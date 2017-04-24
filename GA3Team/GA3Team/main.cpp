@@ -3,5 +3,6 @@
 #include <conio.h>
 
 void main() {
+	int i;
 	return;
 }

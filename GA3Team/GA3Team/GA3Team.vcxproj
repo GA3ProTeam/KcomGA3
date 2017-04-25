@@ -110,7 +110,33 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Library\Audio.cpp" />
+    <ClCompile Include="Library\DirectXDevice.cpp" />
+    <ClCompile Include="Library\DrawFont.cpp" />
+    <ClCompile Include="Library\DrawTexture.cpp" />
+    <ClCompile Include="Library\HitBoxManager.cpp" />
+    <ClCompile Include="Library\Library.cpp" />
+    <ClCompile Include="Library\SceneManager.cpp" />
+    <ClCompile Include="Library\SceneObjManager.cpp" />
+    <ClCompile Include="Library\Trace.cpp" />
+    <ClCompile Include="Library\UserData.cpp" />
+    <ClCompile Include="Library\WinInputs.cpp" />
     <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Library\Audio.h" />
+    <ClInclude Include="Library\DirectXDevice.h" />
+    <ClInclude Include="Library\DrawFont.h" />
+    <ClInclude Include="Library\DrawTexture.h" />
+    <ClInclude Include="Library\HitBoxManager.h" />
+    <ClInclude Include="Library\Library.h" />
+    <ClInclude Include="Library\SceneManager.h" />
+    <ClInclude Include="Library\SceneObjManager.h" />
+    <ClInclude Include="Library\Trace.h" />
+    <ClInclude Include="Library\WinInputs.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="Library\Draw2DTex.hlsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

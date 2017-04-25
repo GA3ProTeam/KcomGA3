@@ -13,7 +13,7 @@ public:
 	void Action();		//アクション
 	void Draw();		//ドロー
 private:
-	int m_x, m_y;
+	float m_x, m_y;
 
 	RECT m_src;	//転送先座標
 	RECT m_dst;	//切り取り座標

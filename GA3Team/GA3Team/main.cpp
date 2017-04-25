@@ -6,5 +6,6 @@ void main() {
 	int i;
 	int j;
 	int x;
+	int y;
 	return;
 }

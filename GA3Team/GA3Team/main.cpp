@@ -4,5 +4,6 @@
 
 void main() {
 	int i;
+	int a;
 	return;
 }

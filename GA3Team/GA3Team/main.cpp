@@ -3,6 +3,7 @@
 #include <conio.h>
 
 void main() {
-	int i = 0;
+	int i;
+	int j;
 	return;
 }

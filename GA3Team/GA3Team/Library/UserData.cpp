@@ -4,11 +4,6 @@
 CUserData::CUserData()
 {
 	memset(this,0x00,sizeof(this));
-	ballcounter=0;
-	blockcounter=0;
-	clearflg=0;
-	itemflg=0;
-	itemcounter=0;
 }
 
 CUserData::~CUserData()

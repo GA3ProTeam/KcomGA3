@@ -199,7 +199,8 @@ extern CHitBoxManager*	g_HitBoxManager;
 
 //ゲームシーン・オブジェクトのインクルード-------
 //シーン１
-
+#include "CSceneGameMain.h"
+#include "CObjPlayer.h"
 
 //----------------------------------------------
 

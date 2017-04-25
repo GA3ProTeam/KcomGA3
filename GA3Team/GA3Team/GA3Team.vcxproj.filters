@@ -16,6 +16,9 @@
     <Filter Include="ライブラリ ファイル">
       <UniqueIdentifier>{a970247a-2e8d-4155-aab2-d5fe8fdc0bcd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="CSceneGameMain">
+      <UniqueIdentifier>{e1cb80a8-74b5-4ed3-8c48-32697ee648bf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -54,6 +57,12 @@
     <ClCompile Include="Library\WinInputs.cpp">
       <Filter>ライブラリ ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="CObjPlayer.cpp">
+      <Filter>CSceneGameMain</Filter>
+    </ClCompile>
+    <ClCompile Include="CSceneGameMain.cpp">
+      <Filter>CSceneGameMain</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Library\Audio.h">
@@ -88,6 +97,12 @@
     </ClInclude>
     <ClInclude Include="main.h">
       <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="CObjPlayer.h">
+      <Filter>CSceneGameMain</Filter>
+    </ClInclude>
+    <ClInclude Include="CSceneGameMain.h">
+      <Filter>CSceneGameMain</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

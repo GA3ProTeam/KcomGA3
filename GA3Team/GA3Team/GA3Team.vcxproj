@@ -117,6 +117,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CObjPlayer.cpp" />
+    <ClCompile Include="CSceneGameMain.cpp" />
     <ClCompile Include="Library\Audio.cpp" />
     <ClCompile Include="Library\DirectXDevice.cpp" />
     <ClCompile Include="Library\DrawFont.cpp" />
@@ -131,6 +133,8 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CObjPlayer.h" />
+    <ClInclude Include="CSceneGameMain.h" />
     <ClInclude Include="Library\Audio.h" />
     <ClInclude Include="Library\DirectXDevice.h" />
     <ClInclude Include="Library\DrawFont.h" />

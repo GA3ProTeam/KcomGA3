@@ -122,6 +122,7 @@
     <ClCompile Include="CSceneTitle.cpp" />
     <ClCompile Include="Library\Audio.cpp" />
     <ClCompile Include="Library\Button.cpp" />
+    <ClCompile Include="Library\CObjSavedata.cpp" />
     <ClCompile Include="Library\CObjTest.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -136,6 +137,7 @@
     <ClCompile Include="Library\UserData.cpp" />
     <ClCompile Include="Library\WinInputs.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="CSceneDataSelect.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CObjPlayer.h" />
@@ -143,6 +145,7 @@
     <ClInclude Include="CSceneTitle.h" />
     <ClInclude Include="Library\Audio.h" />
     <ClInclude Include="Library\Button.h" />
+    <ClInclude Include="Library\CObjSavedata.h" />
     <ClInclude Include="Library\CObjTest.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClInclude>
@@ -156,6 +159,7 @@
     <ClInclude Include="Library\Trace.h" />
     <ClInclude Include="Library\WinInputs.h" />
     <ClInclude Include="main.h" />
+    <ClInclude Include="CSceneDataSelect.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Library\Draw2DTex.hlsl">

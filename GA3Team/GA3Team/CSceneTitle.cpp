@@ -31,5 +31,7 @@ void CSceneTitle::InitScene()
 //ƒV[ƒ“ŽÀs
 void CSceneTitle::Scene()
 {
-
+	if (Input()->GetVKey(VK_RETURN)) {
+		Manager()->Pop(new CSceneDataSelect());
+	}
 }

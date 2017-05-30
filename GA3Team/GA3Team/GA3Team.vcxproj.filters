@@ -105,6 +105,9 @@
     <ClCompile Include="CObjPlayer.cpp">
       <Filter>CSceneGameMain</Filter>
     </ClCompile>
+    <ClCompile Include="CSceneGameMain.cpp">
+      <Filter>CSceneGameMain</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Library\Audio.h">

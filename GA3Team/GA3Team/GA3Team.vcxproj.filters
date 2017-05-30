@@ -108,6 +108,15 @@
     <ClCompile Include="CSceneGameMain.cpp">
       <Filter>CSceneGameMain</Filter>
     </ClCompile>
+    <ClCompile Include="ButtonPlayer.cpp">
+      <Filter>CSceneStageSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="ButtonStage.cpp">
+      <Filter>CSceneStageSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="CObjStageTab.cpp">
+      <Filter>CSceneStageSelect</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Library\Audio.h">
@@ -175,6 +184,15 @@
     </ClInclude>
     <ClInclude Include="CObjDataSelect.h">
       <Filter>CSceneDataSelect</Filter>
+    </ClInclude>
+    <ClInclude Include="ButtonPlayer.h">
+      <Filter>CSceneStageSelect</Filter>
+    </ClInclude>
+    <ClInclude Include="ButtonStage.h">
+      <Filter>CSceneStageSelect</Filter>
+    </ClInclude>
+    <ClInclude Include="CObjStageTab.h">
+      <Filter>CSceneStageSelect</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -20,9 +20,9 @@ void CSceneTitle::InitScene()
 
 	//シーンに必要なオブジェクト情報
 
-	//m_obj_back = new CObjBack();
-	//m_obj_back->Init();
-	//Obj()->InsertObj(m_obj_back,OBJ_BACK,0,this,HIT_BOX_OFF);
+	m_obj_title = new CObjTitle();
+	m_obj_title->Init();
+	Obj()->InsertObj(m_obj_title,OBJ_TITLE,0,this,HIT_BOX_OFF);
 
 	//Audio()->LoopStart(0);
 

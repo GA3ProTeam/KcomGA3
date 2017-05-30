@@ -90,6 +90,15 @@
     <ClCompile Include="CSceneTitle.cpp">
       <Filter>CSceneTitle</Filter>
     </ClCompile>
+    <ClCompile Include="CObjTitle.cpp">
+      <Filter>CSceneTitle</Filter>
+    </ClCompile>
+    <ClCompile Include="CObjDataSelect.cpp">
+      <Filter>CSceneDataSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="CObjMenuTab.cpp">
+      <Filter>CSceneGameMain</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Library\Audio.h">
@@ -136,6 +145,24 @@
     </ClInclude>
     <ClInclude Include="Library\CObjTest.h">
       <Filter>テスト ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="CSceneTitle.h">
+      <Filter>CSceneTitle</Filter>
+    </ClInclude>
+    <ClInclude Include="CSceneDataSelect.h">
+      <Filter>CSceneDataSelect</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\CObjSavedata.h">
+      <Filter>ライブラリ ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="CObjTitle.h">
+      <Filter>CSceneTitle</Filter>
+    </ClInclude>
+    <ClInclude Include="CObjMenuTab.h">
+      <Filter>CSceneGameMain</Filter>
+    </ClInclude>
+    <ClInclude Include="CObjDataSelect.h">
+      <Filter>CSceneDataSelect</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

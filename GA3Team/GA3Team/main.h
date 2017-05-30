@@ -102,6 +102,7 @@ enum OBJ_NAME
 	OBJ_TITLE,
 	OBJ_RESULT,
 	OBJ_ITEM,
+	OBJ_DATASELECT,
 };
 //----------------------
 
@@ -201,6 +202,8 @@ extern CHitBoxManager*	g_HitBoxManager;
 #include "Library\Button.h"
 #include "Library\CObjSavedata.h"
 
+//#include "CSceneGameMain.h"
+//#include "CObjPlayer.h"
 
 //ゲームシーン・オブジェクトのインクルード-------
 //シーン１
@@ -209,6 +212,12 @@ extern CHitBoxManager*	g_HitBoxManager;
 #include "CObjMenuTab.h"
 #include "CSceneDataSelect.h"
 
+//シーン1
+#include "CSceneTitle.h"
+#include "CObjTitle.h"
+//シーン2
+#include "CSceneDataSelect.h"
+#include "CObjDataSelect.h"
 //シーン2
 #include "CSceneTitle.h"
 //----------------------------------------------

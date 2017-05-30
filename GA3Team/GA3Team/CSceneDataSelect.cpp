@@ -20,9 +20,9 @@ void CSceneDataSelect::InitScene()
 
 	//シーンに必要なオブジェクト情報
 
-	//m_obj_back = new CObjBack();
-	//m_obj_back->Init();
-	//Obj()->InsertObj(m_obj_back,OBJ_BACK,0,this,HIT_BOX_OFF);
+	m_obj_dataselect = new CObjDataSelect();
+	m_obj_dataselect->Init();
+	Obj()->InsertObj(m_obj_dataselect,OBJ_DATASELECT,0,this,HIT_BOX_OFF);
 
 	//Audio()->LoopStart(0);
 

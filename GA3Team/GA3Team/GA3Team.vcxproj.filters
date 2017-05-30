@@ -27,7 +27,7 @@
     </Filter>
     <Filter Include="CSceneStageSelect">
       <UniqueIdentifier>{4b2047ba-e52c-4b1c-a89c-047cdcbe447e}</UniqueIdentifier>
-    </Filter>    
+    </Filter>
     <Filter Include="テスト ファイル">
       <UniqueIdentifier>{bbe6a533-474e-47f0-b138-fb3b9b43098b}</UniqueIdentifier>
     </Filter>
@@ -80,12 +80,6 @@
     </ClCompile>
     <ClCompile Include="Library\CObjTest.cpp">
       <Filter>テスト ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="Library\CObjSavedata.cpp">
-      <Filter>ライブラリ ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="CSceneDataSelect.cpp">
-      <Filter>CSceneDataSelect</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

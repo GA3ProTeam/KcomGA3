@@ -3,6 +3,7 @@
 #define __C_SCENE_TITLE_H__
 
 //使用オブジェクトのプロトタイプ宣言
+class CObjTitle;
 
 //シーン　ゲームメイン
 class CSceneTitle : public CScene
@@ -13,6 +14,7 @@ public:
 	void InitScene();
 	void Scene();
 private:
+	CObjTitle* m_obj_title;
 
 };
 

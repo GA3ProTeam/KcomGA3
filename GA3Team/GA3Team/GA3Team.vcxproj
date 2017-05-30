@@ -119,15 +119,7 @@
   <ItemGroup>
     <ClCompile Include="CObjMenuTab.cpp" />
     <ClCompile Include="CObjDataSelect.cpp" />
-    <ClCompile Include="CObjPlayer.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
     <ClCompile Include="CObjTitle.cpp" />
-    <ClCompile Include="CSceneGameMain.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="CObjPlayer.cpp" />
-    <ClCompile Include="CSceneGameMain.cpp" />
     <ClCompile Include="CSceneStageSelect.cpp" />
     <ClCompile Include="CSceneTitle.cpp" />
     <ClCompile Include="Library\Audio.cpp" />

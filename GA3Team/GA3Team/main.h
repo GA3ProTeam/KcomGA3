@@ -202,9 +202,6 @@ extern CHitBoxManager*	g_HitBoxManager;
 #include "Library\Button.h"
 #include "Library\CObjSavedata.h"
 
-//#include "CSceneGameMain.h"
-//#include "CObjPlayer.h"
-
 //ゲームシーン・オブジェクトのインクルード-------
 //シーンタイトル
 #include "CSceneTitle.h"
@@ -223,14 +220,10 @@ extern CHitBoxManager*	g_HitBoxManager;
 #include "CObjPlayer.h"
 
 
-//シーン１
-//#include "CSceneGameMain.h"
-//#include "CObjPlayer.h"
-//#include "CObjMenuTab.h"
-//#include "CSceneDataSelect.h"
 
-//シーン2
-#include "CSceneTitle.h"
+//#include "CObjMenuTab.h"
+
+
 //----------------------------------------------
 
 

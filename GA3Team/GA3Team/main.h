@@ -207,10 +207,10 @@ extern CHitBoxManager*	g_HitBoxManager;
 
 //ゲームシーン・オブジェクトのインクルード-------
 //シーン１
-#include "CSceneGameMain.h"
-#include "CObjPlayer.h"
-#include "CObjMenuTab.h"
-#include "CSceneDataSelect.h"
+//#include "CSceneGameMain.h"
+//#include "CObjPlayer.h"
+//#include "CObjMenuTab.h"
+//#include "CSceneDataSelect.h"
 
 //シーン1
 #include "CSceneTitle.h"
@@ -218,8 +218,6 @@ extern CHitBoxManager*	g_HitBoxManager;
 //シーン2
 #include "CSceneDataSelect.h"
 #include "CObjDataSelect.h"
-//シーン2
-#include "CSceneTitle.h"
 //----------------------------------------------
 
 

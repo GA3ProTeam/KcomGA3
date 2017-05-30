@@ -90,6 +90,9 @@
     <ClCompile Include="CSceneTitle.cpp">
       <Filter>CSceneTitle</Filter>
     </ClCompile>
+    <ClCompile Include="CSceneStageSelect.cpp">
+      <Filter>CSceneStageSelect</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Library\Audio.h">
@@ -145,6 +148,9 @@
     </ClInclude>
     <ClInclude Include="CSceneDataSelect.h">
       <Filter>CSceneDataSelect</Filter>
+    </ClInclude>
+    <ClInclude Include="CSceneStageSelect.h">
+      <Filter>CSceneStageSelect</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

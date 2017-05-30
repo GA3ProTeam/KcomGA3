@@ -93,20 +93,20 @@
     <ClCompile Include="CObjDataSelect.cpp">
       <Filter>CSceneDataSelect</Filter>
     </ClCompile>
+    <ClCompile Include="CObjPlayer.cpp">
+      <Filter>CSceneGameMain</Filter>
+    </ClCompile>
+    <ClCompile Include="CSceneGameMain.cpp">
+      <Filter>CSceneGameMain</Filter>
+    </ClCompile>
+    <ClCompile Include="CObjPlayer.cpp">
+      <Filter>CSceneGameMain</Filter>
+    </ClCompile>
+    <ClCompile Include="CSceneGameMain.cpp">
+      <Filter>CSceneGameMain</Filter>
+    </ClCompile>
     <ClCompile Include="CObjMenuTab.cpp">
-      <Filter>CSceneGameMain</Filter>
-    </ClCompile>
-    <ClCompile Include="CObjPlayer.cpp">
-      <Filter>CSceneGameMain</Filter>
-    </ClCompile>
-    <ClCompile Include="CSceneGameMain.cpp">
-      <Filter>CSceneGameMain</Filter>
-    </ClCompile>
-    <ClCompile Include="CObjPlayer.cpp">
-      <Filter>CSceneGameMain</Filter>
-    </ClCompile>
-    <ClCompile Include="CSceneGameMain.cpp">
-      <Filter>CSceneGameMain</Filter>
+      <Filter>CSceneStageSelect</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -164,9 +164,6 @@
     <ClInclude Include="Library\CObjSavedata.h">
       <Filter>ライブラリ ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="CObjMenuTab.h">
-      <Filter>CSceneGameMain</Filter>
-    </ClInclude>
     <ClInclude Include="CSceneStageSelect.h">
       <Filter>CSceneStageSelect</Filter>
     </ClInclude>
@@ -175,6 +172,9 @@
     </ClInclude>
     <ClInclude Include="CObjDataSelect.h">
       <Filter>CSceneDataSelect</Filter>
+    </ClInclude>
+    <ClInclude Include="CObjMenuTab.h">
+      <Filter>CSceneStageSelect</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

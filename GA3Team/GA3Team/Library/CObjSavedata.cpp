@@ -1,0 +1,19 @@
+#include "../main.h"
+
+//セーブデータ読み込み
+void CObjSavedata::Loadsavedata()
+{
+
+}
+
+//セーブデータ書き込み
+void CObjSavedata::Writesavedata()
+{
+
+}
+
+//セーブデータ確認
+void CObjSavedata::Savedatacheck()
+{
+
+}

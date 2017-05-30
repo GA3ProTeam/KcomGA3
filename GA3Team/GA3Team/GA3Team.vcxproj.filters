@@ -27,7 +27,7 @@
     </Filter>
     <Filter Include="CSceneStageSelect">
       <UniqueIdentifier>{4b2047ba-e52c-4b1c-a89c-047cdcbe447e}</UniqueIdentifier>
-    </Filter>    
+    </Filter>
     <Filter Include="テスト ファイル">
       <UniqueIdentifier>{bbe6a533-474e-47f0-b138-fb3b9b43098b}</UniqueIdentifier>
     </Filter>
@@ -139,6 +139,12 @@
     </ClInclude>
     <ClInclude Include="CSceneTitle.h">
       <Filter>CSceneTitle</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\CObjSavedata.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="CSceneDataSelect.h">
+      <Filter>CSceneDataSelect</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

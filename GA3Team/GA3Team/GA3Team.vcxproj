@@ -119,7 +119,6 @@
   <ItemGroup>
     <ClCompile Include="CObjPlayer.cpp" />
     <ClCompile Include="CSceneGameMain.cpp" />
-    <ClCompile Include="CSceneStageSelect.cpp" />
     <ClCompile Include="Library\Audio.cpp" />
     <ClCompile Include="Library\Button.cpp" />
     <ClCompile Include="Library\CObjSavedata.cpp" />
@@ -142,7 +141,6 @@
   <ItemGroup>
     <ClInclude Include="CObjPlayer.h" />
     <ClInclude Include="CSceneGameMain.h" />
-    <ClInclude Include="CSceneStageSelect.h" />
     <ClInclude Include="Library\Audio.h" />
     <ClInclude Include="Library\Button.h" />
     <ClInclude Include="Library\CObjSavedata.h" />

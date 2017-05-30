@@ -215,6 +215,7 @@ extern CHitBoxManager*	g_HitBoxManager;
 
 //シーンステージセレクト
 #include "CSceneStageSelect.h"
+#include "CObjMenuTab.h"
 
 //シーンゲームメイン
 #include "CSceneGameMain.h"

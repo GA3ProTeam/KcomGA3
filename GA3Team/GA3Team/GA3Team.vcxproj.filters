@@ -81,6 +81,9 @@
     <ClCompile Include="Library\CObjTest.cpp">
       <Filter>テスト ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="CObjMenuTab.cpp">
+      <Filter>CSceneStageSelect</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Library\Audio.h">
@@ -127,6 +130,9 @@
     </ClInclude>
     <ClInclude Include="Library\CObjTest.h">
       <Filter>テスト ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="CObjMenuTab.h">
+      <Filter>CSceneStageSelect</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -198,6 +198,8 @@ extern CHitBoxManager*	g_HitBoxManager;
 #include "Library\\HitBoxManager.h"
 #include "Library\Library.h"
 #include "Library\Trace.h"
+#include "Library\Button.h"
+//#include "CObjTest.h"
 
 
 

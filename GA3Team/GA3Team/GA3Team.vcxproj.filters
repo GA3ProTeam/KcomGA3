@@ -19,6 +19,9 @@
     <Filter Include="CSceneGameMain">
       <UniqueIdentifier>{e1cb80a8-74b5-4ed3-8c48-32697ee648bf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="テスト ファイル">
+      <UniqueIdentifier>{bbe6a533-474e-47f0-b138-fb3b9b43098b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -66,6 +69,9 @@
     <ClCompile Include="Library\Button.cpp">
       <Filter>ライブラリ ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="Library\CObjTest.cpp">
+      <Filter>テスト ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Library\Audio.h">
@@ -109,6 +115,9 @@
     </ClInclude>
     <ClInclude Include="Library\Button.h">
       <Filter>ライブラリ ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\CObjTest.h">
+      <Filter>テスト ファイル</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

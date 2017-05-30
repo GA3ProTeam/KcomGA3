@@ -1,7 +1,6 @@
 #ifndef __C_OBJ_PLAYER_H__
 #define __C_OBJ_PLAYER_H__
 
-
 class CObjPlayer : public CObj
 {
 public:

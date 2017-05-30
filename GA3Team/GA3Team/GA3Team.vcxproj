@@ -121,6 +121,9 @@
     <ClCompile Include="CSceneGameMain.cpp" />
     <ClCompile Include="Library\Audio.cpp" />
     <ClCompile Include="Library\Button.cpp" />
+    <ClCompile Include="Library\CObjTest.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="Library\DirectXDevice.cpp" />
     <ClCompile Include="Library\DrawFont.cpp" />
     <ClCompile Include="Library\DrawTexture.cpp" />
@@ -138,6 +141,9 @@
     <ClInclude Include="CSceneGameMain.h" />
     <ClInclude Include="Library\Audio.h" />
     <ClInclude Include="Library\Button.h" />
+    <ClInclude Include="Library\CObjTest.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="Library\DirectXDevice.h" />
     <ClInclude Include="Library\DrawFont.h" />
     <ClInclude Include="Library\DrawTexture.h" />

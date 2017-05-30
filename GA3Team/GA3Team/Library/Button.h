@@ -1,21 +1,18 @@
-#pragma once
 #ifndef __BUTTON_H__
 #define __BUTTON_H__
 
-class CObj;
-
 class Button : public CObj{
-private:
+protected:
 	bool m_bStatus;
 	int m_iXpos;
 	int m_iYpos;
 	int m_iWidth;
 	int m_iHeight;
 public:
-	void Init();		//イニシャライズ
-	void Destructor();	//デストラクタ
-	void Action();		//アクション
-	void Draw();		//ドロー
+	virtual void Init() = 0;		//イニシャライズ
+	virtual void Destructor() = 0;	//デストラクタ
+	virtual void Action() = 0;		//アクション
+	virtual void Draw() = 0;		//ドロー
 
 	void Push();
 	void Rangedetection();

@@ -199,8 +199,7 @@ extern CHitBoxManager*	g_HitBoxManager;
 #include "Library\Library.h"
 #include "Library\Trace.h"
 #include "Library\Button.h"
-//#include "CObjTest.h"
-
+#include "Library\CObjSavedata.h"
 
 
 //ゲームシーン・オブジェクトのインクルード-------
@@ -208,7 +207,10 @@ extern CHitBoxManager*	g_HitBoxManager;
 #include "CSceneGameMain.h"
 #include "CObjPlayer.h"
 #include "CObjMenuTab.h"
+#include "CSceneDataSelect.h"
 
+//シーン2
+#include "CSceneTitle.h"
 //----------------------------------------------
 
 

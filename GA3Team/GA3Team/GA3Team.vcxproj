@@ -135,6 +135,7 @@
     <ClCompile Include="Library\UserData.cpp" />
     <ClCompile Include="Library\WinInputs.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="CSceneDataSelect.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CObjPlayer.h" />
@@ -154,6 +155,7 @@
     <ClInclude Include="Library\Trace.h" />
     <ClInclude Include="Library\WinInputs.h" />
     <ClInclude Include="main.h" />
+    <ClInclude Include="CSceneDataSelect.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Library\Draw2DTex.hlsl">

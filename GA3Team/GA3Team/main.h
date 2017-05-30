@@ -207,7 +207,7 @@ extern CHitBoxManager*	g_HitBoxManager;
 //ÉVÅ[ÉìÇP
 #include "CSceneGameMain.h"
 #include "CObjPlayer.h"
-
+#include "CSceneDataSelect.h"
 //----------------------------------------------
 
 

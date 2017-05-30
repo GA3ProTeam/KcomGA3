@@ -97,10 +97,10 @@
       <Filter>CSceneGameMain</Filter>
     </ClCompile>
     <ClCompile Include="CObjPlayer.cpp">
-      <Filter>ソース ファイル</Filter>
+      <Filter>CSceneGameMain</Filter>
     </ClCompile>
     <ClCompile Include="CSceneGameMain.cpp">
-      <Filter>ソース ファイル</Filter>
+      <Filter>CSceneGameMain</Filter>
     </ClCompile>
     <ClCompile Include="CObjPlayer.cpp">
       <Filter>CSceneGameMain</Filter>

@@ -13,8 +13,8 @@ public:
 	~CObjStageTab() {}//デストラクタ
 
 private:
-	int m_iSelectedCharacterNumber;			  //選んだキャラクター番号
-	ButtonStage* m_sStage_Button[STAGENUMBER];//ステージボタン
+	int m_iSelectedCharacterNumber;				//選んだキャラクター番号
+	//ButtonStage* m_sStage_Button[STAGENUMBER];  //ステージボタン
 };
 
 #endif//__COBJ_STAGETAB_H__

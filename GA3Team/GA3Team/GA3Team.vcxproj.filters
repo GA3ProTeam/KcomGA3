@@ -146,17 +146,11 @@
     <ClInclude Include="CSceneTitle.h">
       <Filter>CSceneTitle</Filter>
     </ClInclude>
+    <ClInclude Include="Library\CObjSavedata.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
     <ClInclude Include="CSceneDataSelect.h">
       <Filter>CSceneDataSelect</Filter>
-    </ClInclude>
-    <ClInclude Include="CObjTitle.h">
-      <Filter>CSceneTitle</Filter>
-    </ClInclude>
-    <ClInclude Include="CObjDataSelect.h">
-      <Filter>CSceneDataSelect</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\CObjSavedata.h">
-      <Filter>ライブラリ ファイル</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

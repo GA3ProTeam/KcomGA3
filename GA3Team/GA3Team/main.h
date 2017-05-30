@@ -200,12 +200,18 @@ extern CHitBoxManager*	g_HitBoxManager;
 #include "Library\Library.h"
 #include "Library\Trace.h"
 #include "Library\Button.h"
-#include "Library\CObjSavedata.h"
+//#include "CObjTest.h"
 
 //#include "CSceneGameMain.h"
 //#include "CObjPlayer.h"
 
+
 //ゲームシーン・オブジェクトのインクルード-------
+//シーン１
+#include "CSceneGameMain.h"
+#include "CObjPlayer.h"
+#include "CObjMenuTab.h"
+
 //シーン1
 #include "CSceneTitle.h"
 #include "CObjTitle.h"

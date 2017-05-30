@@ -208,6 +208,8 @@ extern CHitBoxManager*	g_HitBoxManager;
 #include "CSceneGameMain.h"
 #include "CObjPlayer.h"
 
+//ÉVÅ[Éì2
+#include "CSceneTitle.h"
 //----------------------------------------------
 
 

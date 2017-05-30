@@ -8,6 +8,10 @@ private:
 	//ŠJ•Âƒtƒ‰ƒO
 	bool m_bOpenClose;
 public:
+	void Init();
+	void Destructor();
+	void Action();
+	void Draw();
 
 
 };

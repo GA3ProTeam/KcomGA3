@@ -96,17 +96,14 @@
     <ClCompile Include="CObjMenuTab.cpp">
       <Filter>CSceneGameMain</Filter>
     </ClCompile>
-    <ClCompile Include="CSceneGameMain.cpp">
-      <Filter>CSceneGameMain</Filter>
-    </ClCompile>
-    <ClCompile Include="CObjPlayer.cpp">
-      <Filter>CSceneGameMain</Filter>
-    </ClCompile>
     <ClCompile Include="CObjPlayer.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="CSceneGameMain.cpp">
       <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="CObjPlayer.cpp">
+      <Filter>CSceneGameMain</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

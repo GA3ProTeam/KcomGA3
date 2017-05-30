@@ -119,6 +119,7 @@
   <ItemGroup>
     <ClCompile Include="CObjMenuTab.cpp" />
     <ClCompile Include="CObjDataSelect.cpp" />
+    <ClCompile Include="CObjPlayer.cpp" />
     <ClCompile Include="CObjTitle.cpp" />
     <ClCompile Include="CSceneStageSelect.cpp" />
     <ClCompile Include="CSceneTitle.cpp" />

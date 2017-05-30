@@ -27,7 +27,7 @@
     </Filter>
     <Filter Include="CSceneStageSelect">
       <UniqueIdentifier>{4b2047ba-e52c-4b1c-a89c-047cdcbe447e}</UniqueIdentifier>
-    </Filter>    
+    </Filter>
     <Filter Include="テスト ファイル">
       <UniqueIdentifier>{bbe6a533-474e-47f0-b138-fb3b9b43098b}</UniqueIdentifier>
     </Filter>
@@ -87,6 +87,9 @@
     <ClCompile Include="CSceneDataSelect.cpp">
       <Filter>CSceneDataSelect</Filter>
     </ClCompile>
+    <ClCompile Include="CSceneStageSelect.cpp">
+      <Filter>CSceneStageSelect</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Library\Audio.h">
@@ -133,6 +136,15 @@
     </ClInclude>
     <ClInclude Include="Library\CObjTest.h">
       <Filter>テスト ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\CObjSavedata.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="CSceneDataSelect.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="CSceneStageSelect.h">
+      <Filter>CSceneStageSelect</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

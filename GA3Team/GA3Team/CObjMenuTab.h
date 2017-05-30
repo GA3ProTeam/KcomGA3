@@ -5,7 +5,8 @@
 class CObjMenuTab : public CObj
 {
 private:
-
+	//ŠJ•Âƒtƒ‰ƒO
+	bool m_bOpenClose;
 public:
 
 

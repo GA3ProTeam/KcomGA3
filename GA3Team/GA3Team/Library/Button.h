@@ -1,6 +1,7 @@
 #ifndef __BUTTON_H__
 #define __BUTTON_H__
 
+//ボタンクラス（基底）
 class Button : public CObj{
 protected:
 	bool m_bStatus;

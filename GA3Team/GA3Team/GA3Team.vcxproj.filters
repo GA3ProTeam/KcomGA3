@@ -33,9 +33,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="Library\Audio.cpp">
       <Filter>ライブラリ ファイル</Filter>
     </ClCompile>
@@ -108,6 +105,18 @@
     <ClCompile Include="CObjMenuTab.cpp">
       <Filter>CSceneStageSelect</Filter>
     </ClCompile>
+    <ClCompile Include="ButtonPlayer.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="ButtonStage.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="CObjStageTab.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Library\Audio.h">
@@ -175,6 +184,15 @@
     </ClInclude>
     <ClInclude Include="CObjMenuTab.h">
       <Filter>CSceneStageSelect</Filter>
+    </ClInclude>
+    <ClInclude Include="ButtonPlayer.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="ButtonStage.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="CObjStageTab.h">
+      <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

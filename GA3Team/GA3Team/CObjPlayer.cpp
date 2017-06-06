@@ -2,6 +2,10 @@
 
 //イニシャライズ
 void CObjPlayer::Init() {
+	char* token;
+	int i = 0;
+
+
 	ifstream ifw("1-1.bin", std::ios::in | std::ios::binary);
 
 	ifw.read(reinterpret_cast<char*>(&textlen), sizeof(textlen));
@@ -12,6 +16,13 @@ void CObjPlayer::Init() {
 	ifw.read(reinterpret_cast<char*>(&tmpstr), textlen * sizeof(char) + 1);
 
 	ifw.close();
+
+	token = strtok(tmpstr, "\n");
+	while (token != NULL) {
+		strcpy(strsave[i], token);
+		token = strtok(NULL, "\n");
+		i++;
+	}
 }
 
 //デストラクタ
@@ -29,5 +40,5 @@ void CObjPlayer::Draw() {
 	//カラー情報
 	float col[4] = { 1.0f,1.0f,1.0f,1.0f };
 
-	Font()->StrDraw("test", 0, 0, 16, col);
+	Font()->StrDraw(tmpstr, 0, 0, 16, col);
 }

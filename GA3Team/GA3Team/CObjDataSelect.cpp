@@ -23,7 +23,7 @@ void CObjDataSelect::Action()
 
 
   //ボタン判定
-
+	/*
 	if () {
 		//初めから
 		ButtonFromTheBegin();
@@ -31,7 +31,7 @@ void CObjDataSelect::Action()
 		//続きから
 		ButtonContinuation();
 	}
-
+*/
 	//タイトルに戻る
 
 }
@@ -87,6 +87,11 @@ void CObjDataSelect::Draw()
 
 //はじめから
 void ButtonFromTheBegin() {
+	//マウスク判定
+	//カーソルがある所を拡大+発光
+	
+	//選択しました
+
 
 }
 
@@ -105,13 +110,13 @@ void ButtonContinuation() {
 	}
 */
 
-	//マウスクリック判定
+	//マウス判定
 	//カーソルがある所を拡大+発光
 	//......
 
 
 	//データが入ってなかったら選べなくする/暗くする
-	switch () {
+/*	switch () {
 		//選択されたデータをロード
 		//セーブデータ１
 		case 1:
@@ -136,7 +141,7 @@ void ButtonContinuation() {
 
 			break;
 	}
-
+*/
 	//シーン移動
 
 	

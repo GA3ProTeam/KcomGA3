@@ -26,6 +26,8 @@ void CSceneTitle::InitScene()
 
 	//Audio()->LoopStart(0);
 
+	
+
 }
 
 //ƒV[ƒ“Às

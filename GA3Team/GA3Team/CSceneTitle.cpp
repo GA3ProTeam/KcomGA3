@@ -31,7 +31,10 @@ void CSceneTitle::InitScene()
 //シーン実行
 void CSceneTitle::Scene()
 {
-	if (Input()->GetVKey(VK_RETURN)) {
+	/*
+	if () {
+		//シーン移動　→データセレクトへ
 		Manager()->Pop(new CSceneDataSelect());
 	}
+	*/
 }

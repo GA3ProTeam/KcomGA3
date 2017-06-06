@@ -7,6 +7,9 @@ public:
 	void Destructor();	//デストラクタ
 	void Action();		//アクション
 	void Draw();		//ドロー
+
+private:
+
 };
 
 #endif // !__COBJDATASELECT_H__

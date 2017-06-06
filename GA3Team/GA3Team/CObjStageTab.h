@@ -6,14 +6,22 @@
 //ステージの数(仮)
 #define STAGENUMBER 8
 
-//プレイヤーボタン
+//ステージタブ
 class CObjStageTab : public CObj {
 public:
 	CObjStageTab() {}//コンストラクタ
 	~CObjStageTab() {}//デストラクタ
 
+
+	void Init();		//イニシャライズ
+	void Destructor();	//デストラクタ
+	void Action();		//アクション
+	void Draw();		//ドロー
+
+	//キャラクター番号をセット
+	void SetCharacterNum(int chara_num) { m_iSelectedCharacterNumber = m_iSelectedCharacterNumber; }
 private:
-	int m_iSelectedCharacterNumber;				//選んだキャラクター番号
+	int m_iSelectedCharacterNumber;//選んだキャラクター番号
 	//ButtonStage* m_sStage_Button[STAGENUMBER];  //ステージボタン
 };
 

@@ -20,9 +20,9 @@ void CSceneGameMain::InitScene()
 
 	//シーンに必要なオブジェクト情報
 
-	//m_obj_back = new CObjBack();
-	//m_obj_back->Init();
-	//Obj()->InsertObj(m_obj_back,OBJ_BACK,0,this,HIT_BOX_OFF);
+	m_obj_player = new CObjPlayer();
+	m_obj_player->Init();
+	Obj()->InsertObj(m_obj_player,OBJ_PLAYER,0,this,HIT_BOX_OFF);
 
 	//Audio()->LoopStart(0);
 

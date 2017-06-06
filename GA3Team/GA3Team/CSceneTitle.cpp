@@ -37,4 +37,9 @@ void CSceneTitle::Scene()
 		Manager()->Pop(new CSceneDataSelect());
 	}
 	*/
+
+	//テスト用　消さないように
+	if (Input()->GetVKey(VK_RETURN)) {
+		Manager()->Pop(new CSceneGameMain());
+	}
 }

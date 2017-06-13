@@ -103,6 +103,7 @@ enum OBJ_NAME
 	OBJ_RESULT,
 	OBJ_ITEM,
 	OBJ_DATASELECT,
+	OBJ_GIMMICKOBJECT,
 };
 //----------------------
 
@@ -223,6 +224,7 @@ extern CHitBoxManager*	g_HitBoxManager;
 //シーンゲームメイン
 #include "CSceneGameMain.h"
 #include "CObjPlayer.h"
+#include "CObjgimmickobject.h"
 //----------------------------------------------
 
 

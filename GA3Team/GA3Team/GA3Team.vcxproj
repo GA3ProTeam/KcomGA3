@@ -119,6 +119,7 @@
   <ItemGroup>
     <ClCompile Include="ButtonPlayer.cpp" />
     <ClCompile Include="ButtonStage.cpp" />
+    <ClCompile Include="CObjgimmickobject.cpp" />
     <ClCompile Include="CObjMenuTab.cpp" />
     <ClCompile Include="CObjDataSelect.cpp" />
     <ClCompile Include="CObjPlayer.cpp" />
@@ -150,6 +151,7 @@
     <ClInclude Include="ButtonPlayer.h" />
     <ClInclude Include="ButtonStage.h" />
     <ClInclude Include="CObjDataSelect.h" />
+    <ClInclude Include="CObjgimmickobject.h" />
     <ClInclude Include="CObjMenuTab.h" />
     <ClInclude Include="CObjPlayer.h" />
     <ClInclude Include="CObjStageTab.h" />

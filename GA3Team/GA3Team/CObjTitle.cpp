@@ -2,8 +2,8 @@
 
 void CObjTitle::Init()
 {
-	m_x = 0.0f;
-	m_y = 0.0f;
+	m_x = 0;
+	m_y = 0;
 
 	m_idataflg = false;
 }
@@ -31,7 +31,7 @@ void CObjTitle::Action()
 		//ボタン生成(仮)
 		m_obj_button = new ButtonStage();
 		Obj()->InsertObj(m_obj_button, OBJ_BUTTON_STAGE, 0, this->m_pScene, HIT_BOX_OFF);
-		m_obj_button->Init(m_idataflg, 0);
+		//m_obj_button->Init(m_idataflg, 0);
 	}
 	else {
 		//セーブデータがないので続きからを暗くする
@@ -40,7 +40,7 @@ void CObjTitle::Action()
 		//ボタン生成(仮)
 		m_obj_button = new ButtonStage();
 		Obj()->InsertObj(m_obj_button, OBJ_BUTTON_STAGE, 0, this->m_pScene, HIT_BOX_OFF);
-		m_obj_button->Init(m_idataflg, 0);
+		//m_obj_button->Init(m_idataflg, 0);
 	}
 }
 

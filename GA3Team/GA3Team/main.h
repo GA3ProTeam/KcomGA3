@@ -201,7 +201,7 @@ extern CHitBoxManager*	g_HitBoxManager;
 //シーンゲームメイン
 #include "CSceneGameMain.h"
 #include "CObjPlayer.h"
-#include "ButtonScrollScreen.h"
+#include "ButtonLScrollScreen.h"
 //----------------------------------------------
 
 
@@ -218,7 +218,7 @@ class CUserData
 		
 		//----ユーザーが持つデータ-------
 		int mSeveData;//サンプルセーブデータ
-
+		int mscroll_x;
 		//-------------------------------
 
 		//ユーザーデータ以外の外部データ読み込み

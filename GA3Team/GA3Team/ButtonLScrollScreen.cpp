@@ -23,14 +23,6 @@ void ButtonLScrollScreen::Action() {
 		User()->mscroll_x-=10;
 	}
 
-
-
-
-
-
-
-
-
 }
 
 //ƒhƒ[

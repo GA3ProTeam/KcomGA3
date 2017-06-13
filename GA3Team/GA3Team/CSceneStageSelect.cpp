@@ -7,7 +7,7 @@ void CSceneStageSelect::InitScene()
 	//このシーンで表示させるイメージ情報
 	Image()->LoadImage("ステージセレクト仮画像.png",0,TEX_SIZE_1024);
 	//Image()->LoadImage("back.png",1,TEX_SIZE_512);
-	//Image()->LoadImage("boss.png",2,TEX_SIZE_256);
+	Image()->LoadImage("ステージタブ（仮）.png",1,TEX_SIZE_256);
 
 	//文字データ作成
 	//Font()->SetStrTex("ボスHP：");

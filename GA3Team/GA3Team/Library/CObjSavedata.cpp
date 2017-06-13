@@ -15,5 +15,5 @@ void CObjSavedata::Writesavedata()
 //セーブデータ確認
 bool CObjSavedata::Savedatacheck()
 {
-
+	return true;
 }

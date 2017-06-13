@@ -16,10 +16,10 @@ public:
 private:
 
 	//スクロールボタン位置
-	int m_left_Button_x;
-	int m_left_Button_y;
-	int m_right_Button_x;
-	int m_right_Button_y;
+	int m_leftButton_x;
+	int m_leftButton_y;
+	int m_rightButton_x;
+	int m_rightButton_y;
 
 	//画面スクロール値
 	int m_scroll_x;

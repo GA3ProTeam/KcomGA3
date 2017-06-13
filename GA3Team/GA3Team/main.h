@@ -106,7 +106,8 @@ enum OBJ_NAME
 	OBJ_BUTTON_PLAYER,
 	OBJ_BUTTON_STAGE,
 	OBJ_SAVEDATA,
-	BOTTON_LSCROLL_SCREEN,
+	BUTTON_LSCROLL_SCREEN,
+	BUTTON_RSCROLL_SCREEN,
 };
 //----------------------
 
@@ -203,6 +204,7 @@ extern CHitBoxManager*	g_HitBoxManager;
 #include "CSceneGameMain.h"
 #include "CObjPlayer.h"
 #include "ButtonLScrollScreen.h"
+#include "ButtonRScrollScreen.h"
 //----------------------------------------------
 
 

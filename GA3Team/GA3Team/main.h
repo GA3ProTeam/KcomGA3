@@ -200,6 +200,7 @@ extern CHitBoxManager*	g_HitBoxManager;
 //シーンゲームメイン
 #include "CSceneGameMain.h"
 #include "CObjPlayer.h"
+#include "Button.h"
 //----------------------------------------------
 
 

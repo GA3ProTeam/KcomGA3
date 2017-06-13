@@ -188,6 +188,12 @@
     <ClInclude Include="CObjMenuTab.h">
       <Filter>CSceneStageSelect</Filter>
     </ClInclude>
+    <ClInclude Include="CObjStageTab.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="ButtonScrollScreen.h">
+      <Filter>CSceneGameMain</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Library\Draw2DTex.hlsl">

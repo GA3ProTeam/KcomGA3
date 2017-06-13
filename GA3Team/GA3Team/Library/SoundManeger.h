@@ -1,0 +1,14 @@
+#ifndef __SOUNDMANEGER_H__
+#define __SOUNDMANEGER_H__
+
+
+class CObjSoundManeger : public CObj{
+private:
+	int SoundSlot[3];
+public:
+	void SoundDelete(int soundSlotNum/*削除する音スロットの番号*/);//音を消去する
+	void SoundSave(int soundNum/*音の番号*/); //音をセーブする
+	int  GetSound(int SlotNum/*引き出すスロットの番号*/);
+};
+
+#endif

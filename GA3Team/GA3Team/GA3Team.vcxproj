@@ -118,7 +118,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ButtonPlayer.cpp" />
+    <ClCompile Include="ButtonLScrollScreen.cpp" />
+    <ClCompile Include="ButtonRScrollScreen.cpp" />
     <ClCompile Include="ButtonStage.cpp" />
+    <ClCompile Include="CObjgimmickobject.cpp" />
     <ClCompile Include="CObjMenuTab.cpp" />
     <ClCompile Include="CObjDataSelect.cpp" />
     <ClCompile Include="CObjPlayer.cpp" />
@@ -140,6 +143,7 @@
     <ClCompile Include="Library\Library.cpp" />
     <ClCompile Include="Library\SceneManager.cpp" />
     <ClCompile Include="Library\SceneObjManager.cpp" />
+    <ClCompile Include="Library\SoundManeger.cpp" />
     <ClCompile Include="Library\Trace.cpp" />
     <ClCompile Include="Library\UserData.cpp" />
     <ClCompile Include="Library\WinInputs.cpp" />
@@ -147,9 +151,10 @@
     <ClCompile Include="CSceneDataSelect.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ButtonPlayer.h" />
-    <ClInclude Include="ButtonStage.h" />
+    <ClInclude Include="ButtonLScrollScreen.h" />
+    <ClInclude Include="ButtonRScrollScreen.h" />
     <ClInclude Include="CObjDataSelect.h" />
+    <ClInclude Include="CObjgimmickobject.h" />
     <ClInclude Include="CObjMenuTab.h" />
     <ClInclude Include="CObjPlayer.h" />
     <ClInclude Include="CObjStageTab.h" />
@@ -170,6 +175,7 @@
     <ClInclude Include="Library\Library.h" />
     <ClInclude Include="Library\SceneManager.h" />
     <ClInclude Include="Library\SceneObjManager.h" />
+    <ClInclude Include="Library\SoundManeger.h" />
     <ClInclude Include="Library\Trace.h" />
     <ClInclude Include="Library\WinInputs.h" />
     <ClInclude Include="main.h" />

@@ -1,7 +1,7 @@
 #include "main.h"
 
-void ButtonFromTheBegin(); //はじめから
-void ButtonContinuation(); //つづきから
+
+
 
 void CObjDataSelect::Init()
 {
@@ -13,14 +13,13 @@ void CObjDataSelect::Destructor()
 
 void CObjDataSelect::Action()
 {
-	//データの有無を確認する
-	//セーブデータの有無を確認する
-	/*for (int; < 3 : ++) {
-		if (ButtonData[][]) {
-			m_dataflg[]//←変数名かえる = true;
-		}
-	}*/
+	m_obj_savedata = (CObjSavedata *)Obj()->GetObj(OBJ_SAVEDATA);
 
+
+	//データの有無を確認する
+	m_obj_savedata->Savedatacheck();
+
+	
 
   //ボタン判定
 	
@@ -88,9 +87,11 @@ void CObjDataSelect::Draw()
 
 
 //はじめから
-void ButtonFromTheBegin() {
+void CObjDataSelect::ButtonFromTheBegin() {
 	//マウスク判定
 	//カーソルがある所を拡大+発光
+
+	
 	
 	//選択しました
 //	if (/*セーブデータが入っていたら*/) {
@@ -107,6 +108,7 @@ void ButtonFromTheBegin() {
 		//※戻るボタンを押したときセレクト画面に戻るよう判定を変更する
 
 		//新規セーブデータ作成(仮)
+		m_obj_savedata->Writesavedata();
 
 		//ゲームメインへ
 
@@ -114,35 +116,27 @@ void ButtonFromTheBegin() {
 
 	
 
+	
+	
+
 }
 
 //つづきから
-void ButtonContinuation() {
-	//保留
-/*	for (int; < 3;++) {
-		if (m_dataflg[]) {
-			
-		}
-		else {
-			//データが入ってなかったら選べなくする/暗くする
-			//判定消すかできるほうだけ判定を入れる
-
-		}
-	}
-*/
-
+void CObjDataSelect::ButtonContinuation() {
+	
 	//マウス判定
 	//カーソルがある所を拡大+発光
 	//......
 
 
 	//データが入ってなかったら選べなくする/暗くする
+
+	//選択されたデータをロード
 /*	switch () {
-		//選択されたデータをロード
 		//セーブデータ１
 		case 1:
 			//データをロードする
-
+			m_obj_savedata->Loadsavedata();
 
 			break;
 
@@ -150,7 +144,7 @@ void ButtonContinuation() {
 		//セーブデータ２
 		case 2:
 			//データをロードする
-
+			m_obj_savedata->Loadsavedata();
 
 			break;
 
@@ -158,7 +152,7 @@ void ButtonContinuation() {
 		//セーブデータ３
 		case 3:
 			//データをロードする
-
+			m_obj_savedata->Loadsavedata();
 
 			break;
 	}

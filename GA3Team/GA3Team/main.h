@@ -103,9 +103,14 @@ enum OBJ_NAME
 	OBJ_RESULT,
 	OBJ_ITEM,
 	OBJ_DATASELECT,
+	OBJ_GIMMICKOBJECT,
 	OBJ_BUTTON_PLAYER,
 	OBJ_BUTTON_STAGE,
 	OBJ_STAGE_TAB,
+	OBJ_BUTTON_STAGE,
+	OBJ_SAVEDATA,
+	BUTTON_LSCROLL_SCREEN,
+	BUTTON_RSCROLL_SCREEN,
 };
 //----------------------
 
@@ -179,6 +184,7 @@ extern CHitBoxManager*	g_HitBoxManager;
 #include "Library\Trace.h"
 #include "Library\Button.h"
 #include "Library\CObjSavedata.h"
+#include "Library\SoundManeger.h"
 
 //ゲームシーン・オブジェクトのインクルード-------
 #define MAX_CHARA 4
@@ -219,7 +225,7 @@ class CUserData
 		
 		//----ユーザーが持つデータ-------
 		int mSeveData;//サンプルセーブデータ
-
+		int mscroll_x;
 		//-------------------------------
 
 		//ユーザーデータ以外の外部データ読み込み

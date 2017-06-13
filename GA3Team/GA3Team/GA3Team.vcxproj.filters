@@ -117,6 +117,18 @@
     <ClCompile Include="CObjStageTab.cpp">
       <Filter>CSceneStageSelect</Filter>
     </ClCompile>
+    <ClCompile Include="ButtonLScrollScreen.cpp">
+      <Filter>CSceneGameMain</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\SoundManeger.cpp">
+      <Filter>ライブラリ ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="ButtonRScrollScreen.cpp">
+      <Filter>CSceneGameMain</Filter>
+    </ClCompile>
+    <ClCompile Include="CObjgimmickobject.cpp">
+      <Filter>CSceneGameMain</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Library\Audio.h">
@@ -185,14 +197,20 @@
     <ClInclude Include="CObjMenuTab.h">
       <Filter>CSceneStageSelect</Filter>
     </ClInclude>
-    <ClInclude Include="ButtonPlayer.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="ButtonStage.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="CObjStageTab.h">
-      <Filter>CSceneStageSelect</Filter>
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="ButtonLScrollScreen.h">
+      <Filter>CSceneGameMain</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\SoundManeger.h">
+      <Filter>ライブラリ ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="ButtonRScrollScreen.h">
+      <Filter>CSceneGameMain</Filter>
+    </ClInclude>
+    <ClInclude Include="CObjgimmickobject.h">
+      <Filter>CSceneGameMain</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

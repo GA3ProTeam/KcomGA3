@@ -126,6 +126,9 @@
     <ClCompile Include="ButtonRScrollScreen.cpp">
       <Filter>CSceneGameMain</Filter>
     </ClCompile>
+    <ClCompile Include="ButtonDataSelect.cpp">
+      <Filter>CSceneDataSelect</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Library\Audio.h">
@@ -205,6 +208,9 @@
     </ClInclude>
     <ClInclude Include="ButtonRScrollScreen.h">
       <Filter>CSceneGameMain</Filter>
+    </ClInclude>
+    <ClInclude Include="ButtonDataSelect.h">
+      <Filter>CSceneDataSelect</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

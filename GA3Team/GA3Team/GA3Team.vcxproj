@@ -117,6 +117,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ButtonDataSelect.cpp" />
     <ClCompile Include="ButtonPlayer.cpp" />
     <ClCompile Include="ButtonLScrollScreen.cpp" />
     <ClCompile Include="ButtonRScrollScreen.cpp" />
@@ -150,6 +151,7 @@
     <ClCompile Include="CSceneDataSelect.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ButtonDataSelect.h" />
     <ClInclude Include="ButtonLScrollScreen.h" />
     <ClInclude Include="ButtonRScrollScreen.h" />
     <ClInclude Include="CObjDataSelect.h" />

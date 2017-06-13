@@ -19,6 +19,18 @@ void CObjStageTab::Action() {
 
 //ドロー
 void CObjStageTab::Draw() {
-	
+	//カラー情報
+	float m_fCol[4] = { 1.0f,1.0f,1.0f,1.0f };
+
+	//切り取り先座標
+	m_rDst.top = 0; m_rDst.left = 0; m_rDst.bottom = 256; m_rDst.top = 256;
+
+
+	//転送先座標
+	m_rSrc.top = 0; m_rSrc.left = 0; m_rSrc.bottom = 32; m_rSrc.top = 32;
+
+
+	//描画
+	Image()->Draw(1, &m_rSrc, &m_rDst, m_fCol, 0.0f);
 
 }

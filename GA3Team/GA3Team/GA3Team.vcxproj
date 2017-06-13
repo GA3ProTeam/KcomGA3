@@ -117,6 +117,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ButtonScrollScreen.cpp" />
     <ClCompile Include="CObjMenuTab.cpp" />
     <ClCompile Include="CObjDataSelect.cpp" />
     <ClCompile Include="CObjPlayer.cpp" />
@@ -144,6 +145,7 @@
     <ClCompile Include="CSceneDataSelect.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ButtonScrollScreen.h" />
     <ClInclude Include="CObjDataSelect.h" />
     <ClInclude Include="CObjMenuTab.h" />
     <ClInclude Include="CObjPlayer.h" />

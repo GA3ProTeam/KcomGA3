@@ -104,6 +104,7 @@ enum OBJ_NAME
 	OBJ_ITEM,
 	OBJ_DATASELECT,
 	OBJ_BUTTON_PLAYER,
+	OBJ_SAVEDATA,
 };
 //----------------------
 

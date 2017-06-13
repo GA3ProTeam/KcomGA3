@@ -14,6 +14,7 @@ private:
 	bool m_idataflg; //データの有無を確認
 
 	CObjSavedata* m_obj_savedata;
+	ButtonStage* m_obj_button;
 };
 
 #endif // !__COBJTITLE_H__

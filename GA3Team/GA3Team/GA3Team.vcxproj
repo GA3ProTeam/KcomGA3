@@ -145,7 +145,6 @@
     <ClCompile Include="Library\WinInputs.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="CSceneDataSelect.cpp" />
-    <ClCompile Include="SaveData.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ButtonPlayer.h" />
@@ -158,7 +157,6 @@
     <ClInclude Include="CSceneGameMain.h" />
     <ClInclude Include="CSceneStageSelect.h" />
     <ClInclude Include="CSceneTitle.h" />
-    <ClInclude Include="SaveData.h" />
     <ClInclude Include="Library\Audio.h" />
     <ClInclude Include="Library\Button.h" />
     <ClInclude Include="Library\CObjSavedata.h" />

@@ -117,9 +117,6 @@
     <ClCompile Include="CObjStageTab.cpp">
       <Filter>CSceneStageSelect</Filter>
     </ClCompile>
-    <ClCompile Include="SaveData.cpp">
-      <Filter>ライブラリ ファイル</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Library\Audio.h">
@@ -196,9 +193,6 @@
     </ClInclude>
     <ClInclude Include="CObjStageTab.h">
       <Filter>CSceneStageSelect</Filter>
-    </ClInclude>
-    <ClInclude Include="SaveData.h">
-      <Filter>ライブラリ ファイル</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

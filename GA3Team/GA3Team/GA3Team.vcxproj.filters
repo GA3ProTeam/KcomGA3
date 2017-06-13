@@ -120,7 +120,7 @@
     <ClCompile Include="ButtonLScrollScreen.cpp">
       <Filter>CSceneGameMain</Filter>
     </ClCompile>
-    <ClCompile Include="SoundManeger.cpp">
+    <ClCompile Include="Library\SoundManeger.cpp">
       <Filter>ライブラリ ファイル</Filter>
     </ClCompile>
   </ItemGroup>
@@ -197,7 +197,7 @@
     <ClInclude Include="ButtonLScrollScreen.h">
       <Filter>CSceneGameMain</Filter>
     </ClInclude>
-    <ClInclude Include="SoundManeger.h">
+    <ClInclude Include="Library\SoundManeger.h">
       <Filter>ライブラリ ファイル</Filter>
     </ClInclude>
   </ItemGroup>

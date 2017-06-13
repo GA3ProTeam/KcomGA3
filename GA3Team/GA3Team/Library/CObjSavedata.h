@@ -8,7 +8,7 @@ protected:
 public:
 	void Loadsavedata();  // セーブデータ読み込み
 	void Writesavedata(); //セーブデータ書き込み
-	void Savedatacheck(); //セーブデータ確認
+	bool Savedatacheck(); //セーブデータ確認
 };
 
 #endif // !__COBJSAVEDATA_H__

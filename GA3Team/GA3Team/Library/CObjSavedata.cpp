@@ -13,7 +13,7 @@ void CObjSavedata::Writesavedata()
 }
 
 //セーブデータ確認
-void CObjSavedata::Savedatacheck()
+bool CObjSavedata::Savedatacheck()
 {
-
+	return true;
 }

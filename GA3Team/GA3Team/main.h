@@ -104,6 +104,11 @@ enum OBJ_NAME
 	OBJ_ITEM,
 	OBJ_DATASELECT,
 	OBJ_GIMMICKOBJECT,
+	OBJ_BUTTON_PLAYER,
+	OBJ_BUTTON_STAGE,
+	OBJ_SAVEDATA,
+	BUTTON_LSCROLL_SCREEN,
+	BUTTON_RSCROLL_SCREEN,
 };
 //----------------------
 
@@ -136,32 +141,7 @@ enum OBJ_NAME
 //当たり判定の複数同時判定量
 #define MAX_HITS	15
 
-
-//------------------------------
-//バーの幅
-#define BAR_SIZE_W		72
-//バーの高さ
-#define BAR_SIZE_H		8
-//ブロックの幅
-#define BLOCK_SIZE_W	48
-//ブロックの高さ
-#define BLOCK_SIZE_H	24
-//ボールの幅
-#define BALL_SIZE_W		16
-//ボールの高さ
-#define BALL_SIZE_H		16
-//ブロックのxの量
-#define BLOCK_ARRAY_X	14
-//ブロックのyの量
-#define BLOCK_ARRAY_Y	5
-//ボールの最大量
-#define BALL_MAX		16
-//アイテムの幅
-#define ITEM_SIZE_W		32
-//アイテムの高さ
-#define ITEM_SIZE_H		32
-
-//------------------------------
+//---------------------------------------
 
 //ゲームエンジンクラス
 class CObj;
@@ -202,6 +182,7 @@ extern CHitBoxManager*	g_HitBoxManager;
 #include "Library\Trace.h"
 #include "Library\Button.h"
 #include "Library\CObjSavedata.h"
+#include "Library\SoundManeger.h"
 
 //ゲームシーン・オブジェクトのインクルード-------
 //シーンタイトル
@@ -224,7 +205,6 @@ extern CHitBoxManager*	g_HitBoxManager;
 //シーンゲームメイン
 #include "CSceneGameMain.h"
 #include "CObjPlayer.h"
-#include "CObjgimmickobject.h"
 //----------------------------------------------
 
 
@@ -241,7 +221,7 @@ class CUserData
 		
 		//----ユーザーが持つデータ-------
 		int mSeveData;//サンプルセーブデータ
-
+		int mscroll_x;
 		//-------------------------------
 
 		//ユーザーデータ以外の外部データ読み込み

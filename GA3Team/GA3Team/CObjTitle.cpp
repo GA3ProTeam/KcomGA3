@@ -14,27 +14,34 @@ void CObjTitle::Destructor()
 
 void CObjTitle::Action()
 {
+	m_obj_savedata = (CObjSavedata *)Obj()->GetObj(OBJ_SAVEDATA);
 
-  //セーブデータの有無判定"仮"
-	//セーブデータの有無を確認する
-/*	for (int datacon = 0; datacon < 3; datacon++) {
-		if (ButtonData[datacon][0]) {
-			m_dataflg = true;
-		}
-	}
-*/
+	
+	
+
+  //セーブデータの有無判定
+	m_idataflg = m_obj_savedata->Savedatacheck();
+
+	
 
 	//※Draw
 	if (m_idataflg) {
 		//セーブデータがある
-		
+
+		//ボタン生成(仮)
+		m_obj_button = new ButtonStage();
+		Obj()->InsertObj(m_obj_button, OBJ_BUTTON_STAGE, 0, this->m_pScene, HIT_BOX_OFF);
+		m_obj_button->Init(m_idataflg, 0);
 	}
 	else {
 		//セーブデータがないので続きからを暗くする
 		//ボタン判定なくす
 
+		//ボタン生成(仮)
+		m_obj_button = new ButtonStage();
+		Obj()->InsertObj(m_obj_button, OBJ_BUTTON_STAGE, 0, this->m_pScene, HIT_BOX_OFF);
+		m_obj_button->Init(m_idataflg, 0);
 	}
-	
 }
 
 void CObjTitle::Draw()
@@ -42,10 +49,7 @@ void CObjTitle::Draw()
 	//カラー情報
 	float col[4] = { 1.0f,1.0f,1.0f,1.0f };
 
-/*	if () {
-		float col[4] = { 0.5f,0.5f,0.5f,1.0f }; //暗くする
-	}
-*/	
+
 	//テキストカラー情報
 	float coltext[4] = { 1.0f,1.0f,1.0f,1.0f };
 	//テスト描画

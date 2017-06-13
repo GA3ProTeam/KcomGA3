@@ -192,6 +192,7 @@ extern CHitBoxManager*	g_HitBoxManager;
 //シーンデータセレクト
 #include "CSceneDataSelect.h"
 #include "CObjDataSelect.h"
+#include "ButtonDataSelect.h"
 
 
 //シーンステージセレクト
@@ -200,7 +201,7 @@ extern CHitBoxManager*	g_HitBoxManager;
 #include "CObjStageTab.h"
 #include "ButtonPlayer.h"
 #include "ButtonStage.h"
-#include "ButtonDataSelect.h"
+
 
 //シーンゲームメイン
 #include "CSceneGameMain.h"

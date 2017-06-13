@@ -8,7 +8,13 @@ public:
 	void Action();		//アクション
 	void Draw();		//ドロー
 
+	void ButtonFromTheBegin(); //はじめから
+	void ButtonContinuation(); //つづきから
+
 private:
+
+	CObjSavedata* m_obj_savedata;
+
 
 };
 

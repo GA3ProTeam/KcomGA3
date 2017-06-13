@@ -31,5 +31,19 @@ void CSceneDataSelect::InitScene()
 //シーン実行
 void CSceneDataSelect::Scene()
 {
+	/*
+	//ゲームメイン
+	if () {
+	//シーン移動　→ゲーム画面へ
+	Manager()->Pop(new ());
+	}
+	*/
 
+	/*
+	//タイトルに戻る
+	if () {
+	//シーン移動　→タイトルへ
+	Manager()->Pop(new CSceneTitle());
+	}
+	*/
 }

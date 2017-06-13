@@ -108,6 +108,15 @@
     <ClCompile Include="CObjMenuTab.cpp">
       <Filter>CSceneStageSelect</Filter>
     </ClCompile>
+    <ClCompile Include="ButtonPlayer.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="ButtonStage.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="CObjStageTab.cpp">
+      <Filter>CSceneStageSelect</Filter>
+    </ClCompile>
     <ClCompile Include="ButtonScrollScreen.cpp">
       <Filter>CSceneGameMain</Filter>
     </ClCompile>
@@ -178,9 +187,6 @@
     </ClInclude>
     <ClInclude Include="CObjMenuTab.h">
       <Filter>CSceneStageSelect</Filter>
-    </ClInclude>
-    <ClInclude Include="ButtonScrollScreen.h">
-      <Filter>CSceneGameMain</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

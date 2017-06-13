@@ -10,6 +10,10 @@ public:
 	void Draw();		//ドロー
 private:
 	int m_x, m_y;
+
+	int m_idataflg; //データの有無を確認
+
+	CObjSavedata* m_obj_savedata;
 };
 
 #endif // !__COBJTITLE_H__

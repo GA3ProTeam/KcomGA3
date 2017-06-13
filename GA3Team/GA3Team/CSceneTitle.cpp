@@ -26,12 +26,22 @@ void CSceneTitle::InitScene()
 
 	//Audio()->LoopStart(0);
 
+	
+
 }
 
 //シーン実行
 void CSceneTitle::Scene()
 {
-	if (Input()->GetVKey(VK_RETURN)) {
+	/*
+	if () {
+		//シーン移動　→データセレクトへ
 		Manager()->Pop(new CSceneDataSelect());
+	}
+	*/
+
+	//テスト用　消さないように
+	if (Input()->GetVKey(VK_RETURN)) {
+		Manager()->Pop(new CSceneGameMain());
 	}
 }

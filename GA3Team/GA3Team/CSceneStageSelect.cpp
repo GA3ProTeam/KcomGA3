@@ -25,7 +25,7 @@ void CSceneStageSelect::InitScene()
 	//-----------------------------------
 
 	//シーンに必要なオブジェクト情報
-
+	/*
 	//プレイヤーボタン生成
 	for (int i = 0; i < MAXCHARACTERSELECT; i++) {
 		button_player = new ButtonPlayer();
@@ -33,7 +33,7 @@ void CSceneStageSelect::InitScene()
 		Obj()->InsertObj(button_player,OBJ_BUTTON_PLAYER,0,this,HIT_BOX_OFF);
 
 	}
-
+	*/
 }
 
 //シーン実行

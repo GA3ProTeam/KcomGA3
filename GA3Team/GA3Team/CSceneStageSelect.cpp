@@ -18,13 +18,21 @@ void CSceneStageSelect::InitScene()
 	//Audio()->LoadAudio(1,"se_maoudamashii_se_pc03.wav");
 	//Audio()->LoadAudio(2,"se_maoudamashii_explosion06.wav");
 
+	
+
+	//ポインタ宣言-----------------------
+	ButtonPlayer *button_player;
+	//-----------------------------------
+
 	//シーンに必要なオブジェクト情報
 
-	//m_obj_back = new CObjBack();
-	//m_obj_back->Init();
-	//Obj()->InsertObj(m_obj_back,OBJ_BACK,0,this,HIT_BOX_OFF);
+	//プレイヤーボタン生成
+	for (int i = 0; i < MAXCHARACTERSELECT; i++) {
+		button_player = new ButtonPlayer();
+		button_player->Init(i);
+		Obj()->InsertObj(button_player,OBJ_BUTTON_PLAYER,0,this,HIT_BOX_OFF);
 
-	//Audio()->LoopStart(0);
+	}
 
 }
 

@@ -103,7 +103,7 @@ enum OBJ_NAME
 	OBJ_RESULT,
 	OBJ_ITEM,
 	OBJ_DATASELECT,
-	OBJ_SAVEDATA,
+	OBJ_BUTTON_PLAYER,
 };
 //----------------------
 

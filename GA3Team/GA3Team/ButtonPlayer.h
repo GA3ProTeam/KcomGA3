@@ -10,14 +10,13 @@ public:
 	ButtonPlayer() {}//コンストラクタ
 	~ButtonPlayer() {}//デストラクタ
 
-	void Init();		//イニシャライズ
+	void Init(int m_iButtonID);		//イニシャライズ
 	void Destructor();	//デストラクタ
 	void Action();		//アクション
 	void Draw();		//ドロー
 	
 private:
 	int m_iCharacterNumber;		//キャラクター番号
-	bool m_bSelected;			//選んだかどうかの変数
 	CObjStageTab* m_sStage_Tab;	//ステージタブ
 	
 	RECT m_src; //転送先座標

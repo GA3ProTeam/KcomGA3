@@ -29,7 +29,8 @@ void CObjPlayer::Init() {
 	}
 
 	for (int j = 0; j < i; j++) {
-		strsave[j][strlen(strsave[j]) - 1] = '\0';
+		if(strsave[j][strlen(strsave[j]) - 1] == '\r')
+			strsave[j][strlen(strsave[j]) - 1] = '\0';
 	}
 }
 
@@ -51,5 +52,5 @@ void CObjPlayer::Draw() {
 	Font()->StrDraw(strsave[0], 0, 0, 16, col);
 	Font()->StrDraw(strsave[1], 0, 16, 16, col);
 	Font()->StrDraw(strsave[2], 0, 32, 16, col);
-	Font()->StrDraw(strsave[3], 0, 32, 16, col);
+	Font()->StrDraw(strsave[3], 0, 48, 16, col);
 }

@@ -142,12 +142,12 @@
     <ClCompile Include="Library\Library.cpp" />
     <ClCompile Include="Library\SceneManager.cpp" />
     <ClCompile Include="Library\SceneObjManager.cpp" />
+    <ClCompile Include="Library\SoundManeger.cpp" />
     <ClCompile Include="Library\Trace.cpp" />
     <ClCompile Include="Library\UserData.cpp" />
     <ClCompile Include="Library\WinInputs.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="CSceneDataSelect.cpp" />
-    <ClCompile Include="SoundManeger.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ButtonLScrollScreen.h" />
@@ -160,7 +160,6 @@
     <ClInclude Include="CSceneGameMain.h" />
     <ClInclude Include="CSceneStageSelect.h" />
     <ClInclude Include="CSceneTitle.h" />
-    <ClInclude Include="SoundManeger.h" />
     <ClInclude Include="Library\Audio.h" />
     <ClInclude Include="Library\Button.h" />
     <ClInclude Include="Library\CObjSavedata.h" />
@@ -174,6 +173,7 @@
     <ClInclude Include="Library\Library.h" />
     <ClInclude Include="Library\SceneManager.h" />
     <ClInclude Include="Library\SceneObjManager.h" />
+    <ClInclude Include="Library\SoundManeger.h" />
     <ClInclude Include="Library\Trace.h" />
     <ClInclude Include="Library\WinInputs.h" />
     <ClInclude Include="main.h" />

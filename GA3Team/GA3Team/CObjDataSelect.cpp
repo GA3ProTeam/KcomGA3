@@ -17,7 +17,6 @@ void CObjDataSelect::Action()
 
 
 	//データの有無を確認する
-	
 	m_obj_savedata->Savedatacheck();
 
 	

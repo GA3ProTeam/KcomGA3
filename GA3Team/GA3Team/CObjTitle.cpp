@@ -14,15 +14,11 @@ void CObjTitle::Destructor()
 
 void CObjTitle::Action()
 {
+	m_obj_savedata = (CObjSavedata *)Obj()->GetObj(OBJ_SAVEDATA);
 
-  //セーブデータの有無判定"仮"
-	//セーブデータの有無を確認する
-/*	for (int datacon = 0; datacon < 3; datacon++) {
-		if (ButtonData[datacon][0]) {
-			m_dataflg = true;
-		}
-	}
-*/
+
+  //セーブデータの有無判定
+	m_idataflg = m_obj_savedata->Savedatacheck();
 
 	//※Draw
 	if (m_idataflg) {

@@ -106,7 +106,8 @@ enum OBJ_NAME
 	OBJ_BUTTON_PLAYER,
 	OBJ_BUTTON_STAGE,
 	OBJ_SAVEDATA,
-	BOTTON_SCROLL_SCREEN,
+	BUTTON_LSCROLL_SCREEN,
+	BUTTON_RSCROLL_SCREEN,
 };
 //----------------------
 
@@ -180,6 +181,7 @@ extern CHitBoxManager*	g_HitBoxManager;
 #include "Library\Trace.h"
 #include "Library\Button.h"
 #include "Library\CObjSavedata.h"
+#include "Library\SoundManeger.h"
 
 //ゲームシーン・オブジェクトのインクルード-------
 //シーンタイトル
@@ -202,7 +204,8 @@ extern CHitBoxManager*	g_HitBoxManager;
 //シーンゲームメイン
 #include "CSceneGameMain.h"
 #include "CObjPlayer.h"
-#include "ButtonScrollScreen.h"
+#include "ButtonLScrollScreen.h"
+#include "ButtonRScrollScreen.h"
 //----------------------------------------------
 
 
@@ -219,7 +222,7 @@ class CUserData
 		
 		//----ユーザーが持つデータ-------
 		int mSeveData;//サンプルセーブデータ
-
+		int mscroll_x;
 		//-------------------------------
 
 		//ユーザーデータ以外の外部データ読み込み

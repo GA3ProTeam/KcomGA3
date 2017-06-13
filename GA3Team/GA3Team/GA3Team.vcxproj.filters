@@ -126,8 +126,8 @@
     <ClCompile Include="ButtonRScrollScreen.cpp">
       <Filter>CSceneGameMain</Filter>
     </ClCompile>
-    <ClCompile Include="ButtonDataSelect.cpp">
-      <Filter>CSceneDataSelect</Filter>
+    <ClCompile Include="CObjgimmickobject.cpp">
+      <Filter>CSceneGameMain</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -209,8 +209,8 @@
     <ClInclude Include="ButtonRScrollScreen.h">
       <Filter>CSceneGameMain</Filter>
     </ClInclude>
-    <ClInclude Include="ButtonDataSelect.h">
-      <Filter>CSceneDataSelect</Filter>
+    <ClInclude Include="CObjgimmickobject.h">
+      <Filter>CSceneGameMain</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

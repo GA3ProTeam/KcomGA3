@@ -30,7 +30,9 @@ public:
 	//キャラクター番号を取得
 	int GetCharacterNum() { return m_iSelectedCharacterNumber; }
 private:
-	int m_iSelectedCharacterNumber;//選んだキャラクター番号
+	int m_iSelectedCharacterNumber;	//選んだキャラクター番号
+	int m_iStageNum[4];				//各キャラクターのステージ生成数
+	bool m_bStageCreateFlg[4];		//ボタンを一回生成したかどうか
 	//ButtonStage* m_sStage_Button[STAGENUMBER];  //ステージボタン
 };
 

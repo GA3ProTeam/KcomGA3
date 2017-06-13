@@ -122,6 +122,7 @@
     <ClCompile Include="ButtonLScrollScreen.cpp" />
     <ClCompile Include="ButtonRScrollScreen.cpp" />
     <ClCompile Include="ButtonStage.cpp" />
+    <ClCompile Include="CObjgimmickobject.cpp" />
     <ClCompile Include="CObjMenuTab.cpp" />
     <ClCompile Include="CObjDataSelect.cpp" />
     <ClCompile Include="CObjPlayer.cpp" />
@@ -155,6 +156,7 @@
     <ClInclude Include="ButtonLScrollScreen.h" />
     <ClInclude Include="ButtonRScrollScreen.h" />
     <ClInclude Include="CObjDataSelect.h" />
+    <ClInclude Include="CObjgimmickobject.h" />
     <ClInclude Include="CObjMenuTab.h" />
     <ClInclude Include="CObjPlayer.h" />
     <ClInclude Include="CObjStageTab.h" />

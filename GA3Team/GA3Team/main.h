@@ -103,7 +103,10 @@ enum OBJ_NAME
 	OBJ_RESULT,
 	OBJ_ITEM,
 	OBJ_DATASELECT,
+	OBJ_GIMMICKOBJECT,
 	OBJ_BUTTON_PLAYER,
+	OBJ_BUTTON_STAGE,
+	OBJ_STAGE_TAB,
 	OBJ_BUTTON_STAGE,
 	OBJ_SAVEDATA,
 	BUTTON_LSCROLL_SCREEN,
@@ -184,6 +187,8 @@ extern CHitBoxManager*	g_HitBoxManager;
 #include "Library\SoundManeger.h"
 
 //ゲームシーン・オブジェクトのインクルード-------
+#define MAX_CHARA 4
+
 //シーンタイトル
 #include "CSceneTitle.h"
 #include "CObjTitle.h"
@@ -206,8 +211,6 @@ extern CHitBoxManager*	g_HitBoxManager;
 //シーンゲームメイン
 #include "CSceneGameMain.h"
 #include "CObjPlayer.h"
-#include "ButtonLScrollScreen.h"
-#include "ButtonRScrollScreen.h"
 //----------------------------------------------
 
 

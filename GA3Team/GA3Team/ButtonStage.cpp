@@ -1,7 +1,12 @@
 #include "main.h"
 
 //イニシャライズ
-void ButtonStage::Init(bool bSelected, CObjStageTab* sStage_Tab){
+void ButtonStage::Init(int x, int y, int w, int h, bool bSelected, CObjStageTab* sStage_Tab){
+	m_iXpos = x;    //ボタンの位置X
+	m_iYpos = y;    //ボタンの位置Y
+	m_iWidth = w;   //ボタンの幅
+	m_iHeight = h;  //ボタンの高さ
+
 	//選択できるかどうかを設定
 	m_bSelected = bSelected;
 

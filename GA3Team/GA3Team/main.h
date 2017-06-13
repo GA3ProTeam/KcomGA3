@@ -104,6 +104,8 @@ enum OBJ_NAME
 	OBJ_ITEM,
 	OBJ_DATASELECT,
 	OBJ_BUTTON_PLAYER,
+	OBJ_BUTTON_STAGE,
+	OBJ_STAGE_TAB,
 };
 //----------------------
 
@@ -179,6 +181,8 @@ extern CHitBoxManager*	g_HitBoxManager;
 #include "Library\CObjSavedata.h"
 
 //ゲームシーン・オブジェクトのインクルード-------
+#define MAX_CHARA 4
+
 //シーンタイトル
 #include "CSceneTitle.h"
 #include "CObjTitle.h"

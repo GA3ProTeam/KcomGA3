@@ -22,18 +22,23 @@ void CSceneStageSelect::InitScene()
 
 	//ポインタ宣言-----------------------
 	ButtonPlayer *button_player;
+	CObjStageTab *stage_tab;
 	//-----------------------------------
 
-	//シーンに必要なオブジェクト情報
+	//シーンに必要なオブジェクト情報-------------------------------------------
+
+	//ステージタブ生成
+	stage_tab = new CObjStageTab();
+	stage_tab->Init();
+	Obj()->InsertObj(stage_tab, OBJ_STAGE_TAB, 0, this, HIT_BOX_OFF);
 
 	//プレイヤーボタン生成
-	for (int i = 0; i < MAXCHARACTERSELECT; i++) {
+	for (int player_num = 0; player_num < MAX_CHARA; player_num++) {
 		button_player = new ButtonPlayer();
-		button_player->Init(i);
+		button_player->Init(player_num *128,400,128,128,player_num, stage_tab);
 		Obj()->InsertObj(button_player,OBJ_BUTTON_PLAYER,0,this,HIT_BOX_OFF);
-
 	}
-
+	//-------------------------------------------------------------------------
 }
 
 //シーン実行

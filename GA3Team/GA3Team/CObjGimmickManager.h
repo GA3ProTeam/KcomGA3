@@ -8,11 +8,16 @@ public:
 	CObjGimmickManager() {};
 	~CObjGimmickManager() {};
 
-	void Init();		//イニシャライズ
+	void Init(int stage_id);		//イニシャライズ
 	void Destructor();	//デストラクタ
 	void Action();		//アクション
 	void Draw();		//ドロー
 private:
+
+	int Stage_ID;//ステージの番号
+
+
+
 	
 };
 

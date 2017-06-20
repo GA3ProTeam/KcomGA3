@@ -29,6 +29,9 @@ bool Button::Push() //ƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚ê‚½Žž
 			m_bStatus = false;
 		}
 	}
+	else {
+		m_bStatus = false;
+	}
 
 	return m_bStatus;
 }

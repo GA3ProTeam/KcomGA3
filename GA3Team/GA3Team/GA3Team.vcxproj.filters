@@ -200,9 +200,6 @@
     <ClInclude Include="CObjMenuTab.h">
       <Filter>CSceneStageSelect</Filter>
     </ClInclude>
-    <ClInclude Include="CObjStageTab.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="ButtonLScrollScreen.h">
       <Filter>CSceneGameMain</Filter>
     </ClInclude>
@@ -217,6 +214,9 @@
     </ClInclude>
     <ClInclude Include="CObjGimmickObject.h">
       <Filter>CSceneGameMain</Filter>
+    </ClInclude>
+    <ClInclude Include="CObjStageTab.h">
+      <Filter>CSceneStageSelect</Filter>
     </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>ヘッダー ファイル</Filter>

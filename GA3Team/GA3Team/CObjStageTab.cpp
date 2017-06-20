@@ -2,16 +2,16 @@
 
 //イニシャライズ
 void CObjStageTab::Init() {
-	//選んだキャラクター番号初期化(-1はステージが選択されていないときの状態)
+	//選んだキャラクター番号の初期化(-1はステージが選択されていないときの状態)
 	m_iSelectedCharacterNumber=-1;
 	
-	//選んだキャラクター番号初期化
+	//選んだキャラクターのステージ番号を初期化
 	m_iStageNum[0]=4;
 	m_iStageNum[1]=4;
 	m_iStageNum[2]=4;
 	m_iStageNum[3]=4;
 
-	//主人公ボタン生成フラグ初期化
+	//主人公ボタン生成フラグの初期化
 	for (int chara_roop = 0; chara_roop < MAX_CHARA; chara_roop++) {
 		m_bStageCreateFlg[chara_roop] = false;
 	}
@@ -56,7 +56,7 @@ void CObjStageTab::Draw() {
 
 
 	//転送先座標
-	m_rSrc.top = 0; m_rSrc.left = 250; m_rSrc.bottom = 256; m_rSrc.right = 32;
+	m_rSrc.top = 40; m_rSrc.left = 50; m_rSrc.bottom = m_rSrc.top + 400; m_rSrc.right = m_rSrc.left + 700;
 
 
 	//描画

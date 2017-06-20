@@ -5,7 +5,11 @@ void CObjTitle::Init()
 	m_x = 0;
 	m_y = 0;
 
-	m_idataflg = false;
+	m_bdataflg = false;
+
+	m_ititle_choice = NONE;
+
+	m_icreateflg = false;
 }
 
 void CObjTitle::Destructor()
@@ -19,31 +23,29 @@ void CObjTitle::Action()
 
 
   //セーブデータの有無判定
-	m_idataflg = m_obj_savedata->Savedatacheck();
+	m_bdataflg = m_obj_savedata->Savedatacheck();
+
+	if (m_icreateflg){
+
+		//はじめからボタン生成(仮)
+		m_obj_button = new ButtonDataSelect();
+		Obj()->InsertObj(m_obj_button, OBJ_BUTTON_STAGE, 0, this->m_pScene, HIT_BOX_OFF);
+		m_obj_button->Init(0, 0, 100, 50, true);
+
+		//つづきからボタン生成(仮)
+		m_obj_button = new ButtonDataSelect();
+		Obj()->InsertObj(m_obj_button, OBJ_BUTTON_STAGE, 0, this->m_pScene, HIT_BOX_OFF);
+		m_obj_button->Init(50, 0, 100, 50, m_bdataflg);//セーブデータがなかったら続きからを暗くする。ボタン判定なくす
+
+		m_icreateflg = true;
+	}
 
 	
-
 	//※Draw
-	if (m_idataflg) {
-		//セーブデータがある
-
-		//ボタン生成(仮)
-		m_obj_button = new ButtonDataSelect();
-		Obj()->InsertObj(m_obj_button, OBJ_BUTTON_STAGE, 0, this->m_pScene, HIT_BOX_OFF);
-		//m_obj_button->Init(m_idataflg);
-
-
-
+	if (m_bdataflg) {
+		
 	}
 	else {
-		//セーブデータがないので続きからを暗くする
-		//ボタン判定なくす
-
-		//ボタン生成(仮)
-		m_obj_button = new ButtonDataSelect();
-		Obj()->InsertObj(m_obj_button, OBJ_BUTTON_STAGE, 0, this->m_pScene, HIT_BOX_OFF);
-		//m_obj_button->Init(m_idataflg);
-
 
 	}
 }

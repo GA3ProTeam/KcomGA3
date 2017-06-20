@@ -1,7 +1,14 @@
 #ifndef __COBJTITLE_H__
 #define __COBJTITLE_H__
 
-class ButtonStage;
+enum TITLECHOICE
+{
+	NONE,
+	NEW,
+	LOAD,
+};
+
+class CObjSavedata;
 class ButtonDataSelect;
 
 class CObjTitle : public CObj
@@ -14,7 +21,12 @@ public:
 private:
 	int m_x, m_y;
 
-	bool m_idataflg; //データの有無を確認
+	bool m_bdataflg; //データの有無を確認
+
+	//はじめからつづきからどちらが選ばれたか
+	int m_ititle_choice;
+	//ボタンが作成されたか確認
+	int m_icreateflg;
 
 	CObjSavedata* m_obj_savedata;
 	ButtonDataSelect* m_obj_button;

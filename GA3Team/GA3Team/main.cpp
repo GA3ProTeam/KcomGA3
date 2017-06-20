@@ -88,13 +88,16 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 BOOL CALLBACK DlgProc(HWND hDlg, UINT Msg, WPARAM wParam, LPARAM lParam)
 {
 	char str[256];
+	HWND edit;
 
 	switch (Msg)
 	{
 	case WM_INITDIALOG:
+		edit = GetDlgItem(hDlg, IDC_EDIT1);
 		SetDlgItemText(hDlg, IDC_EDIT1, "");
+		SetFocus(edit);
 		str[0] = '\0';
-		return TRUE;
+		return FALSE;
 
 	case WM_COMMAND:
 		switch (LOWORD(wParam))

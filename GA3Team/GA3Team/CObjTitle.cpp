@@ -52,6 +52,11 @@ void CObjTitle::Action()
 
 void CObjTitle::Draw()
 {
+	char x[32], y[32];
+
+	sprintf(x, "%d", Input()->m_x);
+	sprintf(y, "%d", Input()->m_y);
+
 	//カラー情報
 	float col[4] = { 1.0f,1.0f,1.0f,1.0f };
 
@@ -60,4 +65,6 @@ void CObjTitle::Draw()
 	float coltext[4] = { 1.0f,1.0f,1.0f,1.0f };
 	//テスト描画
 	Font()->StrDraw("title", 0, 0, 16, coltext);
+	Font()->StrDraw(x, 0, 16, 16, coltext);
+	Font()->StrDraw(y, 0, 32, 16, coltext);
 }

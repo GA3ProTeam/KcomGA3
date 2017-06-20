@@ -41,17 +41,6 @@ void CObjTitle::Action()
 	}
 
 	
-	
-	
-	
-
-	
-	
-	
-	
-
-
-
 	//Å¶Draw
 	if (m_bdataflg) {
 		

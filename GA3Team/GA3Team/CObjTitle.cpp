@@ -29,18 +29,18 @@ void CObjTitle::Action()
 		//セーブデータがある
 
 		//ボタン生成(仮)
-		m_obj_button = new ButtonStage();
-		Obj()->InsertObj(m_obj_button, OBJ_BUTTON_STAGE, 0, this->m_pScene, HIT_BOX_OFF);
-		m_obj_button->Init(m_idataflg, 0);
+		//m_obj_button = new ButtonStage();
+		//Obj()->InsertObj(m_obj_button, OBJ_BUTTON_STAGE, 0, this->m_pScene, HIT_BOX_OFF);
+		//m_obj_button->Init(m_idataflg, 0);
 	}
 	else {
 		//セーブデータがないので続きからを暗くする
 		//ボタン判定なくす
 
 		//ボタン生成(仮)
-		m_obj_button = new ButtonStage();
-		Obj()->InsertObj(m_obj_button, OBJ_BUTTON_STAGE, 0, this->m_pScene, HIT_BOX_OFF);
-		m_obj_button->Init(m_idataflg, 0);
+		//m_obj_button = new ButtonStage();
+		//Obj()->InsertObj(m_obj_button, OBJ_BUTTON_STAGE, 0, this->m_pScene, HIT_BOX_OFF);
+		//m_obj_button->Init(m_idataflg, 0);
 	}
 }
 

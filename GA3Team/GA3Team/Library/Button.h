@@ -11,6 +11,7 @@ protected:
 	int m_iHeight;  //ƒ{ƒ^ƒ“‚Ì‚‚³
 public:
 	bool Push();
+	bool Rangedetection();
 };
 
 #endif

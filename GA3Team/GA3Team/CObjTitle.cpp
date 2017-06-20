@@ -42,10 +42,8 @@ void CObjTitle::Draw()
 	//カラー情報
 	float col[4] = { 1.0f,1.0f,1.0f,1.0f };
 
-/*	if () {
-		float col[4] = { 0.5f,0.5f,0.5f,1.0f }; //暗くする
-	}
-*/	
+
+
 	//テキストカラー情報
 	float coltext[4] = { 1.0f,1.0f,1.0f,1.0f };
 	//テスト描画

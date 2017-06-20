@@ -44,7 +44,7 @@ void CObjPlayer::Destructor() {
 
 //アクション
 void CObjPlayer::Action() {
-	//DialogBox(User()->p_hInstance , MAKEINTRESOURCE(IDD_DIALOG1), User()->p_hWnd , User()->p_DlgProc);
+	DialogBox(User()->p_hInstance , MAKEINTRESOURCE(IDD_DIALOG1), User()->p_hWnd , User()->p_DlgProc);
 }
 
 //ドロー
@@ -55,7 +55,7 @@ void CObjPlayer::Draw() {
 	for(int f = 0;f < linecount;f++)
 		Font()->StrDraw(((char*)test[f].c_str()), 0, f*16, 16, col);
 
-	Font()->StrDraw(User()->dlgIn, 0, WINDOW_SIZE_H-40, 32, col);
+	Font()->StrDraw(User()->dlgIn, 0, WINDOW_SIZE_H/2, 32, col);
 
 	//Font()->StrDraw(strsave[1], 0, 16, 16, col);
 	//Font()->StrDraw(strsave[2], 0, 32, 16, col);

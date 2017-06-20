@@ -17,3 +17,8 @@ bool CObjSavedata::Savedatacheck()
 {
 	return true;
 }
+
+//セーブデータ削除
+void CObjSavedata::Deletesavedata()
+{
+}

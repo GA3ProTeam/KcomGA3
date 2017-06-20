@@ -23,6 +23,9 @@ public:
 	void Action();//アクション
 	void Draw();//描画
 
+	//開閉フラグをとる
+	bool GetOpenCloseFlg() { return m_bOpenClose; };
+
 
 };
 

@@ -1,11 +1,12 @@
 #ifndef __COBJTITLE_H__
 #define __COBJTITLE_H__
 
+//‚Ç‚¿‚ç‚ª‘I‚Î‚ê‚½‚©
 enum TITLECHOICE
 {
-	NONE,
-	NEW,
-	LOAD,
+	NONE, //‘I‘ð‚³‚ê‚Ä‚¢‚È‚¢
+	NEW,  //‚Í‚¶‚ß‚©‚ç
+	LOAD, //‚Â‚Ã‚«‚©‚ç
 };
 
 class CObjSavedata;

@@ -25,6 +25,7 @@ void CObjTitle::Action()
   //セーブデータの有無判定
 	m_bdataflg = m_obj_savedata->Savedatacheck();
 
+  //ボタンがまだ作成されていなければ、ボタンを作成する
 	if (m_icreateflg){
 
 		//はじめからボタン生成(仮)
@@ -37,17 +38,19 @@ void CObjTitle::Action()
 		Obj()->InsertObj(m_obj_button, OBJ_BUTTON_STAGE, 0, this->m_pScene, HIT_BOX_OFF);
 		m_obj_button->Init(50, 0, 100, 50, m_bdataflg);//セーブデータがなかったら続きからを暗くする。ボタン判定なくす
 
-		m_icreateflg = true;
+		m_icreateflg = true; //ボタン作成済
 	}
 
 	
-	//※Draw
-	if (m_bdataflg) {
+	//
+/*	if (m_bdataflg) {
 		
 	}
 	else {
 
 	}
+*/
+
 }
 
 void CObjTitle::Draw()

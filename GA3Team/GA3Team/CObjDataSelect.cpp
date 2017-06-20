@@ -1,10 +1,12 @@
 #include "main.h"
-
+#include <stdio.h>
 
 
 
 void CObjDataSelect::Init()
 {
+
+	//bool m_bsavedataflg[3];
 }
 
 void CObjDataSelect::Destructor()
@@ -16,13 +18,11 @@ void CObjDataSelect::Action()
 	//セーブデータ
 	m_obj_savedata = (CObjSavedata *)Obj()->GetObj(OBJ_SAVEDATA);
 
-	//データの有無を確認する
-	m_obj_savedata->Savedatacheck();
+	//各セーブデータの有無を確認する(仮)
+	m_bsavedataflg[0] = m_obj_savedata->Savedatacheck();
 
 	
-
-  //ボタン判定
-	
+	//
 	//if () {
 		//初めから
 	//	ButtonFromTheBegin();
@@ -32,6 +32,7 @@ void CObjDataSelect::Action()
 	//}
 
 	//タイトルに戻る
+
 
 	//sprintf(c[], "%d  %d  %d", x,y,z); //textmemo
 
@@ -52,6 +53,7 @@ void CObjDataSelect::Draw()
 	//テスト描画
 	Font()->StrDraw("dataselect", 0, 0, 16, col);
 
+	//プレイヤー名/進行度描画(仮)
 	//プレイヤー名１
 	Font()->StrDraw("", 0, 0, 16, col);
 	//主人公１の進行度
@@ -88,29 +90,33 @@ void CObjDataSelect::Draw()
 
 //はじめから
 void CObjDataSelect::ButtonFromTheBegin() {
-	//マウスク判定
+	//マウス判定
 	//カーソルがある所を拡大+発光
 
 	
 	
 	//選択しました
-//	if (/*セーブデータが入っていたら*/) {
+//	if (m_bsavedataflg[]) {/*セーブデータが入っていたら*/
 		//初期化してもいいですか
 		//"はい"...データ削除
+		
 
 		//"いいえ"...セレクト画面へ
+
 
 //	}
 
 	
-//	if(/*データが入っていなければ*/){
+//	if(/*データが入っていなければ or 初期化後*/){
 		//名前を入力する
 		//※戻るボタンを押したときセレクト画面に戻るよう判定を変更する
+		//scanf(); //(仮)
 
 		//新規セーブデータ作成(仮)
 		m_obj_savedata->Writesavedata();
 
 		//ゲームメインへ
+
 
 //	}
 
@@ -123,13 +129,22 @@ void CObjDataSelect::ButtonFromTheBegin() {
 
 //つづきから
 void CObjDataSelect::ButtonContinuation() {
-	
+
+	//データが入ってなかったら選べなくする/暗くする
+	for (int i = 0; i < 3; i++) {
+		if (m_bsavedataflg[i] >= 1) {
+			//判定を消す/暗くする
+			;
+		}
+	}
+
+
 	//マウス判定
 	//カーソルがある所を拡大+発光
+	//ボタン/文字/画像サイズ変更
 	//......
 
 
-	//データが入ってなかったら選べなくする/暗くする
 
 	//選択されたデータをロード
 /*	switch () {
@@ -157,7 +172,7 @@ void CObjDataSelect::ButtonContinuation() {
 			break;
 	}
 */
-	//シーン移動
+	//ステージセレクトへシーン移動
 
 	
 }

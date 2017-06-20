@@ -15,6 +15,8 @@ public:
 
 private:
 
+	bool m_bsavedataflg[3]; //各セーブデータ確認する
+
 	CObjSavedata* m_obj_savedata;	//セーブデータ
 	ButtonDataSelect* m_obj_button; //ボタン
 

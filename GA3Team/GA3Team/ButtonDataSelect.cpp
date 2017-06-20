@@ -39,6 +39,7 @@ void ButtonDataSelect::Destructor() {
 //アクション
 void ButtonDataSelect::Action() {
 	
+	//選択できる
 	if (m_bSelected == true){
 		Push();
 	}

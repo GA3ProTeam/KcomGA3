@@ -44,7 +44,7 @@ void CObjPlayer::Destructor() {
 
 //アクション
 void CObjPlayer::Action() {
-
+	DialogBox(User()->p_hInstance , MAKEINTRESOURCE(IDD_DIALOG1), User()->p_hWnd , User()->p_DlgProc);
 }
 
 //ドロー

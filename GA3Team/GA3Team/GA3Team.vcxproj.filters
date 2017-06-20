@@ -132,6 +132,9 @@
     <ClCompile Include="CObjGimmickObject.cpp">
       <Filter>CSceneGameMain</Filter>
     </ClCompile>
+    <ClCompile Include="CObjGimmickManager.cpp">
+      <Filter>CSceneGameMain</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Library\Audio.h">
@@ -220,6 +223,9 @@
     </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="CObjGimmickManager.h">
+      <Filter>CSceneGameMain</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

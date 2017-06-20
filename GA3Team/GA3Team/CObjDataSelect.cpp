@@ -13,8 +13,8 @@ void CObjDataSelect::Destructor()
 
 void CObjDataSelect::Action()
 {
+	//セーブデータ
 	m_obj_savedata = (CObjSavedata *)Obj()->GetObj(OBJ_SAVEDATA);
-
 
 	//データの有無を確認する
 	m_obj_savedata->Savedatacheck();

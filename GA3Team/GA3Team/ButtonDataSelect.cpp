@@ -1,7 +1,14 @@
 #include "main.h"
 
 //イニシャライズ
-void ButtonDataSelect::Init(bool bSelected) {
+void ButtonDataSelect::Init(int x, int y, int w, int h, bool bSelected) {
+	
+	//ボタンサイズを指定
+	m_iXpos = x;
+	m_iYpos = y;
+	m_iWidth = w;
+	m_iHeight = h;
+	
 	//選択できるかどうかを設定
 	m_bSelected = bSelected;
 

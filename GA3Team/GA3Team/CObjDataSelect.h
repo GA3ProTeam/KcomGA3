@@ -15,7 +15,8 @@ public:
 
 private:
 
-	CObjSavedata* m_obj_savedata;
+	CObjSavedata* m_obj_savedata;	//セーブデータ
+	ButtonDataSelect* m_obj_button; //ボタン
 
 
 };

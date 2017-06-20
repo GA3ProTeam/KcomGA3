@@ -19,14 +19,9 @@ public:
 	void Action();		//アクション
 	void Draw();		//ドロー
 
-	//切り取り先座標
-	RECT m_rDst;
-	//転送先座標
-	RECT m_rSrc;
-
 
 	//キャラクター番号をセット
-	void SetCharacterNum(int chara_num) { m_iSelectedCharacterNumber = m_iSelectedCharacterNumber; }
+	void SetCharacterNum(int chara_num) { m_iSelectedCharacterNumber = chara_num; }
 	//キャラクター番号を取得
 	int GetCharacterNum() { return m_iSelectedCharacterNumber; }
 private:
@@ -34,6 +29,11 @@ private:
 	int m_iStageNum[4];				//各キャラクターのステージ生成数
 	bool m_bStageCreateFlg[4];		//ボタンを一回生成したかどうか
 	//ButtonStage* m_sStage_Button[STAGENUMBER];  //ステージボタン
+
+	//切り取り先座標
+	RECT m_rDst;
+	//転送先座標
+	RECT m_rSrc;
 };
 
 #endif//__COBJ_STAGETAB_H__

@@ -17,8 +17,7 @@ void CObjPlayer::Init() {
 
 	ifw.close();
 
-	std::vector<std::string> test;
-
+	
 	
 
 	token = strtok(tmpstr, "\n");
@@ -31,6 +30,10 @@ void CObjPlayer::Init() {
 	for (int j = 0; j < i; j++) {
 		if(strsave[j][strlen(strsave[j]) - 1] == '\r')
 			strsave[j][strlen(strsave[j]) - 1] = '\0';
+	}
+
+	for (int w = 0; w < i; w++) {
+		test.push_back(strsave[w]);
 	}
 }
 
@@ -49,8 +52,10 @@ void CObjPlayer::Draw() {
 	//ƒJƒ‰[î•ñ
 	float col[4] = { 1.0f,1.0f,1.0f,1.0f };
 
-	Font()->StrDraw(strsave[0], 0, 0, 16, col);
-	Font()->StrDraw(strsave[1], 0, 16, 16, col);
-	Font()->StrDraw(strsave[2], 0, 32, 16, col);
-	Font()->StrDraw(strsave[3], 0, 48, 16, col);
+	for(int f = 0;f < linecount;f++)
+		Font()->StrDraw(((char*)test[f].c_str()), 0, f*16, 16, col);
+
+	//Font()->StrDraw(strsave[1], 0, 16, 16, col);
+	//Font()->StrDraw(strsave[2], 0, 32, 16, col);
+	//Font()->StrDraw(strsave[3], 0, 48, 16, col);
 }

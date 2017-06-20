@@ -46,10 +46,17 @@ void ButtonPlayer::Draw()
 	float col[4] = { numcolor,numcolor,numcolor,1.0f };
 
 	//Ø‚èŽæ‚èÀ•W
-	m_dst.top = 0; m_dst.left = 0; m_dst.bottom = 1; m_dst.right = 1;
+	m_dst.top = 0;
+	m_dst.bottom = 1;
+	m_dst.left = 0;
+	m_dst.right = 1;
 
-	m_src.top = 0; m_src.left = 0;
-	m_src.bottom = 64 + m_src.top; m_src.right = 64 + m_src.left;
-
+	//“]‘—æÀ•W
+	m_src.top = m_iYpos;
+	m_src.bottom = m_src.top + m_iHeight;
+	m_src.left = m_iXpos;
+	m_src.right = m_src.left + m_iWidth;
+	
+		
 	Image()->Draw(0, &m_src, &m_dst, col, 0.0f);
 }

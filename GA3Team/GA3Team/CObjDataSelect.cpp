@@ -50,7 +50,7 @@ void CObjDataSelect::Draw()
 
 	//主人公３
 
-	//テスト描画
+	//テスト描画/
 	Font()->StrDraw("dataselect", 0, 0, 16, col);
 
 	//プレイヤー名/進行度描画(仮)

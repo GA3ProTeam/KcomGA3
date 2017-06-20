@@ -1,6 +1,8 @@
 #ifndef __COBJTITLE_H__
 #define __COBJTITLE_H__
 
+class ButtonStage;
+
 class CObjTitle : public CObj
 {
 public:

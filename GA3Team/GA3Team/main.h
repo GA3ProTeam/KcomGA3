@@ -8,6 +8,7 @@
 //vs2015_warning
 #pragma warning ( disable : 4005 )
 #pragma warning ( disable : 4838 )
+#define _CRT_SECURE_NO_WARNINGS
 
 //ヘッダー
 #include <stdio.h>
@@ -107,7 +108,6 @@ enum OBJ_NAME
 	OBJ_BUTTON_PLAYER,
 	OBJ_BUTTON_STAGE,
 	OBJ_STAGE_TAB,
-	OBJ_BUTTON_STAGE,
 	OBJ_SAVEDATA,
 	BUTTON_LSCROLL_SCREEN,
 	BUTTON_RSCROLL_SCREEN,
@@ -211,6 +211,8 @@ extern CHitBoxManager*	g_HitBoxManager;
 //シーンゲームメイン
 #include "CSceneGameMain.h"
 #include "CObjPlayer.h"
+#include "ButtonLScrollScreen.h"
+#include "ButtonRScrollScreen.h"
 //----------------------------------------------
 
 

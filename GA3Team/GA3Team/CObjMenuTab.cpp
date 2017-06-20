@@ -7,6 +7,11 @@ void CObjMenuTab::Init()
 	m_openclose_x = 736;
 	m_openclose_y = 500;
 
+	m_iXpos = m_openclose_x;    //ボタンの位置X
+	m_iYpos = m_openclose_y;    //ボタンの位置Y
+	m_iWidth = 64;   //ボタンの幅
+	m_iHeight = 64;  //ボタンの高さ
+
 }
 
 //-----------------------------------------------------------------
@@ -18,6 +23,13 @@ void CObjMenuTab::Destructor()
 //-----------------------------------------------------------------
 void CObjMenuTab::Action()
 {
+	if (m_bOpenClose) {
+		m_openclose_x = 352;
+	}
+	else {
+		m_openclose_x = 736;
+	}
+
 
 }
 
@@ -31,7 +43,7 @@ void CObjMenuTab::Draw()
 
 		//切り取り先座標
 		m_rDst.top = 0; m_rDst.left = 0; 
-		m_rDst.bottom = 256; m_rDst.right = 256;
+		m_rDst.bottom = 64; m_rDst.right = 256;
 
 
 		//転送先座標
@@ -49,7 +61,7 @@ void CObjMenuTab::Draw()
 
 		//切り取り先座標
 		m_rDst.top = 0; m_rDst.left = 0;
-		m_rDst.bottom = 64; m_rDst.right = 800;
+		m_rDst.bottom = 64; m_rDst.right = 64;
 
 
 		//転送先座標

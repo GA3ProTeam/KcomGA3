@@ -26,8 +26,18 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR szCmdL
 		return false;
 
 	//ウィンドウ作成
+	LONG winWidth = WINDOW_SIZE_W +
+		GetSystemMetrics(SM_CXEDGE) +
+		GetSystemMetrics(SM_CXBORDER) +
+		GetSystemMetrics(SM_CXDLGFRAME);
+	LONG winHeight = WINDOW_SIZE_H +
+		GetSystemMetrics(SM_CYEDGE) +
+		GetSystemMetrics(SM_CYBORDER) +
+		GetSystemMetrics(SM_CYDLGFRAME) +
+		GetSystemMetrics(SM_CYCAPTION);
+
 	if (!(hWnd = CreateWindow(Name, Name, WS_OVERLAPPEDWINDOW & ~(WS_MAXIMIZEBOX | WS_SIZEBOX),
-		CW_USEDEFAULT, 0, WINDOW_SIZE_W, WINDOW_SIZE_H, 0, 0, hInstance, 0)))
+		CW_USEDEFAULT, 0, winWidth, winHeight, 0, 0, hInstance, 0)))
 		return false;
 	ShowWindow(hWnd, SW_SHOW);
 
@@ -88,20 +98,24 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 BOOL CALLBACK DlgProc(HWND hDlg, UINT Msg, WPARAM wParam, LPARAM lParam)
 {
 	char str[256];
+	HWND edit;
 
 	switch (Msg)
 	{
 	case WM_INITDIALOG:
-		SetDlgItemText(hDlg, IDC_EDIT1, "文字列を入力してください");
+		edit = GetDlgItem(hDlg, IDC_EDIT1);
+		SetDlgItemText(hDlg, IDC_EDIT1, "");
+		SetFocus(edit);
 		str[0] = '\0';
-		return TRUE;
+		return FALSE;
 
 	case WM_COMMAND:
 		switch (LOWORD(wParam))
 		{
 		case IDOK:
 			GetDlgItemText(hDlg, IDC_EDIT1, str, 255);
-			MessageBox(hDlg, str, "取得されたメッセージ", MB_OK);
+			strcpy_s(g_UserData->dlgIn, str);
+			//MessageBox(hDlg, str, "取得されたメッセージ", MB_OK);
 		case IDCANCEL:
 			EndDialog(hDlg, 0);
 			return TRUE;

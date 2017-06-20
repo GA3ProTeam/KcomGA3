@@ -19,6 +19,9 @@ private:
 	int m_Button_x;
 	int m_Button_y;
 
+	RECT m_src; //“]‘—æÀ•W
+	RECT m_dst; //Ø‚èæ‚èÀ•W
+
 
 };
 

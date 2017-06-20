@@ -3,6 +3,8 @@
 
 //使用オブジェクトのプロトタイプ宣言
 class CObjPlayer;
+class ButtonRScrollScreen;
+class ButtonLScrollScreen;
 
 //シーン　ゲームメイン
 class CSceneGameMain : public CScene
@@ -14,6 +16,13 @@ public:
 	void Scene();
 private:
 	CObjPlayer* m_obj_player;
+
+	ButtonRScrollScreen* m_obj_Rscroll;
+	ButtonLScrollScreen* m_obj_Lscroll;
+
+
+
+
 };
 
 #endif

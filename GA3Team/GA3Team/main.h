@@ -112,6 +112,7 @@ enum OBJ_NAME
 	OBJ_SAVEDATA,
 	BUTTON_LSCROLL_SCREEN,
 	BUTTON_RSCROLL_SCREEN,
+	OBJ_GIMMICK_MANAGER,
 };
 //----------------------
 
@@ -214,6 +215,7 @@ extern CHitBoxManager*	g_HitBoxManager;
 #include "CObjPlayer.h"
 #include "ButtonLScrollScreen.h"
 #include "ButtonRScrollScreen.h"
+#include "CObjGimmickManager.h"
 //----------------------------------------------
 
 
@@ -236,6 +238,7 @@ class CUserData
 		HINSTANCE p_hInstance;
 		HWND p_hWnd;
 		DLGPROC p_DlgProc;
+		char dlgIn[256];
 		//-------------------------------
 
 		//ユーザーデータ以外の外部データ読み込み

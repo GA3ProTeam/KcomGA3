@@ -5,7 +5,7 @@ void CSceneGameMain::InitScene()
 {
 
 	//このシーンで表示させるイメージ情報
-	//Image()->LoadImage("image.png",0,TEX_SIZE_512);
+	Image()->LoadImage("gamemain_kari.png",0,TEX_SIZE_256);
 	//Image()->LoadImage("back.png",1,TEX_SIZE_512);
 	//Image()->LoadImage("boss.png",2,TEX_SIZE_256);
 

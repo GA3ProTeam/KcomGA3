@@ -23,7 +23,6 @@ private:
 	RECT m_dst; //Ø‚èæ‚èÀ•W
 
 
-
 };
 
 #endif

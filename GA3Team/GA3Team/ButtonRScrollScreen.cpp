@@ -4,11 +4,8 @@
 void ButtonRScrollScreen::Init() {
 
 
-	m_Button_x = 0;
-	m_Button_y = 0;
-
-	
-
+	m_Button_x = WINDOW_SIZE_W-64;
+	m_Button_y = WINDOW_SIZE_H-64;
 
 }
 
@@ -35,7 +32,7 @@ void ButtonRScrollScreen::Draw() {
 
 	//êÿÇËéÊÇËç¿ïW
 	m_dst.top = 33;						m_dst.left = 33;
-	m_dst.bottom = m_dst.top + 64;		m_dst.right = m_dst.left + 64;
+	m_dst.bottom = m_dst.top + 32;		m_dst.right = m_dst.left + 32;
 
 	//ì]ëóêÊç¿ïW
 	m_src.top = m_Button_y;					m_src.left = m_Button_x;

@@ -14,6 +14,7 @@ public:
 	void Loadsavedata();  // セーブデータ読み込み
 	void Writesavedata(); //セーブデータ書き込み
 	bool Savedatacheck(); //セーブデータ確認
+	void Deletesavedata();//セーブデータ削除
 };
 
 #endif // !__COBJSAVEDATA_H__

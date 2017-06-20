@@ -1,10 +1,9 @@
 #include "main.h"
 
 
-
-
 //プロトタイプ宣言
 LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
+BOOL CALLBACK DlgProc(HWND hDlg, UINT Msg, WPARAM wParam, LPARAM lParam);
 
 //Main関数
 int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR szCmdLine, int nCmdShow)
@@ -35,6 +34,9 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR szCmdL
 	//ゲームエンジン関連の初期化---------------------
 	InitLibrary();
 	srand((unsigned int)time(NULL));
+	g_UserData->p_hInstance = hInstance;
+	g_UserData->p_hWnd = hWnd;
+	g_UserData->p_DlgProc = DlgProc;
 	//------------------------------------------------
 
 	//------始めのシーンを登録------------------------
@@ -80,4 +82,36 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 		return 0;
 	}
 	return DefWindowProc(hWnd, uMsg, wParam, lParam);
+}
+
+//ダイアログプロシージャ
+BOOL CALLBACK DlgProc(HWND hDlg, UINT Msg, WPARAM wParam, LPARAM lParam)
+{
+	char str[256];
+
+	switch (Msg)
+	{
+	case WM_INITDIALOG:
+		SetDlgItemText(hDlg, IDC_EDIT1, "");
+		str[0] = '\0';
+		return TRUE;
+
+	case WM_COMMAND:
+		switch (LOWORD(wParam))
+		{
+		case IDOK:
+			GetDlgItemText(hDlg, IDC_EDIT1, str, 255);
+			strcpy_s(g_UserData->dlgIn, str);
+			//MessageBox(hDlg, str, "取得されたメッセージ", MB_OK);
+		case IDCANCEL:
+			EndDialog(hDlg, 0);
+			return TRUE;
+		}
+		break;
+	case WM_CLOSE:
+		EndDialog(hDlg, 0);
+		return TRUE;
+	}
+
+	return FALSE;
 }

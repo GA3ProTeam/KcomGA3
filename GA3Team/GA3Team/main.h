@@ -21,6 +21,7 @@
 #include <XAudio2.h>
 #include <time.h>
 #include <stdlib.h>
+#include "resource.h"
 
 //STLヘッダ
 #include <iostream>
@@ -228,8 +229,14 @@ class CUserData
 		void Seve();
 		
 		//----ユーザーが持つデータ-------
-		int mSeveData;//サンプルセーブデータ
+		//int mSeveData;//サンプルセーブデータ
 		int mscroll_x;
+
+		//---ライブラリ改造用ポインター---
+		HINSTANCE p_hInstance;
+		HWND p_hWnd;
+		DLGPROC p_DlgProc;
+		char dlgIn[256];
 		//-------------------------------
 
 		//ユーザーデータ以外の外部データ読み込み

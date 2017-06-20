@@ -7,6 +7,8 @@ CUserData::CUserData()
 
 	mscroll_x = 0;
 
+	dlgIn[0] = '\0';
+
 }
 
 CUserData::~CUserData()

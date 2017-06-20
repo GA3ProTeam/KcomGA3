@@ -56,7 +56,7 @@ void CObjStageTab::Draw() {
 
 
 	//ì]ëóêÊç¿ïW
-	m_rSrc.top = 0; m_rSrc.left = 250; m_rSrc.bottom = 256; m_rSrc.right = 32;
+	m_rSrc.top = 0; m_rSrc.left = 250; m_rSrc.bottom = 256; m_rSrc.right = 150 + m_rSrc.left;
 
 
 	//ï`âÊ

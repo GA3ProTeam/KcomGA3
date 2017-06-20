@@ -7,6 +7,11 @@ void ButtonRScrollScreen::Init() {
 	m_Button_x = WINDOW_SIZE_W-64;
 	m_Button_y = WINDOW_SIZE_H-64;
 
+	m_iXpos = m_Button_x;    //ボタンの位置X
+	m_iYpos = m_Button_y;    //ボタンの位置Y
+	m_iWidth = 64;   //ボタンの幅
+	m_iHeight = 64;  //ボタンの高さ
+
 }
 
 //デストラクタ
@@ -21,6 +26,9 @@ void ButtonRScrollScreen::Action() {
 	if (Push()) {
 		User()->mscroll_x -= 10;
 	}
+
+	//デバッグ用
+	sprintf(strsave, "%d", User()->mscroll_x);
 
 }
 
@@ -40,5 +48,9 @@ void ButtonRScrollScreen::Draw() {
 
 	//描画
 	Image()->Draw(0, &m_src, &m_dst, col, 0.0f);
+
+
+	Font()->StrDraw(strsave, 0, 500, 16, col);
+
 
 }

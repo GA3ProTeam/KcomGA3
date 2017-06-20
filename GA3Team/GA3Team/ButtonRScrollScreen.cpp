@@ -7,6 +7,8 @@ void ButtonRScrollScreen::Init() {
 	m_Button_x = 0;
 	m_Button_y = 0;
 
+	
+
 
 }
 
@@ -18,6 +20,8 @@ void ButtonRScrollScreen::Destructor() {
 
 //ƒAƒNƒVƒ‡ƒ“
 void ButtonRScrollScreen::Action() {
+
+	Push();
 
 	if (m_bStatus) {
 		User()->mscroll_x -= 10;

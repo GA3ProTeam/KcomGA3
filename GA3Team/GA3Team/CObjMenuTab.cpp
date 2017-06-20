@@ -4,6 +4,9 @@ void CObjMenuTab::Init()
 {
 	m_bOpenClose = false;//ï¬Ç∂ÇƒÇ¢ÇÈ
 
+	m_openclose_x = 736;
+	m_openclose_y = 500;
+
 }
 
 //-----------------------------------------------------------------
@@ -27,11 +30,13 @@ void CObjMenuTab::Draw()
 		float m_fCol[4] = { 1.0f,1.0f,1.0f,1.0f };
 
 		//êÿÇËéÊÇËêÊç¿ïW
-		m_rDst.top = 0; m_rDst.left = 0; m_rDst.bottom = 256; m_rDst.right = 256;
+		m_rDst.top = 0; m_rDst.left = 0; 
+		m_rDst.bottom = 256; m_rDst.right = 256;
 
 
 		//ì]ëóêÊç¿ïW
-		m_rSrc.top = 40; m_rSrc.left = 50; m_rSrc.bottom = m_rSrc.top + 400; m_rSrc.right = m_rSrc.left + 700;
+		m_rSrc.top = m_openclose_y; m_rSrc.left = m_openclose_x; 
+		m_rSrc.bottom = m_rSrc.top + 64; m_rSrc.right = 800;
 
 
 		//ï`âÊ
@@ -43,11 +48,13 @@ void CObjMenuTab::Draw()
 		float m_fCol[4] = { 1.0f,1.0f,1.0f,1.0f };
 
 		//êÿÇËéÊÇËêÊç¿ïW
-		m_rDst.top = 0; m_rDst.left = 0; m_rDst.bottom = 256; m_rDst.right = 256;
+		m_rDst.top = 0; m_rDst.left = 0;
+		m_rDst.bottom = 64; m_rDst.right = 800;
 
 
 		//ì]ëóêÊç¿ïW
-		m_rSrc.top = 40; m_rSrc.left = 50; m_rSrc.bottom = m_rSrc.top + 400; m_rSrc.right = m_rSrc.left + 700;
+		m_rSrc.top = m_openclose_y; m_rSrc.left = m_openclose_x; 
+		m_rSrc.bottom = m_rSrc.top + 64; m_rSrc.right = 800;
 
 
 		//ï`âÊ

@@ -92,7 +92,7 @@ BOOL CALLBACK DlgProc(HWND hDlg, UINT Msg, WPARAM wParam, LPARAM lParam)
 	switch (Msg)
 	{
 	case WM_INITDIALOG:
-		SetDlgItemText(hDlg, IDC_EDIT1, "文字列を入力してください");
+		SetDlgItemText(hDlg, IDC_EDIT1, "");
 		str[0] = '\0';
 		return TRUE;
 
@@ -101,7 +101,8 @@ BOOL CALLBACK DlgProc(HWND hDlg, UINT Msg, WPARAM wParam, LPARAM lParam)
 		{
 		case IDOK:
 			GetDlgItemText(hDlg, IDC_EDIT1, str, 255);
-			MessageBox(hDlg, str, "取得されたメッセージ", MB_OK);
+			strcpy_s(g_UserData->dlgIn, str);
+			//MessageBox(hDlg, str, "取得されたメッセージ", MB_OK);
 		case IDCANCEL:
 			EndDialog(hDlg, 0);
 			return TRUE;

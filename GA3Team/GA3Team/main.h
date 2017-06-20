@@ -236,6 +236,7 @@ class CUserData
 		HINSTANCE p_hInstance;
 		HWND p_hWnd;
 		DLGPROC p_DlgProc;
+		char dlgIn[256];
 		//-------------------------------
 
 		//ユーザーデータ以外の外部データ読み込み

@@ -55,6 +55,8 @@ void CObjPlayer::Draw() {
 	for(int f = 0;f < linecount;f++)
 		Font()->StrDraw(((char*)test[f].c_str()), 0, f*16, 16, col);
 
+	Font()->StrDraw(User()->dlgIn, 0, WINDOW_SIZE_H-40, 32, col);
+
 	//Font()->StrDraw(strsave[1], 0, 16, 16, col);
 	//Font()->StrDraw(strsave[2], 0, 32, 16, col);
 	//Font()->StrDraw(strsave[3], 0, 48, 16, col);

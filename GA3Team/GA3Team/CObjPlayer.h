@@ -15,6 +15,8 @@ private:
 	float m_x, m_y;
 	char tmpstr[2048];
 	char strsave[16][2048];
+	std::vector<std::string> test;
+
 	int linecount = 0;
 	int textlen = 0;
 	int arrsize = 0;

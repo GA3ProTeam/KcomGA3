@@ -2,6 +2,7 @@
 #define __COBJTITLE_H__
 
 class ButtonStage;
+class ButtonDataSelect;
 
 class CObjTitle : public CObj
 {

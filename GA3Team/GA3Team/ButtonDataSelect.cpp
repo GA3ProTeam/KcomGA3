@@ -38,6 +38,10 @@ void ButtonDataSelect::Destructor() {
 
 //ƒAƒNƒVƒ‡ƒ“
 void ButtonDataSelect::Action() {
+	
+	if (m_bSelected == true){
+		Push();
+	}
 
 }
 

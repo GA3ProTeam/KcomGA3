@@ -7,6 +7,8 @@ class CObjMenuTab : public Button
 private:
 	//開閉フラグ
 	bool m_bOpenClose;
+	//連打回避のためのカウント
+	int m_icnt;
 
 	//開閉ボタンの位置
 	int m_openclose_x;

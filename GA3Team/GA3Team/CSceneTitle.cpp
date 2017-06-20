@@ -34,14 +34,14 @@ void CSceneTitle::InitScene()
 void CSceneTitle::Scene()
 {
 	
-	if (Input()->GetVKey(VK_RETURN)) {
-		//シーン移動　→データセレクトへ
-		Manager()->Pop(new CSceneStageSelect());
-	}
-	
+	//if (Input()->GetVKey(VK_RETURN)) {
+	//	//シーン移動　→データセレクトへ
+	//	Manager()->Pop(new CSceneStageSelect());
+	//}
+	//
 
 	//テスト用　消さないように
-	/*if (Input()->GetVKey(VK_RETURN)) {
+	if (Input()->GetVKey(VK_RETURN)) {
 		Manager()->Pop(new CSceneGameMain());
-	}*/
+	}
 }

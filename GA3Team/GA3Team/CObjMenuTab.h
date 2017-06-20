@@ -8,8 +8,8 @@ private:
 	//開閉フラグ
 	bool m_bOpenClose;
 
-	RECT m_src;//転送先座標
-	RECT m_dst;//切り取り座標
+	RECT m_rSrc;//転送先座標
+	RECT m_rDst;//切り取り座標
 
 public:
 	void Init();//イニシャライズ

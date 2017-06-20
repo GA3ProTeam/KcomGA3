@@ -10,8 +10,7 @@ protected:
 	int m_iWidth;   //ボタンの幅
 	int m_iHeight;  //ボタンの高さ
 public:
-	void Push();
-	void Rangedetection();
+	bool Push();
 };
 
 #endif

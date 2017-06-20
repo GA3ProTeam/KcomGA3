@@ -10,7 +10,7 @@ public:
 	ButtonStage() {}//コンストラクタ
 	~ButtonStage() {}//デストラクタ
 
-	void Init(bool bSelected, CObjStageTab* sStage_Tab);	//イニシャライズ
+	void Init(int x, int y, int w, int h, bool bSelected, CObjStageTab* sStage_Tab);	//イニシャライズ
 	void Destructor();			//デストラクタ
 	void Action();				//アクション
 	void Draw();				//ドロー

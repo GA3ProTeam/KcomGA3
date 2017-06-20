@@ -8,6 +8,7 @@
 //vs2015_warning
 #pragma warning ( disable : 4005 )
 #pragma warning ( disable : 4838 )
+#define _CRT_SECURE_NO_WARNINGS
 
 //ヘッダー
 #include <stdio.h>
@@ -20,6 +21,7 @@
 #include <XAudio2.h>
 #include <time.h>
 #include <stdlib.h>
+#include "resource.h"
 
 //STLヘッダ
 #include <iostream>
@@ -103,8 +105,13 @@ enum OBJ_NAME
 	OBJ_RESULT,
 	OBJ_ITEM,
 	OBJ_DATASELECT,
+	OBJ_GIMMICKOBJECT,
 	OBJ_BUTTON_PLAYER,
+	OBJ_BUTTON_STAGE,
+	OBJ_STAGE_TAB,
 	OBJ_SAVEDATA,
+	BUTTON_LSCROLL_SCREEN,
+	BUTTON_RSCROLL_SCREEN,
 };
 //----------------------
 
@@ -178,8 +185,11 @@ extern CHitBoxManager*	g_HitBoxManager;
 #include "Library\Trace.h"
 #include "Library\Button.h"
 #include "Library\CObjSavedata.h"
+#include "Library\SoundManeger.h"
 
 //ゲームシーン・オブジェクトのインクルード-------
+#define MAX_CHARA 4
+
 //シーンタイトル
 #include "CSceneTitle.h"
 #include "CObjTitle.h"
@@ -188,6 +198,7 @@ extern CHitBoxManager*	g_HitBoxManager;
 //シーンデータセレクト
 #include "CSceneDataSelect.h"
 #include "CObjDataSelect.h"
+#include "ButtonDataSelect.h"
 
 
 //シーンステージセレクト
@@ -197,9 +208,12 @@ extern CHitBoxManager*	g_HitBoxManager;
 #include "ButtonPlayer.h"
 #include "ButtonStage.h"
 
+
 //シーンゲームメイン
 #include "CSceneGameMain.h"
 #include "CObjPlayer.h"
+#include "ButtonLScrollScreen.h"
+#include "ButtonRScrollScreen.h"
 //----------------------------------------------
 
 
@@ -215,8 +229,13 @@ class CUserData
 		void Seve();
 		
 		//----ユーザーが持つデータ-------
-		int mSeveData;//サンプルセーブデータ
+		//int mSeveData;//サンプルセーブデータ
+		int mscroll_x;
 
+		//---ライブラリ改造用ポインター---
+		HINSTANCE p_hInstance;
+		HWND p_hWnd;
+		DLGPROC p_DlgProc;
 		//-------------------------------
 
 		//ユーザーデータ以外の外部データ読み込み

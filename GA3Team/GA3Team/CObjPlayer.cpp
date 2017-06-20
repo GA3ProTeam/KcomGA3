@@ -17,8 +17,7 @@ void CObjPlayer::Init() {
 
 	ifw.close();
 
-	std::vector<std::string> test;
-
+	
 	
 
 	token = strtok(tmpstr, "\n");
@@ -32,6 +31,10 @@ void CObjPlayer::Init() {
 		if(strsave[j][strlen(strsave[j]) - 1] == '\r')
 			strsave[j][strlen(strsave[j]) - 1] = '\0';
 	}
+
+	for (int w = 0; w < i; w++) {
+		test.push_back(strsave[w]);
+	}
 }
 
 //デストラクタ
@@ -41,7 +44,7 @@ void CObjPlayer::Destructor() {
 
 //アクション
 void CObjPlayer::Action() {
-
+	DialogBox(User()->p_hInstance , MAKEINTRESOURCE(IDD_DIALOG1), User()->p_hWnd , User()->p_DlgProc);
 }
 
 //ドロー
@@ -49,8 +52,10 @@ void CObjPlayer::Draw() {
 	//カラー情報
 	float col[4] = { 1.0f,1.0f,1.0f,1.0f };
 
-	Font()->StrDraw(strsave[0], 0, 0, 16, col);
-	Font()->StrDraw(strsave[1], 0, 16, 16, col);
-	Font()->StrDraw(strsave[2], 0, 32, 16, col);
-	Font()->StrDraw(strsave[3], 0, 48, 16, col);
+	for(int f = 0;f < linecount;f++)
+		Font()->StrDraw(((char*)test[f].c_str()), 0, f*16, 16, col);
+
+	//Font()->StrDraw(strsave[1], 0, 16, 16, col);
+	//Font()->StrDraw(strsave[2], 0, 32, 16, col);
+	//Font()->StrDraw(strsave[3], 0, 48, 16, col);
 }

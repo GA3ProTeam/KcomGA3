@@ -117,8 +117,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ButtonDataSelect.cpp" />
     <ClCompile Include="ButtonPlayer.cpp" />
+    <ClCompile Include="ButtonLScrollScreen.cpp" />
+    <ClCompile Include="ButtonRScrollScreen.cpp" />
     <ClCompile Include="ButtonStage.cpp" />
+    <ClCompile Include="CObjGimmickObject.cpp" />
     <ClCompile Include="CObjMenuTab.cpp" />
     <ClCompile Include="CObjDataSelect.cpp" />
     <ClCompile Include="CObjPlayer.cpp" />
@@ -140,6 +144,7 @@
     <ClCompile Include="Library\Library.cpp" />
     <ClCompile Include="Library\SceneManager.cpp" />
     <ClCompile Include="Library\SceneObjManager.cpp" />
+    <ClCompile Include="Library\SoundManeger.cpp" />
     <ClCompile Include="Library\Trace.cpp" />
     <ClCompile Include="Library\UserData.cpp" />
     <ClCompile Include="Library\WinInputs.cpp" />
@@ -147,9 +152,11 @@
     <ClCompile Include="CSceneDataSelect.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ButtonPlayer.h" />
-    <ClInclude Include="ButtonStage.h" />
+    <ClInclude Include="ButtonDataSelect.h" />
+    <ClInclude Include="ButtonLScrollScreen.h" />
+    <ClInclude Include="ButtonRScrollScreen.h" />
     <ClInclude Include="CObjDataSelect.h" />
+    <ClInclude Include="CObjGimmickObject.h" />
     <ClInclude Include="CObjMenuTab.h" />
     <ClInclude Include="CObjPlayer.h" />
     <ClInclude Include="CObjStageTab.h" />
@@ -170,16 +177,21 @@
     <ClInclude Include="Library\Library.h" />
     <ClInclude Include="Library\SceneManager.h" />
     <ClInclude Include="Library\SceneObjManager.h" />
+    <ClInclude Include="Library\SoundManeger.h" />
     <ClInclude Include="Library\Trace.h" />
     <ClInclude Include="Library\WinInputs.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="CSceneDataSelect.h" />
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Library\Draw2DTex.hlsl">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </FxCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="GA3Team.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

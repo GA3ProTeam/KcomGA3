@@ -1,6 +1,8 @@
 #ifndef __COBJDATASELECT_H__
 #define __COBJDATASELECT_H__
 
+
+
 class CObjDataSelect : public CObj {
 public:
 	void Init();		//イニシャライズ
@@ -13,7 +15,8 @@ public:
 
 private:
 
-	CObjSavedata* m_obj_savedata;
+	CObjSavedata* m_obj_savedata;	//セーブデータ
+	ButtonDataSelect* m_obj_button; //ボタン
 
 
 };

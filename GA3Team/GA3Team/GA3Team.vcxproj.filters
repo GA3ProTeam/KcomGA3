@@ -117,6 +117,21 @@
     <ClCompile Include="CObjStageTab.cpp">
       <Filter>CSceneStageSelect</Filter>
     </ClCompile>
+    <ClCompile Include="ButtonLScrollScreen.cpp">
+      <Filter>CSceneGameMain</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\SoundManeger.cpp">
+      <Filter>ライブラリ ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="ButtonRScrollScreen.cpp">
+      <Filter>CSceneGameMain</Filter>
+    </ClCompile>
+    <ClCompile Include="ButtonDataSelect.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="CObjGimmickObject.cpp">
+      <Filter>CSceneGameMain</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Library\Audio.h">
@@ -185,19 +200,36 @@
     <ClInclude Include="CObjMenuTab.h">
       <Filter>CSceneStageSelect</Filter>
     </ClInclude>
-    <ClInclude Include="ButtonPlayer.h">
+    <ClInclude Include="ButtonLScrollScreen.h">
+      <Filter>CSceneGameMain</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\SoundManeger.h">
+      <Filter>ライブラリ ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="ButtonRScrollScreen.h">
+      <Filter>CSceneGameMain</Filter>
+    </ClInclude>
+    <ClInclude Include="ButtonDataSelect.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="ButtonStage.h">
-      <Filter>ヘッダー ファイル</Filter>
+    <ClInclude Include="CObjGimmickObject.h">
+      <Filter>CSceneGameMain</Filter>
     </ClInclude>
     <ClInclude Include="CObjStageTab.h">
       <Filter>CSceneStageSelect</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Library\Draw2DTex.hlsl">
       <Filter>ライブラリ ファイル</Filter>
     </FxCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="GA3Team.rc">
+      <Filter>リソース ファイル</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

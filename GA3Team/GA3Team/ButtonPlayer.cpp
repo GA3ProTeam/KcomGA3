@@ -1,10 +1,16 @@
 #include"main.h"
-#include "CSceneStageSelect.h"
-#define MAXCHARACTERSELECT 4
+
+
 
 //イニシャライズ
-void ButtonPlayer::Init(int m_iButtonID) {
-	m_iCharacterNumber = m_iButtonID;
+void ButtonPlayer::Init(int x, int y, int w, int h, int m_iButtonID, CObjStageTab* sStage_Tab) {
+	m_iXpos = x;    //ボタンの位置X
+	m_iYpos = y;    //ボタンの位置Y
+	m_iWidth = w;   //ボタンの幅
+	m_iHeight = h;  //ボタンの高さ
+
+	m_iCharacterNumber = m_iButtonID;//キャラクター番号
+	m_sStage_Tab = sStage_Tab;//ステージタブへの参照セット
 }
 
 //Destructor
@@ -22,10 +28,6 @@ void ButtonPlayer::Action()
 		//キャラクター番号をステージタブに転送
 		m_sStage_Tab->SetCharacterNum(m_iCharacterNumber);
 	}
-	
-	
-	
-	
 }
 
 //Draw

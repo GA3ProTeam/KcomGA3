@@ -4,6 +4,9 @@
 CUserData::CUserData()
 {
 	memset(this,0x00,sizeof(this));
+
+	mscroll_x = 0;
+
 }
 
 CUserData::~CUserData()

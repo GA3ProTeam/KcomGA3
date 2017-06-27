@@ -56,7 +56,7 @@ void CObjMenuTab::Action()
 	}
 	
 	//タブが押されて1秒以上経つと押せるようになる
-	if (BTPush(m_iBackTitlex, m_iBackTitley, 64, 64) && m_bOpenClose && m_icnt >= 60) {
+	if (SelectPush(m_iBackTitlex, m_iBackTitley, 64, 64) && m_bOpenClose && m_icnt >= 60) {
 		Manager()->Pop(new CSceneTitle());//タイトルに戻る
 	}
 	else if(m_bOpenClose){
@@ -104,6 +104,7 @@ void CObjMenuTab::Draw()
 		//描画
 		Image()->Draw(1, &m_rSrc, &m_rDst, m_fCol, 0.0f);
 
+
 		//タイトルに戻るボタン
 
 		//切り取り先座標
@@ -121,7 +122,7 @@ void CObjMenuTab::Draw()
 
 }
 
-bool CObjMenuTab::BTPush(int btx, int bty, int btwid, int bthei)
+bool CObjMenuTab::SelectPush(int btx, int bty, int btwid, int bthei)
 {
 	int mousex = Input()->m_x;
 	int mousey = Input()->m_y;

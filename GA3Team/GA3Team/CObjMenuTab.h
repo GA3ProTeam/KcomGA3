@@ -24,8 +24,8 @@ public:
 	void Destructor();//デストラクタ
 	void Action();//アクション
 	void Draw();//描画
-	//タイトルに戻るボタンを押す
-	bool BTPush(int btx, int bty, int btwid, int bthei);
+	//指定されたボタンを押す
+	bool SelectPush(int btx, int bty, int btwid, int bthei);
 
 	//開閉フラグをとる
 	bool GetOpenCloseFlg() { return m_bOpenClose; };

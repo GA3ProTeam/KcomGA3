@@ -13,8 +13,8 @@ public:
 	void Draw();		//ƒhƒ[
 private:
 	float m_x, m_y;
-	char tmpstr[2048];
-	char strsave[16][2048];
+	char tmpstr[1024];
+	char strsave[64][512];
 	std::vector<std::string> test;
 
 	int linecount = 0;

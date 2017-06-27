@@ -6,7 +6,7 @@ void CObjPlayer::Init() {
 	int i = 0;
 
 
-	ifstream ifw("1-1.bin", std::ios::in | std::ios::binary);
+	ifstream ifw("Text\\sion1\\sion1-start.bin", std::ios::in | std::ios::binary);
 
 	ifw.read(reinterpret_cast<char*>(&textlen), sizeof(textlen));
 	ifw.read(reinterpret_cast<char*>(&linecount), sizeof(linecount));
@@ -17,7 +17,10 @@ void CObjPlayer::Init() {
 
 	ifw.close();
 
-	
+	if (tmpstr[textlen - 2] == '\r') {
+		tmpstr[textlen - 2] = '\0';
+		linecount--;
+	}
 	
 
 	token = strtok(tmpstr, "\n");

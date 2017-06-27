@@ -15,7 +15,6 @@ public:
 	void Draw();		//ドロー
 private:
 
-	int m_Select_character;	//キャラクターの番号
 	int m_Stage_ID;			//ステージの番号
 
 

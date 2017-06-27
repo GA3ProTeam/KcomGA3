@@ -112,7 +112,7 @@ void CObjDataSelect::ButtonFromTheBegin() {
 		
 	//マウス判定
 	//カーソルがある所を拡大+発光
-
+	
 	
 	
 	//選択しました

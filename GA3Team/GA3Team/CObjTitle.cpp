@@ -26,7 +26,7 @@ void CObjTitle::Action()
 	m_bdataflg = m_obj_savedata->Savedatacheck();
 
   //ボタンがまだ作成されていなければ、ボタンを作成する
-	if (m_icreateflg){
+	if (!m_icreateflg){
 
 		//はじめからボタン生成(仮)
 		m_obj_button[0] = new ButtonDataSelect();
@@ -41,10 +41,10 @@ void CObjTitle::Action()
 		m_icreateflg = true; //ボタン作成済
 	}
 
-	if (m_obj_button[0]->Push){
+	if (m_obj_button[0]->Push()){
 		m_ititle_choice = NEW;
 	}
-	else if (m_obj_button[1]->Push) {
+	else if (m_obj_button[1]->Push()) {
 		m_ititle_choice = LOAD;
 	}
 

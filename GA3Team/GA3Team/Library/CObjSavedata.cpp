@@ -21,4 +21,5 @@ bool CObjSavedata::Savedatacheck()
 //セーブデータ削除
 void CObjSavedata::Deletesavedata()
 {
+
 }

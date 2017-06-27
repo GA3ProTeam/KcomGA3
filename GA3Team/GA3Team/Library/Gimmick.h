@@ -11,12 +11,13 @@ protected:
 	int m_iYpos;	//ギミックの位置(Y)
 	int m_iWidth;	//ギミック幅
 	int m_iHeight;	//ギミック高さ
-
 	//----------------表示位置----------
-	int m_iGimXpos;	//ギミックの表示位置(X)
-	int m_iGimYpos; //ギミックの表示位置(Y)
+	int m_iGimXpos;	//吹き出しの表示位置(X)
+	int m_iGimYpos; //吹き出しの表示位置(Y)
 
 	bool m_bCursor;	//ギミックにカーソルが当たっているかのフラグ
+	int time;		//吹き出しの維持時間
+
 public:
 	void gimmickDrawSet(int x, int y);
 	bool gimmickCd(); //ギミックの当たり判定

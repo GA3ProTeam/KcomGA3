@@ -10,8 +10,8 @@ protected:
 	int m_iWidth;   //ボタンの幅
 	int m_iHeight;  //ボタンの高さ
 public:
-	bool Push();
-	bool Rangedetection();
+	bool Push();//ボタンの当たり判定
+	bool Rangedetection();//ボタンの範囲にカーソルが入っているかどうか
 };
 
 #endif

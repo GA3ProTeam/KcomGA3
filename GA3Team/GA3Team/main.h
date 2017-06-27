@@ -193,9 +193,12 @@ extern CHitBoxManager*	g_HitBoxManager;
 //ゲームシーン・オブジェクトのインクルード-------
 #define MAX_CHARA 4
 
-//ギミックのサイズ
+//吹き出しのサイズ
 #define GIMMICK_SIZE_X 32
 #define GIMMICK_SIZE_Y 32
+
+//吹き出し維持時間
+#define BALLOON_KEEP_TIME 300
 
 //シーンタイトル
 #include "CSceneTitle.h"

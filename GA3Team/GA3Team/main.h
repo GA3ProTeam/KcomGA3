@@ -186,6 +186,7 @@ extern CHitBoxManager*	g_HitBoxManager;
 #include "Library\Library.h"
 #include "Library\Trace.h"
 #include "Library\Button.h"
+#include "Library\Gimmick.h"
 #include "Library\CObjSavedata.h"
 #include "Library\SoundManeger.h"
 

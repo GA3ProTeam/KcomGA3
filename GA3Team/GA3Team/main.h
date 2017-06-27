@@ -193,6 +193,10 @@ extern CHitBoxManager*	g_HitBoxManager;
 //ゲームシーン・オブジェクトのインクルード-------
 #define MAX_CHARA 4
 
+//ギミックのサイズ
+#define GIMMICK_SIZE_X 32
+#define GIMMICK_SIZE_Y 32
+
 //シーンタイトル
 #include "CSceneTitle.h"
 #include "CObjTitle.h"
@@ -235,6 +239,7 @@ class CUserData
 		//----ユーザーが持つデータ-------
 		//int mSeveData;//サンプルセーブデータ
 		int mscroll_x;
+		int mititle_choice; //始め方の選択
 
 		//---ライブラリ改造用ポインター---
 		HINSTANCE p_hInstance;

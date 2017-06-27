@@ -1,5 +1,7 @@
 #include "main.h"
 
+
+
 //イニシャライズ
 void ButtonDataSelect::Init(int x, int y, int w, int h, bool bSelected) {
 	

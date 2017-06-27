@@ -7,6 +7,8 @@ void CObjDataSelect::Init()
 {
 
 	//bool m_bsavedataflg[3];
+
+	m_button_y = 10;
 }
 
 void CObjDataSelect::Destructor()
@@ -16,22 +18,29 @@ void CObjDataSelect::Destructor()
 void CObjDataSelect::Action()
 {
 	//セーブデータ
-	m_obj_savedata = (CObjSavedata *)Obj()->GetObj(OBJ_SAVEDATA);
+	for (int i = 0; i < MAX_SAVEDATA; i++) {
+		m_obj_savedata[i] = (CObjSavedata *)Obj()->GetObj(OBJ_SAVEDATA);
+		m_obj_savedata[i]->Savedatacheck();
+	}
 
-	//各セーブデータの有無を確認する(仮)
-	m_bsavedataflg[0] = m_obj_savedata->Savedatacheck();
-
+	//どちらが選ばれたか持ってくる
+	m_ititle_choice = User()->mititle_choice;
 	
 	//
-	//if () {
+	if (m_ititle_choice = NEW) {
 		//初めから
-	//	ButtonFromTheBegin();
-	//}if(){
+		ButtonFromTheBegin();
+
+	}if(m_ititle_choice = LOAD){
 		//続きから
-	//	ButtonContinuation();
-	//}
+		ButtonContinuation();
+	}
 
 	//タイトルに戻る
+	m_obj_titlebackbutton = new ButtonDataSelect();
+	Obj()->InsertObj(m_obj_titlebackbutton, OBJ_BUTTON_STAGE, 0, this->m_pScene, HIT_BOX_OFF);
+	m_obj_titlebackbutton->Init(0, 300, 50, 50, true);
+
 
 
 	//sprintf(c[], "%d  %d  %d", x,y,z); //textmemo
@@ -90,6 +99,17 @@ void CObjDataSelect::Draw()
 
 //はじめから
 void CObjDataSelect::ButtonFromTheBegin() {
+	
+	for (int i = 0; i < MAX_SAVEDATA; i++){
+	
+		m_obj_savedatabutton[i] = new ButtonDataSelect();
+		Obj()->InsertObj(m_obj_savedatabutton[i], OBJ_BUTTON_STAGE, 0, this->m_pScene, HIT_BOX_OFF);
+		m_obj_savedatabutton[i]->Init(250, m_button_y, 50, 50, true);
+
+		m_button_y += 50;
+
+	}
+		
 	//マウス判定
 	//カーソルがある所を拡大+発光
 
@@ -113,7 +133,7 @@ void CObjDataSelect::ButtonFromTheBegin() {
 		//scanf(); //(仮)
 
 		//新規セーブデータ作成(仮)
-		m_obj_savedata->Writesavedata();
+		//m_obj_savedata->Writesavedata();
 
 		//ゲームメインへ
 
@@ -131,12 +151,17 @@ void CObjDataSelect::ButtonFromTheBegin() {
 void CObjDataSelect::ButtonContinuation() {
 
 	//データが入ってなかったら選べなくする/暗くする
-	for (int i = 0; i < 3; i++) {
-		if (m_bsavedataflg[i] >= 1) {
-			//判定を消す/暗くする
-			;
-		}
-	}
+//	for (int i = 0; i < MAX_SAVEDATA; i++) {
+//
+//		m_obj_savedatabutton[i] = new ButtonDataSelect();
+//		Obj()->InsertObj(m_obj_savedatabutton[i], OBJ_BUTTON_STAGE, 0, this->m_pScene, HIT_BOX_OFF);
+//		m_obj_savedatabutton[i]->Init(250, m_button_y, 50, 50, true);
+//
+//		m_button_y += 50;
+//	}
+
+	
+	
 
 
 	//マウス判定

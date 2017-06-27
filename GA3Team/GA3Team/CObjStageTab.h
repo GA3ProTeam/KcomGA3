@@ -3,6 +3,8 @@
 #ifndef __COBJ_STAGETAB_H__
 #define __COBJ_STAGETAB_H__
 
+class ButtonStage;
+
 //ステージの数(仮)
 #define STAGENUMBER 8
 
@@ -21,14 +23,15 @@ public:
 
 
 	//キャラクター番号をセット
-	void SetCharacterNum(int chara_num) { m_iSelectedCharacterNumber = chara_num; }
+	void SetCharacterNum(int chara_num) { m_iSelChara = chara_num; }
 	//キャラクター番号を取得
-	int GetCharacterNum() { return m_iSelectedCharacterNumber; }
+	int GetCharacterNum() { return m_iSelChara; }
 private:
-	int m_iSelectedCharacterNumber;	//選んだキャラクター番号
-	int m_iStageNum[4];				//各キャラクターのステージ生成数
-	bool m_bStageCreateFlg[4];		//ボタンを一回生成したかどうか
-	//ButtonStage* m_sStage_Button[STAGENUMBER];  //ステージボタン
+	int m_iSelChara;					//選んだキャラクター番号
+	int m_iStageNum[MAX_CHARA];			//各キャラクターのステージ生成数
+	int m_iSelCharaOld;					//前回選択したキャラクター番号
+	bool m_bStageCreateFlg[MAX_CHARA];	//ボタンを一回生成したかどうか
+	ButtonStage** m_sStage_Button[STAGENUMBER]; //ステージボタンへの参照
 
 	//切り取り先座標
 	RECT m_rDst;

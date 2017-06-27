@@ -15,9 +15,14 @@ public:
 	void Action();				//アクション
 	void Draw();				//ドロー
 
+	void Expansion();			//拡大
+	void Emission();			//発光
+
 private:
 	bool m_bSelected;			//選択できるかどうか
 	float m_fCol[4];			//カラー情報
+
+	int m_storage_x, m_storage_y, m_storage_w, m_storage_h;
 
 
 	RECT m_rSrc;	//転送先座標

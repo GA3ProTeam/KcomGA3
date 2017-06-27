@@ -6,7 +6,11 @@
 void CObjDataSelect::Init()
 {
 
-	//bool m_bsavedataflg[3];
+	m_bsavedataflg = false;
+	m_icreateflg = false;
+
+
+	m_button_y = 10;
 }
 
 void CObjDataSelect::Destructor()
@@ -16,22 +20,29 @@ void CObjDataSelect::Destructor()
 void CObjDataSelect::Action()
 {
 	//セーブデータ
-	m_obj_savedata = (CObjSavedata *)Obj()->GetObj(OBJ_SAVEDATA);
+	for (int i = 0; i < MAX_SAVEDATA; i++) {
+		m_obj_savedata[i] = (CObjSavedata *)Obj()->GetObj(OBJ_SAVEDATA);
+		
+	}
 
-	//各セーブデータの有無を確認する(仮)
-	m_bsavedataflg[0] = m_obj_savedata->Savedatacheck();
-
+	//どちらが選ばれたか持ってくる
+	m_ititle_choice = User()->mititle_choice;
 	
 	//
-	//if () {
+	if (m_ititle_choice = NEW) {
 		//初めから
-	//	ButtonFromTheBegin();
-	//}if(){
+		ButtonFromTheBegin();
+
+	}if(m_ititle_choice = LOAD){
 		//続きから
-	//	ButtonContinuation();
-	//}
+		ButtonContinuation();
+	}
 
 	//タイトルに戻る
+	m_obj_titlebackbutton = new ButtonDataSelect();
+	Obj()->InsertObj(m_obj_titlebackbutton, OBJ_BUTTON_STAGE, 0, this->m_pScene, HIT_BOX_OFF);
+	m_obj_titlebackbutton->Init(0, 300, 50, 50, true);
+
 
 
 	//sprintf(c[], "%d  %d  %d", x,y,z); //textmemo
@@ -90,21 +101,58 @@ void CObjDataSelect::Draw()
 
 //はじめから
 void CObjDataSelect::ButtonFromTheBegin() {
+	
+	if (m_icreateflg == false) {
+
+		for (int i = 0; i < MAX_SAVEDATA; i++) {
+
+			//もしかしたら配列いらないかもしれない(後で検証)
+			m_obj_savedatabutton[i] = new ButtonDataSelect();
+			Obj()->InsertObj(m_obj_savedatabutton[i], OBJ_BUTTON_STAGE, 0, this->m_pScene, HIT_BOX_OFF);
+			m_obj_savedatabutton[i]->Init(250, m_button_y, 50, 50, true);
+
+			m_button_y += 50;
+
+			if (i == MAX_SAVEDATA)
+				m_icreateflg = true;
+		}
+	}
+		
 	//マウス判定
 	//カーソルがある所を拡大+発光
+	for (int i = 0; i < MAX_SAVEDATA; i++) {
+		m_obj_savedatabutton[i]->Expansion();	//拡大
+		m_obj_savedatabutton[i]->Emission();	//発光
 
+		if (m_obj_savedatabutton[i]->Push()){
+
+			if (m_obj_savedata[i]->Savedatacheck()){
+				m_bsavedataflg = true;
+			}
+			
+
+		}
+	}
 	
 	
 	//選択しました
-//	if (m_bsavedataflg[]) {/*セーブデータが入っていたら*/
+	if (m_bsavedataflg = true) {/*セーブデータが入っていたら*/
 		//初期化してもいいですか
 		//"はい"...データ削除
 		
+		m_obj_deletebutton = new ButtonDataSelect();
+		Obj()->InsertObj(m_obj_deletebutton, OBJ_BUTTON_STAGE, 0, this->m_pScene, HIT_BOX_OFF);
+		m_obj_deletebutton->Init(250, 0, 50, 50, true);
 
+//		if (Push()) {
+//			m_obj_savedata[0]->Deletesavedata(); //仮
+//		}
+
+	}else{
 		//"いいえ"...セレクト画面へ
 
 
-//	}
+	}
 
 	
 //	if(/*データが入っていなければ or 初期化後*/){
@@ -113,7 +161,7 @@ void CObjDataSelect::ButtonFromTheBegin() {
 		//scanf(); //(仮)
 
 		//新規セーブデータ作成(仮)
-		m_obj_savedata->Writesavedata();
+		//m_obj_savedata->Writesavedata();
 
 		//ゲームメインへ
 
@@ -127,16 +175,23 @@ void CObjDataSelect::ButtonFromTheBegin() {
 
 }
 
+//-------------------------------------------------------------------------------------------------------
+
 //つづきから
 void CObjDataSelect::ButtonContinuation() {
 
 	//データが入ってなかったら選べなくする/暗くする
-	for (int i = 0; i < 3; i++) {
-		if (m_bsavedataflg[i] >= 1) {
-			//判定を消す/暗くする
-			;
-		}
-	}
+//	for (int i = 0; i < MAX_SAVEDATA; i++) {
+//
+//		m_obj_savedatabutton[i] = new ButtonDataSelect();
+//		Obj()->InsertObj(m_obj_savedatabutton[i], OBJ_BUTTON_STAGE, 0, this->m_pScene, HIT_BOX_OFF);
+//		m_obj_savedatabutton[i]->Init(250, m_button_y, 50, 50, true);
+//
+//		m_button_y += 50;
+//	}
+
+	
+	
 
 
 	//マウス判定

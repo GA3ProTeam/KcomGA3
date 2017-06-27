@@ -46,10 +46,10 @@ void ButtonPlayer::Draw()
 	float col[4] = { numcolor,numcolor,numcolor,1.0f };
 
 	//Ø‚èæ‚èÀ•W
-	m_dst.top = 0;
-	m_dst.bottom = 1;
-	m_dst.left = 0;
-	m_dst.right = 1;
+	m_dst.top = 320;
+	m_dst.bottom = m_dst.top + 128;
+	m_dst.left = m_iCharacterNumber * 128;
+	m_dst.right = m_dst.left + 128;
 
 	//“]‘—æÀ•W
 	m_src.top = m_iYpos;

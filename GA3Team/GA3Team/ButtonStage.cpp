@@ -1,11 +1,14 @@
 #include "main.h"
 
 //イニシャライズ
-void ButtonStage::Init(int x, int y, int w, int h, bool bSelected, CObjStageTab* sStage_Tab){
+void ButtonStage::Init(int x, int y, int w, int h, bool bSelected, CObjStageTab* sStage_Tab ,int iStageNumber){
 	m_iXpos = x;    //ボタンの位置X
 	m_iYpos = y;    //ボタンの位置Y
 	m_iWidth = w;   //ボタンの幅
 	m_iHeight = h;  //ボタンの高さ
+
+	//ステージ番号を設定
+	m_iStageNumber = iStageNumber;
 
 	//選択できるかどうかを設定
 	m_bSelected = bSelected;
@@ -48,13 +51,22 @@ void ButtonStage::Action(){
 }
 
 //ドロー
-void ButtonStage::Draw(){
+void ButtonStage::Draw() {
 	//切り取り先座標
-	m_rDst.top = 0; m_rDst.left = 0; m_rDst.bottom = 32; m_rDst.right = 32;
 
+	m_rDst.top = m_sStage_Tab->GetCharacterNum() * 64;
+	m_rDst.left = m_iStageNumber * 64;
+	m_rDst.bottom = m_rDst.top + 64;
+	m_rDst.right = m_rDst.left + 64;
 
 	//転送先座標
-	m_rSrc.top = 0; m_rSrc.left = 0; m_rSrc.bottom = 32; m_rSrc.right = 32;
+	m_rSrc.top = m_iYpos;
+	m_rSrc.left = m_iXpos;
+	m_rSrc.bottom = m_rSrc.top + m_iHeight;
+	m_rSrc.right = m_rSrc.left + m_iWidth;
+	
+		
+		
 
 
 	//描画

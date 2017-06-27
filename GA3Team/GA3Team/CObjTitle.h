@@ -30,7 +30,7 @@ private:
 	int m_icreateflg;
 
 	CObjSavedata* m_obj_savedata;
-	ButtonDataSelect* m_obj_button;
+	ButtonDataSelect* m_obj_button[2];
 };
 
 #endif // !__COBJTITLE_H__

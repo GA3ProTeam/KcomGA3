@@ -132,6 +132,7 @@
     <ClCompile Include="CSceneGameMain.cpp" />
     <ClCompile Include="CSceneStageSelect.cpp" />
     <ClCompile Include="CSceneTitle.cpp" />
+    <ClCompile Include="Gimmick.cpp" />
     <ClCompile Include="Library\Audio.cpp" />
     <ClCompile Include="Library\Button.cpp" />
     <ClCompile Include="Library\CObjSavedata.cpp" />
@@ -166,6 +167,7 @@
     <ClInclude Include="CSceneGameMain.h" />
     <ClInclude Include="CSceneStageSelect.h" />
     <ClInclude Include="CSceneTitle.h" />
+    <ClInclude Include="Gimmick.h" />
     <ClInclude Include="Library\Audio.h" />
     <ClInclude Include="Library\Button.h" />
     <ClInclude Include="Library\CObjSavedata.h" />

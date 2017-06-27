@@ -135,6 +135,9 @@
     <ClCompile Include="CObjGimmickManager.cpp">
       <Filter>CSceneGameMain</Filter>
     </ClCompile>
+    <ClCompile Include="Gimmick.cpp">
+      <Filter>ライブラリ ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Library\Audio.h">
@@ -226,6 +229,9 @@
     </ClInclude>
     <ClInclude Include="CObjGimmickManager.h">
       <Filter>CSceneGameMain</Filter>
+    </ClInclude>
+    <ClInclude Include="Gimmick.h">
+      <Filter>ライブラリ ファイル</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

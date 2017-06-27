@@ -13,8 +13,8 @@ private:
 	int m_openclose_x;//開閉ボタンのX
 	int m_openclose_y;//開閉ボタンのY
 
-	int m_iBackTittlex;//タイトルの戻るボタンのX
-	int m_iBackTittley;//タイトルの戻るボタンのY
+	int m_iBackTitlex;//タイトルの戻るボタンのX
+	int m_iBackTitley;//タイトルの戻るボタンのY
 
 	RECT m_rSrc;//転送先座標
 	RECT m_rDst;//切り取り座標
@@ -24,6 +24,8 @@ public:
 	void Destructor();//デストラクタ
 	void Action();//アクション
 	void Draw();//描画
+	//タイトルに戻る
+	void BTPush(int btx, int bty, int btwid, int bthei);
 
 	//開閉フラグをとる
 	bool GetOpenCloseFlg() { return m_bOpenClose; };

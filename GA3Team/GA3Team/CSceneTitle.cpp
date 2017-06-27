@@ -22,7 +22,7 @@ void CSceneTitle::InitScene()
 
 	//Audio()->LoopStart(0);
 
-	
+	m_ititle_choice = User()->mititle_choice;
 
 }
 
@@ -30,11 +30,11 @@ void CSceneTitle::InitScene()
 void CSceneTitle::Scene()
 {
 	
-	//if (Input()->GetVKey(VK_RETURN)) {
+	//if (m_ititle_choice != NONE) {
 	//	//シーン移動　→データセレクトへ
 	//	Manager()->Pop(new CSceneStageSelect());
 	//}
-	//
+	
 
 	//テスト用　消さないように
 	if (Input()->GetVKey(VK_RETURN)) {

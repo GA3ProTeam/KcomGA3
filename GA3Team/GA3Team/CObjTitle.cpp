@@ -29,27 +29,26 @@ void CObjTitle::Action()
 	if (m_icreateflg){
 
 		//はじめからボタン生成(仮)
-		m_obj_button = new ButtonDataSelect();
-		Obj()->InsertObj(m_obj_button, OBJ_BUTTON_STAGE, 0, this->m_pScene, HIT_BOX_OFF);
-		m_obj_button->Init(0, 0, 100, 50, true);
+		m_obj_button[0] = new ButtonDataSelect();
+		Obj()->InsertObj(m_obj_button[0], OBJ_BUTTON_STAGE, 0, this->m_pScene, HIT_BOX_OFF);
+		m_obj_button[0]->Init(0, 100, 100, 50, true);
 
 		//つづきからボタン生成(仮)
-		m_obj_button = new ButtonDataSelect();
-		Obj()->InsertObj(m_obj_button, OBJ_BUTTON_STAGE, 0, this->m_pScene, HIT_BOX_OFF);
-		m_obj_button->Init(50, 0, 100, 50, m_bdataflg);//セーブデータがなかったら続きからを暗くする。ボタン判定なくす
+		m_obj_button[1] = new ButtonDataSelect();
+		Obj()->InsertObj(m_obj_button[1], OBJ_BUTTON_STAGE, 0, this->m_pScene, HIT_BOX_OFF);
+		m_obj_button[1]->Init(0, 200, 100, 50, m_bdataflg);//セーブデータがなかったら続きからを暗くする。ボタン判定なくす
 
 		m_icreateflg = true; //ボタン作成済
 	}
 
-	
-	//
-/*	if (m_bdataflg) {
-		
+	if (m_obj_button[0]->Push){
+		m_ititle_choice = NEW;
 	}
-	else {
+	else if (m_obj_button[1]->Push) {
+		m_ititle_choice = LOAD;
+	}
 
-	}
-*/
+	User()->mititle_choice = m_ititle_choice;
 
 }
 
@@ -63,10 +62,6 @@ void CObjTitle::Draw()
 	//カラー情報
 	float col[4] = { 1.0f,1.0f,1.0f,1.0f };
 
-/*	if () {
-		float col[4] = { 0.5f,0.5f,0.5f,1.0f }; //暗くする
-	}
-*/	
 	//テキストカラー情報
 	float coltext[4] = { 1.0f,1.0f,1.0f,1.0f };
 	//テスト描画

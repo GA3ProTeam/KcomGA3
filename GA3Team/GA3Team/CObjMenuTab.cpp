@@ -8,8 +8,8 @@ void CObjMenuTab::Init()
 	m_openclose_x = 736;
 	m_openclose_y = 400;
 
-	m_iBackTittlex = m_openclose_x;
-	m_iBackTittley = m_openclose_y;
+	m_iBackTitlex = m_openclose_x;
+	m_iBackTitley = m_openclose_y;
 
 	//ƒ{ƒ^ƒ“‚ÌˆÊ’uX
 	m_iXpos = m_openclose_x;
@@ -60,6 +60,10 @@ void CObjMenuTab::Action()
 	}
 	else {
 		m_icnt = 0;
+	}
+
+	if (m_bOpenClose && m_icnt == 0) {
+		BTPush(m_iBackTitlex, m_iBackTitley, 64, 64);
 	}
 
 
@@ -118,4 +122,17 @@ void CObjMenuTab::Draw()
 
 	}
 
+}
+
+void CObjMenuTab::BTPush(int btx, int bty, int btwid, int bthei)
+{
+	int mousex = Input()->m_x;
+	int mousey = Input()->m_y;
+
+	//c‚Æ‰¡(x)
+	if ((mousex > btx && mousex < (btx + btwid))
+		&& (mousey > bty && mousey < (bty + bthei)))
+	{
+		Manager()->Pop(new CSceneTitle());
+	}
 }

@@ -235,6 +235,7 @@ class CUserData
 		//----ユーザーが持つデータ-------
 		//int mSeveData;//サンプルセーブデータ
 		int mscroll_x;
+		int mititle_choice; //始め方の選択
 
 		//---ライブラリ改造用ポインター---
 		HINSTANCE p_hInstance;

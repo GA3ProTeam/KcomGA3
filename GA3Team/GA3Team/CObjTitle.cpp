@@ -48,6 +48,8 @@ void CObjTitle::Action()
 		m_ititle_choice = LOAD;
 	}
 
+	User()->mititle_choice = m_ititle_choice;
+
 }
 
 void CObjTitle::Draw()

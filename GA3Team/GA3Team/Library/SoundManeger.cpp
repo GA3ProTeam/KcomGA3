@@ -1,4 +1,11 @@
 #include "../main.h"
+void CObjSoundManeger::Init()
+{
+	for (int i = 0; i < 3; i++) {
+		SoundSlot[i] = NULL;
+	}
+
+}
 
 void CObjSoundManeger::SoundDelete(int slotNum/*íœ‚·‚é‰¹ƒXƒƒbƒg‚Ì”Ô†*/)//‰¹‚ðÁ‹Ž‚·‚é
 {

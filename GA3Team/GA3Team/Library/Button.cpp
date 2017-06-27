@@ -9,7 +9,7 @@ bool Button::Push() //ƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚ê‚½Žž
 
 	//c‚Æ‰¡(x)
 	if ((mousex > m_iXpos && mousex < (m_iXpos + m_iWidth)) 
-		&& (mousey > m_iYpos && mousey < (m_iYpos + m_iWidth))) 
+		&& (mousey > m_iYpos && mousey < (m_iYpos + m_iHeight)))
 	{
 		flg = true;
 	}
@@ -41,7 +41,7 @@ bool Button::Rangedetection()
 	int mousey = Input()->m_y;
 
 	if ((mousex > m_iXpos && mousex < (m_iXpos + m_iWidth))
-		&& (mousey < m_iYpos && mousey < (m_iYpos + m_iWidth)))
+		&& (mousey < m_iYpos && mousey < (m_iYpos + m_iHeight)))
 	{
 		return true;
 	}

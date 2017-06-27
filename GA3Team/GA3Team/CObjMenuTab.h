@@ -10,9 +10,11 @@ private:
 	//連打回避のためのカウント
 	int m_icnt;
 
-	//開閉ボタンの位置
-	int m_openclose_x;
-	int m_openclose_y;
+	int m_openclose_x;//開閉ボタンのX
+	int m_openclose_y;//開閉ボタンのY
+
+	int m_iBackTittlex;//タイトルの戻るボタンのX
+	int m_iBackTittley;//タイトルの戻るボタンのY
 
 	RECT m_rSrc;//転送先座標
 	RECT m_rDst;//切り取り座標

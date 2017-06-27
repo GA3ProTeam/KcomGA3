@@ -38,6 +38,16 @@ void CObjPlayer::Init() {
 	for (int w = 0; w < i; w++) {
 		test.push_back(strsave[w]);
 	}
+
+	std::vector<std::string>::iterator itr = test.begin();
+	while (itr != test.end()) {
+		if (strchr((*itr).c_str(), '[')) {
+			itr = test.erase(itr);
+		}
+		else {
+			itr++;
+		}
+	}
 }
 
 //デストラクタ

@@ -62,6 +62,9 @@ void CObjMenuTab::Action()
 	else if(m_bOpenClose){
 		m_icnt++;
 	}
+	else {
+		m_icnt = 0;
+	}
 
 }
 

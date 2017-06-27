@@ -5,6 +5,7 @@
 class CObjPlayer;
 class ButtonRScrollScreen;
 class ButtonLScrollScreen;
+class CObjMenuTab;
 
 //シーン　ゲームメイン
 class CSceneGameMain : public CScene
@@ -19,6 +20,7 @@ private:
 
 	ButtonRScrollScreen* m_obj_Rscroll;
 	ButtonLScrollScreen* m_obj_Lscroll;
+	CObjMenuTab* m_obj_menutab;
 
 
 

@@ -35,7 +35,7 @@ void CSceneStageSelect::InitScene()
 	//プレイヤーボタン生成
 	for (int player_num = 0; player_num < MAX_CHARA; player_num++) {
 		button_player = new ButtonPlayer();
-		button_player->Init(player_num *128,400,128,128,player_num, stage_tab);
+		button_player->Init((player_num *160)+50,400,128,128,player_num, stage_tab);
 		Obj()->InsertObj(button_player,OBJ_BUTTON_PLAYER,0,this,HIT_BOX_OFF);
 	}
 

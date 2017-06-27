@@ -6,11 +6,11 @@ void CSceneGameMain::InitScene()
 
 	//このシーンで表示させるイメージ情報
 	Image()->LoadImage("gamemain_kari.png",0,TEX_SIZE_256);
-	//Image()->LoadImage("back.png",1,TEX_SIZE_512);
+	Image()->LoadImage("メニュータブ(仮).png",1,TEX_SIZE_256);
 	//Image()->LoadImage("boss.png",2,TEX_SIZE_256);
 
 	//文字データ作成
-	//Font()->SetStrTex("ボスHP：");
+	//Font()->SetStrTex("ボスHP：");2
 	//Font()->SetStrTex("アイテム有効：速度アップ");
 
 	//このシーンで鳴らすサウンド情報
@@ -32,6 +32,9 @@ void CSceneGameMain::InitScene()
 	m_obj_Lscroll->Init();
 	Obj()->InsertObj(m_obj_Lscroll, BUTTON_LSCROLL_SCREEN, 0, this, HIT_BOX_OFF);
 	
+	m_obj_menutab = new CObjMenuTab();
+	Obj()->InsertObj(m_obj_menutab, OBJ_MENUTAB, 5, this, HIT_BOX_OFF);
+	m_obj_menutab->Init();
 
 	//Audio()->LoopStart(0);
 

@@ -3,7 +3,7 @@
 //セーブデータ読み込み
 void CObjSavedata::Loadsavedata()
 {
-
+	m_bKouneClearflg[0] = true;
 }
 
 //セーブデータ書き込み

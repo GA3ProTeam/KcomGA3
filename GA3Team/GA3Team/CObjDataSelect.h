@@ -1,7 +1,7 @@
 #ifndef __COBJDATASELECT_H__
 #define __COBJDATASELECT_H__
 
-
+#define MAX_SAVEDATA 3
 
 class CObjDataSelect : public CObj {
 public:
@@ -15,10 +15,14 @@ public:
 
 private:
 
-	bool m_bsavedataflg[3]; //各セーブデータ確認する
+	bool m_bsavedataflg[MAX_SAVEDATA]; //各セーブデータ確認する
 
-	CObjSavedata* m_obj_savedata;	//セーブデータ
-	ButtonDataSelect* m_obj_button; //ボタン
+	CObjSavedata* m_obj_savedata[MAX_SAVEDATA];				//セーブデータ
+	ButtonDataSelect* m_obj_savedatabutton[MAX_SAVEDATA];	//データ選択ボタン
+	ButtonDataSelect* m_obj_titlebackbutton;				//戻るボタン
+
+	int m_ititle_choice;	//はじめからつづきからどちらが選ばれたか
+	int m_button_y;			//セーブデータ表示位置
 
 
 };

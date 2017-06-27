@@ -137,6 +137,7 @@
     <ClCompile Include="Library\CObjSavedata.cpp" />
     <ClCompile Include="Library\CObjTest.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="Library\DirectXDevice.cpp" />
     <ClCompile Include="Library\DrawFont.cpp" />
@@ -172,6 +173,7 @@
     <ClInclude Include="Library\CObjSavedata.h" />
     <ClInclude Include="Library\CObjTest.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="Library\DirectXDevice.h" />
     <ClInclude Include="Library\DrawFont.h" />

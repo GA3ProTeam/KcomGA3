@@ -135,7 +135,7 @@
     <ClCompile Include="CObjGimmickManager.cpp">
       <Filter>CSceneGameMain</Filter>
     </ClCompile>
-    <ClCompile Include="Gimmick.cpp">
+    <ClCompile Include="Library\Gimmick.cpp">
       <Filter>ライブラリ ファイル</Filter>
     </ClCompile>
   </ItemGroup>
@@ -230,7 +230,7 @@
     <ClInclude Include="CObjGimmickManager.h">
       <Filter>CSceneGameMain</Filter>
     </ClInclude>
-    <ClInclude Include="Gimmick.h">
+    <ClInclude Include="Library\Gimmick.h">
       <Filter>ライブラリ ファイル</Filter>
     </ClInclude>
   </ItemGroup>

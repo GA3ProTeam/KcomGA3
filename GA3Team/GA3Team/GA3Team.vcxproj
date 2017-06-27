@@ -132,7 +132,6 @@
     <ClCompile Include="CSceneGameMain.cpp" />
     <ClCompile Include="CSceneStageSelect.cpp" />
     <ClCompile Include="CSceneTitle.cpp" />
-    <ClCompile Include="Gimmick.cpp" />
     <ClCompile Include="Library\Audio.cpp" />
     <ClCompile Include="Library\Button.cpp" />
     <ClCompile Include="Library\CObjSavedata.cpp" />
@@ -142,6 +141,7 @@
     <ClCompile Include="Library\DirectXDevice.cpp" />
     <ClCompile Include="Library\DrawFont.cpp" />
     <ClCompile Include="Library\DrawTexture.cpp" />
+    <ClCompile Include="Library\Gimmick.cpp" />
     <ClCompile Include="Library\HitBoxManager.cpp" />
     <ClCompile Include="Library\Library.cpp" />
     <ClCompile Include="Library\SceneManager.cpp" />
@@ -167,7 +167,6 @@
     <ClInclude Include="CSceneGameMain.h" />
     <ClInclude Include="CSceneStageSelect.h" />
     <ClInclude Include="CSceneTitle.h" />
-    <ClInclude Include="Gimmick.h" />
     <ClInclude Include="Library\Audio.h" />
     <ClInclude Include="Library\Button.h" />
     <ClInclude Include="Library\CObjSavedata.h" />
@@ -177,6 +176,7 @@
     <ClInclude Include="Library\DirectXDevice.h" />
     <ClInclude Include="Library\DrawFont.h" />
     <ClInclude Include="Library\DrawTexture.h" />
+    <ClInclude Include="Library\Gimmick.h" />
     <ClInclude Include="Library\HitBoxManager.h" />
     <ClInclude Include="Library\Library.h" />
     <ClInclude Include="Library\SceneManager.h" />

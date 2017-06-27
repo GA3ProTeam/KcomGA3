@@ -55,8 +55,9 @@ void CObjMenuTab::Action()
 		}
 	}
 	
+	//タブが押されて1秒以上経つと押せるようになる
 	if (BTPush(m_iBackTitlex, m_iBackTitley, 64, 64) && m_bOpenClose && m_icnt >= 60) {
-		Manager()->Pop(new CSceneTitle());
+		Manager()->Pop(new CSceneTitle());//タイトルに戻る
 	}
 	else if(m_bOpenClose){
 		m_icnt++;

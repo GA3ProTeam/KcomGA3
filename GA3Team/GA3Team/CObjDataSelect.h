@@ -15,14 +15,17 @@ public:
 
 private:
 
-	bool m_bsavedataflg[MAX_SAVEDATA]; //各セーブデータ確認する
+	bool m_bsavedataflg; //各セーブデータ確認する
 
 	CObjSavedata* m_obj_savedata[MAX_SAVEDATA];				//セーブデータ
 	ButtonDataSelect* m_obj_savedatabutton[MAX_SAVEDATA];	//データ選択ボタン
 	ButtonDataSelect* m_obj_titlebackbutton;				//戻るボタン
+	ButtonDataSelect* m_obj_deletebutton;					//初期化するボタン
 
 	int m_ititle_choice;	//はじめからつづきからどちらが選ばれたか
 	int m_button_y;			//セーブデータ表示位置
+	
+	int m_icreateflg;		//ボタンが作成されたか確認
 
 
 };

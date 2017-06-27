@@ -6,7 +6,9 @@
 void CObjDataSelect::Init()
 {
 
-	//bool m_bsavedataflg[3];
+	m_bsavedataflg = false;
+	m_icreateflg = false;
+
 
 	m_button_y = 10;
 }
@@ -20,7 +22,7 @@ void CObjDataSelect::Action()
 	//セーブデータ
 	for (int i = 0; i < MAX_SAVEDATA; i++) {
 		m_obj_savedata[i] = (CObjSavedata *)Obj()->GetObj(OBJ_SAVEDATA);
-		m_obj_savedata[i]->Savedatacheck();
+		
 	}
 
 	//どちらが選ばれたか持ってくる
@@ -100,31 +102,57 @@ void CObjDataSelect::Draw()
 //はじめから
 void CObjDataSelect::ButtonFromTheBegin() {
 	
-	for (int i = 0; i < MAX_SAVEDATA; i++){
-	
-		m_obj_savedatabutton[i] = new ButtonDataSelect();
-		Obj()->InsertObj(m_obj_savedatabutton[i], OBJ_BUTTON_STAGE, 0, this->m_pScene, HIT_BOX_OFF);
-		m_obj_savedatabutton[i]->Init(250, m_button_y, 50, 50, true);
+	if (m_icreateflg == false) {
 
-		m_button_y += 50;
+		for (int i = 0; i < MAX_SAVEDATA; i++) {
 
+			//もしかしたら配列いらないかもしれない(後で検証)
+			m_obj_savedatabutton[i] = new ButtonDataSelect();
+			Obj()->InsertObj(m_obj_savedatabutton[i], OBJ_BUTTON_STAGE, 0, this->m_pScene, HIT_BOX_OFF);
+			m_obj_savedatabutton[i]->Init(250, m_button_y, 50, 50, true);
+
+			m_button_y += 50;
+
+			if (i == MAX_SAVEDATA)
+				m_icreateflg = true;
+		}
 	}
 		
 	//マウス判定
 	//カーソルがある所を拡大+発光
-	
+	for (int i = 0; i < MAX_SAVEDATA; i++) {
+		m_obj_savedatabutton[i]->Expansion();	//拡大
+		m_obj_savedatabutton[i]->Emission();	//発光
+
+		if (m_obj_savedatabutton[i]->Push()){
+
+			if (m_obj_savedata[i]->Savedatacheck()){
+				m_bsavedataflg = true;
+			}
+			
+
+		}
+	}
 	
 	
 	//選択しました
-//	if (m_bsavedataflg[]) {/*セーブデータが入っていたら*/
+	if (m_bsavedataflg = true) {/*セーブデータが入っていたら*/
 		//初期化してもいいですか
 		//"はい"...データ削除
 		
+		m_obj_deletebutton = new ButtonDataSelect();
+		Obj()->InsertObj(m_obj_deletebutton, OBJ_BUTTON_STAGE, 0, this->m_pScene, HIT_BOX_OFF);
+		m_obj_deletebutton->Init(250, 0, 50, 50, true);
 
+//		if (Push()) {
+//			m_obj_savedata[0]->Deletesavedata(); //仮
+//		}
+
+	}else{
 		//"いいえ"...セレクト画面へ
 
 
-//	}
+	}
 
 	
 //	if(/*データが入っていなければ or 初期化後*/){
@@ -146,6 +174,8 @@ void CObjDataSelect::ButtonFromTheBegin() {
 	
 
 }
+
+//-------------------------------------------------------------------------------------------------------
 
 //つづきから
 void CObjDataSelect::ButtonContinuation() {

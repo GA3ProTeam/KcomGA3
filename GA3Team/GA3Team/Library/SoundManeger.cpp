@@ -7,7 +7,7 @@ void CObjSoundManeger::SoundDelete(int slotNum/*íœ‚·‚é‰¹ƒXƒƒbƒg‚Ì”Ô†*/)//‰¹‚
 }
 void CObjSoundManeger::SoundSave(int soundNum/*‰¹‚Ì”Ô†*/) //‰¹‚ğƒZ[ƒu‚·‚é
 {
-
+	//’†g‚ª0‚Ì”z—ñ‚ğ’T‚·
 	for (int i = 0; i < 3; i++)
 	{
 		if (SoundSlot[i] == 0) {

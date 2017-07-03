@@ -32,11 +32,25 @@ bool Button::Push() //ボタンが押された時
 			m_bStatus = true;
 			onceflg = false;
 		}
+
+		
+
+
+		//左クリックされていない
+		//else {
+		//	m_bStatus = false;
+		//}
 	}
 	else {
 		m_bStatus = false;
 	}
-
+	////左クリックされていない　&&　一回クリックされていたなら
+	//if (!Input()->GetMouButtonL() && onceflg)
+	//{
+	//	m_bStatus = true;
+	//	onceflg = false;
+	//}
+	
 
 	return m_bStatus;
 }

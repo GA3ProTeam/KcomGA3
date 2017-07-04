@@ -2,8 +2,8 @@
 
 void CObjTitle::Init()
 {
-	m_x = 0.0f;
-	m_y = 0.0f;
+	m_x = 0;
+	m_y = 0;
 
 	m_bdataflg = false;
 

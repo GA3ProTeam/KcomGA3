@@ -114,6 +114,7 @@ enum OBJ_NAME
 	BUTTON_RSCROLL_SCREEN,
 	OBJ_GIMMICK_MANAGER,
 	OBJ_MENUTAB,
+	OBJ_SOUND,
 };
 //----------------------
 

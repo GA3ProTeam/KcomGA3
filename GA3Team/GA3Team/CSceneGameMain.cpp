@@ -31,6 +31,10 @@ void CSceneGameMain::InitScene()
 	m_obj_Lscroll = new ButtonLScrollScreen();
 	m_obj_Lscroll->Init();
 	Obj()->InsertObj(m_obj_Lscroll, BUTTON_LSCROLL_SCREEN, 0, this, HIT_BOX_OFF);
+
+	m_obj_sound = new CObjSoundManeger();
+	Obj()->InsertObj(m_obj_sound, OBJ_SOUND, 0, this, HIT_BOX_OFF);
+	m_obj_sound->Init();
 	
 	m_obj_menutab = new CObjMenuTab();
 	Obj()->InsertObj(m_obj_menutab, OBJ_MENUTAB, 5, this, HIT_BOX_OFF);

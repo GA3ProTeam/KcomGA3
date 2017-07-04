@@ -189,6 +189,7 @@ extern CHitBoxManager*	g_HitBoxManager;
 #include "Library\Gimmick.h"
 #include "Library\CObjSavedata.h"
 #include "Library\SoundManeger.h"
+#include "Library\TextManager.h"
 
 //ゲームシーン・オブジェクトのインクルード-------
 #define MAX_CHARA 4

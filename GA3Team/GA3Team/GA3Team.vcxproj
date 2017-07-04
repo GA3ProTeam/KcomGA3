@@ -150,6 +150,7 @@
     <ClCompile Include="Library\SceneManager.cpp" />
     <ClCompile Include="Library\SceneObjManager.cpp" />
     <ClCompile Include="Library\SoundManeger.cpp" />
+    <ClCompile Include="Library\TextManager.cpp" />
     <ClCompile Include="Library\Trace.cpp" />
     <ClCompile Include="Library\UserData.cpp" />
     <ClCompile Include="Library\WinInputs.cpp" />
@@ -188,6 +189,7 @@
     <ClInclude Include="Library\SceneManager.h" />
     <ClInclude Include="Library\SceneObjManager.h" />
     <ClInclude Include="Library\SoundManeger.h" />
+    <ClInclude Include="Library\TextManager.h" />
     <ClInclude Include="Library\Trace.h" />
     <ClInclude Include="Library\WinInputs.h" />
     <ClInclude Include="main.h" />

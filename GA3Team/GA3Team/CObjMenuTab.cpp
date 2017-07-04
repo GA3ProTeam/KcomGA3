@@ -8,6 +8,9 @@ void CObjMenuTab::Init()
 	m_openclose_x = 736;
 	m_openclose_y = 400;
 
+	m_isoundx = 416;
+	m_isoundy = m_openclose_y;
+
 	m_iBackTitlex = m_openclose_x;
 	m_iBackTitley = m_openclose_y;
 
@@ -19,6 +22,8 @@ void CObjMenuTab::Init()
 	m_iWidth = 64;
 	//ボタンの高さ
 	m_iHeight = 64;
+
+	sound = (CObjSoundManeger*)Obj()->GetObj(OBJ_SOUND);
 
 }
 
@@ -53,6 +58,10 @@ void CObjMenuTab::Action()
 			//ボタンの位置の更新
 			m_iXpos = m_openclose_x;
 		}
+	}
+
+	if (SelectPush(m_isoundx + 256, m_isoundy, 64, 64) && m_bOpenClose) {
+
 	}
 	
 	//タブが押されて1秒以上経つと押せるようになる
@@ -90,8 +99,6 @@ void CObjMenuTab::Draw()
 	//タブを開いていたら描画する
 	if (m_bOpenClose) {
 		//機能部分を表示する場所の描画
-		//カラー情報
-		float m_fCol[4] = { 1.0f,1.0f,1.0f,1.0f };
 
 		//切り取り先座標
 		m_rDst.top = 0; m_rDst.left = 64; 
@@ -117,6 +124,45 @@ void CObjMenuTab::Draw()
 
 		//描画
 		Image()->Draw(1, &m_rSrc, &m_rDst, m_fCol, 0.0f);
+
+		//音を格納する部分の描画
+		for (int i = 0; i < 3; i++) {
+			if(sound->GetSound(i) != 0) {
+				//切り取り先座標
+				m_rDst.top = 64; m_rDst.left = 128;
+				m_rDst.bottom = m_rDst.top + 64; m_rDst.right = m_rDst.left + 64;
+
+				//転送先座標
+				m_rSrc.top = m_isoundy; m_rSrc.left = m_isoundx + 64 * i;
+				m_rSrc.bottom = m_rSrc.top + 64; m_rSrc.right = m_rSrc.left + 64;
+
+				//描画
+				Image()->Draw(1, &m_rSrc, &m_rDst, m_fCol, 0.0f);
+			}
+			else{
+				//切り取り先座標
+				m_rDst.top = 64; m_rDst.left = 64;
+				m_rDst.bottom = m_rDst.top + 64; m_rDst.right = m_rDst.left + 64;
+
+				//転送先座標
+				m_rSrc.top = m_isoundy; m_rSrc.left = m_isoundx + 64 * i;
+				m_rSrc.bottom = m_rSrc.top + 64; m_rSrc.right = m_rSrc.left + 64;
+
+				//描画
+				Image()->Draw(1, &m_rSrc, &m_rDst, m_fCol, 0.0f);
+			}
+			//音を消すボタン
+			//切り取り先座標
+			//m_rDst.top = 64; m_rDst.left = 64;
+			//m_rDst.bottom = m_rDst.top + 64; m_rDst.right = m_rDst.left + 64;
+
+			////転送先座標
+			//m_rSrc.top = m_isoundy; m_rSrc.left = m_isoundx + 64 * i;
+			//m_rSrc.bottom = m_rSrc.top + 64; m_rSrc.right = m_rSrc.left + 64;
+
+			////描画
+			//Image()->Draw(1, &m_rSrc, &m_rDst, m_fCol, 0.0f);
+		}
 
 	}
 

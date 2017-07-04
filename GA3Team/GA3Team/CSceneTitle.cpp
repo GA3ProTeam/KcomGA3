@@ -30,7 +30,7 @@ void CSceneTitle::InitScene()
 void CSceneTitle::Scene()
 {
 	
-	//if (m_ititle_choice != NONE) {
+	//if (m_ititle_choice == 1/* NEW*/) {
 	//	//シーン移動　→データセレクトへ
 	//	Manager()->Pop(new CSceneStageSelect());
 	//}

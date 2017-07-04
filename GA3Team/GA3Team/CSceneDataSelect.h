@@ -14,6 +14,8 @@ public:
 	void InitScene();
 	void Scene();
 private:
+	int m_ititle_choice; //‰½‚ª‘I‘ð‚³‚ê‚½‚©
+
 	CObjDataSelect *m_obj_dataselect;
 };
 

@@ -4,9 +4,11 @@
 //どちらが選ばれたか
 enum TITLECHOICE
 {
-	NONE, //選択されていない
-	NEW,  //はじめから
-	LOAD, //つづきから
+	NONE,		  //選択されていない
+	NEW,		  //はじめから
+	LOAD,		  //つづきから
+	TITLE_RETURN, //タイトルへ戻る
+	STAGE_SELECT, //ステージセレクトへ
 };
 
 class CObjSavedata;

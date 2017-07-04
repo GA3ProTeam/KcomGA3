@@ -27,6 +27,12 @@ private:
 	
 	int m_icreateflg;		//ボタンが作成されたか確認
 
+	int m_idatadelete_flg;  //(はじめから)データがあった場合削除されたか
+
+	//カラー情報
+	float col[4];
+	int text_size_playername[MAX_SAVEDATA]; //仮
+	int text_size_progress[MAX_SAVEDATA]; //仮
 
 };
 

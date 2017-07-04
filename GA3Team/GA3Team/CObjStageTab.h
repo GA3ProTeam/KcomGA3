@@ -27,11 +27,12 @@ public:
 	//キャラクター番号を取得
 	int GetCharacterNum() { return m_iSelChara; }
 private:
-	int m_iSelChara;					//選んだキャラクター番号
-	int m_iStageNum[MAX_CHARA];			//各キャラクターのステージ生成数
-	int m_iSelCharaOld;					//前回選択したキャラクター番号
-	bool m_bStageCreateFlg[MAX_CHARA];	//ボタンを一回生成したかどうか
-	ButtonStage** m_sStage_Button[STAGENUMBER]; //ステージボタンへの参照
+	int m_iSelChara;							//選んだキャラクター番号
+	int m_iStageNum[MAX_CHARA];					//各キャラクターのステージ生成数
+	int m_iStageOpen[MAX_CHARA];				//各キャラクターのステージ開放数
+	int m_iSelCharaOld;							//前回選択したキャラクター番号
+	bool m_bStageCreateFlg[MAX_CHARA];			//ボタンを一回生成したかどうか
+	ButtonStage** m_sStage_Button[MAX_CHARA];	//ステージボタンへの参照
 
 	//切り取り先座標
 	RECT m_rDst;

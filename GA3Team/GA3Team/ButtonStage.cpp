@@ -1,7 +1,7 @@
 #include "main.h"
 
 //イニシャライズ
-void ButtonStage::Init(int x, int y, int w, int h, bool bSelected, CObjStageTab* sStage_Tab ,int iStageNumber){
+void ButtonStage::Init(int x, int y, int w, int h, bool bSelFlg, CObjStageTab* sStage_Tab ,int iStageNumber){
 	m_iXpos = x;    //ボタンの位置X
 	m_iYpos = y;    //ボタンの位置Y
 	m_iWidth = w;   //ボタンの幅
@@ -11,7 +11,7 @@ void ButtonStage::Init(int x, int y, int w, int h, bool bSelected, CObjStageTab*
 	m_iStageNumber = iStageNumber;
 
 	//選択できるかどうかを設定
-	m_bSelected = bSelected;
+	m_bSelFlg = bSelFlg;
 
 	//ステージタブへの参照取得
 	m_sStage_Tab = sStage_Tab;
@@ -22,8 +22,11 @@ void ButtonStage::Init(int x, int y, int w, int h, bool bSelected, CObjStageTab*
 	m_rDst.left = m_iStageNumber*64;
 	m_rDst.right = m_rDst.left+64;
 
+	////ボタンのアクティブ状態(操作可能かどうか)初期化
+	//m_bActive=true;
+
 	//選択できる状態
-	if (m_bSelected) {
+	if (m_bSelFlg) {
 		//ボタンの色を明るく
 		m_fCol[0] = 1.0f;
 		m_fCol[1] = 1.0f;
@@ -47,13 +50,15 @@ void ButtonStage::Destructor(){
 
 //アクション
 void ButtonStage::Action(){
+	//選択できない状態なら、動作しない
+	if (!m_bSelFlg) return;
+
 
 }
 
 //ドロー
 void ButtonStage::Draw() {
 	//切り取り先座標
-
 	m_rDst.top = m_sStage_Tab->GetCharacterNum() * 64;
 	m_rDst.left = m_iStageNumber * 64;
 	m_rDst.bottom = m_rDst.top + 64;
@@ -65,10 +70,6 @@ void ButtonStage::Draw() {
 	m_rSrc.bottom = m_rSrc.top + m_iHeight;
 	m_rSrc.right = m_rSrc.left + m_iWidth;
 	
-		
-		
-
-
 	//描画
 	Image()->Draw(0, &m_rSrc, &m_rDst, m_fCol,0.0f);
 }

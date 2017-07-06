@@ -21,24 +21,32 @@ void CSceneDataSelect::InitScene()
 
 	//Audio()->LoopStart(0);
 
+	m_ititle_choice = User()->mititle_choice;
+
 }
 
 //シーン実行
 void CSceneDataSelect::Scene()
 {
-	/*
+	
 	//ステージセレクト
-	if () {
-	//シーン移動　→ステージセレクト画面へ
-	Manager()->Pop(new ());
+	if (m_ititle_choice == STAGE_SELECT) {
+		//シーン移動　→ステージセレクト画面へ
+		Manager()->Pop(new CSceneStageSelect());
 	}
-	*/
-
-	/*
+	
 	//タイトルに戻る
-	if () {
-	//シーン移動　→タイトルへ
-	Manager()->Pop(new CSceneTitle());
+	if (m_ititle_choice == TITLE_RETURN ) {
+		//シーン移動　→タイトルへ
+		Manager()->Pop(new CSceneTitle());
 	}
-	*/
+
+
+	//テスト描画
+	if (Input()->GetVKey(VK_RETURN)) {
+		//シーン移動　→ステージセレクト画面へ
+		Manager()->Pop(new CSceneStageSelect());
+	}
+
+	
 }

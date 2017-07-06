@@ -6,17 +6,6 @@ void CSceneStageSelect::InitScene()
 
 	//このシーンで表示させるイメージ情報
 	Image()->LoadImage("ステージセレクト仮画像.png",0,TEX_SIZE_1024);
-	//Image()->LoadImage("back.png",1,TEX_SIZE_512);
-
-	//文字データ作成
-	//Font()->SetStrTex("ボスHP：");
-	//Font()->SetStrTex("アイテム有効：速度アップ");
-
-	//このシーンで鳴らすサウンド情報
-	//Audio()->LoadAudio(0,"game_maoudamashii_1_battle37.wav");
-	//Audio()->LoadAudio(1,"se_maoudamashii_se_pc03.wav");
-	//Audio()->LoadAudio(2,"se_maoudamashii_explosion06.wav");
-
 	
 
 	//ポインタ宣言-----------------------

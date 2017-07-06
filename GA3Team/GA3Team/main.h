@@ -114,6 +114,7 @@ enum OBJ_NAME
 	BUTTON_RSCROLL_SCREEN,
 	OBJ_GIMMICK_MANAGER,
 	OBJ_MENUTAB,
+	OBJ_SOUND,
 };
 //----------------------
 
@@ -194,6 +195,7 @@ extern CHitBoxManager*	g_HitBoxManager;
 #include "Library\Gimmick.h"
 #include "Library\CObjSavedata.h"
 #include "Library\SoundManeger.h"
+#include "Library\TextManager.h"
 
 //ゲームシーン・オブジェクトのインクルード-------
 #define MAX_CHARA 4

@@ -2,7 +2,7 @@
 void CObjSoundManeger::Init()
 {
 	for (int i = 0; i < 3; i++) {
-		SoundSlot[i] = NULL;
+		SoundSlot[i] = 0;
 	}
 
 }

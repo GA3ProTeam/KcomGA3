@@ -10,14 +10,15 @@ public:
 	ButtonStage() {}//コンストラクタ
 	~ButtonStage() {}//デストラクタ
 
-	void Init(int x, int y, int w, int h, bool bSelected, CObjStageTab* sStage_Tab,int iStageNumber);	//イニシャライズ
+	void Init(int x, int y, int w, int h, bool bSelFlg, CObjStageTab* sStage_Tab,int iStageNumber);	//イニシャライズ
 	void Destructor();			//デストラクタ
 	void Action();				//アクション
 	void Draw();				//ドロー
 
 private:
 	int m_iStageNumber;			//ステージ番号
-	bool m_bSelected;			//選択できるかどうか
+	bool m_bSelFlg;				//選択できるかどうか
+	//bool m_bActive;			//ボタンのアクティブ状態(操作可能かどうか)
 	float m_fCol[4];			//カラー情報
 	CObjStageTab* m_sStage_Tab; //ステージタブへの参照
 

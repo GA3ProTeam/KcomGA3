@@ -124,7 +124,9 @@
     <ClCompile Include="ButtonStage.cpp" />
     <ClCompile Include="CObjGimmickManager.cpp" />
     <ClCompile Include="CObjGimmickObject.cpp" />
-    <ClCompile Include="CObjMenuTab.cpp" />
+    <ClCompile Include="CObjMenuTab.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="CObjDataSelect.cpp" />
     <ClCompile Include="CObjPlayer.cpp" />
     <ClCompile Include="CObjStageTab.cpp" />
@@ -136,8 +138,8 @@
     <ClCompile Include="Library\Button.cpp" />
     <ClCompile Include="Library\CObjSavedata.cpp" />
     <ClCompile Include="Library\CObjTest.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="Library\DirectXDevice.cpp" />
     <ClCompile Include="Library\DrawFont.cpp" />
@@ -148,6 +150,7 @@
     <ClCompile Include="Library\SceneManager.cpp" />
     <ClCompile Include="Library\SceneObjManager.cpp" />
     <ClCompile Include="Library\SoundManeger.cpp" />
+    <ClCompile Include="Library\TextManager.cpp" />
     <ClCompile Include="Library\Trace.cpp" />
     <ClCompile Include="Library\UserData.cpp" />
     <ClCompile Include="Library\WinInputs.cpp" />
@@ -161,7 +164,9 @@
     <ClInclude Include="CObjDataSelect.h" />
     <ClInclude Include="CObjGimmickManager.h" />
     <ClInclude Include="CObjGimmickObject.h" />
-    <ClInclude Include="CObjMenuTab.h" />
+    <ClInclude Include="CObjMenuTab.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="CObjPlayer.h" />
     <ClInclude Include="CObjStageTab.h" />
     <ClInclude Include="CObjTitle.h" />
@@ -172,8 +177,8 @@
     <ClInclude Include="Library\Button.h" />
     <ClInclude Include="Library\CObjSavedata.h" />
     <ClInclude Include="Library\CObjTest.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="Library\DirectXDevice.h" />
     <ClInclude Include="Library\DrawFont.h" />
@@ -184,6 +189,7 @@
     <ClInclude Include="Library\SceneManager.h" />
     <ClInclude Include="Library\SceneObjManager.h" />
     <ClInclude Include="Library\SoundManeger.h" />
+    <ClInclude Include="Library\TextManager.h" />
     <ClInclude Include="Library\Trace.h" />
     <ClInclude Include="Library\WinInputs.h" />
     <ClInclude Include="main.h" />

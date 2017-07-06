@@ -72,12 +72,13 @@ void ButtonDataSelect::Expansion() {
 
 	static bool flg = false;
 
+
 	//c‚Æ‰¡(x)
 	if ((mousex > m_iXpos && mousex < (m_iXpos + m_iWidth))
 		&& (mousey > m_iYpos && mousey < (m_iYpos + m_iHeight))){
 		flg = true;
 	}
-
+	
 	else{
 		flg = false;
 	}

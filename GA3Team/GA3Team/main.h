@@ -146,6 +146,11 @@ enum OBJ_NAME
 //当たり判定の複数同時判定量
 #define MAX_HITS	15
 
+
+//一つのギミックがもてる吹き出しの最大数
+#define BALLOON_MAX_NUM 5
+//例外用
+#define EXCEPTION 999
 //---------------------------------------
 
 //ゲームエンジンクラス

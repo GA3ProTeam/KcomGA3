@@ -3,11 +3,6 @@
 #ifndef __TEXTMANAGER_H__
 #define __TEXTMANAGER_H__
 
-enum Stage {
-	STAGE1_1,
-	STAGE1_1_flg1
-};
-
 class TextManager{
 public:
 	vector<vector<string>> m_SionText;

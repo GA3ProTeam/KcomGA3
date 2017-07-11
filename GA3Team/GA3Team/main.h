@@ -45,6 +45,9 @@ using namespace std;
 #define SAFE_DELETE_ARRAY(p) { if (p) { delete[] (p);   (p)=NULL; } }
 #define SAFE_RELEASE(p)      { if (p) { (p)->Release(); (p)=NULL; } }
 
+//enum()マクロ
+#define ENUMSTR(var) #var
+
 //列挙型
 //テクスチャイメージサイズ　８乗ｵﾝﾘ-設定
 enum TEX_SIZE
@@ -116,6 +119,14 @@ enum OBJ_NAME
 	OBJ_MENUTAB,
 	OBJ_SOUND,
 };
+//----------------------
+//テキストファイルのネーム
+enum TEXT_FILE_NAME {
+	e,
+	e2,
+};
+
+
 //----------------------
 
 //表示ウィンドウの大きさ

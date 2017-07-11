@@ -1,5 +1,7 @@
 #include "main.h"
 #include <stdio.h>
+//#include <afxwin.h>
+//#include "resource.h"
 
 
 
@@ -11,7 +13,11 @@ void CObjDataSelect::Init()
 	
 	m_button_y = 80;
 
-	m_idatadelete_flg = false;
+	//m_idatadelete_flg = false;
+
+	m_iSelectData = -1;
+
+	m_bmessageflg = false;
 
 
 	for (int j = 0; j < 4; j++) {
@@ -73,42 +79,7 @@ void CObjDataSelect::Action()
 		
 	}
 
-//---------------------------------------
-	//拡大(仮)
-//	if ((mousex > 200 && mousex < 700)
-//		&& (mousey > 60 && mousey < 100)) {
-//		//プレイヤー1
-//		text_size_playername[0] = 30;
-//		text_size_progress[0] = 26;
-//	}
-//	else if ((mousex > 200 && mousex < 700)
-//		&& (mousey > 160 && mousey < 200)) {
-//		//プレイヤー2
-//		text_size_playername[1] = 30;
-//		text_size_progress[1] = 26;
-//	}
-//	else if ((mousex > 200 && mousex < 700)
-//		&& (mousey > 260 && mousey < 300)) {
-//		//プレイヤー3
-//		text_size_playername[2] = 30;
-//		text_size_progress[2] = 26;
-//	}
-/*	else if ((mousex > 200 && mousex < 700)
-		&& (mousey > 360 && mousey < 400)) {
-		//プレイヤー4
-		text_size_playername[3] = 30;
-		text_size_progress[3] = 26;
-	}
-*/
-//	else {
-//		//元に戻す
-//		for (int i = 0; i < MAX_SAVEDATA; i++) {
-//			text_size_playername[i] = 20;
-//			text_size_progress[i] = 16;
-//		}
-//
-//	}
-//---------------------------------------
+
 
 	//sprintf(c[], "%d  %d  %d", x,y,z); //textmemo
 
@@ -215,62 +186,63 @@ void CObjDataSelect::ButtonFromTheBegin() {
 	for (int i = 0; i < MAX_SAVEDATA; i++) {
 		
 			m_obj_savedatabutton[i]->Expansion();	//拡大
-			m_obj_savedatabutton[i]->Emission();	//発光
+			m_obj_savedatabutton[i]->Emission();		//発光
 		
-	
+		//データを選択しました
 		if (m_obj_savedatabutton[i]->Push()){
 	
+			m_iSelectData = i;
+
 			//セーブデータ確認
-			if (m_obj_savedata[i]->Savedatacheck()){
+			if (m_obj_savedata[m_iSelectData]->Savedatacheck()){
 				m_bsavedataflg = true;
+				m_bmessageflg = true;
+			}
+
+			if (m_bsavedataflg == false) {/*データが入っていなければ*/
+										  //名前を入力する
+
+				IDD_DIALOG1;
+
+				//新規セーブデータ作成(仮) ---> テスト　プレイヤー１
+				m_obj_savedata[m_iSelectData]->Writesavedata();
+
+				if (m_obj_savedata[m_iSelectData]->Savedatacheck())
+				{
+					//ステージセレクト画面へ
+					User()->mititle_choice = STAGE_SELECT;
+				}
+
 			}
 		}
 	}
 	
-//データを選択しました
+
 
 	//m_bsavedataflg = true;
 
-	//プレイヤー1選択しました(仮) 
-	//if (m_obj_savedatabutton[0]->Push()){
 
-		if (m_bsavedataflg == true) {/*セーブデータが入っていたら*/
+
+	
+		if (m_bmessageflg == true) {/*セーブデータが入っていたら*/
 		//初期化してもいいですか
 		//"はい"...データ削除
-		 m_obj_deletebutton = new ButtonDataSelect();
-		 Obj()->InsertObj(m_obj_deletebutton, OBJ_BUTTON_STAGE, 0, this->m_pScene, HIT_BOX_OFF);
-		 m_obj_deletebutton->Init(0, 0, 500, 500, true,1);
-
-			if (m_obj_deletebutton->Push()) {
-				//m_obj_savedata[0]->Deletesavedata(); //仮
-				Manager()->Pop(new CSceneTitle()); //デバック用
-			}
-
-		}
-		else {
-			//	//"いいえ"...セレクト画面へ
-			//
-			//	m_idatadelete_flg = false;
-		}
-	//}
-	
-			
-
+			if (MessageBox(NULL,"本当に削除しますか？","プレイヤーネーム削除", MB_OKCANCEL) == IDOK) {
 				
-			
+				m_bsavedataflg = false;
+				m_obj_savedata[m_iSelectData]->Deletesavedata(); //仮
+				//Manager()->Pop(new CSceneTitle()); //デバック用
+
+				m_bmessageflg = false;
+				//m_idatadelete_flg == true;
+			}
+			else {
+				m_bmessageflg = false;
+			}
+		}
+
 
 	
-			//if (m_bsavedataflg == false || m_idatadelete_flg == true) {/*データが入っていなければ or 初期化後*/
-				//名前を入力する
-				//IDD_DIALOG1
-
-				//新規セーブデータ作成(仮) ---> テスト　プレイヤー１
-			//	m_obj_savedata[0]->Writesavedata();
-
-				//ステージセレクト画面へ
-				//User()->mititle_choice = STAGE_SELECT;
-
-			//}
 
 }
 
@@ -280,14 +252,14 @@ void CObjDataSelect::ButtonFromTheBegin() {
 void CObjDataSelect::ButtonContinuation() {
 
 	//データが入ってなかったら選べなくする/暗くする
-//	for (int i = 0; i < MAX_SAVEDATA; i++) {
-//
-//		m_obj_savedatabutton[i] = new ButtonDataSelect();
-//		Obj()->InsertObj(m_obj_savedatabutton[i], OBJ_BUTTON_STAGE, 0, this->m_pScene, HIT_BOX_OFF);
-//		m_obj_savedatabutton[i]->Init(250, m_button_y, 50, 50, true);
-//
-//		m_button_y += 50;
-//	}
+	//for (int i = 0; i < MAX_SAVEDATA; i++) {
+	//
+	//	m_obj_savedatabutton[i] = new ButtonDataSelect();
+	//	Obj()->InsertObj(m_obj_savedatabutton[i], OBJ_BUTTON_STAGE, 0, this->m_pScene, HIT_BOX_OFF);
+	//	m_obj_savedatabutton[i]->Init(250, m_button_y, 50, 50, true,1);
+	//
+	//	m_button_y += 50;
+	//}
 
 	
 	
@@ -327,6 +299,6 @@ void CObjDataSelect::ButtonContinuation() {
 	}
 */
 	//ステージセレクトへシーン移動
-	User()->mititle_choice = STAGE_SELECT;
+	//User()->mititle_choice = STAGE_SELECT;
 	
 }

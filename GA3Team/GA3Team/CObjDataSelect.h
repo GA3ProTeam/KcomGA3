@@ -16,6 +16,7 @@ public:
 private:
 
 	bool m_bsavedataflg; //各セーブデータ確認する
+	bool m_bmessageflg;  //メッセージフラグ
 
 	CObjSavedata* m_obj_savedata[MAX_SAVEDATA];				//セーブデータ
 	ButtonDataSelect* m_obj_savedatabutton[MAX_SAVEDATA];	//データ選択ボタン
@@ -27,7 +28,9 @@ private:
 	
 	bool m_icreateflg;		//ボタンが作成されたか確認
 
-	bool m_idatadelete_flg;  //(はじめから)データがあった場合削除されたか
+	int m_iSelectData;
+
+	//bool m_idatadelete_flg;  //(はじめから)データがあった場合削除されたか
 
 	//カラー情報
 	float col[4];

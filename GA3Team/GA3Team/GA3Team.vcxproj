@@ -209,6 +209,7 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="F:\GA3チーム製作\画像\タイトルタブ仮画像.png" />
+    <Image Include="データ削除仮画像.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

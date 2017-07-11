@@ -260,5 +260,8 @@
     <Image Include="F:\GA3チーム製作\画像\タイトルタブ仮画像.png">
       <Filter>リソース ファイル</Filter>
     </Image>
+    <Image Include="データ削除仮画像.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
   </ItemGroup>
 </Project>

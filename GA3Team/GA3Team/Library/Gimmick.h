@@ -15,7 +15,7 @@ typedef struct
 	RECT m_gimsrc;		//“]‘—æÀ•W
 
 }Balloon;
-Balloon *InitBall(int gimX, int gimY, int balltype, RECT gimsrc);
+Balloon *InitBall(int gimX, int gimY, int balltype);
 class Gimmick : public CObj {
 private:
 	

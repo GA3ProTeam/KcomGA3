@@ -34,7 +34,7 @@ void Gimmick::gimmicDorw(Balloon *ball1, int num)
 	m_dst.bottom = 200; m_dst.right = 200;
 
 	//“]‘—æÀ•W
-	m_src.top = m_iYpos; m_src.left = m_iXpos;
+	m_src.top = m_iYpos; m_src.left = m_iXpos+User()->mscroll_x;
 	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
 	//•`‰æ
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
@@ -48,14 +48,14 @@ void Gimmick::gimmicDorw(Balloon *ball1, int num)
 	for (int i = 0; i < m_iballoonnum; i++)
 	{
 		ball[i].m_gimsrc.top = m_iYpos + ball[i].m_iGimYpos;
-		ball[i].m_gimsrc.left = m_iXpos + ball[i].m_iGimXpos;
+		ball[i].m_gimsrc.left = m_iXpos + ball[i].m_iGimXpos + User()->mscroll_x;
 		ball[i].m_gimsrc.bottom = ball[i].m_gimsrc.top + GIMMICK_SIZE_Y;
 		ball[i].m_gimsrc.right = ball[i].m_gimsrc.left + GIMMICK_SIZE_X;	
 	}
 	//-----------------------------------------------------------
 	//c‚Æ‰¡(x)ƒJ[ƒ\ƒ‹‚ªƒMƒ~ƒbƒN‚Ì“–‚½‚è”ÍˆÍ‚É“ü‚Á‚Ä‚¢‚é‚©”Û‚©
-	if ((mousex > m_iXpos && mousex < (m_iXpos + m_iWidth))
-		&& (mousey > m_iYpos && mousey < (m_iYpos + m_iHeight)))
+	if ((mousex > m_src.left && mousex < (m_src.left + m_iWidth))
+		&& (mousey > m_src.top && mousey < (m_src.top + m_iHeight)))
 	{
 		m_iballoontime = BALLOON_KEEP_TIME;
 	}
@@ -75,7 +75,7 @@ void Gimmick::gimmicDorw(Balloon *ball1, int num)
 			if (ball[i].m_iballoontype == sound)
 			{
 				//‰¹‚«o‚µ‚ð•`‰æ
-				Image()->Draw(3, &ball[i].m_gimsrc, &m_gimdst, col, 0.0f);
+				Image()->Draw(4, &ball[i].m_gimsrc, &m_gimdst, col, 0.0f);
 			}
 
 			//‚«o‚µ•`‰æ’†‚É‚«o‚µ‚ðƒNƒŠƒbƒN‚µ‚½‚ç
@@ -105,22 +105,19 @@ void Gimmick::gimmicDorw(Balloon *ball1, int num)
 			else {
 				//m_bStatus = false;
 			}
-
-
 		}
 	}
 	
 
 
 }
-Balloon *InitBall(int gimX, int gimY, int balltype, RECT gimsrc)
+Balloon *InitBall(int gimX, int gimY, int balltype)
 {
 	Balloon *Initball=new Balloon();
 
 	Initball->m_iGimXpos = gimX;
 	Initball->m_iGimYpos = gimY;
 	Initball->m_iballoontype = balltype;
-	Initball->m_gimsrc = gimsrc;
 
 	return Initball;
 }

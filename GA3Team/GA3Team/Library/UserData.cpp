@@ -3,11 +3,7 @@
 
 CUserData::CUserData()
 {
-	memset(this,0x00,sizeof(this));
-
-	mscroll_x = 0;
-
-	dlgIn[0] = '\0';
+	memset(this,0x00,sizeof(CUserData));
 
 }
 

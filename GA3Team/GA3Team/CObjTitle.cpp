@@ -21,61 +21,41 @@ void CObjTitle::Action()
 	//セーブデータ
 	m_obj_savedata = (CObjSavedata *)Obj()->GetObj(OBJ_SAVEDATA);
 
-
-	//セーブデータの有無判定
-	m_bdataflg = m_obj_savedata->Savedatacheck();
-
 	//ボタンがまだ作成されていなければ、ボタンを作成する
 	if (!m_icreateflg){
 
-		  //はじめからボタン生成(仮)
+		//セーブデータの有無判定
+		m_bdataflg = m_obj_savedata->Savedatacheck();
+
+		m_bdataflg = false; //デバック用
+
+		  //はじめからボタン生成
 		m_obj_button[0] = new ButtonDataSelect();
 		Obj()->InsertObj(m_obj_button[0], OBJ_BUTTON_STAGE, 0, this->m_pScene, HIT_BOX_OFF);
-		m_obj_button[0]->Init(0, 100, 100, 50, true);
+		m_obj_button[0]->Init(300, 300, 200, 80, true);
 
-		//つづきからボタン生成(仮)
+		//つづきからボタン生成
 		m_obj_button[1] = new ButtonDataSelect();
 		Obj()->InsertObj(m_obj_button[1], OBJ_BUTTON_STAGE, 0, this->m_pScene, HIT_BOX_OFF);
-		m_obj_button[1]->Init(0, 200, 100, 50, m_bdataflg);//セーブデータがなかったら続きからを暗くする。ボタン判定なくす
+		m_obj_button[1]->Init(300, 400, 200, 80, m_bdataflg);//セーブデータがなかったら続きからを暗くする。ボタン判定なくす
 
 		m_icreateflg = true; //ボタン作成済
 	}
 
+	
+
 	//はじめから
-	//if (m_obj_button[0]->Push()){
-	//	m_ititle_choice = NEW;
-	//}
+	if (m_obj_button[0]->Push()){
+		m_ititle_choice = NEW;
+	}
 	//つづきから
-	//else if (m_obj_button[1]->Push()) {
-	//	m_ititle_choice = LOAD;
-	//}
+	else if (m_bdataflg && m_obj_button[1]->Push()) {
+		m_ititle_choice = LOAD;
+	}
 
 	int mousex = Input()->m_x;
 	int mousey = Input()->m_y;
 
-	//はじめから
-	//左クリックされたら
-	if (Input()->GetMouButtonL()) {
-
-		if ((mousex > 100 && mousex < 170)
-			&& (mousey > 100 && mousey < 120)) {
-
-			m_ititle_choice = NEW;
-		}
-
-	}
-	//続きから
-//	if ( !m_bdataflg ) { //データがなければ選択できない
-		if (Input()->GetMouButtonL()) {
-
-			if ((mousex > 100 && mousex < 170)
-				&& (mousey > 145 && mousey < 170)) {
-
-				m_ititle_choice = LOAD;
-			}
-
-//		}
-	}
 
 	User()->mititle_choice = m_ititle_choice;
 
@@ -93,13 +73,15 @@ void CObjTitle::Draw()
 
 	//テキストカラー情報
 	float coltext[4] = { 1.0f,1.0f,1.0f,1.0f };
+
 	//テスト描画
 	Font()->StrDraw("title", 0, 0, 16, coltext);
 	Font()->StrDraw(x, 0, 16, 16, coltext);
 	Font()->StrDraw(y, 0, 32, 16, coltext);
 
-	Font()->StrDraw("NEW", 100, 100, 20, coltext);  // (仮)
-	Font()->StrDraw("LOAD",100, 150, 20, coltext); //  〃
+	Font()->StrDraw("NEW", 300, 300, 20, coltext);  // (仮)
+	Font()->StrDraw("LOAD",300, 400, 20, coltext); //  〃
+
 
 
 	//シーン移動仮

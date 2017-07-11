@@ -14,6 +14,7 @@ private:
 
 	//音を持っている間、他の音を持たないようにするフラグ
 	bool m_bhavesound;
+	int m_igivesound;//音の種類
 
 	CObjSoundManeger* sound;//サウンドを格納するクラス
 

@@ -37,6 +37,8 @@ void ButtonDataSelect::Init(int x, int y, int w, int h, bool bSelected) {
 		m_fCol[2] = 0.4f;
 		m_fCol[3] = 1.0f;
 	}
+
+	Draw();
 }
 
 //デストラクタ
@@ -53,7 +55,8 @@ void ButtonDataSelect::Action() {
 //ドロー
 void ButtonDataSelect::Draw() {
 	//切り取り先座標
-	m_rDst.top = 0; m_rDst.left = 0; m_rDst.bottom = 32; m_rDst.right = 32;
+
+	m_rDst.top = 0; m_rDst.left = 0; m_rDst.bottom = 64; m_rDst.right = 64;
 
 
 	//転送先座標

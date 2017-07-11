@@ -39,6 +39,7 @@ void CObjTitle::Action()
 		m_obj_button[1]->Init(0, 200, 100, 50, m_bdataflg);//セーブデータがなかったら続きからを暗くする。ボタン判定なくす
 
 		m_icreateflg = true; //ボタン作成済
+
 	}
 
 	//はじめから
@@ -101,6 +102,7 @@ void CObjTitle::Draw()
 	Font()->StrDraw("NEW", 100, 100, 20, coltext);  // (仮)
 	Font()->StrDraw("LOAD",100, 150, 20, coltext); //  〃
 
+	m_obj_button[0]->Init(0, 100, 100, 50, true);
 
 	//シーン移動仮
 	if (m_ititle_choice == NEW || m_ititle_choice == LOAD) {

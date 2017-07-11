@@ -40,7 +40,7 @@ void CSceneGameMain::InitScene()
 
 	m_gimmick_test = new GimmickTest();
 	Obj()->InsertObj(m_gimmick_test, OBJ_GIMMICK_TEST, 5, this, HIT_BOX_OFF);
-	m_gimmick_test->Init(100,200,64,64,talk,1);
+	m_gimmick_test->Init(100,200,64,64,sound,1,10);
 
 	//Audio()->LoopStart(0);
 

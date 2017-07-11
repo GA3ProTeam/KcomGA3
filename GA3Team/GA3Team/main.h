@@ -122,8 +122,18 @@ enum OBJ_NAME
 //----------------------
 //テキストファイルのネーム
 enum TEXT_FILE_NAME {
-	e,
-	e2,
+	//koune1
+	koune1,
+	koune1_start,
+	koune1_ozi,
+	koune1_ozi_flag2_y,
+	koune1_ozi_flag2_n,
+	koune1_ozi_flag3_y,
+	koune1_ozi_flag3_n,
+	koune1_ozi_flag3_flag1n,
+	koune1_ozi_clear,
+
+	//koune2
 };
 
 

@@ -53,7 +53,15 @@ void ButtonStage::Action(){
 	//選択できない状態なら、動作しない
 	if (!m_bSelFlg) return;
 
+	//ボタンが押されたかどうか確認
+	Push();
 
+	//押されている
+	if (m_bStatus) {
+		//選んだステージとキャラクターの番号をユーザーデータに保存
+		User()->m_iCurrentStage = m_iStageNumber;
+		User()->m_iCurrentChara = m_sStage_Tab->GetCharacterNum();
+	}
 }
 
 //ドロー

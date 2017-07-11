@@ -23,9 +23,9 @@ void CSceneGameMain::InitScene()
 
 	//シーンに必要なオブジェクト情報
 
-	m_obj_player = new CObjPlayer();
-	m_obj_player->Init();
-	Obj()->InsertObj(m_obj_player,OBJ_PLAYER,0,this,HIT_BOX_OFF);
+	//m_obj_player = new CObjPlayer();
+	//m_obj_player->Init();
+	//Obj()->InsertObj(m_obj_player,OBJ_PLAYER,0,this,HIT_BOX_OFF);
 	
 	m_obj_Rscroll = new ButtonRScrollScreen();
 	m_obj_Rscroll->Init();
@@ -44,6 +44,8 @@ void CSceneGameMain::InitScene()
 	m_gimmick_test->Init(100,200,64,64,sound,1,10);
 
 	//Audio()->LoopStart(0);
+
+	TextManager()->LoadText();
 
 }
 

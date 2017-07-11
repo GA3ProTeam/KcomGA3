@@ -5,6 +5,9 @@ CUserData::CUserData()
 {
 	memset(this,0x00,sizeof(CUserData));
 
+	m_iCurrentStage=0; //選択したステージ番号初期化
+	m_iCurrentChara=0; //選択したキャラクター番号初期化
+
 }
 
 CUserData::~CUserData()

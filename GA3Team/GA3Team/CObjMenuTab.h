@@ -12,6 +12,9 @@ private:
 	//連打回避のためのカウント
 	int m_icnt;
 
+	//音を持っている間、他の音を持たないようにするフラグ
+	bool m_bhavesound;
+
 	CObjSoundManeger* sound;//サウンドを格納するクラス
 
 	int m_openclose_x;//開閉ボタンのX

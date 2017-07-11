@@ -35,6 +35,7 @@ class CObj
 		CUserData*			User()	 { return m_UserData;		}//シーン間のデータ及びセーブデータ取得
 		CDrawFont*			Font()	 { return m_DrawFont;		}//フォント表示関連取得
 		CHitBox*			Hit()	{ return m_pHitBox;			}//ヒットボックス取得
+		CSoundManeger* SoundManager() { return m_SoundManeger; }
 		void SetHit();		//コンストラクタ外の当たり判定の作成
 	private:
 		CDrawTexture*	 m_DrawTexture;
@@ -44,6 +45,7 @@ class CObj
 		CSceneObjManager*m_SceneObjManager;
 		CUserData*		 m_UserData;
 		CDrawFont*	     m_DrawFont;
+		CSoundManeger*   m_SoundManeger;
 };
 
 //ソート用クラス

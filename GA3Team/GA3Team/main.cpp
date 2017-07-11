@@ -50,7 +50,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR szCmdL
 	//------------------------------------------------
 
 	//------始めのシーンを登録------------------------
-	g_SceneManager->Pop(new CSceneStageSelect);
+	g_SceneManager->Pop(new CSceneGameMain);
 	//------------------------------------------------
 
 	//------ゲームループ実行--------------------------

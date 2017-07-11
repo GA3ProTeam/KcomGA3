@@ -2,7 +2,7 @@
 #define __SOUNDMANEGER_H__
 
 
-class CObjSoundManeger : public CObj{
+class CSoundManeger{
 private:
 	int SoundSlot[3];
 public:

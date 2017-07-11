@@ -2,8 +2,6 @@
 #ifndef __C_OBJ_MENUTAB_H__
 #define __C_OBJ_MENUTAB_H__
 
-class CObjSoundManeger;
-
 class CObjMenuTab : public Button
 {
 private:
@@ -15,8 +13,6 @@ private:
 	//音を持っている間、他の音を持たないようにするフラグ
 	bool m_bhavesound;
 	int m_igivesound;//音の種類
-
-	CObjSoundManeger* sound;//サウンドを格納するクラス
 
 	int m_openclose_x;//開閉ボタンのX
 	int m_openclose_y;//開閉ボタンのY

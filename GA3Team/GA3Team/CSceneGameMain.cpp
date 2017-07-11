@@ -44,6 +44,8 @@ void CSceneGameMain::InitScene()
 
 	//Audio()->LoopStart(0);
 
+	TextManager()->LoadText();
+
 }
 
 //ƒV[ƒ“Às

@@ -18,6 +18,7 @@ class CScene
 			m_DrawFont		 =g_DrawFont;
 			m_HitBoxManager  =g_HitBoxManager;
 			m_SoundManeger = g_SoundManeger;
+			m_TextManager = g_TextManager;
 		}
 
 		virtual void InitScene()=0;

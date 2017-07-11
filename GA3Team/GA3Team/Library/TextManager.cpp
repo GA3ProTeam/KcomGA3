@@ -7,7 +7,7 @@ void CTextManager::LoadText()
 	char filePath[64];
 
 	//ï∂éöÉfÅ[É^ì«Ç›çûÇ›
-	sprintf_s(filePath, "Text\\%s\\%s.bin", ENUMSTR(TEXT_FILE_NAME::koune1), ENUMSTR(TEXT_FILE_NAME::koune1_start));
+	sprintf_s(filePath, "Text\\%s\\%s.bin", ENUMSTR(koune1), ENUMSTR(koune1_start));
 	ifstream ifw(filePath, std::ios::in | std::ios::binary);
 
 	ifw.read(reinterpret_cast<char*>(&textlen), sizeof(textlen));

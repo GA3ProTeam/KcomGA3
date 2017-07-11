@@ -191,6 +191,7 @@ class CUserData;
 class CHitBox;
 class CHitBoxManager;
 class CSoundManeger;
+class CTextManager;
 
 //ゲーム各エンジンクラス
 extern CDirectXDeviec*	g_DirectXDeveice;
@@ -203,6 +204,7 @@ extern CSceneObjManager*g_SceneObjManager;
 extern CUserData*		g_UserData;
 extern CHitBoxManager*	g_HitBoxManager;
 extern CSoundManeger* g_SoundManeger;
+extern CTextManager* g_TextManager;
 
 //エンジンヘッダー
 #include "Library\\DirectXDevice.h"

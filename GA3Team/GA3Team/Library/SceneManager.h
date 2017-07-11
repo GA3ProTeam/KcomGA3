@@ -33,6 +33,7 @@ class CScene
 		CDrawFont*		    Font()   { return m_DrawFont;		}
 		CHitBoxManager*		Hit()	 { return m_HitBoxManager;	}
 		CSoundManeger* SoundManager() { return m_SoundManeger; }
+		CTextManager*       TextManager() { return m_TextManager; }
 	private:
 		CDrawTexture*	 m_DrawTexture;
 		CAudio*			 m_Audio;
@@ -43,6 +44,7 @@ class CScene
 		CDrawFont*		 m_DrawFont;
 		CHitBoxManager*	 m_HitBoxManager;
 		CSoundManeger*   m_SoundManeger;
+		CTextManager*	 m_TextManager;
 };
 
 //シーンマネージャークラス

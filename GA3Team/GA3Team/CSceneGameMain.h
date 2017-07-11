@@ -2,7 +2,7 @@
 #define __C_SCENE_GAME_MAIN_H__
 
 //使用オブジェクトのプロトタイプ宣言
-class CObjPlayer;
+//class CObjPlayer;
 class ButtonRScrollScreen;
 class ButtonLScrollScreen;
 class CObjMenuTab;
@@ -18,7 +18,7 @@ public:
 	void InitScene();
 	void Scene();
 private:
-	CObjPlayer* m_obj_player;
+	//CObjPlayer* m_obj_player;
 
 	ButtonRScrollScreen* m_obj_Rscroll;
 	ButtonLScrollScreen* m_obj_Lscroll;

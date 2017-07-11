@@ -3,6 +3,7 @@
 #ifndef __TEXTMANAGER_H__
 #define __TEXTMANAGER_H__
 
+
 class CTextManager{
 private:
 	int linecount = 0;
@@ -20,6 +21,7 @@ public:
 	vector<vector<string>> m_MerueruText;
 
 	void LoadText();
+	int GetCtrlLine(int line);
 };
 
 #endif // !__TEXTMANAGER_H__

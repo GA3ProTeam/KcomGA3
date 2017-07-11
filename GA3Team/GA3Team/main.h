@@ -46,7 +46,7 @@ using namespace std;
 #define SAFE_RELEASE(p)      { if (p) { (p)->Release(); (p)=NULL; } }
 
 //enum()マクロ
-#define ENUMSTR(var) #var
+#define ESTR(var) #var
 
 //列挙型
 //テクスチャイメージサイズ　８乗ｵﾝﾘ-設定

@@ -22,9 +22,9 @@ void CSceneGameMain::InitScene()
 
 	//シーンに必要なオブジェクト情報
 
-	m_obj_player = new CObjPlayer();
-	m_obj_player->Init();
-	Obj()->InsertObj(m_obj_player,OBJ_PLAYER,0,this,HIT_BOX_OFF);
+	//m_obj_player = new CObjPlayer();
+	//m_obj_player->Init();
+	//Obj()->InsertObj(m_obj_player,OBJ_PLAYER,0,this,HIT_BOX_OFF);
 	
 	m_obj_Rscroll = new ButtonRScrollScreen();
 	m_obj_Rscroll->Init();

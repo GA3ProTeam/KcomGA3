@@ -7,7 +7,7 @@ void CTextManager::LoadText()
 	char filePath[64];
 
 	//文字データ読み込み
-	sprintf_s(filePath, "Text\\%s\\%s.bin", ENUMSTR(koune1), ENUMSTR(koune1_start));
+	sprintf_s(filePath, "Text\\%s\\%s.bin", ESTR(koune1), ESTR(koune1_start));
 	ifstream ifw(filePath, std::ios::in | std::ios::binary);
 
 	ifw.read(reinterpret_cast<char*>(&textlen), sizeof(textlen));
@@ -44,6 +44,8 @@ void CTextManager::LoadText()
 		tmpData.push_back(strsave[w]);
 	}
 
+	m_KouneText.push_back(tmpData);
+
 	//制御文字削除（検出）
 	//std::vector<std::string>::iterator itr = tmpData.begin();
 	//while (itr != tmpData.end()) {
@@ -54,4 +56,11 @@ void CTextManager::LoadText()
 	//		itr++;
 	//	}
 	//}
+}
+
+int CTextManager::GetCtrlLine(int line)
+{
+	return 0;
+	
+	
 }

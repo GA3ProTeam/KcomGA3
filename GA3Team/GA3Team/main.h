@@ -45,6 +45,9 @@ using namespace std;
 #define SAFE_DELETE_ARRAY(p) { if (p) { delete[] (p);   (p)=NULL; } }
 #define SAFE_RELEASE(p)      { if (p) { (p)->Release(); (p)=NULL; } }
 
+//enum()マクロ
+#define ENUMSTR(var) #var
+
 //列挙型
 //テクスチャイメージサイズ　８乗ｵﾝﾘ-設定
 enum TEX_SIZE
@@ -115,7 +118,26 @@ enum OBJ_NAME
 	OBJ_GIMMICK_MANAGER,
 	OBJ_MENUTAB,
 	OBJ_SOUND,
+	OBJ_GIMMICK_TEST,
 };
+//----------------------
+//テキストファイルのネーム
+enum TEXT_FILE_NAME {
+	//koune1
+	koune1,
+	koune1_start,
+	koune1_ozi,
+	koune1_ozi_flag2_y,
+	koune1_ozi_flag2_n,
+	koune1_ozi_flag3_y,
+	koune1_ozi_flag3_n,
+	koune1_ozi_flag3_flag1n,
+	koune1_ozi_clear,
+
+	//koune2
+};
+
+
 //----------------------
 
 //表示ウィンドウの大きさ
@@ -147,6 +169,11 @@ enum OBJ_NAME
 //当たり判定の複数同時判定量
 #define MAX_HITS	15
 
+
+//一つのギミックがもてる吹き出しの最大数
+#define BALLOON_MAX_NUM 5
+//例外用
+#define EXCEPTION 999
 //---------------------------------------
 
 //ゲームエンジンクラス
@@ -163,6 +190,7 @@ class CSceneObjManager;
 class CUserData;
 class CHitBox;
 class CHitBoxManager;
+class CSoundManeger;
 
 //ゲーム各エンジンクラス
 extern CDirectXDeviec*	g_DirectXDeveice;
@@ -174,6 +202,7 @@ extern CSceneManager*   g_SceneManager;
 extern CSceneObjManager*g_SceneObjManager;
 extern CUserData*		g_UserData;
 extern CHitBoxManager*	g_HitBoxManager;
+extern CSoundManeger* g_SoundManeger;
 
 //エンジンヘッダー
 #include "Library\\DirectXDevice.h"
@@ -192,15 +221,26 @@ extern CHitBoxManager*	g_HitBoxManager;
 #include "Library\SoundManeger.h"
 #include "Library\TextManager.h"
 
+inline RECT InitRect(LONG left, LONG top, LONG right, LONG bottom)
+{
+	RECT Init;
+	Init.left=left;
+	Init.top=top;
+	Init.right=right;
+	Init.bottom=bottom;
+
+	return Init;
+}
+
 //ゲームシーン・オブジェクトのインクルード-------
 #define MAX_CHARA 4
 
 //吹き出しのサイズ
-#define GIMMICK_SIZE_X 32
-#define GIMMICK_SIZE_Y 32
+#define GIMMICK_SIZE_X 64
+#define GIMMICK_SIZE_Y 64
 
 //吹き出し維持時間
-#define BALLOON_KEEP_TIME 300
+#define BALLOON_KEEP_TIME 180
 
 //シーンタイトル
 #include "CSceneTitle.h"
@@ -229,7 +269,7 @@ extern CHitBoxManager*	g_HitBoxManager;
 #include "CObjGimmickManager.h"
 //----------------------------------------------
 
-
+#include "GimmckTest.h"
 
 //ユーザー・セーブ・シーン間受け渡しデータ
 //固定メモリのみ
@@ -246,6 +286,8 @@ class CUserData
 		int mscroll_x;
 		int mititle_choice; //始め方の選択
 
+		CObjSavedata savedate[3];
+
 		//---ライブラリ改造用ポインター---
 		HINSTANCE p_hInstance;
 		HWND p_hWnd;
@@ -256,6 +298,7 @@ class CUserData
 		//ユーザーデータ以外の外部データ読み込み
 		//全データ(文字列情報)を取得したメモリが返される
 		char* ExternalDataOpen(char* file_name,int* size);
+
 };
 
 

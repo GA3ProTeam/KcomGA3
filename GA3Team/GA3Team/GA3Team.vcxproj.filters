@@ -141,6 +141,9 @@
     <ClCompile Include="Library\TextManager.cpp">
       <Filter>ライブラリ ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="GimmckTest.cpp">
+      <Filter>テスト ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Library\Audio.h">
@@ -238,6 +241,9 @@
     </ClInclude>
     <ClInclude Include="Library\TextManager.h">
       <Filter>ライブラリ ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="GimmckTest.h">
+      <Filter>テスト ファイル</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

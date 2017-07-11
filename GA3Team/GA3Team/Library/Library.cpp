@@ -15,6 +15,8 @@ CSceneManager*   g_SceneManager	  =NULL;//シーンマネージャー
 CSceneObjManager*g_SceneObjManager=NULL;//オブジェクトマネージャー
 CUserData*		 g_UserData		  =NULL;//ユーザーデータ管理
 CHitBoxManager*	 g_HitBoxManager  =NULL;//当たり判定マネージャー
+//
+CSoundManeger* g_SoundManeger = NULL;//音管理マネージャー
 
 void EndLibrary()
 {
@@ -27,7 +29,7 @@ void EndLibrary()
 	delete g_WinInputs;
 	delete g_DrawTexture;
 	delete g_DirectXDeveice;
-
+	delete g_SoundManeger;
 	// この時点で開放されていないメモリの情報の表示
 	_CrtDumpMemoryLeaks();
 }
@@ -55,6 +57,8 @@ bool InitLibrary()
 	
 	g_UserData = new CUserData();				//ユーザーセーブ・シーン間のデータ輸送用
 	//------------------------------------------------
+
+	g_SoundManeger = new CSoundManeger();
 
 	return true;
 }

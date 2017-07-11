@@ -7,6 +7,8 @@ void CSceneGameMain::InitScene()
 	//このシーンで表示させるイメージ情報
 	Image()->LoadImage("gamemain_kari.png",0,TEX_SIZE_256);
 	Image()->LoadImage("メニュータブ(仮).png",1,TEX_SIZE_256);
+	Image()->LoadImage("黒犬c.png", 2, TEX_SIZE_256);//テスト用
+	Image()->LoadImage("吹き出し仮.png", 3, TEX_SIZE_512);//テスト用
 	//Image()->LoadImage("boss.png",2,TEX_SIZE_256);
 
 	//文字データ作成
@@ -31,14 +33,14 @@ void CSceneGameMain::InitScene()
 	m_obj_Lscroll = new ButtonLScrollScreen();
 	m_obj_Lscroll->Init();
 	Obj()->InsertObj(m_obj_Lscroll, BUTTON_LSCROLL_SCREEN, 0, this, HIT_BOX_OFF);
-
-	m_obj_sound = new CObjSoundManeger();
-	Obj()->InsertObj(m_obj_sound, OBJ_SOUND, 0, this, HIT_BOX_OFF);
-	m_obj_sound->Init();
 	
 	m_obj_menutab = new CObjMenuTab();
 	Obj()->InsertObj(m_obj_menutab, OBJ_MENUTAB, 5, this, HIT_BOX_OFF);
 	m_obj_menutab->Init();
+
+	m_gimmick_test = new GimmickTest();
+	Obj()->InsertObj(m_gimmick_test, OBJ_GIMMICK_TEST, 5, this, HIT_BOX_OFF);
+	m_gimmick_test->Init(100,200,64,64,talk,1);
 
 	//Audio()->LoopStart(0);
 

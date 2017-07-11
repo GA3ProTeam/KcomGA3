@@ -126,31 +126,31 @@ void CObjMenuTab::Draw()
 		Image()->Draw(1, &m_rSrc, &m_rDst, m_fCol, 0.0f);
 
 		//‰¹‚ğŠi”[‚·‚é•”•ª‚Ì•`‰æ
-		for (int i = 0; i < 3; i++) {
-			if(sound->GetSound(i) != 0) {
-				//Ø‚èæ‚èæÀ•W
-				m_rDst.top = 64; m_rDst.left = 128;
-				m_rDst.bottom = m_rDst.top + 64; m_rDst.right = m_rDst.left + 64;
+		//for (int i = 0; i < 3; i++) {
+		//	if(sound->GetSound(i) != 0) {
+		//		//Ø‚èæ‚èæÀ•W
+		//		m_rDst.top = 64; m_rDst.left = 128;
+		//		m_rDst.bottom = m_rDst.top + 64; m_rDst.right = m_rDst.left + 64;
 
-				//“]‘—æÀ•W
-				m_rSrc.top = m_isoundy; m_rSrc.left = m_isoundx + 64 * i;
-				m_rSrc.bottom = m_rSrc.top + 64; m_rSrc.right = m_rSrc.left + 64;
+		//		//“]‘—æÀ•W
+		//		m_rSrc.top = m_isoundy; m_rSrc.left = m_isoundx + 64 * i;
+		//		m_rSrc.bottom = m_rSrc.top + 64; m_rSrc.right = m_rSrc.left + 64;
 
-				//•`‰æ
-				Image()->Draw(1, &m_rSrc, &m_rDst, m_fCol, 0.0f);
-			}
-			else{
-				//Ø‚èæ‚èæÀ•W
-				m_rDst.top = 64; m_rDst.left = 64;
-				m_rDst.bottom = m_rDst.top + 64; m_rDst.right = m_rDst.left + 64;
+		//		//•`‰æ
+		//		Image()->Draw(1, &m_rSrc, &m_rDst, m_fCol, 0.0f);
+		//	}
+		//	else{
+		//		//Ø‚èæ‚èæÀ•W
+		//		m_rDst.top = 64; m_rDst.left = 64;
+		//		m_rDst.bottom = m_rDst.top + 64; m_rDst.right = m_rDst.left + 64;
 
-				//“]‘—æÀ•W
-				m_rSrc.top = m_isoundy; m_rSrc.left = m_isoundx + 64 * i;
-				m_rSrc.bottom = m_rSrc.top + 64; m_rSrc.right = m_rSrc.left + 64;
+		//		//“]‘—æÀ•W
+		//		m_rSrc.top = m_isoundy; m_rSrc.left = m_isoundx + 64 * i;
+		//		m_rSrc.bottom = m_rSrc.top + 64; m_rSrc.right = m_rSrc.left + 64;
 
-				//•`‰æ
-				Image()->Draw(1, &m_rSrc, &m_rDst, m_fCol, 0.0f);
-			}
+		//		//•`‰æ
+		//		Image()->Draw(1, &m_rSrc, &m_rDst, m_fCol, 0.0f);
+		//	}
 			//‰¹‚ğÁ‚·ƒ{ƒ^ƒ“
 			//Ø‚èæ‚èæÀ•W
 			//m_rDst.top = 64; m_rDst.left = 64;
@@ -162,7 +162,7 @@ void CObjMenuTab::Draw()
 
 			////•`‰æ
 			//Image()->Draw(1, &m_rSrc, &m_rDst, m_fCol, 0.0f);
-		}
+		//}
 
 	}
 

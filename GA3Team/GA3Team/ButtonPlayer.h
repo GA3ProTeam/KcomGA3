@@ -18,7 +18,8 @@ public:
 private:
 	int m_iCharacterNumber;		//キャラクター番号
 	CObjStageTab* m_sStage_Tab;	//ステージタブへの参照
-	
+	float m_fCol[4];			//ボタンの色
+
 	RECT m_src; //転送先座標
 	RECT m_dst; //切り取り座標;
 };

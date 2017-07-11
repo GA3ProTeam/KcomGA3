@@ -9,6 +9,12 @@ void ButtonPlayer::Init(int x, int y, int w, int h, int m_iButtonID, CObjStageTa
 	m_iWidth = w;   //ボタンの幅
 	m_iHeight = h;  //ボタンの高さ
 
+	//カラー情報初期化
+	m_fCol[0] = 0.5f;
+	m_fCol[1] = 0.5f;
+	m_fCol[2] = 0.5f;
+	m_fCol[3] = 1.0f;
+
 	m_iCharacterNumber = m_iButtonID;//キャラクター番号
 	m_sStage_Tab = sStage_Tab;//ステージタブへの参照セット
 }
@@ -33,17 +39,18 @@ void ButtonPlayer::Action()
 //Draw
 void ButtonPlayer::Draw()
 {
-	float numcolor = 0.5f;//非選択カラー処理
+	//このプレイヤーボタンが現在選択されているプレイヤーボタンなら明るい色に
+	if (m_sStage_Tab->GetCharacterNum() == m_iCharacterNumber) {
+		m_fCol[0] = 1.0f;
+		m_fCol[1] = 1.0f;
+		m_fCol[2] = 1.0f;
 
-	if (m_bStatus == false) {
-		numcolor = 0.5f;//非選択カラー処理ループ用
+	}//現在選択されているプレイヤーボタンでなければ、暗い色に
+	else {
+		m_fCol[0] = 0.5f;
+		m_fCol[1] = 0.5f;
+		m_fCol[2] = 0.5f;
 	}
-	else{//もし選択されたキャラまできたら
-			numcolor = 1.0f;//選択カラー処理
-	}
-		
-	//カラー情報
-	float col[4] = { numcolor,numcolor,numcolor,1.0f };
 
 	//切り取り座標
 	m_dst.top = 320;
@@ -58,5 +65,5 @@ void ButtonPlayer::Draw()
 	m_src.right = m_src.left + m_iWidth;
 	
 		
-	Image()->Draw(0, &m_src, &m_dst, col, 0.0f);
+	Image()->Draw(0, &m_src, &m_dst, m_fCol, 0.0f);
 }

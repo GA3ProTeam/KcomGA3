@@ -13,7 +13,7 @@ void CObjDataSelect::Init()
 	
 	m_button_y = 80;
 
-	//m_idatadelete_flg = false;
+	//m_bselect_flg[] = false;
 
 	m_iSelectData = -1;
 
@@ -210,20 +210,15 @@ void CObjDataSelect::ButtonFromTheBegin() {
 				if (m_obj_savedata[m_iSelectData]->Savedatacheck())
 				{
 					//ステージセレクト画面へ
-					User()->mititle_choice = STAGE_SELECT;
+					//User()->mititle_choice = STAGE_SELECT;
+					//デバッグ用
+					Manager()->Pop(new CSceneStageSelect());
 				}
 
 			}
 		}
 	}
-	
 
-
-	//m_bsavedataflg = true;
-
-
-
-	
 		if (m_bmessageflg == true) {/*セーブデータが入っていたら*/
 		//初期化してもいいですか
 		//"はい"...データ削除
@@ -251,15 +246,32 @@ void CObjDataSelect::ButtonFromTheBegin() {
 //つづきから
 void CObjDataSelect::ButtonContinuation() {
 
-	//データが入ってなかったら選べなくする/暗くする
-	//for (int i = 0; i < MAX_SAVEDATA; i++) {
-	//
-	//	m_obj_savedatabutton[i] = new ButtonDataSelect();
-	//	Obj()->InsertObj(m_obj_savedatabutton[i], OBJ_BUTTON_STAGE, 0, this->m_pScene, HIT_BOX_OFF);
-	//	m_obj_savedatabutton[i]->Init(250, m_button_y, 50, 50, true,1);
-	//
-	//	m_button_y += 50;
-	//}
+	//ボタン作成
+	if (m_icreateflg == false) {
+		//データが入ってなかったら選べなくする/暗くする
+		for (int i = 0; i < MAX_SAVEDATA; i++) {
+
+			//m_bselect_flg = m_obj_savedata[i]->Savedatacheck(); //セーブデータの有無を読む
+
+			//デバック用
+			if (i == 1) {
+				m_bselect_flg[i] = true;
+			}
+			else {
+				m_bselect_flg[i] = false;
+			}
+
+			m_obj_savedatabutton[i] = new ButtonDataSelect();
+			Obj()->InsertObj(m_obj_savedatabutton[i], OBJ_BUTTON_STAGE, 0, this->m_pScene, HIT_BOX_OFF);
+			m_obj_savedatabutton[i]->Init(200, m_button_y, 500, 100, m_bselect_flg[i], 0);
+
+			m_button_y += 150;
+
+			if (i < MAX_SAVEDATA)
+				m_icreateflg = true;
+
+		}
+	}
 
 	
 	
@@ -267,38 +279,31 @@ void CObjDataSelect::ButtonContinuation() {
 
 	//マウス判定
 	//カーソルがある所を拡大+発光
-	//ボタン/文字/画像サイズ変更
-	//......
+	for (int i = 0; i < MAX_SAVEDATA; i++) {
 
+		if (m_bselect_flg[i] == true) {
+			m_obj_savedatabutton[i]->Expansion();	//拡大
+			m_obj_savedatabutton[i]->Emission();	//発光
+		}
 
+		//データを選択しました
+		if (m_obj_savedatabutton[i]->Push()) {
 
-	//選択されたデータをロード
-/*	switch () {
-		//セーブデータ１
-		case 1:
-			//データをロードする
-			m_obj_savedata->Loadsavedata();
+			m_iSelectData = i;
 
-			break;
-
-		//---------------------------------------------
-		//セーブデータ２
-		case 2:
-			//データをロードする
-			m_obj_savedata->Loadsavedata();
-
-			break;
-
-		//---------------------------------------------
-		//セーブデータ３
-		case 3:
-			//データをロードする
-			m_obj_savedata->Loadsavedata();
-
-			break;
+			//セーブデータ確認
+			if (m_obj_savedata[m_iSelectData]->Savedatacheck()) {
+				//m_obj_savedata[m_iSelectData]->Loadsavedata();
+				//ステージセレクトへシーン移動
+				//User()->mititle_choice = STAGE_SELECT;
+				//デバッグ用
+				Manager()->Pop(new CSceneStageSelect());
+			}
+		}
 	}
-*/
-	//ステージセレクトへシーン移動
-	//User()->mititle_choice = STAGE_SELECT;
+
+
+
+	
 	
 }

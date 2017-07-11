@@ -30,7 +30,7 @@ private:
 
 	int m_iSelectData;
 
-	//bool m_idatadelete_flg;  //(はじめから)データがあった場合削除されたか
+	bool m_bselect_flg[MAX_SAVEDATA];  //(つづきから)ボタンが選択できるかどうか
 
 	//カラー情報
 	float col[4];

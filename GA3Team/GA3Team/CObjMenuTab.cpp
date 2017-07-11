@@ -3,12 +3,13 @@
 void CObjMenuTab::Init()
 {
 	m_bOpenClose = false;//閉じている
+	m_bhavesound = false;//持っていない
 	m_icnt = 0;
 
 	m_openclose_x = 736;
 	m_openclose_y = 400;
 
-	m_isoundx = 416;
+	m_isoundx = 480;
 	m_isoundy = m_openclose_y;
 
 	m_iBackTitlex = m_openclose_x;
@@ -58,6 +59,19 @@ void CObjMenuTab::Action()
 			//ボタンの位置の更新
 			m_iXpos = m_openclose_x;
 		}
+	}
+
+	if (SelectPush(m_isoundx, m_isoundy, 64, 64) && !m_bhavesound) {
+		m_bhavesound = true;
+	}
+	else if (SelectPush(m_isoundx + 64, m_isoundy, 64, 64) && !m_bhavesound) {
+		m_bhavesound = true;
+	}
+	else if (SelectPush(m_isoundx + 128, m_isoundy, 64, 64) && !m_bhavesound) {
+		m_bhavesound = true;
+	}
+	else if (!Input()->GetMouButtonL()) {
+		m_bhavesound = false;
 	}
 
 	if (SelectPush(m_isoundx + 256, m_isoundy, 64, 64) && m_bOpenClose) {
@@ -164,6 +178,20 @@ void CObjMenuTab::Draw()
 			//Image()->Draw(1, &m_rSrc, &m_rDst, m_fCol, 0.0f);
 		//}
 
+	}
+
+	//音をドラック＆ドロップ
+	if (m_bhavesound && Input()->GetMouButtonL()) {
+		//切り取り先座標
+		m_rDst.top = 64; m_rDst.left = 128;
+		m_rDst.bottom = m_rDst.top + 64; m_rDst.right = m_rDst.left + 64;
+
+		//転送先座標
+		m_rSrc.top = Input()->m_y - 32; m_rSrc.left = Input()->m_x - 32;
+		m_rSrc.bottom = m_rSrc.top + 64; m_rSrc.right = m_rSrc.left + 64;
+
+		//描画
+		Image()->Draw(1, &m_rSrc, &m_rDst, m_fCol, 0.0f);
 	}
 
 }

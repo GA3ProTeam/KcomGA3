@@ -36,6 +36,7 @@ class CObj
 		CDrawFont*			Font()	 { return m_DrawFont;		}//フォント表示関連取得
 		CHitBox*			Hit()	{ return m_pHitBox;			}//ヒットボックス取得
 		CSoundManeger* SoundManager() { return m_SoundManeger; }
+		CTextManager* TextManager() { return m_TextManager; }
 		void SetHit();		//コンストラクタ外の当たり判定の作成
 	private:
 		CDrawTexture*	 m_DrawTexture;
@@ -46,6 +47,7 @@ class CObj
 		CUserData*		 m_UserData;
 		CDrawFont*	     m_DrawFont;
 		CSoundManeger*   m_SoundManeger;
+		CTextManager*    m_TextManager;
 };
 
 //ソート用クラス

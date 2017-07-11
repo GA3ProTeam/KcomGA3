@@ -17,6 +17,7 @@ CUserData*		 g_UserData		  =NULL;//ユーザーデータ管理
 CHitBoxManager*	 g_HitBoxManager  =NULL;//当たり判定マネージャー
 //
 CSoundManeger* g_SoundManeger = NULL;//音管理マネージャー
+CTextManager*  g_TextManager = NULL;//テキストマネージャー
 
 void EndLibrary()
 {
@@ -30,6 +31,7 @@ void EndLibrary()
 	delete g_DrawTexture;
 	delete g_DirectXDeveice;
 	delete g_SoundManeger;
+	delete g_TextManager;
 	// この時点で開放されていないメモリの情報の表示
 	_CrtDumpMemoryLeaks();
 }
@@ -59,6 +61,7 @@ bool InitLibrary()
 	//------------------------------------------------
 
 	g_SoundManeger = new CSoundManeger();
+	g_TextManager = new CTextManager();
 
 	return true;
 }

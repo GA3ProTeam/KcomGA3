@@ -25,9 +25,9 @@ private:
 	int m_ititle_choice;	//はじめからつづきからどちらが選ばれたか
 	int m_button_y;			//セーブデータ表示位置
 	
-	int m_icreateflg;		//ボタンが作成されたか確認
+	bool m_icreateflg;		//ボタンが作成されたか確認
 
-	int m_idatadelete_flg;  //(はじめから)データがあった場合削除されたか
+	bool m_idatadelete_flg;  //(はじめから)データがあった場合削除されたか
 
 	//カラー情報
 	float col[4];

@@ -1,6 +1,6 @@
 #include "../main.h"
 
-void Gimmick::Init(int xpos,int ypos,int widht,int height,int balloontype,int balloonnum)
+void Gimmick::Init(int xpos,int ypos,int widht,int height,int balloontype,int balloonnum,int soundnum)
 {
 	m_iXpos = xpos;	//ギミックの位置の初期化(X)
 	m_iYpos = ypos;	//ギミックの位置の初期化(Y)
@@ -9,12 +9,10 @@ void Gimmick::Init(int xpos,int ypos,int widht,int height,int balloontype,int ba
 	//----------------表示位置----------
 
 	m_iballoonnum = balloonnum;//吹き出しの総数
-
-	
-
-	for (int i = 0; i < m_iballoonnum; i++) {
-		ball[i];
+	if (balloontype == sound) {
+		m_iSoundNum = soundnum;
 	}
+
 }
 void Gimmick::gimmicDorw(Balloon *ball1, int num)
 {
@@ -77,7 +75,7 @@ void Gimmick::gimmicDorw(Balloon *ball1, int num)
 			if (ball[i].m_iballoontype == sound)
 			{
 				//音吹き出しを描画
-				//Image()->Draw(0, &m_src, &m_dst, col, 0.0f);
+				Image()->Draw(3, &ball[i].m_gimsrc, &m_gimdst, col, 0.0f);
 			}
 
 			//吹き出し描画中に吹き出しをクリックしたら
@@ -100,7 +98,7 @@ void Gimmick::gimmicDorw(Balloon *ball1, int num)
 				//左クリックされていない　&&　一回クリックされていたなら
 				else if (!Input()->GetMouButtonL() && onceflg)
 				{
-					SoundManager()->Init();
+					SoundManager()->SoundSave(m_iSoundNum);
 					onceflg = false;
 				}
 			}
@@ -113,10 +111,6 @@ void Gimmick::gimmicDorw(Balloon *ball1, int num)
 	}
 	
 
-
-}
-void Gimmick::setBalloon(int gimx, int gimy, int balltype, RECT gimsrc)
-{
 
 }
 Balloon *InitBall(int gimX, int gimY, int balltype, RECT gimsrc)

@@ -24,6 +24,9 @@ public:
 private:
 	int m_x, m_y;
 
+	RECT m_rSrc;	//転送先座標
+	RECT m_rDst;	//切り取り先座標
+
 	bool m_bdataflg; //データの有無を確認
 
 	//はじめからつづきからどちらが選ばれたか

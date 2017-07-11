@@ -5,7 +5,7 @@ void CSceneTitle::InitScene()
 {
 
 	//このシーンで表示させるイメージ情報
-	Image()->LoadImage("title.png",0,TEX_SIZE_512);
+	Image()->LoadImage("タイトルタブ仮画像.png",0,TEX_SIZE_64);
 
 	//文字データ作成
 	//Font()->SetStrTex("ボスHP：");

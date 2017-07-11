@@ -57,7 +57,7 @@ void ButtonDataSelect::Draw() {
 
 
 	//ì]ëóêÊç¿ïW
-	m_rSrc.top = m_iYpos; m_rSrc.left = m_iXpos; m_rSrc.bottom = m_iHeight; m_rSrc.right = m_iWidth;
+	m_rSrc.top = m_iYpos; m_rSrc.left = m_iXpos; m_rSrc.bottom = m_iYpos +m_iHeight; m_rSrc.right = m_iXpos +m_iWidth;
 
 
 	//ï`âÊ

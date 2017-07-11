@@ -46,7 +46,7 @@ using namespace std;
 #define SAFE_RELEASE(p)      { if (p) { (p)->Release(); (p)=NULL; } }
 
 //enum()マクロ
-#define ENUMSTR(var) #var
+#define ESTR(var) #var
 
 //列挙型
 //テクスチャイメージサイズ　８乗ｵﾝﾘ-設定
@@ -191,6 +191,7 @@ class CUserData;
 class CHitBox;
 class CHitBoxManager;
 class CSoundManeger;
+class CTextManager;
 
 //ゲーム各エンジンクラス
 extern CDirectXDeviec*	g_DirectXDeveice;
@@ -203,6 +204,7 @@ extern CSceneObjManager*g_SceneObjManager;
 extern CUserData*		g_UserData;
 extern CHitBoxManager*	g_HitBoxManager;
 extern CSoundManeger* g_SoundManeger;
+extern CTextManager* g_TextManager;
 
 //エンジンヘッダー
 #include "Library\\DirectXDevice.h"
@@ -281,6 +283,9 @@ class CUserData
 		void Open();
 		void Seve();
 		
+		int m_iCurrentStage; //選択したステージ番号
+		int m_iCurrentChara; //選択したキャラクター番号
+
 		//----ユーザーが持つデータ-------
 		//int mSeveData;//サンプルセーブデータ
 		int mscroll_x;

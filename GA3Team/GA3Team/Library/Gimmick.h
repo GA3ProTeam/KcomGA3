@@ -15,14 +15,14 @@ typedef struct
 	RECT m_gimsrc;		//転送先座標
 
 }Balloon;
-Balloon *InitBall(int gimX, int gimY, int balltype, RECT gimsrc);
+Balloon *InitBall(int gimX, int gimY, int balltype);
 class Gimmick : public CObj {
 private:
 	
 protected:
 	bool m_bCursor;	//ギミックにカーソルが当たっているかのフラグ
 	int m_iballoontime;		//吹き出しの維持時間
-	
+	int m_iSoundNum;
 	int m_iballoonnum;//吹き出しの数
 	//-----------------判定-------------
 	int m_iXpos;	//ギミックの位置(X)
@@ -33,19 +33,13 @@ protected:
 	Balloon ball[BALLOON_MAX_NUM];
 	
 	RECT m_gimdst;		//切り取り座標
-
-
 	RECT m_src;		//転送先座標
 	RECT m_dst;		//切り取り座標
 public:
 	//Init(X座標、Y座標、幅、高さ、吹き出しの種類(talk or sound),吹き出しの数)
-	void Init(int xpos, int ypos, int widht, int height, int balloontype, int balloonnum);
+	void Init(int xpos, int ypos, int widht, int height, int balloontype, int balloonnum,int soundnum);
 	//void balloonSet(Balloon *ball1, int num);
 	void setballoontype(int balloontype,int num) { ball[num].m_iballoontype = balloontype; }//吹き出しの種類をセットする
 	void gimmicDorw(Balloon *ball1, int num); //描画
-	void setBalloon(int gimx,int gimy,int balltype,RECT gimsrc);
-
-
-
 };
 #endif // !__GIMMICK_H__

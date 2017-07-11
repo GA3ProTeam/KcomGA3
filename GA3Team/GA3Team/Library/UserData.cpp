@@ -3,11 +3,10 @@
 
 CUserData::CUserData()
 {
-	memset(this,0x00,sizeof(this));
+	memset(this,0x00,sizeof(CUserData));
 
-	mscroll_x = 0;
-
-	dlgIn[0] = '\0';
+	m_iCurrentStage=0; //選択したステージ番号初期化
+	m_iCurrentChara=0; //選択したキャラクター番号初期化
 
 }
 

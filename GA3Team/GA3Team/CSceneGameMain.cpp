@@ -9,6 +9,7 @@ void CSceneGameMain::InitScene()
 	Image()->LoadImage("メニュータブ(仮).png",1,TEX_SIZE_256);
 	Image()->LoadImage("黒犬c.png", 2, TEX_SIZE_256);//テスト用
 	Image()->LoadImage("吹き出し仮.png", 3, TEX_SIZE_512);//テスト用
+	Image()->LoadImage("吹き出し音符.png", 4, TEX_SIZE_512);//テスト用
 	//Image()->LoadImage("boss.png",2,TEX_SIZE_256);
 
 	//文字データ作成
@@ -22,9 +23,9 @@ void CSceneGameMain::InitScene()
 
 	//シーンに必要なオブジェクト情報
 
-	m_obj_player = new CObjPlayer();
-	m_obj_player->Init();
-	Obj()->InsertObj(m_obj_player,OBJ_PLAYER,0,this,HIT_BOX_OFF);
+	//m_obj_player = new CObjPlayer();
+	//m_obj_player->Init();
+	//Obj()->InsertObj(m_obj_player,OBJ_PLAYER,0,this,HIT_BOX_OFF);
 	
 	m_obj_Rscroll = new ButtonRScrollScreen();
 	m_obj_Rscroll->Init();
@@ -40,9 +41,11 @@ void CSceneGameMain::InitScene()
 
 	m_gimmick_test = new GimmickTest();
 	Obj()->InsertObj(m_gimmick_test, OBJ_GIMMICK_TEST, 5, this, HIT_BOX_OFF);
-	m_gimmick_test->Init(100,200,64,64,talk,1);
+	m_gimmick_test->Init(100,200,64,64,sound,1,10);
 
 	//Audio()->LoopStart(0);
+
+	TextManager()->LoadText();
 
 }
 

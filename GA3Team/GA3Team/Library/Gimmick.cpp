@@ -113,10 +113,6 @@ void Gimmick::gimmicDorw(Balloon *ball1, int num)
 
 
 }
-void Gimmick::setBalloon(int gimx, int gimy, int balltype, RECT gimsrc)
-{
-
-}
 Balloon *InitBall(int gimX, int gimY, int balltype, RECT gimsrc)
 {
 	Balloon *Initball=new Balloon();

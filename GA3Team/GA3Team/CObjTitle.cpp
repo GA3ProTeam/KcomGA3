@@ -27,7 +27,7 @@ void CObjTitle::Action()
 		//セーブデータの有無判定
 		m_bdataflg = m_obj_savedata->Savedatacheck();
 
-		m_bdataflg = false; //デバック用
+//		m_bdataflg = false; //デバック用
 
 		  //はじめからボタン生成
 		m_obj_button[0] = new ButtonDataSelect();

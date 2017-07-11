@@ -174,18 +174,18 @@ void CObjMenuTab::Draw()
 				//•`‰æ
 				Image()->Draw(1, &m_rSrc, &m_rDst, m_fCol, 0.0f);
 			}
-			//‰¹‚ðÁ‚·ƒ{ƒ^ƒ“
-			//Ø‚èŽæ‚èæÀ•W
-			//m_rDst.top = 64; m_rDst.left = 64;
-			//m_rDst.bottom = m_rDst.top + 64; m_rDst.right = m_rDst.left + 64;
-
-			////“]‘—æÀ•W
-			//m_rSrc.top = m_isoundy; m_rSrc.left = m_isoundx + 64 * i;
-			//m_rSrc.bottom = m_rSrc.top + 64; m_rSrc.right = m_rSrc.left + 64;
-
-			////•`‰æ
-			//Image()->Draw(1, &m_rSrc, &m_rDst, m_fCol, 0.0f);
 		}
+		//‰¹‚ðÁ‚·ƒ{ƒ^ƒ“
+		//Ø‚èŽæ‚èæÀ•W
+		m_rDst.top = 64; m_rDst.left = 192;
+		m_rDst.bottom = m_rDst.top + 64; m_rDst.right = m_rDst.left + 64;
+
+		//“]‘—æÀ•W
+		m_rSrc.top = m_isoundy; m_rSrc.left = m_isoundx + 192;
+		m_rSrc.bottom = m_rSrc.top + 64; m_rSrc.right = m_rSrc.left + 64;
+
+		//•`‰æ
+		Image()->Draw(1, &m_rSrc, &m_rDst, m_fCol, 0.0f);
 
 	}
 

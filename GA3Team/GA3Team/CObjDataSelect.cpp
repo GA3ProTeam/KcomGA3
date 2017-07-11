@@ -20,6 +20,9 @@ void CObjDataSelect::Init()
 	m_bmessageflg = false;
 
 
+	//load_progress[MAX_SAVEDATA][0] = 0;
+
+
 	for (int j = 0; j < 4; j++) {
 		//カラー情報初期化
 		col[j] = 1.0f;
@@ -30,8 +33,17 @@ void CObjDataSelect::Init()
 		col[i] = 1.0f;
 		text_size_playername[i] = 20; //仮
 		text_size_progress[i] = 16; //仮
-	}
 
+		char player_str[254] = "No Name";
+		sprintf(m_cplayername[i], "%s", player_str);
+
+		//for (int j = 0; j < CHAR_PROGRESS; j++) {
+		//	m_iplayerprogress[i][j] = 0;	   //キャラクター進行度
+		//	if (i == 1 && j == 1) {
+		//		m_iplayerprogress[i][j] = 1;
+		//	}
+		//}
+	}
 	
 
 }
@@ -48,6 +60,27 @@ void CObjDataSelect::Action()
 	//セーブデータ
 	for (int i = 0; i < MAX_SAVEDATA; i++) {
 		m_obj_savedata[i] = (CObjSavedata *)Obj()->GetObj(OBJ_SAVEDATA);
+
+		if (m_obj_savedata[i]->Savedatacheck()){
+
+			//プレイヤーデータ表示デバッグ用
+			if (i == 1)
+			{
+				//名前
+				char load_name[256] = "お名前";
+				//load_name[i] = m_obj_savedata[];
+				sprintf(m_cplayername[i], "%s", load_name);
+
+				//for (int j = 0; j < CHAR_PROGRESS; j++)
+				//{
+				//	//進行度
+				//	sprintf(load_progress[i], "%d", m_iplayerprogress[i][j]);
+				//}
+				
+
+			}
+			
+		}	
 		
 	}
 
@@ -81,7 +114,9 @@ void CObjDataSelect::Action()
 
 
 
-	//sprintf(c[], "%d  %d  %d", x,y,z); //textmemo
+	//sprintf(m_cplayername, "%d  %d  %d", x,y,z); //textmemo
+
+	
 
 }
 
@@ -113,31 +148,31 @@ void CObjDataSelect::Draw()
 	//プレイヤー名/進行度描画(位置確認中)---> 入力した名前、進行度を描画する
 	//マウスカーソルが合っているときは拡大と発光をする
 	//プレイヤー名１
-	Font()->StrDraw("プレイヤー１", 200, 80, text_size_playername[0], col);
+	Font()->StrDraw(m_cplayername[0], 200, 80, text_size_playername[0], col);
 	//主人公１の進行度
-	Font()->StrDraw("0", 400, 80, text_size_progress[0], col);
-	//主人公２の進行度			  
-	Font()->StrDraw("0", 500, 80, text_size_progress[0], col);
-	//主人公３の進行度			  
-	Font()->StrDraw("0", 600, 80, text_size_progress[0], col);
+	//Font()->StrDraw(load_progress[0], 400, 80, text_size_progress[0], col);
+	////主人公２の進行度			  
+	//Font()->StrDraw(load_progress[0], 500, 80, text_size_progress[0], col);
+	////主人公３の進行度			  
+	//Font()->StrDraw(load_progress[0], 600, 80, text_size_progress[0], col);
 
 	//プレイヤー名２
-	Font()->StrDraw("プレイヤー２", 200, 230, text_size_playername[1], col);
-	//主人公１の進行度
-	Font()->StrDraw("0", 400, 230, text_size_progress[1], col);
-	//主人公２の進行度
-	Font()->StrDraw("0", 500, 230, text_size_progress[1], col);
-	//主人公３の進行度
-	Font()->StrDraw("0", 600, 230, text_size_progress[1], col);
+	Font()->StrDraw(m_cplayername[1], 200, 230, text_size_playername[1], col);
+	////主人公１の進行度
+	//Font()->StrDraw(load_progress[1], 400, 230, text_size_progress[1], col);
+	////主人公２の進行度
+	//Font()->StrDraw(load_progress[1], 500, 230, text_size_progress[1], col);
+	////主人公３の進行度
+	//Font()->StrDraw(load_progress[1], 600, 230, text_size_progress[1], col);
 
 	//プレイヤー名３
-	Font()->StrDraw("プレイヤー３", 200, 380, text_size_playername[2], col);
-	//主人公１の進行度
-	Font()->StrDraw("0", 400, 380, text_size_progress[2], col);
-	//主人公２の進行度								  
-	Font()->StrDraw("0", 500, 380, text_size_progress[2], col);
-	//主人公３の進行度								  
-	Font()->StrDraw("0", 600, 380, text_size_progress[2], col);
+	Font()->StrDraw(m_cplayername[2], 200, 380, text_size_playername[2], col);
+	////主人公１の進行度
+	//Font()->StrDraw(load_progress[2], 400, 380, text_size_progress[2], col);
+	////主人公２の進行度								  
+	//Font()->StrDraw(load_progress[2], 500, 380, text_size_progress[2], col);
+	////主人公３の進行度								  
+	//Font()->StrDraw(load_progress[2], 600, 380, text_size_progress[2], col);
 
 
 /*	//プレイヤー名４

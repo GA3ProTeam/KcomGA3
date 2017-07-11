@@ -1,7 +1,8 @@
 #ifndef __COBJDATASELECT_H__
 #define __COBJDATASELECT_H__
 
-#define MAX_SAVEDATA 3
+#define MAX_SAVEDATA 3       //セーブデータの数
+#define CHAR_PROGRESS 3		 //キャラクターの数(進行度用)
 
 class CObjDataSelect : public CObj {
 public:
@@ -36,6 +37,15 @@ private:
 	float col[4];
 	int text_size_playername[MAX_SAVEDATA]; //仮
 	int text_size_progress[MAX_SAVEDATA]; //仮
+
+	//データ表示用
+	char m_cplayername[MAX_SAVEDATA][256];
+
+	char m_csave_playername[MAX_SAVEDATA][256];					   //プレイヤーネーム
+	int  m_iplayerprogress[MAX_SAVEDATA][CHAR_PROGRESS];	   //キャラクター進行度
+
+	char load_progress[MAX_SAVEDATA][32];
+
 
 };
 

@@ -17,6 +17,7 @@ class CScene
 			m_UserData		 =g_UserData;
 			m_DrawFont		 =g_DrawFont;
 			m_HitBoxManager  =g_HitBoxManager;
+			m_SoundManeger = g_SoundManeger;
 		}
 
 		virtual void InitScene()=0;
@@ -31,6 +32,7 @@ class CScene
 		CUserData*			User()   { return m_UserData;		}
 		CDrawFont*		    Font()   { return m_DrawFont;		}
 		CHitBoxManager*		Hit()	 { return m_HitBoxManager;	}
+		CSoundManeger* SoundManager() { return m_SoundManeger; }
 	private:
 		CDrawTexture*	 m_DrawTexture;
 		CAudio*			 m_Audio;
@@ -40,6 +42,7 @@ class CScene
 		CUserData*		 m_UserData;
 		CDrawFont*		 m_DrawFont;
 		CHitBoxManager*	 m_HitBoxManager;
+		CSoundManeger*   m_SoundManeger;
 };
 
 //シーンマネージャークラス

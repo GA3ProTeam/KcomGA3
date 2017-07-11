@@ -281,6 +281,9 @@ class CUserData
 		void Open();
 		void Seve();
 		
+		int m_iCurrentStage; //選択したステージ番号
+		int m_iCurrentChara; //選択したキャラクター番号
+
 		//----ユーザーが持つデータ-------
 		//int mSeveData;//サンプルセーブデータ
 		int mscroll_x;

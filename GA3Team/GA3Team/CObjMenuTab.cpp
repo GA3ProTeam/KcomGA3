@@ -61,38 +61,36 @@ void CObjMenuTab::Action()
 		}
 	}
 
-	//ゴミ箱動作----------------------------------------------------------------
-	//ゴミ箱ボタンの範囲内にマウスがあるか確認
-	if (Input()->m_x > m_isoundx + 192 && Input()->m_x < (m_isoundx + 192 + 64)
-		&& Input()->m_y > m_isoundy && Input()->m_y < (m_isoundy + 64)) {
-		//マウスドラッグ中にマウスボタンが離された
-		if (!Input()->GetMouButtonL() && m_bhavesound) {
-			//ドラッグしていた効果音を削除
-			SoundManager()->SoundDelete(m_igivesound);
+	if (m_bOpenClose) {
+		//ゴミ箱動作----------------------------------------------------------------
+		//ゴミ箱ボタンの範囲内にマウスがあるか確認
+		if (Input()->m_x > m_isoundx + 192 && Input()->m_x < (m_isoundx + 192 + 64)
+			&& Input()->m_y > m_isoundy && Input()->m_y < (m_isoundy + 64)) {
+			//マウスドラッグ中にマウスボタンが離された
+			if (!Input()->GetMouButtonL() && m_bhavesound) {
+				//ドラッグしていた効果音を削除
+				SoundManager()->SoundDelete(m_igivesound);
+			}
 		}
-	}
-	//--------------------------------------------------------------------------
+		//--------------------------------------------------------------------------
 
-	//各音ボタン動作------------------------------------------------------------
-	//各ボタン押下処理
-	if (SelectPush(m_isoundx, m_isoundy, 64, 64) && !m_bhavesound) {
-		m_bhavesound = true;//マウスドラッグ開始
-		m_igivesound =0;//配列[0]番目の音を選択
-	}
-	else if (SelectPush(m_isoundx + 64, m_isoundy, 64, 64) && !m_bhavesound) {
-		m_bhavesound = true;//マウスドラッグ開始
-		m_igivesound =1;//配列[1]番目の音を選択
-	}
-	else if (SelectPush(m_isoundx + 128, m_isoundy, 64, 64) && !m_bhavesound) {
-		m_bhavesound = true;//マウスドラッグ開始
-		m_igivesound =2;//配列[2]番目の音を選択
-	}//マウス左クリックが離されたら、ドラッグ終了
-	else if (!Input()->GetMouButtonL()) {
-		m_bhavesound = false;
-	}
-
-	if (SelectPush(m_isoundx + 256, m_isoundy, 64, 64) && m_bOpenClose) {
-
+		//各音ボタン動作------------------------------------------------------------
+		//各ボタン押下処理
+		if (SelectPush(m_isoundx, m_isoundy, 64, 64) && !m_bhavesound) {
+			m_bhavesound = true;//マウスドラッグ開始
+			m_igivesound = 0;//配列[0]番目の音を選択
+		}
+		else if (SelectPush(m_isoundx + 64, m_isoundy, 64, 64) && !m_bhavesound) {
+			m_bhavesound = true;//マウスドラッグ開始
+			m_igivesound = 1;//配列[1]番目の音を選択
+		}
+		else if (SelectPush(m_isoundx + 128, m_isoundy, 64, 64) && !m_bhavesound) {
+			m_bhavesound = true;//マウスドラッグ開始
+			m_igivesound = 2;//配列[2]番目の音を選択
+		}//マウス左クリックが離されたら、ドラッグ終了
+		else if (!Input()->GetMouButtonL()) {
+			m_bhavesound = false;
+		}
 	}
 	//--------------------------------------------------------------------------
 

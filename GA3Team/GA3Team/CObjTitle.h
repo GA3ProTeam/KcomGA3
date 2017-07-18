@@ -34,7 +34,7 @@ private:
 	//ボタンが作成されたか確認
 	int m_icreateflg;
 
-	CSavedataManeger* m_obj_savedata;
+	//CSavedataManeger* m_obj_savedata;
 	ButtonDataSelect* m_obj_button[2];
 };
 

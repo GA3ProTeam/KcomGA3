@@ -7,7 +7,6 @@
 
 void CObjDataSelect::Init()
 {
-
 	m_bsavedataflg = false;
 	m_icreateflg = false;
 	

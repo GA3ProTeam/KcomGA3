@@ -137,6 +137,7 @@
     <ClCompile Include="CSceneStageSelect.cpp" />
     <ClCompile Include="CSceneTitle.cpp" />
     <ClCompile Include="GimmckTest.cpp" />
+    <ClCompile Include="GimmickKatsuo.cpp" />
     <ClCompile Include="Library\Audio.cpp" />
     <ClCompile Include="Library\Button.cpp" />
     <ClCompile Include="Library\CTalkOverlay.cpp" />
@@ -182,6 +183,7 @@
     <ClInclude Include="CSceneStageSelect.h" />
     <ClInclude Include="CSceneTitle.h" />
     <ClInclude Include="GimmckTest.h" />
+    <ClInclude Include="GimmickKatsuo.h" />
     <ClInclude Include="Library\Audio.h" />
     <ClInclude Include="Library\Button.h" />
     <ClInclude Include="Library\CTalkOverlay.h" />

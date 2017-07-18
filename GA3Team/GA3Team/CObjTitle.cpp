@@ -19,7 +19,7 @@ void CObjTitle::Destructor()
 void CObjTitle::Action()
 {
 	//セーブデータ
-	m_obj_savedata = (CObjSavedata *)Obj()->GetObj(OBJ_SAVEDATA);
+	m_obj_savedata = (CSavedataManeger *)Obj()->GetObj(OBJ_SAVEDATA);
 
 	//ボタンがまだ作成されていなければ、ボタンを作成する
 	if (!m_icreateflg){

@@ -150,6 +150,9 @@
     <ClCompile Include="Library\CTalkOverlay.cpp">
       <Filter>ライブラリ ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="GimmickKatsuo.cpp">
+      <Filter>CSceneGameMain\MelueruStageGimmick</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Library\Audio.h">
@@ -256,6 +259,9 @@
     </ClInclude>
     <ClInclude Include="Library\CTalkOverlay.h">
       <Filter>ライブラリ ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="GimmickKatsuo.h">
+      <Filter>CSceneGameMain\MelueruStageGimmick</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

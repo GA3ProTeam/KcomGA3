@@ -14,6 +14,8 @@ public:
 	void ButtonFromTheBegin(); //はじめから
 	void ButtonContinuation(); //つづきから
 
+	
+
 private:
 
 	bool m_bsavedataflg; //各セーブデータ確認する

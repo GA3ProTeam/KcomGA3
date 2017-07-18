@@ -121,6 +121,7 @@ BOOL CALLBACK DlgProc(HWND hDlg, UINT Msg, WPARAM wParam, LPARAM lParam)
 			return TRUE;
 		}
 		break;
+
 	case WM_CLOSE:
 		EndDialog(hDlg, 0);
 		return TRUE;

@@ -273,6 +273,7 @@ inline RECT InitRect(LONG left, LONG top, LONG right, LONG bottom)
 
 #include "GimmckTest.h"
 
+
 //ユーザー・セーブ・シーン間受け渡しデータ
 //固定メモリのみ
 class CUserData

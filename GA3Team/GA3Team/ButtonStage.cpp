@@ -61,6 +61,8 @@ void ButtonStage::Action(){
 		//選んだステージとキャラクターの番号をユーザーデータに保存
 		User()->m_iCurrentStage = m_iStageNumber;
 		User()->m_iCurrentChara = m_sStage_Tab->GetCharacterNum();
+		//ゲーム本編に移動
+		Manager()->Pop(new CSceneGameMain);
 	}
 }
 

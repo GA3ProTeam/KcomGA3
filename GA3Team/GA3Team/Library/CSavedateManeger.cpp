@@ -1,5 +1,10 @@
 #include "../main.h"
 
+void CSavedataManeger::Init()
+{
+	Savedata.resize(3);
+}
+
 void CSavedataManeger::Loadsavedata()
 {
 	ifstream stream("test.sav", std::ios::in);

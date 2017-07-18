@@ -10,7 +10,7 @@ public:
 	ButtonDataSelect() {}//コンストラクタ
 	~ButtonDataSelect() {}//デストラクタ
 
-	void Init(int x, int y, int w, int h, bool bSelected);	//イニシャライズ
+	void Init(int x, int y, int w, int h, bool bSelected,int col_num);	//イニシャライズ
 	void Destructor();			//デストラクタ
 	void Action();				//アクション
 	void Draw();				//ドロー
@@ -23,6 +23,7 @@ private:
 	float m_fCol[4];			//カラー情報
 
 	int m_storage_x, m_storage_y, m_storage_w, m_storage_h;
+	int Color_ID; //表示する画像情報
 
 
 	RECT m_rSrc;	//転送先座標

@@ -3,7 +3,7 @@
 
 
 //イニシャライズ
-void ButtonDataSelect::Init(int x, int y, int w, int h, bool bSelected) {
+void ButtonDataSelect::Init(int x, int y, int w, int h, bool bSelected, int col_num) {
 	
 	//ボタンサイズを指定
 	m_iXpos = x;
@@ -15,6 +15,8 @@ void ButtonDataSelect::Init(int x, int y, int w, int h, bool bSelected) {
 	m_storage_y = m_iYpos;
 	m_storage_w = m_iWidth;
 	m_storage_h = m_iHeight;
+
+	Color_ID = col_num;
 
 	
 	//選択できるかどうかを設定
@@ -38,7 +40,7 @@ void ButtonDataSelect::Init(int x, int y, int w, int h, bool bSelected) {
 		m_fCol[3] = 1.0f;
 	}
 
-	Draw();
+	
 }
 
 //デストラクタ
@@ -54,17 +56,16 @@ void ButtonDataSelect::Action() {
 
 //ドロー
 void ButtonDataSelect::Draw() {
+
 	//切り取り先座標
-
 	m_rDst.top = 0; m_rDst.left = 0; m_rDst.bottom = 64; m_rDst.right = 64;
-
 
 	//転送先座標
 	m_rSrc.top = m_iYpos; m_rSrc.left = m_iXpos; m_rSrc.bottom = m_iYpos +m_iHeight; m_rSrc.right = m_iXpos +m_iWidth;
 
-
 	//描画
-	Image()->Draw(0, &m_rSrc, &m_rDst, m_fCol, 0.0f);
+	Image()->Draw(Color_ID, &m_rSrc, &m_rDst, m_fCol, 0.0f);
+
 }
 
 //拡大
@@ -90,10 +91,10 @@ void ButtonDataSelect::Expansion() {
 	if (flg){
 
 		//拡大
-		m_iXpos = m_storage_x - 10;
-		m_iYpos = m_storage_y - 5;
-		m_iWidth = m_storage_w + 10;
-		m_iHeight = m_storage_h + 5;
+		m_iXpos = m_storage_x - 50;
+		m_iYpos = m_storage_y - 25;
+		m_iWidth = m_storage_w + 50;
+		m_iHeight = m_storage_h + 25;
 	}
 	else {
 		//元に戻す
@@ -124,10 +125,10 @@ void ButtonDataSelect::Emission() {
 
 	if (flg) {
 		//発光
-		m_fCol[0] = 1.0f;
-		m_fCol[1] = 1.0f;
-		m_fCol[2] = 1.0f;
-		m_fCol[3] = 1.0f;
+		m_fCol[0] = 2.0f;
+		m_fCol[1] = 2.0f;
+		m_fCol[2] = 2.0f;
+		m_fCol[3] = 2.0f;
 	}
 	else {
 		//元に戻す

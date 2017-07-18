@@ -117,13 +117,15 @@ void CSavedataManeger::Writesavedata()
 	}
 }
 
-bool CSavedataManeger::Savedatacheck()
+bool CSavedataManeger::Savedatacheck(int savenum)
 {
-	if (!Savedata.size()) //=0
+	
+	if (Savedata[savenum].m_cPlayerName) //=0
 		return true;
 	return false;
 }
 
 void CSavedataManeger::Deletesavedata()
 {
+
 }

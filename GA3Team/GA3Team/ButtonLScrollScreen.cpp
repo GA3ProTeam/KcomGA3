@@ -23,7 +23,12 @@ void ButtonLScrollScreen::Destructor() {
 
 //ƒAƒNƒVƒ‡ƒ“
 void ButtonLScrollScreen::Action() {
-
+	static int c = 0;
+	if (c == 0) {
+		SavedataManeger()->Savedata.resize(3);
+		SavedataManeger()->Loadsavedata();
+		c++;
+	}
 
 	if(Push()){
 		User()->mscroll_x-=10;

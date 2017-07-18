@@ -21,7 +21,7 @@ private:
 	bool m_bsavedataflg; //各セーブデータ確認する
 	bool m_bmessageflg;  //メッセージフラグ
 
-	CObjSavedata* m_obj_savedata[MAX_SAVEDATA];				//セーブデータ
+	//CSavedata* m_obj_savedata[MAX_SAVEDATA];				//セーブデータ
 	ButtonDataSelect* m_obj_savedatabutton[MAX_SAVEDATA];	//データ選択ボタン
 	ButtonDataSelect* m_obj_titlebackbutton;				//戻るボタン
 	ButtonDataSelect* m_obj_deletebutton;					//初期化するボタン

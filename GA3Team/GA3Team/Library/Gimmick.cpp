@@ -1,26 +1,21 @@
 #include "../main.h"
 
-void Gimmick::Init(int xpos,int ypos,int widht,int height,int balloontype,int balloonnum,int soundnum)
+void Gimmick::Init(int xpos, int ypos, int widht, int height, int balloonnum)
 {
 	m_iXpos = xpos;	//ギミックの位置の初期化(X)
 	m_iYpos = ypos;	//ギミックの位置の初期化(Y)
 	m_iWidth = widht;	//ギミック幅の初期化
 	m_iHeight = height;	//ギミック高さの初期化
-	//----------------表示位置----------
-
 	m_iballoonnum = balloonnum;//吹き出しの総数
-	if (balloontype == sound) {
-		m_iSoundNum = soundnum;
-	}
-
+	m_iSoundNum = 1;
 }
 void Gimmick::gimmicDorw(Balloon *ball1, int num)
 {
 	static bool flg = false;
 	static bool onceflg = false;//クリックした際一度だけ反応するためのフラグ
-	
+
 	ball[num] = *ball1;
-	
+
 	memcmp(&ball[num], ball1, sizeof(Balloon));
 
 	//マウスの座標を取得
@@ -34,7 +29,7 @@ void Gimmick::gimmicDorw(Balloon *ball1, int num)
 	m_dst.bottom = 200; m_dst.right = 200;
 
 	//転送先座標
-	m_src.top = m_iYpos; m_src.left = m_iXpos+User()->mscroll_x;
+	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
 	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
 	//描画
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
@@ -50,9 +45,9 @@ void Gimmick::gimmicDorw(Balloon *ball1, int num)
 		ball[i].m_gimsrc.top = m_iYpos + ball[i].m_iGimYpos;
 		ball[i].m_gimsrc.left = m_iXpos + ball[i].m_iGimXpos + User()->mscroll_x;
 		ball[i].m_gimsrc.bottom = ball[i].m_gimsrc.top + GIMMICK_SIZE_Y;
-		ball[i].m_gimsrc.right = ball[i].m_gimsrc.left + GIMMICK_SIZE_X;	
+		ball[i].m_gimsrc.right = ball[i].m_gimsrc.left + GIMMICK_SIZE_X;
 	}
-	//-----------------------------------------------------------
+	//-----------------------当たり判定----------------------------------
 	//縦と横(x)カーソルがギミックの当たり範囲に入っているか否か
 	if ((mousex > m_src.left && mousex < (m_src.left + m_iWidth))
 		&& (mousey > m_src.top && mousey < (m_src.top + m_iHeight)))
@@ -70,7 +65,7 @@ void Gimmick::gimmicDorw(Balloon *ball1, int num)
 			if (ball[i].m_iballoontype == talk)
 			{
 				//会話吹き出しを描画
-				Image()->Draw(3, &ball[i].m_gimsrc,&m_gimdst, col, 0.0f);
+				Image()->Draw(3, &ball[i].m_gimsrc, &m_gimdst, col, 0.0f);
 			}
 			if (ball[i].m_iballoontype == sound)
 			{
@@ -93,31 +88,26 @@ void Gimmick::gimmicDorw(Balloon *ball1, int num)
 				if (Input()->GetMouButtonL())
 				{
 					onceflg = true;
-					//m_bStatus = true;
 				}
 				//左クリックされていない　&&　一回クリックされていたなら
 				else if (!Input()->GetMouButtonL() && onceflg)
 				{
-					SoundManager()->SoundSave(m_iSoundNum);
+					if (ball[i].m_iballoontype == sound && ball[i].m_soundnum != EXCEPTION)
+						SoundManager()->SoundSave(m_iSoundNum);
 					onceflg = false;
 				}
 			}
-			else {
-				//m_bStatus = false;
-			}
 		}
 	}
-	
-
-
 }
-Balloon *InitBall(int gimX, int gimY, int balltype)
+Balloon *InitBall(int gimX, int gimY, int balltype, int soundnum)
 {
-	Balloon *Initball=new Balloon();
+	Balloon *Initball = new Balloon();
 
 	Initball->m_iGimXpos = gimX;
 	Initball->m_iGimYpos = gimY;
 	Initball->m_iballoontype = balltype;
+	Initball->m_soundnum = soundnum;
 
 	return Initball;
 }

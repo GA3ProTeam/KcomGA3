@@ -1,20 +1,21 @@
 #include "main.h"
 //-----------------------------------------------------------------
-void CObjMenuTab::Init()
+void CObjMenuTab::Init(int openclosey)
 {
+	//各変数を初期化
 	m_bOpenClose = false;//閉じている
 	m_bhavesound = false;//持っていない
 	m_igivesound = -1;//音なし
 	m_icnt = 0;
 
-	m_openclose_x = 736;
-	m_openclose_y = 400;
+	m_openclose_x = 736;//開閉ボタンのX
+	m_openclose_y = openclosey;//開閉ボタンのY
 
-	m_isoundx = 480;
-	m_isoundy = m_openclose_y;
+	m_isoundx = 480;//音のボタンのX
+	m_isoundy = m_openclose_y;//音のボタンのY
 
-	m_iBackTitlex = m_openclose_x;
-	m_iBackTitley = m_openclose_y;
+	m_iBackTitlex = m_openclose_x;//タイトルの戻るボタンのX
+	m_iBackTitley = m_openclose_y;//タイトルの戻るボタンのY
 
 	//ボタンの位置X
 	m_iXpos = m_openclose_x;
@@ -39,46 +40,53 @@ void CObjMenuTab::Action()
 
 	//開閉ボタンをクリック
 	if (Push()) {
-		//開いていたら
+		//開いている場合は閉じる
 		if (m_bOpenClose) {
-			m_bOpenClose = false;
+			m_bOpenClose = false;//メニュータブを閉じる
 
-			m_openclose_x = 736;
+			m_openclose_x = 736;//閉じた後の位置をセット
 
 			//ボタンの位置の更新
 			m_iXpos = m_openclose_x;
 
 		}
-		//閉じていたら
+		//閉じている場合は開く
 		else {
-			m_bOpenClose = true;
+			m_bOpenClose = true;//メニュータブを開く
 
-			m_openclose_x = 352;
+			m_openclose_x = 352;//開いた後の位置をセット
 
 			//ボタンの位置の更新
 			m_iXpos = m_openclose_x;
 		}
 	}
 
+	//ゴミ箱動作----------------------------------------------------------------
+	//ゴミ箱ボタンの範囲内にマウスがあるか確認
 	if (Input()->m_x > m_isoundx + 192 && Input()->m_x < (m_isoundx + 192 + 64)
 		&& Input()->m_y > m_isoundy && Input()->m_y < (m_isoundy + 64)) {
+		//マウスドラッグ中にマウスボタンが離された
 		if (!Input()->GetMouButtonL() && m_bhavesound) {
+			//ドラッグしていた効果音を削除
 			SoundManager()->SoundDelete(m_igivesound);
 		}
 	}
+	//--------------------------------------------------------------------------
 
+	//各音ボタン動作------------------------------------------------------------
+	//各ボタン押下処理
 	if (SelectPush(m_isoundx, m_isoundy, 64, 64) && !m_bhavesound) {
-		m_bhavesound = true;
-		m_igivesound = SoundManager()->GetSound(0);
+		m_bhavesound = true;//マウスドラッグ開始
+		m_igivesound =0;//配列[0]番目の音を選択
 	}
 	else if (SelectPush(m_isoundx + 64, m_isoundy, 64, 64) && !m_bhavesound) {
-		m_bhavesound = true;
-		m_igivesound = SoundManager()->GetSound(1);
+		m_bhavesound = true;//マウスドラッグ開始
+		m_igivesound =1;//配列[1]番目の音を選択
 	}
 	else if (SelectPush(m_isoundx + 128, m_isoundy, 64, 64) && !m_bhavesound) {
-		m_bhavesound = true;
-		m_igivesound = SoundManager()->GetSound(2);
-	}
+		m_bhavesound = true;//マウスドラッグ開始
+		m_igivesound =2;//配列[2]番目の音を選択
+	}//マウス左クリックが離されたら、ドラッグ終了
 	else if (!Input()->GetMouButtonL()) {
 		m_bhavesound = false;
 	}
@@ -86,10 +94,19 @@ void CObjMenuTab::Action()
 	if (SelectPush(m_isoundx + 256, m_isoundy, 64, 64) && m_bOpenClose) {
 
 	}
-	
+	//--------------------------------------------------------------------------
+
+	//タイトルに戻るボタン動作--------------------------------------------------
+	//タブが開いた後、すぐに反応させないようにする
 	//タブが押されて1秒以上経つと押せるようになる
 	if (SelectPush(m_iBackTitlex, m_iBackTitley, 64, 64) && m_bOpenClose && m_icnt >= 60) {
+		
+
+		//SavedataManeger()->Savedata[SavedataManeger()->SelectedData].m_bSionflg[0] = true;
+		SavedataManeger()->Writesavedata();
+
 		Manager()->Pop(new CSceneTitle());//タイトルに戻る
+
 	}
 	else if(m_bOpenClose){
 		m_icnt++;
@@ -97,7 +114,7 @@ void CObjMenuTab::Action()
 	else {
 		m_icnt = 0;
 	}
-
+	//--------------------------------------------------------------------------
 }
 
 //-----------------------------------------------------------------

@@ -15,4 +15,4 @@ public:
 private:
 
 };
-#endif // !__GIMMICKKATSUO__
+#endif // !__GIMMICKDOOR__

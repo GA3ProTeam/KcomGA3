@@ -100,7 +100,13 @@ void CObjMenuTab::Action()
 	//タブが開いた後、すぐに反応させないようにする
 	//タブが押されて1秒以上経つと押せるようになる
 	if (SelectPush(m_iBackTitlex, m_iBackTitley, 64, 64) && m_bOpenClose && m_icnt >= 60) {
+		
+
+		//SavedataManeger()->Savedata[SavedataManeger()->SelectedData].m_bSionflg[0] = true;
+		SavedataManeger()->Writesavedata();
+
 		Manager()->Pop(new CSceneTitle());//タイトルに戻る
+
 	}
 	else if(m_bOpenClose){
 		m_icnt++;

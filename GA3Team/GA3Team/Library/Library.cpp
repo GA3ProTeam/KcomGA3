@@ -15,9 +15,12 @@ CSceneManager*   g_SceneManager	  =NULL;//シーンマネージャー
 CSceneObjManager*g_SceneObjManager=NULL;//オブジェクトマネージャー
 CUserData*		 g_UserData		  =NULL;//ユーザーデータ管理
 CHitBoxManager*	 g_HitBoxManager  =NULL;//当たり判定マネージャー
+
 //
 CSoundManeger* g_SoundManeger = NULL;//音管理マネージャー
 CTextManager*  g_TextManager = NULL;//テキストマネージャー
+CObjTalkOverlay* g_TalkOverlay = NULL;
+CSavedataManeger* g_SavedataManeger = NULL;//セーブデータマネージャー
 
 void EndLibrary()
 {
@@ -32,6 +35,8 @@ void EndLibrary()
 	delete g_DirectXDeveice;
 	delete g_SoundManeger;
 	delete g_TextManager;
+	delete g_TalkOverlay;
+	delete g_SavedataManeger;
 	// この時点で開放されていないメモリの情報の表示
 	_CrtDumpMemoryLeaks();
 }
@@ -62,6 +67,8 @@ bool InitLibrary()
 
 	g_SoundManeger = new CSoundManeger();
 	g_TextManager = new CTextManager();
+	g_TalkOverlay = new CObjTalkOverlay(g_TextManager);
+	g_SavedataManeger = new CSavedataManeger();
 
 	return true;
 }

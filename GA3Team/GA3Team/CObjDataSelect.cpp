@@ -7,7 +7,6 @@
 
 void CObjDataSelect::Init()
 {
-
 	m_bsavedataflg = false;
 	m_icreateflg = false;
 	
@@ -198,6 +197,7 @@ void CObjDataSelect::ButtonFromTheBegin() {
 	int mousex = Input()->m_x;
 	int mousey = Input()->m_y;
 
+
 	
 	if (m_icreateflg == false) {
 
@@ -230,6 +230,7 @@ void CObjDataSelect::ButtonFromTheBegin() {
 
 			//セーブデータ確認
 			if (m_obj_savedata[m_iSelectData]->Savedatacheck()){
+
 				m_bsavedataflg = true;
 				m_bmessageflg = true;
 			}
@@ -271,6 +272,8 @@ void CObjDataSelect::ButtonFromTheBegin() {
 			}
 		}
 
+				//新規セーブデータ作成(仮) ---> テスト　プレイヤー１
+				m_obj_savedata[0]->Writesavedata();
 
 	
 

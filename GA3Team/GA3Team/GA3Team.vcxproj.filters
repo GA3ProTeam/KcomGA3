@@ -75,9 +75,6 @@
     <ClCompile Include="Library\CObjTest.cpp">
       <Filter>テスト ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="Library\CObjSavedata.cpp">
-      <Filter>ライブラリ ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="CSceneDataSelect.cpp">
       <Filter>CSceneDataSelect</Filter>
     </ClCompile>
@@ -144,6 +141,12 @@
     <ClCompile Include="GimmckTest.cpp">
       <Filter>テスト ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="Library\CSavedateManeger.cpp">
+      <Filter>ライブラリ ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\CObjTalkOverlay.cpp">
+      <Filter>ライブラリ ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Library\Audio.h">
@@ -197,9 +200,6 @@
     <ClInclude Include="CSceneDataSelect.h">
       <Filter>CSceneDataSelect</Filter>
     </ClInclude>
-    <ClInclude Include="Library\CObjSavedata.h">
-      <Filter>ライブラリ ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="CSceneStageSelect.h">
       <Filter>CSceneStageSelect</Filter>
     </ClInclude>
@@ -244,6 +244,15 @@
     </ClInclude>
     <ClInclude Include="GimmckTest.h">
       <Filter>テスト ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\CSavedateManeger.h">
+      <Filter>ライブラリ ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\CSavedata.h">
+      <Filter>ライブラリ ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\CObjTalkOverlay.h">
+      <Filter>ライブラリ ファイル</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

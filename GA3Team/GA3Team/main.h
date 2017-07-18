@@ -284,6 +284,7 @@ inline RECT InitRect(LONG left, LONG top, LONG right, LONG bottom)
 #include "GimmickKatsuo.h"
 #include "GimmickDoor.h"
 #include "GimmickOven.h"
+#include "GimmickChildren.h"
 //----------------------------------------------
 
 #include "GimmckTest.h"

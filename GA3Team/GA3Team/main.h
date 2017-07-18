@@ -121,6 +121,7 @@ enum OBJ_NAME
 	OBJ_MENUTAB,
 	OBJ_SOUND,
 	OBJ_GIMMICK_TEST,
+	OBJ_TALKOVERLAY,
 };
 //----------------------
 //テキストファイルのネーム

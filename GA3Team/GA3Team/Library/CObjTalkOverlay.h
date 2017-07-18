@@ -10,6 +10,7 @@ private:
 public:
 	CObjTalkOverlay(CTextManager *p): textmgr(p){}
 	bool isDraw() { return m_bDrawing; }
+	void talkDraw();
 };
 
 #endif // !__COBJTALKOVERLAY_H__

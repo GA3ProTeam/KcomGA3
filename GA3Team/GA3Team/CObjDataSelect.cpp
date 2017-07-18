@@ -229,7 +229,7 @@ void CObjDataSelect::ButtonFromTheBegin() {
 			m_iSelectData = i;
 
 			//セーブデータ確認
-			if (m_obj_savedata[m_iSelectData]->Savedatacheck()){
+			if (SavedataManeger()->Savedatacheck(m_iSelectData)){
 
 				m_bsavedataflg = true;
 				m_bmessageflg = true;
@@ -241,9 +241,9 @@ void CObjDataSelect::ButtonFromTheBegin() {
 				IDD_DIALOG1;
 
 				//新規セーブデータ作成(仮) ---> テスト　プレイヤー１
-				m_obj_savedata[m_iSelectData]->Writesavedata();
+				SavedataManeger()->Writesavedata();
 
-				if (m_obj_savedata[m_iSelectData]->Savedatacheck())
+				if (SavedataManeger()->Savedatacheck(m_iSelectData))
 				{
 					//ステージセレクト画面へ
 					//User()->mititle_choice = STAGE_SELECT;
@@ -261,7 +261,7 @@ void CObjDataSelect::ButtonFromTheBegin() {
 			if (MessageBox(NULL,"本当に削除しますか？","プレイヤーネーム削除", MB_OKCANCEL) == IDOK) {
 				
 				m_bsavedataflg = false;
-				m_obj_savedata[m_iSelectData]->Deletesavedata(); //仮
+				SavedataManeger()->Deletesavedata(); //仮
 				//Manager()->Pop(new CSceneTitle()); //デバック用
 
 				m_bmessageflg = false;
@@ -273,7 +273,7 @@ void CObjDataSelect::ButtonFromTheBegin() {
 		}
 
 				//新規セーブデータ作成(仮) ---> テスト　プレイヤー１
-				m_obj_savedata[0]->Writesavedata();
+				SavedataManeger()->Writesavedata();
 
 	
 
@@ -330,7 +330,7 @@ void CObjDataSelect::ButtonContinuation() {
 			m_iSelectData = i;
 
 			//セーブデータ確認
-			if (m_obj_savedata[m_iSelectData]->Savedatacheck()) {
+			if (SavedataManeger()->Savedatacheck(m_iSelectData)) {
 				//m_obj_savedata[m_iSelectData]->Loadsavedata();
 				//ステージセレクトへシーン移動
 				//User()->mititle_choice = STAGE_SELECT;

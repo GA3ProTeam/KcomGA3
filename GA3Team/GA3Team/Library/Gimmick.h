@@ -44,7 +44,7 @@ protected:
 	RECT m_src;		//転送先座標
 	RECT m_dst;		//切り取り座標
 public:
-	//Init(X座標、Y座標、幅、高さ、吹き出しの種類(talk or sound),吹き出しの数)
+	//Init(X座標、Y座標、幅、高さ,吹き出しの数)
 	void Init(int xpos, int ypos, int widht, int height, int balloonnum);
 
 	//吹き出しの種類をセットする

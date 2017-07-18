@@ -4,6 +4,7 @@
 //セーブデータマネージャークラス（共通）
 class CSavedataManeger {
 public:
+	void Init();
 	void Loadsavedata();  // 別ファイルのセーブデータ読み込み
 	void Writesavedata(); //セーブデータ書き込み
 	bool Savedatacheck(int savenum); //セーブデータ確認

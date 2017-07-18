@@ -19,13 +19,18 @@ void CObjTitle::Destructor()
 void CObjTitle::Action()
 {
 	//セーブデータ
-	m_obj_savedata = (CSavedataManeger *)Obj()->GetObj(OBJ_SAVEDATA);
+	//m_obj_savedata = (CSavedataManeger *)Obj()->GetObj(OBJ_SAVEDATA);
 
 	//ボタンがまだ作成されていなければ、ボタンを作成する
 	if (!m_icreateflg){
 
 		//セーブデータの有無判定
-		//m_bdataflg = m_obj_savedata->Savedatacheck();
+		//for (int i = 0; i < MAX_SAVEDATA; i++) {
+		//	if (!m_bdataflg) {
+		//		m_bdataflg = SavedataManeger()->Savedatacheck(i);
+		//		break;
+		//	}
+		//}
 
 		m_bdataflg = true; //デバック用
 

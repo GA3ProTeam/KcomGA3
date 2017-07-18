@@ -34,6 +34,9 @@
     <Filter Include="CSceneGameMain\MelueruStageGimmick">
       <UniqueIdentifier>{cd23dd36-28aa-440c-8cec-ce23548dbc9d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="CSceneGameMain\ShionStage3Gimmick">
+      <UniqueIdentifier>{929c2595-c81f-4641-b84f-d89667af6600}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -154,10 +157,13 @@
       <Filter>CSceneGameMain\MelueruStageGimmick</Filter>
     </ClCompile>
     <ClCompile Include="GimmickDoor.cpp">
-      <Filter>CSceneGameMain\MelueruStageGimmick</Filter>
+      <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="GimmickOven.cpp">
-      <Filter>CSceneGameMain\MelueruStageGimmick</Filter>
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="GimmickChildren.cpp">
+      <Filter>CSceneGameMain\ShionStage3Gimmick</Filter>
     </ClCompile>
     <ClCompile Include="GimmickTelevision.cpp">
       <Filter>CSceneGameMain\MelueruStageGimmick</Filter>
@@ -273,10 +279,13 @@
       <Filter>CSceneGameMain\MelueruStageGimmick</Filter>
     </ClInclude>
     <ClInclude Include="GimmickDoor.h">
-      <Filter>CSceneGameMain\MelueruStageGimmick</Filter>
+      <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="GimmickOven.h">
-      <Filter>CSceneGameMain\MelueruStageGimmick</Filter>
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="GimmickChildren.h">
+      <Filter>CSceneGameMain\ShionStage3Gimmick</Filter>
     </ClInclude>
     <ClInclude Include="GimmickTelevision.h">
       <Filter>CSceneGameMain\MelueruStageGimmick</Filter>

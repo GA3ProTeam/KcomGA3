@@ -6,7 +6,7 @@ void CSceneStageSelect::InitScene()
 
 	//このシーンで表示させるイメージ情報
 	Image()->LoadImage("ステージセレクト仮画像.png",0,TEX_SIZE_1024);
-	
+	Image()->LoadImage("メニュータブ(仮).png", 1, TEX_SIZE_256);
 
 	//ポインタ宣言-----------------------
 	ButtonPlayer *button_player;
@@ -27,6 +27,10 @@ void CSceneStageSelect::InitScene()
 		Obj()->InsertObj(button_player,OBJ_BUTTON_PLAYER,0,this,HIT_BOX_OFF);
 	}
 
+	//メニュータブ生成
+	CObjMenuTab* obj_menutab = new CObjMenuTab();
+	Obj()->InsertObj(obj_menutab, OBJ_MENUTAB, 5, this, HIT_BOX_OFF);
+	obj_menutab->Init(500);
 }
 
 //シーン実行

@@ -52,5 +52,5 @@ void CSceneGameMain::InitScene()
 //ƒV[ƒ“ŽÀs
 void CSceneGameMain::Scene()
 {
-
+	Talk()->talkDraw();
 }

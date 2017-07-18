@@ -194,6 +194,7 @@ class CHitBox;
 class CHitBoxManager;
 class CSoundManeger;
 class CTextManager;
+class CObjTalkOverlay;
 class CSavedataManeger;
 
 //ゲーム各エンジンクラス
@@ -208,6 +209,7 @@ extern CUserData*		g_UserData;
 extern CHitBoxManager*	g_HitBoxManager;
 extern CSoundManeger* g_SoundManeger;
 extern CTextManager* g_TextManager;
+extern CObjTalkOverlay* g_TalkOverlay;
 extern CSavedataManeger* g_SavedataManeger;
 
 //エンジンヘッダー

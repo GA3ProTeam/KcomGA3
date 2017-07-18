@@ -19,6 +19,8 @@ class CScene
 			m_HitBoxManager  =g_HitBoxManager;
 			m_SoundManeger = g_SoundManeger;
 			m_TextManager = g_TextManager;
+			m_SavedataManeger = g_SavedataManeger;
+
 		}
 
 		virtual void InitScene()=0;
@@ -35,6 +37,7 @@ class CScene
 		CHitBoxManager*		Hit()	 { return m_HitBoxManager;	}
 		CSoundManeger* SoundManager() { return m_SoundManeger; }
 		CTextManager*       TextManager() { return m_TextManager; }
+		CSavedataManeger* SavedataManeger() { return m_SavedataManeger; }
 	private:
 		CDrawTexture*	 m_DrawTexture;
 		CAudio*			 m_Audio;
@@ -46,6 +49,7 @@ class CScene
 		CHitBoxManager*	 m_HitBoxManager;
 		CSoundManeger*   m_SoundManeger;
 		CTextManager*	 m_TextManager;
+		CSavedataManeger* m_SavedataManeger;
 };
 
 //シーンマネージャークラス

@@ -25,7 +25,7 @@ void CObjTitle::Action()
 	if (!m_icreateflg){
 
 		//セーブデータの有無判定
-		m_bdataflg = m_obj_savedata->Savedatacheck();
+		//m_bdataflg = m_obj_savedata->Savedatacheck();
 
 //		m_bdataflg = false; //デバック用
 

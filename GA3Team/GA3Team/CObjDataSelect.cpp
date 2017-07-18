@@ -219,9 +219,9 @@ void CObjDataSelect::ButtonFromTheBegin() {
 
 		if (m_obj_savedatabutton[i]->Push()){
 
-			if (m_obj_savedata[i]->Savedatacheck()){
-				m_bsavedataflg = true;
-			}
+			//if (m_obj_savedata[i]->Savedatacheck()){
+			//	m_bsavedataflg = true;
+			//}
 		}
 	}
 	
@@ -260,7 +260,7 @@ void CObjDataSelect::ButtonFromTheBegin() {
 				//IDD_DIALOG1
 
 				//新規セーブデータ作成(仮) ---> テスト　プレイヤー１
-				m_obj_savedata[0]->Writesavedata();
+				//m_obj_savedata[0]->Writesavedata();
 
 				//ステージセレクト画面へ
 				User()->mititle_choice = STAGE_SELECT;

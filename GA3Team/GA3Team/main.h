@@ -31,6 +31,8 @@
 #include <set>
 #include <map>
 #include <algorithm>
+#include <iterator>
+#include <string>
 
 //DIB
 #pragma comment(lib, "winmm.lib")
@@ -192,6 +194,7 @@ class CHitBox;
 class CHitBoxManager;
 class CSoundManeger;
 class CTextManager;
+class CSavedataManeger;
 
 //ゲーム各エンジンクラス
 extern CDirectXDeviec*	g_DirectXDeveice;
@@ -205,6 +208,7 @@ extern CUserData*		g_UserData;
 extern CHitBoxManager*	g_HitBoxManager;
 extern CSoundManeger* g_SoundManeger;
 extern CTextManager* g_TextManager;
+extern CSavedataManeger* g_SavedataManeger;
 
 //エンジンヘッダー
 #include "Library\\DirectXDevice.h"
@@ -219,9 +223,10 @@ extern CTextManager* g_TextManager;
 #include "Library\Trace.h"
 #include "Library\Button.h"
 #include "Library\Gimmick.h"
-#include "Library\CObjSavedata.h"
+#include "Library\CSavedata.h"
 #include "Library\SoundManeger.h"
 #include "Library\TextManager.h"
+#include "Library\CSavedateManeger.h"
 
 inline RECT InitRect(LONG left, LONG top, LONG right, LONG bottom)
 {
@@ -290,8 +295,7 @@ class CUserData
 		//int mSeveData;//サンプルセーブデータ
 		int mscroll_x;
 		int mititle_choice; //始め方の選択
-
-		CObjSavedata savedate[3];
+		
 
 		//---ライブラリ改造用ポインター---
 		HINSTANCE p_hInstance;

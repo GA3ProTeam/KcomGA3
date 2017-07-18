@@ -7,6 +7,7 @@ void CObjPlayer::Init() {
 
 	//•¶šƒf[ƒ^“Ç‚İ‚İ
 	ifstream ifw("Text\\sion1\\sion1_start.bin", std::ios::in | std::ios::binary);
+	
 
 	ifw.read(reinterpret_cast<char*>(&textlen), sizeof(textlen));
 	ifw.read(reinterpret_cast<char*>(&linecount), sizeof(linecount));

@@ -125,6 +125,7 @@ enum OBJ_NAME
 	GIMMICK_KATSUO,
 	GIMMICK_DOOR,
 	GIMMICK_OVEN,
+	GIMMICK_TELEVISION,
 };
 //----------------------
 //テキストファイルのネーム
@@ -284,6 +285,7 @@ inline RECT InitRect(LONG left, LONG top, LONG right, LONG bottom)
 #include "GimmickKatsuo.h"
 #include "GimmickDoor.h"
 #include "GimmickOven.h"
+#include "GimmickTelevision.h"
 //----------------------------------------------
 
 #include "GimmckTest.h"

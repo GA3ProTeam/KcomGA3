@@ -140,6 +140,7 @@
     <ClCompile Include="GimmickDoor.cpp" />
     <ClCompile Include="GimmickKatsuo.cpp" />
     <ClCompile Include="GimmickOven.cpp" />
+    <ClCompile Include="GimmickTelevision.cpp" />
     <ClCompile Include="Library\Audio.cpp" />
     <ClCompile Include="Library\Button.cpp" />
     <ClCompile Include="Library\CTalkOverlay.cpp" />
@@ -188,6 +189,7 @@
     <ClInclude Include="GimmickDoor.h" />
     <ClInclude Include="GimmickKatsuo.h" />
     <ClInclude Include="GimmickOven.h" />
+    <ClInclude Include="GimmickTelevision.h" />
     <ClInclude Include="Library\Audio.h" />
     <ClInclude Include="Library\Button.h" />
     <ClInclude Include="Library\CTalkOverlay.h" />

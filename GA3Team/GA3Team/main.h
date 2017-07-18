@@ -280,6 +280,7 @@ inline RECT InitRect(LONG left, LONG top, LONG right, LONG bottom)
 #include "ButtonRScrollScreen.h"
 #include "CObjGimmickManager.h"
 #include "GimmickKatsuo.h"
+#include "GimmickChildren.h"
 //----------------------------------------------
 
 #include "GimmckTest.h"

@@ -301,6 +301,9 @@ class CUserData
 		int mscroll_x;
 		int mititle_choice; //始め方の選択
 		
+		bool m_bsionability;
+		bool m_bkouneability;
+		bool m_bmerueruability;
 
 		//---ライブラリ改造用ポインター---
 		HINSTANCE p_hInstance;

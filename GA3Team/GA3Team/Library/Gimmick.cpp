@@ -23,17 +23,7 @@ void Gimmick::gimmicDorw(Balloon *ball1, int num)
 	int mousey = Input()->m_y;
 
 	float col[4] = { 1.0f,1.0f,1.0f,1.0f };
-	//-------------------------ギミック(本体)を描画-------------------------------
-	//切り取り先座標
-	m_dst.top = 0; m_dst.left = 0;
-	m_dst.bottom = 200; m_dst.right = 200;
-
-	//転送先座標
-	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
-	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
-	//描画
-	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
-
+	
 	//-----------------------吹き出し描画------------------------
 	//切り取り座標
 	m_gimdst.top = 0;						m_gimdst.left = 0;

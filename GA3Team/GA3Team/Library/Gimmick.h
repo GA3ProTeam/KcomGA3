@@ -15,6 +15,8 @@ typedef struct
 	int m_iballoontype;  //吹き出しの種類
 	RECT m_gimsrc;		 //転送先座標
 	int m_soundnum;        //ギミックが持っている音情報
+						   //押されたかどうかを判断する
+	bool OnPush;
 }Balloon;
 
 //プロトタイプ宣言
@@ -43,6 +45,8 @@ protected:
 	RECT m_gimdst;		//切り取り座標
 	RECT m_src;		//転送先座標
 	RECT m_dst;		//切り取り座標
+
+	
 public:
 	//Init(X座標、Y座標、幅、高さ,吹き出しの数)
 	void Init(int xpos, int ypos, int widht, int height, int balloonnum);
@@ -55,5 +59,7 @@ public:
 
 	//描画
 	void gimmicDorw(Balloon *ball1, int num);
+
+
 };
 #endif // !__GIMMICK_H__

@@ -8,10 +8,11 @@ void CSceneManager::GameLoop()
 	
 	Pop();			//シーン切り替え
 	SceneAction();	//シーンアクション実行
-
+	g_TalkOverlay->Action(); //オーバーレイ実行
 
 	g_DrawTexture->Set2DDraw();
 	SceneDraw();	//シーン描画
+	g_TalkOverlay->Draw(); //オーバーレイ描画
 	
 	m_TimeEnd=timeGetTime();
 	m_Time+= m_TimeEnd - m_TimeStart;

@@ -127,7 +127,9 @@
     <ClCompile Include="CObjMenuTab.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="CObjDataSelect.cpp" />
+    <ClCompile Include="CObjDataSelect.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="CObjPlayer.cpp" />
     <ClCompile Include="CObjStageTab.cpp" />
     <ClCompile Include="CObjTitle.cpp" />
@@ -157,13 +159,17 @@
     <ClCompile Include="Library\UserData.cpp" />
     <ClCompile Include="Library\WinInputs.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="CSceneDataSelect.cpp" />
+    <ClCompile Include="CSceneDataSelect.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ButtonDataSelect.h" />
     <ClInclude Include="ButtonLScrollScreen.h" />
     <ClInclude Include="ButtonRScrollScreen.h" />
-    <ClInclude Include="CObjDataSelect.h" />
+    <ClInclude Include="CObjDataSelect.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="CObjGimmickManager.h" />
     <ClInclude Include="CObjGimmickObject.h" />
     <ClInclude Include="CObjMenuTab.h">
@@ -198,7 +204,9 @@
     <ClInclude Include="Library\Trace.h" />
     <ClInclude Include="Library\WinInputs.h" />
     <ClInclude Include="main.h" />
-    <ClInclude Include="CSceneDataSelect.h" />
+    <ClInclude Include="CSceneDataSelect.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>

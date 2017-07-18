@@ -1,6 +1,6 @@
 #include "main.h"
 
-void GimmickKatsuo::Action()
+void GimmickOven::Action()
 {
 
 	if (ball[0].OnPush) {
@@ -20,11 +20,11 @@ void GimmickKatsuo::Action()
 
 
 }
-void GimmickKatsuo::Destructor()
+void GimmickOven::Destructor()
 {
 
 }
-void GimmickKatsuo::Draw()
+void GimmickOven::Draw()
 {
 	Balloon *ball1 = InitBall(48, -48, sound, 1);
 	gimmicDorw(ball1, 0);

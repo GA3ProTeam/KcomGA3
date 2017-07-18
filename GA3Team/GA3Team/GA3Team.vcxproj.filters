@@ -156,8 +156,11 @@
     <ClCompile Include="GimmickKatsuo.cpp">
       <Filter>CSceneGameMain\MelueruStageGimmick</Filter>
     </ClCompile>
-    <ClCompile Include="GimmickChildren.cpp">
-      <Filter>CSceneGameMain\ShionStage3Gimmick</Filter>
+    <ClCompile Include="GimmickDoor.cpp">
+      <Filter>CSceneGameMain\MelueruStageGimmick</Filter>
+    </ClCompile>
+    <ClCompile Include="GimmickOven.cpp">
+      <Filter>CSceneGameMain\MelueruStageGimmick</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -269,8 +272,11 @@
     <ClInclude Include="GimmickKatsuo.h">
       <Filter>CSceneGameMain\MelueruStageGimmick</Filter>
     </ClInclude>
-    <ClInclude Include="GimmickChildren.h">
-      <Filter>CSceneGameMain\ShionStage3Gimmick</Filter>
+    <ClInclude Include="GimmickDoor.h">
+      <Filter>CSceneGameMain\MelueruStageGimmick</Filter>
+    </ClInclude>
+    <ClInclude Include="GimmickOven.h">
+      <Filter>CSceneGameMain\MelueruStageGimmick</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -8,6 +8,10 @@ CUserData::CUserData()
 	m_iCurrentStage=0; //選択したステージ番号初期化
 	m_iCurrentChara=0; //選択したキャラクター番号初期化
 
+	m_bsionability=false;
+	m_bkouneability = false;
+	m_bmerueruability = false;
+
 }
 
 CUserData::~CUserData()

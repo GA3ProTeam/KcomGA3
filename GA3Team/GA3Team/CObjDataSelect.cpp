@@ -58,9 +58,9 @@ void CObjDataSelect::Action()
 
 	//セーブデータ
 	for (int i = 0; i < MAX_SAVEDATA; i++) {
-		m_obj_savedata[i] = (CObjSavedata *)Obj()->GetObj(OBJ_SAVEDATA);
+		//m_obj_savedata[i] = (CObjSavedata *)Obj()->GetObj(OBJ_SAVEDATA);
 
-		if (m_obj_savedata[i]->Savedatacheck()){
+		if (SavedataManeger()->Savedatacheck(i)){
 
 			//プレイヤーデータ表示デバッグ用
 			if (i == 1)

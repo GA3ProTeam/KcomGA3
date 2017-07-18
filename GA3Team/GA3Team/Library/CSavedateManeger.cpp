@@ -38,6 +38,15 @@ void CSavedataManeger::Loadsavedata()
 			switch (dataflg) { //__SWITCH__
 			case 0: { //m_bKouneflg
 				if ((*itr)[i] == '0') {
+					Savedata[saveflg].m_btutoriaruflg.push_back(false);
+				}
+				else {
+					Savedata[saveflg].m_btutoriaruflg.push_back(true);
+				}
+				break;
+			}
+			case 1: { //m_bKouneflg
+				if ((*itr)[i] == '0') {
 					Savedata[saveflg].m_bKouneflg.push_back(false);
 				}
 				else {
@@ -45,7 +54,7 @@ void CSavedataManeger::Loadsavedata()
 				}
 				break;
 			}
-			case 1: {//m_bKouneClearflg
+			case 2: {//m_bKouneClearflg
 				if ((*itr)[i] == '0') {
 					Savedata[saveflg].m_bKouneClearflg.push_back(false);
 				}
@@ -54,7 +63,7 @@ void CSavedataManeger::Loadsavedata()
 				}
 				break;
 			}
-			case 2: {//m_bKouneClearflg
+			case 3: {//m_bKouneClearflg
 				if ((*itr)[i] == '0') {
 					Savedata[saveflg].m_bSionflg.push_back(false);
 				}
@@ -63,7 +72,7 @@ void CSavedataManeger::Loadsavedata()
 				}
 				break;
 			}
-			case 3: {//m_bKouneClearflg
+			case 4: {//m_bKouneClearflg
 				if ((*itr)[i] == '0') {
 					Savedata[saveflg].m_bSionClearflg.push_back(false);
 				}
@@ -72,7 +81,7 @@ void CSavedataManeger::Loadsavedata()
 				}
 				break;
 			}
-			case 4: {//m_bKouneClearflg
+			case 5: {//m_bKouneClearflg
 				if ((*itr)[i] == '0') {
 					Savedata[saveflg].m_bMelueruflg.push_back(false);
 				}
@@ -81,7 +90,7 @@ void CSavedataManeger::Loadsavedata()
 				}
 				break;
 			}
-			case 5: {//m_bKouneClearflg
+			case 6: {//m_bKouneClearflg
 				if ((*itr)[i] == '0') {
 					Savedata[saveflg].m_bMelueruClearflg.push_back(false);
 				}
@@ -97,7 +106,7 @@ void CSavedataManeger::Loadsavedata()
 		if (saveflg >= 3)
 			return;
 
-		if (dataflg > 5)
+		if (dataflg > 6)
 		{
 			saveflg++;
 			dataflg = 0;
@@ -116,6 +125,8 @@ void CSavedataManeger::Writesavedata()
 		stream << "\n";
 		stream << "]";
 		stream << (*itr).m_btutorial;
+		stream << "\n";
+		copy((*itr).m_btutoriaruflg.begin(), (*itr).m_btutoriaruflg.end(), stream_itr);
 		stream << "\n";
 		copy((*itr).m_bKouneflg.begin(), (*itr).m_bKouneflg.end(), stream_itr);
 		stream << "\n";

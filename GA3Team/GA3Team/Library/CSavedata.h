@@ -7,6 +7,7 @@ public:
 	//char m_savedata;	  //仮
 	char m_cPlayerName[32];   //プレイヤーの名前
 	bool m_btutorial;
+	vector<bool> m_btutoriaruflg;//チュートリアルのフラグ進行度
 
 	vector<bool> m_bKouneflg;//コウネのフラグ進行度
 	vector<bool> m_bKouneClearflg;//コウネのクリア進行度

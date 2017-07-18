@@ -146,9 +146,9 @@ void CSavedataManeger::Writesavedata()
 
 bool CSavedataManeger::Savedatacheck(int savenum)
 {
-	
-	if (Savedata[savenum].m_cPlayerName) //=0
-		return true;
+
+//	if (Savedata[savenum].m_cPlayerName) //=0
+//		return true;
 	return false;
 }
 

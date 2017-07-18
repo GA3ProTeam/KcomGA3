@@ -1,6 +1,6 @@
 #include "main.h"
 //-----------------------------------------------------------------
-void CObjMenuTab::Init()
+void CObjMenuTab::Init(int openclosey)
 {
 	//各変数を初期化
 	m_bOpenClose = false;//閉じている
@@ -9,7 +9,7 @@ void CObjMenuTab::Init()
 	m_icnt = 0;
 
 	m_openclose_x = 736;//開閉ボタンのX
-	m_openclose_y = 400;//開閉ボタンのY
+	m_openclose_y = openclosey;//開閉ボタンのY
 
 	m_isoundx = 480;//音のボタンのX
 	m_isoundy = m_openclose_y;//音のボタンのY

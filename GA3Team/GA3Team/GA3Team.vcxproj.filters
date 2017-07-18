@@ -31,6 +31,9 @@
     <Filter Include="テスト ファイル">
       <UniqueIdentifier>{bbe6a533-474e-47f0-b138-fb3b9b43098b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="CSceneGameMain\MelueruStageGimmick">
+      <UniqueIdentifier>{cd23dd36-28aa-440c-8cec-ce23548dbc9d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -144,7 +147,7 @@
     <ClCompile Include="Library\CSavedateManeger.cpp">
       <Filter>ライブラリ ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="Library\CObjTalkOverlay.cpp">
+    <ClCompile Include="Library\CTalkOverlay.cpp">
       <Filter>ライブラリ ファイル</Filter>
     </ClCompile>
   </ItemGroup>
@@ -251,7 +254,7 @@
     <ClInclude Include="Library\CSavedata.h">
       <Filter>ライブラリ ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="Library\CObjTalkOverlay.h">
+    <ClInclude Include="Library\CTalkOverlay.h">
       <Filter>ライブラリ ファイル</Filter>
     </ClInclude>
   </ItemGroup>

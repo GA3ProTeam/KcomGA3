@@ -1,6 +1,6 @@
 #include "main.h"
 //-----------------------------------------------------------------
-void CObjMenuTab::Init()
+void CObjMenuTab::Init(int openclosey)
 {
 	//各変数を初期化
 	m_bOpenClose = false;//閉じている
@@ -9,7 +9,7 @@ void CObjMenuTab::Init()
 	m_icnt = 0;
 
 	m_openclose_x = 736;//開閉ボタンのX
-	m_openclose_y = 400;//開閉ボタンのY
+	m_openclose_y = openclosey;//開閉ボタンのY
 
 	m_isoundx = 480;//音のボタンのX
 	m_isoundy = m_openclose_y;//音のボタンのY
@@ -77,15 +77,15 @@ void CObjMenuTab::Action()
 	//各ボタン押下処理
 	if (SelectPush(m_isoundx, m_isoundy, 64, 64) && !m_bhavesound) {
 		m_bhavesound = true;//マウスドラッグ開始
-		m_igivesound = SoundManager()->GetSound(0);//この音を選択
+		m_igivesound =0;//配列[0]番目の音を選択
 	}
 	else if (SelectPush(m_isoundx + 64, m_isoundy, 64, 64) && !m_bhavesound) {
 		m_bhavesound = true;//マウスドラッグ開始
-		m_igivesound = SoundManager()->GetSound(1);//この音を選択
+		m_igivesound =1;//配列[1]番目の音を選択
 	}
 	else if (SelectPush(m_isoundx + 128, m_isoundy, 64, 64) && !m_bhavesound) {
 		m_bhavesound = true;//マウスドラッグ開始
-		m_igivesound = SoundManager()->GetSound(2);//この音を選択
+		m_igivesound =2;//配列[2]番目の音を選択
 	}//マウス左クリックが離されたら、ドラッグ終了
 	else if (!Input()->GetMouButtonL()) {
 		m_bhavesound = false;

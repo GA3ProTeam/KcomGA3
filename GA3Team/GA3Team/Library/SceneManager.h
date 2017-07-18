@@ -38,7 +38,7 @@ class CScene
 		CHitBoxManager*		Hit()	 { return m_HitBoxManager;	}
 		CSoundManeger* SoundManager() { return m_SoundManeger; }
 		CTextManager*       TextManager() { return m_TextManager; }
-		CObjTalkOverlay*    Talk() { return m_TalkOverlay; }
+		CTalkOverlay*    Talk() { return m_TalkOverlay; }
 		CSavedataManeger* SavedataManeger() { return m_SavedataManeger; }
 	private:
 		CDrawTexture*	 m_DrawTexture;
@@ -51,7 +51,7 @@ class CScene
 		CHitBoxManager*	 m_HitBoxManager;
 		CSoundManeger*   m_SoundManeger;
 		CTextManager*	 m_TextManager;
-		CObjTalkOverlay* m_TalkOverlay;
+		CTalkOverlay* m_TalkOverlay;
 		CSavedataManeger* m_SavedataManeger;
 };
 

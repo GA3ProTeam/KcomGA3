@@ -127,7 +127,9 @@
     <ClCompile Include="CObjMenuTab.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="CObjDataSelect.cpp" />
+    <ClCompile Include="CObjDataSelect.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="CObjPlayer.cpp" />
     <ClCompile Include="CObjStageTab.cpp" />
     <ClCompile Include="CObjTitle.cpp" />
@@ -137,7 +139,7 @@
     <ClCompile Include="GimmckTest.cpp" />
     <ClCompile Include="Library\Audio.cpp" />
     <ClCompile Include="Library\Button.cpp" />
-    <ClCompile Include="Library\CObjTalkOverlay.cpp" />
+    <ClCompile Include="Library\CTalkOverlay.cpp" />
     <ClCompile Include="Library\CObjTest.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
@@ -157,13 +159,17 @@
     <ClCompile Include="Library\UserData.cpp" />
     <ClCompile Include="Library\WinInputs.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="CSceneDataSelect.cpp" />
+    <ClCompile Include="CSceneDataSelect.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ButtonDataSelect.h" />
     <ClInclude Include="ButtonLScrollScreen.h" />
     <ClInclude Include="ButtonRScrollScreen.h" />
-    <ClInclude Include="CObjDataSelect.h" />
+    <ClInclude Include="CObjDataSelect.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="CObjGimmickManager.h" />
     <ClInclude Include="CObjGimmickObject.h" />
     <ClInclude Include="CObjMenuTab.h">
@@ -178,7 +184,7 @@
     <ClInclude Include="GimmckTest.h" />
     <ClInclude Include="Library\Audio.h" />
     <ClInclude Include="Library\Button.h" />
-    <ClInclude Include="Library\CObjTalkOverlay.h" />
+    <ClInclude Include="Library\CTalkOverlay.h" />
     <ClInclude Include="Library\CSavedata.h" />
     <ClInclude Include="Library\CObjTest.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
@@ -198,7 +204,9 @@
     <ClInclude Include="Library\Trace.h" />
     <ClInclude Include="Library\WinInputs.h" />
     <ClInclude Include="main.h" />
-    <ClInclude Include="CSceneDataSelect.h" />
+    <ClInclude Include="CSceneDataSelect.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>

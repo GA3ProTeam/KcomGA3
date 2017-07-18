@@ -37,7 +37,7 @@ void CSceneGameMain::InitScene()
 	
 	m_obj_menutab = new CObjMenuTab();
 	Obj()->InsertObj(m_obj_menutab, OBJ_MENUTAB, 5, this, HIT_BOX_OFF);
-	m_obj_menutab->Init();
+	m_obj_menutab->Init(400);
 
 	m_gimmick_test = new GimmickTest();
 	Obj()->InsertObj(m_gimmick_test, OBJ_GIMMICK_TEST, 5, this, HIT_BOX_OFF);

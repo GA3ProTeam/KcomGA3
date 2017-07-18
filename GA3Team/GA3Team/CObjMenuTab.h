@@ -27,7 +27,7 @@ private:
 	RECT m_rDst;//切り取り座標
 
 public:
-	void Init();//イニシャライズ
+	void Init(int openclosey);//イニシャライズ
 	void Destructor();//デストラクタ
 	void Action();//アクション
 	void Draw();//描画

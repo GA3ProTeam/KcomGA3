@@ -122,6 +122,7 @@ enum OBJ_NAME
 	OBJ_SOUND,
 	OBJ_GIMMICK_TEST,
 	OBJ_TALKOVERLAY,
+	GIMMICK_KATSUO,
 };
 //----------------------
 //テキストファイルのネーム
@@ -278,6 +279,7 @@ inline RECT InitRect(LONG left, LONG top, LONG right, LONG bottom)
 #include "ButtonLScrollScreen.h"
 #include "ButtonRScrollScreen.h"
 #include "CObjGimmickManager.h"
+#include "GimmickKatsuo.h"
 //----------------------------------------------
 
 #include "GimmckTest.h"

@@ -14,13 +14,26 @@ void CSavedataManeger::Loadsavedata()
 	}
 
 	for (auto itr = vstr.begin(); itr != vstr.end(); itr++) {//行
+		//プレイヤーネームを読み取る
 		if ((*itr)[0] == '[')
 		{
 			(*itr).erase(0, 1);
 			strcpy_s(Savedata[saveflg].m_cPlayerName, (*itr).c_str());
 			continue;
 		}
-
+		//チュートリアルクリアしてるか否かを判断するフラグを取得
+		if ((*itr)[0] == ']')
+		{
+			(*itr).erase(0, 1);
+			if ((*itr)[0] == '0') {
+				Savedata[saveflg].m_btutorial = false;
+			}
+			else {
+				Savedata[saveflg].m_btutorial = true;
+			}
+			continue;
+		}
+		//各フラグを取得する
 		for (int i = 0; i < (*itr).length(); i++) {//文字
 			switch (dataflg) { //__SWITCH__
 			case 0: { //m_bKouneflg
@@ -100,6 +113,9 @@ void CSavedataManeger::Writesavedata()
 	{
 		stream << "[";
 		stream << (*itr).m_cPlayerName;
+		stream << "\n";
+		stream << "]";
+		stream << (*itr).m_btutorial;
 		stream << "\n";
 		copy((*itr).m_bKouneflg.begin(), (*itr).m_bKouneflg.end(), stream_itr);
 		stream << "\n";

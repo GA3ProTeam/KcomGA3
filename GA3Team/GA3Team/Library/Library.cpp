@@ -19,7 +19,7 @@ CHitBoxManager*	 g_HitBoxManager  =NULL;//当たり判定マネージャー
 //
 CSoundManeger* g_SoundManeger = NULL;//音管理マネージャー
 CTextManager*  g_TextManager = NULL;//テキストマネージャー
-CObjTalkOverlay* g_TalkOverlay = NULL;
+CTalkOverlay* g_TalkOverlay = NULL;
 CSavedataManeger* g_SavedataManeger = NULL;//セーブデータマネージャー
 
 void EndLibrary()
@@ -67,7 +67,7 @@ bool InitLibrary()
 
 	g_SoundManeger = new CSoundManeger();
 	g_TextManager = new CTextManager();
-	g_TalkOverlay = new CObjTalkOverlay(g_TextManager);
+	g_TalkOverlay = new CTalkOverlay(g_TextManager);
 	g_SavedataManeger = new CSavedataManeger();
 
 	return true;

@@ -144,7 +144,7 @@
     <ClCompile Include="Library\CSavedateManeger.cpp">
       <Filter>ライブラリ ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="Library\CObjTalkOverlay.cpp">
+    <ClCompile Include="Library\CTalkOverlay.cpp">
       <Filter>ライブラリ ファイル</Filter>
     </ClCompile>
   </ItemGroup>
@@ -251,7 +251,7 @@
     <ClInclude Include="Library\CSavedata.h">
       <Filter>ライブラリ ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="Library\CObjTalkOverlay.h">
+    <ClInclude Include="Library\CTalkOverlay.h">
       <Filter>ライブラリ ファイル</Filter>
     </ClInclude>
   </ItemGroup>

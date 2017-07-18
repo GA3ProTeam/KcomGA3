@@ -7,6 +7,7 @@ void Gimmick::Init(int xpos, int ypos, int widht, int height, int balloonnum)
 	m_iWidth = widht;	//ギミック幅の初期化
 	m_iHeight = height;	//ギミック高さの初期化
 	m_iballoonnum = balloonnum;//吹き出しの総数
+	m_iSoundNum = 1;
 }
 void Gimmick::gimmicDorw(Balloon *ball1, int num)
 {

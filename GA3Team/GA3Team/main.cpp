@@ -50,7 +50,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR szCmdL
 	//------------------------------------------------
 
 	//------始めのシーンを登録------------------------
-	g_SceneManager->Pop(new CSceneStageSelect);
+	g_SceneManager->Pop(new CSceneTitle);
 	//------------------------------------------------
 
 	//------ゲームループ実行--------------------------
@@ -121,6 +121,7 @@ BOOL CALLBACK DlgProc(HWND hDlg, UINT Msg, WPARAM wParam, LPARAM lParam)
 			return TRUE;
 		}
 		break;
+
 	case WM_CLOSE:
 		EndDialog(hDlg, 0);
 		return TRUE;

@@ -156,6 +156,9 @@
     <ClCompile Include="GimmickDoor.cpp">
       <Filter>CSceneGameMain\MelueruStageGimmick</Filter>
     </ClCompile>
+    <ClCompile Include="GimmickAunt.cpp">
+      <Filter>CSceneGameMain</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Library\Audio.h">
@@ -268,6 +271,9 @@
     </ClInclude>
     <ClInclude Include="GimmickDoor.h">
       <Filter>CSceneGameMain\MelueruStageGimmick</Filter>
+    </ClInclude>
+    <ClInclude Include="GimmickAunt.h">
+      <Filter>CSceneGameMain</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

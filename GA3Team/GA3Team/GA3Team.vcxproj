@@ -164,6 +164,7 @@
     <ClCompile Include="CSceneDataSelect.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="GimmickAunt.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ButtonDataSelect.h" />
@@ -184,6 +185,7 @@
     <ClInclude Include="CSceneStageSelect.h" />
     <ClInclude Include="CSceneTitle.h" />
     <ClInclude Include="GimmckTest.h" />
+    <ClInclude Include="GimmickAunt.h" />
     <ClInclude Include="GimmickDoor.h" />
     <ClInclude Include="GimmickKatsuo.h" />
     <ClInclude Include="Library\Audio.h" />

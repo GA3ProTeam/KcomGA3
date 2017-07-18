@@ -126,21 +126,6 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 	default:
 		break;
 	}
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
 
 //デストラクタ

@@ -122,6 +122,7 @@ enum OBJ_NAME
 	OBJ_SOUND,
 	OBJ_GIMMICK_TEST,
 	OBJ_TALKOVERLAY,
+	GIMMICK_KATSUO,
 };
 //----------------------
 //テキストファイルのネーム
@@ -278,6 +279,7 @@ inline RECT InitRect(LONG left, LONG top, LONG right, LONG bottom)
 #include "ButtonLScrollScreen.h"
 #include "ButtonRScrollScreen.h"
 #include "CObjGimmickManager.h"
+#include "GimmickKatsuo.h"
 //----------------------------------------------
 
 #include "GimmckTest.h"
@@ -301,6 +303,9 @@ class CUserData
 		int mscroll_x;
 		int mititle_choice; //始め方の選択
 		
+		bool m_bsionability;
+		bool m_bkouneability;
+		bool m_bmerueruability;
 
 		//---ライブラリ改造用ポインター---
 		HINSTANCE p_hInstance;

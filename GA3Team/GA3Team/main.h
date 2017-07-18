@@ -227,6 +227,7 @@ extern CSavedataManeger* g_SavedataManeger;
 #include "Library\SoundManeger.h"
 #include "Library\TextManager.h"
 #include "Library\CSavedateManeger.h"
+#include "Library\CObjTalkOverlay.h"
 
 inline RECT InitRect(LONG left, LONG top, LONG right, LONG bottom)
 {

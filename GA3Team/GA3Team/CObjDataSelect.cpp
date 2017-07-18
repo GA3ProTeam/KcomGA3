@@ -11,6 +11,9 @@ BOOL CALLBACK DlgProc(HWND hDlg, UINT Msg, WPARAM wParam, LPARAM lParam);
 void CObjDataSelect::Init()
 {
 
+	//プレイヤーデータ読込み
+//	SavedataManeger()->Loadsavedata();
+
 	m_bsavedataflg = false;
 	m_icreateflg = false;
 
@@ -55,13 +58,20 @@ void CObjDataSelect::Action()
 	//セーブデータ
 	for (int i = 0; i < MAX_SAVEDATA; i++) {
 
+		//セーブデータがなければ「No Data」と表示する
+		//if (SavedataManeger()->Savedatacheck(i)) {
+		//	if (SavedataManeger()->Savedatacheck(i) == false) {
+		//		sprintf(m_cplayername[i], "No Data");
+		//	}
+		//}
+
 		if (SavedataManeger()->Savedatacheck(i)) {
 			//プレイヤー進行度
-				//for (int j = 0; j < CHAR_PROGRESS; j++)
-				//{
-				//	//進行度
-				//	sprintf(load_progress[i], "%d", m_iplayerprogress[i][j]);
-				//}
+			//for (int j = 0; j < CHAR_PROGRESS; j++)
+			//{
+			//	//進行度
+			//	sprintf(load_progress[i], "%d", m_iplayerprogress[i][j]);
+			//}
 		}
 	}
 

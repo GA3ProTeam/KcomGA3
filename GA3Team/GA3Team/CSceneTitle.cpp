@@ -5,8 +5,8 @@ void CSceneTitle::InitScene()
 {
 
 	//このシーンで表示させるイメージ情報
-	Image()->LoadImage("はじめから.png",0,TEX_SIZE_64);
-	Image()->LoadImage("つづきから.png", 1, TEX_SIZE_64);
+	Image()->LoadImage("はじめから.png",0,TEX_SIZE_512);
+	Image()->LoadImage("つづきから.png", 1, TEX_SIZE_512);
 
 	//文字データ作成
 	//Font()->SetStrTex("ボスHP：");

@@ -57,11 +57,12 @@ void CObjDataSelect::Action()
 	for (int i = 0; i < MAX_SAVEDATA; i++) {
 
 		//セーブデータがなければ「No Data」と表示する
-		//if (SavedataManeger()->Savedatacheck(i)) {
-		//	if (SavedataManeger()->Savedatacheck(i) == false) {
-		//		sprintf(m_cplayername[i], "No Data");
-		//	}
-		//}
+		//デバッグ用
+		if (/*SavedataManeger()->Savedatacheck(i)*/ strlen(m_cplayername[i]) == 0) {
+			if (SavedataManeger()->Savedatacheck(i) == false) {
+				sprintf(m_cplayername[i], "No Data");
+			}
+		}
 
 		if (SavedataManeger()->Savedatacheck(i)) {
 			//プレイヤー進行度
@@ -86,7 +87,7 @@ void CObjDataSelect::Action()
 	//タイトルに戻る
 	m_obj_titlebackbutton = new ButtonDataSelect();
 	Obj()->InsertObj(m_obj_titlebackbutton, OBJ_BUTTON_STAGE, 0, this->m_pScene, HIT_BOX_OFF);
-	m_obj_titlebackbutton->Init(30, 525, 150, 50, true, 0);
+	m_obj_titlebackbutton->Init(30, 525, 150, 150, true, 1, 512, 512);
 
 
 	//タイトルに戻る(仮)
@@ -155,7 +156,7 @@ void CObjDataSelect::Draw()
 	Font()->StrDraw(load_progress[2], 600, 380, text_size_progress[2], col);
 
 	//戻る
-	Font()->StrDraw("タイトルに戻る", 30, 525, 20, col);
+	//Font()->StrDraw("タイトルに戻る", 30, 525, 20, col);
 
 }
 
@@ -170,7 +171,7 @@ void CObjDataSelect::ButtonFromTheBegin() {
 			//ボタン描画
 			m_obj_savedatabutton[i] = new ButtonDataSelect();
 			Obj()->InsertObj(m_obj_savedatabutton[i], OBJ_BUTTON_STAGE, 0, this->m_pScene, HIT_BOX_OFF);
-			m_obj_savedatabutton[i]->Init(200, m_button_y, 500, 100, true, 0);
+			m_obj_savedatabutton[i]->Init(200, m_button_y, 500, 100, true, 0 , 64, 64);
 
 			m_button_y += 150;
 
@@ -186,7 +187,7 @@ void CObjDataSelect::ButtonFromTheBegin() {
 		m_obj_savedatabutton[i]->Expansion();	//拡大
 		m_obj_savedatabutton[i]->Emission();		//発光
 
-													//データを選択しました
+		//データを選択しました
 		if (m_obj_savedatabutton[i]->Push()) {
 
 			//セーブデータ番号
@@ -199,31 +200,39 @@ void CObjDataSelect::ButtonFromTheBegin() {
 				m_bsavedataflg = true;
 				m_bmessageflg = true;
 			}
+
+			if (m_bmessageflg == true && strcmp(m_cplayername[m_iSelectData], "No Data") != 0) {/*セーブデータが入っていたら*/
+				 
+				 //初期化してもいいですか
+				 //"はい"...データ削除
+				if (MessageBox(User()->p_hWnd, "本当に削除しますか？", "プレイヤーネーム削除", MB_OKCANCEL) == IDOK) {
+
+					m_bsavedataflg = false;
+					SavedataManeger()->Deletesavedata(); //仮
+
+					//デバッグ用
+					sprintf(m_cplayername[m_iSelectData], "No Data");
+
+					//メッセージボックスを閉じる
+					m_bmessageflg = false;
+
+				}
+				else {
+					//メッセージボックスを閉じる
+					m_bmessageflg = false;
+				}
+			}
+
 		}
 	}
 
-	if (m_bmessageflg == true) {/*セーブデータが入っていたら*/
-								//初期化してもいいですか
-								//"はい"...データ削除
-		if (MessageBox(User()->p_hWnd, "本当に削除しますか？", "プレイヤーネーム削除", MB_OKCANCEL) == IDOK) {
-
-			m_bsavedataflg = false;
-			SavedataManeger()->Deletesavedata(); //仮
-			//Manager()->Pop(new CSceneTitle()); //デバック用
-			//メッセージボックスを閉じる
-			m_bmessageflg = false;
-
-		}
-		else {
-			//メッセージボックスを閉じる
-			m_bmessageflg = false;
-		}
-	}
-
+	
 	if (m_bsavedataflg == false && m_iSelectData >= 0) {/*データが入っていなければ*/
 														//名前を入力する
 
 		if (DialogBox(User()->p_hInstance, MAKEINTRESOURCE(IDD_DIALOG1), User()->p_hWnd, User()->p_DlgProc) == IDOK) {
+
+			if(strcmp(User()->dlgIn, m_cplayername[m_iSelectData]) !=  0 )
 			sprintf(m_cplayername[m_iSelectData], "%s", User()->dlgIn);
 		}
 
@@ -268,7 +277,7 @@ void CObjDataSelect::ButtonContinuation() {
 			//ボタン作成
 			m_obj_savedatabutton[i] = new ButtonDataSelect();
 			Obj()->InsertObj(m_obj_savedatabutton[i], OBJ_BUTTON_STAGE, 0, this->m_pScene, HIT_BOX_OFF);
-			m_obj_savedatabutton[i]->Init(200, m_button_y, 500, 100, m_bselect_flg[i], 0);
+			m_obj_savedatabutton[i]->Init(200, m_button_y, 500, 100, m_bselect_flg[i], 0, 64, 64);
 
 			m_button_y += 150;
 
@@ -286,7 +295,6 @@ void CObjDataSelect::ButtonContinuation() {
 			m_obj_savedatabutton[i]->Expansion();	//拡大
 			m_obj_savedatabutton[i]->Emission();	//発光
 		}
-
 
 		//データを選択しました
 		if (m_obj_savedatabutton[i]->Push()) {

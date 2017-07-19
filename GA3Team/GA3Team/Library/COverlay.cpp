@@ -1,6 +1,12 @@
 #include "../main.h"
 
-void CTalkOverlay::Action()
+void COverlay::InitLoad()
+{
+	//Image
+	image->LoadImageEx("Image\\talk.png", 0, TEX_SIZE_512);
+}
+
+void COverlay::Action()
 {
 	if (m_iDrawFlg == 0) {
 		//m_x = input->m_x;
@@ -8,7 +14,7 @@ void CTalkOverlay::Action()
 	}
 }
 
-void CTalkOverlay::Draw()
+void COverlay::Draw()
 {
 	if (m_iDrawFlg == 0) {
 		RECT src, dst;
@@ -28,11 +34,11 @@ void CTalkOverlay::Draw()
 		src.bottom = src.top + 600;
 		src.right = src.left + 800;
 
-		image->Draw(5, &src, &dst, col, 0.0f);
+		image->DrawEx(0, &src, &dst, col, 0.0f);
 	}
 }
 
-void CTalkOverlay::talkDraw()
+void COverlay::talkDraw()
 {
 	m_iDrawFlg = 0;
 }

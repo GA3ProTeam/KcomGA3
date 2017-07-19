@@ -154,7 +154,7 @@
     </ClCompile>
     <ClCompile Include="Library\Audio.cpp" />
     <ClCompile Include="Library\Button.cpp" />
-    <ClCompile Include="Library\CTalkOverlay.cpp" />
+    <ClCompile Include="Library\COverlay.cpp" />
     <ClCompile Include="Library\CObjTest.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
@@ -218,7 +218,7 @@
     </ClInclude>
     <ClInclude Include="Library\Audio.h" />
     <ClInclude Include="Library\Button.h" />
-    <ClInclude Include="Library\CTalkOverlay.h" />
+    <ClInclude Include="Library\COverlay.h" />
     <ClInclude Include="Library\CSavedata.h" />
     <ClInclude Include="Library\CObjTest.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>

@@ -37,7 +37,7 @@ class CObj
 		CHitBox*			Hit()	{ return m_pHitBox;			}//ヒットボックス取得
 		CSoundManeger* SoundManager() { return m_SoundManeger; }
 		CTextManager* TextManager() { return m_TextManager; }
-		CTalkOverlay*    Talk() { return m_TalkOverlay; }
+		COverlay*    Talk() { return m_TalkOverlay; }
 		CSavedataManeger* SavedataManeger() { return m_SavedataManeger; }
 		void SetHit();		//コンストラクタ外の当たり判定の作成
 	private:
@@ -50,7 +50,7 @@ class CObj
 		CDrawFont*	     m_DrawFont;
 		CSoundManeger*   m_SoundManeger;
 		CTextManager*    m_TextManager;
-		CTalkOverlay* m_TalkOverlay;
+		COverlay* m_TalkOverlay;
 		CSavedataManeger* m_SavedataManeger;
 };
 

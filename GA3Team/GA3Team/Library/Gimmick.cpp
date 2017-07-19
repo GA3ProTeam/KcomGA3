@@ -55,13 +55,11 @@ void Gimmick::gimmicDorw(Balloon *ball1, int num)
 		if (m_iballoontime >= 0) {
 			for (int i = 0; i < m_iballoonnum; i++)
 			{
-				if (ball[i].m_iballoontype == talk)
-				{
+				if (ball[i].m_iballoontype == talk){
 					//‰ï˜b‚«o‚µ‚ð•`‰æ
 					Image()->Draw(3, &ball[i].m_gimsrc, &m_gimdst, col, 0.0f);
 				}
-				if (ball[i].m_iballoontype == sound)
-				{
+				if (ball[i].m_iballoontype == sound){
 					//‰¹‚«o‚µ‚ð•`‰æ
 					Image()->Draw(4, &ball[i].m_gimsrc, &m_gimdst, col, 0.0f);
 				}

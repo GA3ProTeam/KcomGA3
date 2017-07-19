@@ -253,6 +253,8 @@ CDrawTexture::CDrawTexture(ID3D11Device* p_device,ID3D11DeviceContext* p_device_
 	{
 		m_pSRV[i]=NULL;
 		m_tex_size[i]=TEX_SIZE_128;
+		m_pSRV_EX[i] = NULL;
+		m_tex_size_EX[i] = TEX_SIZE_128;
 	}
 }
 
@@ -260,6 +262,7 @@ CDrawTexture::CDrawTexture(ID3D11Device* p_device,ID3D11DeviceContext* p_device_
 CDrawTexture::~CDrawTexture()
 {
 	DeleteImage();
+	DeleteImageEx();
 	m_pConstantBuffer->Release();
 	m_pVertexShader->Release();		
 	m_pPixelShader->Release();	
@@ -296,12 +299,17 @@ void  CDrawTexture::LoadImage(char* name,int id,TEX_SIZE hw)
     ImageLoadInfoDesc.MipFilter = D3DX11_FILTER_POINT;
     ImageLoadInfoDesc.pSrcInfo	= 0;
 
+	char tmpname[64];
+	char dir[64] = "Image\\";
+	strcpy(tmpname, name);
+
+	strcat(dir, tmpname);
+
 	//テクスチャー作成
-	D3DX11CreateShaderResourceViewFromFile(m_pDevice,name,&ImageLoadInfoDesc, NULL, &m_pSRV[id], NULL );
+	D3DX11CreateShaderResourceViewFromFile(m_pDevice,dir,&ImageLoadInfoDesc, NULL, &m_pSRV[id], NULL );
 	m_tex_size[id]=hw;
 	return ;
 }
-
 
 void  CDrawTexture::DeleteImage()
 {
@@ -311,6 +319,79 @@ void  CDrawTexture::DeleteImage()
 		{
 			m_pSRV[i]->Release();
 			m_pSRV[i]=NULL;
+		}
+	}
+}
+
+void CDrawTexture::LoadImageEx(char * name, int id, TEX_SIZE hw)
+{
+	if (m_pSRV_EX[id] != NULL)
+	{
+		m_tex_size_EX[id] = TEX_SIZE_128;
+		m_pSRV_EX[id]->Release();
+		m_pSRV_EX[id] = NULL;
+	}
+
+	// シェーダーリソースの生成
+	D3DX11_IMAGE_LOAD_INFO ImageLoadInfoDesc;
+	memset(&ImageLoadInfoDesc, 0, sizeof(D3DX11_IMAGE_LOAD_INFO));
+	ImageLoadInfoDesc.Width = hw;
+	ImageLoadInfoDesc.Height = hw;
+	ImageLoadInfoDesc.Depth = D3DX11_DEFAULT;
+	ImageLoadInfoDesc.Usage = D3D11_USAGE_DEFAULT;
+	ImageLoadInfoDesc.CpuAccessFlags = 0;
+	ImageLoadInfoDesc.MiscFlags = 0;
+	ImageLoadInfoDesc.FirstMipLevel = D3DX11_DEFAULT;
+	ImageLoadInfoDesc.MipLevels = 0;
+	ImageLoadInfoDesc.Format = DXGI_FORMAT_FROM_FILE;
+	ImageLoadInfoDesc.Filter = D3DX11_FILTER_POINT;
+	ImageLoadInfoDesc.BindFlags = D3D11_BIND_SHADER_RESOURCE;
+	ImageLoadInfoDesc.MipFilter = D3DX11_FILTER_POINT;
+	ImageLoadInfoDesc.pSrcInfo = 0;
+
+	//テクスチャー作成
+	D3DX11CreateShaderResourceViewFromFile(m_pDevice, name, &ImageLoadInfoDesc, NULL, &m_pSRV_EX[id], NULL);
+	m_tex_size_EX[id] = hw;
+	return;
+}
+
+void CDrawTexture::DrawEx(int id, RECT * src, RECT * dst, float col[4], float r)
+{
+	//シェーダデータ輸送
+	D3D11_MAPPED_SUBRESOURCE pData;
+	if (SUCCEEDED(m_pDeviceContext->Map(m_pConstantBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &pData)))
+	{
+		DRAW_2D_TEX  data;
+		data.color[0] = col[0];	data.color[1] = col[1];	data.color[2] = col[2];	data.color[3] = col[3];
+
+		data.size[0] = (float)m_tex_size_EX[id];	data.size[1] = (float)r;
+		data.size[2] = (float)PIXEL_SIZE_W;	data.size[3] = (float)PIXEL_SIZE_H;
+
+		data.rect_out[0] = (float)src->left;		data.rect_out[1] = (float)src->top;
+		data.rect_out[2] = (float)src->right;		data.rect_out[3] = (float)src->bottom;
+
+		data.rect_in[0] = (float)dst->left;		data.rect_in[1] = (float)dst->top;
+		data.rect_in[2] = (float)dst->right;		data.rect_in[3] = (float)dst->bottom;
+		memcpy_s(pData.pData, pData.RowPitch, (void*)&data, sizeof(DRAW_2D_TEX));
+
+		m_pDeviceContext->Unmap(m_pConstantBuffer, 0);
+	}
+
+	//テクスチャ設定
+	m_pDeviceContext->PSSetShaderResources(0, 1, &m_pSRV_EX[id]);
+
+	//プリミティブをレンダリング
+	m_pDeviceContext->DrawIndexed(4, 0, 0);
+}
+
+void  CDrawTexture::DeleteImageEx()
+{
+	for (int i = 0; i<SCENE_IMG_MAX; i++)
+	{
+		if (m_pSRV_EX[i] != NULL)
+		{
+			m_pSRV_EX[i]->Release();
+			m_pSRV_EX[i] = NULL;
 		}
 	}
 }

@@ -10,7 +10,6 @@ void CSceneGameMain::InitScene()
 	Image()->LoadImage("黒犬c.png", 2, TEX_SIZE_256);//テスト用
 	Image()->LoadImage("吹き出し仮.png", 3, TEX_SIZE_512);//テスト用
 	Image()->LoadImage("吹き出し音符.png", 4, TEX_SIZE_512);//テスト用
-	Image()->LoadImage("talk.png", 5, TEX_SIZE_512);
 	//Image()->LoadImage("boss.png",2,TEX_SIZE_256);
 
 	//文字データ作成
@@ -21,6 +20,15 @@ void CSceneGameMain::InitScene()
 	//Audio()->LoadAudio(0,"game_maoudamashii_1_battle37.wav");
 	//Audio()->LoadAudio(1,"se_maoudamashii_se_pc03.wav");
 	//Audio()->LoadAudio(2,"se_maoudamashii_explosion06.wav");
+
+	//Audio()->LoadAudio(1,"se_maoudamashii_se_pc03.wav");
+	//Audio()->LoadAudio(2,"se_maoudamashii_explosion06.wav");
+
+
+	//Audio()->LoadAudio(3,"se_maoudamashii_se_pc03.wav");
+	//Audio()->LoadAudio(4,"se_maoudamashii_explosion06.wav");
+
+
 
 	//シーンに必要なオブジェクト情報
 

@@ -34,6 +34,10 @@ class CDrawTexture
 		void DrawHitBox(float x,float y,float h,float w,float col[4]);//当たり判定描画
 		void Set2DDraw();	//２D使用設定
 
+		void LoadImageEx(char* name, int id, TEX_SIZE hw);			//グラフィック読み込み　サイズは定数で指定
+		void DrawEx(int id, RECT* src, RECT* dst, float col[4], float r); //登録テクスチャ描画
+		void DeleteImageEx();											//グラフィック破棄
+
 	private:
 		//デバイス
 		ID3D11DeviceContext*m_pDeviceContext;
@@ -41,7 +45,9 @@ class CDrawTexture
 
 		//テクスチャ情報
 		ID3D11ShaderResourceView*   m_pSRV[SCENE_IMG_MAX];
+		ID3D11ShaderResourceView*   m_pSRV_EX[SCENE_IMG_MAX];
 		TEX_SIZE					m_tex_size[SCENE_IMG_MAX];
+		TEX_SIZE					m_tex_size_EX[SCENE_IMG_MAX];
 
 		//シェーダ関係
 		ID3D11VertexShader* m_pVertexShader;	//バーテックスシェーダー

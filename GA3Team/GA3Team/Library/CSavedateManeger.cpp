@@ -1,5 +1,10 @@
 #include "../main.h"
 
+void CSavedataManeger::Init()
+{
+	Savedata.resize(3);
+}
+
 void CSavedataManeger::Loadsavedata()
 {
 	ifstream stream("test.sav", std::ios::in);
@@ -147,7 +152,7 @@ void CSavedataManeger::Writesavedata()
 bool CSavedataManeger::Savedatacheck(int savenum)
 {
 	
-	if (Savedata[savenum].m_cPlayerName) //=0
+	if (strlen(Savedata[savenum].m_cPlayerName) > 0) //=0
 		return true;
 	return false;
 }

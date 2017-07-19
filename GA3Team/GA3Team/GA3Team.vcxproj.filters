@@ -34,6 +34,9 @@
     <Filter Include="CSceneGameMain\MelueruStageGimmick">
       <UniqueIdentifier>{cd23dd36-28aa-440c-8cec-ce23548dbc9d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="CSceneGameMain\ShionStage3Gimmick">
+      <UniqueIdentifier>{929c2595-c81f-4641-b84f-d89667af6600}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -150,6 +153,24 @@
     <ClCompile Include="Library\CTalkOverlay.cpp">
       <Filter>ライブラリ ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="GimmickKatsuo.cpp">
+      <Filter>CSceneGameMain\MelueruStageGimmick</Filter>
+    </ClCompile>
+    <ClCompile Include="GimmickDoor.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="GimmickOven.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="GimmickChildren.cpp">
+      <Filter>CSceneGameMain\ShionStage3Gimmick</Filter>
+    </ClCompile>
+    <ClCompile Include="GimmickAunt.cpp">
+      <Filter>CSceneGameMain</Filter>
+    </ClCompile>
+    <ClCompile Include="GimmickTelevision.cpp">
+      <Filter>CSceneGameMain\MelueruStageGimmick</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Library\Audio.h">
@@ -256,6 +277,18 @@
     </ClInclude>
     <ClInclude Include="Library\CTalkOverlay.h">
       <Filter>ライブラリ ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="GimmickKatsuo.h">
+      <Filter>CSceneGameMain\MelueruStageGimmick</Filter>
+    </ClInclude>
+    <ClInclude Include="GimmickDoor.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="GimmickOven.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="GimmickChildren.h">
+      <Filter>CSceneGameMain\ShionStage3Gimmick</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

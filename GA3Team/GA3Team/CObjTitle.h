@@ -11,7 +11,7 @@ enum TITLECHOICE
 	STAGE_SELECT, //ステージセレクトへ
 };
 
-class CObjSavedata;
+class CSavedataManeger;
 class ButtonDataSelect;
 
 class CObjTitle : public CObj
@@ -34,7 +34,7 @@ private:
 	//ボタンが作成されたか確認
 	int m_icreateflg;
 
-	CObjSavedata* m_obj_savedata;
+	//CSavedataManeger* m_obj_savedata;
 	ButtonDataSelect* m_obj_button[2];
 };
 

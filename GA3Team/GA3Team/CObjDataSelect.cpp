@@ -1,26 +1,29 @@
 #include "main.h"
 #include <stdio.h>
-//#include <afxwin.h>
-//#include "resource.h"
 
+//#include    <windows.h>
+//#include    "resource.h"
+
+//プロトタイプ宣言
+BOOL CALLBACK DlgProc(HWND hDlg, UINT Msg, WPARAM wParam, LPARAM lParam);
 
 
 void CObjDataSelect::Init()
 {
+
+	//プレイヤーデータ読込み
+//	SavedataManeger()->Loadsavedata();
+
 	m_bsavedataflg = false;
 	m_icreateflg = false;
-	
-	m_button_y = 80;
 
-	//m_bselect_flg[] = false;
+	m_button_y = 80;
 
 	m_iSelectData = -1;
 
 	m_bmessageflg = false;
 
-
-	//load_progress[MAX_SAVEDATA][0] = 0;
-
+	load_progress[0][0] = 0;
 
 	for (int j = 0; j < 4; j++) {
 		//カラー情報初期化
@@ -29,12 +32,8 @@ void CObjDataSelect::Init()
 
 	for (int i = 0; i < MAX_SAVEDATA; i++) {
 		//カラー情報初期化
-		col[i] = 1.0f;
 		text_size_playername[i] = 20; //仮
 		text_size_progress[i] = 16; //仮
-
-		char player_str[254] = "No Name";
-		sprintf(m_cplayername[i], "%s", player_str);
 
 		//for (int j = 0; j < CHAR_PROGRESS; j++) {
 		//	m_iplayerprogress[i][j] = 0;	   //キャラクター進行度
@@ -43,7 +42,7 @@ void CObjDataSelect::Init()
 		//	}
 		//}
 	}
-	
+
 
 }
 
@@ -58,29 +57,22 @@ void CObjDataSelect::Action()
 
 	//セーブデータ
 	for (int i = 0; i < MAX_SAVEDATA; i++) {
-		//m_obj_savedata[i] = (CObjSavedata *)Obj()->GetObj(OBJ_SAVEDATA);
 
-		if (SavedataManeger()->Savedatacheck(i)){
+		//セーブデータがなければ「No Data」と表示する
+		//if (SavedataManeger()->Savedatacheck(i)) {
+		//	if (SavedataManeger()->Savedatacheck(i) == false) {
+		//		sprintf(m_cplayername[i], "No Data");
+		//	}
+		//}
 
-			//プレイヤーデータ表示デバッグ用
-			if (i == 1)
-			{
-				//名前
-				char load_name[256] = "お名前";
-				//load_name[i] = m_obj_savedata[];
-				sprintf(m_cplayername[i], "%s", load_name);
-
-				//for (int j = 0; j < CHAR_PROGRESS; j++)
-				//{
-				//	//進行度
-				//	sprintf(load_progress[i], "%d", m_iplayerprogress[i][j]);
-				//}
-				
-
-			}
-			
-		}	
-		
+		if (SavedataManeger()->Savedatacheck(i)) {
+			//プレイヤー進行度
+			//for (int j = 0; j < CHAR_PROGRESS; j++)
+			//{
+			//	//進行度
+			//	sprintf(load_progress[i], "%d", m_iplayerprogress[i][j]);
+			//}
+		}
 	}
 
 	//
@@ -88,7 +80,7 @@ void CObjDataSelect::Action()
 		//初めから
 		ButtonFromTheBegin();
 
-	}if(m_ititle_choice == LOAD){
+	}if (m_ititle_choice == LOAD) {
 		//続きから
 		ButtonContinuation();
 	}
@@ -96,26 +88,17 @@ void CObjDataSelect::Action()
 	//タイトルに戻る
 	m_obj_titlebackbutton = new ButtonDataSelect();
 	Obj()->InsertObj(m_obj_titlebackbutton, OBJ_BUTTON_STAGE, 0, this->m_pScene, HIT_BOX_OFF);
-	m_obj_titlebackbutton->Init(30, 525, 150, 50, true,0);
+	m_obj_titlebackbutton->Init(30, 525, 150, 50, true, 0);
 
-
-//	//マウス位置取得
-//	int mousex = Input()->m_x;
-//	int mousey = Input()->m_y;
 
 	//タイトルに戻る(仮)
 	if (m_obj_titlebackbutton->Push()) {
-		
+
 		User()->mititle_choice = TITLE_RETURN;
+
 		Manager()->Pop(new CSceneTitle());
-		
+
 	}
-
-
-
-	//sprintf(m_cplayername, "%d  %d  %d", x,y,z); //textmemo
-
-	
 
 }
 
@@ -149,40 +132,29 @@ void CObjDataSelect::Draw()
 	//プレイヤー名１
 	Font()->StrDraw(m_cplayername[0], 200, 80, text_size_playername[0], col);
 	//主人公１の進行度
-	//Font()->StrDraw(load_progress[0], 400, 80, text_size_progress[0], col);
-	////主人公２の進行度			  
-	//Font()->StrDraw(load_progress[0], 500, 80, text_size_progress[0], col);
-	////主人公３の進行度			  
-	//Font()->StrDraw(load_progress[0], 600, 80, text_size_progress[0], col);
+	Font()->StrDraw(load_progress[0], 400, 80, text_size_progress[0], col);
+	//主人公２の進行度			  
+	Font()->StrDraw(load_progress[0], 500, 80, text_size_progress[0], col);
+	//主人公３の進行度			  
+	Font()->StrDraw(load_progress[0], 600, 80, text_size_progress[0], col);
 
 	//プレイヤー名２
 	Font()->StrDraw(m_cplayername[1], 200, 230, text_size_playername[1], col);
-	////主人公１の進行度
-	//Font()->StrDraw(load_progress[1], 400, 230, text_size_progress[1], col);
-	////主人公２の進行度
-	//Font()->StrDraw(load_progress[1], 500, 230, text_size_progress[1], col);
-	////主人公３の進行度
-	//Font()->StrDraw(load_progress[1], 600, 230, text_size_progress[1], col);
+	//主人公１の進行度
+	Font()->StrDraw(load_progress[1], 400, 230, text_size_progress[1], col);
+	//主人公２の進行度
+	Font()->StrDraw(load_progress[1], 500, 230, text_size_progress[1], col);
+	//主人公３の進行度
+	Font()->StrDraw(load_progress[1], 600, 230, text_size_progress[1], col);
 
 	//プレイヤー名３
 	Font()->StrDraw(m_cplayername[2], 200, 380, text_size_playername[2], col);
-	////主人公１の進行度
-	//Font()->StrDraw(load_progress[2], 400, 380, text_size_progress[2], col);
-	////主人公２の進行度								  
-	//Font()->StrDraw(load_progress[2], 500, 380, text_size_progress[2], col);
-	////主人公３の進行度								  
-	//Font()->StrDraw(load_progress[2], 600, 380, text_size_progress[2], col);
-
-
-/*	//プレイヤー名４
-	Font()->StrDraw("プレイヤー４", 200, 380, text_size_playername[3], col);
 	//主人公１の進行度
-	Font()->StrDraw("0", 400, 380, text_size_progress[3], col);
-	//主人公２の進行度
-	Font()->StrDraw("0", 500, 380, text_size_progress[3], col);
-	//主人公３の進行度
-	Font()->StrDraw("0", 600, 380, text_size_progress[3], col);
-*/
+	Font()->StrDraw(load_progress[2], 400, 380, text_size_progress[2], col);
+	//主人公２の進行度								  
+	Font()->StrDraw(load_progress[2], 500, 380, text_size_progress[2], col);
+	//主人公３の進行度								  
+	Font()->StrDraw(load_progress[2], 600, 380, text_size_progress[2], col);
 
 	//戻る
 	Font()->StrDraw("タイトルに戻る", 30, 525, 20, col);
@@ -193,12 +165,6 @@ void CObjDataSelect::Draw()
 //はじめから
 void CObjDataSelect::ButtonFromTheBegin() {
 
-	//マウス位置取得
-	int mousex = Input()->m_x;
-	int mousey = Input()->m_y;
-
-
-	
 	if (m_icreateflg == false) {
 
 		for (int i = 0; i < MAX_SAVEDATA; i++) {
@@ -206,7 +172,7 @@ void CObjDataSelect::ButtonFromTheBegin() {
 			//ボタン描画
 			m_obj_savedatabutton[i] = new ButtonDataSelect();
 			Obj()->InsertObj(m_obj_savedatabutton[i], OBJ_BUTTON_STAGE, 0, this->m_pScene, HIT_BOX_OFF);
-			m_obj_savedatabutton[i]->Init(200, m_button_y, 500, 100, true,0);
+			m_obj_savedatabutton[i]->Init(200, m_button_y, 500, 100, true, 0);
 
 			m_button_y += 150;
 
@@ -215,68 +181,69 @@ void CObjDataSelect::ButtonFromTheBegin() {
 		}
 	}
 
-		
 	//マウス判定
 	//カーソルがある所を拡大+発光
 	for (int i = 0; i < MAX_SAVEDATA; i++) {
-		
-			m_obj_savedatabutton[i]->Expansion();	//拡大
-			m_obj_savedatabutton[i]->Emission();		//発光
-		
-		//データを選択しました
-		if (m_obj_savedatabutton[i]->Push()){
-	
+
+		m_obj_savedatabutton[i]->Expansion();	//拡大
+		m_obj_savedatabutton[i]->Emission();		//発光
+
+													//データを選択しました
+		if (m_obj_savedatabutton[i]->Push()) {
+
+			//セーブデータ番号
 			m_iSelectData = i;
 
 			//セーブデータ確認
-			if (SavedataManeger()->Savedatacheck(m_iSelectData)){
-
+			if (SavedataManeger()->Savedatacheck(m_iSelectData)) {
 				m_bsavedataflg = true;
 				m_bmessageflg = true;
-			}
-
-			if (m_bsavedataflg == false) {/*データが入っていなければ*/
-										  //名前を入力する
-
-				IDD_DIALOG1;
-
-				//新規セーブデータ作成(仮) ---> テスト　プレイヤー１
-				SavedataManeger()->Writesavedata();
-
-				if (SavedataManeger()->Savedatacheck(m_iSelectData))
-				{
-					//ステージセレクト画面へ
-					//User()->mititle_choice = STAGE_SELECT;
-					//デバッグ用
-					Manager()->Pop(new CSceneStageSelect());
-				}
-
 			}
 		}
 	}
 
-		if (m_bmessageflg == true) {/*セーブデータが入っていたら*/
-		//初期化してもいいですか
-		//"はい"...データ削除
-			if (MessageBox(NULL,"本当に削除しますか？","プレイヤーネーム削除", MB_OKCANCEL) == IDOK) {
-				
-				m_bsavedataflg = false;
-				SavedataManeger()->Deletesavedata(); //仮
-				//Manager()->Pop(new CSceneTitle()); //デバック用
+	if (m_bmessageflg == true) {/*セーブデータが入っていたら*/
+								//初期化してもいいですか
+								//"はい"...データ削除
+		if (MessageBox(NULL, "本当に削除しますか？", "プレイヤーネーム削除", MB_OKCANCEL) == IDOK) {
 
-				m_bmessageflg = false;
-				//m_idatadelete_flg == true;
-			}
-			else {
-				m_bmessageflg = false;
-			}
+			m_bsavedataflg = false;
+			SavedataManeger()->Deletesavedata(); //仮
+															 //Manager()->Pop(new CSceneTitle()); //デバック用
+			//メッセージボックスを閉じる
+			m_bmessageflg = false;
+
 		}
+		else {
+			//メッセージボックスを閉じる
+			m_bmessageflg = false;
+		}
+	}
 
-				//新規セーブデータ作成(仮) ---> テスト　プレイヤー１
-				SavedataManeger()->Writesavedata();
+	if (m_bsavedataflg == false && m_iSelectData >= 0) {/*データが入っていなければ*/
+														//名前を入力する
 
-	
+		char name_str[256] = { "\0" };
+		DialogBox(User()->p_hInstance, MAKEINTRESOURCE(IDD_DIALOG1), NULL, (DLGPROC)DlgProc);
 
+		sprintf(m_cplayername[m_iSelectData], "%s", User()->dlgIn);
+
+
+		//新規セーブデータ作成(仮) ---> テスト　プレイヤー１
+		SavedataManeger()->Writesavedata();
+
+		m_iSelectData = -1;
+
+//		int debug_flg = true;
+//		if(debug_flg)
+		if (SavedataManeger()->Savedatacheck(m_iSelectData))
+		{
+			//ステージセレクト画面へ
+			//User()->mititle_choice = STAGE_SELECT;
+			//デバッグ用
+			Manager()->Pop(new CSceneStageSelect());
+		}
+	}
 }
 
 //-------------------------------------------------------------------------------------------------------
@@ -289,16 +256,18 @@ void CObjDataSelect::ButtonContinuation() {
 		//データが入ってなかったら選べなくする/暗くする
 		for (int i = 0; i < MAX_SAVEDATA; i++) {
 
-			//m_bselect_flg = m_obj_savedata[i]->Savedatacheck(); //セーブデータの有無を読む
+			//データの有無を確認
+			m_bselect_flg[i] = SavedataManeger()->Savedatacheck(i); //セーブデータの有無を読む
 
 			//デバック用
-			if (i == 1) {
-				m_bselect_flg[i] = true;
-			}
-			else {
-				m_bselect_flg[i] = false;
-			}
+//			if (i == 1) {
+//				m_bselect_flg[i] = true;
+//			}
+//			else {
+//				m_bselect_flg[i] = false;
+//			}
 
+			//ボタン作成
 			m_obj_savedatabutton[i] = new ButtonDataSelect();
 			Obj()->InsertObj(m_obj_savedatabutton[i], OBJ_BUTTON_STAGE, 0, this->m_pScene, HIT_BOX_OFF);
 			m_obj_savedatabutton[i]->Init(200, m_button_y, 500, 100, m_bselect_flg[i], 0);
@@ -310,10 +279,6 @@ void CObjDataSelect::ButtonContinuation() {
 
 		}
 	}
-
-	
-	
-
 
 	//マウス判定
 	//カーソルがある所を拡大+発光
@@ -331,7 +296,7 @@ void CObjDataSelect::ButtonContinuation() {
 
 			//セーブデータ確認
 			if (SavedataManeger()->Savedatacheck(m_iSelectData)) {
-				//m_obj_savedata[m_iSelectData]->Loadsavedata();
+				//SavedataManeger()->Loadsavedata();
 				//ステージセレクトへシーン移動
 				//User()->mititle_choice = STAGE_SELECT;
 				//デバッグ用
@@ -339,9 +304,5 @@ void CObjDataSelect::ButtonContinuation() {
 			}
 		}
 	}
-
-
-
-	
-	
 }
+

@@ -21,8 +21,8 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 
 	//-シオンステージ-----------------------------------------
 	case 10:
+		//シオンのステージ1のギミック生成
 		
-
 
 		break;
 	case 11:

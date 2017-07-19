@@ -67,8 +67,10 @@ bool InitLibrary()
 
 	g_SoundManeger = new CSoundManeger();
 	g_TextManager = new CTextManager();
-	g_TalkOverlay = new CTalkOverlay(g_TextManager);
+	g_TalkOverlay = new CTalkOverlay(g_DrawTexture,g_DrawFont,g_WinInputs,g_SoundManeger,g_TextManager);
+
 	g_SavedataManeger = new CSavedataManeger();
+	g_SavedataManeger->Init();
 
 	return true;
 }

@@ -59,7 +59,41 @@ void GimmickChildren::Action()//アクション
 		//マウスドラッグ中にマウスボタンが離された
 		if (!Input()->GetMouButtonL() && tab->GetHaveSound()) {
 			//ドラッグしていた効果音をギミックに聞かせる
-			//Audio()->Start(tab->GetGiveSound());//効果音を鳴らす
+			//Audio()->Start(tab->GetGiveSound());
+			switch (m_iChild_ID) {
+			case 1:
+				//if (tab->GetGiveSound() == /*正解の音*/) {
+
+				//	break;
+				//}
+				//else {
+
+				//}
+				break;
+
+			case 2:
+				//if (tab->GetGiveSound() == /*正解の音*/) {
+
+				//	break;
+				//}
+				//else {
+
+				//}
+
+				break;
+
+			case 3:
+				//if (tab->GetGiveSound() == /*正解の音*/) {
+
+				//	break;
+				//}
+				//else {
+
+				//}
+
+				break;
+
+			}
 		}
 	}
 }

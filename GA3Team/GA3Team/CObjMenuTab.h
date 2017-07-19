@@ -34,6 +34,9 @@ public:
 	//指定されたボタンを押す
 	bool SelectPush(int btx, int bty, int btwid, int bthei);
 
+	//音を持っているか調べる
+	bool GetHaveSound() { return m_bhavesound; };
+
 	//開閉フラグをとる
 	bool GetOpenCloseFlg() { return m_bOpenClose; };
 

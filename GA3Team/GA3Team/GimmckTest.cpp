@@ -59,7 +59,7 @@ void GimmickChildren::Action()//アクション
 		//マウスドラッグ中にマウスボタンが離された
 		if (!Input()->GetMouButtonL() && tab->GetHaveSound()) {
 			//ドラッグしていた効果音をギミックに聞かせる
-			SoundManager()->GetSound();
+			//SoundManager()->GetSound();
 		}
 	}
 }

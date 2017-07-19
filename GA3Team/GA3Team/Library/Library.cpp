@@ -55,6 +55,7 @@ bool InitLibrary()
 	g_DrawTexture =new CDrawTexture(g_DirectXDeveice->GetDevice(),
 		g_DirectXDeveice->GetDeviceContext());	//ドローテクスチャ初期化
 	g_DrawTexture->InitDraw();
+	g_DrawTexture->LoadImageEx("talk.png",0,TEX_SIZE_512);
 
 	g_DrawFont= new CDrawFont(g_DirectXDeveice,g_DrawTexture);//フォント初期化 
 

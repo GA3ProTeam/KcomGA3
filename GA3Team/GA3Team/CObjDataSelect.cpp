@@ -4,8 +4,6 @@
 //#include    <windows.h>
 //#include    "resource.h"
 
-//プロトタイプ宣言
-BOOL CALLBACK DlgProc(HWND hDlg, UINT Msg, WPARAM wParam, LPARAM lParam);
 
 
 void CObjDataSelect::Init()
@@ -224,8 +222,8 @@ void CObjDataSelect::ButtonFromTheBegin() {
 														//名前を入力する
 
 		char name_str[256] = { "\0" };
-		DialogBox(User()->p_hInstance, MAKEINTRESOURCE(IDD_DIALOG1), NULL, (DLGPROC)DlgProc);
-
+		DialogBox(User()->p_hInstance, MAKEINTRESOURCE(IDD_DIALOG1), User()->p_hWnd, User()->p_DlgProc);
+		
 		sprintf(m_cplayername[m_iSelectData], "%s", User()->dlgIn);
 
 

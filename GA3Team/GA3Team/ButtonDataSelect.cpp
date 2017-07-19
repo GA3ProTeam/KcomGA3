@@ -3,7 +3,7 @@
 
 
 //イニシャライズ
-void ButtonDataSelect::Init(int x, int y, int w, int h, bool bSelected, int col_num) {
+void ButtonDataSelect::Init(int x, int y, int w, int h, bool bSelected, int col_num,int Dst_w, int Dst_h) {
 	
 	//ボタンサイズを指定
 	m_iXpos = x;
@@ -15,6 +15,9 @@ void ButtonDataSelect::Init(int x, int y, int w, int h, bool bSelected, int col_
 	m_storage_y = m_iYpos;
 	m_storage_w = m_iWidth;
 	m_storage_h = m_iHeight;
+
+	m_dst_w = Dst_w;
+	m_dst_h = Dst_h;
 
 	Color_ID = col_num;
 
@@ -58,7 +61,7 @@ void ButtonDataSelect::Action() {
 void ButtonDataSelect::Draw() {
 
 	//切り取り先座標
-	m_rDst.top = 0; m_rDst.left = 0; m_rDst.bottom = 64; m_rDst.right = 64;
+	m_rDst.top = 0; m_rDst.left = 0; m_rDst.bottom = m_dst_h; m_rDst.right = m_dst_w;
 
 	//転送先座標
 	m_rSrc.top = m_iYpos; m_rSrc.left = m_iXpos; m_rSrc.bottom = m_iYpos +m_iHeight; m_rSrc.right = m_iXpos +m_iWidth;

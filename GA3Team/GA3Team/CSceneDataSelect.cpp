@@ -5,9 +5,8 @@ void CSceneDataSelect::InitScene()
 {
 
 	//このシーンで表示させるイメージ情報
-	//Image()->LoadImage("image.png",0,TEX_SIZE_512);
 	Image()->LoadImage("タイトルタブ仮画像.png", 0, TEX_SIZE_64);
-	Image()->LoadImage("データ削除仮画像.png", 1, TEX_SIZE_64);
+	Image()->LoadImage("戻りボタン.png", 1, TEX_SIZE_512);
 
 	//文字データ作成
 	//Font()->SetStrTex("ボスHP：");

@@ -299,8 +299,14 @@ void  CDrawTexture::LoadImage(char* name,int id,TEX_SIZE hw)
     ImageLoadInfoDesc.MipFilter = D3DX11_FILTER_POINT;
     ImageLoadInfoDesc.pSrcInfo	= 0;
 
+	char tmpname[32];
+	char dir[32] = "Image\\";
+	strcpy(tmpname, name);
+
+	strcat(dir, tmpname);
+
 	//テクスチャー作成
-	D3DX11CreateShaderResourceViewFromFile(m_pDevice,name,&ImageLoadInfoDesc, NULL, &m_pSRV[id], NULL );
+	D3DX11CreateShaderResourceViewFromFile(m_pDevice,dir,&ImageLoadInfoDesc, NULL, &m_pSRV[id], NULL );
 	m_tex_size[id]=hw;
 	return ;
 }

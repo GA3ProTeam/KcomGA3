@@ -22,6 +22,15 @@ void CSceneGameMain::InitScene()
 	//Audio()->LoadAudio(1,"se_maoudamashii_se_pc03.wav");
 	//Audio()->LoadAudio(2,"se_maoudamashii_explosion06.wav");
 
+	//Audio()->LoadAudio(1,"se_maoudamashii_se_pc03.wav");
+	//Audio()->LoadAudio(2,"se_maoudamashii_explosion06.wav");
+
+
+	//Audio()->LoadAudio(3,"se_maoudamashii_se_pc03.wav");
+	//Audio()->LoadAudio(4,"se_maoudamashii_explosion06.wav");
+
+
+
 	//シーンに必要なオブジェクト情報
 
 	//m_obj_player = new CObjPlayer();

@@ -299,8 +299,8 @@ void  CDrawTexture::LoadImage(char* name,int id,TEX_SIZE hw)
     ImageLoadInfoDesc.MipFilter = D3DX11_FILTER_POINT;
     ImageLoadInfoDesc.pSrcInfo	= 0;
 
-	char tmpname[32];
-	char dir[32] = "Image\\";
+	char tmpname[64];
+	char dir[64] = "Image\\";
 	strcpy(tmpname, name);
 
 	strcat(dir, tmpname);

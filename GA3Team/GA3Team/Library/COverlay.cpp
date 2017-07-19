@@ -1,7 +1,8 @@
 #include "../main.h"
 
-void COverlay::LoadImage()
+void COverlay::InitLoad()
 {
+	//Image
 	image->LoadImageEx("Image\\talk.png", 0, TEX_SIZE_512);
 }
 

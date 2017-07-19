@@ -3,7 +3,7 @@
 #ifndef __CTALKOVERLAY_H__
 #define __CTALKOVERLAY_H__
 
-class CTalkOverlay{
+class COverlay{
 private:
 	CDrawTexture *image;
 	CDrawFont *font;
@@ -16,7 +16,7 @@ private:
 	bool m_bDrawing;
 	int m_iDrawFlg;
 public:
-	CTalkOverlay(CDrawTexture *i,CDrawFont *f,CWinInputs *w,CSoundManeger *s,CTextManager *t)
+	COverlay(CDrawTexture *i,CDrawFont *f,CWinInputs *w,CSoundManeger *s,CTextManager *t)
 		: image(i),font(f),input(w),soundmgr(s),textmgr(t),
 		  m_iDrawFlg(-1),m_x(0),m_y(0)
 	{}

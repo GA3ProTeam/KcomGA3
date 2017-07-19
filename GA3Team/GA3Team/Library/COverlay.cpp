@@ -1,6 +1,6 @@
 #include "../main.h"
 
-void CTalkOverlay::Action()
+void COverlay::Action()
 {
 	if (m_iDrawFlg == 0) {
 		//m_x = input->m_x;
@@ -8,7 +8,7 @@ void CTalkOverlay::Action()
 	}
 }
 
-void CTalkOverlay::Draw()
+void COverlay::Draw()
 {
 	if (m_iDrawFlg == 0) {
 		RECT src, dst;
@@ -32,7 +32,7 @@ void CTalkOverlay::Draw()
 	}
 }
 
-void CTalkOverlay::talkDraw()
+void COverlay::talkDraw()
 {
 	m_iDrawFlg = 0;
 }

@@ -195,9 +195,7 @@
     <ClInclude Include="CSceneTitle.h" />
     <ClInclude Include="GimmckTest.h" />
     <ClInclude Include="GimmickAunt.h" />
-    <ClInclude Include="GimmickChildren.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClInclude>
+    <ClInclude Include="GimmickChildren.h" />
     <ClInclude Include="GimmickDoor.h" />
     <ClInclude Include="GimmickKatsuo.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>

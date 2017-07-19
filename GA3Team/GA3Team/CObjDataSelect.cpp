@@ -57,11 +57,12 @@ void CObjDataSelect::Action()
 	for (int i = 0; i < MAX_SAVEDATA; i++) {
 
 		//セーブデータがなければ「No Data」と表示する
-		//if (SavedataManeger()->Savedatacheck(i)) {
-		//	if (SavedataManeger()->Savedatacheck(i) == false) {
-		//		sprintf(m_cplayername[i], "No Data");
-		//	}
-		//}
+		//デバッグ用
+		if (/*SavedataManeger()->Savedatacheck(i)*/ strlen(m_cplayername[i]) == 0) {
+			if (SavedataManeger()->Savedatacheck(i) == false) {
+				sprintf(m_cplayername[i], "No Data");
+			}
+		}
 
 		if (SavedataManeger()->Savedatacheck(i)) {
 			//プレイヤー進行度
@@ -186,7 +187,7 @@ void CObjDataSelect::ButtonFromTheBegin() {
 		m_obj_savedatabutton[i]->Expansion();	//拡大
 		m_obj_savedatabutton[i]->Emission();		//発光
 
-													//データを選択しました
+		//データを選択しました
 		if (m_obj_savedatabutton[i]->Push()) {
 
 			//セーブデータ番号
@@ -199,31 +200,39 @@ void CObjDataSelect::ButtonFromTheBegin() {
 				m_bsavedataflg = true;
 				m_bmessageflg = true;
 			}
+
+			if (m_bmessageflg == true && strcmp(m_cplayername[m_iSelectData], "No Data") != 0) {/*セーブデータが入っていたら*/
+				 
+				 //初期化してもいいですか
+				 //"はい"...データ削除
+				if (MessageBox(User()->p_hWnd, "本当に削除しますか？", "プレイヤーネーム削除", MB_OKCANCEL) == IDOK) {
+
+					m_bsavedataflg = false;
+					SavedataManeger()->Deletesavedata(); //仮
+
+					//デバッグ用
+					sprintf(m_cplayername[m_iSelectData], "No Data");
+
+					//メッセージボックスを閉じる
+					m_bmessageflg = false;
+
+				}
+				else {
+					//メッセージボックスを閉じる
+					m_bmessageflg = false;
+				}
+			}
+
 		}
 	}
 
-	if (m_bmessageflg == true) {/*セーブデータが入っていたら*/
-								//初期化してもいいですか
-								//"はい"...データ削除
-		if (MessageBox(User()->p_hWnd, "本当に削除しますか？", "プレイヤーネーム削除", MB_OKCANCEL) == IDOK) {
-
-			m_bsavedataflg = false;
-			SavedataManeger()->Deletesavedata(); //仮
-			//Manager()->Pop(new CSceneTitle()); //デバック用
-			//メッセージボックスを閉じる
-			m_bmessageflg = false;
-
-		}
-		else {
-			//メッセージボックスを閉じる
-			m_bmessageflg = false;
-		}
-	}
-
+	
 	if (m_bsavedataflg == false && m_iSelectData >= 0) {/*データが入っていなければ*/
 														//名前を入力する
 
 		if (DialogBox(User()->p_hInstance, MAKEINTRESOURCE(IDD_DIALOG1), User()->p_hWnd, User()->p_DlgProc) == IDOK) {
+
+			if(strcmp(User()->dlgIn, m_cplayername[m_iSelectData]) !=  0 )
 			sprintf(m_cplayername[m_iSelectData], "%s", User()->dlgIn);
 		}
 
@@ -286,7 +295,6 @@ void CObjDataSelect::ButtonContinuation() {
 			m_obj_savedatabutton[i]->Expansion();	//拡大
 			m_obj_savedatabutton[i]->Emission();	//発光
 		}
-
 
 		//データを選択しました
 		if (m_obj_savedatabutton[i]->Push()) {

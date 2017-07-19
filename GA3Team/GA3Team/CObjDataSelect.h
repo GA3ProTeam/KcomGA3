@@ -48,7 +48,6 @@ private:
 
 	char load_progress[MAX_SAVEDATA][32];
 
-
 };
 
 #endif // !__COBJDATASELECT_H__

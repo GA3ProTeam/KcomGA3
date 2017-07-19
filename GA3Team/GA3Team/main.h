@@ -282,11 +282,11 @@ inline RECT InitRect(LONG left, LONG top, LONG right, LONG bottom)
 #include "ButtonLScrollScreen.h"
 #include "ButtonRScrollScreen.h"
 #include "CObjGimmickManager.h"
-#include "GimmickKatsuo.h"
-#include "GimmickDoor.h"
-#include "GimmickOven.h"
-#include "GimmickChildren.h"
-#include "GimmickTelevision.h"
+//#include "GimmickKatsuo.h"
+//#include "GimmickDoor.h"
+//#include "GimmickOven.h"
+//#include "GimmickChildren.h"
+//#include "GimmickTelevision.h"
 //----------------------------------------------
 
 #include "GimmckTest.h"

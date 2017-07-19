@@ -19,7 +19,7 @@ CHitBoxManager*	 g_HitBoxManager  =NULL;//当たり判定マネージャー
 //
 CSoundManeger* g_SoundManeger = NULL;//音管理マネージャー
 CTextManager*  g_TextManager = NULL;//テキストマネージャー
-COverlay* g_TalkOverlay = NULL;
+COverlay* g_Overlay = NULL;
 CSavedataManeger* g_SavedataManeger = NULL;//セーブデータマネージャー
 
 void EndLibrary()
@@ -35,7 +35,7 @@ void EndLibrary()
 	delete g_DirectXDeveice;
 	delete g_SoundManeger;
 	delete g_TextManager;
-	delete g_TalkOverlay;
+	delete g_Overlay;
 	delete g_SavedataManeger;
 	// この時点で開放されていないメモリの情報の表示
 	_CrtDumpMemoryLeaks();
@@ -55,7 +55,6 @@ bool InitLibrary()
 	g_DrawTexture =new CDrawTexture(g_DirectXDeveice->GetDevice(),
 		g_DirectXDeveice->GetDeviceContext());	//ドローテクスチャ初期化
 	g_DrawTexture->InitDraw();
-	g_DrawTexture->LoadImageEx("talk.png",0,TEX_SIZE_512);
 
 	g_DrawFont= new CDrawFont(g_DirectXDeveice,g_DrawTexture);//フォント初期化 
 
@@ -68,7 +67,8 @@ bool InitLibrary()
 
 	g_SoundManeger = new CSoundManeger();
 	g_TextManager = new CTextManager();
-	g_TalkOverlay = new COverlay(g_DrawTexture,g_DrawFont,g_WinInputs,g_SoundManeger,g_TextManager);
+	g_Overlay = new COverlay(g_DrawTexture,g_DrawFont,g_WinInputs,g_SoundManeger,g_TextManager);
+	g_Overlay->LoadImage();
 
 	g_SavedataManeger = new CSavedataManeger();
 	g_SavedataManeger->Init();

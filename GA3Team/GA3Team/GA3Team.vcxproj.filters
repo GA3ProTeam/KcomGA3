@@ -165,6 +165,9 @@
     <ClCompile Include="GimmickTelevision.cpp">
       <Filter>CSceneGameMain\MelueruStageGimmick</Filter>
     </ClCompile>
+    <ClCompile Include="GimmickChildren.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Library\Audio.h">
@@ -291,6 +294,9 @@
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="GimmickTelevision.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="GimmickChildren.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>

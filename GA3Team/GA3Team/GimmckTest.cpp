@@ -36,16 +36,14 @@ void GimmickTest::Draw()
 	delete ccc;*/
 }
 
-void GimmickChildren::Init(int child_id)///イニシャライズ
+void GimmickChildren::Init(int xpos, int ypos, int widht, int height, int balloonnum, int child_id)///イニシャライズ
 {
-	switch (child_id) {
-	case 1://強気な男の子
-		break;
-	case 2://優しい女の子
-		break;
-	case 3://弱気な男の子
-		break;
-	}
+	m_iChild_ID = child_id;
+	m_iXpos = xpos;	//ギミックの位置の初期化(X)
+	m_iYpos = ypos;	//ギミックの位置の初期化(Y)
+	m_iWidth = widht;	//ギミック幅の初期化
+	m_iHeight = height;	//ギミック高さの初期化
+	m_iballoonnum = balloonnum;//吹き出しの総数
 
 }
 void GimmickChildren::Destructor()//デストラクタ
@@ -54,7 +52,16 @@ void GimmickChildren::Destructor()//デストラクタ
 }
 void GimmickChildren::Action()//アクション
 {
+	CObjMenuTab* tab = (CObjMenuTab*)Obj()->GetObj(OBJ_MENUTAB);
 
+	if (Input()->m_x > m_iXpos&& Input()->m_x < (m_iXpos + m_iWidth)
+		&& Input()->m_y > m_iYpos && Input()->m_y < (m_iYpos + m_iHeight)) {
+		//マウスドラッグ中にマウスボタンが離された
+		if (!Input()->GetMouButtonL() && tab->GetHaveSound()) {
+			//ドラッグしていた効果音をギミックに聞かせる
+			;
+		}
+	}
 }
 void GimmickChildren::Draw()//描画
 {

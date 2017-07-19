@@ -68,7 +68,7 @@ bool InitLibrary()
 	g_SoundManeger = new CSoundManeger();
 	g_TextManager = new CTextManager();
 	g_Overlay = new COverlay(g_DrawTexture,g_DrawFont,g_WinInputs,g_SoundManeger,g_TextManager);
-	g_Overlay->LoadImage();
+	g_Overlay->InitLoad();
 
 	g_SavedataManeger = new CSavedataManeger();
 	g_SavedataManeger->Init();

@@ -59,12 +59,77 @@ void GimmickChildren::Action()//アクション
 		//マウスドラッグ中にマウスボタンが離された
 		if (!Input()->GetMouButtonL() && tab->GetHaveSound()) {
 			//ドラッグしていた効果音をギミックに聞かせる
-			SoundManager()->GetSound();
+			//Audio()->Start(tab->GetGiveSound());
+			switch (m_iChild_ID) {
+			case 1:
+				//if (tab->GetGiveSound() == /*正解の音*/) {
+
+				//	break;
+				//}
+				//else {
+
+				//}
+				break;
+
+			case 2:
+				//if (tab->GetGiveSound() == /*正解の音*/) {
+
+				//	break;
+				//}
+				//else {
+
+				//}
+
+				break;
+
+			case 3:
+				//if (tab->GetGiveSound() == /*正解の音*/) {
+
+				//	break;
+				//}
+				//else {
+
+				//}
+
+				break;
+
+			}
 		}
 	}
 }
 void GimmickChildren::Draw()//描画
 {
+	//-------------------------ギミック(本体)を描画-------------------------------
+	//float col[4] = { 1.0,1.0,1.0,1.0 };
 
+	//switch (m_iChild_ID) {
+	//case 1:
+	//	//切り取り先座標
+	//	m_dst.top = 0; m_dst.left = 0;
+	//	m_dst.bottom = 200; m_dst.right = 200;
+
+	//	break;
+
+	//case 2:
+	//	//切り取り先座標
+	//	m_dst.top = 0; m_dst.left = 0;
+	//	m_dst.bottom = 200; m_dst.right = 200;
+
+	//	break;
+
+	//case 3:
+	//	//切り取り先座標
+	//	m_dst.top = 0; m_dst.left = 0;
+	//	m_dst.bottom = 200; m_dst.right = 200;
+
+	//	break;
+
+	//}
+
+	////転送先座標
+	//m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
+	//m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
+	////描画
+	//Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
 }
 

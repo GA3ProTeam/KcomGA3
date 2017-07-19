@@ -3,7 +3,31 @@
 void COverlay::InitLoad()
 {
 	//Image
-	image->LoadImageEx("Image\\talk.png", 0, TEX_SIZE_512);
+	/*image->LoadImageEx("はじめから.png", 0, TEX_SIZE_512);
+	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);
+
+	image->LoadImageEx("戻りボタン.png", 1, TEX_SIZE_512);
+	image->LoadImageEx("破棄ボタン.png", 1, TEX_SIZE_512);
+	image->LoadImageEx(".png", 1, TEX_SIZE_512);
+	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_);
+	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);
+	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);
+	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);
+	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);
+	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);
+	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);
+	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);
+	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);
+	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);
+	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);
+	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);
+	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);
+	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);
+	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);
+	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);
+	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);
+	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);*/
+
 }
 
 void COverlay::Action()

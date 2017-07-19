@@ -28,5 +28,13 @@ public:
 
 };
 
+class GimmickGranny : public Gimmick
+{
+private:
+
+public:
+
+};
+
 
 #endif // !__GIMMCKTEST__

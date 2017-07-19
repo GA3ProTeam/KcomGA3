@@ -21,6 +21,8 @@ public:
 		  m_iDrawFlg(-1),m_x(0),m_y(0)
 	{}
 	
+	void LoadImage();
+
 	void Action();
 	void Draw();
 

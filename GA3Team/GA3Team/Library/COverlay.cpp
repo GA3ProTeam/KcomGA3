@@ -1,5 +1,10 @@
 #include "../main.h"
 
+void COverlay::LoadImage()
+{
+	
+}
+
 void COverlay::Action()
 {
 	if (m_iDrawFlg == 0) {

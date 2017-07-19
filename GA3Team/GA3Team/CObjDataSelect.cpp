@@ -287,6 +287,7 @@ void CObjDataSelect::ButtonContinuation() {
 			m_obj_savedatabutton[i]->Emission();	//発光
 		}
 
+
 		//データを選択しました
 		if (m_obj_savedatabutton[i]->Push()) {
 

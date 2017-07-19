@@ -55,6 +55,7 @@ bool InitLibrary()
 	g_DrawTexture =new CDrawTexture(g_DirectXDeveice->GetDevice(),
 		g_DirectXDeveice->GetDeviceContext());	//ドローテクスチャ初期化
 	g_DrawTexture->InitDraw();
+	g_DrawTexture->LoadImageEx("talk.png",0,TEX_SIZE_512);
 
 	g_DrawFont= new CDrawFont(g_DirectXDeveice,g_DrawTexture);//フォント初期化 
 
@@ -68,7 +69,9 @@ bool InitLibrary()
 	g_SoundManeger = new CSoundManeger();
 	g_TextManager = new CTextManager();
 	g_TalkOverlay = new CTalkOverlay(g_DrawTexture,g_DrawFont,g_WinInputs,g_SoundManeger,g_TextManager);
+
 	g_SavedataManeger = new CSavedataManeger();
+	g_SavedataManeger->Init();
 
 	return true;
 }

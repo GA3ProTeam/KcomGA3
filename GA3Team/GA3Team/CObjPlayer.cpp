@@ -63,6 +63,8 @@ void CObjPlayer::Destructor() {
 //アクション
 void CObjPlayer::Action() {
 	//DialogBox(User()->p_hInstance , MAKEINTRESOURCE(IDD_DIALOG1), User()->p_hWnd , User()->p_DlgProc);
+
+	//Font()->StrDraw(User()->dlgIn, 0, WINDOW_SIZE_H/2, 32, col);
 }
 
 //ドロー

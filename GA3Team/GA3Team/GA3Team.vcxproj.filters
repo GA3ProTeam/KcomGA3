@@ -31,9 +31,6 @@
     <Filter Include="テスト ファイル">
       <UniqueIdentifier>{bbe6a533-474e-47f0-b138-fb3b9b43098b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="CSceneGameMain\MelueruStageGimmick">
-      <UniqueIdentifier>{cd23dd36-28aa-440c-8cec-ce23548dbc9d}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -150,8 +147,23 @@
     <ClCompile Include="Library\CTalkOverlay.cpp">
       <Filter>ライブラリ ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="GimmickDoor.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="GimmickOven.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="GimmickAunt.cpp">
+      <Filter>CSceneGameMain</Filter>
+    </ClCompile>
+    <ClCompile Include="GimmickChildren.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
     <ClCompile Include="GimmickKatsuo.cpp">
-      <Filter>CSceneGameMain\MelueruStageGimmick</Filter>
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="GimmickTelevision.cpp">
+      <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -260,8 +272,29 @@
     <ClInclude Include="Library\CTalkOverlay.h">
       <Filter>ライブラリ ファイル</Filter>
     </ClInclude>
+    <ClInclude Include="GimmickDoor.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="GimmickOven.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="GimmickAunt.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="GimmickTelevision.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="GimmickAunt.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="GimmickTelevision.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="GimmickChildren.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
     <ClInclude Include="GimmickKatsuo.h">
-      <Filter>CSceneGameMain\MelueruStageGimmick</Filter>
+      <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

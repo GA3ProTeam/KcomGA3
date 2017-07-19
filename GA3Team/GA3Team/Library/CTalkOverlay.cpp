@@ -28,7 +28,7 @@ void CTalkOverlay::Draw()
 		src.bottom = src.top + 600;
 		src.right = src.left + 800;
 
-		image->Draw(5, &src, &dst, col, 0.0f);
+		image->DrawEx(0, &src, &dst, col, 0.0f);
 	}
 }
 

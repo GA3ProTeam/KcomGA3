@@ -137,7 +137,21 @@
     <ClCompile Include="CSceneStageSelect.cpp" />
     <ClCompile Include="CSceneTitle.cpp" />
     <ClCompile Include="GimmckTest.cpp" />
-    <ClCompile Include="GimmickKatsuo.cpp" />
+    <ClCompile Include="GimmickChildren.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="GimmickDoor.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="GimmickKatsuo.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="GimmickOven.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="GimmickTelevision.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="Library\Audio.cpp" />
     <ClCompile Include="Library\Button.cpp" />
     <ClCompile Include="Library\CTalkOverlay.cpp" />
@@ -163,6 +177,7 @@
     <ClCompile Include="CSceneDataSelect.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="GimmickAunt.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ButtonDataSelect.h" />
@@ -183,7 +198,24 @@
     <ClInclude Include="CSceneStageSelect.h" />
     <ClInclude Include="CSceneTitle.h" />
     <ClInclude Include="GimmckTest.h" />
-    <ClInclude Include="GimmickKatsuo.h" />
+    <ClInclude Include="GimmickAunt.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="GimmickChildren.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="GimmickDoor.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="GimmickKatsuo.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="GimmickOven.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="GimmickTelevision.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="Library\Audio.h" />
     <ClInclude Include="Library\Button.h" />
     <ClInclude Include="Library\CTalkOverlay.h" />

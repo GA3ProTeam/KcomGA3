@@ -37,6 +37,10 @@ public:
 	//‰¹‚ğ‚Á‚Ä‚¢‚é‚©’²‚×‚é
 	bool GetHaveSound() { return m_bhavesound; };
 
+	//‚Á‚Ä‚¢‚é‰¹‚ğ’²‚×‚é
+	int GetGiveSound() { return m_igivesound; };
+
+
 	//ŠJ•Âƒtƒ‰ƒO‚ğ‚Æ‚é
 	bool GetOpenCloseFlg() { return m_bOpenClose; };
 

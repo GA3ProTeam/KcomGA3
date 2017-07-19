@@ -115,9 +115,11 @@ BOOL CALLBACK DlgProc(HWND hDlg, UINT Msg, WPARAM wParam, LPARAM lParam)
 		case IDOK:
 			GetDlgItemText(hDlg, IDC_EDIT1, str, 255);
 			strcpy_s(g_UserData->dlgIn, str);
+			EndDialog(hDlg, IDOK);
+			break;
 			//MessageBox(hDlg, str, "取得されたメッセージ", MB_OK);
 		case IDCANCEL:
-			EndDialog(hDlg, 0);
+			EndDialog(hDlg, IDCANCEL);
 			return TRUE;
 		}
 		break;

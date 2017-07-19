@@ -37,12 +37,12 @@ void CObjTitle::Action()
 		  //はじめからボタン生成
 		m_obj_button[0] = new ButtonDataSelect();
 		Obj()->InsertObj(m_obj_button[0], OBJ_BUTTON_STAGE, 0, this->m_pScene, HIT_BOX_OFF);
-		m_obj_button[0]->Init(300, 300, 200, 80, true,0);
+		m_obj_button[0]->Init(250, 300, 300, 100, true,0);
 
 		//つづきからボタン生成
 		m_obj_button[1] = new ButtonDataSelect();
 		Obj()->InsertObj(m_obj_button[1], OBJ_BUTTON_STAGE, 0, this->m_pScene, HIT_BOX_OFF);
-		m_obj_button[1]->Init(300, 400, 200, 80, m_bdataflg,0);//セーブデータがなかったら続きからを暗くする。ボタン判定なくす
+		m_obj_button[1]->Init(250, 400, 300, 100, m_bdataflg,1);//セーブデータがなかったら続きからを暗くする。ボタン判定なくす
 
 		m_icreateflg = true; //ボタン作成済
 
@@ -85,8 +85,8 @@ void CObjTitle::Draw()
 	Font()->StrDraw(x, 0, 16, 16, coltext);
 	Font()->StrDraw(y, 0, 32, 16, coltext);
 
-	Font()->StrDraw("NEW", 300, 300, 20, coltext);  // (仮)
-	Font()->StrDraw("LOAD",300, 400, 20, coltext); //  〃
+//	Font()->StrDraw("NEW", 300, 300, 20, coltext);  // (仮)
+//	Font()->StrDraw("LOAD",300, 400, 20, coltext); //  〃
 
 
 	

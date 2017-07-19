@@ -192,6 +192,8 @@ void CObjDataSelect::ButtonFromTheBegin() {
 			//セーブデータ番号
 			m_iSelectData = i;
 
+			SavedataManeger()->SelectedData = m_iSelectData; //選択されたセーブデータ番号を送る
+
 			//セーブデータ確認
 			if (SavedataManeger()->Savedatacheck(m_iSelectData)) {
 				m_bsavedataflg = true;
@@ -203,11 +205,11 @@ void CObjDataSelect::ButtonFromTheBegin() {
 	if (m_bmessageflg == true) {/*セーブデータが入っていたら*/
 								//初期化してもいいですか
 								//"はい"...データ削除
-		if (MessageBox(NULL, "本当に削除しますか？", "プレイヤーネーム削除", MB_OKCANCEL) == IDOK) {
+		if (MessageBox(User()->p_hWnd, "本当に削除しますか？", "プレイヤーネーム削除", MB_OKCANCEL) == IDOK) {
 
 			m_bsavedataflg = false;
 			SavedataManeger()->Deletesavedata(); //仮
-															 //Manager()->Pop(new CSceneTitle()); //デバック用
+			//Manager()->Pop(new CSceneTitle()); //デバック用
 			//メッセージボックスを閉じる
 			m_bmessageflg = false;
 
@@ -221,11 +223,9 @@ void CObjDataSelect::ButtonFromTheBegin() {
 	if (m_bsavedataflg == false && m_iSelectData >= 0) {/*データが入っていなければ*/
 														//名前を入力する
 
-		char name_str[256] = { "\0" };
-		DialogBox(User()->p_hInstance, MAKEINTRESOURCE(IDD_DIALOG1), User()->p_hWnd, User()->p_DlgProc);
-		
-		sprintf(m_cplayername[m_iSelectData], "%s", User()->dlgIn);
-
+		if (DialogBox(User()->p_hInstance, MAKEINTRESOURCE(IDD_DIALOG1), User()->p_hWnd, User()->p_DlgProc) == IDOK) {
+			sprintf(m_cplayername[m_iSelectData], "%s", User()->dlgIn);
+		}
 
 		//新規セーブデータ作成(仮) ---> テスト　プレイヤー１
 		SavedataManeger()->Writesavedata();
@@ -287,10 +287,13 @@ void CObjDataSelect::ButtonContinuation() {
 			m_obj_savedatabutton[i]->Emission();	//発光
 		}
 
+
 		//データを選択しました
 		if (m_obj_savedatabutton[i]->Push()) {
 
 			m_iSelectData = i;
+
+			SavedataManeger()->SelectedData = m_iSelectData; //選択されたセーブデータ番号を送る
 
 			//セーブデータ確認
 			if (SavedataManeger()->Savedatacheck(m_iSelectData)) {

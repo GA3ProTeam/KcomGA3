@@ -214,7 +214,7 @@ extern CUserData*		g_UserData;
 extern CHitBoxManager*	g_HitBoxManager;
 extern CSoundManeger* g_SoundManeger;
 extern CTextManager* g_TextManager;
-extern COverlay* g_TalkOverlay;
+extern COverlay* g_Overlay;
 extern CSavedataManeger* g_SavedataManeger;
 
 //エンジンヘッダー

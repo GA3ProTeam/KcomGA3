@@ -19,7 +19,7 @@ class CScene
 			m_HitBoxManager  =g_HitBoxManager;
 			m_SoundManeger = g_SoundManeger;
 			m_TextManager = g_TextManager;
-			m_TalkOverlay = g_TalkOverlay;
+			m_TalkOverlay = g_Overlay;
 			m_SavedataManeger = g_SavedataManeger;
 
 		}

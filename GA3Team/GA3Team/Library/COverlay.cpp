@@ -2,7 +2,7 @@
 
 void COverlay::LoadImage()
 {
-	
+	image->LoadImageEx("Image\\talk.png", 0, TEX_SIZE_512);
 }
 
 void COverlay::Action()

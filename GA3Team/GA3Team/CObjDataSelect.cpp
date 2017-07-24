@@ -234,12 +234,13 @@ void CObjDataSelect::ButtonFromTheBegin() {
 
 			if(strcmp(User()->dlgIn, m_cplayername[m_iSelectData]) !=  0 )
 			sprintf(m_cplayername[m_iSelectData], "%s", User()->dlgIn);
+
+			strcpy(SavedataManeger()->Savedata[m_iSelectData].m_cPlayerName, m_cplayername[m_iSelectData]);
+
 		}
 
 		//新規セーブデータ作成(仮) ---> テスト　プレイヤー１
 		SavedataManeger()->Writesavedata();
-
-		m_iSelectData = -1;
 
 //		int debug_flg = true;
 //		if(debug_flg)
@@ -250,6 +251,8 @@ void CObjDataSelect::ButtonFromTheBegin() {
 			//デバッグ用
 			Manager()->Pop(new CSceneStageSelect());
 		}
+
+		m_iSelectData = -1;
 	}
 }
 

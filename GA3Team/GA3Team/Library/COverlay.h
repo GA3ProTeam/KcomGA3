@@ -5,29 +5,49 @@
 
 class COverlay{
 private:
+	//CObj配下と同じようにアクセスできるように
 	CDrawTexture *image;
 	CDrawFont *font;
 	CWinInputs *input;
 	CSoundManeger *soundmgr;
 	CTextManager *textmgr;
 
+	//描画用
 	int m_x, m_y;
+	float alpha;
 
+	//フラグ式管理用
 	bool m_bDrawing;
 	int m_iDrawFlg;
+	int m_iFadeFlg;
 public:
+	//
 	COverlay(CDrawTexture *i,CDrawFont *f,CWinInputs *w,CSoundManeger *s,CTextManager *t)
 		: image(i),font(f),input(w),soundmgr(s),textmgr(t),
-		  m_iDrawFlg(-1),m_x(0),m_y(0)
+		  m_iDrawFlg(-1),m_iFadeFlg(0),m_x(0),m_y(0),alpha(0.0f)
 	{}
 	
+	//----------------動作系----------------
+
+	//最初のロード
 	void InitLoad();
-
+	//アクション
 	void Action();
+	//描画
 	void Draw();
-
+	//トークの描画有効
 	void talkDraw();
 
+	//----------------命令系----------------
+
+	//フェードイン
+	void FadeIn();
+	//フェードアウト
+	void FadeOut();
+
+	//----------------状態取得----------------
+
+	//オーバーレイが描画されているか
 	bool isDraw() { return m_bDrawing; }
 };
 

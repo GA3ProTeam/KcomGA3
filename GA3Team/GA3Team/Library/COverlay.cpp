@@ -32,10 +32,31 @@ void COverlay::InitLoad()
 
 void COverlay::Action()
 {
-	if (m_iDrawFlg == 0) {
-		//m_x = input->m_x;
-		//m_y = input->m_y;
+	//-------フェードイン---------
+	//フェードイン
+	if (m_iFadeFlg == 1) {
+		if (alpha >= 0.0f) {
+			alpha += 0.01f;
+		}
+
+		if (alpha > 1.0f) {
+			m_iFadeFlg = 0;
+			alpha = 1.0f;
+		}
+
 	}
+	//フェードアウト
+	else if (m_iFadeFlg == 2) {
+		if (alpha >= 0.0f) {
+			alpha += 0.01f;
+		}
+
+		if (alpha < 0.0f) {
+			m_iFadeFlg = 0;
+			alpha = 0.0f;
+		}
+	}
+	//------------------------------
 }
 
 void COverlay::Draw()
@@ -44,7 +65,7 @@ void COverlay::Draw()
 		RECT src, dst;
 
 		//カラー情報
-		float col[4] = { 1.0f,1.0f,1.0f,1.0f };
+		float col[4] = { 1.0f,1.0f,1.0f,alpha };
 
 		//切り取り座標
 		dst.top = 0;
@@ -65,4 +86,14 @@ void COverlay::Draw()
 void COverlay::talkDraw()
 {
 	m_iDrawFlg = 0;
+}
+
+void COverlay::FadeIn()
+{
+	m_iFadeFlg = 1;
+}
+
+void COverlay::FadeOut()
+{
+	m_iFadeFlg = 2;
 }

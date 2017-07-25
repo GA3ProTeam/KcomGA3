@@ -312,8 +312,8 @@ void GimmickTelevision::Draw()
 	//•`‰æ
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
 
-	Balloon *ball1 = InitBall(48, -48, sound, 1);
-	gimmicDorw(ball1, 0);
+	Balloon *ball1 = InitBall(48, -48, sound, 1,CNONE);
+	gimmicDraw(ball1, 0);
 	delete ball1;
 }
 
@@ -356,8 +356,8 @@ void GimmickOven::Draw()
 	//•`‰æ
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
 
-	Balloon *ball1 = InitBall(48, -48, sound, 1);
-	gimmicDorw(ball1, 0);
+	Balloon *ball1 = InitBall(48, -48, sound, 1, CNONE);
+	gimmicDraw(ball1, 0);
 	delete ball1;
 }
 
@@ -415,8 +415,8 @@ void GimmickKatsuo::Draw()
 	//•`‰æ
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
 
-	Balloon *ball1 = InitBall(48, -48, sound, 1);
-	gimmicDorw(ball1, 0);
+	Balloon *ball1 = InitBall(48, -48, sound, 1, CNONE);
+	gimmicDraw(ball1, 0);
 	delete ball1;
 }
 
@@ -459,8 +459,8 @@ void GimmickDoor::Draw()
 	//•`‰æ
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
 
-	Balloon *ball1 = InitBall(48, -48, sound, 1);
-	gimmicDorw(ball1, 0);
+	Balloon *ball1 = InitBall(48, -48, sound, 1, CNONE);
+	gimmicDraw(ball1, 0);
 	delete ball1;
 }
 

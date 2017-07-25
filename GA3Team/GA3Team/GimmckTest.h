@@ -42,6 +42,18 @@ public:
 	void SetSound(int sound) { m_iSoundNum = sound; };
 
 };
+
+class GimmickGranny : public Gimmick
+{
+private:
+
+public:
+	void Init(int xpos, int ypos, int widht, int height, int balloonnum);//イニシャライズ
+	void Destructor();//デストラクタ
+	void Action();//アクション
+	void Draw();//描画
+
+};
 //ステージ3↑
 
 

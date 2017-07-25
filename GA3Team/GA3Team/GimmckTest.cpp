@@ -153,6 +153,18 @@ void GimmickChildren::Draw()//描画
 	//Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
 }
 
+void GimmickGranny::Destructor()//デストラクタ
+{
+
+}
+void GimmickGranny::Action()//アクション
+{
+
+}
+void GimmickGranny::Draw()//描画
+{
+
+}
 //ステージ3↑
 
 

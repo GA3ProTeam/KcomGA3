@@ -374,6 +374,9 @@ void GimmickKatsuo::Action()
 			SavedataManeger()->CurrentData->m_bMelueruflg[1] == false) {
 
 			//カツオフラグ1true会話
+
+
+
 			SavedataManeger()->CurrentData->m_bMelueruflg[1] = true;
 
 		}
@@ -383,6 +386,9 @@ void GimmickKatsuo::Action()
 			SavedataManeger()->CurrentData->m_bMelueruflg[2] == false) {
 
 			//カツオフラグ2true会話
+
+
+
 			SavedataManeger()->CurrentData->m_bMelueruflg[2] = true;
 
 		}

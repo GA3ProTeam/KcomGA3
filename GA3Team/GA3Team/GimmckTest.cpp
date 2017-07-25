@@ -79,7 +79,7 @@ void GimmickChildren::Action()//アクション
 			//ドラッグしていた効果音をギミックに聞かせる
 			//Audio()->Start(tab->GetGiveSound());
 			switch (m_iChild_ID) {
-			case 1:
+			case 1://強気な男の子
 				//if (tab->GetGiveSound() == /*正解の音*/) {
 				m_bclearflg[0] = true;
 				//	break;
@@ -89,7 +89,7 @@ void GimmickChildren::Action()//アクション
 				//}
 				break;
 
-			case 2:
+			case 2://優しい女の子
 				//if (tab->GetGiveSound() == /*正解の音*/) {
 				m_bclearflg[1] = true;
 				//	break;
@@ -100,7 +100,7 @@ void GimmickChildren::Action()//アクション
 
 				break;
 
-			case 3:
+			case 3://弱気な男の子
 				//if (tab->GetGiveSound() == /*正解の音*/) {
 				m_bclearflg[2] = true;
 				//	break;

@@ -42,6 +42,15 @@ public:
 	void SetSound(int sound) { m_iSoundNum = sound; };
 
 };
+
+class GimmickGranny : public Gimmick
+{
+private:
+
+public:
+
+};
+
 //ステージ1↑
 
 //ステージ2↓
@@ -227,13 +236,7 @@ private:
 
 //-----------メルエルステージ↑-----------------------------------------
 
-class GimmickGranny : public Gimmick
-{
-private:
 
-public:
-
-};
 
 
 #endif // !__GIMMCKTEST__

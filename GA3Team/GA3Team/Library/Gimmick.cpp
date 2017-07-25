@@ -38,8 +38,8 @@ void Gimmick::gimmicDorw(Balloon *ball1, int num)
 		ball[i].m_gimsrc.right = ball[i].m_gimsrc.left + GIMMICK_SIZE_X;
 	}
 	//-----------------------当たり判定----------------------------------
-	//talkOverRayが起動してたらあたり判定をなくす
-	if (!Talk()->isDraw())
+	//OverRayが起動してたらあたり判定をなくす
+	if (!Overlay()->isDraw())
 	{
 		//縦と横(x)カーソルがギミックの当たり範囲に入っているか否か
 		if ((mousex > m_src.left && mousex < (m_src.left + m_iWidth))

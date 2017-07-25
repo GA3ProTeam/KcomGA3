@@ -31,7 +31,7 @@ void ButtonLScrollScreen::Action() {
 	}
 
 	if(Push()){
-		User()->mscroll_x-=10;
+		User()->mscroll_x+=10;
 	}
 
 }

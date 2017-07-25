@@ -466,14 +466,20 @@ void GimmickKatsuo::Draw()
 void GimmickDoor::Action()
 {
 
-	if (ball[0].OnPush) {
+	//レンジ音使用でステージクリア
+	if (Input()->m_x > m_iXpos&& Input()->m_x < (m_iXpos + m_iWidth)
+		&& Input()->m_y > m_iYpos && Input()->m_y < (m_iYpos + m_iHeight)) {
+		//マウスドラッグ中にマウスボタンが離された
+		//if (!Input()->GetMouButtonL() && tab->GetHaveSound()) {
 
-		//レンジ音取得でステージクリア
 
 
 
-
+		//}
 	}
+
+
+	
 }
 void GimmickDoor::Destructor()
 {

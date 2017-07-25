@@ -27,6 +27,6 @@ void GimmickTelevision::Destructor()
 void GimmickTelevision::Draw()
 {
 	Balloon *ball1 = InitBall(48, -48, sound, 1);
-	gimmicDorw(ball1, 0);
+	gimmicDraw(ball1, 0);
 	delete ball1;
 }

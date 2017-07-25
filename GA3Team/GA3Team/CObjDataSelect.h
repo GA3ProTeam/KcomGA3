@@ -58,7 +58,7 @@ private:
 
 	//char load_progress[MAX_SAVEDATA][32];
 
-	//各セーブデータ用キャラクターデータ
+
 	CharacterData charaData[MAX_SAVEDATA];
 
 };

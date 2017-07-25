@@ -13,9 +13,8 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 	20~25=メルエル
 	30~35=コウネ
 	*/
+	SavedataManeger()->Setcurrentdata();
 
-
-	
 
 	switch (m_Stage_ID) {
 
@@ -31,6 +30,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 
 		break;
 	case 12:
+		//シオンのステージ3のギミック生成
 
 
 

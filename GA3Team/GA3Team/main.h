@@ -63,6 +63,7 @@ enum TEX_SIZE
 	TEX_SIZE_256  =	256,
 	TEX_SIZE_512  =	512,
 	TEX_SIZE_1024 =	1024,
+
 };
 //オブジェクト状態
 enum OBJ_STATUS

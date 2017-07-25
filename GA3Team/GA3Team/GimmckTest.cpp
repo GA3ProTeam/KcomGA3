@@ -54,12 +54,28 @@ void Gimmickearphone::Destructor()
 
 void Gimmickearphone::Action()
 {
+	if (ball[0].OnPush)
+	{
 
+	}
 }
 
 void Gimmickearphone::Draw()
 {
+	float col[4] = { 1.0,1.0,1.0,1.0 };
+	//切り取り先座標
+	m_dst.top = 0; m_dst.left = 0;
+	m_dst.bottom = 200; m_dst.right = 200;
 
+	//転送先座標
+	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
+	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
+	//描画
+	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
+	Balloon *aaa = InitBall(48, -48, sound, 1,RED);
+
+	gimmicDraw(aaa, 0);
+	delete aaa;
 }
 //コウネ
 void Gimmickkoune::Destructor()
@@ -69,12 +85,28 @@ void Gimmickkoune::Destructor()
 
 void Gimmickkoune::Action()
 {
+	if (ball[1].OnPush)
+	{
 
+	}
 }
 
 void Gimmickkoune::Draw()
 {
+	float col[4] = { 1.0,1.0,1.0,1.0 };
+	//切り取り先座標
+	m_dst.top = 0; m_dst.left = 0;
+	m_dst.bottom = 200; m_dst.right = 200;
 
+	//転送先座標
+	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
+	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
+	//描画
+	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
+	Balloon *aaa = InitBall(48, -48, sound, 1, RED);
+
+	gimmicDraw(aaa, 0);
+	delete aaa;
 }
 //猫
 void Gimmickcat::Destructor()
@@ -84,12 +116,28 @@ void Gimmickcat::Destructor()
 
 void Gimmickcat::Action()
 {
+	if (ball[1].OnPush)
+	{
 
+	}
 }
 
 void Gimmickcat::Draw()
 {
+	float col[4] = { 1.0,1.0,1.0,1.0 };
+	//切り取り先座標
+	m_dst.top = 0; m_dst.left = 0;
+	m_dst.bottom = 200; m_dst.right = 200;
 
+	//転送先座標
+	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
+	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
+	//描画
+	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
+	Balloon *aaa = InitBall(48, -48, sound, 1, RED);
+
+	gimmicDraw(aaa, 0);
+	delete aaa;
 }
 //自転車
 void Gimmickbicycle::Destructor()
@@ -104,12 +152,25 @@ void Gimmickbicycle::Action()
 
 void Gimmickbicycle::Draw()
 {
+	float col[4] = { 1.0,1.0,1.0,1.0 };
+	//切り取り先座標
+	m_dst.top = 0; m_dst.left = 0;
+	m_dst.bottom = 200; m_dst.right = 200;
 
+	//転送先座標
+	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
+	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
+	//描画
+	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
+	Balloon *aaa = InitBall(48, -48, sound, 1, RED);
+
+	gimmicDraw(aaa, 0);
+	delete aaa;
 }
 //ステージ2↑
 
 //ステージ3↓
-//子供１，２，３
+//子供1、2、3
 void GimmickChildren::Init(int xpos, int ypos, int widht, int height, int balloonnum, int child_id)///イニシャライズ
 {
 	m_iChild_ID = child_id;

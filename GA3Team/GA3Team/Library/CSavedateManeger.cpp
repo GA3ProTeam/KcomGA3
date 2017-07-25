@@ -41,7 +41,7 @@ void CSavedataManeger::Loadsavedata()
 		//各フラグを取得する
 		for (unsigned int i = 0; i < (*itr).length(); i++) {//文字
 			switch (dataflg) { //__SWITCH__
-			case 0: { //m_bKouneflg
+			case 0: { //m_btutoriaruflg
 				if ((*itr)[i] == '0') {
 					Savedata[saveflg].m_btutoriaruflg.push_back(false);
 				}
@@ -68,7 +68,7 @@ void CSavedataManeger::Loadsavedata()
 				}
 				break;
 			}
-			case 3: {//m_bKouneClearflg
+			case 3: {//m_bSionflg
 				if ((*itr)[i] == '0') {
 					Savedata[saveflg].m_bSionflg.push_back(false);
 				}
@@ -77,7 +77,7 @@ void CSavedataManeger::Loadsavedata()
 				}
 				break;
 			}
-			case 4: {//m_bKouneClearflg
+			case 4: {//m_bSionClearflg
 				if ((*itr)[i] == '0') {
 					Savedata[saveflg].m_bSionClearflg.push_back(false);
 				}
@@ -86,7 +86,7 @@ void CSavedataManeger::Loadsavedata()
 				}
 				break;
 			}
-			case 5: {//m_bKouneClearflg
+			case 5: {//m_bMelueruflg
 				if ((*itr)[i] == '0') {
 					Savedata[saveflg].m_bMelueruflg.push_back(false);
 				}
@@ -95,7 +95,7 @@ void CSavedataManeger::Loadsavedata()
 				}
 				break;
 			}
-			case 6: {//m_bKouneClearflg
+			case 6: {//m_bMelueruClearflg
 				if ((*itr)[i] == '0') {
 					Savedata[saveflg].m_bMelueruClearflg.push_back(false);
 				}
@@ -164,5 +164,6 @@ void CSavedataManeger::Deletesavedata()
 
 void CSavedataManeger::Setcurrentdata()
 {
+	SelectedData = 0;//テスト用
 	CurrentData = &(Savedata[SelectedData]);
 }

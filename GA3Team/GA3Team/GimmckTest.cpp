@@ -109,6 +109,7 @@ void Gimmickbicycle::Draw()
 //ステージ2↑
 
 //ステージ3↓
+//子供１，２，３
 void GimmickChildren::Init(int xpos, int ypos, int widht, int height, int balloonnum, int child_id)///イニシャライズ
 {
 	m_iChild_ID = child_id;
@@ -216,6 +217,7 @@ void GimmickChildren::Draw()//描画
 	//Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
 }
 
+//おばあちゃん
 void GimmickGranny::Destructor()//デストラクタ
 {
 
@@ -228,6 +230,49 @@ void GimmickGranny::Draw()//描画
 {
 
 }
+
+//九官鳥
+void GimmickMynah::Destructor()	//デストラクタ
+{
+
+}
+void GimmickMynah::Action()		//アクション
+{
+
+}
+void GimmickMynah::Draw()		//ドロー
+{
+
+}
+
+//菓子棚
+void GimmickShelf::Destructor()	//デストラクタ
+{
+
+}
+void GimmickShelf::Action()		//アクション
+{
+
+}
+void GimmickShelf::Draw()		//ドロー
+{
+
+}
+
+//風鈴
+void GimmickWindchime::Destructor()	//デストラクタ
+{
+
+}
+void GimmickWindchime::Action()		//アクション
+{
+
+}
+void GimmickWindchime::Draw()		//ドロー
+{
+
+}
+
 //ステージ3↑
 
 //ステージ4↓
@@ -250,6 +295,60 @@ void GimmickGranny::Draw()//描画
 
 
 //ステージ1↓
+//犬のデストラクタ
+void GimmickDog::Destructor()
+{
+
+}	
+//犬のアクション
+void GimmickDog::Action() 
+{
+
+}
+//犬のドロー
+void GimmickDog::Draw() 
+{
+
+}	
+//マンホールの蓋のデストラクタ
+void GimmickManholeCover::Destructor() 
+{
+
+}	
+//マンホールの蓋のアクション
+void GimmickManholeCover::Action() 
+{
+
+}		
+//マンホールの蓋のドロー
+void GimmickManholeCover::Draw() 
+{
+
+}//マンホールの穴のデストラクタ
+void GimmickManholeHole::Destructor() 
+{
+
+}//マンホールの穴のアクション
+void GimmickManholeHole::Action()
+{
+
+}//マンホールの穴のドロー
+void GimmickManholeHole::Draw()
+{
+
+}//老人のデストラクタ
+void GimmickOldman::Destructor()
+{
+
+}//老人のアクション
+void GimmickOldman::Action()
+{
+
+}//老人のドロー
+void GimmickOldman::Draw()
+{
+
+}	
 //ステージ1↑
 
 //ステージ2↓

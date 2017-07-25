@@ -9,9 +9,9 @@ struct CharacterData
 	int Koune_Data;
 	int Sion_Data;
 	int Melueru_Data;
-	char Koune_progress[32];
-	char Sion_progress[32];
-	char Melueru_progress[32];
+	//char Koune_progress[32];
+	//char Sion_progress[32];
+	//char Melueru_progress[32];
 };
 
 
@@ -28,6 +28,15 @@ public:
 	
 
 private:
+
+	RECT m_rSrc;
+	RECT m_rDst;
+	RECT m_rSrc_Koune;
+	RECT m_rDst_Koune;
+	RECT m_rSrc_Sion;
+	RECT m_rDst_Sion;
+	RECT m_rSrc_Melueru;
+	RECT m_rDst_Melueru;
 
 	bool m_bsavedataflg; //各セーブデータ確認する
 	bool m_bmessageflg;  //メッセージフラグ

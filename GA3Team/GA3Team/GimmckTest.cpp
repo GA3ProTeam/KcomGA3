@@ -191,6 +191,135 @@ void GimmickChildren::Draw()//描画
 
 
 //ステージ1↓
+
+//GimmickTelevision
+void GimmickTelevision::Action()
+{
+
+	if (ball[0].OnPush) {
+
+
+
+
+
+
+	}
+
+
+
+
+
+
+
+
+}
+void GimmickTelevision::Destructor()
+{
+
+}
+void GimmickTelevision::Draw()
+{
+	Balloon *ball1 = InitBall(48, -48, sound, 1);
+	gimmicDorw(ball1, 0);
+	delete ball1;
+}
+
+//GimmickOven
+void GimmickOven::Action()
+{
+
+	if (ball[0].OnPush) {
+
+
+
+
+
+
+	}
+
+
+
+
+
+
+
+
+}
+void GimmickOven::Destructor()
+{
+
+}
+void GimmickOven::Draw()
+{
+	Balloon *ball1 = InitBall(48, -48, sound, 1);
+	gimmicDorw(ball1, 0);
+	delete ball1;
+}
+
+//GimmickKatsuo
+void GimmickKatsuo::Action()
+{
+
+	if (ball[0].OnPush) {
+
+
+
+
+
+
+	}
+
+
+
+
+
+
+
+
+}
+void GimmickKatsuo::Destructor()
+{
+
+}
+void GimmickKatsuo::Draw()
+{
+	Balloon *ball1 = InitBall(48, -48, sound, 1);
+	gimmicDorw(ball1, 0);
+	delete ball1;
+}
+
+//GimmickDoor
+void GimmickDoor::Action()
+{
+
+	if (ball[0].OnPush) {
+
+
+
+
+
+
+	}
+
+
+
+
+
+
+
+
+}
+void GimmickDoor::Destructor()
+{
+
+}
+void GimmickDoor::Draw()
+{
+	Balloon *ball1 = InitBall(48, -48, sound, 1);
+	gimmicDorw(ball1, 0);
+	delete ball1;
+}
+
 //ステージ1↑
 
 //ステージ2↓

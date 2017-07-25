@@ -2,6 +2,12 @@
 #ifndef __C_OBJ_GIMIMICKMANAGER_H__
 #define __C_OBJ_GIMIMICKMANAGER_H__
 
+//使用オブジェクトのプロトタイプ宣言
+class GimmickTelevision;
+class GimmickOven;
+class GimmickKatsuo;
+class GimmickDoor;
+
 class CObjGimmickManager : public CObj
 {
 public:
@@ -16,6 +22,32 @@ public:
 private:
 
 	int m_Stage_ID;			//ステージの番号
+
+
+
+
+
+
+
+	//メルエルステージ↓
+	//ステージ1↓
+	GimmickTelevision* m_gimmick_television;
+	GimmickOven* m_gimmick_oven;
+	GimmickKatsuo* m_gimmick_katsuo;
+	GimmickDoor* m_gimmick_door;
+	//ステージ1↑
+	//メルエルステージ↑
+
+
+
+
+
+
+
+
+
+
+
 
 
 

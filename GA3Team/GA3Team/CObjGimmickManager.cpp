@@ -13,9 +13,8 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 	20~25=メルエル
 	30~35=コウネ
 	*/
+	SavedataManeger()->Setcurrentdata();
 
-
-	
 
 	switch (m_Stage_ID) {
 

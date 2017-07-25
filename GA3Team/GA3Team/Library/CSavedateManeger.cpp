@@ -164,5 +164,6 @@ void CSavedataManeger::Deletesavedata()
 
 void CSavedataManeger::Setcurrentdata()
 {
+	SelectedData = 0;//テスト用
 	CurrentData = &(Savedata[SelectedData]);
 }

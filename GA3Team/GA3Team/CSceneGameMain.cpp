@@ -54,8 +54,8 @@ void CSceneGameMain::InitScene()
 
 	//Audio()->LoopStart(0);
 
-	Overlay()->FadeIn();
 	Overlay()->talkDraw();
+	Overlay()->FadeIn();
 
 	TextManager()->LoadText();
 

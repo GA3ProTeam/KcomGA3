@@ -3,6 +3,8 @@
 void COverlay::InitLoad()
 {
 	//Image
+	image->LoadImageEx("talk.png", 0, TEX_SIZE_512);
+
 	/*image->LoadImageEx("‚Í‚¶‚ß‚©‚ç.png", 0, TEX_SIZE_512);
 	image->LoadImageEx("‚Â‚Ã‚«‚©‚ç.png", 1, TEX_SIZE_512);
 

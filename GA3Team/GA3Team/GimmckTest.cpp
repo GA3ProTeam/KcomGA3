@@ -289,20 +289,9 @@ void GimmickTelevision::Action()
 
 	if (ball[0].OnPush) {
 
-
-
-
-
+		//テレビ音取得
 
 	}
-
-
-
-
-
-
-
-
 }
 void GimmickTelevision::Destructor()
 {
@@ -375,6 +364,21 @@ void GimmickOven::Draw()
 //GimmickKatsuo
 void GimmickKatsuo::Action()
 {
+	if (SavedataManeger()->Savedata[SavedataManeger()->SelectedData].m_bMelueruflg[0]) {
+
+
+
+
+
+	}
+	if (User()->m_bmerueruability==false) {
+
+		//カツオフラグ無し、能力なし
+
+
+	}
+	else if (User()->m_bmerueruability == true) {}
+
 
 	if (ball[0].OnPush) {
 

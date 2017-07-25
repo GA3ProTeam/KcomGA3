@@ -30,6 +30,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 
 		break;
 	case 12:
+		//シオンのステージ3のギミック生成
 
 
 

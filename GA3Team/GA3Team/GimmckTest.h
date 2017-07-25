@@ -129,13 +129,13 @@ public:
 };
 
 //菓子棚
-class Gimmickshelf : public Gimmick
+class GimmickShelf : public Gimmick
 {
 private:
 
 public:
-	Gimmickshelf() {};
-	~Gimmickshelf() {};
+	GimmickShelf() {};
+	~GimmickShelf() {};
 
 	void Destructor();	//デストラクタ
 	void Action();		//アクション

@@ -14,7 +14,8 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 	30~35=コウネ
 	*/
 	SavedataManeger()->Setcurrentdata();
-
+	//SavedataManeger()->CurrentData->m_bKouneClearflg[0];
+	m_Stage_ID = 20;
 
 	switch (m_Stage_ID) {
 
@@ -57,7 +58,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 	//-メルエルステージ---------------------------------------
 
 	case 20:
-		/*
+		
 		m_gimmick_television = new GimmickTelevision();
 		Obj()->InsertObj(m_gimmick_television, GIMMICK_TELEVISION, 5, this->m_pScene, HIT_BOX_OFF);
 		m_gimmick_television->Init(100, 300, 100, 70, 1);
@@ -73,7 +74,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 		m_gimmick_door = new GimmickDoor();
 		Obj()->InsertObj(m_gimmick_door, GIMMICK_DOOR, 5, this->m_pScene, HIT_BOX_OFF);
 		m_gimmick_door->Init(400, 150, 100, 300, 1);
-		*/
+		
 		break;
 	case 21:
 
@@ -108,7 +109,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 	case 30:
 
 			
-		/**/
+		
 
 		m_gimmick_dog = new GimmickDog();
 		Obj()->InsertObj(m_gimmick_television,GIMMICK_DOG , 5, this->m_pScene, HIT_BOX_OFF);
@@ -125,7 +126,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 		m_gimmick_oldman = new GimmickOldman();
 		Obj()->InsertObj(m_gimmick_oldman, GIMMICK_OLDMAN, 5, this->m_pScene, HIT_BOX_OFF);
 		m_gimmick_oldman->Init(400, 150, 100, 300, 1);
-		
+
 
 		break;
 	case 31:

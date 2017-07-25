@@ -170,7 +170,7 @@ void Gimmickbicycle::Draw()
 //ステージ2↑
 
 //ステージ3↓
-//子供１，２，３
+//子供1、2、3
 void GimmickChildren::Init(int xpos, int ypos, int widht, int height, int balloonnum, int child_id)///イニシャライズ
 {
 	m_iChild_ID = child_id;

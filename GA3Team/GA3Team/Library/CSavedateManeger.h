@@ -9,8 +9,11 @@ public:
 	void Writesavedata(); //セーブデータ書き込み
 	bool Savedatacheck(int savenum); //セーブデータ確認
 	void Deletesavedata();//セーブデータ削除
+	void Setcurrentdata();//ポインターセット
 
 	int SelectedData;
+
+	CSavedata *CurrentData;
 
 	vector<CSavedata> Savedata;
 };

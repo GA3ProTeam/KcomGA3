@@ -61,6 +61,9 @@ private:
 
 	CharacterData charaData[MAX_SAVEDATA];
 
+	//ˆê‰ñ‚¾‚¯ƒ[ƒh‚·‚é—p
+	int iLoad_flg;
+
 };
 
 #endif // !__COBJDATASELECT_H__

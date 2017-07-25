@@ -214,7 +214,7 @@ void CObjDataSelect::ButtonFromTheBegin() {
 				 
 				 //初期化してもいいですか
 				 //"はい"...データ削除
-				if (MessageBox(User()->p_hWnd, "本当に削除しますか？", "プレイヤーネーム削除", MB_OKCANCEL) == IDOK) {
+				if (MessageBox(User()->p_hWnd, "選択中のセーブデータを\n初期化していいですか？", "プレイヤーネーム削除", MB_OKCANCEL) == IDOK) {
 
 					m_bsavedataflg = false;
 					SavedataManeger()->Deletesavedata(); //仮

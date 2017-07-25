@@ -189,6 +189,7 @@ void CObjDataSelect::ButtonFromTheBegin() {
 		}
 	}
 
+
 	//マウス判定
 	//カーソルがある所を拡大+発光
 	for (int i = 0; i < MAX_SAVEDATA; i++) {

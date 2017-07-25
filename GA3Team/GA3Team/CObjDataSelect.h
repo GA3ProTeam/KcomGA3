@@ -4,6 +4,17 @@
 #define MAX_SAVEDATA 3       //セーブデータの数
 #define CHAR_PROGRESS 3		 //キャラクターの数(進行度用)
 
+struct CharacterData
+{
+	int Koune_Data;
+	int Sion_Data;
+	int Melueru_Data;
+	char Koune_progress[32];
+	char Sion_progress[32];
+	char Melueru_progress[32];
+};
+
+
 class CObjDataSelect : public CObj {
 public:
 	void Init();		//イニシャライズ
@@ -47,6 +58,8 @@ private:
 	int  m_iplayerprogress[MAX_SAVEDATA][CHAR_PROGRESS];	   //キャラクター進行度
 
 	char load_progress[MAX_SAVEDATA][32];
+
+	CharacterData charaData[MAX_SAVEDATA];
 
 };
 

@@ -15,8 +15,6 @@ private:
 	void Draw();
 };
 
-
-
 //-----------シオンステージ↓-----------------------------------------
 //ステージ1↓
 
@@ -78,6 +76,7 @@ private:
 //ステージ2↑
 
 //ステージ3↓
+//子供
 class GimmickChildren : public Gimmick
 {
 private:
@@ -86,6 +85,9 @@ private:
 	bool m_bclearflg[3];//クリアフラグ
 
 public:
+	GimmickChildren() {};
+	~GimmickChildren() {};
+
 	void Init(int xpos, int ypos, int widht, int height, int balloonnum, int child_id);//イニシャライズ(child_id 1:強気な男の子　2:優しい女の子　3:弱気な男の子)
 	void Destructor();//デストラクタ
 	void Action();//アクション
@@ -100,13 +102,59 @@ class GimmickGranny : public Gimmick
 private:
 
 public:
-	void Init(int xpos, int ypos, int widht, int height, int balloonnum);//イニシャライズ
+	GimmickGranny() {};
+	~GimmickGranny() {};
+
 	void Destructor();//デストラクタ
 	void Action();//アクション
 	void Draw();//描画
 
 };
 
+//九官鳥
+class GimmickMynah : public Gimmick
+{
+private:
+
+public:
+	GimmickMynah() {};
+	~GimmickMynah() {};
+
+	void Destructor();	//デストラクタ
+	void Action();		//アクション
+	void Draw();		//ドロー
+
+};
+
+//菓子棚
+class GimmickShelf : public Gimmick
+{
+private:
+
+public:
+	GimmickShelf() {};
+	~GimmickShelf() {};
+
+	void Destructor();	//デストラクタ
+	void Action();		//アクション
+	void Draw();		//ドロー
+
+};
+
+//風鈴
+class GimmickWindchime : public Gimmick
+{
+private:
+
+public:
+	GimmickWindchime() {};
+	~GimmickWindchime() {};
+
+	void Destructor();	//デストラクタ
+	void Action();		//アクション
+	void Draw();		//ドロー
+
+};
 
 //ステージ3↑
 
@@ -131,6 +179,64 @@ public:
 
 
 //ステージ1↓
+//老人
+class GimmickOldman :public Gimmick
+{
+public:
+	GimmickOldman() {};
+	~GimmickOldman() {};
+
+	void Destructor();	//デストラクタ
+	void Action();		//アクション
+	void Draw();		//ドロー
+
+private:
+
+};
+//マンホールの蓋
+class GimmickManholeCover :public Gimmick
+{
+public:
+	GimmickManholeCover() {};
+	~GimmickManholeCover() {};
+
+	void Destructor();	//デストラクタ
+	void Action();		//アクション
+	void Draw();		//ドロー
+
+private:
+
+};
+//マンホールの穴
+class GimmickManholeHole :public Gimmick
+{
+public:
+	GimmickManholeHole() {};
+	~GimmickManholeHole() {};
+
+
+	void Destructor();	//デストラクタ
+	void Action();		//アクション
+	void Draw();		//ドロー
+
+private:
+
+};
+//犬
+class GimmickDog :public Gimmick
+{
+public:
+	GimmickDog() {};
+	~GimmickDog() {};
+
+
+	void Destructor();	//デストラクタ
+	void Action();		//アクション
+	void Draw();		//ドロー
+
+private:
+
+};
 //ステージ1↑
 
 //ステージ2↓

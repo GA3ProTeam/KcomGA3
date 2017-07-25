@@ -5,8 +5,11 @@ void CSceneDataSelect::InitScene()
 {
 
 	//このシーンで表示させるイメージ情報
-	Image()->LoadImage("タイトルタブ仮画像.png", 0, TEX_SIZE_64);
+	Image()->LoadImage("タイトルタブ仮画像.png", 0, TEX_SIZE_64); //赤いの表示
 	Image()->LoadImage("戻りボタン.png", 1, TEX_SIZE_512);
+	//Image()->LoadImage("コウネ進行度.png", 10, TEX_SIZE_512); //コウネ
+	//Image()->LoadImage("シオン進行度.png", 11, TEX_SIZE_512); //シオン
+	//Image()->LoadImage("メルエル進行度.png", 12, TEX_SIZE_512); //メルエル
 
 	//文字データ作成
 	//Font()->SetStrTex("ボスHP：");

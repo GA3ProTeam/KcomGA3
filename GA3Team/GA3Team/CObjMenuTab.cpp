@@ -17,14 +17,17 @@ void CObjMenuTab::Init(int openclosey)
 	m_iBackTitlex = m_openclose_x;//タイトルの戻るボタンのX
 	m_iBackTitley = m_openclose_y;//タイトルの戻るボタンのY
 
-	//ボタンの位置X
-	m_iXpos = m_openclose_x;
-	//ボタンの位置Y
-	m_iYpos = m_openclose_y;
-	//ボタンの幅
-	m_iWidth = 64;
-	//ボタンの高さ
-	m_iHeight = 64;
+	////ボタンの位置X
+	//m_iXpos = m_openclose_x;
+	////ボタンの位置Y
+	//m_iYpos = m_openclose_y;
+	////ボタンの幅
+	//m_iWidth = 64;
+	////ボタンの高さ
+	//m_iHeight = 64;
+
+	//親クラスを初期化
+	Button::Init(m_openclose_x, m_openclose_y, 64, 64 ,true);
 
 }
 
@@ -205,7 +208,7 @@ void CObjMenuTab::Draw()
 	}
 
 	//音をドラック＆ドロップ
-	if (m_bhavesound && Input()->GetMouButtonL()) {
+	if (m_bhavesound && Input()->GetMouButtonL() && SoundManager()->GetSound(m_igivesound) != 0) {
 		//切り取り先座標
 		m_rDst.top = 64; m_rDst.left = 128;
 		m_rDst.bottom = m_rDst.top + 64; m_rDst.right = m_rDst.left + 64;

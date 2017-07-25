@@ -4,6 +4,17 @@
 #define MAX_SAVEDATA 3       //セーブデータの数
 #define CHAR_PROGRESS 3		 //キャラクターの数(進行度用)
 
+struct CharacterData
+{
+	int Koune_Data;
+	int Sion_Data;
+	int Melueru_Data;
+	char Koune_progress[32];
+	char Sion_progress[32];
+	char Melueru_progress[32];
+};
+
+
 class CObjDataSelect : public CObj {
 public:
 	void Init();		//イニシャライズ
@@ -21,7 +32,6 @@ private:
 	bool m_bsavedataflg; //各セーブデータ確認する
 	bool m_bmessageflg;  //メッセージフラグ
 
-	//CSavedataManeger* m_obj_savedata[MAX_SAVEDATA];				//セーブデータ
 	ButtonDataSelect* m_obj_savedatabutton[MAX_SAVEDATA];	//データ選択ボタン
 	ButtonDataSelect* m_obj_titlebackbutton;				//戻るボタン
 	ButtonDataSelect* m_obj_deletebutton;					//初期化するボタン
@@ -46,7 +56,10 @@ private:
 	char m_csave_playername[MAX_SAVEDATA][256];					   //プレイヤーネーム
 	int  m_iplayerprogress[MAX_SAVEDATA][CHAR_PROGRESS];	   //キャラクター進行度
 
-	char load_progress[MAX_SAVEDATA][32];
+	//char load_progress[MAX_SAVEDATA][32];
+
+	//各セーブデータ用キャラクターデータ
+	CharacterData charaData[MAX_SAVEDATA];
 
 };
 

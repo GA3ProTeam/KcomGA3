@@ -15,15 +15,19 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 	*/
 
 
-	
+	m_Stage_ID = 11;
 
 	switch (m_Stage_ID) {
 
 	//-シオンステージ-----------------------------------------
 	case 10:
+	{
 		//シオンのステージ1のギミック生成
-		
 
+		GimmickTest* m_gimmick = new GimmickTest();
+		Obj()->InsertObj(m_gimmick, GIMMICK_TELEVISION, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick->Init(100, 300, 100, 70, 1);
+	}
 		break;
 	case 11:
 

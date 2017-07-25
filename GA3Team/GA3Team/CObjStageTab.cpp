@@ -75,8 +75,8 @@ void CObjStageTab::Action() {
 
 				//生成したステージボタンの参照を各ポインタに格納しておく
 				m_stage_button[m_isel_chara][stage_num] = new ButtonStage();
-				m_stage_button[m_isel_chara][stage_num]->Init(250 + (stage_num % 4) * 128, 75 + (stage_num / 4) * 128, 96, 96, bSelFlg, this, stage_num);
 				Obj()->InsertObj(m_stage_button[m_isel_chara][stage_num], OBJ_BUTTON_STAGE, 1, this->m_pScene, HIT_BOX_OFF);
+				m_stage_button[m_isel_chara][stage_num]->Init(250 + (stage_num % 4) * 128, 75 + (stage_num / 4) * 128, 96, 96, bSelFlg, this, stage_num);
 			}
 			//-------------------------------------------------------------------------------------------
 

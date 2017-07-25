@@ -49,7 +49,7 @@ public:
 private:
 
 };
-//ƒRƒEƒl
+//”L
 class Gimmickcat : public Gimmick
 {
 public:

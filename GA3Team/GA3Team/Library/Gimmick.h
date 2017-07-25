@@ -9,6 +9,7 @@ enum BalloonType {
 };
 //吹き出しの色(シオンの能力発動時)
 enum BalloonColor {
+	NONE = -1,
 	RED,
 	BLUE,
 	GREEN,

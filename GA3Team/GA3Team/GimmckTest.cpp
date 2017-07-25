@@ -277,7 +277,7 @@ void GimmickChildren::Draw()//ï`âÊ
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
 
 	//1å¬ÇÃèÍçá
-	Balloon *aaa = InitBall(48, -48, talk, 1, RED);
+	Balloon *aaa = InitBall(48, -48, talk, 1, CNONE);
 
 	gimmicDraw(aaa, 0);
 	delete aaa;
@@ -308,7 +308,7 @@ void GimmickGranny::Draw()//ï`âÊ
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
 
 	//1å¬ÇÃèÍçá
-	Balloon *aaa = InitBall(48, -48, talk, 1, RED);
+	Balloon *aaa = InitBall(48, -48, talk, 1, CNONE);
 
 	gimmicDraw(aaa, 0);
 	delete aaa;
@@ -401,7 +401,7 @@ void GimmickWindchime::Draw()		//ÉhÉçÅ[
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
 
 	//1å¬ÇÃèÍçá
-	Balloon *aaa = InitBall(48, -48, talk, 1, RED);
+	Balloon *aaa = InitBall(48, -48, talk, 1, PURPLE);
 
 	gimmicDraw(aaa, 0);
 	delete aaa;

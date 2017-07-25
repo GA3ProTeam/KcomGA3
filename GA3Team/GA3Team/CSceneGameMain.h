@@ -6,6 +6,7 @@
 class ButtonRScrollScreen;
 class ButtonLScrollScreen;
 class CObjMenuTab;
+class CObjGimmickManager;
 class GimmickTest;//テスト用
 
 //シーン　ゲームメイン

@@ -170,6 +170,7 @@ void Gimmickbicycle::Draw()
 //ステージ2↑
 
 //ステージ3↓
+//子供１，２，３
 void GimmickChildren::Init(int xpos, int ypos, int widht, int height, int balloonnum, int child_id)///イニシャライズ
 {
 	m_iChild_ID = child_id;
@@ -277,6 +278,7 @@ void GimmickChildren::Draw()//描画
 	//Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
 }
 
+//おばあちゃん
 void GimmickGranny::Destructor()//デストラクタ
 {
 
@@ -289,6 +291,49 @@ void GimmickGranny::Draw()//描画
 {
 
 }
+
+//九官鳥
+void GimmickMynah::Destructor()	//デストラクタ
+{
+
+}
+void GimmickMynah::Action()		//アクション
+{
+
+}
+void GimmickMynah::Draw()		//ドロー
+{
+
+}
+
+//菓子棚
+void Gimmickshelf::Destructor()	//デストラクタ
+{
+
+}
+void Gimmickshelf::Action()		//アクション
+{
+
+}
+void Gimmickshelf::Draw()		//ドロー
+{
+
+}
+
+//風鈴
+void GimmickWindchime::Destructor()	//デストラクタ
+{
+
+}
+void GimmickWindchime::Action()		//アクション
+{
+
+}
+void GimmickWindchime::Draw()		//ドロー
+{
+
+}
+
 //ステージ3↑
 
 //ステージ4↓
@@ -435,6 +480,9 @@ void GimmickKatsuo::Action()
 			SavedataManeger()->CurrentData->m_bMelueruflg[1] == false) {
 
 			//カツオフラグ1true会話
+
+
+
 			SavedataManeger()->CurrentData->m_bMelueruflg[1] = true;
 
 		}
@@ -444,6 +492,9 @@ void GimmickKatsuo::Action()
 			SavedataManeger()->CurrentData->m_bMelueruflg[2] == false) {
 
 			//カツオフラグ2true会話
+
+
+
 			SavedataManeger()->CurrentData->m_bMelueruflg[2] = true;
 
 		}

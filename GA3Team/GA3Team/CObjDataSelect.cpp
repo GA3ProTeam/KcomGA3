@@ -40,9 +40,9 @@ void CObjDataSelect::Destructor()
 
 void CObjDataSelect::Action()
 {
-
+	
 	//プレイヤーデータ読込み
-	SavedataManeger()->Loadsavedata();
+	//SavedataManeger()->Loadsavedata();
 
 	//どちらが選ばれたか持ってくる
 	m_ititle_choice = User()->mititle_choice;
@@ -87,8 +87,8 @@ void CObjDataSelect::Action()
 void CObjDataSelect::Draw()
 {
 	//マウス位置描画　デバック用
-	char x[32], y[32];
 
+	char x[32], y[32];
 	sprintf(x, "%d", Input()->m_x);
 	sprintf(y, "%d", Input()->m_y);
 
@@ -143,6 +143,7 @@ void CObjDataSelect::Draw()
 //----------------------------------------------------------------------------------
 //はじめから
 void CObjDataSelect::ButtonFromTheBegin() {
+
 
 	if (m_icreateflg == false) {
 
@@ -225,8 +226,8 @@ void CObjDataSelect::ButtonFromTheBegin() {
 			if(strcmp(User()->dlgIn, m_cplayername[m_iSelectData]) !=  0 )
 			sprintf(m_cplayername[m_iSelectData], "%s", User()->dlgIn);
 
-			//プレイヤーネーム取得
-			strcpy(SavedataManeger()->Savedata[m_iSelectData].m_cPlayerName, m_cplayername[m_iSelectData]);
+			//プレイヤーネームをセーブデータへ
+			strcpy(SavedataManeger()->Savedata[m_iSelectData].m_cPlayerName , m_cplayername[m_iSelectData]);
 
 			//新規セーブデータ作成(仮) ---> テスト　プレイヤー１
 			SavedataManeger()->Writesavedata();
@@ -250,8 +251,6 @@ void CObjDataSelect::ButtonFromTheBegin() {
 //つづきから
 void CObjDataSelect::ButtonContinuation() {
 
-	
-
 	//ボタン作成
 	if (m_icreateflg == false) {
 		//データが入ってなかったら選べなくする/暗くする
@@ -263,16 +262,9 @@ void CObjDataSelect::ButtonContinuation() {
 			//セーブデータがあったらプレイヤーネームを表示する(仮)
 			if (m_bselect_flg[i] == true)
 			{
-				strcpy(m_cplayername[i],SavedataManeger()->Savedata[i].m_cPlayerName);
+				strcpy(m_cplayername[i] ,SavedataManeger()->Savedata[i].m_cPlayerName);
 			}
 
-			//デバック用
-//			if (i == 1) {
-//				m_bselect_flg[i] = true;
-//			}
-//			else {
-//				m_bselect_flg[i] = false;
-//			}
 
 			//ボタン作成
 			m_obj_savedatabutton[i] = new ButtonDataSelect();

@@ -159,5 +159,10 @@ bool CSavedataManeger::Savedatacheck(int savenum)
 
 void CSavedataManeger::Deletesavedata()
 {
+	
+}
 
+void CSavedataManeger::Setcurrentdata()
+{
+	CurrentData = &(Savedata[SelectedData]);
 }

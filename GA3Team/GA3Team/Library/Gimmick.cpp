@@ -9,7 +9,7 @@ void Gimmick::Init(int xpos, int ypos, int widht, int height, int balloonnum)
 	m_iballoonnum = balloonnum;//吹き出しの総数
 	m_iSoundNum = 1;
 }
-void Gimmick::gimmicDorw(Balloon *ball1, int num)
+void Gimmick::gimmicDraw(Balloon *ball1, int num)
 {
 	static bool flg = false;
 	static bool onceflg = false;//クリックした際一度だけ反応するためのフラグ
@@ -62,6 +62,12 @@ void Gimmick::gimmicDorw(Balloon *ball1, int num)
 				if (ball[i].m_iballoontype == sound){
 					//音吹き出しを描画
 					Image()->Draw(4, &ball[i].m_gimsrc, &m_gimdst, col, 0.0f);
+
+					//シオンの能力発動時に吹き出しの色を変える
+					/*if (User()->m_bsionability)
+					{
+						
+					}*/
 				}
 
 				//吹き出し描画中に吹き出しをクリックしたら
@@ -94,7 +100,11 @@ void Gimmick::gimmicDorw(Balloon *ball1, int num)
 		}
 	}
 }
-Balloon *InitBall(int gimX, int gimY, int balltype, int soundnum)
+void Gimmick::setballooncolor(int num)
+{
+	if(ball[num].m_iballooncolor == RED);
+}
+Balloon *InitBall(int gimX, int gimY, int balltype, int soundnum, int color)
 {
 	Balloon *Initball = new Balloon();
 
@@ -102,6 +112,7 @@ Balloon *InitBall(int gimX, int gimY, int balltype, int soundnum)
 	Initball->m_iGimYpos = gimY;
 	Initball->m_iballoontype = balltype;
 	Initball->m_soundnum = soundnum;
+	Initball->m_iballooncolor = color;
 
 	return Initball;
 }

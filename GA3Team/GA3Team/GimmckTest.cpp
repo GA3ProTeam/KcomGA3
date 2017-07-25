@@ -152,6 +152,72 @@ void GimmickChildren::Draw()//描画
 	////描画
 	//Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
 }
+//ステージ1↑
+
+//ステージ2↓
+//イヤホン男
+void Gimmickearphone::Destructor()
+{
+
+}
+
+void Gimmickearphone::Action()
+{
+
+}
+
+void Gimmickearphone::Draw()
+{
+
+}
+//コウネ
+void Gimmickkoune::Destructor()
+{
+
+}
+
+void Gimmickkoune::Action()
+{
+
+}
+
+void Gimmickkoune::Draw()
+{
+
+}
+//猫
+void Gimmickcat::Destructor()
+{
+
+}
+
+void Gimmickcat::Action()
+{
+
+}
+
+void Gimmickcat::Draw()
+{
+
+}
+//自転車
+void Gimmickbicycle::Destructor()
+{
+
+}
+
+void Gimmickbicycle::Action()
+{
+
+}
+
+void Gimmickbicycle::Draw()
+{
+
+}
+//ステージ2↑
+
+//ステージ3↓
 
 //ステージ3↑
 

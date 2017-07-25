@@ -37,25 +37,25 @@ void COverlay::Action()
 	//-------フェードイン---------
 	//フェードイン
 	if (m_iFadeFlg == 1) {
-		if (alpha >= 0.0f) {
-			alpha += 0.01f;
+		if (m_fAlpha >= 0.0f) {
+			m_fAlpha += 0.01f;
 		}
 
-		if (alpha > 1.0f) {
+		if (m_fAlpha > 1.0f) {
 			m_iFadeFlg = 0;
-			alpha = 1.0f;
+			m_fAlpha = 1.0f;
 		}
 
 	}
 	//フェードアウト
 	else if (m_iFadeFlg == 2) {
-		if (alpha >= 0.0f) {
-			alpha += 0.01f;
+		if (m_fAlpha >= 0.0f) {
+			m_fAlpha += 0.01f;
 		}
 
-		if (alpha < 0.0f) {
+		if (m_fAlpha < 0.0f) {
 			m_iFadeFlg = 0;
-			alpha = 0.0f;
+			m_fAlpha = 0.0f;
 		}
 	}
 	//------------------------------
@@ -63,11 +63,12 @@ void COverlay::Action()
 
 void COverlay::Draw()
 {
+	//test overlay
 	if (m_iDrawFlg == 0) {
 		RECT src, dst;
 
 		//カラー情報
-		float col[4] = { 1.0f,1.0f,1.0f,alpha };
+		float col[4] = { 1.0f,1.0f,1.0f,m_fAlpha };
 
 		//切り取り座標
 		dst.top = 0;
@@ -83,11 +84,34 @@ void COverlay::Draw()
 
 		image->DrawEx(0, &src, &dst, col, 0.0f);
 	}
+	else if (m_iDrawFlg == 1) {
+		static int i = 0;
+		char c[8];
+		char tmp[64];
+
+		m_iDelay++;
+
+		if (i < 10) {
+			if (m_iDelay > m_iTextSpeed) {
+				sprintf_s(c, "%d", i);
+				m_strTemp += c;
+				i++;
+			}
+		}
+
+		if (m_iDelay > m_iTextSpeed)
+			m_iDelay = 0;
+
+		sprintf_s(tmp, "%s", m_strTemp.c_str());
+		float col[4] = { 1.0f,1.0f,1.0f,m_fAlpha };
+		font->StrDraw(tmp, 0, 0, 16, col);
+	}
+
 }
 
 void COverlay::talkDraw()
 {
-	m_iDrawFlg = 0;
+	m_iDrawFlg = 1;
 }
 
 void COverlay::FadeIn()

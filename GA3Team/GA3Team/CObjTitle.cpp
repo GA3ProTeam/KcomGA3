@@ -97,4 +97,7 @@ void CObjTitle::Draw()
 		Manager()->Pop(new CSceneDataSelect());
 	}
 
+	//テスト用表示
+	float coldbg[4] = { 1.0f,1.0f,1.0f,1.0f };
+	Font()->StrDraw("Debugモード有効：EnterでGameMainへ", 0, WINDOW_SIZE_H - 16, 16, coldbg);
 }

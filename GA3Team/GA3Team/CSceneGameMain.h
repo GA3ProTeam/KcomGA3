@@ -6,6 +6,7 @@
 class ButtonRScrollScreen;
 class ButtonLScrollScreen;
 class CObjMenuTab;
+class CObjGimmickManager;
 class GimmickTest;//テスト用
 
 //シーン　ゲームメイン
@@ -19,6 +20,7 @@ public:
 private:
 	//CObjPlayer* m_obj_player;
 
+	CObjGimmickManager* m_obj_gimmickmanager;
 	ButtonRScrollScreen* m_obj_Rscroll;
 	ButtonLScrollScreen* m_obj_Lscroll;
 	CObjMenuTab* m_obj_menutab;

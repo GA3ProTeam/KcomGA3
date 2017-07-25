@@ -246,15 +246,15 @@ void GimmickMynah::Draw()		//ドロー
 }
 
 //菓子棚
-void Gimmickshelf::Destructor()	//デストラクタ
+void GimmickShelf::Destructor()	//デストラクタ
 {
 
 }
-void Gimmickshelf::Action()		//アクション
+void GimmickShelf::Action()		//アクション
 {
 
 }
-void Gimmickshelf::Draw()		//ドロー
+void GimmickShelf::Draw()		//ドロー
 {
 
 }

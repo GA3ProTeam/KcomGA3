@@ -72,6 +72,7 @@ private:
 
 	//ˆê‰ñ‚¾‚¯ƒ[ƒh‚·‚é—p
 	int iLoad_flg;
+	int iTitle_flg;
 
 };
 

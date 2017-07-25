@@ -34,6 +34,7 @@ void CObjDataSelect::Init()
 	}
 
 	iLoad_flg = 0;
+	iTitle_flg = 0;
 }
 
 void CObjDataSelect::Destructor()
@@ -75,10 +76,13 @@ void CObjDataSelect::Action()
 	}
 
 	//タイトルに戻る
-	m_obj_titlebackbutton = new ButtonDataSelect();
-	Obj()->InsertObj(m_obj_titlebackbutton, OBJ_BUTTON_STAGE, 0, this->m_pScene, HIT_BOX_OFF);
-	m_obj_titlebackbutton->Init(30, 525, 150, 150, true, 1, 512, 512);
+	if (iTitle_flg == 0) {
+		m_obj_titlebackbutton = new ButtonDataSelect();
+		Obj()->InsertObj(m_obj_titlebackbutton, OBJ_BUTTON_STAGE, 0, this->m_pScene, HIT_BOX_OFF);
+		m_obj_titlebackbutton->Init(30, 525, 150, 150, true, 1, 512, 512);
 
+		iTitle_flg = 1;
+	}
 
 	//タイトルに戻る(仮)
 	if (m_obj_titlebackbutton->Push()) {

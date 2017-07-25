@@ -7,10 +7,10 @@ class GimmickTelevision;
 class GimmickOven;
 class GimmickKatsuo;
 class GimmickDoor;
-class GimmickChildren;
-class GimmickGranny;
-class GimmickShelf;
-class GimmickWindchime;
+class GimmickDog;
+class GimmickManholeCover;
+class GimmickManholeHole;
+class GimmickOldman;
 
 class CObjGimmickManager : public CObj
 {
@@ -27,14 +27,8 @@ private:
 
 	int m_Stage_ID;			//ステージの番号
 
-	//シオンステージ↓
-	//ステージ3↓
-	GimmickChildren* m_gimmick_children;
-	GimmickGranny* m_gimmick_granny;
-	GimmickShelf* m_gimmick_shelf;
-	GimmickWindchime* m_gimmick_windchime;
-	//↑ステージ3
-	//↑シオンステージ
+
+
 
 
 
@@ -45,16 +39,21 @@ private:
 	GimmickOven* m_gimmick_oven;
 	GimmickKatsuo* m_gimmick_katsuo;
 	GimmickDoor* m_gimmick_door;
+
 	//ステージ1↑
 	//メルエルステージ↑
 
 
 
 
-
-
-
-
+	//コウネステージ↓
+	//ステージ1↓
+	GimmickDog*  m_gimmick_dog;
+	GimmickManholeCover*  m_gimmick_manhole_cover;
+	GimmickManholeHole*  m_gimmick_manhole_hole;
+	GimmickOldman*  m_gimmick_oldman;
+	//ステージ1↑
+	//コウネステージ↑
 
 
 

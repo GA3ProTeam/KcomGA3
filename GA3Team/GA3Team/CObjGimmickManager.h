@@ -12,6 +12,10 @@ class GimmickGranny;
 class GimmickShelf;
 class GimmickWindchime;
 
+class GimmickDog;
+class GimmickManholeHole;
+class GimmickManholeCover;
+class GimmickOldman;
 class CObjGimmickManager : public CObj
 {
 public:
@@ -39,6 +43,14 @@ private:
 
 
 
+	//コウネステージ↓
+	//ステージ1↓
+	GimmickDog* m_gimmick_dog;
+	GimmickManholeHole* m_gimmick_manhole_hole;
+	GimmickManholeCover* m_gimmick_manhole_cover;
+	GimmickOldman* m_gimmick_oldman;
+
+
 	//メルエルステージ↓
 	//ステージ1↓
 	GimmickTelevision* m_gimmick_television;
@@ -47,7 +59,6 @@ private:
 	GimmickDoor* m_gimmick_door;
 	//ステージ1↑
 	//メルエルステージ↑
-
 
 
 

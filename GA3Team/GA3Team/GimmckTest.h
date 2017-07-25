@@ -181,6 +181,64 @@ public:
 
 
 //ステージ1↓
+//老人
+class GimmickOldman :public Gimmick
+{
+public:
+	GimmickOldman() {};
+	~GimmickOldman() {};
+
+	void Destructor();	//デストラクタ
+	void Action();		//アクション
+	void Draw();		//ドロー
+
+private:
+
+};
+//マンホールの蓋
+class GimmickManholeCover :public Gimmick
+{
+public:
+	GimmickManholeCover() {};
+	~GimmickManholeCover() {};
+
+	void Destructor();	//デストラクタ
+	void Action();		//アクション
+	void Draw();		//ドロー
+
+private:
+
+};
+//マンホールの穴
+class GimmickManholeHole :public Gimmick
+{
+public:
+	GimmickManholeHole() {};
+	~GimmickManholeHole() {};
+
+
+	void Destructor();	//デストラクタ
+	void Action();		//アクション
+	void Draw();		//ドロー
+
+private:
+
+};
+//犬
+class GimmickDog :public Gimmick
+{
+public:
+	GimmickDog() {};
+	~GimmickDog() {};
+
+
+	void Destructor();	//デストラクタ
+	void Action();		//アクション
+	void Draw();		//ドロー
+
+private:
+
+};
 //ステージ1↑
 
 //ステージ2↓

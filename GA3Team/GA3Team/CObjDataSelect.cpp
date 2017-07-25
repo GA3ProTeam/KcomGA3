@@ -168,6 +168,9 @@ void CObjDataSelect::ButtonFromTheBegin() {
 
 		for (int i = 0; i < MAX_SAVEDATA; i++) {
 
+			//データの有無を確認
+			m_bselect_flg[i] = SavedataManeger()->Savedatacheck(i); //セーブデータの有無を読む
+
 			//ボタン描画
 			m_obj_savedatabutton[i] = new ButtonDataSelect();
 			Obj()->InsertObj(m_obj_savedatabutton[i], OBJ_BUTTON_STAGE, 0, this->m_pScene, HIT_BOX_OFF);
@@ -177,6 +180,12 @@ void CObjDataSelect::ButtonFromTheBegin() {
 
 			if (i < MAX_SAVEDATA)
 				m_icreateflg = true;
+
+			//セーブデータがあったらプレイヤーネームを表示する(仮)
+			if (m_bselect_flg[i] == true)
+			{
+				strcpy(m_cplayername[i], SavedataManeger()->Savedata[i].m_cPlayerName);
+			}
 		}
 	}
 
@@ -268,6 +277,12 @@ void CObjDataSelect::ButtonContinuation() {
 
 			//データの有無を確認
 			m_bselect_flg[i] = SavedataManeger()->Savedatacheck(i); //セーブデータの有無を読む
+
+			//セーブデータがあったらプレイヤーネームを表示する(仮)
+			if (m_bselect_flg[i] == true)
+			{
+				strcpy(m_cplayername[i],SavedataManeger()->Savedata[i].m_cPlayerName);
+			}
 
 			//デバック用
 //			if (i == 1) {

@@ -21,13 +21,9 @@ void CObjDataSelect::Init()
 
 	m_bmessageflg = false;
 
-	
-	
-
 	for (int j = 0; j < 4; j++) {
 		//カラー情報初期化
 		col[j] = 1.0f;
-	
 	}
 
 	for (int i = 0; i < MAX_SAVEDATA; i++) {
@@ -43,7 +39,10 @@ void CObjDataSelect::Init()
 		//}
 
 		//キャラクター進行度表示
-		sprintf(load_progress[i], "0");
+		//sprintf(load_progress[i], "0");
+		sprintf(charaData[i].Koune_progress, "0");
+		sprintf(charaData[i].Sion_progress, "0");
+		sprintf(charaData[i].Melueru_progress, "0");
 	}
 
 
@@ -136,29 +135,29 @@ void CObjDataSelect::Draw()
 	//プレイヤー名１
 	Font()->StrDraw(m_cplayername[0], 200, 120, text_size_playername[0], col);
 	//主人公１の進行度
-	Font()->StrDraw(load_progress[0], 400, 120, text_size_progress[0], col);
+	Font()->StrDraw(charaData[0].Koune_progress, 400, 120, text_size_progress[0], col);
 	//主人公２の進行度			  
-	Font()->StrDraw(load_progress[0], 500, 120, text_size_progress[0], col);
+	Font()->StrDraw(charaData[0].Sion_progress, 500, 120, text_size_progress[0], col);
 	//主人公３の進行度			  
-	Font()->StrDraw(load_progress[0], 600, 120, text_size_progress[0], col);
+	Font()->StrDraw(charaData[0].Melueru_progress, 600, 120, text_size_progress[0], col);
 
 	//プレイヤー名２
 	Font()->StrDraw(m_cplayername[1], 200, 270, text_size_playername[1], col);
 	//主人公１の進行度
-	Font()->StrDraw(load_progress[1], 400, 270, text_size_progress[1], col);
+	Font()->StrDraw(charaData[1].Koune_progress, 400, 270, text_size_progress[1], col);
 	//主人公２の進行度
-	Font()->StrDraw(load_progress[1], 500, 270, text_size_progress[1], col);
+	Font()->StrDraw(charaData[1].Sion_progress, 500, 270, text_size_progress[1], col);
 	//主人公３の進行度
-	Font()->StrDraw(load_progress[1], 600, 270, text_size_progress[1], col);
+	Font()->StrDraw(charaData[1].Melueru_progress, 600, 270, text_size_progress[1], col);
 
 	//プレイヤー名３
 	Font()->StrDraw(m_cplayername[2], 200, 420, text_size_playername[2], col);
 	//主人公１の進行度
-	Font()->StrDraw(load_progress[2], 400, 420, text_size_progress[2], col);
+	Font()->StrDraw(charaData[2].Koune_progress, 400, 420, text_size_progress[2], col);
 	//主人公２の進行度								  
-	Font()->StrDraw(load_progress[2], 500, 420, text_size_progress[2], col);
+	Font()->StrDraw(charaData[2].Sion_progress, 500, 420, text_size_progress[2], col);
 	//主人公３の進行度								  
-	Font()->StrDraw(load_progress[2], 600, 420, text_size_progress[2], col);
+	Font()->StrDraw(charaData[2].Melueru_progress, 600, 420, text_size_progress[2], col);
 
 }
 

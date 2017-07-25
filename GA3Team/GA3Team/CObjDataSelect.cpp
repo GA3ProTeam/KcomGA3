@@ -32,6 +32,8 @@ void CObjDataSelect::Init()
 		sprintf(charaData[i].Sion_progress, "0");
 		sprintf(charaData[i].Melueru_progress, "0");
 	}
+
+	iLoad_flg = 0;
 }
 
 void CObjDataSelect::Destructor()
@@ -42,7 +44,12 @@ void CObjDataSelect::Action()
 {
 	
 	//プレイヤーデータ読込み
-	//SavedataManeger()->Loadsavedata();
+	if (iLoad_flg == 0)
+	{
+		SavedataManeger()->Loadsavedata();
+		iLoad_flg = 1;
+	}
+	
 
 	//どちらが選ばれたか持ってくる
 	m_ititle_choice = User()->mititle_choice;
@@ -79,7 +86,6 @@ void CObjDataSelect::Action()
 		User()->mititle_choice = TITLE_RETURN;
 
 		Manager()->Pop(new CSceneTitle());
-
 	}
 
 }
@@ -186,6 +192,10 @@ void CObjDataSelect::ButtonFromTheBegin() {
 			m_iSelectData = i;
 
 			SavedataManeger()->SelectedData = m_iSelectData; //選択されたセーブデータ番号を送る
+			
+			//テスト
+//			SavedataManeger()->Setcurrentdata();
+
 
 			//セーブデータ確認
 			if (SavedataManeger()->Savedatacheck(m_iSelectData)) {
@@ -229,7 +239,7 @@ void CObjDataSelect::ButtonFromTheBegin() {
 			//プレイヤーネームをセーブデータへ
 			strcpy(SavedataManeger()->Savedata[m_iSelectData].m_cPlayerName , m_cplayername[m_iSelectData]);
 
-			//新規セーブデータ作成(仮) ---> テスト　プレイヤー１
+			//新規セーブデータ作成(仮) 
 			SavedataManeger()->Writesavedata();
 		}
 

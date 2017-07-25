@@ -57,7 +57,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 	//-メルエルステージ---------------------------------------
 
 	case 20:
-		/*
+		
 		m_gimmick_television = new GimmickTelevision();
 		Obj()->InsertObj(m_gimmick_television, GIMMICK_TELEVISION, 5, this->m_pScene, HIT_BOX_OFF);
 		m_gimmick_television->Init(100, 200, 100, 70, 1);
@@ -73,7 +73,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 		m_gimmick_door = new GimmickDoor();
 		Obj()->InsertObj(m_gimmick_door, GIMMICK_DOOR, 5, this->m_pScene, HIT_BOX_OFF);
 		m_gimmick_door->Init(400, 150, 100, 300, 1);
-		*/
+		
 		break;
 	case 21:
 

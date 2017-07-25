@@ -19,6 +19,7 @@ public:
 private:
 	//CObjPlayer* m_obj_player;
 
+	CObjGimmickManager* m_obj_gimmickmanager;
 	ButtonRScrollScreen* m_obj_Rscroll;
 	ButtonLScrollScreen* m_obj_Lscroll;
 	CObjMenuTab* m_obj_menutab;

@@ -94,6 +94,7 @@ public:
 
 };
 
+//‚¨‚Î‚ ‚¿‚á‚ñ
 class GimmickGranny : public Gimmick
 {
 private:

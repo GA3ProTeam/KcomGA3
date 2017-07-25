@@ -60,6 +60,7 @@ CObj* CSceneObjManager:: InsertObj(CObj* obj,OBJ_NAME name,unsigned int prio,CSc
 	obj->m_SoundManeger = g_SoundManeger;
 	obj->m_TextManager = g_TextManager;
 	obj->m_SavedataManeger = g_SavedataManeger;
+	obj->m_Overlay = g_Overlay;
 
 	m_ListData.push_front(obj);	//ƒf[ƒ^“o˜^
 

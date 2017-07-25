@@ -27,9 +27,9 @@ private:
 	int m_iFadeFlg;
 public:
 	//
-	COverlay(CDrawTexture *i,CDrawFont *f,CWinInputs *w,CSoundManeger *s,CTextManager *t)
-		: image(i),font(f),input(w),soundmgr(s),textmgr(t),
-		  m_iDrawFlg(-1),m_iFadeFlg(0),m_x(0),m_y(0), m_fAlpha(0.0f),m_iDelay(0),m_iTextSpeed(30)
+	COverlay(CDrawTexture *i, CDrawFont *f, CWinInputs *w, CSoundManeger *s, CTextManager *t)
+		: image(i), font(f), input(w), soundmgr(s), textmgr(t),
+		m_bDrawing(false), m_iDrawFlg(-1), m_iFadeFlg(0), m_x(0), m_y(0), m_fAlpha(0.0f), m_iDelay(0), m_iTextSpeed(30)
 	{}
 	
 	//----------------ìÆçÏån----------------

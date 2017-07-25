@@ -23,9 +23,9 @@ void GimmickTest::Draw()
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
 
 	//1ŒÂ‚Ìê‡
-	/*Balloon *aaa = InitBall(48, -48, sound, 1);
+	Balloon *aaa = InitBall(48, -48, talk, EXCEPTION);
 	gimmicDorw(aaa, 0);
-	delete aaa;*/
+	delete aaa;
 
 	//•¡”‚Ìê‡
 	/*Balloon *bbb = InitBall(48, -48, sound, 1);
@@ -295,6 +295,19 @@ void GimmickTelevision::Destructor()
 }
 void GimmickTelevision::Draw()
 {
+
+	//-------------------------ƒMƒ~ƒbƒN(–{‘Ì)‚ð•`‰æ-------------------------------
+	float col[4] = { 1.0,1.0,1.0,1.0 };
+	//Ø‚èŽæ‚èæÀ•W
+	m_dst.top = 0; m_dst.left = 0;
+	m_dst.bottom = 200; m_dst.right = 200;
+
+	//“]‘—æÀ•W
+	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
+	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
+	//•`‰æ
+	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
+
 	Balloon *ball1 = InitBall(48, -48, sound, 1);
 	gimmicDorw(ball1, 0);
 	delete ball1;
@@ -327,6 +340,18 @@ void GimmickOven::Destructor()
 }
 void GimmickOven::Draw()
 {
+	//-------------------------ƒMƒ~ƒbƒN(–{‘Ì)‚ð•`‰æ-------------------------------
+	float col[4] = { 1.0,1.0,1.0,1.0 };
+	//Ø‚èŽæ‚èæÀ•W
+	m_dst.top = 0; m_dst.left = 0;
+	m_dst.bottom = 200; m_dst.right = 200;
+
+	//“]‘—æÀ•W
+	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
+	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
+	//•`‰æ
+	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
+
 	Balloon *ball1 = InitBall(48, -48, sound, 1);
 	gimmicDorw(ball1, 0);
 	delete ball1;
@@ -359,6 +384,18 @@ void GimmickKatsuo::Destructor()
 }
 void GimmickKatsuo::Draw()
 {
+	//-------------------------ƒMƒ~ƒbƒN(–{‘Ì)‚ð•`‰æ-------------------------------
+	float col[4] = { 1.0,1.0,1.0,1.0 };
+	//Ø‚èŽæ‚èæÀ•W
+	m_dst.top = 0; m_dst.left = 0;
+	m_dst.bottom = 200; m_dst.right = 200;
+
+	//“]‘—æÀ•W
+	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
+	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
+	//•`‰æ
+	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
+
 	Balloon *ball1 = InitBall(48, -48, sound, 1);
 	gimmicDorw(ball1, 0);
 	delete ball1;
@@ -391,6 +428,18 @@ void GimmickDoor::Destructor()
 }
 void GimmickDoor::Draw()
 {
+	//-------------------------ƒMƒ~ƒbƒN(–{‘Ì)‚ð•`‰æ-------------------------------
+	float col[4] = { 1.0,1.0,1.0,1.0 };
+	//Ø‚èŽæ‚èæÀ•W
+	m_dst.top = 0; m_dst.left = 0;
+	m_dst.bottom = 200; m_dst.right = 200;
+
+	//“]‘—æÀ•W
+	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
+	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
+	//•`‰æ
+	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
+
 	Balloon *ball1 = InitBall(48, -48, sound, 1);
 	gimmicDorw(ball1, 0);
 	delete ball1;

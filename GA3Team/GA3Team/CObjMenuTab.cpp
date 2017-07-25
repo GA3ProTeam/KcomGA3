@@ -205,7 +205,7 @@ void CObjMenuTab::Draw()
 	}
 
 	//音をドラック＆ドロップ
-	if (m_bhavesound && Input()->GetMouButtonL()) {
+	if (m_bhavesound && Input()->GetMouButtonL() && SoundManager()->GetSound(m_igivesound) != 0) {
 		//切り取り先座標
 		m_rDst.top = 64; m_rDst.left = 128;
 		m_rDst.bottom = m_rDst.top + 64; m_rDst.right = m_rDst.left + 64;

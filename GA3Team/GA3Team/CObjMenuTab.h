@@ -38,7 +38,7 @@ public:
 	bool GetHaveSound() { return m_bhavesound; };
 
 	//Ž‚Á‚Ä‚¢‚é‰¹‚ð’²‚×‚é
-	int GetGiveSound() { return m_igivesound; };
+	int GetGiveSound() { return SoundManager()->GetSound(m_igivesound); };
 
 	//ŠJ•Âƒtƒ‰ƒO‚ð‚Æ‚é
 	bool GetOpenCloseFlg() { return m_bOpenClose; };

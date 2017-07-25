@@ -39,6 +39,13 @@ void GimmickTest::Draw()
 //-----------シオンステージ↓-----------------------------------------
 //ステージ1↓
 
+//ステージ1↑
+
+//ステージ2↓
+
+//ステージ2↑
+
+//ステージ3↓
 void GimmickChildren::Init(int xpos, int ypos, int widht, int height, int balloonnum, int child_id)///イニシャライズ
 {
 	m_iChild_ID = child_id;
@@ -47,6 +54,11 @@ void GimmickChildren::Init(int xpos, int ypos, int widht, int height, int balloo
 	m_iWidth = widht;	//ギミック幅の初期化
 	m_iHeight = height;	//ギミック高さの初期化
 	m_iballoonnum = balloonnum;//吹き出しの総数
+
+	for (int i = 0; i < 3; i++) {
+		m_bclearflg[i] = false;
+	}
+
 
 }
 void GimmickChildren::Destructor()//デストラクタ
@@ -66,7 +78,7 @@ void GimmickChildren::Action()//アクション
 			switch (m_iChild_ID) {
 			case 1:
 				//if (tab->GetGiveSound() == /*正解の音*/) {
-
+				m_bclearflg[0] = true;
 				//	break;
 				//}
 				//else {
@@ -76,7 +88,7 @@ void GimmickChildren::Action()//アクション
 
 			case 2:
 				//if (tab->GetGiveSound() == /*正解の音*/) {
-
+				m_bclearflg[1] = true;
 				//	break;
 				//}
 				//else {
@@ -87,7 +99,7 @@ void GimmickChildren::Action()//アクション
 
 			case 3:
 				//if (tab->GetGiveSound() == /*正解の音*/) {
-
+				m_bclearflg[2] = true;
 				//	break;
 				//}
 				//else {
@@ -99,6 +111,11 @@ void GimmickChildren::Action()//アクション
 			}
 		}
 	}
+
+	if (m_bclearflg[0] == true && m_bclearflg[1] == true && m_bclearflg[2] == true) {
+		SavedataManeger()->Savedata[SavedataManeger()->SelectedData].m_bSionflg[2] = true;
+	}
+
 }
 void GimmickChildren::Draw()//描画
 {
@@ -135,13 +152,6 @@ void GimmickChildren::Draw()//描画
 	////描画
 	//Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
 }
-//ステージ1↑
-
-//ステージ2↓
-
-//ステージ2↑
-
-//ステージ3↓
 
 //ステージ3↑
 
@@ -191,6 +201,135 @@ void GimmickChildren::Draw()//描画
 
 
 //ステージ1↓
+
+//GimmickTelevision
+void GimmickTelevision::Action()
+{
+
+	if (ball[0].OnPush) {
+
+
+
+
+
+
+	}
+
+
+
+
+
+
+
+
+}
+void GimmickTelevision::Destructor()
+{
+
+}
+void GimmickTelevision::Draw()
+{
+	Balloon *ball1 = InitBall(48, -48, sound, 1);
+	gimmicDorw(ball1, 0);
+	delete ball1;
+}
+
+//GimmickOven
+void GimmickOven::Action()
+{
+
+	if (ball[0].OnPush) {
+
+
+
+
+
+
+	}
+
+
+
+
+
+
+
+
+}
+void GimmickOven::Destructor()
+{
+
+}
+void GimmickOven::Draw()
+{
+	Balloon *ball1 = InitBall(48, -48, sound, 1);
+	gimmicDorw(ball1, 0);
+	delete ball1;
+}
+
+//GimmickKatsuo
+void GimmickKatsuo::Action()
+{
+
+	if (ball[0].OnPush) {
+
+
+
+
+
+
+	}
+
+
+
+
+
+
+
+
+}
+void GimmickKatsuo::Destructor()
+{
+
+}
+void GimmickKatsuo::Draw()
+{
+	Balloon *ball1 = InitBall(48, -48, sound, 1);
+	gimmicDorw(ball1, 0);
+	delete ball1;
+}
+
+//GimmickDoor
+void GimmickDoor::Action()
+{
+
+	if (ball[0].OnPush) {
+
+
+
+
+
+
+	}
+
+
+
+
+
+
+
+
+}
+void GimmickDoor::Destructor()
+{
+
+}
+void GimmickDoor::Draw()
+{
+	Balloon *ball1 = InitBall(48, -48, sound, 1);
+	gimmicDorw(ball1, 0);
+	delete ball1;
+}
+
 //ステージ1↑
 
 //ステージ2↓

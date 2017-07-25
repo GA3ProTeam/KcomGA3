@@ -34,7 +34,58 @@ public:
 //ステージ1↑
 
 //ステージ2↓
+//イヤホン男
+class Gimmickearphone : public Gimmick
+{
+public:
+	Gimmickearphone() {};
+	~Gimmickearphone() {};
 
+	void Destructor();	//デストラクタ
+	void Action();		//アクション
+	void Draw();		//ドロー
+private:
+
+};
+//コウネ
+class Gimmickkoune : public Gimmick
+{
+public:
+	Gimmickkoune() {};
+	~Gimmickkoune() {};
+
+	void Destructor();	//デストラクタ
+	void Action();		//アクション
+	void Draw();		//ドロー
+private:
+
+};
+//コウネ
+class Gimmickcat : public Gimmick
+{
+public:
+	Gimmickcat() {};
+	~Gimmickcat() {};
+
+	void Destructor();	//デストラクタ
+	void Action();		//アクション
+	void Draw();		//ドロー
+private:
+
+};
+//自転車
+class Gimmickbicycle : public Gimmick
+{
+public:
+	Gimmickbicycle() {};
+	~Gimmickbicycle() {};
+
+	void Destructor();	//デストラクタ
+	void Action();		//アクション
+	void Draw();		//ドロー
+private:
+
+};
 //ステージ2↑
 
 //ステージ3↓

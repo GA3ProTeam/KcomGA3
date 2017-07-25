@@ -21,11 +21,13 @@ void CObjDataSelect::Init()
 
 	m_bmessageflg = false;
 
-	load_progress[0][0] = 0;
+	
+	
 
 	for (int j = 0; j < 4; j++) {
 		//カラー情報初期化
 		col[j] = 1.0f;
+	
 	}
 
 	for (int i = 0; i < MAX_SAVEDATA; i++) {
@@ -39,6 +41,9 @@ void CObjDataSelect::Init()
 		//		m_iplayerprogress[i][j] = 1;
 		//	}
 		//}
+
+		//キャラクター進行度表示
+		sprintf(load_progress[i], "0");
 	}
 
 
@@ -182,6 +187,7 @@ void CObjDataSelect::ButtonFromTheBegin() {
 			if (m_bselect_flg[i] == true)
 			{
 				strcpy(m_cplayername[i], SavedataManeger()->Savedata[i].m_cPlayerName);
+				
 			}
 		}
 	}

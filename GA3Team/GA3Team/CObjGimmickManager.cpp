@@ -14,8 +14,9 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 	30~35=コウネ
 	*/
 	SavedataManeger()->Setcurrentdata();
+	//SavedataManeger()->CurrentData->m_bKouneClearflg[0];
+	
 
-	m_Stage_ID = 12;
 	switch (m_Stage_ID) {
 
 	//-シオンステージ-----------------------------------------

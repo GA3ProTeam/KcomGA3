@@ -5,7 +5,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 	
 
 
-	m_Stage_ID = ((select_chara + 1) * 10) + stage_id;
+	m_Stage_ID = 30;//((select_chara + 1) * 10) + stage_id;
 
 	/*
 	m_Stage_ID
@@ -14,7 +14,6 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 	30~35=ƒRƒEƒl
 	*/
 	SavedataManeger()->Setcurrentdata();
-
 
 	switch (m_Stage_ID) {
 

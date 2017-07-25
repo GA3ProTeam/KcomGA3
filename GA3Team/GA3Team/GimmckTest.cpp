@@ -357,35 +357,34 @@ void GimmickOven::Draw()
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
 
 	Balloon *ball1 = InitBall(48, -48, sound, 1);
-	gimmicDorw(ball1, 0);
+	gimmicDraw(ball1, 0);
 	delete ball1;
 }
 
 //GimmickKatsuo
 void GimmickKatsuo::Action()
 {
-	if (SavedataManeger()->Savedata[SavedataManeger()->SelectedData].m_bMelueruflg[0]) {
+	if (SavedataManeger()->CurrentData->m_bMelueruflg[0]) {
 
 
 
 
 
 	}
-	if (User()->m_bmerueruability==false) {
+	if (User()->m_bmerueruability==false && 
+		SavedataManeger()->CurrentData->m_bMelueruflg[0]==false) {
 
-		//カツオフラグ無し、能力なし
+		//カツオフラグ無し、能力なし会話
 
 
 	}
-	else if (User()->m_bmerueruability == true) {}
-
-
+	else if (User()->m_bmerueruability == false &&
+		SavedataManeger()->CurrentData->m_bMelueruflg[0] == false) {
+	}
 	if (ball[0].OnPush) {
 
 
-
-
-
+	
 
 	}
 

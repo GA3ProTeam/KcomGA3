@@ -129,34 +129,31 @@ void CObjDataSelect::Draw()
 	//プレイヤー名/進行度描画(位置確認中)---> 入力した名前、進行度を描画する
 	//マウスカーソルが合っているときは拡大と発光をする
 	//プレイヤー名１
-	Font()->StrDraw(m_cplayername[0], 200, 80, text_size_playername[0], col);
+	Font()->StrDraw(m_cplayername[0], 200, 120, text_size_playername[0], col);
 	//主人公１の進行度
-	Font()->StrDraw(load_progress[0], 400, 80, text_size_progress[0], col);
+	Font()->StrDraw(load_progress[0], 400, 120, text_size_progress[0], col);
 	//主人公２の進行度			  
-	Font()->StrDraw(load_progress[0], 500, 80, text_size_progress[0], col);
+	Font()->StrDraw(load_progress[0], 500, 120, text_size_progress[0], col);
 	//主人公３の進行度			  
-	Font()->StrDraw(load_progress[0], 600, 80, text_size_progress[0], col);
+	Font()->StrDraw(load_progress[0], 600, 120, text_size_progress[0], col);
 
 	//プレイヤー名２
-	Font()->StrDraw(m_cplayername[1], 200, 230, text_size_playername[1], col);
+	Font()->StrDraw(m_cplayername[1], 200, 270, text_size_playername[1], col);
 	//主人公１の進行度
-	Font()->StrDraw(load_progress[1], 400, 230, text_size_progress[1], col);
+	Font()->StrDraw(load_progress[1], 400, 270, text_size_progress[1], col);
 	//主人公２の進行度
-	Font()->StrDraw(load_progress[1], 500, 230, text_size_progress[1], col);
+	Font()->StrDraw(load_progress[1], 500, 270, text_size_progress[1], col);
 	//主人公３の進行度
-	Font()->StrDraw(load_progress[1], 600, 230, text_size_progress[1], col);
+	Font()->StrDraw(load_progress[1], 600, 270, text_size_progress[1], col);
 
 	//プレイヤー名３
-	Font()->StrDraw(m_cplayername[2], 200, 380, text_size_playername[2], col);
+	Font()->StrDraw(m_cplayername[2], 200, 420, text_size_playername[2], col);
 	//主人公１の進行度
-	Font()->StrDraw(load_progress[2], 400, 380, text_size_progress[2], col);
+	Font()->StrDraw(load_progress[2], 400, 420, text_size_progress[2], col);
 	//主人公２の進行度								  
-	Font()->StrDraw(load_progress[2], 500, 380, text_size_progress[2], col);
+	Font()->StrDraw(load_progress[2], 500, 420, text_size_progress[2], col);
 	//主人公３の進行度								  
-	Font()->StrDraw(load_progress[2], 600, 380, text_size_progress[2], col);
-
-	//戻る
-	//Font()->StrDraw("タイトルに戻る", 30, 525, 20, col);
+	Font()->StrDraw(load_progress[2], 600, 420, text_size_progress[2], col);
 
 }
 
@@ -189,6 +186,7 @@ void CObjDataSelect::ButtonFromTheBegin() {
 		}
 	}
 
+
 	//マウス判定
 	//カーソルがある所を拡大+発光
 	for (int i = 0; i < MAX_SAVEDATA; i++) {
@@ -214,7 +212,7 @@ void CObjDataSelect::ButtonFromTheBegin() {
 				 
 				 //初期化してもいいですか
 				 //"はい"...データ削除
-				if (MessageBox(User()->p_hWnd, "本当に削除しますか？", "プレイヤーネーム削除", MB_OKCANCEL) == IDOK) {
+				if (MessageBox(User()->p_hWnd, "選択中のセーブデータを\n初期化していいですか？", "プレイヤーネーム削除", MB_OKCANCEL) == IDOK) {
 
 					m_bsavedataflg = false;
 					SavedataManeger()->Deletesavedata(); //仮

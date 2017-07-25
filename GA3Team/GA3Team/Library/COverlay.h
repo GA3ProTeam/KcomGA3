@@ -14,7 +14,12 @@ private:
 
 	//描画用
 	int m_x, m_y;
-	float alpha;
+	float m_fAlpha;
+
+	//文字表示用
+	string m_strTemp;
+	int m_iDelay;
+	int m_iTextSpeed;
 
 	//フラグ式管理用
 	bool m_bDrawing;
@@ -24,7 +29,7 @@ public:
 	//
 	COverlay(CDrawTexture *i,CDrawFont *f,CWinInputs *w,CSoundManeger *s,CTextManager *t)
 		: image(i),font(f),input(w),soundmgr(s),textmgr(t),
-		  m_iDrawFlg(-1),m_iFadeFlg(0),m_x(0),m_y(0),alpha(0.0f)
+		  m_iDrawFlg(-1),m_iFadeFlg(0),m_x(0),m_y(0), m_fAlpha(0.0f),m_iDelay(0),m_iTextSpeed(30)
 	{}
 	
 	//----------------動作系----------------
@@ -44,6 +49,11 @@ public:
 	void FadeIn();
 	//フェードアウト
 	void FadeOut();
+
+	//----------------引数設定----------------
+
+	//テキストスピード設定(例：60=約1秒)
+	void SetTextSpeed(int set) { m_iTextSpeed = set; }
 
 	//----------------状態取得----------------
 

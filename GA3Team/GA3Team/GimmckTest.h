@@ -19,10 +19,21 @@ private:
 
 //-----------シオンステージ↓-----------------------------------------
 //ステージ1↓
+
+//ステージ1↑
+
+//ステージ2↓
+
+//ステージ2↑
+
+//ステージ3↓
 class GimmickChildren : public Gimmick
 {
 private:
 	int m_iChild_ID;//子供を区別するための変数
+
+	bool m_bclearflg[3];//クリアフラグ
+
 public:
 	void Init(int xpos, int ypos, int widht, int height, int balloonnum, int child_id);//イニシャライズ(child_id 1:強気な男の子　2:優しい女の子　3:弱気な男の子)
 	void Destructor();//デストラクタ

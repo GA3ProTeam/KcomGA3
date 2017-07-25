@@ -14,7 +14,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 	30~35=ÉRÉEÉl
 	*/
 
-	m_Stage_ID = 10;
+	
 	
 
 	switch (m_Stage_ID) {

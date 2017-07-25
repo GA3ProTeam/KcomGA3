@@ -23,10 +23,11 @@ void GimmickTest::Draw()
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
 
 	//1個の場合
-	/*Balloon *aaa = InitBall(48, -48, sound, 1,RED);
+	Balloon *aaa = InitBall(48, -48, talk, 1,RED);
 
-	gimmicDorw(aaa, 0);
+	gimmicDraw(aaa, 0);
 	delete aaa;
+
 
 	//複数の場合
 	/*Balloon *bbb = InitBall(48, -48, sound, RED);
@@ -314,21 +315,14 @@ void GimmickOven::Action()
 {
 
 	if (ball[0].OnPush) {
+		if (SavedataManeger()->CurrentData->m_bMelueruflg[2] == true) {
+
+			//レンジ音入手
 
 
 
-
-
-
+		}
 	}
-
-
-
-
-
-
-
-
 }
 void GimmickOven::Destructor()
 {
@@ -356,37 +350,43 @@ void GimmickOven::Draw()
 //GimmickKatsuo
 void GimmickKatsuo::Action()
 {
-	if (SavedataManeger()->CurrentData->m_bMelueruflg[0]) {
 
-
-
-
-
-	}
-	if (User()->m_bmerueruability==false && 
-		SavedataManeger()->CurrentData->m_bMelueruflg[0]==false) {
-
-		//カツオフラグ無し、能力なし会話
-
-
-	}
-	else if (User()->m_bmerueruability == false &&
-		SavedataManeger()->CurrentData->m_bMelueruflg[0] == false) {
-	}
 	if (ball[0].OnPush) {
 
+		//会話1
+		if (User()->m_bmerueruability==false && 
+			SavedataManeger()->CurrentData->m_bMelueruflg[0]==false) {
 
-	
+			//カツオフラグ無し、能力なし会話
 
+
+		}
+		else if (User()->m_bmerueruability == false &&
+			SavedataManeger()->CurrentData->m_bMelueruflg[0] == false) {
+
+			//カツオフラグ無し、能力あり会話
+
+			SavedataManeger()->CurrentData->m_bMelueruflg[0] = true;
+		}
+
+	//会話2
+		if (SavedataManeger()->CurrentData->m_bMelueruflg[0] == true &&
+			SavedataManeger()->CurrentData->m_bMelueruflg[1] == false) {
+
+			//カツオフラグ1true会話
+			SavedataManeger()->CurrentData->m_bMelueruflg[1] = true;
+
+		}
+
+		//会話3
+		if (SavedataManeger()->CurrentData->m_bMelueruflg[1] == true &&
+			SavedataManeger()->CurrentData->m_bMelueruflg[2] == false) {
+
+			//カツオフラグ2true会話
+			SavedataManeger()->CurrentData->m_bMelueruflg[2] = true;
+
+		}
 	}
-
-
-
-
-
-
-
-
 }
 void GimmickKatsuo::Destructor()
 {
@@ -417,20 +417,12 @@ void GimmickDoor::Action()
 
 	if (ball[0].OnPush) {
 
-
+		//レンジ音取得でステージクリア
 
 
 
 
 	}
-
-
-
-
-
-
-
-
 }
 void GimmickDoor::Destructor()
 {

@@ -242,6 +242,60 @@ void Gimmickbicycle::Draw()
 
 
 //ステージ1↓
+//犬のデストラクタ
+void GimmickDog::Destructor()
+{
+
+}	
+//犬のアクション
+void GimmickDog::Action() 
+{
+
+}
+//犬のドロー
+void GimmickDog::Draw() 
+{
+
+}	
+//マンホールの蓋のデストラクタ
+void GimmickManholeCover::Destructor() 
+{
+
+}	
+//マンホールの蓋のアクション
+void GimmickManholeCover::Action() 
+{
+
+}		
+//マンホールの蓋のドロー
+void GimmickManholeCover::Draw() 
+{
+
+}//マンホールの穴のデストラクタ
+void GimmickManholeHole::Destructor() 
+{
+
+}//マンホールの穴のアクション
+void GimmickManholeHole::Action()
+{
+
+}//マンホールの穴のドロー
+void GimmickManholeHole::Draw()
+{
+
+}//老人のデストラクタ
+void GimmickOldman::Destructor()
+{
+
+}//老人のアクション
+void GimmickOldman::Action()
+{
+
+}//老人のドロー
+void GimmickOldman::Draw()
+{
+
+}	
 //ステージ1↑
 
 //ステージ2↓

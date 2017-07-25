@@ -7,7 +7,10 @@ class GimmickTelevision;
 class GimmickOven;
 class GimmickKatsuo;
 class GimmickDoor;
-
+class GimmickDog;
+class GimmickManholeHole;
+class GimmickManholeCover;
+class GimmickOldman;
 class CObjGimmickManager : public CObj
 {
 public:
@@ -25,8 +28,12 @@ private:
 
 
 
-
-
+	//コウネステージ↓
+	//ステージ1↓
+	GimmickDog* m_gimmick_dog;
+	GimmickManholeHole* m_gimmick_manhole_hole;
+	GimmickManholeCover* m_gimmick_manhole_cover;
+	GimmickOldman* m_gimmick_oldman;
 
 
 	//メルエルステージ↓
@@ -37,7 +44,6 @@ private:
 	GimmickDoor* m_gimmick_door;
 	//ステージ1↑
 	//メルエルステージ↑
-
 
 
 

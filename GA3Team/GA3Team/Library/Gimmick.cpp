@@ -102,7 +102,7 @@ void Gimmick::gimmicDraw(Balloon *ball1, int num)
 }
 void Gimmick::setballooncolor(int num)
 {
-	if(ball[num].m_iballooncolor == RED);
+	//if(ball[num].m_iballooncolor == RED);
 }
 Balloon *InitBall(int gimX, int gimY, int balltype, int soundnum, int color)
 {

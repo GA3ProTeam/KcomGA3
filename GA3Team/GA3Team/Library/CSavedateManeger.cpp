@@ -39,7 +39,7 @@ void CSavedataManeger::Loadsavedata()
 			continue;
 		}
 		//Šeƒtƒ‰ƒO‚ğæ“¾‚·‚é
-		for (int i = 0; i < (*itr).length(); i++) {//•¶š
+		for (unsigned int i = 0; i < (*itr).length(); i++) {//•¶š
 			switch (dataflg) { //__SWITCH__
 			case 0: { //m_bKouneflg
 				if ((*itr)[i] == '0') {

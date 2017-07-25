@@ -23,17 +23,20 @@ void GimmickTest::Draw()
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
 
 	//1個の場合
-	Balloon *aaa = InitBall(48, -48, talk, EXCEPTION);
+	/*Balloon *aaa = InitBall(48, -48, sound, 1,RED);
+
 	gimmicDorw(aaa, 0);
 	delete aaa;
 
 	//複数の場合
-	/*Balloon *bbb = InitBall(48, -48, sound, 1);
-	Balloon *ccc = InitBall(48, -48, talk, 2);
+	/*Balloon *bbb = InitBall(48, -48, sound, RED);
+	Balloon *ccc = InitBall(48, -48, talk, BULE);
 	gimmicDorw(bbb, 0);
 	gimmicDorw(ccc, 1);
 	delete bbb;
 	delete ccc;*/
+
+	//SavedataManeger()->CurrentData->m_bKouneClearflg
 }
 //テスト用↑
 //-----------シオンステージ↓-----------------------------------------

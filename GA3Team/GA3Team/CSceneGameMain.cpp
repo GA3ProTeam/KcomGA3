@@ -35,7 +35,11 @@ void CSceneGameMain::InitScene()
 	//m_obj_player = new CObjPlayer();
 	//m_obj_player->Init();
 	//Obj()->InsertObj(m_obj_player,OBJ_PLAYER,0,this,HIT_BOX_OFF);
-	
+
+	m_obj_gimmickmanager = new CObjGimmickManager();
+	Obj()->InsertObj(m_obj_gimmickmanager, OBJ_GIMMICK_MANAGER, 0, this, HIT_BOX_OFF);
+	m_obj_gimmickmanager->Init(0,0);
+
 	m_obj_Rscroll = new ButtonRScrollScreen();
 	m_obj_Rscroll->Init();
 	Obj()->InsertObj(m_obj_Rscroll, BUTTON_RSCROLL_SCREEN, 0, this, HIT_BOX_OFF);
@@ -54,8 +58,8 @@ void CSceneGameMain::InitScene()
 
 	//Audio()->LoopStart(0);
 
-	Overlay()->talkDraw();
-	Overlay()->FadeIn();
+	//Overlay()->talkDraw();
+	//Overlay()->FadeIn();
 
 	TextManager()->LoadText();
 

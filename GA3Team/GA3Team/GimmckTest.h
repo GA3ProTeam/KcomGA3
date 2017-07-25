@@ -42,18 +42,65 @@ public:
 	void SetSound(int sound) { m_iSoundNum = sound; };
 
 };
+//ステージ1↑
 
-class GimmickGranny : public Gimmick
+//ステージ2↓
+//イヤホン男
+class Gimmickearphone : public Gimmick
 {
+public:
+	Gimmickearphone() {};
+	~Gimmickearphone() {};
+
+	void Destructor();	//デストラクタ
+	void Action();		//アクション
+	void Draw();		//ドロー
 private:
 
+};
+//コウネ
+class Gimmickkoune : public Gimmick
+{
 public:
-	void Init(int xpos, int ypos, int widht, int height, int balloonnum);//イニシャライズ
-	void Destructor();//デストラクタ
-	void Action();//アクション
-	void Draw();//描画
+	Gimmickkoune() {};
+	~Gimmickkoune() {};
+
+	void Destructor();	//デストラクタ
+	void Action();		//アクション
+	void Draw();		//ドロー
+private:
 
 };
+//コウネ
+class Gimmickcat : public Gimmick
+{
+public:
+	Gimmickcat() {};
+	~Gimmickcat() {};
+
+	void Destructor();	//デストラクタ
+	void Action();		//アクション
+	void Draw();		//ドロー
+private:
+
+};
+//自転車
+class Gimmickbicycle : public Gimmick
+{
+public:
+	Gimmickbicycle() {};
+	~Gimmickbicycle() {};
+
+	void Destructor();	//デストラクタ
+	void Action();		//アクション
+	void Draw();		//ドロー
+private:
+
+};
+//ステージ2↑
+
+//ステージ3↓
+
 //ステージ3↑
 
 

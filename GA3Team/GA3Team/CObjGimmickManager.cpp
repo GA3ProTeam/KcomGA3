@@ -57,6 +57,12 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 	//-メルエルステージ---------------------------------------
 
 	case 20:
+		/*
+		m_gimmick_television = new GimmickTelevision();
+		Obj()->InsertObj(m_gimmick_television, GIMMICK_TELEVISION, 5, this, HIT_BOX_OFF);
+		m_gimmick_television->Init(100, 200, 64, 64, 1);
+		*/
+
 
 
 

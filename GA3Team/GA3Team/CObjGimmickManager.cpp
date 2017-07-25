@@ -125,7 +125,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 		m_gimmick_oldman = new GimmickOldman();
 		Obj()->InsertObj(m_gimmick_oldman, GIMMICK_OLDMAN, 5, this->m_pScene, HIT_BOX_OFF);
 		m_gimmick_oldman->Init(400, 150, 100, 300, 1);
-*/		
+		
 
 		break;
 	case 31:

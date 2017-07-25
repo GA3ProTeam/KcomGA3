@@ -29,6 +29,7 @@ public:
 
 private:
 
+	//描画用
 	RECT m_rSrc;
 	RECT m_rDst;
 	RECT m_rSrc_Koune;
@@ -37,6 +38,8 @@ private:
 	RECT m_rDst_Sion;
 	RECT m_rSrc_Melueru;
 	RECT m_rDst_Melueru;
+	int m_idraw_pos_x;
+	int m_idraw_pos_y;
 
 	bool m_bsavedataflg; //各セーブデータ確認する
 	bool m_bmessageflg;  //メッセージフラグ

@@ -15,6 +15,53 @@ private:
 	void Draw();
 };
 
+//-----------チュートリアル（博士）ステージ↑-------------------------
+//博士
+class GimmickDoctor :public Gimmick {
+public:
+	GimmickDoctor() {}
+	~GimmickDoctor() {}
+
+	void Init(int xpos, int ypos, int widht, int height, int balloonnum);		//イニシャライズ
+	void Destructor();	//デストラクタ
+	void Action();		//アクション
+	void Draw();		//ドロー
+
+private:
+
+};
+
+//パソコン
+class GimmickComputer :public Gimmick {
+public:
+	GimmickComputer() {}
+	~GimmickComputer() {}
+
+	void Init(int xpos, int ypos, int widht, int height, int balloonnum);		//イニシャライズ
+	void Destructor();	//デストラクタ
+	void Action();		//アクション
+	void Draw();		//ドロー
+
+private:
+
+};
+
+//レコーダー
+class GimmickRecorder :public Gimmick {
+public:
+	GimmickRecorder() {}
+	~GimmickRecorder() {}
+
+	void Init(int xpos, int ypos, int widht, int height, int balloonnum);		//イニシャライズ
+	void Destructor();	//デストラクタ
+	void Action();		//アクション
+	void Draw();		//ドロー
+
+private:
+
+};
+//--------------------------------------------------------------------
+
 //-----------シオンステージ↓-----------------------------------------
 //ステージ1↓
 
@@ -75,6 +122,7 @@ private:
 //ステージ2↑
 
 //ステージ3↓
+
 //子供
 class GimmickChildren : public Gimmick
 {
@@ -281,8 +329,5 @@ private:
 //ステージ6↑
 
 //-----------メルエルステージ↑-----------------------------------------
-
-
-
 
 #endif // !__GIMMCKTEST__

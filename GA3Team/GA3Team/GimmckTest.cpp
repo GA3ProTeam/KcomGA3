@@ -40,6 +40,75 @@ void GimmickTest::Draw()
 	//SavedataManeger()->CurrentData->m_bKouneClearflg
 }
 //テスト用↑
+
+//-----------チュートリアル（博士）ステージ---------------------------
+//博士
+//イニシャライズ
+void GimmickDoctor::Init(int xpos, int ypos, int widht, int height, int balloonnum) {
+	//親クラスのInit関数を呼ぶ
+	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
+}
+
+//デストラクタ
+void GimmickDoctor::Destructor() {
+
+}
+
+//アクション
+void GimmickDoctor::Action() {
+
+}
+
+//ドロー
+void GimmickDoctor::Draw() {
+
+}
+
+//パソコン
+//イニシャライズ
+void GimmickComputer::Init(int xpos, int ypos, int widht, int height, int balloonnum) {
+	//親クラスのInit関数を呼ぶ
+	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
+}
+
+//デストラクタ
+void GimmickComputer::Destructor() {
+
+}
+
+//アクション
+void GimmickComputer::Action() {
+
+}
+
+//ドロー
+void GimmickComputer::Draw() {
+
+}
+
+//レコーダー
+//イニシャライズ
+void GimmickRecorder::Init(int xpos, int ypos, int widht, int height, int balloonnum) {
+	//親クラスのInit関数を呼ぶ
+	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
+}
+
+//デストラクタ
+void GimmickRecorder::Destructor() {
+
+}
+
+//アクション
+void GimmickRecorder::Action() {
+
+}
+
+//ドロー
+void GimmickRecorder::Draw() {
+
+}
+//--------------------------------------------------------------------
+
 //-----------シオンステージ↓-----------------------------------------
 //ステージ1↓
 

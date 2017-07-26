@@ -47,7 +47,7 @@ typedef struct
 //プロトタイプ宣言
 
 //吹き出し構造体(Balloon)の初期化関数
-//InitBall(X座標、Y座標,吹き出しの種類,(talk or sound),ギミックが持っている音情報(ない場合は　EXCEPTION　を入れる)),シオンの能力発動時の色情報
+//InitBall(X座標、Y座標,吹き出しの種類(talk or sound),ギミックが持っている音情報(ない場合は　EXCEPTION　を入れる)),シオンの能力発動時の色情報
 Balloon *InitBall(int gimX, int gimY, int balltype, int soundnum,int color);
 
 //ギミッククラス(基底)

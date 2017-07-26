@@ -49,11 +49,11 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 
 		//m_gimmick_mynah = new GimmickMynah();
 		//Obj()->InsertObj(m_gimmick_mynah, GIMMICK_MYNAH, 5, this->m_pScene, HIT_BOX_OFF);
-		//m_gimmick_mynah->Init(500, 300, 50, 70, 1);
+		//m_gimmick_mynah->Init(500, 200, 50, 70, 1);
 
 		//m_gimmick_shelf = new GimmickShelf();
 		//Obj()->InsertObj(m_gimmick_shelf, GIMMICK_SHELF, 5, this->m_pScene, HIT_BOX_OFF);
-		//m_gimmick_shelf->Init(600, 280, 100, 170, 1);
+		//m_gimmick_shelf->Init(600, 280, 100, 170, 3);
 
 		//m_gimmick_windchime = new GimmickWindchime();
 		//Obj()->InsertObj(m_gimmick_windchime, GIMMICK_WINDCHIME, 5, this->m_pScene, HIT_BOX_OFF);

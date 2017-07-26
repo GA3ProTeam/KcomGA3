@@ -22,13 +22,14 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 	switch (m_Stage_ID) {
 
 	//-シオンステージ-----------------------------------------
-	case 10:
+	case 10://ステージ1
 	{
-		//シオンのステージ1のギミック生成
+		//【スタート時の会話】
 
-		GimmickTest* m_gimmick = new GimmickTest();
-		Obj()->InsertObj(m_gimmick, GIMMICK_TELEVISION, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick->Init(100, 300, 100, 70, 1);
+		//おばちゃん生成
+		GimmickAunt* m_gimmick_aunt = new GimmickAunt();
+		Obj()->InsertObj(m_gimmick_aunt, GIMMICK_AUNT, 0, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_aunt->Init(100, 300, 60, 100, 1);
 	}
 		break;
 	case 11:

@@ -137,7 +137,7 @@ enum OBJ_NAME
 	GIMMICK_MYNAH,
 	GIMMICK_SHELF,
 	GIMMICK_WINDCHIME,
-
+	GIMMICK_AUNT,
 };
 //----------------------
 //テキストファイルのネーム

@@ -112,6 +112,56 @@ void GimmickRecorder::Draw() {
 //-----------シオンステージ↓-----------------------------------------
 //ステージ1↓
 
+//おばちゃん
+//イニシャライズ
+void GimmickAunt::Init(int xpos, int ypos, int widht, int height, int balloonnum) {
+	//親クラスのInit関数を呼ぶ
+	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
+
+
+}
+//デストラクタ
+void GimmickAunt::Destructor() {
+
+}
+//アクション
+void GimmickAunt::Action() {
+
+}
+//描画
+void GimmickAunt::Draw() {
+	float col[4] = { 1.0,1.0,1.0,1.0 };
+
+	//ギミック本体描画---------------------------------------------------------
+	//切り取り先座標
+	m_dst.top = 0; 
+	m_dst.bottom = 200;
+	m_dst.left = 0;
+	m_dst.right = 200;
+
+	//転送先座標
+	m_src.top = m_iYpos;
+	m_src.bottom = m_src.top + m_iHeight;
+	m_src.left = m_iXpos;
+	m_src.right = m_src.left + m_iWidth;
+
+	//User()->mscroll_x
+
+	//描画
+	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
+	//--------------------------------------------------------------------------
+
+	//吹き出し描画＆動作--------------------------------------------------------
+	Balloon *aaa = InitBall(48, -48, talk, 1, RED);
+	gimmicDraw(aaa, 0);
+	delete aaa;
+	//--------------------------------------------------------------------------
+
+	//【会話終了時】
+	SavedataManeger()->CurrentData->m_bSionflg[0] = true;
+	
+}
+
 //ステージ1↑
 
 //ステージ2↓

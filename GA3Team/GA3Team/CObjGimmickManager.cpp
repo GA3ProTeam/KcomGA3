@@ -12,6 +12,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 	10~15=シオン
 	20~25=メルエル
 	30~35=コウネ
+	40	 =チュートリアル（博士）
 	*/
 	SavedataManeger()->Setcurrentdata();
 
@@ -153,8 +154,14 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 
 
 		break;
-
 	//--------------------------------------------------------
+		
+	//チュートリアル（博士）ステージ--------------------------
+	case 40:
+
+		break;
+	//--------------------------------------------------------
+
 	default:
 		break;
 	}

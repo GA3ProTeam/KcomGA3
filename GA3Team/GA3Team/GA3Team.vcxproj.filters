@@ -150,9 +150,6 @@
     <ClCompile Include="GimmickOven.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="GimmickAunt.cpp">
-      <Filter>CSceneGameMain</Filter>
-    </ClCompile>
     <ClCompile Include="GimmickChildren.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
@@ -164,6 +161,9 @@
     </ClCompile>
     <ClCompile Include="Library\COverlay.cpp">
       <Filter>ライブラリ ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="GimmickAunt.cpp">
+      <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

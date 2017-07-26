@@ -77,6 +77,8 @@ void Gimmickearphone::Draw()
 	gimmicDraw(aaa, 0);
 	delete aaa;
 }
+
+
 //コウネ
 void Gimmickkoune::Destructor()
 {
@@ -168,6 +170,7 @@ void Gimmickbicycle::Draw()
 	delete aaa;
 }
 //ステージ2↑
+
 
 //ステージ3↓
 //子供1、2、3
@@ -279,9 +282,6 @@ void GimmickChildren::Draw()//描画
 
 }
 //ステージ1↓
-//イニシャライズ
-void GimmickAunt::Init() {
-
 //おばあちゃん
 void GimmickGranny::Destructor()//デストラクタ
 {
@@ -508,6 +508,7 @@ void GimmickOldman::Draw()
 
 //ステージ1↓
 
+/*
 //GimmickTelevision
 void GimmickTelevision::Action()
 {
@@ -690,7 +691,7 @@ void GimmickDoor::Draw()
 	gimmicDraw(ball1, 0);
 	delete ball1;
 }
-
+*/
 //ステージ1↑
 
 //ステージ2↓

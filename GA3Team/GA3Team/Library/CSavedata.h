@@ -6,7 +6,7 @@ class CSavedata{
 public:
 	//char m_savedata;	  //仮
 	char m_cPlayerName[32];   //プレイヤーの名前
-	bool m_btutorial;
+	bool m_btutorial;//チュートリアルのクリアフラグ
 	vector<bool> m_btutoriaruflg;//チュートリアルのフラグ進行度
 
 	vector<bool> m_bKouneflg;//コウネのフラグ進行度
@@ -15,8 +15,6 @@ public:
 	vector<bool> m_bSionClearflg; //シオンのクリア進行度
 	vector<bool> m_bMelueruflg;//メルエルのフラグ進行度
 	vector<bool> m_bMelueruClearflg;//メルエルのクリア進行度
-
-
 };
 
 #endif // !__COBJSAVEDATA_H__

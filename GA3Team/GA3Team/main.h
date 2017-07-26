@@ -187,7 +187,7 @@ enum TEXT_FILE_NAME {
 //当たり判定の複数同時判定量
 #define MAX_HITS	15
 
-
+#define STAGE_MAX 6
 //一つのギミックがもてる吹き出しの最大数
 #define BALLOON_MAX_NUM 5
 //例外用

@@ -17,8 +17,19 @@ enum BalloonColor {
 	YELLOW,
 	ORANGE,
 	PURPLE,
-	ASH,
+	GRAY,
 	PINK,
+};
+//吹き出しの形(吹き出しのチョンの部分の方向)
+enum Balloondir {
+	LOWER_LEFT, //左下
+	LOWER_RIGHT,//右下
+	UPPER_LEFT,//左上
+	UPPER_RIGHT,//右上
+	UNDER,//真下
+	UPPER,//真上
+	LEFT,//真左
+	RIGHT,//真右
 };
 //吹き出し構造体
 typedef struct
@@ -28,6 +39,7 @@ typedef struct
 	int m_iballoontype; //吹き出しの種類
 	int m_iballooncolor;//吹き出しの色情報(シオンの能力発動時)
 	RECT m_gimsrc;		//転送先座標
+	RECT m_gimdst;		//切り取り座標
 	int m_soundnum;     //ギミックが持っている音情報					 
 	bool OnPush;        //押されたかどうかを判断する
 }Balloon;
@@ -43,21 +55,19 @@ class Gimmick : public CObj {
 private:
 
 protected:
-	bool m_bCursor;	//ギミックにカーソルが当たっているかのフラグ
-	int m_iballoontime;		//吹き出しの維持時間
-	int m_iSoundNum;
-	int m_iballoonnum;//吹き出しの数
-//-----------------判定-------------
+	
+	Balloon ball[BALLOON_MAX_NUM];//吹き出し
+	bool m_bCursor;	    //ギミックにカーソルが当たっているかのフラグ
+	int m_iballoontime;	//吹き出しの維持時間
+	int m_iballoonnum;  //吹き出しの数
+
 	int m_iXpos;	//ギミックの位置(X)
 	int m_iYpos;	//ギミックの位置(Y)
 	int m_iWidth;	//ギミック幅
 	int m_iHeight;	//ギミック高さ
-//----------------表示位置----------
-	Balloon ball[BALLOON_MAX_NUM];
-
-	RECT m_gimdst;		//切り取り座標
 	RECT m_src;		//転送先座標
 	RECT m_dst;		//切り取り座標
+	
 public:
 	//Init(X座標、Y座標、幅、高さ,吹き出しの数)
 	void Init(int xpos, int ypos, int widht, int height, int balloonnum);
@@ -74,7 +84,7 @@ public:
 	//描画
 	void gimmicDraw(Balloon *ball1, int num);
 
-	//シオンの能力発動時
+	//シオンの能力発動時音符に色をつける
 	void setballooncolor(int num);
 
 

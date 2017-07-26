@@ -48,8 +48,6 @@ void CObjDataSelect::Destructor()
 void CObjDataSelect::Action()
 {
 
-	
-	
 	//プレイヤーデータ読込み
 	if (iLoad_flg == 0)
 	{

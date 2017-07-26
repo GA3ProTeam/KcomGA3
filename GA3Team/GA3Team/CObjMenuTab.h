@@ -12,7 +12,7 @@ private:
 
 	//音を持っている間、他の音を持たないようにするフラグ
 	bool m_bhavesound;
-	int m_igivesound;//音の種類
+	int m_igivesound;//音が入っている配列番号
 
 	int m_openclose_x;//開閉ボタンのX
 	int m_openclose_y;//開閉ボタンのY

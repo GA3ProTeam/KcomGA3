@@ -71,28 +71,14 @@ private:
 //イヤホン男
 class Gimmickearphone : public Gimmick
 {
-public:
-	Gimmickearphone() {};
-	~Gimmickearphone() {};
-
-	void Destructor();	//デストラクタ
-	void Action();		//アクション
-	void Draw();		//ドロー
 private:
-
-};
-//コウネ
-class Gimmickkoune : public Gimmick
-{
+	
 public:
-	Gimmickkoune() {};
-	~Gimmickkoune() {};
-
-	void Destructor();	//デストラクタ
-	void Action();		//アクション
-	void Draw();		//ドロー
-private:
-
+	void Init();//イニシャライズ
+	void Destructor();//デストラクタ
+	void Action();//アクション
+	void Draw();//描画
+//	int 
 };
 //猫
 class Gimmickcat : public Gimmick
@@ -106,20 +92,8 @@ public:
 	void Draw();		//ドロー
 private:
 
-};
-//自転車
-class Gimmickbicycle : public Gimmick
-{
-public:
-	Gimmickbicycle() {};
-	~Gimmickbicycle() {};
+//ステージ2↓
 
-	void Destructor();	//デストラクタ
-	void Action();		//アクション
-	void Draw();		//ドロー
-private:
-
-};
 //ステージ2↑
 
 //ステージ3↓
@@ -309,63 +283,6 @@ private:
 
 
 //ステージ1↓
-
-class GimmickTelevision :public Gimmick
-{
-public:
-	GimmickTelevision() {};
-	~GimmickTelevision() {};
-
-	void Destructor();	//デストラクタ
-	void Action();		//アクション
-	void Draw();		//ドロー
-
-private:
-
-};
-
-class GimmickOven :public Gimmick
-{
-public:
-	GimmickOven() {};
-	~GimmickOven() {};
-
-	void Destructor();	//デストラクタ
-	void Action();		//アクション
-	void Draw();		//ドロー
-
-private:
-
-};
-
-class GimmickKatsuo :public Gimmick
-{
-public:
-	GimmickKatsuo() {};
-	~GimmickKatsuo() {};
-
-	void Destructor();	//デストラクタ
-	void Action();		//アクション
-	void Draw();		//ドロー
-
-private:
-
-};
-
-class GimmickDoor :public Gimmick
-{
-public:
-	GimmickDoor() {};
-	~GimmickDoor() {};
-
-	void Destructor();	//デストラクタ
-	void Action();		//アクション
-	void Draw();		//ドロー
-
-private:
-
-};
-
 //ステージ1↑
 
 //ステージ2↓

@@ -139,7 +139,7 @@ public:
 	void Destructor();//デストラクタ
 	void Action();//アクション
 	void Draw();//描画
-	void SetSound(int sound) { m_iSoundNum = sound; };
+//	void SetSound(int sound) { m_iSoundNum = sound; };
 
 };
 

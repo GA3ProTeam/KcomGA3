@@ -8,7 +8,6 @@
 
 void CObjDataSelect::Init()
 {
-
 	m_idraw_pos_x = 0;
 	m_idraw_pos_y = 0;
 
@@ -55,7 +54,7 @@ void CObjDataSelect::Action()
 		iLoad_flg = 1;
 
 		//セーブデータ作成(仮) 
-		SavedataManeger()->Writesavedata();
+		//SavedataManeger()->Writesavedata();
 	}
 	
 
@@ -120,7 +119,7 @@ void CObjDataSelect::Draw()
 	//画像
 	//データセレクト
 
-	//各セーブデータ
+	//各キャラクターの進行度データ
 	for (int i = 0; i < MAX_SAVEDATA; i++) {
 		//進行度の画像が一枚でまとめられている場合
 		//切り取り先座標
@@ -278,6 +277,10 @@ void CObjDataSelect::ButtonFromTheBegin() {
 
 		m_iSelectData = -1;
 	}
+
+
+
+
 }
 
 //-------------------------------------------------------------------------------------------------------

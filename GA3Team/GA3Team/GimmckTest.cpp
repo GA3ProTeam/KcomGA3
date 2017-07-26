@@ -113,7 +113,7 @@ void GimmickRecorder::Draw() {
 //ステージ1↓
 
 //ステージ1↑
-
+/*
 //ステージ2↓
 //イヤホン男
 void Gimmickearphone::Destructor()
@@ -125,6 +125,7 @@ void Gimmickearphone::Action()
 {
 	if (ball[0].OnPush)
 	{
+		//会話
 
 	}
 }
@@ -158,7 +159,17 @@ void Gimmickkoune::Action()
 {
 	if (ball[1].OnPush)
 	{
+		if (SavedataManeger()->CurrentData->m_bSionflg[0] ==false)
+		{
+			//イヤホン男フラグなし会話
 
+		}
+
+		else if (SavedataManeger()->CurrentData->m_bSionflg[0] == true)
+		{
+			//イヤホン男フラグなし会話
+
+		}
 	}
 }
 
@@ -189,7 +200,7 @@ void Gimmickcat::Action()
 {
 	if (ball[1].OnPush)
 	{
-
+		//音を取得
 	}
 }
 
@@ -218,7 +229,10 @@ void Gimmickbicycle::Destructor()
 
 void Gimmickbicycle::Action()
 {
-
+	if (ball[1].OnPush)
+	{
+		//音を取得
+	}
 }
 
 void Gimmickbicycle::Draw()
@@ -239,7 +253,7 @@ void Gimmickbicycle::Draw()
 	delete aaa;
 }
 //ステージ2↑
-
+*/
 
 //ステージ3↓
 //子供1、2、3

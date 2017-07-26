@@ -25,10 +25,7 @@ void Gimmick::gimmicDraw(Balloon *ball1, int num)
 	float col[4] = { 1.0f,1.0f,1.0f,1.0f };
 	
 	//-----------------------吹き出し描画------------------------
-	//切り取り座標
-	m_gimdst.top = 0;						m_gimdst.left = 0;
-	m_gimdst.bottom = m_dst.top + 233;		m_gimdst.right = m_dst.left + 394;
-
+	
 	//転送先座標
 	for (int i = 0; i < m_iballoonnum; i++)
 	{
@@ -102,7 +99,15 @@ void Gimmick::gimmicDraw(Balloon *ball1, int num)
 }
 void Gimmick::setballooncolor(int num)
 {
-	//if(ball[num].m_iballooncolor == RED);
+	switch (ball[num].m_iballooncolor)
+	{
+	case RED:
+		//切り取り座標
+		m_gimdst.top = 0;						m_gimdst.left = 0;
+		m_gimdst.bottom = m_dst.top + 233;		m_gimdst.right = m_dst.left + 394;
+		break;
+
+	}
 }
 Balloon *InitBall(int gimX, int gimY, int balltype, int soundnum, int color)
 {

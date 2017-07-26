@@ -10,6 +10,7 @@ enum BalloonType {
 //吹き出しの色(シオンの能力発動時)
 enum BalloonColor {
 	CNONE = -1,
+	NORMAL,
 	RED,
 	BLUE,
 	GREEN,
@@ -66,6 +67,9 @@ public:
 
 	//吹き出し(音情報)をセットする
 	void setSound(int soundnum, int num) { ball[num].m_soundnum = soundnum; }
+
+	//吹き出しの(色情報)をセットする
+	void setSound(int color, int num) { ball[num].m_iballooncolor = color; }
 
 	//描画
 	void gimmicDraw(Balloon *ball1, int num);

@@ -54,7 +54,7 @@ void CObjDataSelect::Action()
 		iLoad_flg = 1;
 
 		//セーブデータ作成(仮) 
-		SavedataManeger()->Writesavedata();
+		//SavedataManeger()->Writesavedata();
 	}
 	
 

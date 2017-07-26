@@ -37,6 +37,7 @@ typedef struct
 	int m_iGimXpos;     //吹き出しの表示位置(X)
 	int m_iGimYpos;     //吹き出しの表示位置(Y)
 	int m_iballoontype; //吹き出しの種類
+	int m_iballoonDir;  //吹き出しの形
 	int m_iballooncolor;//吹き出しの色情報(シオンの能力発動時)
 	RECT m_gimsrc;		//転送先座標
 	RECT m_gimdst;		//切り取り座標
@@ -47,8 +48,8 @@ typedef struct
 //プロトタイプ宣言
 
 //吹き出し構造体(Balloon)の初期化関数
-//InitBall(X座標、Y座標,吹き出しの種類(talk or sound),ギミックが持っている音情報(ない場合は　EXCEPTION　を入れる)),シオンの能力発動時の色情報
-Balloon *InitBall(int gimX, int gimY, int balltype, int soundnum,int color);
+//InitBall(X座標、Y座標,吹き出しの種類,(talk or sound),ギミックが持っている音情報(ない場合は　EXCEPTION　を入れる),シオンの能力発動時の色情報、吹き出しの形)
+Balloon *InitBall(int gimX, int gimY, int balltype, int soundnum,int color,int Dir);
 
 //ギミッククラス(基底)
 class Gimmick : public CObj {
@@ -79,7 +80,7 @@ public:
 	void setSound(int soundnum, int num) { ball[num].m_soundnum = soundnum; }
 
 	//吹き出しの(色情報)をセットする
-//	void setSound(int color, int num) { ball[num].m_iballooncolor = color; }
+	void setSound(int color, int num) { ball[num].m_iballooncolor = color; }
 
 	//描画
 	void gimmicDraw(Balloon *ball1, int num);

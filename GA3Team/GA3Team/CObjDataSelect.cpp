@@ -87,7 +87,7 @@ void CObjDataSelect::Action()
 	//タイトルに戻る
 	if (iTitle_flg == 0) {
 		m_obj_titlebackbutton = new ButtonDataSelect();
-		Obj()->InsertObj(m_obj_titlebackbutton, OBJ_BUTTON_STAGE, 0, this->m_pScene, HIT_BOX_OFF);
+		Obj()->InsertObj(m_obj_titlebackbutton, OBJ_BUTTON_DATASELECT, 0, this->m_pScene, HIT_BOX_OFF);
 		m_obj_titlebackbutton->Init(30, 525, 150, 150, true, 1, 512, 512);
 
 		iTitle_flg = 1;
@@ -186,7 +186,7 @@ void CObjDataSelect::ButtonFromTheBegin() {
 
 			//ボタン描画
 			m_obj_savedatabutton[i] = new ButtonDataSelect();
-			Obj()->InsertObj(m_obj_savedatabutton[i], OBJ_BUTTON_STAGE, 0, this->m_pScene, HIT_BOX_OFF);
+			Obj()->InsertObj(m_obj_savedatabutton[i], OBJ_BUTTON_DATASELECT, 0, this->m_pScene, HIT_BOX_OFF);
 			m_obj_savedatabutton[i]->Init(200, m_button_y, 500, 100, true, 0 , 64, 64);
 
 			m_button_y += 150;
@@ -304,7 +304,7 @@ void CObjDataSelect::ButtonContinuation() {
 
 			//ボタン作成
 			m_obj_savedatabutton[i] = new ButtonDataSelect();
-			Obj()->InsertObj(m_obj_savedatabutton[i], OBJ_BUTTON_STAGE, 0, this->m_pScene, HIT_BOX_OFF);
+			Obj()->InsertObj(m_obj_savedatabutton[i], OBJ_BUTTON_DATASELECT, 0, this->m_pScene, HIT_BOX_OFF);
 			m_obj_savedatabutton[i]->Init(200, m_button_y, 500, 100, m_bselect_flg[i], 0, 64, 64);
 
 			m_button_y += 150;

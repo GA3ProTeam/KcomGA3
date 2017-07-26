@@ -295,7 +295,7 @@ void GimmickAunt::Draw() {
 }
 
 //ステージ1↑
-
+/*
 //ステージ2↓
 //イヤホン男
 void Gimmickearphone::Destructor()
@@ -479,7 +479,7 @@ void Gimmickfiretruck::Draw()
 	delete aaa;
 }
 //ステージ2↑
-
+*/
 
 //ステージ3↓
 //子供1、2、3

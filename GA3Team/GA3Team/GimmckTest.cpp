@@ -235,11 +235,6 @@ void GimmickChildren::Action()//アクション
 			}
 		}
 	}
-
-	if (m_bclearflg[0] == true && m_bclearflg[1] == true && m_bclearflg[2] == true) {
-		SavedataManeger()->Savedata[SavedataManeger()->SelectedData].m_bSionflg[2] = true;
-	}
-
 }
 void GimmickChildren::Draw()//描画
 {
@@ -277,12 +272,15 @@ void GimmickChildren::Draw()//描画
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
 
 	//1個の場合
-	Balloon *aaa = InitBall(48, -48, talk, 1, RED);
+	Balloon *aaa = InitBall(48, -48, talk, 1, CNONE);
 
 	gimmicDraw(aaa, 0);
 	delete aaa;
 
 }
+//ステージ1↓
+//イニシャライズ
+void GimmickAunt::Init() {
 
 //おばあちゃん
 void GimmickGranny::Destructor()//デストラクタ
@@ -308,7 +306,7 @@ void GimmickGranny::Draw()//描画
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
 
 	//1個の場合
-	Balloon *aaa = InitBall(48, -48, talk, 1, RED);
+	Balloon *aaa = InitBall(48, -48, talk, 1, CNONE);
 
 	gimmicDraw(aaa, 0);
 	delete aaa;
@@ -401,7 +399,7 @@ void GimmickWindchime::Draw()		//ドロー
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
 
 	//1個の場合
-	Balloon *aaa = InitBall(48, -48, talk, 1, RED);
+	Balloon *aaa = InitBall(48, -48, talk, 1, PURPLE);
 
 	gimmicDraw(aaa, 0);
 	delete aaa;

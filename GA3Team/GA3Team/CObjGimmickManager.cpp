@@ -14,17 +14,21 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 	30~35=コウネ
 	40   =チュートリアル
 	*/
-	SavedataManeger()->Setcurrentdata();
-	//SavedataManeger()->CurrentData->m_bKouneClearflg[0];
+
+
 	
 
 	switch (m_Stage_ID) {
 
 	//-シオンステージ-----------------------------------------
 	case 10:
+	{
 		//シオンのステージ1のギミック生成
-		
 
+		GimmickTest* m_gimmick = new GimmickTest();
+		Obj()->InsertObj(m_gimmick, GIMMICK_TELEVISION, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick->Init(100, 300, 100, 70, 1);
+	}
 		break;
 	case 11:
 

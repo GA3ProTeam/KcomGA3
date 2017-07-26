@@ -1,6 +1,13 @@
 #ifndef __DRAW_FONT_H__
 #define __DRAW_FONT_H__
 
+enum FONT_TYPE {
+	FONT_MSP_GOSIC,
+	FONT_HGP_SOUEI_POP,
+	FONT_HGP_GOSIC_M,
+	FONT_HG_MGOSIC_M_PRO
+};
+
 //フォント一文字のテクスチャ情報
 class CFontCharTex
 {
@@ -32,9 +39,15 @@ class CDrawFont
 		void SetStrTex(char* init_str);									//事前予約文字リスト作成
 		void ListDelete();												//文字リスト削除
 		void StrDraw(char* str,int x,int y,int size,float color[4]);	//文字列描画
+		
+		void StrDrawEx(char* str, int x, int y, int size, float color[4], int ftype);
+		void ChangeFont(int chf);
+
+
 
 	private:
-		list< CFontCharTex*>::iterator SetChar(char c[3]);				//フォントリスト追加メソッド
+		list< CFontCharTex*>::iterator SetChar(char c[3]);						//フォントリスト追加メソッド
+		list< CFontCharTex*>::iterator SetCharEx(char c[3],int ft);				
 		
 		HFONT		m_hFont;
 		HDC			m_hdc;
@@ -48,6 +61,9 @@ class CDrawFont
 
 		//フォント情報を格納リスト
 		list< CFontCharTex*>	m_ListData;		//文字リスト
+		list< CFontCharTex*>	m_ListDataEx[4];		//文字リスト
+
+		int ctype;
 };
 
 

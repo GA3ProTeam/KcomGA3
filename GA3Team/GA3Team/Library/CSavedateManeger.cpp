@@ -3,6 +3,17 @@
 void CSavedataManeger::Init()
 {
 	Savedata.resize(3);
+	
+	for (int i = 0; i < 3; i++) {
+		Savedata[i].m_bKouneflg.resize(100);
+		Savedata[i].m_bKouneClearflg.resize(10);
+		Savedata[i].m_bMelueruflg.resize(100);
+		Savedata[i].m_bMelueruClearflg.resize(10);
+		Savedata[i].m_bSionflg.resize(100);
+		Savedata[i].m_bSionClearflg.resize(10);
+		Savedata[i].m_btutoriaruflg.resize(10);
+		Savedata[i].m_btutorial = false;
+	}
 }
 
 void CSavedataManeger::Loadsavedata()
@@ -39,9 +50,9 @@ void CSavedataManeger::Loadsavedata()
 			continue;
 		}
 		//各フラグを取得する
-		for (int i = 0; i < (*itr).length(); i++) {//文字
+		for (unsigned int i = 0; i < (*itr).length(); i++) {//文字
 			switch (dataflg) { //__SWITCH__
-			case 0: { //m_bKouneflg
+			case 0: { //m_btutoriaruflg
 				if ((*itr)[i] == '0') {
 					Savedata[saveflg].m_btutoriaruflg.push_back(false);
 				}
@@ -68,7 +79,7 @@ void CSavedataManeger::Loadsavedata()
 				}
 				break;
 			}
-			case 3: {//m_bKouneClearflg
+			case 3: {//m_bSionflg
 				if ((*itr)[i] == '0') {
 					Savedata[saveflg].m_bSionflg.push_back(false);
 				}
@@ -77,7 +88,7 @@ void CSavedataManeger::Loadsavedata()
 				}
 				break;
 			}
-			case 4: {//m_bKouneClearflg
+			case 4: {//m_bSionClearflg
 				if ((*itr)[i] == '0') {
 					Savedata[saveflg].m_bSionClearflg.push_back(false);
 				}
@@ -86,7 +97,7 @@ void CSavedataManeger::Loadsavedata()
 				}
 				break;
 			}
-			case 5: {//m_bKouneClearflg
+			case 5: {//m_bMelueruflg
 				if ((*itr)[i] == '0') {
 					Savedata[saveflg].m_bMelueruflg.push_back(false);
 				}
@@ -95,7 +106,7 @@ void CSavedataManeger::Loadsavedata()
 				}
 				break;
 			}
-			case 6: {//m_bKouneClearflg
+			case 6: {//m_bMelueruClearflg
 				if ((*itr)[i] == '0') {
 					Savedata[saveflg].m_bMelueruClearflg.push_back(false);
 				}
@@ -159,5 +170,11 @@ bool CSavedataManeger::Savedatacheck(int savenum)
 
 void CSavedataManeger::Deletesavedata()
 {
+	
+}
 
+void CSavedataManeger::Setcurrentdata()
+{
+	SelectedData = 0;//テスト用
+	CurrentData = &(Savedata[SelectedData]);
 }

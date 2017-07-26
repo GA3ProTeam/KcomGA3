@@ -63,6 +63,7 @@ enum TEX_SIZE
 	TEX_SIZE_256  =	256,
 	TEX_SIZE_512  =	512,
 	TEX_SIZE_1024 =	1024,
+
 };
 //オブジェクト状態
 enum OBJ_STATUS
@@ -126,6 +127,16 @@ enum OBJ_NAME
 	GIMMICK_DOOR,
 	GIMMICK_OVEN,
 	GIMMICK_TELEVISION,
+	GIMMICK_DOG,
+	GIMMICK_MANHOLECOVER,
+	GIMMICK_MANHOLEHOLE,
+	GIMMICK_OLDMAN,
+	GIMMICK_CHILDREN,
+	GIMMICK_GRANNY,
+	GIMMICK_MYNAH,
+	GIMMICK_SHELF,
+	GIMMICK_WINDCHIME,
+
 };
 //----------------------
 //テキストファイルのネーム
@@ -287,6 +298,7 @@ inline RECT InitRect(LONG left, LONG top, LONG right, LONG bottom)
 //#include "GimmickOven.h"
 //#include "GimmickChildren.h"
 //#include "GimmickTelevision.h"
+
 //----------------------------------------------
 
 #include "GimmckTest.h"

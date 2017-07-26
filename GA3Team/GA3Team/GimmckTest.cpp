@@ -11,7 +11,58 @@ void GimmickTest::Destructor()
 void GimmickTest::Draw()
 {
 	//-------------------------ギミック(本体)を描画-------------------------------
-	float col[4] = {1.0,1.0,1.0,1.0};
+	//float col[4] = {1.0,1.0,1.0,1.0};
+	////切り取り先座標
+	//m_dst.top = 0; m_dst.left = 0;
+	//m_dst.bottom = 200; m_dst.right = 200;
+
+	////転送先座標
+	//m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
+	//m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
+	////描画
+	//Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
+
+	////1個の場合
+	//Balloon *aaa = InitBall(48, -48, talk, 1,RED);
+
+	//gimmicDraw(aaa, 0);
+	//delete aaa;
+
+
+	//複数の場合
+	/*Balloon *bbb = InitBall(48, -48, sound, RED);
+	Balloon *ccc = InitBall(48, -48, talk, BULE);
+	gimmicDorw(bbb, 0);
+	gimmicDorw(ccc, 1);
+	delete bbb;
+	delete ccc;*/
+
+	//SavedataManeger()->CurrentData->m_bKouneClearflg
+}
+//テスト用↑
+//-----------シオンステージ↓-----------------------------------------
+//ステージ1↓
+
+//ステージ1↑
+
+//ステージ2↓
+//イヤホン男
+void Gimmickearphone::Destructor()
+{
+
+}
+
+void Gimmickearphone::Action()
+{
+	if (ball[0].OnPush)
+	{
+
+	}
+}
+
+void Gimmickearphone::Draw()
+{
+	float col[4] = { 1.0,1.0,1.0,1.0 };
 	//切り取り先座標
 	m_dst.top = 0; m_dst.left = 0;
 	m_dst.bottom = 200; m_dst.right = 200;
@@ -21,24 +72,105 @@ void GimmickTest::Draw()
 	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
 	//描画
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
+	Balloon *aaa = InitBall(48, -48, sound, 1,RED);
 
-	//1個の場合
-	/*Balloon *aaa = InitBall(48, -48, sound, 1);
-	gimmicDorw(aaa, 0);
-	delete aaa;*/
-
-	//複数の場合
-	/*Balloon *bbb = InitBall(48, -48, sound, 1);
-	Balloon *ccc = InitBall(48, -48, talk, 2);
-	gimmicDorw(bbb, 0);
-	gimmicDorw(ccc, 1);
-	delete bbb;
-	delete ccc;*/
+	gimmicDraw(aaa, 0);
+	delete aaa;
 }
-//テスト用↑
-//-----------シオンステージ↓-----------------------------------------
-//ステージ1↓
+//コウネ
+void Gimmickkoune::Destructor()
+{
 
+}
+
+void Gimmickkoune::Action()
+{
+	if (ball[1].OnPush)
+	{
+
+	}
+}
+
+void Gimmickkoune::Draw()
+{
+	float col[4] = { 1.0,1.0,1.0,1.0 };
+	//切り取り先座標
+	m_dst.top = 0; m_dst.left = 0;
+	m_dst.bottom = 200; m_dst.right = 200;
+
+	//転送先座標
+	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
+	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
+	//描画
+	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
+	Balloon *aaa = InitBall(48, -48, sound, 1, RED);
+
+	gimmicDraw(aaa, 0);
+	delete aaa;
+}
+//猫
+void Gimmickcat::Destructor()
+{
+
+}
+
+void Gimmickcat::Action()
+{
+	if (ball[1].OnPush)
+	{
+
+	}
+}
+
+void Gimmickcat::Draw()
+{
+	float col[4] = { 1.0,1.0,1.0,1.0 };
+	//切り取り先座標
+	m_dst.top = 0; m_dst.left = 0;
+	m_dst.bottom = 200; m_dst.right = 200;
+
+	//転送先座標
+	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
+	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
+	//描画
+	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
+	Balloon *aaa = InitBall(48, -48, sound, 1, RED);
+
+	gimmicDraw(aaa, 0);
+	delete aaa;
+}
+//自転車
+void Gimmickbicycle::Destructor()
+{
+
+}
+
+void Gimmickbicycle::Action()
+{
+
+}
+
+void Gimmickbicycle::Draw()
+{
+	float col[4] = { 1.0,1.0,1.0,1.0 };
+	//切り取り先座標
+	m_dst.top = 0; m_dst.left = 0;
+	m_dst.bottom = 200; m_dst.right = 200;
+
+	//転送先座標
+	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
+	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
+	//描画
+	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
+	Balloon *aaa = InitBall(48, -48, sound, 1, RED);
+
+	gimmicDraw(aaa, 0);
+	delete aaa;
+}
+//ステージ2↑
+
+//ステージ3↓
+//子供1、2、3
 void GimmickChildren::Init(int xpos, int ypos, int widht, int height, int balloonnum, int child_id)///イニシャライズ
 {
 	m_iChild_ID = child_id;
@@ -47,6 +179,10 @@ void GimmickChildren::Init(int xpos, int ypos, int widht, int height, int balloo
 	m_iWidth = widht;	//ギミック幅の初期化
 	m_iHeight = height;	//ギミック高さの初期化
 	m_iballoonnum = balloonnum;//吹き出しの総数
+
+	for (int i = 0; i < 3; i++) {
+		m_bclearflg[i] = false;
+	}
 
 }
 void GimmickChildren::Destructor()//デストラクタ
@@ -64,9 +200,9 @@ void GimmickChildren::Action()//アクション
 			//ドラッグしていた効果音をギミックに聞かせる
 			//Audio()->Start(tab->GetGiveSound());
 			switch (m_iChild_ID) {
-			case 1:
-				//if (tab->GetGiveSound() == /*正解の音*/) {
-
+			case 1://強気な男の子
+				   //if (tab->GetGiveSound() == /*正解の音*/) {
+				m_bclearflg[0] = true;
 				//	break;
 				//}
 				//else {
@@ -74,9 +210,9 @@ void GimmickChildren::Action()//アクション
 				//}
 				break;
 
-			case 2:
-				//if (tab->GetGiveSound() == /*正解の音*/) {
-
+			case 2://優しい女の子
+				   //if (tab->GetGiveSound() == /*正解の音*/) {
+				m_bclearflg[1] = true;
 				//	break;
 				//}
 				//else {
@@ -85,9 +221,9 @@ void GimmickChildren::Action()//アクション
 
 				break;
 
-			case 3:
-				//if (tab->GetGiveSound() == /*正解の音*/) {
-
+			case 3://弱気な男の子
+				   //if (tab->GetGiveSound() == /*正解の音*/) {
+				m_bclearflg[2] = true;
 				//	break;
 				//}
 				//else {
@@ -103,67 +239,174 @@ void GimmickChildren::Action()//アクション
 void GimmickChildren::Draw()//描画
 {
 	//-------------------------ギミック(本体)を描画-------------------------------
-	//float col[4] = { 1.0,1.0,1.0,1.0 };
+	float col[4] = { 1.0,1.0,1.0,1.0 };
 
-	//switch (m_iChild_ID) {
-	//case 1:
-	//	//切り取り先座標
-	//	m_dst.top = 0; m_dst.left = 0;
-	//	m_dst.bottom = 200; m_dst.right = 200;
+	switch (m_iChild_ID) {
+	case 1:
+		//切り取り先座標
+		m_dst.top = 0; m_dst.left = 0;
+		m_dst.bottom = 200; m_dst.right = 200;
 
-	//	break;
+		break;
 
-	//case 2:
-	//	//切り取り先座標
-	//	m_dst.top = 0; m_dst.left = 0;
-	//	m_dst.bottom = 200; m_dst.right = 200;
+	case 2:
+		//切り取り先座標
+		m_dst.top = 0; m_dst.left = 0;
+		m_dst.bottom = 200; m_dst.right = 200;
 
-	//	break;
+		break;
 
-	//case 3:
-	//	//切り取り先座標
-	//	m_dst.top = 0; m_dst.left = 0;
-	//	m_dst.bottom = 200; m_dst.right = 200;
+	case 3:
+		//切り取り先座標
+		m_dst.top = 0; m_dst.left = 0;
+		m_dst.bottom = 200; m_dst.right = 200;
 
-	//	break;
+		break;
 
-	//}
+	}
 
-	////転送先座標
-	//m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
-	//m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
-	////描画
-	//Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
+	//転送先座標
+	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
+	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
+	//描画
+	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
+
+	//1個の場合
+	Balloon *aaa = InitBall(48, -48, talk, 1, CNONE);
+
+	gimmicDraw(aaa, 0);
+	delete aaa;
+
 }
 //ステージ1↓
 //イニシャライズ
 void GimmickAunt::Init() {
 
-};
-//デストラクタ
-void GimmickAunt::Destructor() {
+//おばあちゃん
+void GimmickGranny::Destructor()//デストラクタ
+{
 
-};
-//アクション
-void GimmickAunt::Action() {
+}
+void GimmickGranny::Action()//アクション
+{
 
-};
-//描画
-void GimmickAunt::Draw() {
+}
+void GimmickGranny::Draw()//描画
+{
+	//-------------------------ギミック(本体)を描画-------------------------------
+	float col[4] = { 1.0,1.0,1.0,1.0 };
+	//切り取り先座標
+	m_dst.top = 0; m_dst.left = 0;
+	m_dst.bottom = 200; m_dst.right = 200;
 
-};
+	//転送先座標
+	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
+	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
+	//描画
+	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
 
+	//1個の場合
+	Balloon *aaa = InitBall(48, -48, talk, 1, CNONE);
 
-//ステージ1↑
+	gimmicDraw(aaa, 0);
+	delete aaa;
 
-//ステージ2↓
+}
 
-//ステージ2↑
+//九官鳥
+void GimmickMynah::Destructor()	//デストラクタ
+{
 
-//ステージ3↓
+}
+void GimmickMynah::Action()		//アクション
+{
+
+}
+void GimmickMynah::Draw()		//ドロー
+{
+	//-------------------------ギミック(本体)を描画-------------------------------
+	float col[4] = { 1.0,1.0,1.0,1.0 };
+	//切り取り先座標
+	m_dst.top = 0; m_dst.left = 0;
+	m_dst.bottom = 200; m_dst.right = 200;
+
+	//転送先座標
+	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
+	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
+	//描画
+	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
+
+	//1個の場合
+	Balloon *aaa = InitBall(48, -48, talk, 1, RED);
+
+	gimmicDraw(aaa, 0);
+	delete aaa;
+
+}
+
+//菓子棚
+void GimmickShelf::Destructor()	//デストラクタ
+{
+
+}
+void GimmickShelf::Action()		//アクション
+{
+
+}
+void GimmickShelf::Draw()		//ドロー
+{
+	//-------------------------ギミック(本体)を描画-------------------------------
+	float col[4] = { 1.0,1.0,1.0,1.0 };
+	//切り取り先座標
+	m_dst.top = 0; m_dst.left = 0;
+	m_dst.bottom = 200; m_dst.right = 200;
+
+	//転送先座標
+	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
+	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
+	//描画
+	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
+
+	//1個の場合
+	Balloon *aaa = InitBall(48, -48, talk, 1, RED);
+
+	gimmicDraw(aaa, 0);
+	delete aaa;
+
+}
+
+//風鈴
+void GimmickWindchime::Destructor()	//デストラクタ
+{
+
+}
+void GimmickWindchime::Action()		//アクション
+{
+
+}
+void GimmickWindchime::Draw()		//ドロー
+{
+	//-------------------------ギミック(本体)を描画-------------------------------
+	float col[4] = { 1.0,1.0,1.0,1.0 };
+	//切り取り先座標
+	m_dst.top = 0; m_dst.left = 0;
+	m_dst.bottom = 200; m_dst.right = 200;
+
+	//転送先座標
+	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
+	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
+	//描画
+	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
+
+	//1個の場合
+	Balloon *aaa = InitBall(48, -48, talk, 1, PURPLE);
+
+	gimmicDraw(aaa, 0);
+	delete aaa;
+
+}
 
 //ステージ3↑
-
 
 //ステージ4↓
 
@@ -185,6 +428,60 @@ void GimmickAunt::Draw() {
 
 
 //ステージ1↓
+//犬のデストラクタ
+void GimmickDog::Destructor()
+{
+
+}	
+//犬のアクション
+void GimmickDog::Action() 
+{
+
+}
+//犬のドロー
+void GimmickDog::Draw() 
+{
+
+}	
+//マンホールの蓋のデストラクタ
+void GimmickManholeCover::Destructor() 
+{
+
+}	
+//マンホールの蓋のアクション
+void GimmickManholeCover::Action() 
+{
+
+}		
+//マンホールの蓋のドロー
+void GimmickManholeCover::Draw() 
+{
+
+}//マンホールの穴のデストラクタ
+void GimmickManholeHole::Destructor() 
+{
+
+}//マンホールの穴のアクション
+void GimmickManholeHole::Action()
+{
+
+}//マンホールの穴のドロー
+void GimmickManholeHole::Draw()
+{
+
+}//老人のデストラクタ
+void GimmickOldman::Destructor()
+{
+
+}//老人のアクション
+void GimmickOldman::Action()
+{
+
+}//老人のドロー
+void GimmickOldman::Draw()
+{
+
+}	
 //ステージ1↑
 
 //ステージ2↓
@@ -210,6 +507,190 @@ void GimmickAunt::Draw() {
 
 
 //ステージ1↓
+
+//GimmickTelevision
+void GimmickTelevision::Action()
+{
+
+	if (ball[0].OnPush) {
+
+		//テレビ音取得
+
+	}
+}
+void GimmickTelevision::Destructor()
+{
+
+}
+void GimmickTelevision::Draw()
+{
+
+	//-------------------------ギミック(本体)を描画-------------------------------
+	float col[4] = { 1.0,1.0,1.0,1.0 };
+	//切り取り先座標
+	m_dst.top = 0; m_dst.left = 0;
+	m_dst.bottom = 200; m_dst.right = 200;
+
+	//転送先座標
+	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
+	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
+	//描画
+	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
+
+	Balloon *ball1 = InitBall(48, -48, sound, 1,CNONE);
+	gimmicDraw(ball1, 0);
+	delete ball1;
+}
+
+//GimmickOven
+void GimmickOven::Action()
+{
+
+	if (ball[0].OnPush) {
+		if (SavedataManeger()->CurrentData->m_bMelueruflg[2] == true) {
+
+			//レンジ音入手
+
+
+
+		}
+	}
+}
+void GimmickOven::Destructor()
+{
+
+}
+void GimmickOven::Draw()
+{
+	//-------------------------ギミック(本体)を描画-------------------------------
+	float col[4] = { 1.0,1.0,1.0,1.0 };
+	//切り取り先座標
+	m_dst.top = 0; m_dst.left = 0;
+	m_dst.bottom = 200; m_dst.right = 200;
+
+	//転送先座標
+	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
+	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
+	//描画
+	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
+
+	Balloon *ball1 = InitBall(48, -48, sound, 1, CNONE);
+	gimmicDraw(ball1, 0);
+	delete ball1;
+}
+
+//GimmickKatsuo
+void GimmickKatsuo::Action()
+{
+
+	if (ball[0].OnPush) {
+
+		//会話1
+		if (User()->m_bmerueruability==false && 
+			SavedataManeger()->CurrentData->m_bMelueruflg[0]==false) {
+
+			//カツオフラグ無し、能力なし会話
+
+
+		}
+		else if (User()->m_bmerueruability == false &&
+			SavedataManeger()->CurrentData->m_bMelueruflg[0] == false) {
+
+			//カツオフラグ無し、能力あり会話
+
+			SavedataManeger()->CurrentData->m_bMelueruflg[0] = true;
+		}
+
+	//会話2
+		if (SavedataManeger()->CurrentData->m_bMelueruflg[0] == true &&
+			SavedataManeger()->CurrentData->m_bMelueruflg[1] == false) {
+
+			//カツオフラグ1true会話
+
+
+
+			SavedataManeger()->CurrentData->m_bMelueruflg[1] = true;
+
+		}
+
+		//会話3
+		if (SavedataManeger()->CurrentData->m_bMelueruflg[1] == true &&
+			SavedataManeger()->CurrentData->m_bMelueruflg[2] == false) {
+
+			//カツオフラグ2true会話
+
+
+
+			SavedataManeger()->CurrentData->m_bMelueruflg[2] = true;
+
+		}
+	}
+}
+void GimmickKatsuo::Destructor()
+{
+
+}
+void GimmickKatsuo::Draw()
+{
+	//-------------------------ギミック(本体)を描画-------------------------------
+	float col[4] = { 1.0,1.0,1.0,1.0 };
+	//切り取り先座標
+	m_dst.top = 0; m_dst.left = 0;
+	m_dst.bottom = 200; m_dst.right = 200;
+
+	//転送先座標
+	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
+	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
+	//描画
+	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
+
+	Balloon *ball1 = InitBall(48, -48, sound, 1, CNONE);
+	gimmicDraw(ball1, 0);
+	delete ball1;
+}
+
+//GimmickDoor
+void GimmickDoor::Action()
+{
+
+	//レンジ音使用でステージクリア
+	if (Input()->m_x > m_iXpos&& Input()->m_x < (m_iXpos + m_iWidth)
+		&& Input()->m_y > m_iYpos && Input()->m_y < (m_iYpos + m_iHeight)) {
+		//マウスドラッグ中にマウスボタンが離された
+		//if (!Input()->GetMouButtonL() && tab->GetHaveSound()) {
+
+			//SavedataManeger()->CurrentData->m_bMelueruClearflg[0] = true;
+
+
+		//}
+	}
+
+
+	
+}
+void GimmickDoor::Destructor()
+{
+
+}
+void GimmickDoor::Draw()
+{
+	//-------------------------ギミック(本体)を描画-------------------------------
+	float col[4] = { 1.0,1.0,1.0,1.0 };
+	//切り取り先座標
+	m_dst.top = 0; m_dst.left = 0;
+	m_dst.bottom = 200; m_dst.right = 200;
+
+	//転送先座標
+	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
+	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
+	//描画
+	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
+
+	Balloon *ball1 = InitBall(48, -48, sound, 1, CNONE);
+	gimmicDraw(ball1, 0);
+	delete ball1;
+}
+
 //ステージ1↑
 
 //ステージ2↓

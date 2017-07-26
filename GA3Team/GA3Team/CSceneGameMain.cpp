@@ -10,7 +10,7 @@ void CSceneGameMain::InitScene()
 	Image()->LoadImage("黒犬c.png", 2, TEX_SIZE_256);//テスト用
 	Image()->LoadImage("吹き出し仮.png", 3, TEX_SIZE_512);//テスト用
 	Image()->LoadImage("吹き出し音符.png", 4, TEX_SIZE_512);//テスト用
-	Image()->LoadImage("博士c.png", 5, (TEX_SIZE)500);//博士
+	Image()->LoadImage("StageTutorial.png", 5, TEX_SIZE_1024);//博士
 
 	//Image()->LoadImage("boss.png",2,TEX_SIZE_256);
 

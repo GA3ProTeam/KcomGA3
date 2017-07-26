@@ -16,6 +16,9 @@ class GimmickGranny;
 class GimmickMynah;
 class GimmickShelf;
 class GimmickWindchime;
+class GimmickDoctor;
+class GimmickComputer;
+class GimmickRecorder;
 
 class CObjGimmickManager : public CObj
 {
@@ -31,6 +34,12 @@ public:
 private:
 
 	int m_Stage_ID;			//ステージの番号
+
+	//チュートリアル（博士）ステージ↓
+	GimmickDoctor* m_gimmick_doctor;	//博士
+	GimmickComputer* m_gimmick_computer;//コンピュータ
+	GimmickRecorder* m_gimmick_recorder;//レコーダー
+	//チュートリアル（博士）ステージ↑
 
 	//シオンステージ↓
 	//ステージ3↓

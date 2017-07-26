@@ -16,8 +16,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 	40   =チュートリアル
 	*/
 
-
-	
+	m_Stage_ID = 40;
 
 	switch (m_Stage_ID) {
 
@@ -184,7 +183,12 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 		
 	//チュートリアル（博士）ステージ--------------------------
 	case 40:
+		//【スタート時会話】
 
+		//博士生成
+		m_gimmick_doctor = new GimmickDoctor();
+		Obj()->InsertObj(m_gimmick_doctor, GIMMICK_DOCTOR, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_doctor->Init(400, 150, 100, 300, 1);
 		break;
 	//--------------------------------------------------------
 

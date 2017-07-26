@@ -41,7 +41,7 @@ void GimmickTest::Draw()
 }
 //テスト用↑
 
-//-----------チュートリアル（博士）ステージ---------------------------
+//-----------チュートリアル（博士）ステージ↓--------------------------
 //博士
 //イニシャライズ
 void GimmickDoctor::Init(int xpos, int ypos, int widht, int height, int balloonnum) {
@@ -61,7 +61,37 @@ void GimmickDoctor::Action() {
 
 //ドロー
 void GimmickDoctor::Draw() {
+	float col[4] = {1.0f,1.0f,1.0f,1.0f};
 
+	//ギミック本体描画-----------------------------------------------------------
+	//切り取り先座標
+	m_dst.top = 0;
+	m_dst.bottom = 380; 
+	m_dst.left = 0;
+	m_dst.right = 200;
+
+	//転送先座標
+	m_src.top = m_iYpos;
+	m_src.bottom = m_src.top+100;
+	m_src.left = m_iXpos;
+	m_src.right = m_src.left + 50;
+
+	////転送先座標
+	//m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
+	//m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
+
+	//描画
+	Image()->Draw(5, &m_src, &m_dst, col, 0.0f);
+	//---------------------------------------------------------------------------
+
+	//吹き出し描画＆動作---------------------------------------------------------
+	Balloon *aaa = InitBall(48, -48, sound, 1, RED);
+	gimmicDraw(aaa, 0);
+	delete aaa;
+	//---------------------------------------------------------------------------
+
+	//【会話終了時】
+	SavedataManeger()->CurrentData->m_btutoriaruflg[0];
 }
 
 //パソコン
@@ -107,7 +137,7 @@ void GimmickRecorder::Action() {
 void GimmickRecorder::Draw() {
 
 }
-//--------------------------------------------------------------------
+//-----------チュートリアル（博士）ステージ↑-------------------------
 
 //-----------シオンステージ↓-----------------------------------------
 //ステージ1↓
@@ -349,7 +379,10 @@ void GimmickChildren::Draw()//描画
 }
 //ステージ1↓
 //イニシャライズ
-void GimmickAunt::Init() {
+void GimmickAunt::Init()
+{
+
+}
 
 //おばあちゃん
 void GimmickGranny::Destructor()//デストラクタ

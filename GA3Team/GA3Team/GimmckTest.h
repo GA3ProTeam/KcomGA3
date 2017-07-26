@@ -50,6 +50,7 @@ private:
 //ステージ2↑
 
 //ステージ3↓
+
 //子供
 class GimmickChildren : public Gimmick
 {

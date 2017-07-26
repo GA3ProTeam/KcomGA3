@@ -47,12 +47,17 @@ void CObjDataSelect::Destructor()
 
 void CObjDataSelect::Action()
 {
+
+	
 	
 	//プレイヤーデータ読込み
 	if (iLoad_flg == 0)
 	{
 		SavedataManeger()->Loadsavedata();
 		iLoad_flg = 1;
+
+		//セーブデータ作成(仮) 
+		SavedataManeger()->Writesavedata();
 	}
 	
 

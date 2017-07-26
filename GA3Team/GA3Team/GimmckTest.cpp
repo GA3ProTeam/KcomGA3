@@ -358,13 +358,13 @@ void GimmickChildren::Draw()//描画
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
 
 	//1個の場合
-	Balloon *aaa = InitBall(48, -48, talk, 1, CNONE);
+	Balloon *aaa = InitBall(48, -48, talk, 1, CNONE, LOWER_RIGHT);
 
 	gimmicDraw(aaa, 0);
 	delete aaa;
 
 }
-//ステージ1↓
+
 //おばあちゃん
 void GimmickGranny::Destructor()//デストラクタ
 {
@@ -389,7 +389,7 @@ void GimmickGranny::Draw()//描画
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
 
 	//1個の場合
-	Balloon *aaa = InitBall(48, -48, talk, 1, CNONE);
+	Balloon *aaa = InitBall(48, -48, talk, 1, CNONE, LOWER_RIGHT);
 
 	gimmicDraw(aaa, 0);
 	delete aaa;
@@ -420,7 +420,7 @@ void GimmickMynah::Draw()		//ドロー
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
 
 	//1個の場合
-	Balloon *aaa = InitBall(48, -48, talk, 1, RED);
+	Balloon *aaa = InitBall(48, -48, sound, 1, PINK, LOWER_RIGHT);
 
 	gimmicDraw(aaa, 0);
 	delete aaa;
@@ -450,11 +450,18 @@ void GimmickShelf::Draw()		//ドロー
 	//描画
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
 
-	//1個の場合
-	Balloon *aaa = InitBall(48, -48, talk, 1, RED);
+	//複数の場合
+	Balloon *aaa = InitBall(-48, 70, sound, 1, BLUE, LOWER_RIGHT);
+	Balloon *bbb = InitBall(0, -48, sound, 1, RED, UNDER);
+	Balloon *ccc = InitBall(48, 70, sound, 1, YELLOW, LOWER_LEFT);
 
 	gimmicDraw(aaa, 0);
+	gimmicDraw(bbb, 1);
+	gimmicDraw(ccc, 2);
+
 	delete aaa;
+	delete bbb;
+	delete ccc;
 
 }
 
@@ -482,7 +489,7 @@ void GimmickWindchime::Draw()		//ドロー
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
 
 	//1個の場合
-	Balloon *aaa = InitBall(48, -48, talk, 1, PURPLE);
+	Balloon *aaa = InitBall(48, -48, talk, 1, PURPLE, LOWER_RIGHT);
 
 	gimmicDraw(aaa, 0);
 	delete aaa;

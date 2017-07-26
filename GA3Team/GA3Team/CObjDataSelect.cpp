@@ -50,11 +50,25 @@ void CObjDataSelect::Action()
 	//プレイヤーデータ読込み
 	if (iLoad_flg == 0)
 	{
-		SavedataManeger()->Loadsavedata();
-		iLoad_flg = 1;
+		int i = 0;
+		while(i < 3)
+		{
+			if (SavedataManeger()->Savedatacheck(i))
+			{
+				SavedataManeger()->Loadsavedata();
+				i = 3;
+			}
+
+			i++;
+		}
+		
 
 		//セーブデータ作成(仮) 
-		//SavedataManeger()->Writesavedata();
+		SavedataManeger()->Writesavedata();
+
+		iLoad_flg = 1;
+
+		
 	}
 	
 

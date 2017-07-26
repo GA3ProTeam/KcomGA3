@@ -119,14 +119,16 @@ void CSavedataManeger::Loadsavedata()
 		}//!__CHAR__
 		dataflg++;
 
-		if (saveflg > 3)
-			return;
-
 		if (dataflg > 6)
 		{
 			saveflg++;
 			dataflg = 0;
 		}
+
+		if (saveflg >= 3)
+			return;
+
+		
 	}//!__TEXT__
 }
 

@@ -8,7 +8,6 @@
 
 void CObjDataSelect::Init()
 {
-
 	m_idraw_pos_x = 0;
 	m_idraw_pos_y = 0;
 
@@ -278,6 +277,10 @@ void CObjDataSelect::ButtonFromTheBegin() {
 
 		m_iSelectData = -1;
 	}
+
+
+
+
 }
 
 //-------------------------------------------------------------------------------------------------------

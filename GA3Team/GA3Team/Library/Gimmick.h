@@ -69,7 +69,7 @@ public:
 	void setSound(int soundnum, int num) { ball[num].m_soundnum = soundnum; }
 
 	//吹き出しの(色情報)をセットする
-	void setSound(int color, int num) { ball[num].m_iballooncolor = color; }
+//	void setSound(int color, int num) { ball[num].m_iballooncolor = color; }
 
 	//描画
 	void gimmicDraw(Balloon *ball1, int num);

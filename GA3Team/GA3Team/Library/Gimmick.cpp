@@ -106,7 +106,7 @@ void Gimmick::gimmicDraw(Balloon *ball1, int num)
 void Gimmick::setballooncolor(int num)
 {
 }
-Balloon *InitBall(int gimX, int gimY, int balltype, int soundnum, int color)
+Balloon *InitBall(int gimX, int gimY, int balltype, int soundnum, int color,int Dir )
 {
 	Balloon *Initball = new Balloon();
 
@@ -115,6 +115,7 @@ Balloon *InitBall(int gimX, int gimY, int balltype, int soundnum, int color)
 	Initball->m_iballoontype = balltype;
 	Initball->m_soundnum = soundnum;
 	Initball->m_iballooncolor = color;
+	Initball->m_iballoonDir = Dir;
 
 	return Initball;
 }

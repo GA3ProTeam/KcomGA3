@@ -163,18 +163,18 @@ public:
 private:
 };
 
-////自転車
-//class Gimmickbicycle : public Gimmick
-//{
-//public:
-//	Gimmickbicycle() {};
-//	~Gimmickbicycle() {};
-//
-//	void Destructor();	//デストラクタ
-//	void Action();		//アクション
-//	void Draw();		//ドロー
-//private:
-//};
+//消防車
+class Gimmickfiretruck : public Gimmick
+{
+public:
+	Gimmickfiretruck() {};
+	~Gimmickfiretruck() {};
+
+	void Destructor();	//デストラクタ
+	void Action();		//アクション
+	void Draw();		//ドロー
+private:
+};
 //ステージ2↑
 
 //ステージ3↓
@@ -196,7 +196,7 @@ public:
 	void Action();//アクション
 	void Draw();//描画
 	//void SetSound(int sound) { m_iSoundNum = sound; };
-
+	
 };
 
 //おばあちゃん

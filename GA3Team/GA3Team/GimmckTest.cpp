@@ -1,5 +1,6 @@
 #include "main.h"
 //テスト用↓
+
 void GimmickTest::Action()
 {
 
@@ -178,6 +179,17 @@ void Gimmickearphone::Action()
 		//会話
 
 	}
+	//工事音使用でステージクリア
+	if (Input()->m_x > m_iXpos&& Input()->m_x < (m_iXpos + m_iWidth)
+		&& Input()->m_y > m_iYpos && Input()->m_y < (m_iYpos + m_iHeight)) {
+		//マウスドラッグ中にマウスボタンが離された
+		//if (!Input()->GetMouButtonL() && tab->GetHaveSound()) {
+
+		SavedataManeger()->CurrentData->m_bSionClearflg[0] = true;
+
+
+		}
+	
 }
 
 void Gimmickearphone::Draw()
@@ -192,7 +204,7 @@ void Gimmickearphone::Draw()
 	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
 	//描画
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
-	Balloon *aaa = InitBall(48, -48, sound, 1,RED, LOWER_LEFT);
+	Balloon *aaa = InitBall(48, -48, sound, 1,EXCEPTION, LOWER_LEFT);
 
 	gimmicDraw(aaa, 0);
 	delete aaa;
@@ -235,7 +247,7 @@ void Gimmickkoune::Draw()
 	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
 	//描画
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
-	Balloon *aaa = InitBall(48, -48, sound, 1, RED, LOWER_LEFT);
+	Balloon *aaa = InitBall(48, -48, sound, 1, EXCEPTION, LOWER_LEFT);
 
 	gimmicDraw(aaa, 0);
 	delete aaa;
@@ -248,7 +260,7 @@ void Gimmickcat::Destructor()
 
 void Gimmickcat::Action()
 {
-	if (ball[1].OnPush)
+	if (ball[2].OnPush)
 	{
 		//音を取得
 	}
@@ -266,11 +278,12 @@ void Gimmickcat::Draw()
 	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
 	//描画
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
-	Balloon *aaa = InitBall(48, -48, sound, 1, RED, LOWER_LEFT);
+	Balloon *aaa = InitBall(48, -48, sound, 1, GREEN, LOWER_LEFT);
 
 	gimmicDraw(aaa, 0);
 	delete aaa;
 }
+
 //自転車
 void Gimmickbicycle::Destructor()
 {
@@ -279,7 +292,7 @@ void Gimmickbicycle::Destructor()
 
 void Gimmickbicycle::Action()
 {
-	if (ball[1].OnPush)
+	if (ball[3].OnPush)
 	{
 		//音を取得
 	}
@@ -297,7 +310,39 @@ void Gimmickbicycle::Draw()
 	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
 	//描画
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
-	Balloon *aaa = InitBall(48, -48, sound, 1, RED, LOWER_LEFT);
+	Balloon *aaa = InitBall(48, -48, sound, 1, ORANGE, LOWER_LEFT);
+
+	gimmicDraw(aaa, 0);
+	delete aaa;
+}
+
+//消防車
+void Gimmickfiretruck::Destructor()
+{
+
+}
+
+void Gimmickfiretruck::Action()
+{
+	if (ball[4].OnPush)
+	{
+		//音を取得
+	}
+}
+
+void Gimmickfiretruck::Draw()
+{
+	float col[4] = { 1.0,1.0,1.0,1.0 };
+	//切り取り先座標
+	m_dst.top = 0; m_dst.left = 0;
+	m_dst.bottom = 200; m_dst.right = 200;
+
+	//転送先座標
+	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
+	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
+	//描画
+	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
+	Balloon *aaa = InitBall(48, -48, sound, 1, PURPLE, LOWER_LEFT);
 
 	gimmicDraw(aaa, 0);
 	delete aaa;
@@ -327,8 +372,8 @@ void GimmickChildren::Destructor()//デストラクタ
 }
 void GimmickChildren::Action()//アクション
 {
-	CObjMenuTab* tab = (CObjMenuTab*)Obj()->GetObj(OBJ_MENUTAB);
-
+	
+	CObjMenuTab* tab= (CObjMenuTab*)Obj()->GetObj(OBJ_MENUTAB);
 	if (Input()->m_x > m_iXpos&& Input()->m_x < (m_iXpos + m_iWidth)
 		&& Input()->m_y > m_iYpos && Input()->m_y < (m_iYpos + m_iHeight)) {
 		//マウスドラッグ中にマウスボタンが離された

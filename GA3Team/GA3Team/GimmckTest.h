@@ -117,11 +117,11 @@ class Gimmickearphone : public Gimmick
 public:
 	Gimmickearphone() {};
 	~Gimmickearphone() {};
-	
-public:
 	void Destructor();//デストラクタ
 	void Action();//アクション
 	void Draw();//描画
+	
+	
 };
 
 //コウネ
@@ -130,11 +130,11 @@ class Gimmickkoune : public Gimmick
 public:
 	Gimmickkoune() {};
 	~Gimmickkoune() {};
-
-public:
 	void Destructor();//デストラクタ
 	void Action();//アクション
 	void Draw();//描画
+
+	
 };
 
 //猫

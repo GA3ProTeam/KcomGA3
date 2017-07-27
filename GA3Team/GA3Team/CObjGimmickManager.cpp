@@ -33,22 +33,22 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 	}
 		break;
 	case 11:
-		//シオンのステージ2のギミック生成
-		m_gimmick_earphone = new Gimmickearphone();
-		Obj()->InsertObj(m_gimmick_earphone, GIMMICK_EARPHONE, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_earphone->Init(350, 220, 70, 100, 1);
+		////シオンのステージ2のギミック生成
+		//m_gimmick_earphone = new Gimmickearphone();
+		//Obj()->InsertObj(m_gimmick_earphone, GIMMICK_EARPHONE, 5, this->m_pScene, HIT_BOX_OFF);
+		//m_gimmick_earphone->Init(350, 220, 70, 100, 1);
 
-		m_gimmick_koune = new Gimmickkoune();
-		Obj()->InsertObj(m_gimmick_koune, GIMMICK_KOUNE, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_koune->Init(350, 220, 70, 100, 1);
+		//m_gimmick_koune = new Gimmickkoune();
+		//Obj()->InsertObj(m_gimmick_koune, GIMMICK_KOUNE, 5, this->m_pScene, HIT_BOX_OFF);
+		//m_gimmick_koune->Init(350, 220, 70, 100, 1);
 
-		m_gimmick_cat = new Gimmickcat();
-		Obj()->InsertObj(m_gimmick_cat, GIMMICK_CAT, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_cat->Init(350, 220, 70, 100, 1);
+		//m_gimmick_cat = new Gimmickcat();
+		//Obj()->InsertObj(m_gimmick_cat, GIMMICK_CAT, 5, this->m_pScene, HIT_BOX_OFF);
+		//m_gimmick_cat->Init(350, 220, 70, 100, 1);
 
-		m_gimmick_bicycle = new Gimmickbicycle();
-		Obj()->InsertObj(m_gimmick_bicycle, GIMMICK_BICYCLE, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_bicycle->Init(350, 220, 70, 100, 1);
+		//m_gimmick_bicycle = new Gimmickbicycle();
+		//Obj()->InsertObj(m_gimmick_bicycle, GIMMICK_BICYCLE, 5, this->m_pScene, HIT_BOX_OFF);
+		//m_gimmick_bicycle->Init(350, 220, 70, 100, 1);
 		break;
 	case 12:
 		////シオンのステージ3のギミック生成

@@ -152,7 +152,7 @@ void GimmickAunt::Draw() {
 	//--------------------------------------------------------------------------
 
 	//吹き出し描画＆動作--------------------------------------------------------
-	Balloon *aaa = InitBall(48, -48, talk, 1, RED);
+	Balloon *aaa = InitBall(48, -48, talk, 1, RED, LOWER_LEFT);
 	gimmicDraw(aaa, 0);
 	delete aaa;
 	//--------------------------------------------------------------------------
@@ -163,7 +163,7 @@ void GimmickAunt::Draw() {
 }
 
 //ステージ1↑
-/*
+
 //ステージ2↓
 //イヤホン男
 void Gimmickearphone::Destructor()
@@ -192,7 +192,7 @@ void Gimmickearphone::Draw()
 	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
 	//描画
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
-	Balloon *aaa = InitBall(48, -48, sound, 1,RED);
+	Balloon *aaa = InitBall(48, -48, sound, 1,RED, LOWER_LEFT);
 
 	gimmicDraw(aaa, 0);
 	delete aaa;
@@ -235,7 +235,7 @@ void Gimmickkoune::Draw()
 	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
 	//描画
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
-	Balloon *aaa = InitBall(48, -48, sound, 1, RED);
+	Balloon *aaa = InitBall(48, -48, sound, 1, RED, LOWER_LEFT);
 
 	gimmicDraw(aaa, 0);
 	delete aaa;
@@ -266,7 +266,7 @@ void Gimmickcat::Draw()
 	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
 	//描画
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
-	Balloon *aaa = InitBall(48, -48, sound, 1, RED);
+	Balloon *aaa = InitBall(48, -48, sound, 1, RED, LOWER_LEFT);
 
 	gimmicDraw(aaa, 0);
 	delete aaa;
@@ -297,13 +297,13 @@ void Gimmickbicycle::Draw()
 	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
 	//描画
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
-	Balloon *aaa = InitBall(48, -48, sound, 1, RED);
+	Balloon *aaa = InitBall(48, -48, sound, 1, RED, LOWER_LEFT);
 
 	gimmicDraw(aaa, 0);
 	delete aaa;
 }
 //ステージ2↑
-*/
+
 
 //ステージ3↓
 //子供1、2、3

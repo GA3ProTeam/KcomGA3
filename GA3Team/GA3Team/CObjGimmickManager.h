@@ -1,4 +1,5 @@
 #pragma once
+
 #ifndef __C_OBJ_GIMIMICKMANAGER_H__
 #define __C_OBJ_GIMIMICKMANAGER_H__
 

@@ -150,7 +150,20 @@ public:
 private:
 };
 
-//猫
+//自転車
+class Gimmickbicycle : public Gimmick
+{
+public:
+	Gimmickbicycle() {};
+	~Gimmickbicycle() {};
+
+	void Destructor();	//デストラクタ
+	void Action();		//アクション
+	void Draw();		//ドロー
+private:
+};
+
+//自転車
 class Gimmickbicycle : public Gimmick
 {
 public:

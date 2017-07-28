@@ -21,10 +21,13 @@ void CSavedataManeger::Loadsavedata()
 	for (int i = 0; i < 3; i++) {
 		Savedata[i].m_bKouneflg.clear();
 		Savedata[i].m_bKouneClearflg.clear();
+
 		Savedata[i].m_bMelueruflg.clear();
 		Savedata[i].m_bMelueruClearflg.clear();
+
 		Savedata[i].m_bSionflg.clear();
 		Savedata[i].m_bSionClearflg.clear();
+
 		Savedata[i].m_btutoriaruflg.clear();
 		Savedata[i].m_btutorial = false;
 	}
@@ -181,8 +184,20 @@ bool CSavedataManeger::Savedatacheck(int savenum)
 	return false;
 }
 
-void CSavedataManeger::Deletesavedata()
+void CSavedataManeger::Deletesavedata(int savedate_srot)
 {
+	
+		Savedata[savedate_srot].m_bKouneflg.clear();
+		Savedata[savedate_srot].m_bKouneClearflg.clear();
+
+		Savedata[savedate_srot].m_bMelueruflg.clear();
+		Savedata[savedate_srot].m_bMelueruClearflg.clear();
+
+		Savedata[savedate_srot].m_bSionflg.clear();
+		Savedata[savedate_srot].m_bSionClearflg.clear();
+
+		Savedata[savedate_srot].m_btutoriaruflg.clear();
+		Savedata[savedate_srot].m_btutorial = false;
 	
 }
 

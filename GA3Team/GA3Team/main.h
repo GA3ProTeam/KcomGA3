@@ -144,6 +144,7 @@ enum OBJ_NAME
 	GIMMICK_KOUNE,
 	GIMMICK_CAT,
 	GIMMICK_BICYCLE,
+	GIMMICK_FIRETRUCK,
 
 	GIMMICK_AUNT,
 };
@@ -301,6 +302,7 @@ inline RECT InitRect(LONG left, LONG top, LONG right, LONG bottom)
 #include "CObjPlayer.h"
 #include "ButtonLScrollScreen.h"
 #include "ButtonRScrollScreen.h"
+#include "GimmckTest.h"
 #include "CObjGimmickManager.h"
 //#include "GimmickKatsuo.h"
 //#include "GimmickDoor.h"
@@ -310,7 +312,7 @@ inline RECT InitRect(LONG left, LONG top, LONG right, LONG bottom)
 
 //----------------------------------------------
 
-#include "GimmckTest.h"
+
 
 
 //ユーザー・セーブ・シーン間受け渡しデータ

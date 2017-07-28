@@ -1,4 +1,5 @@
 #pragma once
+
 #ifndef __C_OBJ_GIMIMICKMANAGER_H__
 #define __C_OBJ_GIMIMICKMANAGER_H__
 
@@ -7,6 +8,7 @@ class Gimickearphone;
 class Gimickearkoune;
 class Gimickcat;
 class Gimmickbicycle;
+class Gimmickfiretruck;
 class GimmickTelevision;
 class GimmickOven;
 class GimmickKatsuo;
@@ -35,7 +37,10 @@ public:
 	void Destructor();	//デストラクタ
 	void Action();		//アクション
 	void Draw();		//ドロー
+	
 private:
+
+	
 
 	int m_Stage_ID;			//ステージの番号
 
@@ -51,6 +56,7 @@ private:
 	Gimmickkoune* m_gimmick_koune;
 	Gimmickcat* m_gimmick_cat;
 	Gimmickbicycle* m_gimmick_bicycle;
+	Gimmickfiretruck* m_gimmick_firetruck;
 	//ステージ2↑
 	//ステージ3↓
 	GimmickChildren* m_gimmick_children;

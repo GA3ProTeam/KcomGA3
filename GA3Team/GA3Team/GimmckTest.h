@@ -117,11 +117,11 @@ class Gimmickearphone : public Gimmick
 public:
 	Gimmickearphone() {};
 	~Gimmickearphone() {};
-	
-public:
 	void Destructor();//デストラクタ
 	void Action();//アクション
 	void Draw();//描画
+	
+	
 };
 
 //コウネ
@@ -130,11 +130,11 @@ class Gimmickkoune : public Gimmick
 public:
 	Gimmickkoune() {};
 	~Gimmickkoune() {};
-
-public:
 	void Destructor();//デストラクタ
 	void Action();//アクション
 	void Draw();//描画
+
+	
 };
 
 //猫
@@ -150,12 +150,25 @@ public:
 private:
 };
 
-//猫
+//自転車
 class Gimmickbicycle : public Gimmick
 {
 public:
 	Gimmickbicycle() {};
 	~Gimmickbicycle() {};
+
+	void Destructor();	//デストラクタ
+	void Action();		//アクション
+	void Draw();		//ドロー
+private:
+};
+
+//消防車
+class Gimmickfiretruck : public Gimmick
+{
+public:
+	Gimmickfiretruck() {};
+	~Gimmickfiretruck() {};
 
 	void Destructor();	//デストラクタ
 	void Action();		//アクション
@@ -183,7 +196,7 @@ public:
 	void Action();//アクション
 	void Draw();//描画
 	//void SetSound(int sound) { m_iSoundNum = sound; };
-
+	
 };
 
 //おばあちゃん

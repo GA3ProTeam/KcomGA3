@@ -57,7 +57,7 @@ void GimmickDoctor::Destructor() {
 
 //アクション
 void GimmickDoctor::Action() {
-
+	
 }
 
 //ドロー
@@ -73,21 +73,17 @@ void GimmickDoctor::Draw() {
 
 	//転送先座標
 	m_src.top = m_iYpos;
-	m_src.bottom = m_src.top+100;
+	m_src.bottom = m_src.top + m_iHeight;
 	m_src.left = m_iXpos;
-	m_src.right = m_src.left + 50;
-
-	////転送先座標
-	//m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
-	//m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
+	m_src.right = m_src.left + m_iWidth;
 
 	//描画
 	Image()->Draw(5, &m_src, &m_dst, col, 0.0f);
 	//---------------------------------------------------------------------------
 
 	//吹き出し描画＆動作---------------------------------------------------------
-	Balloon *aaa = InitBall(48, -48, sound, 1, RED);
-	gimmicDraw(aaa, 0);
+	Balloon *aaa = InitBall(m_iWidth-50, -48, talk, 1, RED, LOWER_LEFT);
+	this->gimmicDraw(aaa, 0);
 	delete aaa;
 	//---------------------------------------------------------------------------
 
@@ -100,6 +96,8 @@ void GimmickDoctor::Draw() {
 void GimmickComputer::Init(int xpos, int ypos, int widht, int height, int balloonnum) {
 	//親クラスのInit関数を呼ぶ
 	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
+
+	
 }
 
 //デストラクタ
@@ -114,7 +112,30 @@ void GimmickComputer::Action() {
 
 //ドロー
 void GimmickComputer::Draw() {
+	float col[4] = { 1.0f,1.0f,1.0f,1.0f };
 
+	//ギミック本体描画-----------------------------------------------------------
+	//切り取り先座標
+	m_dst.top = 0;
+	m_dst.bottom = 320;
+	m_dst.left = 200;
+	m_dst.right = m_dst.left + 600;
+
+	//転送先座標
+	m_src.top = m_iYpos;
+	m_src.bottom = m_src.top + m_iHeight;
+	m_src.left = m_iXpos;
+	m_src.right = m_src.left + m_iWidth;
+
+	//描画
+	Image()->Draw(5, &m_src, &m_dst, col, 0.0f);
+	//---------------------------------------------------------------------------
+
+	//吹き出し描画＆動作---------------------------------------------------------
+	Balloon *aaa = InitBall(m_iWidth - 50, -48, sound, 1, RED, LOWER_LEFT);
+	this->gimmicDraw(aaa, 0);
+	delete aaa;
+	//---------------------------------------------------------------------------
 }
 
 //レコーダー
@@ -136,7 +157,30 @@ void GimmickRecorder::Action() {
 
 //ドロー
 void GimmickRecorder::Draw() {
+	float col[4] = { 1.0f,1.0f,1.0f,1.0f };
 
+	//ギミック本体描画-----------------------------------------------------------
+	//切り取り先座標
+	m_dst.top = 0;
+	m_dst.bottom = 320;
+	m_dst.left = 200;
+	m_dst.right = m_dst.left + 600;
+
+	//転送先座標
+	m_src.top = m_iYpos;
+	m_src.bottom = m_src.top + m_iHeight;
+	m_src.left = m_iXpos;
+	m_src.right = m_src.left + m_iWidth;
+
+	//描画
+	Image()->Draw(5, &m_src, &m_dst, col, 0.0f);
+	//---------------------------------------------------------------------------
+
+	//吹き出し描画＆動作---------------------------------------------------------
+	Balloon *aaa = InitBall(m_iWidth - 50, -48, sound, 1, RED, LOWER_LEFT);
+	this->gimmicDraw(aaa, 0);
+	delete aaa;
+	//---------------------------------------------------------------------------
 }
 //-----------チュートリアル（博士）ステージ↑-------------------------
 
@@ -490,12 +534,6 @@ void GimmickChildren::Draw()//描画
 
 }
 //ステージ1↓
-//イニシャライズ
-void GimmickAunt::Init()
-{
-
-}
-
 //おばあちゃん
 void GimmickGranny::Destructor()//デストラクタ
 {

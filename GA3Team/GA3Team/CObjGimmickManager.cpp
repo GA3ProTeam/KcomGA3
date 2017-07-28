@@ -19,6 +19,8 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 
 	SavedataManeger()->Setcurrentdata();
 
+	m_Stage_ID = 40;
+
 	switch (m_Stage_ID) {
 
 	//-シオンステージ-----------------------------------------
@@ -204,10 +206,15 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 	case 40:
 		//【スタート時会話】
 
-		//博士生成
+		//博士
 		m_gimmick_doctor = new GimmickDoctor();
 		Obj()->InsertObj(m_gimmick_doctor, GIMMICK_DOCTOR, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_doctor->Init(400, 150, 100, 300, 1);
+		m_gimmick_doctor->Init(200, 200, 120, 220, 1);
+
+		//パソコン
+		m_gimmick_computer = new GimmickComputer();
+		Obj()->InsertObj(m_gimmick_computer, GIMMICK_COMPUTER, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_computer->Init(200, 200, 120, 220, 1);
 		break;
 	//--------------------------------------------------------
 

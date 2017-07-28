@@ -8,7 +8,6 @@
 
 void CObjDataSelect::Init()
 {
-
 	m_idraw_pos_x = 0;
 	m_idraw_pos_y = 0;
 
@@ -48,16 +47,28 @@ void CObjDataSelect::Destructor()
 void CObjDataSelect::Action()
 {
 
-	
-	
 	//プレイヤーデータ読込み
 	if (iLoad_flg == 0)
 	{
-		SavedataManeger()->Loadsavedata();
-		iLoad_flg = 1;
+		int i = 0;
+		while(i < 3)
+		{
+			if (SavedataManeger()->Savedatacheck(i))
+			{
+				SavedataManeger()->Loadsavedata();
+				i = 3;
+			}
+
+			i++;
+		}
+		
 
 		//セーブデータ作成(仮) 
 		SavedataManeger()->Writesavedata();
+
+		iLoad_flg = 1;
+
+		
 	}
 	
 
@@ -87,7 +98,7 @@ void CObjDataSelect::Action()
 	//タイトルに戻る
 	if (iTitle_flg == 0) {
 		m_obj_titlebackbutton = new ButtonDataSelect();
-		Obj()->InsertObj(m_obj_titlebackbutton, OBJ_BUTTON_STAGE, 0, this->m_pScene, HIT_BOX_OFF);
+		Obj()->InsertObj(m_obj_titlebackbutton, OBJ_BUTTON_DATASELECT, 0, this->m_pScene, HIT_BOX_OFF);
 		m_obj_titlebackbutton->Init(30, 525, 150, 150, true, 1, 512, 512);
 
 		iTitle_flg = 1;
@@ -122,13 +133,13 @@ void CObjDataSelect::Draw()
 	//画像
 	//データセレクト
 
-	//各セーブデータ
+	//各キャラクターの進行度データ
 	for (int i = 0; i < MAX_SAVEDATA; i++) {
 		//進行度の画像が一枚でまとめられている場合
 		//切り取り先座標
 		m_rDst.top = 0; m_rDst.left = /*セーブデータから取得してきた進行度　* */0; m_rDst.bottom = m_rDst.top + 64; m_rDst.right = m_rDst.left + 64;
 		//転送先座標
-		m_rSrc_Koune.top   = (i*150)   + 120;   m_rSrc_Koune.left   = 400;   m_rSrc_Koune.bottom   = m_rSrc_Koune.top + 64;    m_rSrc_Koune.right = m_rSrc_Koune.left + 64; //コウネ
+		m_rSrc_Koune.top   = (i * 150) + 120;   m_rSrc_Koune.left   = 400;   m_rSrc_Koune.bottom   = m_rSrc_Koune.top + 64;    m_rSrc_Koune.right = m_rSrc_Koune.left + 64; //コウネ
 		m_rSrc_Sion.top    = (i * 150) + 120;   m_rSrc_Sion.left    = 500;   m_rSrc_Sion.bottom    = m_rSrc_Sion.top + 64;     m_rSrc_Sion.right = m_rSrc_Sion.left + 64; //シオン
 		m_rSrc_Melueru.top = (i * 150) + 120;   m_rSrc_Melueru.left = 600;   m_rSrc_Melueru.bottom = m_rSrc_Melueru.top + 64;  m_rSrc_Melueru.right = m_rSrc_Melueru.left + 64; //メルエル
 
@@ -186,7 +197,7 @@ void CObjDataSelect::ButtonFromTheBegin() {
 
 			//ボタン描画
 			m_obj_savedatabutton[i] = new ButtonDataSelect();
-			Obj()->InsertObj(m_obj_savedatabutton[i], OBJ_BUTTON_STAGE, 0, this->m_pScene, HIT_BOX_OFF);
+			Obj()->InsertObj(m_obj_savedatabutton[i], OBJ_BUTTON_DATASELECT, 0, this->m_pScene, HIT_BOX_OFF);
 			m_obj_savedatabutton[i]->Init(200, m_button_y, 500, 100, true, 0 , 64, 64);
 
 			m_button_y += 150;
@@ -280,6 +291,10 @@ void CObjDataSelect::ButtonFromTheBegin() {
 
 		m_iSelectData = -1;
 	}
+
+
+
+
 }
 
 //-------------------------------------------------------------------------------------------------------
@@ -304,7 +319,7 @@ void CObjDataSelect::ButtonContinuation() {
 
 			//ボタン作成
 			m_obj_savedatabutton[i] = new ButtonDataSelect();
-			Obj()->InsertObj(m_obj_savedatabutton[i], OBJ_BUTTON_STAGE, 0, this->m_pScene, HIT_BOX_OFF);
+			Obj()->InsertObj(m_obj_savedatabutton[i], OBJ_BUTTON_DATASELECT, 0, this->m_pScene, HIT_BOX_OFF);
 			m_obj_savedatabutton[i]->Init(200, m_button_y, 500, 100, m_bselect_flg[i], 0, 64, 64);
 
 			m_button_y += 150;

@@ -18,6 +18,17 @@ void CSavedataManeger::Init()
 
 void CSavedataManeger::Loadsavedata()
 {
+	for (int i = 0; i < 3; i++) {
+		Savedata[i].m_bKouneflg.clear();
+		Savedata[i].m_bKouneClearflg.clear();
+		Savedata[i].m_bMelueruflg.clear();
+		Savedata[i].m_bMelueruClearflg.clear();
+		Savedata[i].m_bSionflg.clear();
+		Savedata[i].m_bSionClearflg.clear();
+		Savedata[i].m_btutoriaruflg.clear();
+		Savedata[i].m_btutorial = false;
+	}
+
 	ifstream stream("test.sav", std::ios::in);
 	vector<string> vstr;
 	string str;
@@ -119,14 +130,16 @@ void CSavedataManeger::Loadsavedata()
 		}//!__CHAR__
 		dataflg++;
 
-		if (saveflg >= 3)
-			return;
-
 		if (dataflg > 6)
 		{
 			saveflg++;
 			dataflg = 0;
 		}
+
+		if (saveflg >= 3)
+			return;
+
+		
 	}//!__TEXT__
 }
 

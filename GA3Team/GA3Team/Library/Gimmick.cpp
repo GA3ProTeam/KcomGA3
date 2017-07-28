@@ -7,7 +7,6 @@ void Gimmick::Init(int xpos, int ypos, int widht, int height, int balloonnum)
 	m_iWidth = widht;	//ギミック幅の初期化
 	m_iHeight = height;	//ギミック高さの初期化
 	m_iballoonnum = balloonnum;//吹き出しの総数
-	m_iSoundNum = 1;
 }
 void Gimmick::gimmicDraw(Balloon *ball1, int num)
 {
@@ -25,13 +24,17 @@ void Gimmick::gimmicDraw(Balloon *ball1, int num)
 	float col[4] = { 1.0f,1.0f,1.0f,1.0f };
 	
 	//-----------------------吹き出し描画------------------------
-	//切り取り座標
-	m_gimdst.top = 0;						m_gimdst.left = 0;
-	m_gimdst.bottom = m_dst.top + 233;		m_gimdst.right = m_dst.left + 394;
+	
+	
 
 	//転送先座標
 	for (int i = 0; i < m_iballoonnum; i++)
 	{
+		ball[i].m_gimdst.top = 0;
+		ball[i].m_gimdst.left = 0;
+		ball[i].m_gimdst.bottom = 330;
+		ball[i].m_gimdst.right = 400;
+
 		ball[i].m_gimsrc.top = m_iYpos + ball[i].m_iGimYpos;
 		ball[i].m_gimsrc.left = m_iXpos + ball[i].m_iGimXpos + User()->mscroll_x;
 		ball[i].m_gimsrc.bottom = ball[i].m_gimsrc.top + GIMMICK_SIZE_Y;
@@ -57,11 +60,11 @@ void Gimmick::gimmicDraw(Balloon *ball1, int num)
 			{
 				if (ball[i].m_iballoontype == talk){
 					//会話吹き出しを描画
-					Image()->Draw(3, &ball[i].m_gimsrc, &m_gimdst, col, 0.0f);
+					Image()->Draw(3, &ball[i].m_gimsrc, &ball[i].m_gimdst, col, 0.0f);
 				}
 				if (ball[i].m_iballoontype == sound){
 					//音吹き出しを描画
-					Image()->Draw(4, &ball[i].m_gimsrc, &m_gimdst, col, 0.0f);
+					Image()->Draw(4, &ball[i].m_gimsrc, &ball[i].m_gimdst, col, 0.0f);
 
 					//シオンの能力発動時に吹き出しの色を変える
 					/*if (User()->m_bsionability)
@@ -90,7 +93,7 @@ void Gimmick::gimmicDraw(Balloon *ball1, int num)
 					else if (!Input()->GetMouButtonL() && onceflg)
 					{
 						if (ball[i].m_iballoontype == sound && ball[i].m_soundnum != EXCEPTION)
-							SoundManager()->SoundSave(m_iSoundNum);
+							SoundManager()->SoundSave(ball[i].m_soundnum);
 						onceflg = false;
 						ball[i].OnPush = true;
 
@@ -102,9 +105,8 @@ void Gimmick::gimmicDraw(Balloon *ball1, int num)
 }
 void Gimmick::setballooncolor(int num)
 {
-	//if(ball[num].m_iballooncolor == RED);
 }
-Balloon *InitBall(int gimX, int gimY, int balltype, int soundnum, int color)
+Balloon *InitBall(int gimX, int gimY, int balltype, int soundnum, int color,int Dir )
 {
 	Balloon *Initball = new Balloon();
 
@@ -113,6 +115,7 @@ Balloon *InitBall(int gimX, int gimY, int balltype, int soundnum, int color)
 	Initball->m_iballoontype = balltype;
 	Initball->m_soundnum = soundnum;
 	Initball->m_iballooncolor = color;
+	Initball->m_iballoonDir = Dir;
 
 	return Initball;
 }

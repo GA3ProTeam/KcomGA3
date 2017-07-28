@@ -65,20 +65,76 @@ private:
 //-----------シオンステージ↓-----------------------------------------
 //ステージ1↓
 
+//おばちゃん
+class GimmickAunt : public Gimmick
+{
+private:
+	
+public:
+	void Init(int xpos, int ypos, int widht, int height, int balloonnum);//イニシャライズ
+	void Destructor();//デストラクタ
+	void Action();//アクション
+	void Draw();//描画
+};
+/*//鳥(小鳥)
+class GimmickBird : public Gimmick
+{
+private:
+public:
+void Init();//イニシャライズ
+void Destructor();//デストラクタ
+void Action();//アクション
+void Draw();//描画
+};
+//犬(番犬)
+class GimmickDog : public Gimmick
+{
+private:
+public:
+void Init();//イニシャライズ
+void Destructor();//デストラクタ
+void Action();//アクション
+void Draw();//描画
+};
+//インターホン
+class GimmickInterphone : public Gimmick
+{
+private:
+public:
+void Init();//イニシャライズ
+void Destructor();//デストラクタ
+void Action();//アクション
+void Draw();//描画
+};
+*/
+
 //ステージ1↑
 
 //ステージ2↓
 //イヤホン男
 class Gimmickearphone : public Gimmick
 {
-private:
+public:
+	Gimmickearphone() {};
+	~Gimmickearphone() {};
 	
 public:
-	void Init();//イニシャライズ
 	void Destructor();//デストラクタ
 	void Action();//アクション
 	void Draw();//描画
-//	int 
+};
+
+//コウネ
+class Gimmickkoune : public Gimmick
+{
+public:
+	Gimmickkoune() {};
+	~Gimmickkoune() {};
+
+public:
+	void Destructor();//デストラクタ
+	void Action();//アクション
+	void Draw();//描画
 };
 
 //猫
@@ -94,11 +150,22 @@ public:
 private:
 };
 
-//ステージ2↓
+//猫
+class Gimmickbicycle : public Gimmick
+{
+public:
+	Gimmickbicycle() {};
+	~Gimmickbicycle() {};
 
+	void Destructor();	//デストラクタ
+	void Action();		//アクション
+	void Draw();		//ドロー
+private:
+};
 //ステージ2↑
 
 //ステージ3↓
+
 //子供
 class GimmickChildren : public Gimmick
 {
@@ -115,7 +182,7 @@ public:
 	void Destructor();//デストラクタ
 	void Action();//アクション
 	void Draw();//描画
-	void SetSound(int sound) { m_iSoundNum = sound; };
+	//void SetSound(int sound) { m_iSoundNum = sound; };
 
 };
 

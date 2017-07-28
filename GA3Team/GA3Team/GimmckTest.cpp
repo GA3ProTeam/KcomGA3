@@ -142,8 +142,58 @@ void GimmickRecorder::Draw() {
 //-----------シオンステージ↓-----------------------------------------
 //ステージ1↓
 
-//ステージ1↑
+//おばちゃん
+//イニシャライズ
+void GimmickAunt::Init(int xpos, int ypos, int widht, int height, int balloonnum) {
+	//親クラスのInit関数を呼ぶ
+	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
 
+
+}
+//デストラクタ
+void GimmickAunt::Destructor() {
+
+}
+//アクション
+void GimmickAunt::Action() {
+
+}
+//描画
+void GimmickAunt::Draw() {
+	float col[4] = { 1.0,1.0,1.0,1.0 };
+
+	//ギミック本体描画---------------------------------------------------------
+	//切り取り先座標
+	m_dst.top = 0; 
+	m_dst.bottom = 200;
+	m_dst.left = 0;
+	m_dst.right = 200;
+
+	//転送先座標
+	m_src.top = m_iYpos;
+	m_src.bottom = m_src.top + m_iHeight;
+	m_src.left = m_iXpos;
+	m_src.right = m_src.left + m_iWidth;
+
+	//User()->mscroll_x
+
+	//描画
+	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
+	//--------------------------------------------------------------------------
+
+	//吹き出し描画＆動作--------------------------------------------------------
+	Balloon *aaa = InitBall(48, -48, talk, 1, RED);
+	gimmicDraw(aaa, 0);
+	delete aaa;
+	//--------------------------------------------------------------------------
+
+	//【会話終了時】
+	SavedataManeger()->CurrentData->m_bSionflg[0] = true;
+	
+}
+
+//ステージ1↑
+/*
 //ステージ2↓
 //イヤホン男
 void Gimmickearphone::Destructor()
@@ -155,6 +205,7 @@ void Gimmickearphone::Action()
 {
 	if (ball[0].OnPush)
 	{
+		//会話
 
 	}
 }
@@ -176,6 +227,8 @@ void Gimmickearphone::Draw()
 	gimmicDraw(aaa, 0);
 	delete aaa;
 }
+
+
 //コウネ
 void Gimmickkoune::Destructor()
 {
@@ -186,7 +239,17 @@ void Gimmickkoune::Action()
 {
 	if (ball[1].OnPush)
 	{
+		if (SavedataManeger()->CurrentData->m_bSionflg[0] ==false)
+		{
+			//イヤホン男フラグなし会話
 
+		}
+
+		else if (SavedataManeger()->CurrentData->m_bSionflg[0] == true)
+		{
+			//イヤホン男フラグなし会話
+
+		}
 	}
 }
 
@@ -217,7 +280,7 @@ void Gimmickcat::Action()
 {
 	if (ball[1].OnPush)
 	{
-
+		//音を取得
 	}
 }
 
@@ -246,7 +309,10 @@ void Gimmickbicycle::Destructor()
 
 void Gimmickbicycle::Action()
 {
-
+	if (ball[1].OnPush)
+	{
+		//音を取得
+	}
 }
 
 void Gimmickbicycle::Draw()
@@ -267,6 +333,7 @@ void Gimmickbicycle::Draw()
 	delete aaa;
 }
 //ステージ2↑
+*/
 
 //ステージ3↓
 //子供1、2、3
@@ -371,7 +438,7 @@ void GimmickChildren::Draw()//描画
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
 
 	//1個の場合
-	Balloon *aaa = InitBall(48, -48, talk, 1, CNONE);
+	Balloon *aaa = InitBall(48, -48, talk, 1, CNONE, LOWER_RIGHT);
 
 	gimmicDraw(aaa, 0);
 	delete aaa;
@@ -408,7 +475,7 @@ void GimmickGranny::Draw()//描画
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
 
 	//1個の場合
-	Balloon *aaa = InitBall(48, -48, talk, 1, CNONE);
+	Balloon *aaa = InitBall(48, -48, talk, 1, CNONE, LOWER_RIGHT);
 
 	gimmicDraw(aaa, 0);
 	delete aaa;
@@ -439,7 +506,7 @@ void GimmickMynah::Draw()		//ドロー
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
 
 	//1個の場合
-	Balloon *aaa = InitBall(48, -48, talk, 1, RED);
+	Balloon *aaa = InitBall(48, -48, sound, 1, PINK, LOWER_RIGHT);
 
 	gimmicDraw(aaa, 0);
 	delete aaa;
@@ -469,11 +536,18 @@ void GimmickShelf::Draw()		//ドロー
 	//描画
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
 
-	//1個の場合
-	Balloon *aaa = InitBall(48, -48, talk, 1, RED);
+	//複数の場合
+	Balloon *aaa = InitBall(-48, 70, sound, 1, BLUE, LOWER_RIGHT);
+	Balloon *bbb = InitBall(0, -48, sound, 1, RED, UNDER);
+	Balloon *ccc = InitBall(48, 70, sound, 1, YELLOW, LOWER_LEFT);
 
 	gimmicDraw(aaa, 0);
+	gimmicDraw(bbb, 1);
+	gimmicDraw(ccc, 2);
+
 	delete aaa;
+	delete bbb;
+	delete ccc;
 
 }
 
@@ -501,7 +575,7 @@ void GimmickWindchime::Draw()		//ドロー
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
 
 	//1個の場合
-	Balloon *aaa = InitBall(48, -48, talk, 1, PURPLE);
+	Balloon *aaa = InitBall(48, -48, talk, 1, PURPLE, LOWER_RIGHT);
 
 	gimmicDraw(aaa, 0);
 	delete aaa;
@@ -610,6 +684,7 @@ void GimmickOldman::Draw()
 
 //ステージ1↓
 
+/*
 //GimmickTelevision
 void GimmickTelevision::Action()
 {
@@ -792,7 +867,7 @@ void GimmickDoor::Draw()
 	gimmicDraw(ball1, 0);
 	delete ball1;
 }
-
+*/
 //ステージ1↑
 
 //ステージ2↓

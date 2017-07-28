@@ -3,6 +3,10 @@
 #define __C_OBJ_GIMIMICKMANAGER_H__
 
 //使用オブジェクトのプロトタイプ宣言
+class Gimickearphone;
+class Gimickearkoune;
+class Gimickcat;
+class Gimmickbicycle;
 class GimmickTelevision;
 class GimmickOven;
 class GimmickKatsuo;
@@ -42,6 +46,12 @@ private:
 	//チュートリアル（博士）ステージ↑
 
 	//シオンステージ↓
+	//ステージ2↓
+	Gimmickearphone* m_gimmick_earphone;
+	Gimmickkoune* m_gimmick_koune;
+	Gimmickcat* m_gimmick_cat;
+	Gimmickbicycle* m_gimmick_bicycle;
+	//ステージ2↑
 	//ステージ3↓
 	GimmickChildren* m_gimmick_children;
 	GimmickGranny* m_gimmick_granny;

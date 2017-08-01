@@ -112,43 +112,16 @@ void COverlay::Draw()
 
 			m_iDelay++;
 
-			m_strTemp.resize(textmgr->m_Tutorial_Text[m_iDrawingStageID].size());
-
-			if (m_iChar_Line < textmgr->m_Tutorial_Text[m_iDrawingStageID].size()) {
-				if (m_iChar_Pos < textmgr->m_Tutorial_Text[m_iDrawingStageID][m_iChar_Line].length()) {
-					if (m_iDelay > m_iTextSpeed) {
-						unsigned char lead = textmgr->m_Tutorial_Text[m_iDrawingStageID][m_iChar_Line][m_iChar_Pos];
-						if (lead < 128) {
-							m_iChar_Size = 1;
-						}
-						else if (lead < 224) {
-							m_iChar_Size = 2;
-						}
-						else if (lead < 240) {
-							m_iChar_Size = 3;
-						}
-						else {
-							m_iChar_Size = 4;
-						}
-
-						sprintf_s(c, "%s", textmgr->m_Tutorial_Text[m_iDrawingStageID][m_iChar_Line].substr(m_iChar_Pos, m_iChar_Size).c_str());
-						m_strTemp[m_iChar_Line] += c;
-
-						m_iChar_Pos += m_iChar_Size;
-					}
-				}
-				else {
-					m_iChar_Pos = 0;
-					m_iChar_Line++;
-				}
+		if (i < 10) {
+			if (m_iDelay > m_iTextSpeed) {
+				sprintf_s(c, "%d", i);
+				m_strTemp += c;
+				i++;
 			}
-			else {
-				FadeOut();
-				StopDraw();
-			}
+		}
 
-			if (m_iDelay > m_iTextSpeed)
-				m_iDelay = 0;
+		if (m_iDelay > m_iTextSpeed)
+			m_iDelay = 0;
 
 
 			char linec[32];

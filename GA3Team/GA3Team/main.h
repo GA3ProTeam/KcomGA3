@@ -132,21 +132,9 @@ enum OBJ_NAME
 	GIMMICK_MANHOLECOVER,
 	GIMMICK_MANHOLEHOLE,
 	GIMMICK_OLDMAN,
-	GIMMICK_CHILDREN,
-	GIMMICK_GRANNY,
-	GIMMICK_MYNAH,
-	GIMMICK_SHELF,
-	GIMMICK_WINDCHIME,
 	GIMMICK_DOCTOR,
-	GIMMICK_COMPUTER,
 	GIMMICK_RECORDER,
-	GIMMICK_EARPHONE,
-	GIMMICK_KOUNE,
-	GIMMICK_CAT,
-	GIMMICK_BICYCLE,
-	GIMMICK_FIRETRUCK,
-
-	GIMMICK_AUNT,
+	GIMMICK_COMPUTER,
 };
 //----------------------
 enum STAGE_TYPE {
@@ -188,7 +176,7 @@ enum STAGE_TYPE {
 //当たり判定の複数同時判定量
 #define MAX_HITS	15
 
-#define STAGE_MAX 6
+
 //一つのギミックがもてる吹き出しの最大数
 #define BALLOON_MAX_NUM 5
 //例外用
@@ -293,7 +281,6 @@ inline RECT InitRect(LONG left, LONG top, LONG right, LONG bottom)
 #include "CObjPlayer.h"
 #include "ButtonLScrollScreen.h"
 #include "ButtonRScrollScreen.h"
-#include "GimmckTest.h"
 #include "CObjGimmickManager.h"
 //#include "GimmickKatsuo.h"
 //#include "GimmickDoor.h"
@@ -303,7 +290,7 @@ inline RECT InitRect(LONG left, LONG top, LONG right, LONG bottom)
 
 //----------------------------------------------
 
-
+#include "GimmckTest.h"
 
 
 //ユーザー・セーブ・シーン間受け渡しデータ

@@ -16,6 +16,7 @@ private:
 };
 
 //-----------チュートリアル（博士）ステージ↓-------------------------
+
 //博士
 class GimmickDoctor :public Gimmick {
 public:
@@ -306,7 +307,7 @@ public:
 	void Destructor();	//デストラクタ
 	void Action();		//アクション
 	void Draw();		//ドロー
-
+	
 private:
 
 };
@@ -317,7 +318,7 @@ public:
 	GimmickManholeHole() {};
 	~GimmickManholeHole() {};
 
-
+	void Init();
 	void Destructor();	//デストラクタ
 	void Action();		//アクション
 	void Draw();		//ドロー

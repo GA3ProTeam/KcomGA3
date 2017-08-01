@@ -6,12 +6,10 @@
 void ButtonDataSelect::Init(int x, int y, int w, int h, bool bSelected, int col_num,int Dst_w, int Dst_h) {
 	
 	//ボタンサイズを指定
-	//m_iXpos = x;
-	//m_iYpos = y;
-	//m_iWidth = w;
-	//m_iHeight = h;
-
-	Button::Init(x, y, w, h, false);
+	m_iXpos = x;
+	m_iYpos = y;
+	m_iWidth = w;
+	m_iHeight = h;
 
 	m_storage_x = m_iXpos;
 	m_storage_y = m_iYpos;

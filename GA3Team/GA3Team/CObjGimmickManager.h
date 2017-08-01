@@ -11,6 +11,9 @@ class GimmickDog;
 class GimmickManholeCover;
 class GimmickManholeHole;
 class GimmickOldman;
+class GimmickDoctor;
+class GimmickRecorder;
+class GimmickComputer;
 
 class CObjGimmickManager : public CObj
 {
@@ -56,7 +59,11 @@ private:
 	//コウネステージ↑
 
 
-
+	//チュートリアル↓
+	GimmickDoctor* m_gimmick_doctor;
+	GimmickRecorder* m_gimmick_recorder;
+	GimmickComputer* m_gimmick_computer;
+	//チュートリアル↑
 
 
 

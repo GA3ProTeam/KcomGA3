@@ -17,6 +17,8 @@ private:
 	float m_fAlpha;
 
 	//文字表示用
+	unsigned int m_iChar_Size;
+	unsigned int m_iChar_Pos;
 	string m_strTemp;
 	int m_iDelay;
 	int m_iTextSpeed;
@@ -29,7 +31,7 @@ public:
 	//
 	COverlay(CDrawTexture *i, CDrawFont *f, CWinInputs *w, CSoundManeger *s, CTextManager *t)
 		: image(i), font(f), input(w), soundmgr(s), textmgr(t),
-		m_bDrawing(false), m_iDrawFlg(-1), m_iFadeFlg(0), m_x(0), m_y(0), m_fAlpha(0.0f), m_iDelay(0), m_iTextSpeed(30)
+		m_bDrawing(false), m_iDrawFlg(-1), m_iFadeFlg(0), m_x(0), m_y(0), m_fAlpha(0.0f),m_iChar_Size(0), m_iChar_Pos(0), m_iDelay(0), m_iTextSpeed(7)
 	{}
 	
 	//----------------動作系----------------
@@ -42,6 +44,8 @@ public:
 	void Draw();
 	//トークの描画有効
 	void talkDraw();
+	//描画無効
+	void StopDraw();
 
 	//----------------命令系----------------
 

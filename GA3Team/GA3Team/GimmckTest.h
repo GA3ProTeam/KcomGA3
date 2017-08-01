@@ -15,7 +15,7 @@ private:
 	void Draw();
 };
 
-//-----------チュートリアル（博士）ステージ↑-------------------------
+//-----------チュートリアル（博士）ステージ↓-------------------------
 //博士
 class GimmickDoctor :public Gimmick {
 public:
@@ -60,10 +60,53 @@ public:
 private:
 
 };
-//--------------------------------------------------------------------
+//-----------チュートリアル（博士）ステージ↑-------------------------
 
 //-----------シオンステージ↓-----------------------------------------
 //ステージ1↓
+
+//おばちゃん
+class GimmickAunt : public Gimmick
+{
+private:
+	
+public:
+	void Init(int xpos, int ypos, int widht, int height, int balloonnum);//イニシャライズ
+	void Destructor();//デストラクタ
+	void Action();//アクション
+	void Draw();//描画
+};
+/*//鳥(小鳥)
+class GimmickBird : public Gimmick
+{
+private:
+public:
+void Init();//イニシャライズ
+void Destructor();//デストラクタ
+void Action();//アクション
+void Draw();//描画
+};
+//犬(番犬)
+class GimmickDog : public Gimmick
+{
+private:
+public:
+void Init();//イニシャライズ
+void Destructor();//デストラクタ
+void Action();//アクション
+void Draw();//描画
+};
+//インターホン
+class GimmickInterphone : public Gimmick
+{
+private:
+public:
+void Init();//イニシャライズ
+void Destructor();//デストラクタ
+void Action();//アクション
+void Draw();//描画
+};
+*/
 
 //ステージ1↑
 
@@ -74,11 +117,11 @@ class Gimmickearphone : public Gimmick
 public:
 	Gimmickearphone() {};
 	~Gimmickearphone() {};
-	
-public:
 	void Destructor();//デストラクタ
 	void Action();//アクション
 	void Draw();//描画
+	
+	
 };
 
 //コウネ
@@ -87,11 +130,11 @@ class Gimmickkoune : public Gimmick
 public:
 	Gimmickkoune() {};
 	~Gimmickkoune() {};
-
-public:
 	void Destructor();//デストラクタ
 	void Action();//アクション
 	void Draw();//描画
+
+	
 };
 
 //猫
@@ -107,12 +150,25 @@ public:
 private:
 };
 
-//猫
+//自転車
 class Gimmickbicycle : public Gimmick
 {
 public:
 	Gimmickbicycle() {};
 	~Gimmickbicycle() {};
+
+	void Destructor();	//デストラクタ
+	void Action();		//アクション
+	void Draw();		//ドロー
+private:
+};
+
+//消防車
+class Gimmickfiretruck : public Gimmick
+{
+public:
+	Gimmickfiretruck() {};
+	~Gimmickfiretruck() {};
 
 	void Destructor();	//デストラクタ
 	void Action();		//アクション
@@ -139,7 +195,8 @@ public:
 	void Destructor();//デストラクタ
 	void Action();//アクション
 	void Draw();//描画
-
+	//void SetSound(int sound) { m_iSoundNum = sound; };
+	
 };
 
 //おばあちゃん

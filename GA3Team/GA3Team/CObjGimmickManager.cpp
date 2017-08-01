@@ -4,7 +4,7 @@
 void CObjGimmickManager::Init(int select_chara, int stage_id) {
 	
 
-
+	
 	m_Stage_ID = ((select_chara + 1) * 10) + stage_id;
 
 	/*
@@ -22,19 +22,37 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 	switch (m_Stage_ID) {
 
 	//-シオンステージ-----------------------------------------
-	case 10:
+	case 10://ステージ1
 	{
-		//シオンのステージ1のギミック生成
+		//【スタート時の会話】
 
-		GimmickTest* m_gimmick = new GimmickTest();
-		Obj()->InsertObj(m_gimmick, GIMMICK_TELEVISION, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick->Init(100, 300, 100, 70, 1);
+		//おばちゃん生成
+		GimmickAunt* m_gimmick_aunt = new GimmickAunt();
+		Obj()->InsertObj(m_gimmick_aunt, GIMMICK_AUNT, 0, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_aunt->Init(100, 300, 60, 100, 1);
 	}
 		break;
 	case 11:
+		//シオンのステージ2のギミック生成
+		m_gimmick_earphone = new Gimmickearphone();
+		Obj()->InsertObj(m_gimmick_earphone, GIMMICK_EARPHONE, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_earphone->Init(350, 220, 70, 100, 1);
 
+		m_gimmick_koune = new Gimmickkoune();
+		Obj()->InsertObj(m_gimmick_koune, GIMMICK_KOUNE, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_koune->Init(350, 220, 70, 100, 1);
 
+		m_gimmick_cat = new Gimmickcat();
+		Obj()->InsertObj(m_gimmick_cat, GIMMICK_CAT, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_cat->Init(350, 220, 70, 100, 1);
 
+		m_gimmick_bicycle = new Gimmickbicycle();
+		Obj()->InsertObj(m_gimmick_bicycle, GIMMICK_BICYCLE, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_bicycle->Init(350, 220, 70, 100, 1);
+
+		m_gimmick_firetruck = new Gimmickfiretruck();
+		Obj()->InsertObj(m_gimmick_firetruck, GIMMICK_FIRETRUCK, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_firetruck->Init(350, 220, 70, 100, 1);
 		break;
 	case 12:
 		////シオンのステージ3のギミック生成
@@ -184,7 +202,17 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 		
 	//チュートリアル（博士）ステージ--------------------------
 	case 40:
+		//【スタート時会話】
 
+		//博士
+		m_gimmick_doctor = new GimmickDoctor();
+		Obj()->InsertObj(m_gimmick_doctor, GIMMICK_DOCTOR, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_doctor->Init(200, 200, 120, 220, 1);
+
+		//パソコン
+		m_gimmick_computer = new GimmickComputer();
+		Obj()->InsertObj(m_gimmick_computer, GIMMICK_COMPUTER, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_computer->Init(200, 200, 120, 220, 1);
 		break;
 	//--------------------------------------------------------
 

@@ -61,10 +61,11 @@ void CObjDataSelect::Action()
 
 			i++;
 		}
+
 		
 
 		//セーブデータ作成(仮) 
-		SavedataManeger()->Writesavedata();
+		//SavedataManeger()->Writesavedata();
 
 		iLoad_flg = 1;
 
@@ -246,7 +247,7 @@ void CObjDataSelect::ButtonFromTheBegin() {
 				 //"はい"...データ削除
 				if (MessageBox(User()->p_hWnd, "選択中のセーブデータを\n初期化していいですか？", "プレイヤーネーム削除", MB_OKCANCEL) == IDOK) {
 
-					SavedataManeger()->Deletesavedata(); //仮
+					SavedataManeger()->Deletesavedata(m_iSelectData); //仮
 					m_bsavedataflg = false;
 
 					//デバッグ用
@@ -263,7 +264,7 @@ void CObjDataSelect::ButtonFromTheBegin() {
 			}
 		}
 	}
-
+	
 	
 	if (m_bsavedataflg == false && m_iSelectData >= 0) {/*データが入っていなければ*/
 														//名前を入力する

@@ -69,7 +69,9 @@ private:
 	int  m_iplayerprogress[MAX_SAVEDATA][CHAR_PROGRESS];	   //キャラクター進行度
 
 	int load_progress; //各キャラクターの進行度を読み込む
-
+	int m_Load_KouneClearflg[3][10];
+	int m_Load_SionClearflg[3][10];
+	int m_Load_MelueruClearflg[3][10];
 
 	CharacterData charaData[MAX_SAVEDATA];
 

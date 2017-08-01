@@ -181,9 +181,10 @@ bool CSavedataManeger::Savedatacheck(int savedate_srot)
 	
 	//if (strlen(Savedata[savenum].m_cPlayerName) > 0) //=0
 		//return true;
+	//セーブデータが無ければ
 	if (Savedata[savedate_srot].m_cPlayerName[0] == '\0')
-		return true;
-	return false;
+		return false;
+	return true;
 }
 
 void CSavedataManeger::Deletesavedata(int savedate_srot)

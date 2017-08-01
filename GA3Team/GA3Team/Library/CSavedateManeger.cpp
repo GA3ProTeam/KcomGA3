@@ -38,6 +38,10 @@ void CSavedataManeger::Loadsavedata()
 			}
 			continue;
 		}
+		if ((*itr)[0] == '-')
+		{
+			continue;
+		}
 		//Šeƒtƒ‰ƒO‚ğæ“¾‚·‚é
 		for (unsigned int i = 0; i < (*itr).length(); i++) {//•¶š
 			switch (dataflg) { //__SWITCH__
@@ -149,17 +153,32 @@ void CSavedataManeger::Writesavedata()
 	}
 }
 
-bool CSavedataManeger::Savedatacheck(int savenum)
+bool CSavedataManeger::Savedatacheck(int savedate_srot)
 {
 	
-	if (strlen(Savedata[savenum].m_cPlayerName) > 0) //=0
-		return true;
-	return false;
+	//if (strlen(Savedata[savenum].m_cPlayerName) > 0) //=0
+	//return true;
+	if (Savedata[savedate_srot].m_cPlayerName[0] == '\0')
+		return false;
+	return true;
 }
 
-void CSavedataManeger::Deletesavedata()
+void CSavedataManeger::Deletesavedata(int savedate_srot)
 {
-	
+	Savedata[savedate_srot].m_cPlayerName[0] = '\0';
+
+	Savedata[savedate_srot].m_bKouneflg.clear();
+	Savedata[savedate_srot].m_bKouneClearflg.clear();
+
+	Savedata[savedate_srot].m_bMelueruflg.clear();
+	Savedata[savedate_srot].m_bMelueruClearflg.clear();
+
+	Savedata[savedate_srot].m_bSionflg.clear();
+	Savedata[savedate_srot].m_bSionClearflg.clear();
+
+	Savedata[savedate_srot].m_btutoriaruflg.clear();
+	Savedata[savedate_srot].m_btutorial = false;
+
 }
 
 void CSavedataManeger::Setcurrentdata()

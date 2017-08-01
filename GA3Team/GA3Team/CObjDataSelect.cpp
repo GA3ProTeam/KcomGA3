@@ -20,6 +20,8 @@ void CObjDataSelect::Init()
 
 	m_bmessageflg = false;
 
+	load_progress = 0;
+
 	for (int j = 0; j < 4; j++) {
 		//カラー情報初期化
 		col[j] = 1.0f;
@@ -126,17 +128,21 @@ void CObjDataSelect::Draw()
 
 		if (SavedataManeger()->Savedatacheck(i)) {
 
-		//進行度の画像が一枚でまとめられている場合
-		//切り取り先座標
-		m_rDst.top = 0; m_rDst.left = /*セーブデータから取得してきた進行度　* */0; m_rDst.bottom = m_rDst.top + 64; m_rDst.right = m_rDst.left + 64;
-		//転送先座標
-		m_rSrc_Koune.top   = (i * 150) + 100;   m_rSrc_Koune.left   = 400;   m_rSrc_Koune.bottom   = m_rSrc_Koune.top + 64;    m_rSrc_Koune.right = m_rSrc_Koune.left + 64; //コウネ
-		m_rSrc_Sion.top    = (i * 150) + 100;   m_rSrc_Sion.left    = 500;   m_rSrc_Sion.bottom    = m_rSrc_Sion.top + 64;     m_rSrc_Sion.right = m_rSrc_Sion.left + 64; //シオン
-		m_rSrc_Melueru.top = (i * 150) + 100;   m_rSrc_Melueru.left = 600;   m_rSrc_Melueru.bottom = m_rSrc_Melueru.top + 64;  m_rSrc_Melueru.right = m_rSrc_Melueru.left + 64; //メルエル
+			//各キャラクターの進行度を読み込む
+			load_progress = 0/*......*/;
+			
 
-		Image()->Draw(2, &m_rSrc_Koune,   &m_rDst, coldraw, 0.0f);  //コウネ
-		Image()->Draw(2, &m_rSrc_Sion,    &m_rDst, coldraw, 0.0f);	//シオン
-		Image()->Draw(2, &m_rSrc_Melueru, &m_rDst, coldraw, 0.0f);	//メルエル
+			//進行度の画像が一枚でまとめられている場合
+			//切り取り先座標
+			m_rDst.top = 0; m_rDst.left = /*セーブデータから取得してきた進行度　* */0; m_rDst.bottom = m_rDst.top + 64; m_rDst.right = m_rDst.left + 64;
+			//転送先座標
+			m_rSrc_Koune.top   = (i * 150) + 100;   m_rSrc_Koune.left   = 400;   m_rSrc_Koune.bottom   = m_rSrc_Koune.top + 64;    m_rSrc_Koune.right = m_rSrc_Koune.left + 64; //コウネ
+			m_rSrc_Sion.top    = (i * 150) + 100;   m_rSrc_Sion.left    = 500;   m_rSrc_Sion.bottom    = m_rSrc_Sion.top + 64;     m_rSrc_Sion.right = m_rSrc_Sion.left + 64; //シオン
+			m_rSrc_Melueru.top = (i * 150) + 100;   m_rSrc_Melueru.left = 600;   m_rSrc_Melueru.bottom = m_rSrc_Melueru.top + 64;  m_rSrc_Melueru.right = m_rSrc_Melueru.left + 64; //メルエル
+
+			Image()->Draw(2, &m_rSrc_Koune,   &m_rDst, coldraw, 0.0f);  //コウネ
+			Image()->Draw(2, &m_rSrc_Sion,    &m_rDst, coldraw, 0.0f);	//シオン
+			Image()->Draw(2, &m_rSrc_Melueru, &m_rDst, coldraw, 0.0f);	//メルエル
 
 
 		}

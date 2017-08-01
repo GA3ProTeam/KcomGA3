@@ -753,11 +753,32 @@ void GimmickDog::Destructor()
 void GimmickDog::Action() 
 {
 
+	if (ball[0].OnPush) {
+
+
+
+
+
+
+	}
 }
 //犬のドロー
 void GimmickDog::Draw() 
 {
+	float col[4] = { 1.0,1.0,1.0,1.0 };
+	//切り取り先座標
+	m_dst.top = 0; m_dst.left = 0;
+	m_dst.bottom = 200; m_dst.right = 200;
 
+	//転送先座標
+	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
+	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
+	//描画
+	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
+	Balloon *aaa = InitBall(48, -48, sound, 1, RED);
+
+	gimmicDraw(aaa, 0);
+	delete aaa;
 }	
 //マンホールの蓋のデストラクタ
 void GimmickManholeCover::Destructor() 
@@ -767,13 +788,35 @@ void GimmickManholeCover::Destructor()
 //マンホールの蓋のアクション
 void GimmickManholeCover::Action() 
 {
-
+	if (ball[0].OnPush) {
+		if (SavedataManeger()->CurrentData->m_bKouneflg[3] == true) {
+			m_Status = STATUS_DELETE;
+		}
+	}
 }		
 //マンホールの蓋のドロー
 void GimmickManholeCover::Draw() 
 {
+	float col[4] = { 1.0,1.0,1.0,1.0 };
+	//切り取り先座標
+	m_dst.top = 0; m_dst.left = 0;
+	m_dst.bottom = 200; m_dst.right = 200;
 
+	//転送先座標
+	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
+	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
+	//描画
+	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
+	Balloon *aaa = InitBall(48, -48, sound, 1, RED);
+
+	gimmicDraw(aaa, 0);
+	delete aaa;
 }//マンホールの穴のデストラクタ
+void GimmickManholeHole::Init() 
+{
+	m_Status = STATUS_SLEEP;
+
+}
 void GimmickManholeHole::Destructor() 
 {
 
@@ -781,10 +824,27 @@ void GimmickManholeHole::Destructor()
 void GimmickManholeHole::Action()
 {
 
+	if (ball[0].OnPush) {
+		SavedataManeger()->CurrentData->m_bKouneClearflg[0] = true;
+
+	}
 }//マンホールの穴のドロー
 void GimmickManholeHole::Draw()
 {
+	float col[4] = { 1.0,1.0,1.0,1.0 };
+	//切り取り先座標
+	m_dst.top = 0; m_dst.left = 0;
+	m_dst.bottom = 200; m_dst.right = 200;
 
+	//転送先座標
+	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
+	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
+	//描画
+	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
+	Balloon *aaa = InitBall(48, -48, sound, 1, RED);
+
+	gimmicDraw(aaa, 0);
+	delete aaa;
 }//老人のデストラクタ
 void GimmickOldman::Destructor()
 {
@@ -792,11 +852,50 @@ void GimmickOldman::Destructor()
 }//老人のアクション
 void GimmickOldman::Action()
 {
+	
+	if (ball[0].OnPush) {
+		if (SavedataManeger()->CurrentData->m_bKouneflg[0] == false) {
+			SavedataManeger()->CurrentData->m_bKouneflg[0] = true;
+		}
 
+		else if (SavedataManeger()->CurrentData->m_bKouneflg[2] == true) {
+			SavedataManeger()->CurrentData->m_bKouneflg[3] == true;
+			m_Status = STATUS_DELETE;
+		}
+		else if (SavedataManeger()->CurrentData->m_bKouneflg[1] == true) {
+
+
+		}
+		else if (SavedataManeger()->CurrentData->m_bKouneflg[2] == false&& SavedataManeger()->CurrentData->m_bKouneflg[1] == true) {
+			
+
+		}
+
+		else if (SavedataManeger()->CurrentData->m_bKouneflg[1] == false) {
+
+
+		}
+
+		else 
+
+	}
 }//老人のドロー
 void GimmickOldman::Draw()
 {
+	float col[4] = { 1.0,1.0,1.0,1.0 };
+	//切り取り先座標
+	m_dst.top = 0; m_dst.left = 0;
+	m_dst.bottom = 200; m_dst.right = 200;
 
+	//転送先座標
+	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
+	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
+	//描画
+	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
+	Balloon *aaa = InitBall(48, -48, sound, 1, RED);
+
+	gimmicDraw(aaa, 0);
+	delete aaa;
 }	
 //ステージ1↑
 
@@ -824,7 +923,7 @@ void GimmickOldman::Draw()
 
 //ステージ1↓
 
-/*
+
 //GimmickTelevision
 void GimmickTelevision::Action()
 {
@@ -854,7 +953,7 @@ void GimmickTelevision::Draw()
 	//描画
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
 
-	Balloon *ball1 = InitBall(48, -48, sound, 1,CNONE);
+	Balloon *ball1 = InitBall(48, -48, sound, 1,CNONE, LOWER_LEFT);
 	gimmicDraw(ball1, 0);
 	delete ball1;
 }
@@ -883,15 +982,15 @@ void GimmickOven::Draw()
 	float col[4] = { 1.0,1.0,1.0,1.0 };
 	//切り取り先座標
 	m_dst.top = 0; m_dst.left = 0;
-	m_dst.bottom = 200; m_dst.right = 200;
+	m_dst.bottom = 800; m_dst.right = 800;
 
 	//転送先座標
 	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
 	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
 	//描画
-	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
+	Image()->Draw(6, &m_src, &m_dst, col, 0.0f);
 
-	Balloon *ball1 = InitBall(48, -48, sound, 1, CNONE);
+	Balloon *ball1 = InitBall(48, -48, sound, 1, CNONE, LOWER_LEFT);
 	gimmicDraw(ball1, 0);
 	delete ball1;
 }
@@ -961,7 +1060,7 @@ void GimmickKatsuo::Draw()
 	//描画
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
 
-	Balloon *ball1 = InitBall(48, -48, sound, 1, CNONE);
+	Balloon *ball1 = InitBall(48, -48, talk, 1, CNONE, LOWER_LEFT);
 	gimmicDraw(ball1, 0);
 	delete ball1;
 }
@@ -1003,11 +1102,11 @@ void GimmickDoor::Draw()
 	//描画
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
 
-	Balloon *ball1 = InitBall(48, -48, sound, 1, CNONE);
+	Balloon *ball1 = InitBall(48, -48, notype, 1, CNONE, LOWER_LEFT);
 	gimmicDraw(ball1, 0);
 	delete ball1;
 }
-*/
+
 //ステージ1↑
 
 //ステージ2↓

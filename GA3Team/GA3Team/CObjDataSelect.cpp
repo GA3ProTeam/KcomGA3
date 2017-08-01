@@ -144,9 +144,9 @@ void CObjDataSelect::Draw()
 		m_rSrc_Sion.top    = (i * 150) + 120;   m_rSrc_Sion.left    = 500;   m_rSrc_Sion.bottom    = m_rSrc_Sion.top + 64;     m_rSrc_Sion.right = m_rSrc_Sion.left + 64; //シオン
 		m_rSrc_Melueru.top = (i * 150) + 120;   m_rSrc_Melueru.left = 600;   m_rSrc_Melueru.bottom = m_rSrc_Melueru.top + 64;  m_rSrc_Melueru.right = m_rSrc_Melueru.left + 64; //メルエル
 
-		Image()->Draw(1, &m_rSrc_Koune, &m_rDst, coldraw,0.0f);  //コウネ
-		Image()->Draw(1, &m_rSrc_Sion, &m_rDst, coldraw, 0.0f);	//シオン
-		Image()->Draw(1, &m_rSrc_Melueru, &m_rDst, coldraw, 0.0f);	//メルエル
+		Image()->Draw(2, &m_rSrc_Koune, &m_rDst, coldraw,0.0f);  //コウネ
+		Image()->Draw(2, &m_rSrc_Sion, &m_rDst, coldraw, 0.0f);	//シオン
+		Image()->Draw(2, &m_rSrc_Melueru, &m_rDst, coldraw, 0.0f);	//メルエル
 
 	}
 

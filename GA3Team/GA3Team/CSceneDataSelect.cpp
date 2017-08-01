@@ -6,6 +6,7 @@ void CSceneDataSelect::InitScene()
 
 	//このシーンで表示させるイメージ情報
 	Image()->LoadImage("タイトルタブ仮画像.png", 0, TEX_SIZE_64);
+	Image()->LoadImage("進行度仮画像.png", 2, TEX_SIZE_512);
 	Image()->LoadImage("戻りボタン.png", 1, TEX_SIZE_512);
 
 	//文字データ作成

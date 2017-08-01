@@ -21,7 +21,6 @@ enum BalloonColor {
 	ASH,
 	PINK,
 };
-
 //吹き出しの形(吹き出しのチョンの部分の方向)
 enum Balloondir {
 	LOWER_LEFT, //左下
@@ -34,6 +33,7 @@ enum Balloondir {
 	RIGHT,//真右
 	
 };
+
 //吹き出し構造体
 typedef struct
 {
@@ -51,7 +51,7 @@ typedef struct
 //プロトタイプ宣言
 
 //吹き出し構造体(Balloon)の初期化関数
-//InitBall(X座標、Y座標,吹き出しの種類(talk or sound),ギミックが持っている音情報(ない場合は　EXCEPTION　を入れる),シオンの能力発動時の色情報、吹き出しの形)
+//InitBall(X座標、Y座標,吹き出しの種類,(talk or sound),ギミックが持っている音情報(ない場合は　EXCEPTION　を入れる)),シオンの能力発動時の色情報
 Balloon *InitBall(int gimX, int gimY, int balltype, int soundnum, int color, int Dir);
 
 //ギミッククラス(基底)

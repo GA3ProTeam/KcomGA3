@@ -11,6 +11,7 @@ void CSceneGameMain::InitScene()
 	Image()->LoadImage("吹き出し仮.png", 3, TEX_SIZE_512);//テスト用
 	Image()->LoadImage("吹き出し音符.png", 4, TEX_SIZE_512);//テスト用
 	Image()->LoadImage("StageTutorial.png", 5, TEX_SIZE_1024);//博士
+	Image()->LoadImage("電子レンジ.png", 6, TEX_SIZE_1024);//博士
 
 	//Image()->LoadImage("boss.png",2,TEX_SIZE_256);
 
@@ -37,7 +38,7 @@ void CSceneGameMain::InitScene()
 	//m_obj_player = new CObjPlayer();
 	//m_obj_player->Init();
 	//Obj()->InsertObj(m_obj_player,OBJ_PLAYER,0,this,HIT_BOX_OFF);
-
+	
 	m_obj_gimmickmanager = new CObjGimmickManager();
 	Obj()->InsertObj(m_obj_gimmickmanager, OBJ_GIMMICK_MANAGER, 0, this, HIT_BOX_OFF);
 	m_obj_gimmickmanager->Init(0,0);
@@ -60,8 +61,8 @@ void CSceneGameMain::InitScene()
 
 	//Audio()->LoopStart(0);
 
-	Overlay()->talkDraw();
-	Overlay()->FadeIn();
+	//Overlay()->talkDraw();
+	//Overlay()->FadeIn();
 
 	TextManager()->LoadText();
 

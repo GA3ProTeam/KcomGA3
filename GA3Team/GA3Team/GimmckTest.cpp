@@ -767,7 +767,7 @@ void GimmickOldman::Draw()
 
 //ステージ1↓
 
-/*
+
 //GimmickTelevision
 void GimmickTelevision::Action()
 {
@@ -797,7 +797,7 @@ void GimmickTelevision::Draw()
 	//描画
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
 
-	Balloon *ball1 = InitBall(48, -48, sound, 1,CNONE);
+	Balloon *ball1 = InitBall(48, -48, sound, 1,CNONE, LOWER_LEFT);
 	gimmicDraw(ball1, 0);
 	delete ball1;
 }
@@ -826,15 +826,15 @@ void GimmickOven::Draw()
 	float col[4] = { 1.0,1.0,1.0,1.0 };
 	//切り取り先座標
 	m_dst.top = 0; m_dst.left = 0;
-	m_dst.bottom = 200; m_dst.right = 200;
+	m_dst.bottom = 800; m_dst.right = 800;
 
 	//転送先座標
 	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
 	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
 	//描画
-	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
+	Image()->Draw(6, &m_src, &m_dst, col, 0.0f);
 
-	Balloon *ball1 = InitBall(48, -48, sound, 1, CNONE);
+	Balloon *ball1 = InitBall(48, -48, sound, 1, CNONE, LOWER_LEFT);
 	gimmicDraw(ball1, 0);
 	delete ball1;
 }
@@ -904,7 +904,7 @@ void GimmickKatsuo::Draw()
 	//描画
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
 
-	Balloon *ball1 = InitBall(48, -48, sound, 1, CNONE);
+	Balloon *ball1 = InitBall(48, -48, talk, 1, CNONE, LOWER_LEFT);
 	gimmicDraw(ball1, 0);
 	delete ball1;
 }
@@ -946,11 +946,11 @@ void GimmickDoor::Draw()
 	//描画
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
 
-	Balloon *ball1 = InitBall(48, -48, sound, 1, CNONE);
+	Balloon *ball1 = InitBall(48, -48, notype, 1, CNONE, LOWER_LEFT);
 	gimmicDraw(ball1, 0);
 	delete ball1;
 }
-*/
+
 //ステージ1↑
 
 //ステージ2↓

@@ -46,7 +46,8 @@ void Gimmick::gimmicDraw(Balloon *ball1, int num)
 	{
 		//縦と横(x)カーソルがギミックの当たり範囲に入っているか否か
 		if ((mousex > m_src.left && mousex < (m_src.left + m_iWidth))
-			&& (mousey > m_src.top && mousey < (m_src.top + m_iHeight)))
+			&& (mousey > m_src.top && mousey < (m_src.top + m_iHeight))
+			&& ball[num].m_iballoontype != notype)
 		{
 			m_iballoontime = BALLOON_KEEP_TIME;
 		}

@@ -19,6 +19,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 
 	SavedataManeger()->Setcurrentdata();
 
+
 	switch (m_Stage_ID) {
 
 	//-シオンステージ-----------------------------------------
@@ -105,19 +106,19 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 		/*
 		m_gimmick_television = new GimmickTelevision();
 		Obj()->InsertObj(m_gimmick_television, GIMMICK_TELEVISION, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_television->Init(100, 300, 100, 70, 1);
-		
-		m_gimmick_oven = new GimmickOven();
-		Obj()->InsertObj(m_gimmick_oven, GIMMICK_OVEN, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_oven->Init(-100, 100, 64, 64, 1);
+		m_gimmick_television->Init(100, 150, 200, 100, 1);
 
 		m_gimmick_katsuo = new GimmickKatsuo();
 		Obj()->InsertObj(m_gimmick_katsuo, GIMMICK_KATSUO, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_katsuo->Init(-100, 200, 64, 64, 1);
+		m_gimmick_katsuo->Init(-200, 200, 200, 300, 1);
+
+		m_gimmick_oven = new GimmickOven();
+		Obj()->InsertObj(m_gimmick_oven, GIMMICK_OVEN, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_oven->Init(-200, 100, 200, 150, 1);
 
 		m_gimmick_door = new GimmickDoor();
 		Obj()->InsertObj(m_gimmick_door, GIMMICK_DOOR, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_door->Init(400, 150, 100, 300, 1);
+		m_gimmick_door->Init(500, 100, 200, 400, 1);
 		*/
 		break;
 	case 21:

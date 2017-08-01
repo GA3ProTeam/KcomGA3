@@ -6,6 +6,7 @@
 enum BalloonType {
 	talk,//会話
 	sound,//音を調べる
+	notype,//音会話無し
 };
 //吹き出しの色(シオンの能力発動時)
 enum BalloonColor {

@@ -46,23 +46,10 @@ void CObjDataSelect::Destructor()
 
 void CObjDataSelect::Action()
 {
-
 	//プレイヤーデータ読込み
 	if (iLoad_flg == 0)
 	{
-		int i = 0;
-		while(i < 3)
-		{
-			if (SavedataManeger()->Savedatacheck(i))
-			{
-				SavedataManeger()->Loadsavedata();
-				i = 3;
-			}
-
-			i++;
-		}
-
-		
+		SavedataManeger()->Loadsavedata();
 
 		//セーブデータ作成(仮) 
 		//SavedataManeger()->Writesavedata();
@@ -136,17 +123,23 @@ void CObjDataSelect::Draw()
 
 	//各キャラクターの進行度データ
 	for (int i = 0; i < MAX_SAVEDATA; i++) {
+
+		if (SavedataManeger()->Savedatacheck(i)) {
+
 		//進行度の画像が一枚でまとめられている場合
 		//切り取り先座標
 		m_rDst.top = 0; m_rDst.left = /*セーブデータから取得してきた進行度　* */0; m_rDst.bottom = m_rDst.top + 64; m_rDst.right = m_rDst.left + 64;
 		//転送先座標
-		m_rSrc_Koune.top   = (i * 150) + 120;   m_rSrc_Koune.left   = 400;   m_rSrc_Koune.bottom   = m_rSrc_Koune.top + 64;    m_rSrc_Koune.right = m_rSrc_Koune.left + 64; //コウネ
-		m_rSrc_Sion.top    = (i * 150) + 120;   m_rSrc_Sion.left    = 500;   m_rSrc_Sion.bottom    = m_rSrc_Sion.top + 64;     m_rSrc_Sion.right = m_rSrc_Sion.left + 64; //シオン
-		m_rSrc_Melueru.top = (i * 150) + 120;   m_rSrc_Melueru.left = 600;   m_rSrc_Melueru.bottom = m_rSrc_Melueru.top + 64;  m_rSrc_Melueru.right = m_rSrc_Melueru.left + 64; //メルエル
+		m_rSrc_Koune.top   = (i * 150) + 100;   m_rSrc_Koune.left   = 400;   m_rSrc_Koune.bottom   = m_rSrc_Koune.top + 64;    m_rSrc_Koune.right = m_rSrc_Koune.left + 64; //コウネ
+		m_rSrc_Sion.top    = (i * 150) + 100;   m_rSrc_Sion.left    = 500;   m_rSrc_Sion.bottom    = m_rSrc_Sion.top + 64;     m_rSrc_Sion.right = m_rSrc_Sion.left + 64; //シオン
+		m_rSrc_Melueru.top = (i * 150) + 100;   m_rSrc_Melueru.left = 600;   m_rSrc_Melueru.bottom = m_rSrc_Melueru.top + 64;  m_rSrc_Melueru.right = m_rSrc_Melueru.left + 64; //メルエル
 
-		Image()->Draw(10, &m_rSrc_Koune, &m_rDst, coldraw,0.0f);  //コウネ
-		Image()->Draw(11, &m_rSrc_Sion, &m_rDst, coldraw, 0.0f);	//シオン
-		Image()->Draw(12, &m_rSrc_Melueru, &m_rDst, coldraw, 0.0f);	//メルエル
+		Image()->Draw(2, &m_rSrc_Koune,   &m_rDst, coldraw, 0.0f);  //コウネ
+		Image()->Draw(2, &m_rSrc_Sion,    &m_rDst, coldraw, 0.0f);	//シオン
+		Image()->Draw(2, &m_rSrc_Melueru, &m_rDst, coldraw, 0.0f);	//メルエル
+
+
+		}
 
 	}
 
@@ -251,10 +244,11 @@ void CObjDataSelect::ButtonFromTheBegin() {
 					m_bsavedataflg = false;
 
 					//デバッグ用
-					sprintf(m_cplayername[m_iSelectData], "No Data");
+					//sprintf(m_cplayername[m_iSelectData], "No Data");
 
 					//メッセージボックスを閉じる
 					m_bmessageflg = false;
+
 
 				}
 				else {
@@ -271,11 +265,12 @@ void CObjDataSelect::ButtonFromTheBegin() {
 
 		if (DialogBox(User()->p_hInstance, MAKEINTRESOURCE(IDD_DIALOG1), User()->p_hWnd, User()->p_DlgProc) == IDOK) {
 
-			if(strcmp(User()->dlgIn, m_cplayername[m_iSelectData]) !=  0 )
-			sprintf(m_cplayername[m_iSelectData], "%s", User()->dlgIn);
-
+			if (strcmp(User()->dlgIn, m_cplayername[m_iSelectData]) != 0) {
+				sprintf(m_cplayername[m_iSelectData], "%s", User()->dlgIn);
+			}
+			
 			//プレイヤーネームをセーブデータへ
-			strcpy(SavedataManeger()->Savedata[m_iSelectData].m_cPlayerName , m_cplayername[m_iSelectData]);
+			strcpy(SavedataManeger()->Savedata[m_iSelectData].m_cPlayerName, m_cplayername[m_iSelectData]);
 
 			//新規セーブデータ作成(仮) 
 			SavedataManeger()->Writesavedata();

@@ -16,22 +16,21 @@ void CObjDataSelect::Init()
 
 	m_button_y = 80;
 
+	//選択されたセーブデータ番号
 	m_iSelectData = -1;
 
+	//メッセージボックス開閉
 	m_bmessageflg = false;
 
 	for (int j = 0; j < 4; j++) {
 		//カラー情報初期化
-		col[j] = 1.0f;
+		col[j] = 1.0f;	//仮
 	}
 
 	for (int i = 0; i < MAX_SAVEDATA; i++) {
 		//カラー情報初期化
 		text_size_playername[i] = 20; //仮
 		text_size_progress[i] = 16; //仮
-
-		m_iprogress_cnt[i] = 0;
-
 	}
 
 	iLoad_flg = 0;
@@ -48,13 +47,23 @@ void CObjDataSelect::Action()
 	if (iLoad_flg == 0)
 	{
 		SavedataManeger()->Loadsavedata();
+		SavedataManeger()->Writesavedata();
 
-		//セーブデータ作成(仮) 
-		//SavedataManeger()->Writesavedata();
+
+		//進行度読込み(仮)
+		for (int saveNum = 0; saveNum < 3; saveNum++)
+		{
+			for (int flgNum = 0; flgNum < 10; flgNum++)
+			{
+				m_Load_KouneClearflg[saveNum][flgNum] = SavedataManeger()->Savedata[saveNum].m_bKouneClearflg[flgNum];
+				m_Load_SionClearflg[saveNum][flgNum] = SavedataManeger()->Savedata[saveNum].m_bSionClearflg[flgNum];
+				m_Load_MelueruClearflg[saveNum][flgNum] = SavedataManeger()->Savedata[saveNum].m_bMelueruClearflg[flgNum];
+			}
+		}
+
 
 		iLoad_flg = 1;
-
-		
+	
 	}
 	
 
@@ -81,7 +90,7 @@ void CObjDataSelect::Action()
 		ButtonContinuation();
 	}
 
-	//タイトルに戻る
+	//「タイトルに戻る」ボタン作成
 	if (iTitle_flg == 0) {
 		m_obj_titlebackbutton = new ButtonDataSelect();
 		Obj()->InsertObj(m_obj_titlebackbutton, OBJ_BUTTON_DATASELECT, 0, this->m_pScene, HIT_BOX_OFF);
@@ -90,7 +99,7 @@ void CObjDataSelect::Action()
 		iTitle_flg = 1;
 	}
 
-	//タイトルに戻る(仮)
+	//タイトルに戻る
 	if (m_obj_titlebackbutton->Push()) {
 
 		User()->mititle_choice = TITLE_RETURN;
@@ -124,29 +133,16 @@ void CObjDataSelect::Draw()
 
 		if (SavedataManeger()->Savedatacheck(i)) {
 
-		//進行度読込み(仮)
-		for (int saveNum = 0; saveNum < 3; saveNum++)
-		{
-			for (int flgNum = 0; flgNum < 10; flgNum++)
-			{
-				m_Load_KouneClearflg[saveNum][flgNum] = SavedataManeger()->Savedata[saveNum].m_bKouneClearflg[flgNum];
-				m_Load_SionClearflg[saveNum][flgNum] = SavedataManeger()->Savedata[saveNum].m_bSionClearflg[flgNum];
-				m_Load_MelueruClearflg[saveNum][flgNum] = SavedataManeger()->Savedata[saveNum].m_bMelueruClearflg[flgNum];
-			}
-		}
-
-		//切り取り座標
-		m_rDst_Koune.top   = 0; m_rDst_Koune.left   = /*セーブデータから取得してきた進行度　* */0; m_rDst_Koune.bottom   = m_rDst_Koune.top   + 64; m_rDst_Koune.right   = m_rDst_Koune.left   + 64; //コウネ
-		m_rDst_Sion.top    = 0; m_rDst_Sion.left    = /*セーブデータから取得してきた進行度　* */0; m_rDst_Sion.bottom    = m_rDst_Sion.top    + 64; m_rDst_Sion.right    = m_rDst_Sion.left    + 64; //シオン
-		m_rDst_Melueru.top = 0; m_rDst_Melueru.left = /*セーブデータから取得してきた進行度　* */0; m_rDst_Melueru.bottom = m_rDst_Melueru.top + 64; m_rDst_Melueru.right = m_rDst_Melueru.left + 64; //メルエル
+		
+		m_rDst.top = 0; m_rDst.left = /*セーブデータから取得してきた進行度　* */0; m_rDst.bottom = m_rDst.top + 64; m_rDst.right = m_rDst.left + 64;
 		//転送先座標
 		m_rSrc_Koune.top   = (i * 150) + 100;   m_rSrc_Koune.left   = 400;   m_rSrc_Koune.bottom   = m_rSrc_Koune.top + 64;    m_rSrc_Koune.right = m_rSrc_Koune.left + 64; //コウネ
 		m_rSrc_Sion.top    = (i * 150) + 100;   m_rSrc_Sion.left    = 500;   m_rSrc_Sion.bottom    = m_rSrc_Sion.top + 64;     m_rSrc_Sion.right = m_rSrc_Sion.left + 64; //シオン
 		m_rSrc_Melueru.top = (i * 150) + 100;   m_rSrc_Melueru.left = 600;   m_rSrc_Melueru.bottom = m_rSrc_Melueru.top + 64;  m_rSrc_Melueru.right = m_rSrc_Melueru.left + 64; //メルエル
 
-		Image()->Draw(2, &m_rSrc_Koune,   &m_rDst_Koune,   coldraw, 0.0f);  //コウネ
-		Image()->Draw(2, &m_rSrc_Sion,    &m_rDst_Sion,    coldraw, 0.0f);	//シオン
-		Image()->Draw(2, &m_rSrc_Melueru, &m_rDst_Melueru, coldraw, 0.0f);	//メルエル
+		Image()->Draw(2, &m_rSrc_Koune,   &m_rDst, coldraw, 0.0f);  //コウネ
+		Image()->Draw(2, &m_rSrc_Sion,    &m_rDst, coldraw, 0.0f);	//シオン
+		Image()->Draw(2, &m_rSrc_Melueru, &m_rDst, coldraw, 0.0f);	//メルエル
 
 		}
 
@@ -234,8 +230,13 @@ void CObjDataSelect::ButtonFromTheBegin() {
 					SavedataManeger()->Deletesavedata(m_iSelectData); //仮
 					m_bsavedataflg = false;
 
-					//デバッグ用
-					//sprintf(m_cplayername[m_iSelectData], "No Data");
+					//セーブデータがなければ「No Data」と表示する
+					if (SavedataManeger()->Savedatacheck(m_iSelectData) == false) {
+						sprintf(m_cplayername[i], "No Data");
+					}
+
+					//セーブデータ書き込み 
+					SavedataManeger()->Writesavedata();
 
 					//メッセージボックスを閉じる
 					m_bmessageflg = false;
@@ -263,7 +264,7 @@ void CObjDataSelect::ButtonFromTheBegin() {
 			//プレイヤーネームをセーブデータへ
 			strcpy(SavedataManeger()->Savedata[m_iSelectData].m_cPlayerName, m_cplayername[m_iSelectData]);
 
-			//新規セーブデータ作成(仮) 
+			//セーブデータ書き込み 
 			SavedataManeger()->Writesavedata();
 		}
 

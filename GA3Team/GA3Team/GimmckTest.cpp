@@ -365,6 +365,14 @@ void GimmickDog::Destructor()
 void GimmickDog::Action() 
 {
 
+	if (ball[0].OnPush) {
+
+
+
+
+
+
+	}
 }
 //犬のドロー
 void GimmickDog::Draw() 
@@ -392,7 +400,11 @@ void GimmickManholeCover::Destructor()
 //マンホールの蓋のアクション
 void GimmickManholeCover::Action() 
 {
-
+	if (ball[0].OnPush) {
+		if (SavedataManeger()->CurrentData->m_bKouneflg[3] == true) {
+			m_Status = STATUS_DELETE;
+		}
+	}
 }		
 //マンホールの蓋のドロー
 void GimmickManholeCover::Draw() 
@@ -412,6 +424,11 @@ void GimmickManholeCover::Draw()
 	gimmicDraw(aaa, 0);
 	delete aaa;
 }//マンホールの穴のデストラクタ
+void GimmickManholeHole::Init() 
+{
+	m_Status = STATUS_SLEEP;
+
+}
 void GimmickManholeHole::Destructor() 
 {
 
@@ -419,6 +436,10 @@ void GimmickManholeHole::Destructor()
 void GimmickManholeHole::Action()
 {
 
+	if (ball[0].OnPush) {
+		SavedataManeger()->CurrentData->m_bKouneClearflg[0] = true;
+
+	}
 }//マンホールの穴のドロー
 void GimmickManholeHole::Draw()
 {
@@ -443,7 +464,33 @@ void GimmickOldman::Destructor()
 }//老人のアクション
 void GimmickOldman::Action()
 {
+	
+	if (ball[0].OnPush) {
+		if (SavedataManeger()->CurrentData->m_bKouneflg[0] == false) {
+			SavedataManeger()->CurrentData->m_bKouneflg[0] = true;
+		}
 
+		else if (SavedataManeger()->CurrentData->m_bKouneflg[2] == true) {
+			SavedataManeger()->CurrentData->m_bKouneflg[3] == true;
+			m_Status = STATUS_DELETE;
+		}
+		else if (SavedataManeger()->CurrentData->m_bKouneflg[1] == true) {
+
+
+		}
+		else if (SavedataManeger()->CurrentData->m_bKouneflg[2] == false&& SavedataManeger()->CurrentData->m_bKouneflg[1] == true) {
+			
+
+		}
+
+		else if (SavedataManeger()->CurrentData->m_bKouneflg[1] == false) {
+
+
+		}
+
+		else 
+
+	}
 }//老人のドロー
 void GimmickOldman::Draw()
 {

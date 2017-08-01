@@ -205,7 +205,7 @@ public:
 	void Destructor();	//デストラクタ
 	void Action();		//アクション
 	void Draw();		//ドロー
-
+	
 private:
 
 };
@@ -216,7 +216,7 @@ public:
 	GimmickManholeHole() {};
 	~GimmickManholeHole() {};
 
-
+	void Init();
 	void Destructor();	//デストラクタ
 	void Action();		//アクション
 	void Draw();		//ドロー

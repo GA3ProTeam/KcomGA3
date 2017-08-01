@@ -256,9 +256,6 @@ void CObjDataSelect::ButtonFromTheBegin() {
 					//メッセージボックスを閉じる
 					m_bmessageflg = false;
 
-					//プレイヤーネームをセーブデータへ
-					strcpy(SavedataManeger()->Savedata[m_iSelectData].m_cPlayerName, "No Data");
-
 
 				}
 				else {
@@ -278,7 +275,9 @@ void CObjDataSelect::ButtonFromTheBegin() {
 			if(strcmp(User()->dlgIn, m_cplayername[m_iSelectData]) !=  0 )
 			sprintf(m_cplayername[m_iSelectData], "%s", User()->dlgIn);
 
-			//sprintf(m_cplayername[m_iSelectData], "No Data");
+			//プレイヤーネームをセーブデータへ
+			strcpy(SavedataManeger()->Savedata[m_iSelectData].m_cPlayerName, m_cplayername[m_iSelectData]);
+
 
 			//新規セーブデータ作成(仮) 
 			SavedataManeger()->Writesavedata();

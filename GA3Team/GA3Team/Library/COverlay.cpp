@@ -87,6 +87,7 @@ void COverlay::Draw()
 	else if (m_iDrawFlg == 1) {
 		char c[8];
 		char tmp[128];
+		char tmpname[64] = { 0 };
 
 		RECT src, dst;
 
@@ -148,6 +149,22 @@ void COverlay::Draw()
 
 			if (m_iDelay > m_iTextSpeed)
 				m_iDelay = 0;
+
+
+			char linec[32];
+			sprintf_s(linec, "%d", m_iChar_Line);
+			for (auto nameitr = textmgr->m_Tutorial_Control[m_iDrawingStageID].begin(); nameitr != textmgr->m_Tutorial_Control[m_iDrawingStageID].end(); ++nameitr) {
+				if ((*nameitr).find(linec) != -1) {
+					(*nameitr).erase((*nameitr).begin());
+					if ("•W€" != (*nameitr)) {
+						//m_strTempName
+					}
+				}
+			}
+
+			sprintf_s(tmpname, "%s", tmpname);
+			float col[4] = { 1.0f,1.0f,1.0f,m_fAlpha };
+			font->StrDraw(tmpname, WINDOW_SIZE_W / 2 - 400, WINDOW_SIZE_H / 2 + 100, 16, col);
 
 			for (unsigned int i = 0; i < m_strTemp.size(); i++) {
 				sprintf_s(tmp, "%s", m_strTemp[i].c_str());

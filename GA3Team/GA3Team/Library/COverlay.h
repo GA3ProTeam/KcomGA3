@@ -21,6 +21,7 @@ private:
 	unsigned int m_iChar_Pos;
 	unsigned int m_iChar_Line;
 	vector<string> m_strTemp;
+	string m_strTempName;
 	int m_iDelay;
 	int m_iTextSpeed;
 

@@ -114,7 +114,6 @@ enum OBJ_NAME
 	OBJ_GIMMICKOBJECT,
 	OBJ_BUTTON_PLAYER,
 	OBJ_BUTTON_STAGE,
-	OBJ_BUTTON_DATASELECT,
 	OBJ_STAGE_TAB,
 	OBJ_SAVEDATA,
 	BUTTON_LSCROLL_SCREEN,
@@ -132,28 +131,13 @@ enum OBJ_NAME
 	GIMMICK_MANHOLECOVER,
 	GIMMICK_MANHOLEHOLE,
 	GIMMICK_OLDMAN,
-	GIMMICK_CHILDREN,
-	GIMMICK_GRANNY,
-	GIMMICK_MYNAH,
-	GIMMICK_SHELF,
-	GIMMICK_WINDCHIME,
-
 };
 //----------------------
-//テキストファイルのネーム
-enum TEXT_FILE_NAME {
-	//koune1
-	koune1,
-	koune1_start,
-	koune1_ozi,
-	koune1_ozi_flag2_y,
-	koune1_ozi_flag2_n,
-	koune1_ozi_flag3_y,
-	koune1_ozi_flag3_n,
-	koune1_ozi_flag3_flag1n,
-	koune1_ozi_clear,
-
-	//koune2
+enum STAGE_TYPE {
+	TUTORIAL = 0,
+	SION,
+	KOUNE,
+	MERUERU,
 };
 
 
@@ -188,7 +172,7 @@ enum TEXT_FILE_NAME {
 //当たり判定の複数同時判定量
 #define MAX_HITS	15
 
-#define STAGE_MAX 6
+
 //一つのギミックがもてる吹き出しの最大数
 #define BALLOON_MAX_NUM 5
 //例外用

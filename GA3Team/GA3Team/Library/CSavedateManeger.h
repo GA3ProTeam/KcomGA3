@@ -7,7 +7,7 @@ public:
 	void Init();
 	void Loadsavedata();  // 別ファイルのセーブデータ読み込み
 	void Writesavedata(); //セーブデータ書き込み
-	bool Savedatacheck(int savenum/*確認したいセーブデータのスロット*/); //セーブデータ確認
+	bool Savedatacheck(int savenum); //セーブデータ確認
 	void Deletesavedata();//セーブデータ削除
 	void Setcurrentdata();//ポインターセット
 

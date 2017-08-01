@@ -99,9 +99,5 @@ void CObjTitle::Draw()
 
 	//テスト用表示
 	float coldbg[4] = { 1.0f,1.0f,1.0f,1.0f };
-	Font()->StrDrawEx("1234567890abcdefgjijklmnopqrstuvwxyz", 0, WINDOW_SIZE_H/2-100, 20, coldbg, 0);
-	Font()->StrDrawEx("1234567890abcdefgjijklmnopqrstuvwxyz", 0, WINDOW_SIZE_H/2-100+20, 20, coldbg, 1);
-	Font()->StrDrawEx("1234567890abcdefgjijklmnopqrstuvwxyz", 0, WINDOW_SIZE_H / 2-100 + 40, 20, coldbg, 2);
-	Font()->StrDrawEx("1234567890abcdefgjijklmnopqrstuvwxyz", 0, WINDOW_SIZE_H / 2-100 + 60, 20, coldbg, 3);
-	//Font()->StrDrawEx("abcdefgjijklmnopqrstuvwxyz", 0, WINDOW_SIZE_H/2-16, 16, coldbg, 2);
+	Font()->StrDraw("Debugモード有効：EnterでGameMainへ", 0, WINDOW_SIZE_H - 16, 16, coldbg);
 }

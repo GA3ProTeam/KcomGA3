@@ -15,10 +15,23 @@ private:
 	char strsave[64][512];
 
 	std::vector<std::string> tmpData;
+	std::vector<std::string> tmpControl;
+
+	std::vector<std::string> filePath_tutorial;
+	std::vector<std::string> filePath_sion;
+	std::vector<std::string> filePath_koune;
+	std::vector<std::string> filePath_merueru;
 public:
-	vector<vector<string>> m_SionText;
-	vector<vector<string>> m_KouneText;
-	vector<vector<string>> m_MerueruText;
+	vector<vector<string>> m_Tutorial_Text;
+	vector<vector<string>> m_Tutorial_Control;
+	vector<vector<string>> m_Sion_Text;
+	vector<vector<string>> m_Sion_Control;
+	vector<vector<string>> m_Koune_Text;
+	vector<vector<string>> m_Koune_Control;
+	vector<vector<string>> m_Merueru_Text;
+	vector<vector<string>> m_Merueru_Control;
+
+	CTextManager();
 
 	void LoadText();
 	int GetCtrlLine(int line);

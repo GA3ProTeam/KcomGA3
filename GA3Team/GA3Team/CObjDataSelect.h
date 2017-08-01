@@ -9,9 +9,6 @@ struct CharacterData
 	int Koune_Data;
 	int Sion_Data;
 	int Melueru_Data;
-	//char Koune_progress[32];
-	//char Sion_progress[32];
-	//char Melueru_progress[32];
 };
 
 
@@ -29,17 +26,10 @@ public:
 
 private:
 
-	//描画用
-	RECT m_rSrc;
-	RECT m_rDst;
-	RECT m_rSrc_Koune;
-	RECT m_rDst_Koune;
-	RECT m_rSrc_Sion;
-	RECT m_rDst_Sion;
-	RECT m_rSrc_Melueru;
-	RECT m_rDst_Melueru;
-	int m_idraw_pos_x;
-	int m_idraw_pos_y;
+	RECT m_rDst_Koune,m_rDst_Sion, m_rDst_Melueru;
+	RECT m_rSrc_Koune, m_rSrc_Sion, m_rSrc_Melueru;
+
+
 
 	bool m_bsavedataflg; //各セーブデータ確認する
 	bool m_bmessageflg;  //メッセージフラグ
@@ -68,16 +58,20 @@ private:
 	char m_csave_playername[MAX_SAVEDATA][256];					   //プレイヤーネーム
 	int  m_iplayerprogress[MAX_SAVEDATA][CHAR_PROGRESS];	   //キャラクター進行度
 
-	int load_progress; //各キャラクターの進行度を読み込む
-	int m_Load_KouneClearflg[3][10];
-	int m_Load_SionClearflg[3][10];
-	int m_Load_MelueruClearflg[3][10];
+	//char load_progress[MAX_SAVEDATA][32];
+
 
 	CharacterData charaData[MAX_SAVEDATA];
 
 	//一回だけロードする用
 	int iLoad_flg;
 	int iTitle_flg;
+
+	int m_iprogress_cnt[MAX_SAVEDATA];
+	int m_Load_KouneClearflg[MAX_SAVEDATA][10];
+	int m_Load_SionClearflg[MAX_SAVEDATA][10];
+	int m_Load_MelueruClearflg[MAX_SAVEDATA][10];
+
 
 };
 

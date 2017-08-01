@@ -42,7 +42,7 @@ void CSceneGameMain::InitScene()
 	//m_obj_player = new CObjPlayer();
 	//m_obj_player->Init();
 	//Obj()->InsertObj(m_obj_player,OBJ_PLAYER,0,this,HIT_BOX_OFF);
-	
+
 	m_obj_gimmickmanager = new CObjGimmickManager();
 	Obj()->InsertObj(m_obj_gimmickmanager, OBJ_GIMMICK_MANAGER, 0, this, HIT_BOX_OFF);
 	m_obj_gimmickmanager->Init(0,0);
@@ -65,8 +65,8 @@ void CSceneGameMain::InitScene()
 
 	//Audio()->LoopStart(0);
 
-	//Overlay()->talkDraw();
-	//Overlay()->FadeIn();
+	Overlay()->talkDraw(TUTORIAL,0);
+	Overlay()->FadeIn();
 
 	TextManager()->LoadText();
 

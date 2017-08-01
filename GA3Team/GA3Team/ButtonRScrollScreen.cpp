@@ -27,6 +27,14 @@ void ButtonRScrollScreen::Action() {
 		User()->mscroll_x -= 10;
 	}
 
+	if (User()->mscroll_x < 0) {
+
+		User()->mscroll_x = 0;
+
+	}
+
+
+
 	//デバッグ用
 	sprintf(strsave, "%d", User()->mscroll_x);
 

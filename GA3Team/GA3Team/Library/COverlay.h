@@ -19,19 +19,23 @@ private:
 	//文字表示用
 	unsigned int m_iChar_Size;
 	unsigned int m_iChar_Pos;
-	string m_strTemp;
+	unsigned int m_iChar_Line;
+	vector<string> m_strTemp;
+	string m_strTempName;
 	int m_iDelay;
 	int m_iTextSpeed;
 
 	//フラグ式管理用
 	bool m_bDrawing;
+	int m_iDrawingStage;
+	int m_iDrawingStageID;
 	int m_iDrawFlg;
 	int m_iFadeFlg;
 public:
 	//
 	COverlay(CDrawTexture *i, CDrawFont *f, CWinInputs *w, CSoundManeger *s, CTextManager *t)
 		: image(i), font(f), input(w), soundmgr(s), textmgr(t),
-		m_bDrawing(false), m_iDrawFlg(-1), m_iFadeFlg(0), m_x(0), m_y(0), m_fAlpha(0.0f),m_iChar_Size(0), m_iChar_Pos(0), m_iDelay(0), m_iTextSpeed(7)
+		m_bDrawing(false), m_iDrawFlg(-1), m_iFadeFlg(0), m_x(0), m_y(0), m_fAlpha(0.0f),m_iChar_Size(0), m_iChar_Pos(0),m_iChar_Line(0), m_iDelay(0), m_iTextSpeed(7)
 	{}
 	
 	//----------------動作系----------------
@@ -43,7 +47,7 @@ public:
 	//描画
 	void Draw();
 	//トークの描画有効
-	void talkDraw();
+	void talkDraw(int stage,int stageID);
 	//描画無効
 	void StopDraw();
 

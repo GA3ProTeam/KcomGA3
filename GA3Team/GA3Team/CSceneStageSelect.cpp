@@ -14,23 +14,23 @@ void CSceneStageSelect::InitScene()
 	//-----------------------------------
 
 	//シーンに必要なオブジェクト情報-------------------------------------------
+
 	//ステージタブ生成
 	stage_tab = new CObjStageTab();
-	Obj()->InsertObj(stage_tab, OBJ_STAGE_TAB, 0, this, HIT_BOX_OFF);
 	stage_tab->Init();
+	Obj()->InsertObj(stage_tab, OBJ_STAGE_TAB, 0, this, HIT_BOX_OFF);
 
 	//プレイヤーボタン生成
 	for (int player_num = 0; player_num < MAX_CHARA; player_num++) {
 		button_player = new ButtonPlayer();
+		button_player->Init((player_num *160)+50,400,128,128,player_num, stage_tab);
 		Obj()->InsertObj(button_player,OBJ_BUTTON_PLAYER,0,this,HIT_BOX_OFF);
-		button_player->Init((player_num * 160) + 50, 400, 128, 128, player_num, stage_tab);
 	}
 
 	//メニュータブ生成
 	CObjMenuTab* obj_menutab = new CObjMenuTab();
 	Obj()->InsertObj(obj_menutab, OBJ_MENUTAB, 5, this, HIT_BOX_OFF);
 	obj_menutab->Init(500);
-	//-------------------------------------------------------------------------
 }
 
 //シーン実行

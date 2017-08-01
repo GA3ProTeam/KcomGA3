@@ -141,10 +141,10 @@ void Gimmickearphone::Draw()
 	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
 	//ï`âÊ
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
-	Balloon *aaa = InitBall(48, -48, sound, 1,RED);
-
-	gimmicDraw(aaa, 0);
-	delete aaa;
+//	Balloon *aaa = InitBall(48, -48, sound, 1,RED);
+//
+//	gimmicDraw(aaa, 0);
+//	delete aaa;
 }
 
 
@@ -174,10 +174,10 @@ void Gimmickkoune::Draw()
 	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
 	//ï`âÊ
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
-	Balloon *aaa = InitBall(48, -48, sound, 1, RED);
-
-	gimmicDraw(aaa, 0);
-	delete aaa;
+//	Balloon *aaa = InitBall(48, -48, sound, 1, RED);
+//
+//	gimmicDraw(aaa, 0);
+//	delete aaa;
 }
 //îL
 void Gimmickcat::Destructor()
@@ -205,10 +205,10 @@ void Gimmickcat::Draw()
 	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
 	//ï`âÊ
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
-	Balloon *aaa = InitBall(48, -48, sound, 1, RED);
-
-	gimmicDraw(aaa, 0);
-	delete aaa;
+//	Balloon *aaa = InitBall(48, -48, sound, 1, RED);
+//
+//	gimmicDraw(aaa, 0);
+//	delete aaa;
 }
 //é©ì]é‘
 void Gimmickbicycle::Destructor()
@@ -233,10 +233,10 @@ void Gimmickbicycle::Draw()
 	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
 	//ï`âÊ
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
-	Balloon *aaa = InitBall(48, -48, sound, 1, RED);
-
-	gimmicDraw(aaa, 0);
-	delete aaa;
+//	Balloon *aaa = InitBall(48, -48, sound, 1, RED);
+//
+//	gimmicDraw(aaa, 0);
+//	delete aaa;
 }
 //ÉXÉeÅ[ÉW2Å™
 

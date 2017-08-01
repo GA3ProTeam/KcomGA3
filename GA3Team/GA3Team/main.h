@@ -165,7 +165,9 @@ enum TEXT_FILE_NAME {
 	//koune2
 };
 enum TOLK
+{
 
+};
 
 //----------------------
 

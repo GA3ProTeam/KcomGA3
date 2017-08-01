@@ -176,17 +176,21 @@ void CSavedataManeger::Writesavedata()
 	}
 }
 
-bool CSavedataManeger::Savedatacheck(int savenum)
+bool CSavedataManeger::Savedatacheck(int savedate_srot)
 {
 	
-	if (strlen(Savedata[savenum].m_cPlayerName) > 0) //=0
-		return true;
-	return false;
+	//if (strlen(Savedata[savenum].m_cPlayerName) > 0) //=0
+		//return true;
+	//セーブデータが無ければ
+	if (Savedata[savedate_srot].m_cPlayerName[0] == '\0')
+		return false;
+	return true;
 }
 
 void CSavedataManeger::Deletesavedata(int savedate_srot)
 {
-	
+		Savedata[savedate_srot].m_cPlayerName[0] = '\0';
+
 		Savedata[savedate_srot].m_bKouneflg.clear();
 		Savedata[savedate_srot].m_bKouneClearflg.clear();
 

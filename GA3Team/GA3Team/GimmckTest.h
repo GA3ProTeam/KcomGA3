@@ -365,6 +365,50 @@ private:
 
 
 //ステージ1↓
+class GimmickTelevision : public Gimmick
+{
+public:
+	GimmickTelevision() {};
+	~GimmickTelevision() {};
+	void Destructor();//デストラクタ
+	void Action();//アクション
+	void Draw();//描画
+
+
+};
+class GimmickOven : public Gimmick
+{
+public:
+	GimmickOven() {};
+	~GimmickOven() {};
+	void Destructor();//デストラクタ
+	void Action();//アクション
+	void Draw();//描画
+
+
+};
+class GimmickKatsuo : public Gimmick
+{
+public:
+	GimmickKatsuo() {};
+	~GimmickKatsuo() {};
+	void Destructor();//デストラクタ
+	void Action();//アクション
+	void Draw();//描画
+
+
+};
+class GimmickDoor : public Gimmick
+{
+public:
+	GimmickDoor() {};
+	~GimmickDoor() {};
+	void Destructor();//デストラクタ
+	void Action();//アクション
+	void Draw();//描画
+
+
+};
 //ステージ1↑
 
 //ステージ2↓

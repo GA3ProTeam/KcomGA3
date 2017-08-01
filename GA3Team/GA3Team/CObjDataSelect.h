@@ -9,9 +9,7 @@ struct CharacterData
 	int Koune_Data;
 	int Sion_Data;
 	int Melueru_Data;
-	//char Koune_progress[32];
-	//char Sion_progress[32];
-	//char Melueru_progress[32];
+
 };
 
 
@@ -68,10 +66,14 @@ private:
 	char m_csave_playername[MAX_SAVEDATA][256];					   //プレイヤーネーム
 	int  m_iplayerprogress[MAX_SAVEDATA][CHAR_PROGRESS];	   //キャラクター進行度
 
-	//char load_progress[MAX_SAVEDATA][32];
-
+	int load_progress; //各キャラクターの進行度を読み込む
+	int m_Load_KouneClearflg[3][10];
+	int m_Load_SionClearflg[3][10];
+	int m_Load_MelueruClearflg[3][10];
 
 	CharacterData charaData[MAX_SAVEDATA];
+
+	int m_iprogress_cnt[3]; //各キャラクターの進行度カウント
 
 	//一回だけロードする用
 	int iLoad_flg;

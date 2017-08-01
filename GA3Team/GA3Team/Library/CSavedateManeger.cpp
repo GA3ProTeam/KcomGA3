@@ -63,6 +63,10 @@ void CSavedataManeger::Loadsavedata()
 			}
 			continue;
 		}
+		if ((*itr)[0] == '-')
+		{
+			continue;
+		}
 		//Šeƒtƒ‰ƒO‚ğæ“¾‚·‚é
 		for (unsigned int i = 0; i < (*itr).length(); i++) {//•¶š
 			switch (dataflg) { //__SWITCH__

@@ -57,7 +57,35 @@ void GimmickDoctor::Destructor() {
 
 //アクション
 void GimmickDoctor::Action() {
-	
+	//メニュータブへの参照取得
+	CObjMenuTab* tab = (CObjMenuTab*)Obj()->GetObj(OBJ_MENUTAB);
+
+	//博士に話しかけず録音から再生まで達成（フラグ2○　フラグ3×）
+	if (SavedataManeger()->CurrentData->m_btutoriaruflg[1] &&
+		!SavedataManeger()->CurrentData->m_btutoriaruflg[2]) {
+
+	}
+	//音を再生
+	else if (1) {
+
+	}
+	//音を録音後（フラグ2達成後）、会話
+	else if (SavedataManeger()->CurrentData->m_btutoriaruflg[1] && ball[0].OnPush) {
+		//会話「うむ、言われたことはできるようなのだな・・・」
+		
+	}
+	//フラグ2を達成していなくて、会話
+	else if (!SavedataManeger()->CurrentData->m_btutoriaruflg[1] && ball[0].OnPush) {
+		//会話「話を聞いていなかったのかね？・・・」
+		
+	}
+	//フラグ1達成後
+	else if (SavedataManeger()->CurrentData->m_btutoriaruflg[0]) {
+		//会話「それはこの研究所が開発したレコーダー・・・」
+	}
+	else {
+		//会話「ようこそ！ここは・・・」
+	}
 }
 
 //ドロー
@@ -107,7 +135,30 @@ void GimmickComputer::Destructor() {
 
 //アクション
 void GimmickComputer::Action() {
+	//メニュータブへの参照取得
+	CObjMenuTab* tab = (CObjMenuTab*)Obj()->GetObj(OBJ_MENUTAB);
 
+	//マウスドラッグ中にマウスボタンが離された
+	if (!Input()->GetMouButtonL() && tab->GetHaveSound()) {
+		//マウスがギミック範囲内か確認
+		if (Input()->m_x > m_iXpos&& Input()->m_x < (m_iXpos + m_iWidth)
+			&& Input()->m_y > m_iYpos && Input()->m_y < (m_iYpos + m_iHeight)) {
+			if (tab->GetGiveSound() == 0) {
+
+			}
+		}
+	}
+	
+	//まだパソコンから録音していない
+	if (!SavedataManeger()->CurrentData->m_btutoriaruflg[1]) {
+		//音符吹き出しが押された
+		if (ball[0].OnPush) {
+			//フラグ2達成
+			SavedataManeger()->CurrentData->m_btutoriaruflg[1] = true;
+		}
+	}
+
+	
 }
 
 //ドロー
@@ -152,7 +203,13 @@ void GimmickRecorder::Destructor() {
 
 //アクション
 void GimmickRecorder::Action() {
-
+	//吹き出しが押されたか確認
+	if (ball[0].OnPush) {
+		//フラグ1達成
+		SavedataManeger()->CurrentData->m_btutoriaruflg[0] = true;
+		//レコーダー破棄
+		m_Status = STATUS_DELETE;
+	}
 }
 
 //ドロー
@@ -177,7 +234,7 @@ void GimmickRecorder::Draw() {
 	//---------------------------------------------------------------------------
 
 	//吹き出し描画＆動作---------------------------------------------------------
-	Balloon *aaa = InitBall(m_iWidth - 50, -48, sound, 1, RED, LOWER_LEFT);
+	Balloon *aaa = InitBall(m_iWidth - 50, -48, talk, 1, RED, LOWER_LEFT);
 	this->gimmicDraw(aaa, 0);
 	delete aaa;
 	//---------------------------------------------------------------------------

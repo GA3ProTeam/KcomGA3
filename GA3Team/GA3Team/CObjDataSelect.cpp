@@ -132,6 +132,8 @@ void CObjDataSelect::Draw()
 			for (int flgNum = 0; flgNum < 10; flgNum++)
 			{
 				m_Load_KouneClearflg[saveNum][flgNum] = SavedataManeger()->Savedata[saveNum].m_bKouneClearflg[flgNum];
+				m_Load_SionClearflg[saveNum][flgNum] = SavedataManeger()->Savedata[saveNum].m_bSionClearflg[flgNum];
+				m_Load_MelueruClearflg[saveNum][flgNum] = SavedataManeger()->Savedata[saveNum].m_bMelueruClearflg[flgNum];
 			}
 		}
 

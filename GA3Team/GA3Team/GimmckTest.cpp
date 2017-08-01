@@ -492,10 +492,6 @@ void GimmickChildren::Init(int xpos, int ypos, int widht, int height, int balloo
 	m_iHeight = height;	//ギミック高さの初期化
 	m_iballoonnum = balloonnum;//吹き出しの総数
 
-	for (int i = 0; i < 3; i++) {
-		m_bclearflg[i] = false;
-	}
-
 }
 void GimmickChildren::Destructor()//デストラクタ
 {
@@ -514,7 +510,7 @@ void GimmickChildren::Action()//アクション
 			switch (m_iChild_ID) {
 			case 1://強気な男の子
 				   //if (tab->GetGiveSound() == /*正解の音*/) {
-				m_bclearflg[0] = true;
+				SavedataManeger()->CurrentData->m_bSionflg[3] = true;
 				//	break;
 				//}
 				//else {
@@ -524,7 +520,7 @@ void GimmickChildren::Action()//アクション
 
 			case 2://優しい女の子
 				   //if (tab->GetGiveSound() == /*正解の音*/) {
-				m_bclearflg[1] = true;
+				SavedataManeger()->CurrentData->m_bSionflg[4] = true;
 				//	break;
 				//}
 				//else {
@@ -535,7 +531,7 @@ void GimmickChildren::Action()//アクション
 
 			case 3://弱気な男の子
 				   //if (tab->GetGiveSound() == /*正解の音*/) {
-				m_bclearflg[2] = true;
+				SavedataManeger()->CurrentData->m_bSionflg[5] = true;
 				//	break;
 				//}
 				//else {
@@ -933,6 +929,7 @@ void GimmickTelevision::Action()
 	if (ball[0].OnPush) {
 
 		//テレビ音取得
+		SoundManager()->SoundSave(1/*ここ未定*/);
 
 	}
 }
@@ -968,7 +965,7 @@ void GimmickOven::Action()
 		if (SavedataManeger()->CurrentData->m_bMelueruflg[2] == true) {
 
 			//レンジ音入手
-
+			SoundManager()->SoundSave(1/*ここ未定*/);
 
 
 		}
@@ -1011,7 +1008,7 @@ void GimmickKatsuo::Action()
 
 
 		}
-		else if (User()->m_bmerueruability == false &&
+		else if (User()->m_bmerueruability == true &&
 			SavedataManeger()->CurrentData->m_bMelueruflg[0] == false) {
 
 			//カツオフラグ無し、能力あり会話

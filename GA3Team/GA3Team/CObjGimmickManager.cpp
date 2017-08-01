@@ -52,10 +52,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 		m_gimmick_firetruck = new Gimmickfiretruck();
 		Obj()->InsertObj(m_gimmick_firetruck, GIMMICK_FIRETRUCK, 5, this->m_pScene, HIT_BOX_OFF);
 		m_gimmick_firetruck->Init(-400, 220, 70, 100, 1);
-		m_gimmick_bicycle = new Gimmickbicycle();
-		Obj()->InsertObj(m_gimmick_bicycle, GIMMICK_BICYCLE, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_bicycle->Init(350, 220, 70, 100, 1);
-		break;
+	
 	case 12:
 		////シオンのステージ3のギミック生成
 		//for (int i = 0; i < 3; i++) {

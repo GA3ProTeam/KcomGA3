@@ -295,7 +295,7 @@ void GimmickAunt::Draw() {
 }
 
 //ステージ1↑
-/*
+
 //ステージ2↓
 //イヤホン男
 void Gimmickearphone::Destructor()
@@ -378,7 +378,7 @@ void Gimmickkoune::Draw()
 	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
 	//描画
 	Image()->Draw(8, &m_src, &m_dst, col, 0.0f);
-	Balloon *aaa = InitBall(48, -48, sound, 1, EXCEPTION, LOWER_LEFT);
+	Balloon *aaa = InitBall(48, -48, sound, 1, EXCEPTION);
 
 	gimmicDraw(aaa, 0);
 	delete aaa;
@@ -441,7 +441,7 @@ void Gimmickbicycle::Draw()
 	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
 	//描画
 	Image()->Draw(10, &m_src, &m_dst, col, 0.0f);
-	Balloon *aaa = InitBall(148, -48, sound, 1, ORANGE, LOWER_LEFT);
+	Balloon *aaa = InitBall(148, -48, sound, 1, ORANGE);
 
 	gimmicDraw(aaa, 0);
 	delete aaa;
@@ -479,7 +479,7 @@ void Gimmickfiretruck::Draw()
 	delete aaa;
 }
 //ステージ2↑
-*/
+
 
 //ステージ3↓
 //子供1、2、3

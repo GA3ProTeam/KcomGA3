@@ -104,8 +104,7 @@ void Gimmick::setballooncolor(int num)
 {
 	//if(ball[num].m_iballooncolor == RED);
 }
-Balloon *InitBall(int gimX, int gimY, int balltype, int soundnum, int color)
-{
+Balloon *InitBall(int gimX, int gimY, int balltype, int soundnum, int color, int Dir) {
 	Balloon *Initball = new Balloon();
 
 	Initball->m_iGimXpos = gimX;
@@ -113,6 +112,7 @@ Balloon *InitBall(int gimX, int gimY, int balltype, int soundnum, int color)
 	Initball->m_iballoontype = balltype;
 	Initball->m_soundnum = soundnum;
 	Initball->m_iballooncolor = color;
+	Initball->m_iballoonDir = Dir;
 
 	return Initball;
 }

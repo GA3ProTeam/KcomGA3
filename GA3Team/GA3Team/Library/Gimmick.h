@@ -16,15 +16,30 @@ enum BalloonColor {
 	YELLOW,
 	ORANGE,
 	PURPLE,
+	GRAY,
 	ASH,
 	PINK,
 };
+//吹き出しの形(吹き出しのチョンの部分の方向)
+enum Balloondir {
+	LOWER_LEFT, //左下
+	LOWER_RIGHT,//右下
+	UPPER_LEFT,//左上
+	UPPER_RIGHT,//右上
+	UNDER,//真下
+	UPPER,//真上
+	LEFT,//真左
+	RIGHT,//真右
+	
+};
+
 //吹き出し構造体
 typedef struct
 {
 	int m_iGimXpos;     //吹き出しの表示位置(X)
 	int m_iGimYpos;     //吹き出しの表示位置(Y)
 	int m_iballoontype; //吹き出しの種類
+	int m_iballoonDir;  //吹き出しの形
 	int m_iballooncolor;//吹き出しの色情報(シオンの能力発動時)
 	RECT m_gimsrc;		//転送先座標
 	int m_soundnum;     //ギミックが持っている音情報					 
@@ -35,7 +50,7 @@ typedef struct
 
 //吹き出し構造体(Balloon)の初期化関数
 //InitBall(X座標、Y座標,吹き出しの種類,(talk or sound),ギミックが持っている音情報(ない場合は　EXCEPTION　を入れる)),シオンの能力発動時の色情報
-Balloon *InitBall(int gimX, int gimY, int balltype, int soundnum,int color);
+Balloon *InitBall(int gimX, int gimY, int balltype, int soundnum, int color, int Dir);
 
 //ギミッククラス(基底)
 class Gimmick : public CObj {

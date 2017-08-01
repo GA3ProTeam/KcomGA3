@@ -3,6 +3,17 @@
 void CSavedataManeger::Init()
 {
 	Savedata.resize(3);
+
+	for (int i = 0; i < 3; i++) {
+		Savedata[i].m_bKouneflg.resize(100);
+		Savedata[i].m_bKouneClearflg.resize(10);
+		Savedata[i].m_bMelueruflg.resize(100);
+		Savedata[i].m_bMelueruClearflg.resize(10);
+		Savedata[i].m_bSionflg.resize(100);
+		Savedata[i].m_bSionClearflg.resize(10);
+		Savedata[i].m_btutoriaruflg.resize(10);
+		Savedata[i].m_btutorial = false;
+	}
 }
 
 void CSavedataManeger::Loadsavedata()

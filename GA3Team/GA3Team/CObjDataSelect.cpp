@@ -46,23 +46,11 @@ void CObjDataSelect::Destructor()
 
 void CObjDataSelect::Action()
 {
-
 	//プレイヤーデータ読込み
 	if (iLoad_flg == 0)
 	{
-		int i = 0;
-		while(i < 3)
-		{
-			if (SavedataManeger()->Savedatacheck(i))
-			{
-				SavedataManeger()->Loadsavedata();
-				i = 3;
-			}
-
-			i++;
-		}
-
 		
+		SavedataManeger()->Loadsavedata();
 
 		//セーブデータ作成(仮) 
 		//SavedataManeger()->Writesavedata();
@@ -251,7 +239,7 @@ void CObjDataSelect::ButtonFromTheBegin() {
 					m_bsavedataflg = false;
 
 					//デバッグ用
-					sprintf(m_cplayername[m_iSelectData], "No Data");
+					//sprintf(m_cplayername[m_iSelectData], "No Data");
 
 					//メッセージボックスを閉じる
 					m_bmessageflg = false;
@@ -272,12 +260,12 @@ void CObjDataSelect::ButtonFromTheBegin() {
 
 		if (DialogBox(User()->p_hInstance, MAKEINTRESOURCE(IDD_DIALOG1), User()->p_hWnd, User()->p_DlgProc) == IDOK) {
 
-			if(strcmp(User()->dlgIn, m_cplayername[m_iSelectData]) !=  0 )
-			sprintf(m_cplayername[m_iSelectData], "%s", User()->dlgIn);
-
+			if (strcmp(User()->dlgIn, m_cplayername[m_iSelectData]) != 0) {
+				sprintf(m_cplayername[m_iSelectData], "%s", User()->dlgIn);
+			}
+			
 			//プレイヤーネームをセーブデータへ
 			strcpy(SavedataManeger()->Savedata[m_iSelectData].m_cPlayerName, m_cplayername[m_iSelectData]);
-
 
 			//新規セーブデータ作成(仮) 
 			SavedataManeger()->Writesavedata();

@@ -775,6 +775,7 @@ void GimmickTelevision::Action()
 	if (ball[0].OnPush) {
 
 		//テレビ音取得
+		SoundManager()->SoundSave(1/*ここ未定*/);
 
 	}
 }
@@ -810,7 +811,7 @@ void GimmickOven::Action()
 		if (SavedataManeger()->CurrentData->m_bMelueruflg[2] == true) {
 
 			//レンジ音入手
-
+			SoundManager()->SoundSave(1/*ここ未定*/);
 
 
 		}
@@ -853,7 +854,7 @@ void GimmickKatsuo::Action()
 
 
 		}
-		else if (User()->m_bmerueruability == false &&
+		else if (User()->m_bmerueruability == true &&
 			SavedataManeger()->CurrentData->m_bMelueruflg[0] == false) {
 
 			//カツオフラグ無し、能力あり会話

@@ -866,8 +866,8 @@ void GimmickOldman::Action()
 
 
 		}
-		else if (SavedataManeger()->CurrentData->m_bKouneflg[2] == false&& SavedataManeger()->CurrentData->m_bKouneflg[1] == true) {
-			
+		else if (SavedataManeger()->CurrentData->m_bKouneflg[2] == false && SavedataManeger()->CurrentData->m_bKouneflg[1] == true) {
+
 
 		}
 
@@ -876,8 +876,10 @@ void GimmickOldman::Action()
 
 		}
 
-		else
+		else {
 
+		}
+		
 	}
 }//˜Vl‚Ìƒhƒ[
 void GimmickOldman::Draw()

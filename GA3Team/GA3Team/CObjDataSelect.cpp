@@ -30,10 +30,8 @@ void CObjDataSelect::Init()
 		text_size_playername[i] = 20; //仮
 		text_size_progress[i] = 16; //仮
 
-		//キャラクター進行度表示
-//		sprintf(charaData[i].Koune_progress, "0");
-//		sprintf(charaData[i].Sion_progress, "0");
-//		sprintf(charaData[i].Melueru_progress, "0");
+		m_iprogress_cnt[i] = 0;
+
 	}
 
 	iLoad_flg = 0;
@@ -137,15 +135,18 @@ void CObjDataSelect::Draw()
 			}
 		}
 
-		m_rDst.top = 0; m_rDst.left = /*セーブデータから取得してきた進行度　* */0; m_rDst.bottom = m_rDst.top + 64; m_rDst.right = m_rDst.left + 64;
+		//切り取り座標
+		m_rDst_Koune.top   = 0; m_rDst_Koune.left   = /*セーブデータから取得してきた進行度　* */0; m_rDst_Koune.bottom   = m_rDst_Koune.top   + 64; m_rDst_Koune.right   = m_rDst_Koune.left   + 64; //コウネ
+		m_rDst_Sion.top    = 0; m_rDst_Sion.left    = /*セーブデータから取得してきた進行度　* */0; m_rDst_Sion.bottom    = m_rDst_Sion.top    + 64; m_rDst_Sion.right    = m_rDst_Sion.left    + 64; //シオン
+		m_rDst_Melueru.top = 0; m_rDst_Melueru.left = /*セーブデータから取得してきた進行度　* */0; m_rDst_Melueru.bottom = m_rDst_Melueru.top + 64; m_rDst_Melueru.right = m_rDst_Melueru.left + 64; //メルエル
 		//転送先座標
 		m_rSrc_Koune.top   = (i * 150) + 100;   m_rSrc_Koune.left   = 400;   m_rSrc_Koune.bottom   = m_rSrc_Koune.top + 64;    m_rSrc_Koune.right = m_rSrc_Koune.left + 64; //コウネ
 		m_rSrc_Sion.top    = (i * 150) + 100;   m_rSrc_Sion.left    = 500;   m_rSrc_Sion.bottom    = m_rSrc_Sion.top + 64;     m_rSrc_Sion.right = m_rSrc_Sion.left + 64; //シオン
 		m_rSrc_Melueru.top = (i * 150) + 100;   m_rSrc_Melueru.left = 600;   m_rSrc_Melueru.bottom = m_rSrc_Melueru.top + 64;  m_rSrc_Melueru.right = m_rSrc_Melueru.left + 64; //メルエル
 
-		Image()->Draw(2, &m_rSrc_Koune,   &m_rDst, coldraw, 0.0f);  //コウネ
-		Image()->Draw(2, &m_rSrc_Sion,    &m_rDst, coldraw, 0.0f);	//シオン
-		Image()->Draw(2, &m_rSrc_Melueru, &m_rDst, coldraw, 0.0f);	//メルエル
+		Image()->Draw(2, &m_rSrc_Koune,   &m_rDst_Koune,   coldraw, 0.0f);  //コウネ
+		Image()->Draw(2, &m_rSrc_Sion,    &m_rDst_Sion,    coldraw, 0.0f);	//シオン
+		Image()->Draw(2, &m_rSrc_Melueru, &m_rDst_Melueru, coldraw, 0.0f);	//メルエル
 
 		}
 

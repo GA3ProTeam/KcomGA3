@@ -9,9 +9,7 @@ struct CharacterData
 	int Koune_Data;
 	int Sion_Data;
 	int Melueru_Data;
-	//char Koune_progress[32];
-	//char Sion_progress[32];
-	//char Melueru_progress[32];
+
 };
 
 
@@ -74,6 +72,8 @@ private:
 	int m_Load_MelueruClearflg[3][10];
 
 	CharacterData charaData[MAX_SAVEDATA];
+
+	int m_iprogress_cnt[3]; //各キャラクターの進行度カウント
 
 	//一回だけロードする用
 	int iLoad_flg;

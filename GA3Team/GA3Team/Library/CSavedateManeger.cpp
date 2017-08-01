@@ -18,7 +18,6 @@ void CSavedataManeger::Init()
 
 void CSavedataManeger::Loadsavedata()
 {
-
 	for (int i = 0; i < 3; i++) {
 		Savedata[i].m_bKouneflg.clear();
 		Savedata[i].m_bKouneClearflg.clear();
@@ -32,6 +31,7 @@ void CSavedataManeger::Loadsavedata()
 		Savedata[i].m_btutoriaruflg.clear();
 		Savedata[i].m_btutorial = false;
 	}
+
 
 	ifstream stream("test.sav", std::ios::in);
 	vector<string> vstr;

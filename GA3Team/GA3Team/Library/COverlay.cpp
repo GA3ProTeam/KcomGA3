@@ -112,16 +112,43 @@ void COverlay::Draw()
 
 			m_iDelay++;
 
-		if (i < 10) {
-			if (m_iDelay > m_iTextSpeed) {
-				sprintf_s(c, "%d", i);
-				m_strTemp += c;
-				i++;
-			}
-		}
+			m_strTemp.resize(textmgr->m_Tutorial_Text[m_iDrawingStageID].size());
 
-		if (m_iDelay > m_iTextSpeed)
-			m_iDelay = 0;
+			if (m_iChar_Line < textmgr->m_Tutorial_Text[m_iDrawingStageID].size()) {
+				if (m_iChar_Pos < textmgr->m_Tutorial_Text[m_iDrawingStageID][m_iChar_Line].length()) {
+					if (m_iDelay > m_iTextSpeed) {
+						unsigned char lead = textmgr->m_Tutorial_Text[m_iDrawingStageID][m_iChar_Line][m_iChar_Pos];
+						if (lead < 128) {
+							m_iChar_Size = 1;
+						}
+						else if (lead < 224) {
+							m_iChar_Size = 2;
+						}
+						else if (lead < 240) {
+							m_iChar_Size = 3;
+						}
+						else {
+							m_iChar_Size = 4;
+						}
+
+						sprintf_s(c, "%s", textmgr->m_Tutorial_Text[m_iDrawingStageID][m_iChar_Line].substr(m_iChar_Pos, m_iChar_Size).c_str());
+						m_strTemp[m_iChar_Line] += c;
+
+						m_iChar_Pos += m_iChar_Size;
+					}
+				}
+				else {
+					m_iChar_Pos = 0;
+					m_iChar_Line++;
+				}
+			}
+			else {
+				FadeOut();
+				StopDraw();
+			}
+
+			if (m_iDelay > m_iTextSpeed)
+				m_iDelay = 0;
 
 
 			char linec[32];
@@ -142,7 +169,7 @@ void COverlay::Draw()
 			for (unsigned int i = 0; i < m_strTemp.size(); i++) {
 				sprintf_s(tmp, "%s", m_strTemp[i].c_str());
 				float col[4] = { 1.0f,1.0f,1.0f,m_fAlpha };
-				font->StrDraw(tmp, WINDOW_SIZE_W / 2 - 300, (WINDOW_SIZE_H / 2 + 200) + (i*16), 16, col);
+				font->StrDraw(tmp, WINDOW_SIZE_W / 2 - 300, (WINDOW_SIZE_H / 2 + 200) + (i * 16), 16, col);
 			}
 		}
 	}

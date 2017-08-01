@@ -8,9 +8,6 @@
 
 void CObjDataSelect::Init()
 {
-	m_idraw_pos_x = 0;
-	m_idraw_pos_y = 0;
-
 	m_bsavedataflg = false;
 	m_icreateflg = false;
 
@@ -63,8 +60,6 @@ void CObjDataSelect::Action()
 
 			}
 		}
-
-
 
 		iLoad_flg = 1;
 	

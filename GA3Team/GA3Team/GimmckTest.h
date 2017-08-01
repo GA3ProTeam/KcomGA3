@@ -186,8 +186,6 @@ class GimmickChildren : public Gimmick
 private:
 	int m_iChild_ID;//子供を区別するための変数
 
-	bool m_bclearflg[3];//クリアフラグ
-
 public:
 	GimmickChildren() {};
 	~GimmickChildren() {};

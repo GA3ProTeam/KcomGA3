@@ -31,6 +31,8 @@ void CObjDataSelect::Init()
 		//カラー情報初期化
 		text_size_playername[i] = 20; //仮
 		text_size_progress[i] = 16; //仮
+
+		m_iprogress_cnt[i] = 0;
 	}
 
 	iLoad_flg = 0;
@@ -58,8 +60,10 @@ void CObjDataSelect::Action()
 				m_Load_KouneClearflg[saveNum][flgNum] = SavedataManeger()->Savedata[saveNum].m_bKouneClearflg[flgNum];
 				m_Load_SionClearflg[saveNum][flgNum] = SavedataManeger()->Savedata[saveNum].m_bSionClearflg[flgNum];
 				m_Load_MelueruClearflg[saveNum][flgNum] = SavedataManeger()->Savedata[saveNum].m_bMelueruClearflg[flgNum];
+
 			}
 		}
+
 
 
 		iLoad_flg = 1;
@@ -131,18 +135,39 @@ void CObjDataSelect::Draw()
 	//各キャラクターの進行度データ
 	for (int i = 0; i < MAX_SAVEDATA; i++) {
 
+		for (int f = 0; f < 3; f++) {
+			m_iprogress_cnt[f] = 0;
+		}
+		
 		if (SavedataManeger()->Savedatacheck(i)) {
 
-		
-		m_rDst.top = 0; m_rDst.left = /*セーブデータから取得してきた進行度　* */0; m_rDst.bottom = m_rDst.top + 64; m_rDst.right = m_rDst.left + 64;
-		//転送先座標
-		m_rSrc_Koune.top   = (i * 150) + 100;   m_rSrc_Koune.left   = 400;   m_rSrc_Koune.bottom   = m_rSrc_Koune.top + 64;    m_rSrc_Koune.right = m_rSrc_Koune.left + 64; //コウネ
-		m_rSrc_Sion.top    = (i * 150) + 100;   m_rSrc_Sion.left    = 500;   m_rSrc_Sion.bottom    = m_rSrc_Sion.top + 64;     m_rSrc_Sion.right = m_rSrc_Sion.left + 64; //シオン
-		m_rSrc_Melueru.top = (i * 150) + 100;   m_rSrc_Melueru.left = 600;   m_rSrc_Melueru.bottom = m_rSrc_Melueru.top + 64;  m_rSrc_Melueru.right = m_rSrc_Melueru.left + 64; //メルエル
+			for (int c = 0; c < 10; c++) {
+				if (m_Load_KouneClearflg[i][c] == 1) {
+					m_iprogress_cnt[0]++;
+				}
+				if (m_Load_SionClearflg[i][c] == 1) {
+					m_iprogress_cnt[1]++;
+				}
+				if (m_Load_MelueruClearflg[i][c] == 1) {
+					m_iprogress_cnt[2]++;
+				}
+			}
 
-		Image()->Draw(2, &m_rSrc_Koune,   &m_rDst, coldraw, 0.0f);  //コウネ
-		Image()->Draw(2, &m_rSrc_Sion,    &m_rDst, coldraw, 0.0f);	//シオン
-		Image()->Draw(2, &m_rSrc_Melueru, &m_rDst, coldraw, 0.0f);	//メルエル
+			//切り取り座標
+			m_rDst_Koune.top   = 0; m_rDst_Koune.left   = m_iprogress_cnt[0] * 64; m_rDst_Koune.bottom   = m_rDst_Koune.top   + 64; m_rDst_Koune.right = m_rDst_Koune.left   + 64; //コウネ
+			m_rDst_Sion.top    = 0; m_rDst_Sion.left    = m_iprogress_cnt[1] * 64; m_rDst_Sion.bottom    = m_rDst_Sion.top    + 64; m_rDst_Sion.right  = m_rDst_Sion.left    + 64; //シオン
+			m_rDst_Melueru.top = 0; m_rDst_Melueru.left = m_iprogress_cnt[2] * 64; m_rDst_Melueru.bottom = m_rDst_Melueru.top + 64; m_rDst_Koune.right = m_rDst_Melueru.left + 64; //メリエル
+			//転送先座標
+			m_rSrc_Koune.top   = (i * 150) + 100;   m_rSrc_Koune.left   = 400;   m_rSrc_Koune.bottom   = m_rSrc_Koune.top + 64;    m_rSrc_Koune.right = m_rSrc_Koune.left + 64; //コウネ
+			m_rSrc_Sion.top    = (i * 150) + 100;   m_rSrc_Sion.left    = 500;   m_rSrc_Sion.bottom    = m_rSrc_Sion.top + 64;     m_rSrc_Sion.right = m_rSrc_Sion.left + 64; //シオン
+			m_rSrc_Melueru.top = (i * 150) + 100;   m_rSrc_Melueru.left = 600;   m_rSrc_Melueru.bottom = m_rSrc_Melueru.top + 64;  m_rSrc_Melueru.right = m_rSrc_Melueru.left + 64; //メルエル
+
+			Image()->Draw(2, &m_rSrc_Koune,   &m_rDst_Koune,   coldraw, 0.0f);  //コウネ
+			Image()->Draw(2, &m_rSrc_Sion,    &m_rDst_Sion,    coldraw, 0.0f);	//シオン
+			Image()->Draw(2, &m_rSrc_Melueru, &m_rDst_Melueru, coldraw, 0.0f);	//メルエル
+
+			//デバック用
+			//printf("\n\n\n\n\n%d", m_iprogress_cnt[0]);
 
 		}
 

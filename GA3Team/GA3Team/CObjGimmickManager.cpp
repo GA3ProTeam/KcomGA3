@@ -119,7 +119,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 		
 		m_gimmick_manhole_hole = new GimmickManholeHole();
 		Obj()->InsertObj(m_gimmick_manhole_hole, GIMMICK_MANHOLEHOLE, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_manhole_hole->Init(-100, 200, 64, 64, 1);
+		m_gimmick_manhole_hole->Init();
 
 		m_gimmick_oldman = new GimmickOldman();
 		Obj()->InsertObj(m_gimmick_oldman, GIMMICK_OLDMAN, 5, this->m_pScene, HIT_BOX_OFF);

@@ -335,7 +335,7 @@ void Gimmickearphone::Draw()
 	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
 	//•`‰æ
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
-	Balloon *aaa = InitBall(48, -48, sound, 1,EXCEPTION, LOWER_LEFT);
+	Balloon *aaa = InitBall(48, -48, sound, 1,EXCEPTION);
 
 	gimmicDraw(aaa, 0);
 	delete aaa;
@@ -378,7 +378,7 @@ void Gimmickkoune::Draw()
 	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
 	//•`‰æ
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
-	Balloon *aaa = InitBall(48, -48, sound, 1, EXCEPTION, LOWER_LEFT);
+	Balloon *aaa = InitBall(48, -48, sound, 1, EXCEPTION);
 
 	gimmicDraw(aaa, 0);
 	delete aaa;
@@ -409,7 +409,7 @@ void Gimmickcat::Draw()
 	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
 	//•`‰æ
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
-	Balloon *aaa = InitBall(48, -48, sound, 1, GREEN, LOWER_LEFT);
+	Balloon *aaa = InitBall(48, -48, sound, 1, GREEN);
 
 	gimmicDraw(aaa, 0);
 	delete aaa;
@@ -441,7 +441,7 @@ void Gimmickbicycle::Draw()
 	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
 	//•`‰æ
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
-	Balloon *aaa = InitBall(48, -48, sound, 1, ORANGE, LOWER_LEFT);
+	Balloon *aaa = InitBall(48, -48, sound, 1, ORANGE);
 
 	gimmicDraw(aaa, 0);
 	delete aaa;
@@ -473,7 +473,7 @@ void Gimmickfiretruck::Draw()
 	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
 	//•`‰æ
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
-	Balloon *aaa = InitBall(48, -48, sound, 1, PURPLE, LOWER_LEFT);
+	Balloon *aaa = InitBall(48, -48, sound, 1, PURPLE);
 
 	gimmicDraw(aaa, 0);
 	delete aaa;
@@ -929,6 +929,7 @@ void GimmickTelevision::Action()
 	if (ball[0].OnPush) {
 
 		//ƒeƒŒƒr‰¹Žæ“¾
+		SoundManager()->SoundSave(1/*‚±‚±–¢’è*/);
 
 	}
 }
@@ -951,7 +952,7 @@ void GimmickTelevision::Draw()
 	//•`‰æ
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
 
-	Balloon *ball1 = InitBall(48, -48, sound, 1,CNONE, LOWER_LEFT);
+	Balloon *ball1 = InitBall(48, -48, sound, 1,CNONE);
 	gimmicDraw(ball1, 0);
 	delete ball1;
 }
@@ -964,7 +965,7 @@ void GimmickOven::Action()
 		if (SavedataManeger()->CurrentData->m_bMelueruflg[2] == true) {
 
 			//ƒŒƒ“ƒW‰¹“üŽè
-
+			SoundManager()->SoundSave(1/*‚±‚±–¢’è*/);
 
 
 		}
@@ -988,7 +989,7 @@ void GimmickOven::Draw()
 	//•`‰æ
 	Image()->Draw(6, &m_src, &m_dst, col, 0.0f);
 
-	Balloon *ball1 = InitBall(48, -48, sound, 1, CNONE, LOWER_LEFT);
+	Balloon *ball1 = InitBall(48, -48, sound, 1, CNONE);
 	gimmicDraw(ball1, 0);
 	delete ball1;
 }
@@ -1007,7 +1008,7 @@ void GimmickKatsuo::Action()
 
 
 		}
-		else if (User()->m_bmerueruability == false &&
+		else if (User()->m_bmerueruability == true &&
 			SavedataManeger()->CurrentData->m_bMelueruflg[0] == false) {
 
 			//ƒJƒcƒIƒtƒ‰ƒO–³‚µA”\—Í‚ ‚è‰ï˜b
@@ -1058,7 +1059,7 @@ void GimmickKatsuo::Draw()
 	//•`‰æ
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
 
-	Balloon *ball1 = InitBall(48, -48, talk, 1, CNONE, LOWER_LEFT);
+	Balloon *ball1 = InitBall(48, -48, talk, 1, CNONE);
 	gimmicDraw(ball1, 0);
 	delete ball1;
 }
@@ -1100,7 +1101,7 @@ void GimmickDoor::Draw()
 	//•`‰æ
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
 
-	Balloon *ball1 = InitBall(48, -48, notype, 1, CNONE, LOWER_LEFT);
+	Balloon *ball1 = InitBall(48, -48, talk, 1, CNONE);
 	gimmicDraw(ball1, 0);
 	delete ball1;
 }

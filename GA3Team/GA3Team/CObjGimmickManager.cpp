@@ -15,6 +15,8 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 	*/
 	SavedataManeger()->Setcurrentdata();
 
+
+
 	switch (m_Stage_ID) {
 
 	//-シオンステージ-----------------------------------------

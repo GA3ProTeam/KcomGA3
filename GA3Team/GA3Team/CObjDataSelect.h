@@ -9,9 +9,6 @@ struct CharacterData
 	int Koune_Data;
 	int Sion_Data;
 	int Melueru_Data;
-	char Koune_progress[32];
-	char Sion_progress[32];
-	char Melueru_progress[32];
 };
 
 
@@ -28,6 +25,11 @@ public:
 	
 
 private:
+
+	RECT m_rDst_Koune,m_rDst_Sion, m_rDst_Melueru;
+	RECT m_rSrc_Koune, m_rSrc_Sion, m_rSrc_Melueru;
+
+
 
 	bool m_bsavedataflg; //各セーブデータ確認する
 	bool m_bmessageflg;  //メッセージフラグ
@@ -63,6 +65,13 @@ private:
 
 	//一回だけロードする用
 	int iLoad_flg;
+	int iTitle_flg;
+
+	int m_iprogress_cnt[MAX_SAVEDATA];
+	int m_Load_KouneClearflg[MAX_SAVEDATA][10];
+	int m_Load_SionClearflg[MAX_SAVEDATA][10];
+	int m_Load_MelueruClearflg[MAX_SAVEDATA][10];
+
 
 };
 

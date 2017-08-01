@@ -314,13 +314,13 @@ void Gimmickkoune::Draw()
 	float col[4] = { 1.0,1.0,1.0,1.0 };
 	//Ø‚èŽæ‚èæÀ•W
 	m_dst.top = 0; m_dst.left = 0;
-	m_dst.bottom = 200; m_dst.right = 200;
+	m_dst.bottom = 1024; m_dst.right = 1024;
 
 	//“]‘—æÀ•W
 	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
 	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
 	//•`‰æ
-	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
+	Image()->Draw(8, &m_src, &m_dst, col, 0.0f);
 	Balloon *aaa = InitBall(48, -48, sound, 1, EXCEPTION, LOWER_LEFT);
 
 	gimmicDraw(aaa, 0);
@@ -377,14 +377,14 @@ void Gimmickbicycle::Draw()
 	float col[4] = { 1.0,1.0,1.0,1.0 };
 	//Ø‚èŽæ‚èæÀ•W
 	m_dst.top = 0; m_dst.left = 0;
-	m_dst.bottom = 200; m_dst.right = 200;
+	m_dst.bottom = 1024; m_dst.right = 1024;
 
 	//“]‘—æÀ•W
 	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
 	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
 	//•`‰æ
-	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
-	Balloon *aaa = InitBall(48, -48, sound, 1, ORANGE, LOWER_LEFT);
+	Image()->Draw(10, &m_src, &m_dst, col, 0.0f);
+	Balloon *aaa = InitBall(148, -48, sound, 1, ORANGE, LOWER_LEFT);
 
 	gimmicDraw(aaa, 0);
 	delete aaa;

@@ -523,8 +523,6 @@ void GimmickChildren::Init(int xpos, int ypos, int widht, int height, int balloo
 	m_iHeight = height;	//ギミック高さの初期化
 	m_iballoonnum = balloonnum;//吹き出しの総数
 
-	
-
 }
 void GimmickChildren::Destructor()//デストラクタ
 {
@@ -550,6 +548,13 @@ void GimmickChildren::Action()//アクション
 				//}
 			}
 		}
+		if (SavedataManeger()->CurrentData->m_bSionflg[3] && ball[0].OnPush) {
+			//会話「これだよ。本当に美味しいよね！」
+		}
+
+		else if (!SavedataManeger()->CurrentData->m_bSionflg[3] && ball[0].OnPush) {
+			//会話「僕は、カリカリの菓子が好きなんだ！」
+		}
 		
 		break;
 
@@ -566,6 +571,15 @@ void GimmickChildren::Action()//アクション
 				//}
 			}
 		}
+
+		if (SavedataManeger()->CurrentData->m_bSionflg[4] && ball[0].OnPush) {
+			//会話「優しいお兄ちゃんありがとう！」
+		}
+
+		else if (!SavedataManeger()->CurrentData->m_bSionflg[4] && ball[0].OnPush) {
+			//会話「私はフワフワしたお菓子が好きなの!」
+		}
+
 		break;
 
 	case 3://弱気な男の子
@@ -582,6 +596,14 @@ void GimmickChildren::Action()//アクション
 			}
 		}
 
+		if (SavedataManeger()->CurrentData->m_bSionflg[3] && ball[0].OnPush) {
+			//会話「あ…ありがとう。」
+		}
+
+		else if (!SavedataManeger()->CurrentData->m_bSionflg[3] && ball[0].OnPush) {
+			//会話「ぼ…ぼくは、サクサクが好きです…」
+		}
+
 		break;
 
 	}
@@ -589,6 +611,7 @@ void GimmickChildren::Action()//アクション
 	if (SavedataManeger()->CurrentData->m_bSionflg[3] == true && 
 		SavedataManeger()->CurrentData->m_bSionflg[4] == true && 
 		SavedataManeger()->CurrentData->m_bSionflg[5] == true) {
+		//「お兄ちゃん、ありがとう。その猫なら、ラボの前にいたよ！」
 		SavedataManeger()->CurrentData->m_bSionClearflg[2] = true;
 	}
 
@@ -641,6 +664,13 @@ void GimmickGranny::Destructor()//デストラクタ
 void GimmickGranny::Action()//アクション
 {
 	aaa = InitBall(48, -48, talk, EXCEPTION, CNONE, LOWER_LEFT);
+
+	if (ball[0].OnPush) {
+		/*会話「ヒントを出してあげるね！
+		寒色→暖色
+		硬い→軟らかい	だよ！*/
+	}
+
 }
 void GimmickGranny::Draw()//描画
 {

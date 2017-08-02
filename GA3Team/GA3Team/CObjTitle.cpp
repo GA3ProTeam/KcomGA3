@@ -7,7 +7,7 @@ void CObjTitle::Init()
 
 	m_bdataflg = false;
 
-	m_ititle_choice = NONE;
+	m_inext_scene = NONE;
 
 	m_icreateflg = false;
 
@@ -60,18 +60,18 @@ void CObjTitle::Action()
 
 	//‚Í‚¶‚ß‚©‚ç
 	if (m_obj_button[0]->Push()){
-		m_ititle_choice = NEW;
+		m_inext_scene = NEW;
 	}
 	//‚Â‚Ã‚«‚©‚ç
 	else if (m_bdataflg && m_obj_button[1]->Push()) {
-		m_ititle_choice = LOAD;
+		m_inext_scene = LOAD;
 	}
 
 	int mousex = Input()->m_x;
 	int mousey = Input()->m_y;
 
 
-	User()->mititle_choice = m_ititle_choice;
+	User()->m_iNext_Scene = m_inext_scene;
 
 }
 

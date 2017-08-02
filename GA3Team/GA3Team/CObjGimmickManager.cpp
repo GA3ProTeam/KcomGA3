@@ -16,7 +16,6 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 	*/
 	SavedataManeger()->Setcurrentdata();
 
-	
 
 	switch (m_Stage_ID) {
 
@@ -27,13 +26,50 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 
 		break;
 	case 11:
-
-
-
+		//シオンのステージ2のギミック生成
+		m_gimmick_earphone = new Gimmickearphone();
+		Obj()->InsertObj(m_gimmick_earphone, GIMMICK_EARPHONE, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_earphone->Init(350, 250, 70, 100, 1);
+		//コウネ生成
+		m_gimmick_koune = new Gimmickkoune();
+		Obj()->InsertObj(m_gimmick_koune, GIMMICK_KOUNE, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_koune->Init(-110, 220, 70, 100, 1);
+		//猫生成
+		m_gimmick_cat = new Gimmickcat();
+		Obj()->InsertObj(m_gimmick_cat, GIMMICK_CAT, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_cat->Init(550, 120, 70, 100, 1);
+		//自転車生成
+		m_gimmick_bicycle = new Gimmickbicycle();
+		Obj()->InsertObj(m_gimmick_bicycle, GIMMICK_BICYCLE, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_bicycle->Init(100, 300, 300, 300, 1);
+		//消防車
+		m_gimmick_firetruck = new Gimmickfiretruck();
+		Obj()->InsertObj(m_gimmick_firetruck, GIMMICK_FIRETRUCK, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_firetruck->Init(-400, 220, 70, 100, 1);
 		break;
-	case 12:
-		//シオンのステージ3のギミック生成
 
+	case 12:
+		////シオンのステージ3のギミック生成
+		//for (int i = 0; i < 3; i++) {
+		//	m_gimmick_children = new GimmickChildren(); 
+		//	Obj()->InsertObj(m_gimmick_children, GIMMICK_CHILDREN, 5, this->m_pScene, HIT_BOX_OFF);
+		//	m_gimmick_children->Init(100+(80*i), 350, 70, 100, 1,i+1);
+		//}
+		//m_gimmick_granny = new GimmickGranny();
+		//Obj()->InsertObj(m_gimmick_granny, GIMMICK_GRANNY, 5, this->m_pScene, HIT_BOX_OFF);
+		//m_gimmick_granny->Init(350, 220, 70, 100, 1);
+		
+		//m_gimmick_mynah = new GimmickMynah();
+		//Obj()->InsertObj(m_gimmick_mynah, GIMMICK_MYNAH, 5, this->m_pScene, HIT_BOX_OFF);
+		//m_gimmick_mynah->Init(500, 200, 50, 70, 1);
+		
+		//m_gimmick_shelf = new GimmickShelf();
+		//Obj()->InsertObj(m_gimmick_shelf, GIMMICK_SHELF, 5, this->m_pScene, HIT_BOX_OFF);
+		//m_gimmick_shelf->Init(600, 280, 100, 170, 3);
+		
+		//m_gimmick_windchime = new GimmickWindchime();
+		//Obj()->InsertObj(m_gimmick_windchime, GIMMICK_WINDCHIME, 5, this->m_pScene, HIT_BOX_OFF);
+		//m_gimmick_windchime->Init(230, 100, 60, 80, 1);
 
 
 		break;
@@ -122,7 +158,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 		
 		m_gimmick_manhole_hole = new GimmickManholeHole();
 		Obj()->InsertObj(m_gimmick_manhole_hole, GIMMICK_MANHOLEHOLE, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_manhole_hole->Init(-100, 200, 64, 64, 1);
+		m_gimmick_manhole_hole->Init();
 
 		m_gimmick_oldman = new GimmickOldman();
 		Obj()->InsertObj(m_gimmick_oldman, GIMMICK_OLDMAN, 5, this->m_pScene, HIT_BOX_OFF);

@@ -58,8 +58,6 @@ private:
 	char m_csave_playername[MAX_SAVEDATA][256];					   //プレイヤーネーム
 	int  m_iplayerprogress[MAX_SAVEDATA][CHAR_PROGRESS];	   //キャラクター進行度
 
-	//char load_progress[MAX_SAVEDATA][32];
-
 
 	CharacterData charaData[MAX_SAVEDATA];
 
@@ -67,7 +65,8 @@ private:
 	int iLoad_flg;
 	int iTitle_flg;
 
-	int m_iprogress_cnt[MAX_SAVEDATA];
+	int m_iprogress_cnt[MAX_SAVEDATA][3];
+
 	int m_Load_KouneClearflg[MAX_SAVEDATA][10];
 	int m_Load_SionClearflg[MAX_SAVEDATA][10];
 	int m_Load_MelueruClearflg[MAX_SAVEDATA][10];

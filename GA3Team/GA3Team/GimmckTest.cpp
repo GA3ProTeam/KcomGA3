@@ -57,6 +57,8 @@ void GimmickDoctor::Destructor() {
 
 //アクション
 void GimmickDoctor::Action() {
+	//メニュータブへの参照取得
+	CObjMenuTab* tab = (CObjMenuTab*)Obj()->GetObj(OBJ_MENUTAB);
 
 	//チュートリアルのフェイズ
 	switch (g_itutorial_phase) {
@@ -358,7 +360,7 @@ void Gimmickearphone::Draw()
 	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
 	//描画
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
-	Balloon *aaa = InitBall(48, -48, sound, 1,EXCEPTION/*, LOWER_LEFT*/);
+	Balloon *aaa = InitBall(48, -48, sound, 1,EXCEPTION, LOWER_LEFT);
 
 	gimmicDraw(aaa, 0);
 	delete aaa;
@@ -394,14 +396,14 @@ void Gimmickkoune::Draw()
 	float col[4] = { 1.0,1.0,1.0,1.0 };
 	//切り取り先座標
 	m_dst.top = 0; m_dst.left = 0;
-	m_dst.bottom = 200; m_dst.right = 200;
+	m_dst.bottom = 1024; m_dst.right = 1024;
 
 	//転送先座標
 	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
 	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
 	//描画
-	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
-	Balloon *aaa = InitBall(48, -48, sound, 1, EXCEPTION/*, LOWER_LEFT*/);
+	Image()->Draw(8, &m_src, &m_dst, col, 0.0f);
+	Balloon *aaa = InitBall(48, -48, sound, 1, EXCEPTION, LOWER_LEFT);
 
 	gimmicDraw(aaa, 0);
 	delete aaa;
@@ -432,7 +434,7 @@ void Gimmickcat::Draw()
 	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
 	//描画
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
-	Balloon *aaa = InitBall(48, -48, sound, 1, GREEN/*, LOWER_LEFT*/);
+	Balloon *aaa = InitBall(48, -48, sound, 1, GREEN, LOWER_LEFT);
 
 	gimmicDraw(aaa, 0);
 	delete aaa;
@@ -457,14 +459,14 @@ void Gimmickbicycle::Draw()
 	float col[4] = { 1.0,1.0,1.0,1.0 };
 	//切り取り先座標
 	m_dst.top = 0; m_dst.left = 0;
-	m_dst.bottom = 200; m_dst.right = 200;
+	m_dst.bottom = 1024; m_dst.right = 1024;
 
 	//転送先座標
 	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
 	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
 	//描画
-	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
-	Balloon *aaa = InitBall(48, -48, sound, 1, ORANGE/*, LOWER_LEFT*/);
+	Image()->Draw(10, &m_src, &m_dst, col, 0.0f);
+	Balloon *aaa = InitBall(148, -48, sound, 1, ORANGE, LOWER_LEFT);
 
 	gimmicDraw(aaa, 0);
 	delete aaa;
@@ -496,7 +498,7 @@ void Gimmickfiretruck::Draw()
 	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
 	//描画
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
-	Balloon *aaa = InitBall(48, -48, sound, 1, PURPLE/*, LOWER_LEFT*/);
+	Balloon *aaa = InitBall(48, -48, sound, 1, PURPLE, LOWER_LEFT);
 
 	gimmicDraw(aaa, 0);
 	delete aaa;
@@ -537,7 +539,7 @@ void GimmickChildren::Action()//アクション
 			switch (m_iChild_ID) {
 			case 1://強気な男の子
 				   //if (tab->GetGiveSound() == /*正解の音*/) {
-				m_bclearflg[0] = true;
+				SavedataManeger()->CurrentData->m_bSionflg[3] = true;
 				//	break;
 				//}
 				//else {
@@ -547,7 +549,7 @@ void GimmickChildren::Action()//アクション
 
 			case 2://優しい女の子
 				   //if (tab->GetGiveSound() == /*正解の音*/) {
-				m_bclearflg[1] = true;
+				SavedataManeger()->CurrentData->m_bSionflg[4] = true;
 				//	break;
 				//}
 				//else {
@@ -558,7 +560,7 @@ void GimmickChildren::Action()//アクション
 
 			case 3://弱気な男の子
 				   //if (tab->GetGiveSound() == /*正解の音*/) {
-				m_bclearflg[2] = true;
+				SavedataManeger()->CurrentData->m_bSionflg[5] = true;
 				//	break;
 				//}
 				//else {
@@ -607,7 +609,7 @@ void GimmickChildren::Draw()//描画
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
 
 	//1個の場合
-	Balloon *aaa = InitBall(48, -48, talk, EXCEPTION, CNONE);
+	Balloon *aaa = InitBall(48, -48, talk, EXCEPTION, CNONE, LOWER_LEFT);
 
 	gimmicDraw(aaa, 0);
 	delete aaa;
@@ -638,7 +640,7 @@ void GimmickGranny::Draw()//描画
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
 
 	//1個の場合
-	Balloon *aaa = InitBall(48, -48, talk, EXCEPTION, CNONE);
+	Balloon *aaa = InitBall(48, -48, talk, EXCEPTION, CNONE, LOWER_LEFT);
 
 	gimmicDraw(aaa, 0);
 	delete aaa;
@@ -669,7 +671,7 @@ void GimmickMynah::Draw()		//ドロー
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
 
 	//1個の場合
-	Balloon *aaa = InitBall(48, -48, sound, 1, PINK);
+	Balloon *aaa = InitBall(48, -48, sound, 1, PINK, LOWER_LEFT);
 
 	gimmicDraw(aaa, 0);
 	delete aaa;
@@ -700,9 +702,9 @@ void GimmickShelf::Draw()		//ドロー
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
 
 	//複数の場合
-	Balloon *aaa = InitBall(-48, 70, sound, 1, BLUE);
-	Balloon *bbb = InitBall(0, -48, sound, 1, RED);
-	Balloon *ccc = InitBall(48, 70, sound, 1, YELLOW);
+	Balloon *aaa = InitBall(-48, 70, sound, 1, BLUE, LOWER_LEFT);
+	Balloon *bbb = InitBall(0, -48, sound, 1, RED, LOWER_LEFT);
+	Balloon *ccc = InitBall(48, 70, sound, 1, YELLOW, LOWER_LEFT);
 
 	gimmicDraw(aaa, 0);
 	gimmicDraw(bbb, 1);
@@ -738,7 +740,7 @@ void GimmickWindchime::Draw()		//ドロー
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
 
 	//1個の場合
-	Balloon *aaa = InitBall(48, -48, talk, 1, PURPLE);
+	Balloon *aaa = InitBall(48, -48, talk, 1, PURPLE, LOWER_LEFT);
 
 	gimmicDraw(aaa, 0);
 	delete aaa;
@@ -798,7 +800,7 @@ void GimmickDog::Draw()
 	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
 	//描画
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
-	Balloon *aaa = InitBall(48, -48, sound, 1, RED);
+	Balloon *aaa = InitBall(48, -48, sound, 1, RED, LOWER_LEFT);
 
 	gimmicDraw(aaa, 0);
 	delete aaa;
@@ -830,7 +832,7 @@ void GimmickManholeCover::Draw()
 	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
 	//描画
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
-	Balloon *aaa = InitBall(48, -48, sound, 1, RED);
+	Balloon *aaa = InitBall(48, -48, sound, 1, RED, LOWER_LEFT);
 
 	gimmicDraw(aaa, 0);
 	delete aaa;
@@ -864,7 +866,7 @@ void GimmickManholeHole::Draw()
 	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
 	//描画
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
-	Balloon *aaa = InitBall(48, -48, sound, 1, RED);
+	Balloon *aaa = InitBall(48, -48, sound, 1, RED, LOWER_LEFT);
 
 	gimmicDraw(aaa, 0);
 	delete aaa;
@@ -889,8 +891,8 @@ void GimmickOldman::Action()
 
 
 		}
-		else if (SavedataManeger()->CurrentData->m_bKouneflg[2] == false&& SavedataManeger()->CurrentData->m_bKouneflg[1] == true) {
-			
+		else if (SavedataManeger()->CurrentData->m_bKouneflg[2] == false && SavedataManeger()->CurrentData->m_bKouneflg[1] == true) {
+
 
 		}
 
@@ -902,7 +904,7 @@ void GimmickOldman::Action()
 		else {
 
 		}
-
+		
 	}
 }//老人のドロー
 void GimmickOldman::Draw()
@@ -917,7 +919,7 @@ void GimmickOldman::Draw()
 	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
 	//描画
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
-	Balloon *aaa = InitBall(48, -48, sound, 1, RED);
+	Balloon *aaa = InitBall(48, -48, sound, 1, RED, LOWER_LEFT);
 
 	gimmicDraw(aaa, 0);
 	delete aaa;
@@ -956,6 +958,7 @@ void GimmickTelevision::Action()
 	if (ball[0].OnPush) {
 
 		//テレビ音取得
+		SoundManager()->SoundSave(1/*ここ未定*/);
 
 	}
 }
@@ -991,7 +994,7 @@ void GimmickOven::Action()
 		if (SavedataManeger()->CurrentData->m_bMelueruflg[2] == true) {
 
 			//レンジ音入手
-
+			SoundManager()->SoundSave(1/*ここ未定*/);
 
 
 		}
@@ -1015,7 +1018,7 @@ void GimmickOven::Draw()
 	//描画
 	Image()->Draw(6, &m_src, &m_dst, col, 0.0f);
 
-	Balloon *ball1 = InitBall(48, -48, sound, 1, CNONE/*, LOWER_LEFT*/);
+	Balloon *ball1 = InitBall(48, -48, sound, 1, CNONE, LOWER_LEFT);
 	gimmicDraw(ball1, 0);
 	delete ball1;
 }
@@ -1034,7 +1037,7 @@ void GimmickKatsuo::Action()
 
 
 		}
-		else if (User()->m_bmerueruability == false &&
+		else if (User()->m_bmerueruability == true &&
 			SavedataManeger()->CurrentData->m_bMelueruflg[0] == false) {
 
 			//カツオフラグ無し、能力あり会話
@@ -1085,7 +1088,7 @@ void GimmickKatsuo::Draw()
 	//描画
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
 
-	Balloon *ball1 = InitBall(48, -48, talk, 1, CNONE/*, LOWER_LEFT*/);
+	Balloon *ball1 = InitBall(48, -48, talk, 1, CNONE, LOWER_LEFT);
 	gimmicDraw(ball1, 0);
 	delete ball1;
 }
@@ -1127,7 +1130,7 @@ void GimmickDoor::Draw()
 	//描画
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
 
-	Balloon *ball1 = InitBall(48, -48, /*notype*/ talk, 1, CNONE/*, LOWER_LEFT*/);
+	Balloon *ball1 = InitBall(48, -48, talk, 1, CNONE, LOWER_LEFT);
 	gimmicDraw(ball1, 0);
 	delete ball1;
 }

@@ -10,7 +10,13 @@ void CSceneGameMain::InitScene()
 	Image()->LoadImage("黒犬c.png", 2, TEX_SIZE_256);//テスト用
 	Image()->LoadImage("吹き出し仮.png", 3, TEX_SIZE_512);//テスト用
 	Image()->LoadImage("吹き出し音符.png", 4, TEX_SIZE_512);//テスト用
-	Image()->LoadImage("StageTutorial.png", 5, TEX_SIZE_1024);//テスト用
+	Image()->LoadImage("StageTutorial.png", 5, TEX_SIZE_1024);//博士
+	Image()->LoadImage("電子レンジ.png", 6, TEX_SIZE_1024);//電子レンジ
+	Image()->LoadImage("イヤホン男.png", 7, TEX_SIZE_1024);//イヤホン男
+	Image()->LoadImage("コウネ(マスク無)c.png", 8, TEX_SIZE_1024);//コウネ
+	Image()->LoadImage("猫.png", 9, TEX_SIZE_1024);//猫
+	Image()->LoadImage("自転車.png", 10, TEX_SIZE_1024);//自転車
+	Image()->LoadImage("消防車.png", 11, TEX_SIZE_1024);//消防車
 	//Image()->LoadImage("boss.png",2,TEX_SIZE_256);
 
 	//文字データ作成
@@ -59,8 +65,8 @@ void CSceneGameMain::InitScene()
 
 	//Audio()->LoopStart(0);
 
-	//Overlay()->talkDraw(/*TUTORIAL,0*/);
-	//Overlay()->FadeIn();
+	Overlay()->talkDraw(TUTORIAL,0);
+	Overlay()->FadeIn();
 
 	TextManager()->LoadText();
 

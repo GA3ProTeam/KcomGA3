@@ -1,6 +1,15 @@
 #include "main.h"
 //テスト用↓
+int g_itutorial_phase = 0;
+void GimmickTest::Init(int xpos, int ypos, int widht, int height, int balloonnum)
+{
+	////1個の場合----------------------------------------------------------------
+	//aaa = InitBall(48, -48, sound,0, RED, LOWER_LEFT);
 
+	//複数の場合----------------------------------------------------------------
+	/*bbb = InitBall(48, -48, sound, RED,LOWER_LEFT);
+	//ccc = InitBall(48, -48, talk, BULE,LOWER_LEFT);
+}
 void GimmickTest::Action()
 {
 
@@ -23,16 +32,11 @@ void GimmickTest::Draw()
 	////描画
 	//Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
 
-	////1個の場合
-	//Balloon *aaa = InitBall(48, -48, talk, 1,RED);
-
+	////1個の場合---------------------------------------------------------------
 	//gimmicDraw(aaa, 0);
 	//delete aaa;
 
-
 	//複数の場合
-	/*Balloon *bbb = InitBall(48, -48, sound, RED);
-	Balloon *ccc = InitBall(48, -48, talk, BULE);
 	gimmicDorw(bbb, 0);
 	gimmicDorw(ccc, 1);
 	delete bbb;
@@ -150,7 +154,7 @@ void GimmickDoctor::Draw() {
 	//レコーダーを取得した後から吹き出し出現
 	if (SavedataManeger()->CurrentData->m_btutoriaruflg[0]) {
 		//吹き出し描画＆動作---------------------------------------------------------
-		Balloon *aaa = InitBall(m_iWidth - 50, -48, talk, 1, RED);
+		Balloon *aaa = InitBall(m_iWidth - 50, -48, talk, 1, RED, LOWER_LEFT);
 		this->gimmicDraw(aaa, 0);
 		delete aaa;
 		//---------------------------------------------------------------------------
@@ -208,7 +212,7 @@ void GimmickComputer::Draw() {
 	//---------------------------------------------------------------------------
 
 	//吹き出し描画＆動作---------------------------------------------------------
-	Balloon *aaa = InitBall(m_iWidth - 50, -48, sound, 1, RED);
+	Balloon *aaa = InitBall(m_iWidth - 50, -48, sound, 1, RED, LOWER_LEFT);
 	this->gimmicDraw(aaa, 0);
 	delete aaa;
 	//---------------------------------------------------------------------------
@@ -259,7 +263,7 @@ void GimmickRecorder::Draw() {
 	//---------------------------------------------------------------------------
 
 	//吹き出し描画＆動作---------------------------------------------------------
-	Balloon *aaa = InitBall(m_iWidth - 50, -48, talk, 1, RED);
+	Balloon *aaa = InitBall(m_iWidth - 50, -48, talk, 1, RED, LOWER_LEFT);
 	this->gimmicDraw(aaa, 0);
 	delete aaa;
 	//---------------------------------------------------------------------------
@@ -309,7 +313,7 @@ void GimmickAunt::Draw() {
 	//--------------------------------------------------------------------------
 
 	//吹き出し描画＆動作--------------------------------------------------------
-	Balloon *aaa = InitBall(48, -48, talk, 1, RED);
+	Balloon *aaa = InitBall(48, -48, talk, 1, RED, LOWER_LEFT);
 	gimmicDraw(aaa, 0);
 	delete aaa;
 	//--------------------------------------------------------------------------
@@ -517,9 +521,7 @@ void GimmickChildren::Init(int xpos, int ypos, int widht, int height, int balloo
 	m_iHeight = height;	//ギミック高さの初期化
 	m_iballoonnum = balloonnum;//吹き出しの総数
 
-	for (int i = 0; i < 3; i++) {
-		m_bclearflg[i] = false;
-	}
+	
 
 }
 void GimmickChildren::Destructor()//デストラクタ
@@ -884,7 +886,7 @@ void GimmickOldman::Action()
 		}
 
 		else if (SavedataManeger()->CurrentData->m_bKouneflg[2] == true) {
-			SavedataManeger()->CurrentData->m_bKouneflg[3] == true;
+			SavedataManeger()->CurrentData->m_bKouneflg[3] = true;
 			m_Status = STATUS_DELETE;
 		}
 		else if (SavedataManeger()->CurrentData->m_bKouneflg[1] == true) {
@@ -981,7 +983,7 @@ void GimmickTelevision::Draw()
 	//描画
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
 
-	Balloon *ball1 = InitBall(48, -48, sound, 1,CNONE/*, LOWER_LEFT*/);
+	Balloon *ball1 = InitBall(48, -48, sound, 1,CNONE, LOWER_LEFT);
 	gimmicDraw(ball1, 0);
 	delete ball1;
 }

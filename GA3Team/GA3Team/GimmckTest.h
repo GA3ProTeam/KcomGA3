@@ -23,7 +23,6 @@ private:
 //-----------チュートリアル（博士）ステージ↓-------------------------
 
 
-
 //博士
 class GimmickDoctor :public Gimmick {
 public:

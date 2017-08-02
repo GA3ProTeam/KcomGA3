@@ -47,16 +47,14 @@ private:
 
 	bool m_bselect_flg[MAX_SAVEDATA];  //(つづきから)ボタンが選択できるかどうか
 
-	//カラー情報
-	float col[4];
-	int text_size_playername[MAX_SAVEDATA]; //仮
-	int text_size_progress[MAX_SAVEDATA]; //仮
+	//プレイヤー名文字サイズ
+	int text_size_playername[MAX_SAVEDATA]; 
 
 	//データ表示用
 	char m_cplayername[MAX_SAVEDATA][256];
 
-	char m_csave_playername[MAX_SAVEDATA][256];					   //プレイヤーネーム
-	int  m_iplayerprogress[MAX_SAVEDATA][CHAR_PROGRESS];	   //キャラクター進行度
+	char m_csave_playername[MAX_SAVEDATA][256];			//プレイヤーネーム
+	int  m_iplayerprogress[MAX_SAVEDATA][CHAR_PROGRESS];//キャラクター進行度
 
 
 	CharacterData charaData[MAX_SAVEDATA];

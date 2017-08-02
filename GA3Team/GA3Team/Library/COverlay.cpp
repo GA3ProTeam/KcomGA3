@@ -166,7 +166,7 @@ void COverlay::Draw()
 			float col[4] = { 1.0f,1.0f,1.0f,m_fAlpha };
 			font->StrDraw(tmpname, WINDOW_SIZE_W / 2 - 300, WINDOW_SIZE_H / 2 + 150, 16, col);
 
-			for (unsigned int i = 0; i < m_strTemp.size();) {
+			for (unsigned int i = 0; i < m_strTemp.size();++i) {
 				sprintf_s(tmp, "%s", m_strTemp[i].c_str());
 				float col[4] = { 1.0f,1.0f,1.0f,m_fAlpha };
 				font->StrDraw(tmp, WINDOW_SIZE_W / 2 - 300, (WINDOW_SIZE_H / 2 + 200) + (i * 16), 16, col);

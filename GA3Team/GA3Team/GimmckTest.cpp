@@ -512,16 +512,12 @@ void Gimmickfiretruck::Draw()
 //子供1、2、3
 void GimmickChildren::Init(int xpos, int ypos, int widht, int height, int balloonnum, int child_id)///イニシャライズ
 {
-	m_iChild_ID = child_id;
+	m_iChild_ID = child_id;//子供の識別番号を初期化
 	m_iXpos = xpos;	//ギミックの位置の初期化(X)
 	m_iYpos = ypos;	//ギミックの位置の初期化(Y)
 	m_iWidth = widht;	//ギミック幅の初期化
 	m_iHeight = height;	//ギミック高さの初期化
 	m_iballoonnum = balloonnum;//吹き出しの総数
-
-//	for (int i = 0; i < 3; i++) {
-//		m_bclearflg[i] = false;
-//	}
 
 }
 void GimmickChildren::Destructor()//デストラクタ
@@ -530,6 +526,8 @@ void GimmickChildren::Destructor()//デストラクタ
 }
 void GimmickChildren::Action()//アクション
 {
+	//1個の場合
+	aaa = InitBall(48, -48, talk, EXCEPTION, CNONE, LOWER_LEFT);
 	
 	CObjMenuTab* tab= (CObjMenuTab*)Obj()->GetObj(OBJ_MENUTAB);
 	if (Input()->m_x > m_iXpos&& Input()->m_x < (m_iXpos + m_iWidth)
@@ -617,9 +615,6 @@ void GimmickChildren::Draw()//描画
 	//描画
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
 
-	//1個の場合
-	Balloon *aaa = InitBall(48, -48, talk, EXCEPTION, CNONE, LOWER_LEFT);
-
 	gimmicDraw(aaa, 0);
 	delete aaa;
 
@@ -632,7 +627,7 @@ void GimmickGranny::Destructor()//デストラクタ
 }
 void GimmickGranny::Action()//アクション
 {
-
+	aaa = InitBall(48, -48, talk, EXCEPTION, CNONE, LOWER_LEFT);
 }
 void GimmickGranny::Draw()//描画
 {
@@ -648,9 +643,6 @@ void GimmickGranny::Draw()//描画
 	//描画
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
 
-	//1個の場合
-	Balloon *aaa = InitBall(48, -48, talk, EXCEPTION, CNONE, LOWER_LEFT);
-
 	gimmicDraw(aaa, 0);
 	delete aaa;
 
@@ -663,7 +655,7 @@ void GimmickMynah::Destructor()	//デストラクタ
 }
 void GimmickMynah::Action()		//アクション
 {
-
+	aaa = InitBall(48, -48, sound, 1, PINK, LOWER_LEFT);
 }
 void GimmickMynah::Draw()		//ドロー
 {
@@ -679,9 +671,6 @@ void GimmickMynah::Draw()		//ドロー
 	//描画
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
 
-	//1個の場合
-	Balloon *aaa = InitBall(48, -48, sound, 1, PINK, LOWER_LEFT);
-
 	gimmicDraw(aaa, 0);
 	delete aaa;
 
@@ -694,7 +683,9 @@ void GimmickShelf::Destructor()	//デストラクタ
 }
 void GimmickShelf::Action()		//アクション
 {
-
+	aaa = InitBall(-48, 70, sound, 1, BLUE, LOWER_LEFT);
+	bbb = InitBall(0, -48, sound, 1, RED, LOWER_LEFT);
+	ccc = InitBall(48, 70, sound, 1, YELLOW, LOWER_LEFT);
 }
 void GimmickShelf::Draw()		//ドロー
 {
@@ -709,11 +700,6 @@ void GimmickShelf::Draw()		//ドロー
 	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
 	//描画
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
-
-	//複数の場合
-	Balloon *aaa = InitBall(-48, 70, sound, 1, BLUE, LOWER_LEFT);
-	Balloon *bbb = InitBall(0, -48, sound, 1, RED, LOWER_LEFT);
-	Balloon *ccc = InitBall(48, 70, sound, 1, YELLOW, LOWER_LEFT);
 
 	gimmicDraw(aaa, 0);
 	gimmicDraw(bbb, 1);
@@ -732,7 +718,7 @@ void GimmickWindchime::Destructor()	//デストラクタ
 }
 void GimmickWindchime::Action()		//アクション
 {
-
+	aaa = InitBall(48, -48, talk, 1, PURPLE, LOWER_LEFT);
 }
 void GimmickWindchime::Draw()		//ドロー
 {
@@ -747,9 +733,6 @@ void GimmickWindchime::Draw()		//ドロー
 	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
 	//描画
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
-
-	//1個の場合
-	Balloon *aaa = InitBall(48, -48, talk, 1, PURPLE, LOWER_LEFT);
 
 	gimmicDraw(aaa, 0);
 	delete aaa;

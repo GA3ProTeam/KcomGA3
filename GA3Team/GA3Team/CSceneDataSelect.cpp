@@ -29,16 +29,16 @@ void CSceneDataSelect::InitScene()
 void CSceneDataSelect::Scene()
 {
 
-	m_ititle_choice = User()->mititle_choice;
+	m_inext_scene = User()->m_iNext_Scene;
 	
 	//ステージセレクト
-	if (m_ititle_choice == STAGE_SELECT) {
+	if (m_inext_scene == STAGE_SELECT) {
 		//シーン移動　→ステージセレクト画面へ
 		Manager()->Pop(new CSceneStageSelect());
 	}
 	
 	//タイトルに戻る
-	if (m_ititle_choice == TITLE_RETURN ) {
+	if (m_inext_scene == TITLE_RETURN ) {
 		//シーン移動　→タイトルへ
 		Manager()->Pop(new CSceneTitle());
 	}

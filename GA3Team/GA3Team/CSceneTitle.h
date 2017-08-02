@@ -14,7 +14,7 @@ public:
 	void InitScene();
 	void Scene();
 private:
-	int m_ititle_choice;
+	int m_inext_scene;
 
 
 	CObjTitle* m_obj_title;

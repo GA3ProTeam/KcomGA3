@@ -246,7 +246,7 @@ public:
 class GimmickShelf : public Gimmick
 {
 private:
-	//1ŒÂ‚Ìê‡
+	//•¡”‚Ìƒoƒ‹[ƒ“
 	Balloon *aaa;
 	Balloon *bbb;
 	Balloon *ccc;

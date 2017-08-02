@@ -173,7 +173,8 @@ void GimmickComputer::Init(int xpos, int ypos, int widht, int height, int balloo
 	//親クラスのInit関数を呼ぶ
 	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
 
-	
+	//吹き出しの初期化
+	InitBall(&m_ball[0], m_iWidth - 50, -48, sound, 1, RED, LOWER_LEFT);
 }
 
 //デストラクタ
@@ -217,9 +218,7 @@ void GimmickComputer::Draw() {
 	//---------------------------------------------------------------------------
 
 	//吹き出し描画＆動作---------------------------------------------------------
-//	Balloon *aaa = InitBall(m_iWidth - 50, -48, sound, 1, RED);
-//	this->gimmicDraw(aaa, 0);
-//	delete aaa;
+	this->gimmicDraw(1);
 	//---------------------------------------------------------------------------
 }
 
@@ -228,6 +227,9 @@ void GimmickComputer::Draw() {
 void GimmickRecorder::Init(int xpos, int ypos, int widht, int height, int balloonnum) {
 	//親クラスのInit関数を呼ぶ
 	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
+
+	//吹き出しの初期化
+	InitBall(&m_ball[0], m_iWidth - 50, -48, talk, 1, RED, LOWER_LEFT);
 }
 
 //デストラクタ
@@ -268,9 +270,7 @@ void GimmickRecorder::Draw() {
 	//---------------------------------------------------------------------------
 
 	//吹き出し描画＆動作---------------------------------------------------------
-//	Balloon *aaa = InitBall(m_iWidth - 50, -48, talk, 1, RED);
-//	this->gimmicDraw(aaa, 0);
-//	delete aaa;
+	this->gimmicDraw(1);
 	//---------------------------------------------------------------------------
 }
 //-----------チュートリアル（博士）ステージ↑-------------------------

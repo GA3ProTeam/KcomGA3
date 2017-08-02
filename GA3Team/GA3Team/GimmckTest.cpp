@@ -530,47 +530,54 @@ void GimmickChildren::Action()//アクション
 	aaa = InitBall(48, -48, talk, EXCEPTION, CNONE, LOWER_LEFT);
 	
 	CObjMenuTab* tab= (CObjMenuTab*)Obj()->GetObj(OBJ_MENUTAB);
-	if (Input()->m_x > m_iXpos&& Input()->m_x < (m_iXpos + m_iWidth)
-		&& Input()->m_y > m_iYpos && Input()->m_y < (m_iYpos + m_iHeight)) {
-		//マウスドラッグ中にマウスボタンが離された
-		if (!Input()->GetMouButtonL() && tab->GetHaveSound()) {
-			//ドラッグしていた効果音をギミックに聞かせる
-			//Audio()->Start(tab->GetGiveSound());
-			switch (m_iChild_ID) {
-			case 1://強気な男の子
-				   //if (tab->GetGiveSound() == /*正解の音*/) {
+	switch (m_iChild_ID) {
+	case 1://強気な男の子
+		if (Input()->m_x > m_iXpos&& Input()->m_x < (m_iXpos + m_iWidth)
+			&& Input()->m_y > m_iYpos && Input()->m_y < (m_iYpos + m_iHeight)) {
+			//マウスドラッグ中にマウスボタンが離された
+			if (!Input()->GetMouButtonL() && tab->GetHaveSound()) {
+				//ドラッグしていた効果音をギミックに聞かせる
+				//Audio()->Start(tab->GetGiveSound());
+				 //if (tab->GetGiveSound() == /*正解の音*/) {
 				SavedataManeger()->CurrentData->m_bSionflg[3] = true;
 				//	break;
 				//}
-				//else {
+			}
+		}
+		
+		break;
 
-				//}
-				break;
-
-			case 2://優しい女の子
-				   //if (tab->GetGiveSound() == /*正解の音*/) {
+	case 2://優しい女の子
+		if (Input()->m_x > m_iXpos&& Input()->m_x < (m_iXpos + m_iWidth)
+			&& Input()->m_y > m_iYpos && Input()->m_y < (m_iYpos + m_iHeight)) {
+			//マウスドラッグ中にマウスボタンが離された
+			if (!Input()->GetMouButtonL() && tab->GetHaveSound()) {
+				//ドラッグしていた効果音をギミックに聞かせる
+				//Audio()->Start(tab->GetGiveSound());
+				//if (tab->GetGiveSound() == /*正解の音*/) {
 				SavedataManeger()->CurrentData->m_bSionflg[4] = true;
 				//	break;
 				//}
-				//else {
+			}
+		}
+		break;
 
-				//}
-
-				break;
-
-			case 3://弱気な男の子
-				   //if (tab->GetGiveSound() == /*正解の音*/) {
+	case 3://弱気な男の子
+		if (Input()->m_x > m_iXpos&& Input()->m_x < (m_iXpos + m_iWidth)
+			&& Input()->m_y > m_iYpos && Input()->m_y < (m_iYpos + m_iHeight)) {
+			//マウスドラッグ中にマウスボタンが離された
+			if (!Input()->GetMouButtonL() && tab->GetHaveSound()) {
+				//ドラッグしていた効果音をギミックに聞かせる
+				//Audio()->Start(tab->GetGiveSound());
+		   //if (tab->GetGiveSound() == /*正解の音*/) {
 				SavedataManeger()->CurrentData->m_bSionflg[5] = true;
 				//	break;
 				//}
-				//else {
-
-				//}
-
-				break;
-
 			}
 		}
+
+		break;
+
 	}
 
 	if (SavedataManeger()->CurrentData->m_bSionflg[3] == true && 

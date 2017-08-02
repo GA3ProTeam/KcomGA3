@@ -105,7 +105,7 @@ void CObjDataSelect::Action()
 
 		User()->mititle_choice = TITLE_RETURN;
 
-		Manager()->Pop(new CSceneTitle());
+		//Manager()->Pop(new CSceneTitle());
 	}
 
 }
@@ -164,9 +164,6 @@ void CObjDataSelect::Draw()
 			Image()->Draw(2, &m_rSrc_Koune,   &m_rDst_Koune,   coldraw, 0.0f);  //コウネ
 			Image()->Draw(2, &m_rSrc_Sion,    &m_rDst_Sion,    coldraw, 0.0f);	//シオン
 			Image()->Draw(2, &m_rSrc_Melueru, &m_rDst_Melueru, coldraw, 0.0f);	//メルエル
-
-			//デバック用
-			//printf("\n\n\n\n\n%d", m_iprogress_cnt[0]);
 
 		}
 
@@ -296,9 +293,9 @@ void CObjDataSelect::ButtonFromTheBegin() {
 		if (SavedataManeger()->Savedatacheck(m_iSelectData))
 		{
 			//ステージセレクト画面へ
-			//User()->mititle_choice = STAGE_SELECT;
+			User()->mititle_choice = STAGE_SELECT;
 			//デバッグ用
-			Manager()->Pop(new CSceneStageSelect());
+			//Manager()->Pop(new CSceneStageSelect());
 		}
 
 		m_iSelectData = -1;
@@ -360,9 +357,9 @@ void CObjDataSelect::ButtonContinuation() {
 			if (SavedataManeger()->Savedatacheck(m_iSelectData)) {
 				//SavedataManeger()->Loadsavedata();
 				//ステージセレクトへシーン移動
-				//User()->mititle_choice = STAGE_SELECT;
+				User()->mititle_choice = STAGE_SELECT;
 				//デバッグ用
-				Manager()->Pop(new CSceneStageSelect());
+				//Manager()->Pop(new CSceneStageSelect());
 			}
 		}
 	}

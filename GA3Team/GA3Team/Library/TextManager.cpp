@@ -86,7 +86,7 @@ void CTextManager::LoadText()
 	}
 
 		//改行文字で切断
-		char* token;
+		//char* token;
 		int t = 0;
 		token = strtok(tmpstr, "\n");
 		while (token != NULL) {
@@ -106,7 +106,7 @@ void CTextManager::LoadText()
 			tmpData.push_back(strsave[w]);
 		}
 
-		m_KouneText.push_back(tmpData);
+//		m_KouneText.push_back(tmpData);
 		
 			//制御文字削除（検出）
 			//std::vector<std::string>::iterator itr = tmpData.begin();

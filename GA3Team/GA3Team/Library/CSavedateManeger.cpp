@@ -30,6 +30,7 @@ void CSavedataManeger::Loadsavedata()
 
 		Savedata[i].m_btutoriaruflg.clear();
 		Savedata[i].m_btutorial = false;
+
 	}
 
 

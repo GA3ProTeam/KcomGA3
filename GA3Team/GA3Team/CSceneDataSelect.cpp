@@ -23,13 +23,15 @@ void CSceneDataSelect::InitScene()
 
 	//Audio()->LoopStart(0);
 
-	m_ititle_choice = User()->mititle_choice;
+	
 
 }
 
 //シーン実行
 void CSceneDataSelect::Scene()
 {
+
+	m_ititle_choice = User()->mititle_choice;
 	
 	//ステージセレクト
 	if (m_ititle_choice == STAGE_SELECT) {

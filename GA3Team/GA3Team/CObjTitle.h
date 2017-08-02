@@ -27,6 +27,8 @@ private:
 	RECT m_rSrc;	//転送先座標
 	RECT m_rDst;	//切り取り先座標
 
+	int iLoad_flg; //データの読み込み用
+
 	bool m_bdataflg; //データの有無を確認
 
 	//はじめからつづきからどちらが選ばれたか
@@ -34,7 +36,6 @@ private:
 	//ボタンが作成されたか確認
 	int m_icreateflg;
 
-	//CSavedataManeger* m_obj_savedata;
 	ButtonDataSelect* m_obj_button[2];
 };
 

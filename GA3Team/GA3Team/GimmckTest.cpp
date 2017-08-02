@@ -1,6 +1,8 @@
 #include "main.h"
 //テスト用↓
 
+
+
 void GimmickTest::Action()
 {
 
@@ -150,9 +152,9 @@ void GimmickDoctor::Draw() {
 	//レコーダーを取得した後から吹き出し出現
 	if (SavedataManeger()->CurrentData->m_btutoriaruflg[0]) {
 		//吹き出し描画＆動作---------------------------------------------------------
-		Balloon *aaa = InitBall(m_iWidth - 50, -48, talk, 1, RED);
-		this->gimmicDraw(aaa, 0);
-		delete aaa;
+//		Balloon *aaa = InitBall(m_iWidth - 50, -48, talk, 1, RED);
+//		this->gimmicDraw(aaa, 0);
+//		delete aaa;
 		//---------------------------------------------------------------------------
 	}
 
@@ -208,9 +210,9 @@ void GimmickComputer::Draw() {
 	//---------------------------------------------------------------------------
 
 	//吹き出し描画＆動作---------------------------------------------------------
-	Balloon *aaa = InitBall(m_iWidth - 50, -48, sound, 1, RED);
-	this->gimmicDraw(aaa, 0);
-	delete aaa;
+//	Balloon *aaa = InitBall(m_iWidth - 50, -48, sound, 1, RED);
+//	this->gimmicDraw(aaa, 0);
+//	delete aaa;
 	//---------------------------------------------------------------------------
 }
 
@@ -259,9 +261,9 @@ void GimmickRecorder::Draw() {
 	//---------------------------------------------------------------------------
 
 	//吹き出し描画＆動作---------------------------------------------------------
-	Balloon *aaa = InitBall(m_iWidth - 50, -48, talk, 1, RED);
-	this->gimmicDraw(aaa, 0);
-	delete aaa;
+//	Balloon *aaa = InitBall(m_iWidth - 50, -48, talk, 1, RED);
+//	this->gimmicDraw(aaa, 0);
+//	delete aaa;
 	//---------------------------------------------------------------------------
 }
 //-----------チュートリアル（博士）ステージ↑-------------------------
@@ -309,9 +311,9 @@ void GimmickAunt::Draw() {
 	//--------------------------------------------------------------------------
 
 	//吹き出し描画＆動作--------------------------------------------------------
-	Balloon *aaa = InitBall(48, -48, talk, 1, RED);
-	gimmicDraw(aaa, 0);
-	delete aaa;
+//	Balloon *aaa = InitBall(48, -48, talk, 1, RED);
+//	gimmicDraw(aaa, 0);
+//	delete aaa;
 	//--------------------------------------------------------------------------
 
 	//【会話終了時】
@@ -971,9 +973,9 @@ void GimmickTelevision::Draw()
 	//描画
 	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
 
-	Balloon *ball1 = InitBall(48, -48, sound, 1,CNONE/*, LOWER_LEFT*/);
-	gimmicDraw(ball1, 0);
-	delete ball1;
+//	Balloon *ball1 = InitBall(48, -48, sound, 1,CNONE/*, LOWER_LEFT*/);
+//	gimmicDraw(ball1, 0);
+//	delete ball1;
 }
 
 //GimmickOven

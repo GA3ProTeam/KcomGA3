@@ -138,6 +138,7 @@ void COverlay::Draw()
 				else {
 					m_iChar_Pos = 0;
 					m_iChar_Line++;
+					m_bCharaChangeFlg = false;
 				}
 			}
 			else {
@@ -148,26 +149,24 @@ void COverlay::Draw()
 			if (m_iDelay > m_iTextSpeed)
 				m_iDelay = 0;
 
-
 			char linec[32];
 			sprintf_s(linec, "%d", m_iChar_Line);
-			for (auto nameitr = textmgr->m_Tutorial_Control[m_iDrawingStageID].begin(); nameitr != textmgr->m_Tutorial_Control[m_iDrawingStageID].end(); ++nameitr) {
-				if ((*nameitr).find(linec) != -1) {
-					(*nameitr).erase((*nameitr).begin());
-					if ("•W€" != (*nameitr)) {
-						m_strTempName = (*nameitr).c_str();
-					}else if("•W€" == (*nameitr)){
-						m_strTemp.clear();
-						m_strTemp.resize(m_iChar_Line);
-					}
-				}
+			if (textmgr->isCtrlLine(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line) && !m_bCharaChangeFlg) {
+				char *namet = textmgr->GetCharName(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line);
+				m_strTemp.clear();
+				m_strTemp.resize(textmgr->m_Tutorial_Text[m_iDrawingStageID].size());
+				m_strTempName.clear();
+				m_strTempName += namet;
+				m_bCharaChangeFlg = true;
 			}
+			
+			
 
 			sprintf_s(tmpname, "%s", m_strTempName.c_str());
 			float col[4] = { 1.0f,1.0f,1.0f,m_fAlpha };
 			font->StrDraw(tmpname, WINDOW_SIZE_W / 2 - 300, WINDOW_SIZE_H / 2 + 150, 16, col);
 
-			for (unsigned int i = 0; i < m_strTemp.size(); i++) {
+			for (unsigned int i = 0; i < m_strTemp.size();) {
 				sprintf_s(tmp, "%s", m_strTemp[i].c_str());
 				float col[4] = { 1.0f,1.0f,1.0f,m_fAlpha };
 				font->StrDraw(tmp, WINDOW_SIZE_W / 2 - 300, (WINDOW_SIZE_H / 2 + 200) + (i * 16), 16, col);

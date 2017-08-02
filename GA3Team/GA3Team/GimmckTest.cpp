@@ -1,7 +1,7 @@
 #include "main.h"
 //テスト用↓
 
-
+int g_itutorial_phase = 0;
 
 void GimmickTest::Action()
 {

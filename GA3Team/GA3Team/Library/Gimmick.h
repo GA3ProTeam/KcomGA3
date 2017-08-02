@@ -91,6 +91,6 @@ public:
 	//シオンの能力発動時音符に色をつける
 	void setballooncolor(int num);
 
-
+	
 };
 #endif // !__GIMMICK_H__

@@ -1,8 +1,17 @@
 #include "main.h"
 //テスト用↓
+int g_itutorial_phase = 0;
+//void GimmickTest::Init(int xpos, int ypos, int widht, int height, int balloonnum)
+//{
+	////1個の場合----------------------------------------------------------------
+	//aaa = InitBall(48, -48, sound,0, RED, LOWER_LEFT);
 
+//int g_itutorial_phase = 0;
 
-
+	//複数の場合----------------------------------------------------------------
+	/*bbb = InitBall(48, -48, sound, RED,LOWER_LEFT);
+	//ccc = InitBall(48, -48, talk, BULE,LOWER_LEFT);
+}
 void GimmickTest::Action()
 {
 
@@ -25,23 +34,18 @@ void GimmickTest::Draw()
 	////描画
 	//Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
 
-	////1個の場合
-	//Balloon *aaa = InitBall(48, -48, talk, 1,RED);
-
+	////1個の場合---------------------------------------------------------------
 	//gimmicDraw(aaa, 0);
 	//delete aaa;
 
-
 	//複数の場合
-	/*Balloon *bbb = InitBall(48, -48, sound, RED);
-	Balloon *ccc = InitBall(48, -48, talk, BULE);
 	gimmicDorw(bbb, 0);
 	gimmicDorw(ccc, 1);
 	delete bbb;
 	delete ccc;*/
 
 	//SavedataManeger()->CurrentData->m_bKouneClearflg
-}
+//}
 //テスト用↑
 
 //-----------チュートリアル（博士）ステージ↓--------------------------
@@ -519,6 +523,8 @@ void GimmickChildren::Init(int xpos, int ypos, int widht, int height, int balloo
 	m_iHeight = height;	//ギミック高さの初期化
 	m_iballoonnum = balloonnum;//吹き出しの総数
 
+	
+
 }
 void GimmickChildren::Destructor()//デストラクタ
 {
@@ -883,7 +889,7 @@ void GimmickOldman::Action()
 		}
 
 		else if (SavedataManeger()->CurrentData->m_bKouneflg[2] == true) {
-			SavedataManeger()->CurrentData->m_bKouneflg[3] == true;
+			SavedataManeger()->CurrentData->m_bKouneflg[3] = true;
 			m_Status = STATUS_DELETE;
 		}
 		else if (SavedataManeger()->CurrentData->m_bKouneflg[1] == true) {

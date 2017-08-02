@@ -7,7 +7,7 @@ void CObjTitle::Init()
 
 	m_bdataflg = false;
 
-	m_ititle_choice = NONE;
+	m_inext_scene = NONE;
 
 	m_icreateflg = false;
 
@@ -24,6 +24,8 @@ void CObjTitle::Action()
 	//セーブデータ
 	if (iLoad_flg == 0) {
 		SavedataManeger()->Loadsavedata();
+		SavedataManeger()->Writesavedata();
+		
 		iLoad_flg = 1;
 	}
 
@@ -32,8 +34,10 @@ void CObjTitle::Action()
 
 		//セーブデータの有無判定
 		for (int i = 0; i < MAX_SAVEDATA; i++) {
-			if (!m_bdataflg) {
-				m_bdataflg = SavedataManeger()->Savedatacheck(i);
+			
+			m_bdataflg = SavedataManeger()->Savedatacheck(i);
+			
+			if (m_bdataflg) {
 				break;
 			}
 		}
@@ -56,18 +60,18 @@ void CObjTitle::Action()
 
 	//はじめから
 	if (m_obj_button[0]->Push()){
-		m_ititle_choice = NEW;
+		m_inext_scene = NEW;
 	}
 	//つづきから
 	else if (m_bdataflg && m_obj_button[1]->Push()) {
-		m_ititle_choice = LOAD;
+		m_inext_scene = LOAD;
 	}
 
 	int mousex = Input()->m_x;
 	int mousey = Input()->m_y;
 
 
-	User()->mititle_choice = m_ititle_choice;
+	User()->m_iNext_Scene = m_inext_scene;
 
 }
 

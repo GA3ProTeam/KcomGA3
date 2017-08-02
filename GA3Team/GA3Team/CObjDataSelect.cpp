@@ -57,15 +57,13 @@ void CObjDataSelect::Action()
 				m_Load_KouneClearflg[saveNum][flgNum]   = SavedataManeger()->Savedata[saveNum].m_bKouneClearflg[flgNum];
 				m_Load_SionClearflg[saveNum][flgNum]    = SavedataManeger()->Savedata[saveNum].m_bSionClearflg[flgNum];
 				m_Load_MelueruClearflg[saveNum][flgNum] = SavedataManeger()->Savedata[saveNum].m_bMelueruClearflg[flgNum];
-
 			}
 		}
-
 		iLoad_flg = 1;
 	}
 	
 	//タイトルでどちらが選ばれたか持ってくる
-	m_ititle_choice = User()->mititle_choice;
+	m_inext_scene = User()->m_iNext_Scene;
 
 	//セーブデータチェック
 	for (int i = 0; i < MAX_SAVEDATA; i++) {
@@ -81,11 +79,11 @@ void CObjDataSelect::Action()
 		}
 	}
 
-	if (m_ititle_choice == NEW) {
+	if (m_inext_scene == NEW) {
 		//初めから
 		ButtonFromTheBegin();
 
-	}if (m_ititle_choice == LOAD) {
+	}if (m_inext_scene == LOAD) {
 		//続きから
 		ButtonContinuation();
 	}
@@ -102,9 +100,7 @@ void CObjDataSelect::Action()
 	//タイトルに戻る
 	if (m_obj_titlebackbutton->Push()) {
 
-		User()->mititle_choice = TITLE_RETURN;
-
-		Manager()->Pop(new CSceneTitle());
+		User()->m_iNext_Scene = TITLE_RETURN;
 	}
 
 }
@@ -156,15 +152,14 @@ void CObjDataSelect::Draw()
 			m_rDst_Sion.top    = 0; m_rDst_Sion.left    = m_iprogress_cnt[i][1] * 64; m_rDst_Sion.bottom    = m_rDst_Sion.top    + 64; m_rDst_Sion.right    = m_rDst_Sion.left    + 64; //シオン
 			m_rDst_Melueru.top = 0; m_rDst_Melueru.left = m_iprogress_cnt[i][2] * 64; m_rDst_Melueru.bottom = m_rDst_Melueru.top + 64; m_rDst_Melueru.right = m_rDst_Melueru.left + 64; //メリエル
 			//転送先座標
-			m_rSrc_Koune.top   = (i * 150) + 100;   m_rSrc_Koune.left   = 400;   m_rSrc_Koune.bottom   = m_rSrc_Koune.top + 64;    m_rSrc_Koune.right   = m_rSrc_Koune.left + 64; //コウネ
-			m_rSrc_Sion.top    = (i * 150) + 100;   m_rSrc_Sion.left    = 500;   m_rSrc_Sion.bottom    = m_rSrc_Sion.top + 64;     m_rSrc_Sion.right    = m_rSrc_Sion.left + 64; //シオン
-			m_rSrc_Melueru.top = (i * 150) + 100;   m_rSrc_Melueru.left = 600;   m_rSrc_Melueru.bottom = m_rSrc_Melueru.top + 64;  m_rSrc_Melueru.right = m_rSrc_Melueru.left + 64; //メルエル
-
+			m_rSrc_Koune.top   = (i * 150) + 100;   m_rSrc_Koune.left   = 400;   m_rSrc_Koune.bottom   = m_rSrc_Koune.top   + 64;    m_rSrc_Koune.right   = m_rSrc_Koune.left   + 64;	//コウネ
+			m_rSrc_Sion.top    = (i * 150) + 100;   m_rSrc_Sion.left    = 500;   m_rSrc_Sion.bottom    = m_rSrc_Sion.top    + 64;    m_rSrc_Sion.right    = m_rSrc_Sion.left    + 64;	//シオン
+			m_rSrc_Melueru.top = (i * 150) + 100;   m_rSrc_Melueru.left = 600;   m_rSrc_Melueru.bottom = m_rSrc_Melueru.top + 64;	 m_rSrc_Melueru.right = m_rSrc_Melueru.left + 64;	//メルエル
+			//描画
 			Image()->Draw(2, &m_rSrc_Koune,   &m_rDst_Koune,   coldraw, 0.0f);  //コウネ
 			Image()->Draw(2, &m_rSrc_Sion,    &m_rDst_Sion,    coldraw, 0.0f);	//シオン
 			Image()->Draw(2, &m_rSrc_Melueru, &m_rDst_Melueru, coldraw, 0.0f);	//メルエル
 
-			
 		}
 
 	}
@@ -277,7 +272,7 @@ void CObjDataSelect::ButtonFromTheBegin() {
 		if (SavedataManeger()->Savedatacheck(m_iSelectData))
 		{
 			//ステージセレクト画面へ
-			Manager()->Pop(new CSceneStageSelect());
+			User()->m_iNext_Scene = STAGE_SELECT;
 		}
 
 		m_iSelectData = -1;
@@ -330,7 +325,7 @@ void CObjDataSelect::ButtonContinuation() {
 			//セーブデータ確認
 			if (SavedataManeger()->Savedatacheck(m_iSelectData)) {
 				//ステージセレクトへシーン移動
-				Manager()->Pop(new CSceneStageSelect());
+				User()->m_iNext_Scene = STAGE_SELECT;
 			}
 		}
 	}

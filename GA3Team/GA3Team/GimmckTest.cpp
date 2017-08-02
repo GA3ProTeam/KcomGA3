@@ -1,12 +1,12 @@
 #include "main.h"
 //テスト用↓
 int g_itutorial_phase = 0;
-void GimmickTest::Init(int xpos, int ypos, int widht, int height, int balloonnum)
-{
+//void GimmickTest::Init(int xpos, int ypos, int widht, int height, int balloonnum)
+//{
 	////1個の場合----------------------------------------------------------------
 	//aaa = InitBall(48, -48, sound,0, RED, LOWER_LEFT);
 
-int g_itutorial_phase = 0;
+//int g_itutorial_phase = 0;
 
 	//複数の場合----------------------------------------------------------------
 	/*bbb = InitBall(48, -48, sound, RED,LOWER_LEFT);

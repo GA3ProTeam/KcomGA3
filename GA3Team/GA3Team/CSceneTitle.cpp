@@ -31,13 +31,11 @@ void CSceneTitle::InitScene()
 void CSceneTitle::Scene()
 {
 
-	m_ititle_choice = User()->mititle_choice;
+	m_inext_scene = User()->m_iNext_Scene;
 	
-	if (m_ititle_choice == NEW || m_ititle_choice == LOAD) {
+	if (m_inext_scene == NEW || m_inext_scene == LOAD) {
 		//シーン移動　→データセレクトへ
-		
-		Manager()->Pop(new CSceneDataSelect());
-		
+		Manager()->Pop(new CSceneDataSelect());		
 	}
 	
 

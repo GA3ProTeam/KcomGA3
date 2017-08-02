@@ -32,7 +32,7 @@ private:
 	bool m_bdataflg; //データの有無を確認
 
 	//はじめからつづきからどちらが選ばれたか
-	int m_ititle_choice;
+	int m_inext_scene;
 	//ボタンが作成されたか確認
 	int m_icreateflg;
 

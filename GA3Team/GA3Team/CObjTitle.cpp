@@ -7,7 +7,7 @@ void CObjTitle::Init()
 
 	m_bdataflg = false;
 
-	m_ititle_choice = NONE;
+	m_inext_scene = NONE;
 
 	m_icreateflg = false;
 
@@ -60,18 +60,18 @@ void CObjTitle::Action()
 
 	//はじめから
 	if (m_obj_button[0]->Push()){
-		m_ititle_choice = NEW;
+		m_inext_scene = NEW;
 	}
 	//つづきから
 	else if (m_bdataflg && m_obj_button[1]->Push()) {
-		m_ititle_choice = LOAD;
+		m_inext_scene = LOAD;
 	}
 
 	int mousex = Input()->m_x;
 	int mousey = Input()->m_y;
 
 
-	User()->mititle_choice = m_ititle_choice;
+	User()->m_iNext_Scene = m_inext_scene;
 
 }
 
@@ -93,13 +93,6 @@ void CObjTitle::Draw()
 	Font()->StrDraw("title", 0, 0, 16, coltext);
 	Font()->StrDraw(x, 0, 16, 16, coltext);
 	Font()->StrDraw(y, 0, 32, 16, coltext);
-	
-
-	//シーン移動仮
-	//if (m_ititle_choice == NEW || m_ititle_choice == LOAD) {
-	//	//シーン移動　→データセレクトへ
-	//	Manager()->Pop(new CSceneDataSelect());
-	//}
 
 	//テスト用表示
 	float coldbg[4] = { 1.0f,1.0f,1.0f,1.0f };

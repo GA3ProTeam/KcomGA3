@@ -12,8 +12,11 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 	10~15=シオン
 	20~25=メルエル
 	30~35=コウネ
+	40   =チュートリアル（博士）
 	*/
 	SavedataManeger()->Setcurrentdata();
+
+	
 
 	switch (m_Stage_ID) {
 
@@ -185,7 +188,7 @@ void CObjGimmickManager::Destructor() {
 
 //アクション
 void CObjGimmickManager::Action() {
-
+	
 }
 
 //ドロー

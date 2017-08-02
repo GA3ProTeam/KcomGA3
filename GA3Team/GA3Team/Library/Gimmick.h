@@ -73,6 +73,6 @@ public:
 	//ƒVƒIƒ“‚Ì”\—Í”­“®Žž
 	void setballooncolor(int num);
 
-
+	
 };
 #endif // !__GIMMICK_H__

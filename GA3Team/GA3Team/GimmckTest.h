@@ -16,6 +16,8 @@ private:
 };
 
 //-----------チュートリアル（博士）ステージ↓-------------------------
+int g_itutorial_phase=0;
+
 
 //博士
 class GimmickDoctor :public Gimmick {

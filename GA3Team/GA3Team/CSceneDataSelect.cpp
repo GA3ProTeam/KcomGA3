@@ -23,13 +23,13 @@ void CSceneDataSelect::InitScene()
 
 	//Audio()->LoopStart(0);
 
-	m_ititle_choice = User()->mititle_choice;
-
 }
 
 //シーン実行
 void CSceneDataSelect::Scene()
 {
+
+	m_ititle_choice = User()->mititle_choice;
 	
 	//ステージセレクト
 	if (m_ititle_choice == STAGE_SELECT) {
@@ -42,7 +42,6 @@ void CSceneDataSelect::Scene()
 		//シーン移動　→タイトルへ
 		Manager()->Pop(new CSceneTitle());
 	}
-
 
 	//テスト描画
 	if (Input()->GetVKey(VK_RETURN)) {

@@ -20,7 +20,9 @@ private:
 	
 };
 
-//-----------チュートリアル（博士）ステージ↓------------------------------------------------------------------------------------
+//-----------チュートリアル（博士）ステージ↓-------------------------
+
+
 
 //博士
 class GimmickDoctor :public Gimmick {
@@ -191,6 +193,9 @@ class GimmickChildren : public Gimmick
 private:
 	int m_iChild_ID;//子供を区別するための変数
 
+	//1個の場合
+	Balloon *aaa;
+
 public:
 	GimmickChildren() {};
 	~GimmickChildren() {};
@@ -207,6 +212,8 @@ public:
 class GimmickGranny : public Gimmick
 {
 private:
+	//1個の場合
+	Balloon *aaa;
 
 public:
 	GimmickGranny() {};
@@ -222,6 +229,8 @@ public:
 class GimmickMynah : public Gimmick
 {
 private:
+	//1個の場合
+	Balloon *aaa;
 
 public:
 	GimmickMynah() {};
@@ -237,6 +246,10 @@ public:
 class GimmickShelf : public Gimmick
 {
 private:
+	//1個の場合
+	Balloon *aaa;
+	Balloon *bbb;
+	Balloon *ccc;
 
 public:
 	GimmickShelf() {};
@@ -252,6 +265,8 @@ public:
 class GimmickWindchime : public Gimmick
 {
 private:
+	//1個の場合
+	Balloon *aaa;
 
 public:
 	GimmickWindchime() {};

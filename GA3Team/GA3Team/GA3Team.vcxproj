@@ -166,7 +166,9 @@
   <ItemGroup>
     <ClInclude Include="ButtonDataSelect.h" />
     <ClInclude Include="ButtonLScrollScreen.h" />
+    <ClInclude Include="ButtonPlayer.h" />
     <ClInclude Include="ButtonRScrollScreen.h" />
+    <ClInclude Include="ButtonStage.h" />
     <ClInclude Include="CObjDataSelect.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClInclude>

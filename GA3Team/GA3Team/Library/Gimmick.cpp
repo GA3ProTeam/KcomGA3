@@ -8,6 +8,7 @@ void Gimmick::Init(int xpos, int ypos, int widht, int height, int balloonnum)
 	m_iHeight = height;	//ギミック高さの初期化
 	m_iballoonnum = balloonnum;//吹き出しの総数
 
+	//吹き出し生成
 	m_ball = new Balloon[m_iballoonnum];
 }
 

@@ -237,9 +237,6 @@ void GimmickRecorder::Destructor() {
 
 //アクション
 void GimmickRecorder::Action() {
-	//吹き出し生成
-	m_ball = InitBall(m_iWidth - 50, -48, sound, 1, RED, LOWER_LEFT);
-
 	//吹き出しが押されたか確認
 	if (m_ball[0].OnPush) {
 		//フラグ1達成

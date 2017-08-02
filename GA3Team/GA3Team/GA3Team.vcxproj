@@ -156,7 +156,7 @@
     <ClCompile Include="Library\Button.cpp" />
     <ClCompile Include="Library\COverlay.cpp" />
     <ClCompile Include="Library\CObjTest.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="Library\CSavedateManeger.cpp" />
@@ -222,7 +222,7 @@
     <ClInclude Include="Library\CSavedata.h" />
     <ClInclude Include="Library\CObjTest.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="Library\CSavedateManeger.h" />
     <ClInclude Include="Library\DirectXDevice.h" />

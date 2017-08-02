@@ -205,10 +205,22 @@ void CSavedataManeger::Deletesavedata(int savedate_srot)
 	Savedata[savedate_srot].m_btutoriaruflg.clear();
 	Savedata[savedate_srot].m_btutorial = false;
 
+	InitSaveData(savedate_srot);
 }
 
 void CSavedataManeger::Setcurrentdata()
 {
 	SelectedData = 0;//テスト用
 	CurrentData = &(Savedata[SelectedData]);
+}
+void CSavedataManeger::InitSaveData(int savedate_srot)
+{
+	Savedata[savedate_srot].m_bKouneflg.resize(100);
+	Savedata[savedate_srot].m_bKouneClearflg.resize(10);
+	Savedata[savedate_srot].m_bMelueruflg.resize(100);
+	Savedata[savedate_srot].m_bMelueruClearflg.resize(10);
+	Savedata[savedate_srot].m_bSionflg.resize(100);
+	Savedata[savedate_srot].m_bSionClearflg.resize(10);
+	Savedata[savedate_srot].m_btutoriaruflg.resize(10);
+	Savedata[savedate_srot].m_btutorial = false;
 }

@@ -12,6 +12,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 	10~15=シオン
 	20~25=メルエル
 	30~35=コウネ
+	40   =チュートリアル（博士）
 	*/
 	SavedataManeger()->Setcurrentdata();
 
@@ -25,26 +26,26 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 
 		break;
 	case 11:
-		//シオンのステージ2のギミック生成
-		m_gimmick_earphone = new Gimmickearphone();
-		Obj()->InsertObj(m_gimmick_earphone, GIMMICK_EARPHONE, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_earphone->Init(350, 250, 70, 100, 1);
-		//コウネ生成
-		m_gimmick_koune = new Gimmickkoune();
-		Obj()->InsertObj(m_gimmick_koune, GIMMICK_KOUNE, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_koune->Init(-110, 220, 70, 100, 1);
-		//猫生成
-		m_gimmick_cat = new Gimmickcat();
-		Obj()->InsertObj(m_gimmick_cat, GIMMICK_CAT, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_cat->Init(550, 120, 70, 100, 1);
-		//自転車生成
-		m_gimmick_bicycle = new Gimmickbicycle();
-		Obj()->InsertObj(m_gimmick_bicycle, GIMMICK_BICYCLE, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_bicycle->Init(100, 300, 300, 300, 1);
-		//消防車
-		m_gimmick_firetruck = new Gimmickfiretruck();
-		Obj()->InsertObj(m_gimmick_firetruck, GIMMICK_FIRETRUCK, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_firetruck->Init(-400, 220, 70, 100, 1);
+		////シオンのステージ2のギミック生成
+		//m_gimmick_earphone = new Gimmickearphone();
+		//Obj()->InsertObj(m_gimmick_earphone, GIMMICK_EARPHONE, 5, this->m_pScene, HIT_BOX_OFF);
+		//m_gimmick_earphone->Init(350, 250, 70, 100, 1);
+		////コウネ生成
+		//m_gimmick_koune = new Gimmickkoune();
+		//Obj()->InsertObj(m_gimmick_koune, GIMMICK_KOUNE, 5, this->m_pScene, HIT_BOX_OFF);
+		//m_gimmick_koune->Init(-110, 220, 70, 100, 1);
+		////猫生成
+		//m_gimmick_cat = new Gimmickcat();
+		//Obj()->InsertObj(m_gimmick_cat, GIMMICK_CAT, 5, this->m_pScene, HIT_BOX_OFF);
+		//m_gimmick_cat->Init(550, 120, 70, 100, 1);
+		////自転車生成
+		//m_gimmick_bicycle = new Gimmickbicycle();
+		//Obj()->InsertObj(m_gimmick_bicycle, GIMMICK_BICYCLE, 5, this->m_pScene, HIT_BOX_OFF);
+		//m_gimmick_bicycle->Init(100, 300, 300, 300, 1);
+		////消防車
+		//m_gimmick_firetruck = new Gimmickfiretruck();
+		//Obj()->InsertObj(m_gimmick_firetruck, GIMMICK_FIRETRUCK, 5, this->m_pScene, HIT_BOX_OFF);
+		//m_gimmick_firetruck->Init(-400, 220, 70, 100, 1);
 		break;
 
 	case 12:
@@ -223,7 +224,7 @@ void CObjGimmickManager::Destructor() {
 
 //アクション
 void CObjGimmickManager::Action() {
-
+	
 }
 
 //ドロー

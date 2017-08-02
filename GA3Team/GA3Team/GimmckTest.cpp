@@ -574,6 +574,13 @@ void GimmickChildren::Action()//ƒAƒNƒVƒ‡ƒ“
 			}
 		}
 	}
+
+	if (SavedataManeger()->CurrentData->m_bSionflg[3] == true && 
+		SavedataManeger()->CurrentData->m_bSionflg[4] == true && 
+		SavedataManeger()->CurrentData->m_bSionflg[5] == true) {
+		SavedataManeger()->CurrentData->m_bSionClearflg[2] = true;
+	}
+
 }
 void GimmickChildren::Draw()//•`‰æ
 {

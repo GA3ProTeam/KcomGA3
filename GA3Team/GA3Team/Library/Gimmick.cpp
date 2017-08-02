@@ -7,6 +7,8 @@ void Gimmick::Init(int xpos, int ypos, int widht, int height, int balloonnum)
 	m_iWidth = widht;	//ギミック幅の初期化
 	m_iHeight = height;	//ギミック高さの初期化
 	m_iballoonnum = balloonnum;//吹き出しの総数
+
+
 }
 void Gimmick::gimmicDraw(Balloon *ball1, int num)
 {
@@ -15,7 +17,7 @@ void Gimmick::gimmicDraw(Balloon *ball1, int num)
 
 	ball[num] = *ball1;
 
-	memcmp(&ball[num], ball1, sizeof(Balloon));
+	//memcpy(&ball[num], ball1, sizeof(Balloon));
 
 	//マウスの座標を取得
 	int mousex = Input()->m_x;

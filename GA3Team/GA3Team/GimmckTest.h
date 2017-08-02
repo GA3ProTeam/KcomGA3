@@ -16,8 +16,6 @@ private:
 };
 
 //-----------チュートリアル（博士）ステージ↓-------------------------
-int g_itutorial_phase=0;
-
 
 //博士
 class GimmickDoctor :public Gimmick {
@@ -31,7 +29,7 @@ public:
 	void Draw();		//ドロー
 
 private:
-
+	Balloon *m_ball;//吹き出し
 };
 
 //パソコン
@@ -46,7 +44,7 @@ public:
 	void Draw();		//ドロー
 
 private:
-
+	Balloon *m_ball;//吹き出し
 };
 
 //レコーダー
@@ -61,7 +59,7 @@ public:
 	void Draw();		//ドロー
 
 private:
-
+	Balloon *m_ball;//吹き出し
 };
 //-----------チュートリアル（博士）ステージ↑-------------------------
 

@@ -23,8 +23,6 @@ void CSceneDataSelect::InitScene()
 
 	//Audio()->LoopStart(0);
 
-	
-
 }
 
 //シーン実行
@@ -44,7 +42,6 @@ void CSceneDataSelect::Scene()
 		//シーン移動　→タイトルへ
 		Manager()->Pop(new CSceneTitle());
 	}
-
 
 	//テスト描画
 	if (Input()->GetVKey(VK_RETURN)) {

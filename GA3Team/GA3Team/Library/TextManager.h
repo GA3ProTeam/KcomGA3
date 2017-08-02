@@ -4,7 +4,7 @@
 #define __TEXTMANAGER_H__
 
 
-class CTextManager{
+class CTextManager {
 private:
 	int linecount = 0;
 	int textlen = 0;

@@ -7,9 +7,12 @@ void CObjTitle::Init()
 
 	m_bdataflg = false;
 
-	m_ititle_choice = NONE;
+	m_inext_scene = NONE;
 
 	m_icreateflg = false;
+
+	iLoad_flg = 0;
+
 }
 
 void CObjTitle::Destructor()
@@ -19,22 +22,27 @@ void CObjTitle::Destructor()
 void CObjTitle::Action()
 {
 	//セーブデータ
-	//m_obj_savedata = (CSavedataManeger *)Obj()->GetObj(OBJ_SAVEDATA);
+	if (iLoad_flg == 0) {
+		SavedataManeger()->Loadsavedata();
+		SavedataManeger()->Writesavedata();
+		
+		iLoad_flg = 1;
+	}
 
 	//ボタンがまだ作成されていなければ、ボタンを作成する
 	if (!m_icreateflg){
 
 		//セーブデータの有無判定
-		//for (int i = 0; i < MAX_SAVEDATA; i++) {
-		//	if (!m_bdataflg) {
-		//		m_bdataflg = SavedataManeger()->Savedatacheck(i);
-		//		break;
-		//	}
-		//}
+		for (int i = 0; i < MAX_SAVEDATA; i++) {
+			
+			m_bdataflg = SavedataManeger()->Savedatacheck(i);
+			
+			if (m_bdataflg) {
+				break;
+			}
+		}
 
-		m_bdataflg = true; //デバック用
-
-		  //はじめからボタン生成
+		//はじめからボタン生成
 		m_obj_button[0] = new ButtonDataSelect();
 		Obj()->InsertObj(m_obj_button[0], OBJ_BUTTON_STAGE, 0, this->m_pScene, HIT_BOX_OFF);
 		m_obj_button[0]->Init(250, 300, 300, 100, true,0, 512, 512);
@@ -52,18 +60,18 @@ void CObjTitle::Action()
 
 	//はじめから
 	if (m_obj_button[0]->Push()){
-		m_ititle_choice = NEW;
+		m_inext_scene = NEW;
 	}
 	//つづきから
 	else if (m_bdataflg && m_obj_button[1]->Push()) {
-		m_ititle_choice = LOAD;
+		m_inext_scene = LOAD;
 	}
 
 	int mousex = Input()->m_x;
 	int mousey = Input()->m_y;
 
 
-	User()->mititle_choice = m_ititle_choice;
+	User()->m_iNext_Scene = m_inext_scene;
 
 }
 
@@ -71,6 +79,7 @@ void CObjTitle::Draw()
 {
 	char x[32], y[32];
 
+	//マウス位置取得 デバック用
 	sprintf(x, "%d", Input()->m_x);
 	sprintf(y, "%d", Input()->m_y);
 
@@ -84,18 +93,13 @@ void CObjTitle::Draw()
 	Font()->StrDraw("title", 0, 0, 16, coltext);
 	Font()->StrDraw(x, 0, 16, 16, coltext);
 	Font()->StrDraw(y, 0, 32, 16, coltext);
-
-//	Font()->StrDraw("NEW", 300, 300, 20, coltext);  // (仮)
-//	Font()->StrDraw("LOAD",300, 400, 20, coltext); //  〃
-
-
 	
 
 	//シーン移動仮
-	if (m_ititle_choice == NEW || m_ititle_choice == LOAD) {
-		//シーン移動　→データセレクトへ
-		Manager()->Pop(new CSceneDataSelect());
-	}
+	//if (m_ititle_choice == NEW || m_ititle_choice == LOAD) {
+	//	//シーン移動　→データセレクトへ
+	//	Manager()->Pop(new CSceneDataSelect());
+	//}
 
 	//テスト用表示
 	float coldbg[4] = { 1.0f,1.0f,1.0f,1.0f };

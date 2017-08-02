@@ -8,16 +8,20 @@ void Gimmick::Init(int xpos, int ypos, int widht, int height, int balloonnum)
 	m_iHeight = height;	//ギミック高さの初期化
 	m_iballoonnum = balloonnum;//吹き出しの総数
 
-
+	m_ball = new Balloon[m_iballoonnum];
 }
-void Gimmick::gimmicDraw(Balloon *ball1, int num)
+
+//描画
+//引数：
+//num=描画する吹き出しの数
+void Gimmick::gimmicDraw(int num)
 {
 	static bool flg = false;
 	static bool onceflg = false;//クリックした際一度だけ反応するためのフラグ
 
-	ball[num] = *ball1;
+	//m_ball[num] = *ball1;
 
-	//memcpy(&ball[num], ball1, sizeof(Balloon));
+	//memcmp(&m_ball[num], ball1, sizeof(Balloon));
 
 	//マウスの座標を取得
 	int mousex = Input()->m_x;
@@ -28,17 +32,17 @@ void Gimmick::gimmicDraw(Balloon *ball1, int num)
 	//-----------------------吹き出し描画------------------------
 
 	//転送先座標
-	for (int i = 0; i < m_iballoonnum; i++)
+	for (int i = 0; i < /*m_iballoonnum*/num; i++)
 	{
-		ball[i].m_gimdst.top = 0;
-		ball[i].m_gimdst.left = 0;
-		ball[i].m_gimdst.bottom = 330;
-		ball[i].m_gimdst.right = 400;
+		m_ball[i].m_gimdst.top = 0;
+		m_ball[i].m_gimdst.left = 0;
+		m_ball[i].m_gimdst.bottom = 330;
+		m_ball[i].m_gimdst.right = 400;
 
-		ball[i].m_gimsrc.top = m_iYpos + ball[i].m_iGimYpos;
-		ball[i].m_gimsrc.left = m_iXpos + ball[i].m_iGimXpos + User()->mscroll_x;
-		ball[i].m_gimsrc.bottom = ball[i].m_gimsrc.top + GIMMICK_SIZE_Y;
-		ball[i].m_gimsrc.right = ball[i].m_gimsrc.left + GIMMICK_SIZE_X;
+		m_ball[i].m_gimsrc.top = m_iYpos + m_ball[i].m_iGimYpos;
+		m_ball[i].m_gimsrc.left = m_iXpos + m_ball[i].m_iGimXpos + User()->mscroll_x;
+		m_ball[i].m_gimsrc.bottom = m_ball[i].m_gimsrc.top + GIMMICK_SIZE_Y;
+		m_ball[i].m_gimsrc.right = m_ball[i].m_gimsrc.left + GIMMICK_SIZE_X;
 	}
 	//-----------------------当たり判定----------------------------------
 	//OverRayが起動してたらあたり判定をなくす
@@ -58,13 +62,13 @@ void Gimmick::gimmicDraw(Balloon *ball1, int num)
 		if (m_iballoontime >= 0) {
 			for (int i = 0; i < m_iballoonnum; i++)
 			{
-				if (ball[i].m_iballoontype == talk){
+				if (m_ball[i].m_iballoontype == talk){
 					//会話吹き出しを描画
-					Image()->Draw(3, &ball[i].m_gimsrc, &ball[i].m_gimdst, col, 0.0f);
+					Image()->Draw(3, &m_ball[i].m_gimsrc, &m_ball[i].m_gimdst, col, 0.0f);
 				}
-				if (ball[i].m_iballoontype == sound){
+				if (m_ball[i].m_iballoontype == sound){
 					//音吹き出しを描画
-					Image()->Draw(4, &ball[i].m_gimsrc, &ball[i].m_gimdst, col, 0.0f);
+					Image()->Draw(4, &m_ball[i].m_gimsrc, &m_ball[i].m_gimdst, col, 0.0f);
 
 					//シオンの能力発動時に吹き出しの色を変える
 					/*if (User()->m_bsionability)
@@ -74,8 +78,8 @@ void Gimmick::gimmicDraw(Balloon *ball1, int num)
 				}
 
 				//吹き出し描画中に吹き出しをクリックしたら
-				if ((mousex > ball[i].m_gimsrc.left&& mousex < ball[i].m_gimsrc.right)
-					&& (mousey > ball[i].m_gimsrc.top && mousey < ball[i].m_gimsrc.right))
+				if ((mousex > m_ball[i].m_gimsrc.left&& mousex < m_ball[i].m_gimsrc.right)
+					&& (mousey > m_ball[i].m_gimsrc.top && mousey < m_ball[i].m_gimsrc.right))
 				{
 					flg = true;
 				}
@@ -92,10 +96,10 @@ void Gimmick::gimmicDraw(Balloon *ball1, int num)
 					//左クリックされていない　&&　一回クリックされていたなら
 					else if (!Input()->GetMouButtonL() && onceflg)
 					{
-						if (ball[i].m_iballoontype == sound && ball[i].m_soundnum != EXCEPTION)
-							SoundManager()->SoundSave(ball[i].m_soundnum);
+						if (m_ball[i].m_iballoontype == sound && m_ball[i].m_soundnum != EXCEPTION)
+							SoundManager()->SoundSave(m_ball[i].m_soundnum);
 						onceflg = false;
-						ball[i].OnPush = true;
+						m_ball[i].OnPush = true;
 
 					}
 				}
@@ -107,16 +111,12 @@ void Gimmick::setballooncolor(int num)
 {
 	//if(ball[num].m_iballooncolor == RED);
 }
-Balloon *InitBall(int gimX, int gimY, int balltype, int soundnum, int color, int Dir)
+void InitBall(Balloon* balloon , int gimX, int gimY, int balltype, int soundnum, int color, int Dir)
 {
-	Balloon *Initball = new Balloon();
-
-	Initball->m_iGimXpos = gimX;
-	Initball->m_iGimYpos = gimY;
-	Initball->m_iballoontype = balltype;
-	Initball->m_soundnum = soundnum;
-	Initball->m_iballooncolor = color;
-	Initball->m_iballoonDir = Dir;
-
-	return Initball;
+	balloon->m_iGimXpos = gimX;
+	balloon->m_iGimYpos = gimY;
+	balloon->m_iballoontype = balltype;
+	balloon->m_soundnum = soundnum;
+	balloon->m_iballooncolor = color;
+	balloon->m_iballoonDir = Dir;
 }

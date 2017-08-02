@@ -10,7 +10,7 @@ public:
 	bool Savedatacheck(int savedate_srot/*確認したいセーブデータのスロット*/); //セーブデータ確認
 	void Deletesavedata(int savedate_srot);//セーブデータ削除
 	void Setcurrentdata();//ポインターセット
-
+	void InitSaveData(int savedate_srot);
 	int SelectedData;
 
 	CSavedata *CurrentData;

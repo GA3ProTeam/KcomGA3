@@ -322,7 +322,7 @@ class CUserData
 		//----ユーザーが持つデータ-------
 		//int mSeveData;//サンプルセーブデータ
 		int mscroll_x;
-		int mititle_choice; //始め方の選択
+		int m_iNext_Scene; //次のシーン
 		
 		bool m_bsionability;
 		bool m_bkouneability;

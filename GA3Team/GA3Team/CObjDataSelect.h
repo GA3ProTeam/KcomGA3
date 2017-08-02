@@ -38,7 +38,7 @@ private:
 	ButtonDataSelect* m_obj_titlebackbutton;				//戻るボタン
 	ButtonDataSelect* m_obj_deletebutton;					//初期化するボタン
 
-	int m_ititle_choice;	//はじめからつづきからどちらが選ばれたか
+	int m_inext_scene;	//はじめからつづきからどちらが選ばれたか
 	int m_button_y;			//セーブデータ表示位置
 	
 	bool m_icreateflg;		//ボタンが作成されたか確認

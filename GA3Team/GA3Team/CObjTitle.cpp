@@ -24,6 +24,8 @@ void CObjTitle::Action()
 	//セーブデータ
 	if (iLoad_flg == 0) {
 		SavedataManeger()->Loadsavedata();
+		SavedataManeger()->Writesavedata();
+		
 		iLoad_flg = 1;
 	}
 
@@ -32,8 +34,10 @@ void CObjTitle::Action()
 
 		//セーブデータの有無判定
 		for (int i = 0; i < MAX_SAVEDATA; i++) {
-			if (!m_bdataflg) {
-				m_bdataflg = SavedataManeger()->Savedatacheck(i);
+			
+			m_bdataflg = SavedataManeger()->Savedatacheck(i);
+			
+			if (m_bdataflg) {
 				break;
 			}
 		}

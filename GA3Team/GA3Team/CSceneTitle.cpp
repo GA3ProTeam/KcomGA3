@@ -35,7 +35,9 @@ void CSceneTitle::Scene()
 	
 	if (m_ititle_choice == NEW || m_ititle_choice == LOAD) {
 		//シーン移動　→データセレクトへ
+		
 		Manager()->Pop(new CSceneDataSelect());
+		
 	}
 	
 

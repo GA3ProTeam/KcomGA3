@@ -156,6 +156,9 @@ void COverlay::Draw()
 					(*nameitr).erase((*nameitr).begin());
 					if ("ïWèÄ" != (*nameitr)) {
 						m_strTempName = (*nameitr).c_str();
+					}else if("ïWèÄ" == (*nameitr)){
+						m_strTemp.clear();
+						m_strTemp.resize(m_iChar_Line);
 					}
 				}
 			}
@@ -167,7 +170,7 @@ void COverlay::Draw()
 			for (unsigned int i = 0; i < m_strTemp.size(); i++) {
 				sprintf_s(tmp, "%s", m_strTemp[i].c_str());
 				float col[4] = { 1.0f,1.0f,1.0f,m_fAlpha };
-				font->StrDrawEx(tmp, WINDOW_SIZE_W / 2 - 300, (WINDOW_SIZE_H / 2 + 200) + (i * 16), 16, col,FONT_HGP_SOUEI_POP);
+				font->StrDraw(tmp, WINDOW_SIZE_W / 2 - 300, (WINDOW_SIZE_H / 2 + 200) + (i * 16), 16, col);
 			}
 		}
 	}

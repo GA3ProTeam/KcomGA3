@@ -57,7 +57,6 @@ void GimmickDoctor::Init(int xpos, int ypos, int widht, int height, int balloonn
 
 	//吹き出しの初期化
 	InitBall(&m_ball[0], m_iWidth - 50, -48, talk, 1, RED,LOWER_LEFT);
-	InitBall(&m_ball[1], m_iWidth + 14, -48, sound, 1, RED, LOWER_LEFT);
 }
 
 //デストラクタ
@@ -67,9 +66,6 @@ void GimmickDoctor::Destructor() {
 
 //アクション
 void GimmickDoctor::Action() {
-	//吹き出し生成
-	m_ball = InitBall(m_iWidth - 50, -48, sound, 1, RED, LOWER_LEFT);
-
 	//メニュータブへの参照取得
 	CObjMenuTab* tab = (CObjMenuTab*)Obj()->GetObj(OBJ_MENUTAB);
 

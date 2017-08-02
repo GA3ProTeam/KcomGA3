@@ -52,14 +52,14 @@ typedef struct
 
 //吹き出し構造体(Balloon)の初期化関数
 //InitBall(X座標、Y座標,吹き出しの種類,(talk or sound),ギミックが持っている音情報(ない場合は　EXCEPTION　を入れる)),シオンの能力発動時の色情報
-Balloon *InitBall(int gimX, int gimY, int balltype, int soundnum, int color, int Dir);
+void InitBall(Balloon* balloon, int gimX, int gimY, int balltype, int soundnum, int color, int Dir);
 
 //ギミッククラス(基底)
 class Gimmick : public CObj {
 private:
 
 protected:
-	Balloon ball[BALLOON_MAX_NUM];//吹き出し
+	Balloon* m_ball;//吹き出し
 	bool m_bCursor;	    //ギミックにカーソルが当たっているかのフラグ
 	int m_iballoontime;	//吹き出しの維持時間
 	int m_iballoonnum;  //吹き出しの数
@@ -75,18 +75,24 @@ public:
 	//Init(X座標、Y座標、幅、高さ,吹き出しの数)
 	void Init(int xpos, int ypos, int widht, int height, int balloonnum);
 
+	//デストラクタ
+	void Destructor() {
+		//吹き出し破棄
+		delete[] m_ball;
+	}
+
 	//吹き出しの種類をセットする
-	void setballoontype(int balloontype, int num) { ball[num].m_iballoontype = balloontype; }
+	void setballoontype(int balloontype, int num) { m_ball[num].m_iballoontype = balloontype; }
 
 	//吹き出し(音情報)をセットする
-	void setSound(int soundnum, int num) { ball[num].m_soundnum = soundnum; }
+	void setSound(int soundnum, int num) { m_ball[num].m_soundnum = soundnum; }
 
 	//吹き出しの(色情報)をセットする
-	void setColor(int color, int num) { ball[num].m_iballooncolor = color; }
+	void setColor(int color, int num) { m_ball[num].m_iballooncolor = color; }
 	
 
 	//描画
-	void gimmicDraw(Balloon *ball1, int num);
+	void gimmicDraw(int num);
 
 	//シオンの能力発動時音符に色をつける
 	void setballooncolor(int num);

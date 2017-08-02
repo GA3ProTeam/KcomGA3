@@ -188,6 +188,9 @@ class GimmickChildren : public Gimmick
 private:
 	int m_iChild_ID;//q‹Ÿ‚ğ‹æ•Ê‚·‚é‚½‚ß‚Ì•Ï”
 
+	//1ŒÂ‚Ìê‡
+	Balloon *aaa;
+
 public:
 	GimmickChildren() {};
 	~GimmickChildren() {};
@@ -204,6 +207,8 @@ public:
 class GimmickGranny : public Gimmick
 {
 private:
+	//1ŒÂ‚Ìê‡
+	Balloon *aaa;
 
 public:
 	GimmickGranny() {};
@@ -219,6 +224,8 @@ public:
 class GimmickMynah : public Gimmick
 {
 private:
+	//1ŒÂ‚Ìê‡
+	Balloon *aaa;
 
 public:
 	GimmickMynah() {};
@@ -234,6 +241,10 @@ public:
 class GimmickShelf : public Gimmick
 {
 private:
+	//1ŒÂ‚Ìê‡
+	Balloon *aaa;
+	Balloon *bbb;
+	Balloon *ccc;
 
 public:
 	GimmickShelf() {};
@@ -249,6 +260,8 @@ public:
 class GimmickWindchime : public Gimmick
 {
 private:
+	//1ŒÂ‚Ìê‡
+	Balloon *aaa;
 
 public:
 	GimmickWindchime() {};

@@ -104,7 +104,7 @@ void CObjDataSelect::Action()
 
 		User()->mititle_choice = TITLE_RETURN;
 
-		Manager()->Pop(new CSceneTitle());
+		//Manager()->Pop(new CSceneTitle());
 	}
 
 }
@@ -277,7 +277,8 @@ void CObjDataSelect::ButtonFromTheBegin() {
 		if (SavedataManeger()->Savedatacheck(m_iSelectData))
 		{
 			//ステージセレクト画面へ
-			Manager()->Pop(new CSceneStageSelect());
+			User()->mititle_choice = STAGE_SELECT;
+			//Manager()->Pop(new CSceneStageSelect());
 		}
 
 		m_iSelectData = -1;
@@ -330,7 +331,8 @@ void CObjDataSelect::ButtonContinuation() {
 			//セーブデータ確認
 			if (SavedataManeger()->Savedatacheck(m_iSelectData)) {
 				//ステージセレクトへシーン移動
-				Manager()->Pop(new CSceneStageSelect());
+				User()->mititle_choice = STAGE_SELECT;
+				//Manager()->Pop(new CSceneStageSelect());
 			}
 		}
 	}

@@ -45,7 +45,7 @@ void GimmickTest::Draw()
 	delete ccc;*/
 
 	//SavedataManeger()->CurrentData->m_bKouneClearflg
-}
+//}
 //テスト用↑
 
 //-----------チュートリアル（博士）ステージ↓--------------------------

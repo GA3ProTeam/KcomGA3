@@ -112,8 +112,6 @@ void COverlay::Draw()
 
 			m_iDelay++;
 
-			m_strTemp.resize(textmgr->m_Tutorial_Text[m_iDrawingStageID].size());
-
 			if (m_iChar_Line < textmgr->m_Tutorial_Text[m_iDrawingStageID].size()) {
 				if (m_iChar_Pos < textmgr->m_Tutorial_Text[m_iDrawingStageID][m_iChar_Line].length()) {
 					if (m_iDelay > m_iTextSpeed) {
@@ -157,19 +155,19 @@ void COverlay::Draw()
 				if ((*nameitr).find(linec) != -1) {
 					(*nameitr).erase((*nameitr).begin());
 					if ("•W€" != (*nameitr)) {
-						//m_strTempName
+						m_strTempName = (*nameitr).c_str();
 					}
 				}
 			}
 
-			sprintf_s(tmpname, "%s", tmpname);
+			sprintf_s(tmpname, "%s", m_strTempName.c_str());
 			float col[4] = { 1.0f,1.0f,1.0f,m_fAlpha };
-			font->StrDraw(tmpname, WINDOW_SIZE_W / 2 - 400, WINDOW_SIZE_H / 2 + 100, 16, col);
+			font->StrDraw(tmpname, WINDOW_SIZE_W / 2 - 300, WINDOW_SIZE_H / 2 + 150, 16, col);
 
 			for (unsigned int i = 0; i < m_strTemp.size(); i++) {
 				sprintf_s(tmp, "%s", m_strTemp[i].c_str());
 				float col[4] = { 1.0f,1.0f,1.0f,m_fAlpha };
-				font->StrDrawEx(tmp, WINDOW_SIZE_W / 2 - 300, (WINDOW_SIZE_H / 2 + 200) + (i * 16), 16, col,i);
+				font->StrDrawEx(tmp, WINDOW_SIZE_W / 2 - 300, (WINDOW_SIZE_H / 2 + 200) + (i * 16), 16, col,FONT_HGP_SOUEI_POP);
 			}
 		}
 	}
@@ -181,6 +179,8 @@ void COverlay::talkDraw(int stage, int stageID)
 	m_iDrawFlg = 1;
 	m_iDrawingStage = stage;
 	m_iDrawingStageID = stageID;
+	m_strTemp.resize(textmgr->m_Tutorial_Text[m_iDrawingStageID].size());
+	m_strTempName.resize(32);
 }
 
 void COverlay::StopDraw() {
@@ -188,6 +188,7 @@ void COverlay::StopDraw() {
 		m_iChar_Pos = 0;
 		m_iChar_Size = 0;
 		m_strTemp.clear();
+		m_strTempName.clear();
 		m_iDrawFlg = 0;
 	}
 }

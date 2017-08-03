@@ -6,8 +6,8 @@
 #define _HAS_ITERATOR_DEBUGGING	(0) 
 
 //vs2015_warning
-#pragma warning ( disable : 4005 )
-#pragma warning ( disable : 4838 )
+#pragma warning (disable : 4005)
+#pragma warning (disable : 4838)
 #define _CRT_SECURE_NO_WARNINGS
 
 //ÉwÉbÉ_Å[

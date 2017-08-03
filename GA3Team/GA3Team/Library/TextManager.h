@@ -3,6 +3,7 @@
 #ifndef __TEXTMANAGER_H__
 #define __TEXTMANAGER_H__
 
+//
 
 class CTextManager {
 private:

@@ -64,6 +64,8 @@ void GimmickDoctor::Destructor() {
 
 }
 
+int g_tutorial_phase = 0;
+
 //アクション
 void GimmickDoctor::Action() {
 	//メニュータブへの参照取得
@@ -134,7 +136,6 @@ void GimmickDoctor::Action() {
 	//	
 	//}
 
-
 	if (!SavedataManeger()->CurrentData->m_btutoriaruflg[0]) {
 		//会話「ようこそ！ここは・・・」
 
@@ -147,11 +148,11 @@ void GimmickDoctor::Action() {
 	//音を録音していない状態（フラグ2未達成）で、会話
 	else if (SavedataManeger()->CurrentData->m_btutoriaruflg[0] &&
 			!SavedataManeger()->CurrentData->m_btutoriaruflg[1] && m_ball[0].OnPush) {
-
+		//会話「話を聞いていなかったのかね？・・・」
 	}
 	//音を録音後（フラグ2達成後）、会話
 	else if (SavedataManeger()->CurrentData->m_btutoriaruflg[1] && m_ball[0].OnPush) {
-
+		//会話「うむ、言われたことはできるようなのだな・・・」
 	}
 	//音を再生
 	else if (!SavedataManeger()->CurrentData->m_btutorial) {

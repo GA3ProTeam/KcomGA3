@@ -64,95 +64,31 @@ void GimmickDoctor::Destructor() {
 
 }
 
-int g_tutorial_phase = 0;
-
 //アクション
 void GimmickDoctor::Action() {
 	//メニュータブへの参照取得
 	CObjMenuTab* tab = (CObjMenuTab*)Obj()->GetObj(OBJ_MENUTAB);
-
-	////チュートリアルのフェイズ
-	//switch (g_itutorial_phase) {
-	//case 0:
-	//	{
-
-	//	}
-	//	break;
-
-	//case 1:
-	//	{
-	//
-	//	}
-	//	break;
-
-	//}
-
-	////博士に話しかけず録音から再生まで達成（フラグ2○　フラグ3×）
-	//if (SavedataManeger()->CurrentData->m_btutoriaruflg[1] &&
-	//	!SavedataManeger()->CurrentData->m_btutoriaruflg[2] &&
-	//	SavedataManeger()->CurrentData->m_btutorial) {
-	//	//会話「わしは録音をするようにいったはずなのだが・・・」
-	//}
-	//else if (SavedataManeger()->CurrentData->m_btutorial) {
-	//	//会話「ふむふむ・・・。この音！・・・」
-	//}
-	////音を再生
-	//else if (!SavedataManeger()->CurrentData->m_btutorial) {
-	//	//メニュータブへの参照取得
-	//	CObjMenuTab* tab = (CObjMenuTab*)Obj()->GetObj(OBJ_MENUTAB);
-
-	//	//音ボタンドラッグ処理-------------------------------------------------------
-	//	//マウスドラッグ中にマウスボタンが離された
-	//	if (!Input()->GetMouButtonL() && tab->GetHaveSound()) {
-	//		//マウスがギミック範囲内か確認
-	//		if (Input()->m_x > m_iXpos&& Input()->m_x < (m_iXpos + m_iWidth)
-	//			&& Input()->m_y > m_iYpos && Input()->m_y < (m_iYpos + m_iHeight)) {
-
-	//			//チュートリアルにはパソコンしかないので、音番号判定は無し
-
-	//			//チュートリアルクリア
-	//			SavedataManeger()->CurrentData->m_btutorial = true;
-	//		}
-	//	}
-	//	//---------------------------------------------------------------------------
-	//}
-	////音を録音後（フラグ2達成後）、会話
-	//else if (SavedataManeger()->CurrentData->m_btutoriaruflg[1] && m_ball[0].OnPush) {
-	//	//会話「うむ、言われたことはできるようなのだな・・・」
-	//	
-	//}
-	////フラグ2を達成していなくて、会話
-	//else if (!SavedataManeger()->CurrentData->m_btutoriaruflg[1] && m_ball[0].OnPush) {
-	//	//会話「話を聞いていなかったのかね？・・・」
-	//	
-	//}
-	////フラグ1達成後
-	//else if (SavedataManeger()->CurrentData->m_btutoriaruflg[0]) {
-	//	//会話「それはこの研究所が開発したレコーダー・・・」
-
-	//}
-	//else {
-	//	//会話「ようこそ！ここは・・・」
-	//	
-	//}
 
 	if (!SavedataManeger()->CurrentData->m_btutoriaruflg[0]) {
 		//会話「ようこそ！ここは・・・」
 
 	}
 	//レコーダー入手後（フラグ1達成後）
-	else if (SavedataManeger()->CurrentData->m_btutoriaruflg[0]) {
+	else if (SavedataManeger()->CurrentData->m_btutoriaruflg[0] &&
+			!SavedataManeger()->CurrentData->m_btutoriaruflg[1]) {
 		//会話「それはこの研究所が開発したレコーダー・・・」
 
-	}
-	//音を録音していない状態（フラグ2未達成）で、会話
-	else if (SavedataManeger()->CurrentData->m_btutoriaruflg[0] &&
-			!SavedataManeger()->CurrentData->m_btutoriaruflg[1] && m_ball[0].OnPush) {
-		//会話「話を聞いていなかったのかね？・・・」
+		//音を録音していない（フラグ2未達成）状態で、会話
+		if (m_ball[0].OnPush) {
+			//会話「話を聞いていなかったのかね？・・・」
+		}
 	}
 	//音を録音後（フラグ2達成後）、会話
 	else if (SavedataManeger()->CurrentData->m_btutoriaruflg[1] && m_ball[0].OnPush) {
 		//会話「うむ、言われたことはできるようなのだな・・・」
+
+		//録音した後、会話した（フラグ3達成）
+		SavedataManeger()->CurrentData->m_btutoriaruflg[2] = true;
 	}
 	//音を再生
 	else if (!SavedataManeger()->CurrentData->m_btutorial) {
@@ -160,7 +96,7 @@ void GimmickDoctor::Action() {
 		CObjMenuTab* tab = (CObjMenuTab*)Obj()->GetObj(OBJ_MENUTAB);
 
 		//音ボタンドラッグ処理-------------------------------------------------------
-		//マウスドラッグ中にマウスボタンが離された
+		//音ボタンドラッグ中にマウスボタンが離された
 		if (!Input()->GetMouButtonL() && tab->GetHaveSound()) {
 			//マウスがギミック範囲内か確認
 			if (Input()->m_x > m_iXpos&& Input()->m_x < (m_iXpos + m_iWidth)
@@ -175,13 +111,16 @@ void GimmickDoctor::Action() {
 		//---------------------------------------------------------------------------
 	}
 	else if (SavedataManeger()->CurrentData->m_btutorial) {
-		//会話「ふむふむ・・・。この音！・・・」
-	}
-	//博士に話しかけず録音から再生まで達成（フラグ2○　フラグ3×）
-	else if (SavedataManeger()->CurrentData->m_btutoriaruflg[1] &&
-		!SavedataManeger()->CurrentData->m_btutoriaruflg[2] &&
-		SavedataManeger()->CurrentData->m_btutorial) {
-		//会話「わしは録音をするようにいったはずなのだが・・・」
+
+		//博士に話しかけず録音から再生まで達成（フラグ2○　フラグ3×）
+		if (!SavedataManeger()->CurrentData->m_btutoriaruflg[2]) {
+			//会話「わしは録音をするようにいったはずなのだが・・・」
+		}
+		//話しかけた後、再生した
+		else {
+			//会話「ふむふむ・・・。この音！・・・」
+		}
+		
 	}
 
 }

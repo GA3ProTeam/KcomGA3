@@ -4,18 +4,24 @@ void COverlay::InitLoad()
 {
 	//Image
 	image->LoadImageEx("bb.png", 0, TEX_SIZE_512);
+	//コウネステージ1--------------------------------------
+	/*image->LoadImageEx("おじいさん.png", 1, TEX_SIZE_512);
+	image->LoadImageEx("マンホール.png", 2, TEX_SIZE_1024);
+	image->LoadImageEx("マンホールの穴.png", 3, TEX_SIZE_1024);
+	//コウネステージ2--------------------------------------
+	image->LoadImageEx("強気少年.png", 4, TEX_SIZE_512);
+	image->LoadImageEx("女の子c.png", 5, TEX_SIZE_512);
+	//コウネステージ3-------------------------------------
+	image->LoadImageEx("優しい少女.png", 6, TEX_SIZE_);
+	//シオンステージ1--------------------------------------
+	//シオンステージ2-------------------------------------
+	image->LoadImageEx("イヤホン男.png", 7, TEX_SIZE_512);
+	image->LoadImageEx("自転車.png", 8, TEX_SIZE_512);
+	//シオンステージ3-------------------------------------
+	image->LoadImageEx("おばあちゃんc.png", 9, TEX_SIZE_512);
+	//シオンステージ4-------------------------------------
+	image->LoadImageEx("なぞなぞさん.png", 1, TEX_SIZE_512);
 
-	/*image->LoadImageEx("はじめから.png", 0, TEX_SIZE_512);
-	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);
-
-	image->LoadImageEx("戻りボタン.png", 1, TEX_SIZE_512);
-	image->LoadImageEx("破棄ボタン.png", 1, TEX_SIZE_512);
-	image->LoadImageEx(".png", 1, TEX_SIZE_512);
-	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_);
-	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);
-	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);
-	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);
-	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);
 	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);
 	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);
 	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);

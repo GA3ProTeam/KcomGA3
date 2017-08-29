@@ -506,13 +506,12 @@ void GimmickAunt::Draw() {
 //void GimmickChildren::Init(int xpos, int ypos, int widht, int height, int balloonnum, int child_id)///イニシャライズ
 //{
 //	m_iChild_ID = child_id;//子供の識別番号を初期化
-//	m_iXpos = xpos;	//ギミックの位置の初期化(X)
-//	m_iYpos = ypos;	//ギミックの位置の初期化(Y)
-//	m_iWidth = widht;	//ギミック幅の初期化
-//	m_iHeight = height;	//ギミック高さの初期化
-//	m_iballoonnum = balloonnum;//吹き出しの総数
-//
 //	
+//	//親クラスのInit関数を呼ぶ
+//	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
+//
+//	//吹き出しの初期化
+//	InitBall(&m_ball[0],48, -48, talk, EXCEPTION, CNONE, LOWER_LEFT);
 //
 //}
 //void GimmickChildren::Destructor()//デストラクタ
@@ -521,8 +520,6 @@ void GimmickAunt::Draw() {
 //}
 //void GimmickChildren::Action()//アクション
 //{
-//	//1個の場合
-//	aaa = InitBall(48, -48, talk, EXCEPTION, CNONE, LOWER_LEFT);
 //	
 //	CObjMenuTab* tab= (CObjMenuTab*)Obj()->GetObj(OBJ_MENUTAB);
 //	if (Input()->m_x > m_iXpos&& Input()->m_x < (m_iXpos + m_iWidth)
@@ -581,21 +578,21 @@ void GimmickAunt::Draw() {
 //	float col[4] = { 1.0,1.0,1.0,1.0 };
 //
 //	switch (m_iChild_ID) {
-//	case 1:
+//	case 1://強気な男の子
 //		//切り取り先座標
 //		m_dst.top = 0; m_dst.left = 0;
 //		m_dst.bottom = 200; m_dst.right = 200;
 //
 //		break;
 //
-//	case 2:
+//	case 2://優しい女の子
 //		//切り取り先座標
 //		m_dst.top = 0; m_dst.left = 0;
 //		m_dst.bottom = 200; m_dst.right = 200;
 //
 //		break;
 //
-//	case 3:
+//	case 3://弱気な男の子
 //		//切り取り先座標
 //		m_dst.top = 0; m_dst.left = 0;
 //		m_dst.bottom = 200; m_dst.right = 200;
@@ -610,19 +607,25 @@ void GimmickAunt::Draw() {
 //	//描画
 //	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
 //
-//	gimmicDraw(aaa, 0);
-//	delete aaa;
+//	//吹き出しの描画＆動作
+//	this->gimmicDraw(1);
 //
 //}
-////ステージ1↓
 ////おばあちゃん
+//void GimmickGranny::Init(int xpos, int  ypos, int  widht, int  height, int  balloonnum)
+//{
+//	//親クラスのInit関数を呼ぶ
+//	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
+//
+//	//吹き出しの初期化
+//	InitBall(&m_ball[0], 48, -48, talk, EXCEPTION, CNONE, LOWER_LEFT);
+//}
 //void GimmickGranny::Destructor()//デストラクタ
 //{
 //
 //}
 //void GimmickGranny::Action()//アクション
 //{
-//	aaa = InitBall(48, -48, talk, EXCEPTION, CNONE, LOWER_LEFT);
 //}
 //void GimmickGranny::Draw()//描画
 //{
@@ -638,19 +641,24 @@ void GimmickAunt::Draw() {
 //	//描画
 //	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
 //
-//	gimmicDraw(aaa, 0);
-//	delete aaa;
-//
+//	//吹き出しの描画＆動作
+//	this->gimmicDraw(1);
 //}
 //
 ////九官鳥
+//void GimmickMynah::Init(int xpos, int ypos, int widht, int height, int balloonnum)//イニシャライズ
+//{
+//	//親クラスのInit関数を呼ぶ
+//	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
+//
+//	//吹き出しの初期化
+//	InitBall(&m_ball[0], 48, -48, sound, 1, PINK, LOWER_LEFT);
+//}
 //void GimmickMynah::Destructor()	//デストラクタ
 //{
-//
 //}
 //void GimmickMynah::Action()		//アクション
 //{
-//	aaa = InitBall(48, -48, sound, 1, PINK, LOWER_LEFT);
 //}
 //void GimmickMynah::Draw()		//ドロー
 //{
@@ -666,21 +674,28 @@ void GimmickAunt::Draw() {
 //	//描画
 //	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
 //
-//	gimmicDraw(aaa, 0);
-//	delete aaa;
+//	//吹き出しの描画＆動作
+//	this->gimmicDraw(1);
 //
 //}
 //
 ////菓子棚
+//void GimmickShelf::Init(int xpos, int ypos, int widht, int height, int balloonnum)//イニシャライズ
+//{
+//	//親クラスのInit関数を呼ぶ
+//	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
+//
+//	//吹き出しの初期化
+//	InitBall(&m_ball[0], 48, -48, sound, 1, BLUE, LOWER_LEFT);
+//	InitBall(&m_ball[1], 48, -48, sound, 1, RED, LOWER_LEFT);
+//	InitBall(&m_ball[2], 48, -48, sound, 1, YELLOW, LOWER_LEFT);
+//}
 //void GimmickShelf::Destructor()	//デストラクタ
 //{
 //
 //}
 //void GimmickShelf::Action()		//アクション
 //{
-//	aaa = InitBall(-48, 70, sound, 1, BLUE, LOWER_LEFT);
-//	bbb = InitBall(0, -48, sound, 1, RED, LOWER_LEFT);
-//	ccc = InitBall(48, 70, sound, 1, YELLOW, LOWER_LEFT);
 //}
 //void GimmickShelf::Draw()		//ドロー
 //{
@@ -696,24 +711,26 @@ void GimmickAunt::Draw() {
 //	//描画
 //	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
 //
-//	gimmicDraw(aaa, 0);
-//	gimmicDraw(bbb, 1);
-//	gimmicDraw(ccc, 2);
-//
-//	delete aaa;
-//	delete bbb;
-//	delete ccc;
+//	//吹き出しの描画＆動作
+//	this->gimmicDraw(3);
 //
 //}
 //
 ////風鈴
+//void GimmickWindchime::Init(int xpos, int ypos, int widht, int height, int balloonnum)//イニシャライズ
+//{
+//	//親クラスのInit関数を呼ぶ
+//	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
+//
+//	//吹き出しの初期化
+//	InitBall(&m_ball[0], 48, -48, sound, 1, PURPLE, LOWER_LEFT);
+//}
 //void GimmickWindchime::Destructor()	//デストラクタ
 //{
 //
 //}
 //void GimmickWindchime::Action()		//アクション
 //{
-//	aaa = InitBall(48, -48, talk, 1, PURPLE, LOWER_LEFT);
 //}
 //void GimmickWindchime::Draw()		//ドロー
 //{
@@ -729,8 +746,8 @@ void GimmickAunt::Draw() {
 //	//描画
 //	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
 //
-//	gimmicDraw(aaa, 0);
-//	delete aaa;
+//	//吹き出しの描画＆動作
+//	this->gimmicDraw(1);
 //
 //}
 //

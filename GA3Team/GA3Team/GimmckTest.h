@@ -192,9 +192,6 @@ class GimmickChildren : public Gimmick
 private:
 	int m_iChild_ID;//子供を区別するための変数
 
-	//1個の場合
-	Balloon *aaa;
-
 public:
 	GimmickChildren() {};
 	~GimmickChildren() {};
@@ -211,13 +208,12 @@ public:
 class GimmickGranny : public Gimmick
 {
 private:
-	//1個の場合
-	Balloon *aaa;
 
 public:
 	GimmickGranny() {};
 	~GimmickGranny() {};
 
+	void Init(int xpos, int ypos, int widht, int height, int balloonnum);//イニシャライズ
 	void Destructor();//デストラクタ
 	void Action();//アクション
 	void Draw();//描画
@@ -228,13 +224,12 @@ public:
 class GimmickMynah : public Gimmick
 {
 private:
-	//1個の場合
-	Balloon *aaa;
 
 public:
 	GimmickMynah() {};
 	~GimmickMynah() {};
 
+	void Init(int xpos, int ypos, int widht, int height, int balloonnum);//イニシャライズ
 	void Destructor();	//デストラクタ
 	void Action();		//アクション
 	void Draw();		//ドロー
@@ -245,15 +240,12 @@ public:
 class GimmickShelf : public Gimmick
 {
 private:
-	//複数のバルーン
-	Balloon *aaa;
-	Balloon *bbb;
-	Balloon *ccc;
 
 public:
 	GimmickShelf() {};
 	~GimmickShelf() {};
 
+	void Init(int xpos, int ypos, int widht, int height, int balloonnum);//イニシャライズ
 	void Destructor();	//デストラクタ
 	void Action();		//アクション
 	void Draw();		//ドロー
@@ -264,13 +256,12 @@ public:
 class GimmickWindchime : public Gimmick
 {
 private:
-	//1個の場合
-	Balloon *aaa;
 
 public:
 	GimmickWindchime() {};
 	~GimmickWindchime() {};
 
+	void Init(int xpos, int ypos, int widht, int height, int balloonnum);//イニシャライズ
 	void Destructor();	//デストラクタ
 	void Action();		//アクション
 	void Draw();		//ドロー

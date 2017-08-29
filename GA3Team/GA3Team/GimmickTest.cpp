@@ -59,7 +59,7 @@ void GimmickDoctor::Init(int xpos, int ypos, int widht, int height, int balloonn
 	InitBall(&m_ball[0], m_iWidth - 50, -48, talk, 1, RED, LOWER_LEFT);
 
 	//会話「ようこそ！ここは・・・」
-	Overlay()->talkDraw(TUTORIAL, HAKASE_FLAG_1_2);
+	Overlay()->talkDraw(TUTORIAL, HAKASE_1);
 }
 
 //デストラクタ
@@ -81,8 +81,7 @@ void GimmickDoctor::Action() {
 	//レコーダー入手後（フラグ1達成後）
 	else if (SavedataManeger()->CurrentData->m_btutoriaruflg[0] &&
 		!SavedataManeger()->CurrentData->m_btutoriaruflg[1]) {
-		//会話「それはこの研究所が開発したレコーダー・・・」
-		Overlay()->talkDraw(TUTORIAL, HAKASE_FLAG_1_1);
+		
 
 		//音を録音していない（フラグ2未達成）状態で、会話
 		if (m_ball[0].OnPush) {
@@ -237,6 +236,9 @@ void GimmickRecorder::Action() {
 		SavedataManeger()->CurrentData->m_btutoriaruflg[0] = true;
 		//レコーダー破棄
 		m_Status = STATUS_DELETE;
+
+		//会話「それはこの研究所が開発したレコーダー・・・」
+		Overlay()->talkDraw(TUTORIAL, HAKASE_FLAG_1_1);
 	}
 }
 
@@ -845,35 +847,48 @@ void Gimmickfiretruck::Draw()
 //	//メニュータブへの参照取得
 //
 //	CObjMenuTab* tab = (CObjMenuTab*)Obj()->GetObj(OBJ_MENUTAB);
-//
+//	if (SavedataManeger()->CurrentData->m_bSionflg[6] = false) {
+//		SavedataManeger()->CurrentData->m_bSionflg[6] = true;
+//		Overlay()->talkDraw(SION, SION4_START);
+//	}
 //	if (Input()->m_x > m_iXpos&& Input()->m_x < (m_iXpos + m_iWidth)
 //		&& Input()->m_y > m_iYpos && Input()->m_y < (m_iYpos + m_iHeight)) {
-//
+//		
 //
 //		//マウスドラッグ中にマウスボタンが離された
 //		if (!Input()->GetMouButtonL() && tab->GetHaveSound()) {
 //
 //			if (!Input()->GetMouButtonL() && tab->GetHaveSound()) {
-//				if (SavedataManeger()->CurrentData->m_bSionflg[6] = true && SoundManager()->GetSound(tab->GetGiveSound()))
-//					SavedataManeger()->CurrentData->m_bSionflg[7] = true;
-//
-//				if (SavedataManeger()->CurrentData->m_bSionflg[7] = true && SoundManager()->GetSound(tab->GetGiveSound()))
+//				if (SavedataManeger()->CurrentData->m_bSionflg[7] = true && SoundManager()->GetSound(tab->GetGiveSound())) {
+//					Overlay()->talkDraw(SION, SION4_NAZONAZO_BICYCLE);
+//					SavedataManeger()->CurrentData->m_bSionflg[8] = true;
+//				}
+//				else {
+//					Overlay()->talkDraw(SION, SION4_NAZONAZO_BAT);
+//				}
+//				if (SavedataManeger()->CurrentData->m_bSionflg[8] = true && SoundManager()->GetSound(tab->GetGiveSound())) {
+//					Overlay()->talkDraw(SION, SION4_NAZONAZO_FIRETRUCK);
 //					SavedataManeger()->CurrentData->m_bSionClearflg[3];
-//
+//				}
+//				else {
+//					Overlay()->talkDraw(SION, SION4_NAZONAZO_BAT);
+//				}
 //			}
 //		}
 //		else if (Input()->GetMouButtonL()) {
 //			//2問目出題
-//			if (SavedataManeger()->CurrentData->m_bSionflg[7] = true) {
-//
+//			if (SavedataManeger()->CurrentData->m_bSionflg[8] = true) {
+//				Overlay()->talkDraw(SION, SION4_NAZONAZO_FLAG2_NO);
+//				Overlay()->talkDraw(SION, HAKASE_1);
 //			}
 //			//1問目出題
-//			else if (SavedataManeger()->CurrentData->m_bSionflg[6] = true) {
-//
+//			else if (SavedataManeger()->CurrentData->m_bSionflg[7] = true) {
+//				Overlay()->talkDraw(SION, SION4_NAZONAZO_FLAG1_YES);
 //			}
 //			//1問目を出される前
-//			else if (SavedataManeger()->CurrentData->m_bSionflg[6] = false) {
-//				SavedataManeger()->CurrentData->m_bSionflg[6] = true;
+//			else if (SavedataManeger()->CurrentData->m_bSionflg[7] = false) {
+//				Overlay()->talkDraw(SION, SION4_NAZONAZO_FLAG1_NO);
+//				SavedataManeger()->CurrentData->m_bSionflg[7] = true;
 //			}
 //		}
 //	}
@@ -1146,7 +1161,7 @@ void Gimmickfiretruck::Draw()
 //	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
 //
 //	//吹き出しの初期化
-//	InitBall(&m_ball[0], 48, -48, sound, 1, PURPLE, LOWER_LEFT);
+//	InitBall(&m_ball[0], 48, -48, talk, EXCEPTION, CNONE, LOWER_LEFT);
 //
 //}
 //void GimmickWindow::Destructor()
@@ -1157,6 +1172,8 @@ void Gimmickfiretruck::Draw()
 //}
 //void GimmickWindow::Draw()
 //{
+//	//吹き出しの描画＆動作
+//	this->gimmicDraw(1);
 //}
 //
 ////旅行客
@@ -1166,7 +1183,7 @@ void Gimmickfiretruck::Draw()
 //	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
 //
 //	//吹き出しの初期化
-//	InitBall(&m_ball[0], 48, -48, sound, 1, PURPLE, LOWER_LEFT);
+//	InitBall(&m_ball[0], 48, -48, talk, EXCEPTION, CNONE, LOWER_LEFT);
 //
 //}
 //void GimmickTourist::Destructor()
@@ -1177,6 +1194,7 @@ void Gimmickfiretruck::Draw()
 //}
 //void GimmickTourist::Draw()
 //{
+//	this->gimmicDraw(1);
 //}
 //
 ////改札
@@ -1186,7 +1204,7 @@ void Gimmickfiretruck::Draw()
 //	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
 //
 //	//吹き出しの初期化
-//	InitBall(&m_ball[0], 48, -48, sound, 1, PURPLE, LOWER_LEFT);
+//	InitBall(&m_ball[0], 48, -48, talk, EXCEPTION, CNONE, LOWER_LEFT);
 //
 //}
 //void GimmickExamination::Destructor()
@@ -1197,6 +1215,7 @@ void Gimmickfiretruck::Draw()
 //}
 //void GimmickExamination::Draw()
 //{
+//	this->gimmicDraw(1);
 //}
 //
 ////女の子
@@ -1206,7 +1225,7 @@ void Gimmickfiretruck::Draw()
 //	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
 //
 //	//吹き出しの初期化
-//	InitBall(&m_ball[0], 48, -48, sound, 1, PURPLE, LOWER_LEFT);
+//	InitBall(&m_ball[0], 48, -48, talk, EXCEPTION, CNONE, LOWER_LEFT);
 //
 //}
 //void GimmickExamination::Destructor()
@@ -1217,6 +1236,7 @@ void Gimmickfiretruck::Draw()
 //}
 //void GimmickExamination::Draw()
 //{
+//	this->gimmicDraw(1);
 //}
 ////ステージ6↑
 //
@@ -1425,7 +1445,7 @@ void GimmickKatsuo::Draw()
 }
 
 //GimmickDoor
-void GimmickDoor::Init(int xpos, int ypos, int widht, int height, int balloonnum) {
+void GimmickDoctorroomDoor::Init(int xpos, int ypos, int widht, int height, int balloonnum) {
 	//親クラスのInit関数を呼ぶ
 	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
 
@@ -1433,12 +1453,12 @@ void GimmickDoor::Init(int xpos, int ypos, int widht, int height, int balloonnum
 	InitBall(&m_ball[0], m_iWidth - 50, -48, talk, 1, RED, LOWER_LEFT);
 }
 
-void GimmickDoor::Destructor()
+void GimmickDoctorroomDoor::Destructor()
 {
 
 }
 
-void GimmickDoor::Action()
+void GimmickDoctorroomDoor::Action()
 {
 
 	//レンジ音使用でステージクリア
@@ -1457,7 +1477,7 @@ void GimmickDoor::Action()
 
 }
 
-void GimmickDoor::Draw()
+void GimmickDoctorroomDoor::Draw()
 {
 	float col[4] = { 1.0f,1.0f,1.0f,1.0f };
 

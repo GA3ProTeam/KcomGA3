@@ -163,8 +163,10 @@ void COverlay::Draw()
 					}
 				}
 				else {
-					FadeOut();
-					StopDraw();
+					if (input->GetMouButtonLOnce()) {
+						FadeOut();
+						StopDraw();
+					}
 				}
 
 				if (m_iDelay > m_iTextSpeed)
@@ -214,8 +216,10 @@ void COverlay::Draw()
 					}
 				}
 				else {
-					FadeOut();
-					StopDraw();
+					if (input->GetMouButtonLOnce()) {
+						FadeOut();
+						StopDraw();
+					}
 				}
 
 				if (m_iDelay > m_iTextSpeed)
@@ -265,8 +269,10 @@ void COverlay::Draw()
 					}
 				}
 				else {
-					FadeOut();
-					StopDraw();
+					if (input->GetMouButtonLOnce()) {
+						FadeOut();
+						StopDraw();
+					}
 				}
 
 				if (m_iDelay > m_iTextSpeed)
@@ -316,8 +322,10 @@ void COverlay::Draw()
 					}
 				}
 				else {
-					FadeOut();
-					StopDraw();
+					if (input->GetMouButtonLOnce()) {
+						FadeOut();
+						StopDraw();
+					}
 				}
 
 				if (m_iDelay > m_iTextSpeed)
@@ -349,7 +357,6 @@ void COverlay::Draw()
 			}
 		}
 	}
-
 }
 
 void COverlay::talkDraw(int stage, int stageID)

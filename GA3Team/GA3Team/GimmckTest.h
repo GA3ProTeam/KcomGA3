@@ -272,7 +272,52 @@ public:
 
 
 //ステージ4↓
+//なぞなぞさん
+class GimmickMysteryman :public Gimmick
+{
+public:
+	GimmickMysteryman() {};
+	~GimmickMysteryman() {};
 
+	void Destructor();	//デストラクタ
+	void Action();		//アクション
+	void Draw();		//ドロー
+
+private:
+
+};
+
+
+//バイク
+class GimmickBike :public Gimmick
+{
+public:
+	GimmickBike() {};
+	~GimmickBike() {};
+
+	void Destructor();	//デストラクタ
+	void Action();		//アクション
+	void Draw();		//ドロー
+
+private:
+
+};
+
+//ドア
+class GimmickDoor :public Gimmick
+{
+public:
+	GimmickDoor() {};
+	~GimmickDoor() {};
+
+	void Init();
+	void Destructor();	//デストラクタ
+	void Action();		//アクション
+	void Draw();		//ドロー
+
+private:
+
+};
 //ステージ4↑
 
 

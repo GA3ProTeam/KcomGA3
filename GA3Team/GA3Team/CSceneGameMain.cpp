@@ -69,5 +69,4 @@ void CSceneGameMain::InitScene()
 //ƒV[ƒ“Às
 void CSceneGameMain::Scene()
 {
-	
 }

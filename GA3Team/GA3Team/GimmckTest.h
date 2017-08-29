@@ -366,6 +366,27 @@ private:
 //ステージ5↑
 
 //ステージ6↓
+//窓口
+class GimmickWindow : public Gimmick
+{
+
+};
+//旅行客
+class GimmickTourist : public Gimmick
+{
+
+};
+//改札
+class GimmickExamination : public Gimmick
+{
+
+};
+//女の子
+class GimmickGirl : public Gimmick
+{
+
+};
+
 //ステージ6↑
 
 //-----------コウネステージ↑------------------------------------------------------------------------------------------------------------------

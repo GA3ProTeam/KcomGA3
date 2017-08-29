@@ -172,6 +172,7 @@ void COverlay::Draw()
 						if (input->GetMouButtonLOnce()) {
 							m_iChar_Pos = 0;
 							m_iChar_Line++;
+							m_fWaitAlpha = 0.0f;
 							m_bNextWaiting = false;
 							m_bCharaChangeFlg = false;
 						}
@@ -237,9 +238,25 @@ void COverlay::Draw()
 						}
 					}
 					else {
-						m_iChar_Pos = 0;
-						m_iChar_Line++;
-						m_bCharaChangeFlg = false;
+						if (input->GetMouButtonLOnce()) {
+							m_iChar_Pos = 0;
+							m_iChar_Line++;
+							m_fWaitAlpha = 0.0f;
+							m_bNextWaiting = false;
+							m_bCharaChangeFlg = false;
+						}
+						else {
+							if (m_iDelay > m_iTextSpeed) {
+								if (!m_bNextWaiting) {
+									m_fWaitAlpha = 1.0f;
+									m_bNextWaiting = true;
+								}
+								else {
+									m_fWaitAlpha = 0.0f;
+									m_bNextWaiting = false;
+								}
+							}
+						}
 					}
 				}
 				else {
@@ -290,9 +307,25 @@ void COverlay::Draw()
 						}
 					}
 					else {
-						m_iChar_Pos = 0;
-						m_iChar_Line++;
-						m_bCharaChangeFlg = false;
+						if (input->GetMouButtonLOnce()) {
+							m_iChar_Pos = 0;
+							m_iChar_Line++;
+							m_fWaitAlpha = 0.0f;
+							m_bNextWaiting = false;
+							m_bCharaChangeFlg = false;
+						}
+						else {
+							if (m_iDelay > m_iTextSpeed) {
+								if (!m_bNextWaiting) {
+									m_fWaitAlpha = 1.0f;
+									m_bNextWaiting = true;
+								}
+								else {
+									m_fWaitAlpha = 0.0f;
+									m_bNextWaiting = false;
+								}
+							}
+						}
 					}
 				}
 				else {
@@ -343,9 +376,25 @@ void COverlay::Draw()
 						}
 					}
 					else {
-						m_iChar_Pos = 0;
-						m_iChar_Line++;
-						m_bCharaChangeFlg = false;
+						if (input->GetMouButtonLOnce()) {
+							m_iChar_Pos = 0;
+							m_iChar_Line++;
+							m_fWaitAlpha = 0.0f;
+							m_bNextWaiting = false;
+							m_bCharaChangeFlg = false;
+						}
+						else {
+							if (m_iDelay > m_iTextSpeed) {
+								if (!m_bNextWaiting) {
+									m_fWaitAlpha = 1.0f;
+									m_bNextWaiting = true;
+								}
+								else {
+									m_fWaitAlpha = 0.0f;
+									m_bNextWaiting = false;
+								}
+							}
+						}
 					}
 				}
 				else {

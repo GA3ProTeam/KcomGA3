@@ -81,8 +81,9 @@ void Gimmick::gimmicDraw(int num)
 					//音吹き出しを描画
 					Image()->Draw(4, &m_ball[i].m_gimsrc, &m_ball[i].m_gimdst, col, 0.0f);
 				}
+				m_ball[i].OnPush = false;
 
-				//吹き出し描画中に吹き出しをクリックしたら
+				//範囲内にあるかないか
 				if ((mousex > m_ball[i].m_gimsrc.left&& mousex < m_ball[i].m_gimsrc.right)
 					&& (mousey > m_ball[i].m_gimsrc.top && mousey < m_ball[i].m_gimsrc.right))
 				{
@@ -108,6 +109,7 @@ void Gimmick::gimmicDraw(int num)
 
 					}
 				}
+
 			}
 		}
 	}

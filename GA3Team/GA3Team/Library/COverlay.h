@@ -95,6 +95,17 @@ enum merueru
 	MERUERU_START,
 };
 
+//---------------------------
+//左キャラの横マージン
+#define TALK_CHARA_LEFT_MARGIN_X	50
+//左キャラの縦マージン
+#define TALK_CHARA_LEFT_MARGIN_Y	100
+//右キャラの横マージン
+#define TALK_CHARA_RIGHT_MARGIN_X	300
+//右キャラの縦マージン
+#define TALK_CHARA_RIGHT_MARGIN_Y	100
+
+//---------------------------
 class COverlay{
 private:
 	//CObj配下と同じようにアクセスできるように

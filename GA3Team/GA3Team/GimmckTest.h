@@ -372,50 +372,49 @@ private:
 
 //-----------メルエルステージ↓------------------------------------------------------------------------------------------------------------------
 
-
 //ステージ1↓
-class GimmickTelevision : public Gimmick
-{
+class GimmickTelevision : public Gimmick{
 public:
 	GimmickTelevision() {};
 	~GimmickTelevision() {};
+
+	void Init(int xpos, int ypos, int widht, int height, int balloonnum);//イニシャライズ
 	void Destructor();//デストラクタ
 	void Action();//アクション
 	void Draw();//描画
 
 
 };
-class GimmickOven : public Gimmick
-{
+class GimmickOven : public Gimmick{
 public:
 	GimmickOven() {};
 	~GimmickOven() {};
+	void Init(int xpos, int ypos, int widht, int height, int balloonnum);//イニシャライズ
 	void Destructor();//デストラクタ
 	void Action();//アクション
 	void Draw();//描画
 
 
 };
-class GimmickKatsuo : public Gimmick
-{
+class GimmickKatsuo : public Gimmick{
 public:
 	GimmickKatsuo() {};
 	~GimmickKatsuo() {};
+	void Init(int xpos, int ypos, int widht, int height, int balloonnum);//イニシャライズ
 	void Destructor();//デストラクタ
 	void Action();//アクション
 	void Draw();//描画
 
 
 };
-class GimmickDoor : public Gimmick
-{
+class GimmickDoor : public Gimmick{
 public:
 	GimmickDoor() {};
 	~GimmickDoor() {};
+	void Init(int xpos, int ypos, int widht, int height, int balloonnum);//イニシャライズ
 	void Destructor();//デストラクタ
 	void Action();//アクション
 	void Draw();//描画
-
 
 };
 //ステージ1↑

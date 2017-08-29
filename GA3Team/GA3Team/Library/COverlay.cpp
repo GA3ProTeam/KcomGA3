@@ -76,6 +76,7 @@ void COverlay::Action()
 
 void COverlay::Draw()
 {
+	/*
 	//test overlay
 	if (m_iDrawFlg == 0) {
 		RECT src, dst;
@@ -97,8 +98,10 @@ void COverlay::Draw()
 
 		image->DrawEx(0, &src, &dst, col, 0.0f);
 	}
+	*/
+
 	//talk overlay
-	else if (m_iDrawFlg == 1) {
+	if (m_iDrawFlg == 1) {
 		char c[8];
 		char tmp[128];
 		char tmpname[64] = { 0 };
@@ -351,7 +354,13 @@ void COverlay::Draw()
 
 void COverlay::talkDraw(int stage, int stageID)
 {
+	if (m_iDrawingStage == stage && m_iDrawingStageID == stageID)
+		return;
+
+	if (m_fAlpha == 0.0f)
+		FadeIn();
 	m_iDrawFlg = 1;
+	m_bDrawing = true;
 	m_iDrawingStage = stage;
 	m_iDrawingStageID = stageID;
 	m_strTempName.resize(32);
@@ -385,6 +394,9 @@ void COverlay::StopDraw() {
 		m_strTemp.clear();
 		m_strTempName.clear();
 		m_iDrawFlg = 0;
+		m_iDrawingStage = -1;
+		m_iDrawingStageID = -1;
+		m_bDrawing = false;
 	}
 }
 

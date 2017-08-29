@@ -147,25 +147,32 @@ void COverlay::Draw()
 			case STAGE_TYPE::TUTORIAL: {
 				if (m_iChar_Line < textmgr->m_Tutorial_Text[m_iDrawingStageID].size()) {
 					if (m_iChar_Pos < textmgr->m_Tutorial_Text[m_iDrawingStageID][m_iChar_Line].length()) {
-						if (m_iDelay > m_iTextSpeed) {
-							unsigned char lead = textmgr->m_Tutorial_Text[m_iDrawingStageID][m_iChar_Line][m_iChar_Pos];
-							if (lead < 128) {
-								m_iChar_Size = 1;
-							}
-							else if (lead < 224) {
-								m_iChar_Size = 2;
-							}
-							else if (lead < 240) {
-								m_iChar_Size = 3;
-							}
-							else {
-								m_iChar_Size = 4;
-							}
+						if (input->GetMouButtonLOnce()) {
+							m_strTemp[m_iChar_Line].clear();
+							m_strTemp[m_iChar_Line] += textmgr->m_Tutorial_Text[m_iDrawingStageID][m_iChar_Line];
+							m_iChar_Pos = textmgr->m_Tutorial_Text[m_iDrawingStageID][m_iChar_Line].length() + 1;
+						}
+						else {
+							if (m_iDelay > m_iTextSpeed) {
+								unsigned char lead = textmgr->m_Tutorial_Text[m_iDrawingStageID][m_iChar_Line][m_iChar_Pos];
+								if (lead < 128) {
+									m_iChar_Size = 1;
+								}
+								else if (lead < 224) {
+									m_iChar_Size = 2;
+								}
+								else if (lead < 240) {
+									m_iChar_Size = 3;
+								}
+								else {
+									m_iChar_Size = 4;
+								}
 
-							sprintf_s(c, "%s", textmgr->m_Tutorial_Text[m_iDrawingStageID][m_iChar_Line].substr(m_iChar_Pos, m_iChar_Size).c_str());
-							m_strTemp[m_iChar_Line] += c;
+								sprintf_s(c, "%s", textmgr->m_Tutorial_Text[m_iDrawingStageID][m_iChar_Line].substr(m_iChar_Pos, m_iChar_Size).c_str());
+								m_strTemp[m_iChar_Line] += c;
 
-							m_iChar_Pos += m_iChar_Size;
+								m_iChar_Pos += m_iChar_Size;
+							}
 						}
 					}
 					else {
@@ -216,25 +223,32 @@ void COverlay::Draw()
 			case STAGE_TYPE::SION: {
 				if (m_iChar_Line < textmgr->m_Sion_Text[m_iDrawingStageID].size()) {
 					if (m_iChar_Pos < textmgr->m_Sion_Text[m_iDrawingStageID][m_iChar_Line].length()) {
-						if (m_iDelay > m_iTextSpeed) {
-							unsigned char lead = textmgr->m_Sion_Text[m_iDrawingStageID][m_iChar_Line][m_iChar_Pos];
-							if (lead < 128) {
-								m_iChar_Size = 1;
-							}
-							else if (lead < 224) {
-								m_iChar_Size = 2;
-							}
-							else if (lead < 240) {
-								m_iChar_Size = 3;
-							}
-							else {
-								m_iChar_Size = 4;
-							}
+						if (input->GetMouButtonLOnce()) {
+							m_strTemp[m_iChar_Line].clear();
+							m_strTemp[m_iChar_Line] += textmgr->m_Sion_Text[m_iDrawingStageID][m_iChar_Line];
+							m_iChar_Pos = textmgr->m_Sion_Text[m_iDrawingStageID][m_iChar_Line].length() + 1;
+						}
+						else {
+							if (m_iDelay > m_iTextSpeed) {
+								unsigned char lead = textmgr->m_Sion_Text[m_iDrawingStageID][m_iChar_Line][m_iChar_Pos];
+								if (lead < 128) {
+									m_iChar_Size = 1;
+								}
+								else if (lead < 224) {
+									m_iChar_Size = 2;
+								}
+								else if (lead < 240) {
+									m_iChar_Size = 3;
+								}
+								else {
+									m_iChar_Size = 4;
+								}
 
-							sprintf_s(c, "%s", textmgr->m_Sion_Text[m_iDrawingStageID][m_iChar_Line].substr(m_iChar_Pos, m_iChar_Size).c_str());
-							m_strTemp[m_iChar_Line] += c;
+								sprintf_s(c, "%s", textmgr->m_Sion_Text[m_iDrawingStageID][m_iChar_Line].substr(m_iChar_Pos, m_iChar_Size).c_str());
+								m_strTemp[m_iChar_Line] += c;
 
-							m_iChar_Pos += m_iChar_Size;
+								m_iChar_Pos += m_iChar_Size;
+							}
 						}
 					}
 					else {
@@ -285,25 +299,32 @@ void COverlay::Draw()
 			case STAGE_TYPE::KOUNE: {
 				if (m_iChar_Line < textmgr->m_Koune_Text[m_iDrawingStageID].size()) {
 					if (m_iChar_Pos < textmgr->m_Koune_Text[m_iDrawingStageID][m_iChar_Line].length()) {
-						if (m_iDelay > m_iTextSpeed) {
-							unsigned char lead = textmgr->m_Koune_Text[m_iDrawingStageID][m_iChar_Line][m_iChar_Pos];
-							if (lead < 128) {
-								m_iChar_Size = 1;
-							}
-							else if (lead < 224) {
-								m_iChar_Size = 2;
-							}
-							else if (lead < 240) {
-								m_iChar_Size = 3;
-							}
-							else {
-								m_iChar_Size = 4;
-							}
+						if (input->GetMouButtonLOnce()) {
+							m_strTemp[m_iChar_Line].clear();
+							m_strTemp[m_iChar_Line] += textmgr->m_Koune_Text[m_iDrawingStageID][m_iChar_Line];
+							m_iChar_Pos = textmgr->m_Koune_Text[m_iDrawingStageID][m_iChar_Line].length() + 1;
+						}
+						else {
+							if (m_iDelay > m_iTextSpeed) {
+								unsigned char lead = textmgr->m_Koune_Text[m_iDrawingStageID][m_iChar_Line][m_iChar_Pos];
+								if (lead < 128) {
+									m_iChar_Size = 1;
+								}
+								else if (lead < 224) {
+									m_iChar_Size = 2;
+								}
+								else if (lead < 240) {
+									m_iChar_Size = 3;
+								}
+								else {
+									m_iChar_Size = 4;
+								}
 
-							sprintf_s(c, "%s", textmgr->m_Koune_Text[m_iDrawingStageID][m_iChar_Line].substr(m_iChar_Pos, m_iChar_Size).c_str());
-							m_strTemp[m_iChar_Line] += c;
+								sprintf_s(c, "%s", textmgr->m_Koune_Text[m_iDrawingStageID][m_iChar_Line].substr(m_iChar_Pos, m_iChar_Size).c_str());
+								m_strTemp[m_iChar_Line] += c;
 
-							m_iChar_Pos += m_iChar_Size;
+								m_iChar_Pos += m_iChar_Size;
+							}
 						}
 					}
 					else {
@@ -354,25 +375,32 @@ void COverlay::Draw()
 			case STAGE_TYPE::MERUERU: {
 				if (m_iChar_Line < textmgr->m_Merueru_Text[m_iDrawingStageID].size()) {
 					if (m_iChar_Pos < textmgr->m_Merueru_Text[m_iDrawingStageID][m_iChar_Line].length()) {
-						if (m_iDelay > m_iTextSpeed) {
-							unsigned char lead = textmgr->m_Merueru_Text[m_iDrawingStageID][m_iChar_Line][m_iChar_Pos];
-							if (lead < 128) {
-								m_iChar_Size = 1;
-							}
-							else if (lead < 224) {
-								m_iChar_Size = 2;
-							}
-							else if (lead < 240) {
-								m_iChar_Size = 3;
-							}
-							else {
-								m_iChar_Size = 4;
-							}
+						if (input->GetMouButtonLOnce()) {
+							m_strTemp[m_iChar_Line].clear();
+							m_strTemp[m_iChar_Line] += textmgr->m_Merueru_Text[m_iDrawingStageID][m_iChar_Line];
+							m_iChar_Pos = textmgr->m_Merueru_Text[m_iDrawingStageID][m_iChar_Line].length() + 1;
+						}
+						else {
+							if (m_iDelay > m_iTextSpeed) {
+								unsigned char lead = textmgr->m_Merueru_Text[m_iDrawingStageID][m_iChar_Line][m_iChar_Pos];
+								if (lead < 128) {
+									m_iChar_Size = 1;
+								}
+								else if (lead < 224) {
+									m_iChar_Size = 2;
+								}
+								else if (lead < 240) {
+									m_iChar_Size = 3;
+								}
+								else {
+									m_iChar_Size = 4;
+								}
 
-							sprintf_s(c, "%s", textmgr->m_Merueru_Text[m_iDrawingStageID][m_iChar_Line].substr(m_iChar_Pos, m_iChar_Size).c_str());
-							m_strTemp[m_iChar_Line] += c;
+								sprintf_s(c, "%s", textmgr->m_Merueru_Text[m_iDrawingStageID][m_iChar_Line].substr(m_iChar_Pos, m_iChar_Size).c_str());
+								m_strTemp[m_iChar_Line] += c;
 
-							m_iChar_Pos += m_iChar_Size;
+								m_iChar_Pos += m_iChar_Size;
+							}
 						}
 					}
 					else {

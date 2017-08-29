@@ -60,6 +60,38 @@ bool CWinInputs::GetMouButtonM()
 	return m_ButtonM;
 }
 
+bool CWinInputs::GetMouButtonLOnce()
+{
+	if (!m_ButtonL) {
+		m_ButtonLOnceflg = false;
+	}
+
+	if (m_ButtonL && !m_ButtonLOnceflg) {
+		m_ButtonLOnceflg = true;
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+bool CWinInputs::GetMouButtonROnce()
+{
+	if (!m_ButtonR) {
+		m_ButtonROnceflg = false;
+	}
+
+	if (m_ButtonR && !m_ButtonROnceflg) {
+		m_ButtonROnceflg = true;
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
 CWinInputs:: CWinInputs()
 {
    memset(this,0x00,sizeof(m_KeyBoard));	

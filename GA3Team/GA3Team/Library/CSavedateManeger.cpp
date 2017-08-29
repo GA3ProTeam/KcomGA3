@@ -211,7 +211,6 @@ void CSavedataManeger::Deletesavedata(int savedate_srot)
 
 void CSavedataManeger::Setcurrentdata()
 {
-	SelectedData = 0;//テスト用
 	CurrentData = &(Savedata[SelectedData]);
 }
 void CSavedataManeger::InitSaveData(int savedate_srot)

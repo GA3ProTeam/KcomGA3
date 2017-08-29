@@ -138,14 +138,14 @@
     <ClCompile Include="Library\TextManager.cpp">
       <Filter>ライブラリ ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="GimmckTest.cpp">
-      <Filter>テスト ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="Library\CSavedateManeger.cpp">
       <Filter>ライブラリ ファイル</Filter>
     </ClCompile>
     <ClCompile Include="Library\COverlay.cpp">
       <Filter>ライブラリ ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="GimmickTest.cpp">
+      <Filter>テスト ファイル</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

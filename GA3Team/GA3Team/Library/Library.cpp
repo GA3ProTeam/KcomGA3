@@ -66,7 +66,10 @@ bool InitLibrary()
 	//------------------------------------------------
 
 	g_SoundManeger = new CSoundManeger();
+
 	g_TextManager = new CTextManager();
+	g_TextManager->LoadText();
+
 	g_Overlay = new COverlay(g_DrawTexture,g_DrawFont,g_WinInputs,g_SoundManeger,g_TextManager);
 	g_Overlay->InitLoad();
 

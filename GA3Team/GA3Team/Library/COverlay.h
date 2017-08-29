@@ -14,6 +14,9 @@ enum tolknum
 	HAKASE_FLAG_2_1_NO,
 	HAKASE_FLAG_2_1_YES,
 	HAKASE_FLAG_2_YES_3_NO,
+};
+enum sion
+{
 	//シオン
 	//ステージ1
 	SION1_START,
@@ -44,6 +47,9 @@ enum tolknum
 	SION4_NAZONAZO_FLAG1_YES,
 	SION4_NAZONAZO_FLAG2_NO,
 	SION4_START,
+};
+enum koune
+{
 	//コウネ
 	//ステージ1
 	KOUNE1_OZI,
@@ -68,6 +74,9 @@ enum tolknum
 	KOUNE2_ONNNA_FLAG3_1_2,
 	KOUNE2_ONNNA_FLAG3_1_1,
 	KOUNE2_ONNNA,
+};
+enum merueru
+{
 	//メルエル
 	//ステージ1
 	MERUERU_KATUO_1_2,
@@ -77,7 +86,6 @@ enum tolknum
 	MERUERU_KATUO_3,
 	MERUERU_START,
 };
-
 
 class COverlay{
 private:

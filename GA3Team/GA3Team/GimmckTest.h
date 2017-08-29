@@ -124,6 +124,7 @@ class Gimmickearphone : public Gimmick
 public:
 	Gimmickearphone() {};
 	~Gimmickearphone() {};
+	void Init(int xpos, int ypos, int widht, int height, int balloonnum);
 	void Destructor();//デストラクタ
 	void Action();//アクション
 	void Draw();//描画
@@ -137,6 +138,7 @@ class Gimmickkoune : public Gimmick
 public:
 	Gimmickkoune() {};
 	~Gimmickkoune() {};
+	void Init(int xpos, int ypos, int widht, int height, int balloonnum);
 	void Destructor();//デストラクタ
 	void Action();//アクション
 	void Draw();//描画
@@ -150,7 +152,7 @@ class Gimmickcat : public Gimmick
 public:
 	Gimmickcat() {};
 	~Gimmickcat() {};
-
+	void Init(int xpos, int ypos, int widht, int height, int balloonnum);
 	void Destructor();	//デストラクタ
 	void Action();		//アクション
 	void Draw();		//ドロー
@@ -163,7 +165,7 @@ class Gimmickbicycle : public Gimmick
 public:
 	Gimmickbicycle() {};
 	~Gimmickbicycle() {};
-
+	void Init(int xpos, int ypos, int widht, int height, int balloonnum);
 	void Destructor();	//デストラクタ
 	void Action();		//アクション
 	void Draw();		//ドロー
@@ -176,7 +178,7 @@ class Gimmickfiretruck : public Gimmick
 public:
 	Gimmickfiretruck() {};
 	~Gimmickfiretruck() {};
-
+	void Init(int xpos, int ypos, int widht, int height, int balloonnum);
 	void Destructor();	//デストラクタ
 	void Action();		//アクション
 	void Draw();		//ドロー

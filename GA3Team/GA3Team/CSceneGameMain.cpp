@@ -67,8 +67,8 @@ void CSceneGameMain::InitScene()
 
 	TextManager()->LoadText();
 
-	Overlay()->talkDraw(TUTORIAL, 0);
-	Overlay()->FadeIn();
+	/*Overlay()->talkDraw(TUTORIAL, 0);
+	Overlay()->FadeIn();*/
 }
 
 //ƒV[ƒ“Às

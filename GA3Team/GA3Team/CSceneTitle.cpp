@@ -23,18 +23,20 @@ void CSceneTitle::InitScene()
 
 	//Audio()->LoopStart(0);
 
-	m_ititle_choice = User()->mititle_choice;
+	
 
 }
 
 //シーン実行
 void CSceneTitle::Scene()
 {
+
+	m_inext_scene = User()->m_iNext_Scene;
 	
-	//if (m_ititle_choice == 1/* NEW*/) {
-	//	//シーン移動　→データセレクトへ
-	//	Manager()->Pop(new CSceneStageSelect());
-	//}
+	if (m_inext_scene == NEW || m_inext_scene == LOAD) {
+		//シーン移動　→データセレクトへ
+		Manager()->Pop(new CSceneDataSelect());		
+	}
 	
 
 	//テスト用　消さないように

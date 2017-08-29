@@ -144,24 +144,6 @@
     <ClCompile Include="Library\CSavedateManeger.cpp">
       <Filter>ライブラリ ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="GimmickDoor.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="GimmickOven.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="GimmickAunt.cpp">
-      <Filter>CSceneGameMain</Filter>
-    </ClCompile>
-    <ClCompile Include="GimmickChildren.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="GimmickKatsuo.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="GimmickTelevision.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="Library\COverlay.cpp">
       <Filter>ライブラリ ファイル</Filter>
     </ClCompile>
@@ -269,32 +251,20 @@
     <ClInclude Include="Library\CSavedata.h">
       <Filter>ライブラリ ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="GimmickDoor.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="GimmickOven.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="GimmickAunt.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="GimmickTelevision.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="GimmickAunt.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="GimmickTelevision.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="GimmickChildren.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="GimmickKatsuo.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="Library\COverlay.h">
       <Filter>ライブラリ ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="ButtonPlayer.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="ButtonStage.h">
+      <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -306,5 +276,10 @@
     <ResourceCompile Include="GA3Team.rc">
       <Filter>リソース ファイル</Filter>
     </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Image\進行度仮画像.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
   </ItemGroup>
 </Project>

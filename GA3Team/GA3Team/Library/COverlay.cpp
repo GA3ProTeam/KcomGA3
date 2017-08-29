@@ -3,32 +3,45 @@
 void COverlay::InitLoad()
 {
 	//Image
-	image->LoadImageEx("bb.png", 0, TEX_SIZE_512);
-
-	/*image->LoadImageEx("はじめから.png", 0, TEX_SIZE_512);
-	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);
-
-	image->LoadImageEx("戻りボタン.png", 1, TEX_SIZE_512);
-	image->LoadImageEx("破棄ボタン.png", 1, TEX_SIZE_512);
-	image->LoadImageEx(".png", 1, TEX_SIZE_512);
-	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_);
-	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);
-	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);
-	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);
-	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);
-	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);
-	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);
-	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);
-	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);
-	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);
-	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);
-	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);
-	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);
-	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);
-	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);
-	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);
-	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);
-	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);*/
+	image->LoadImageEx("bb.png", 63, TEX_SIZE_512);
+	//コウネ1----------------------------------
+	image->LoadImageEx("おじいさんc.png", 0, TEX_SIZE_512);
+	image->LoadImageEx("マンホール.png", 1, TEX_SIZE_1024);
+	image->LoadImageEx("マンホールの穴.png", 2, TEX_SIZE_1024);
+	//コウネ2-----------------------------------
+	image->LoadImageEx("強気少年.png", 3, TEX_SIZE_512);
+	image->LoadImageEx("女の子.png", 4, TEX_SIZE_512);
+	//コウネ3----------------------------------------
+	image->LoadImageEx("優しい少女.png", 5, TEX_SIZE_512);
+	//シオン2--------------------------------------
+	image->LoadImageEx("イヤホン男.png", 6, TEX_SIZE_512);
+	image->LoadImageEx("自転車.png", 7, TEX_SIZE_512);
+	//シオン3--------------------------------------
+	image->LoadImageEx("おばあちゃんc.png", 8, TEX_SIZE_512);
+	//シオン4--------------------------------------
+	image->LoadImageEx("なぞなぞさん.png", 9, TEX_SIZE_512);
+	//メルエル1-----------------------------------
+	image->LoadImageEx("カツオc.png", 10, TEX_SIZE_512);
+	image->LoadImageEx("ドアc.png", 11, TEX_SIZE_512);
+	image->LoadImageEx("棚.png", 12, TEX_SIZE_512);
+	image->LoadImageEx("電子レンジ.png", 13, TEX_SIZE_512);
+	image->LoadImageEx("博士c.png", 14, TEX_SIZE_512);
+	//動物------------------------------------------
+	image->LoadImageEx("動物まとめ.png", 15, TEX_SIZE_1024);
+	//メインキャラクター----------------------------
+	image->LoadImageEx("コウネ立ち.png", 16, TEX_SIZE_1024);
+	image->LoadImageEx("シオン立ち.png", 17, TEX_SIZE_1024);
+	image->LoadImageEx("メルエルc立ち.png", 18, TEX_SIZE_512);
+	//データセレクト--------------------------------
+	image->LoadImageEx("コウネ.png", 19, TEX_SIZE_1024);
+	image->LoadImageEx("メルエル.png", 20, TEX_SIZE_512);
+	//吹き出し系統-----------------------------------
+	image->LoadImageEx("アイコン.png", 21, TEX_SIZE_1024);
+	image->LoadImageEx("会話吹き出しまとめ.png", 22, TEX_SIZE_1024);
+	//ステージ
+	image->LoadImageEx("シオンステージ-1.png", 23, TEX_SIZE_1024);
+	image->LoadImageEx("コウネステージ-1.png", 24, TEX_SIZE_1024);
+	image->LoadImageEx("研究所　背景.png", 25, TEX_SIZE_1024);
 
 }
 
@@ -63,6 +76,7 @@ void COverlay::Action()
 
 void COverlay::Draw()
 {
+	/*
 	//test overlay
 	if (m_iDrawFlg == 0) {
 		RECT src, dst;
@@ -84,7 +98,10 @@ void COverlay::Draw()
 
 		image->DrawEx(0, &src, &dst, col, 0.0f);
 	}
-	else if (m_iDrawFlg == 1) {
+	*/
+
+	//talk overlay
+	if (m_iDrawFlg == 1) {
 		char c[8];
 		char tmp[128];
 		char tmpname[64] = { 0 };
@@ -106,70 +123,229 @@ void COverlay::Draw()
 		src.bottom = src.top + 600;
 		src.right = src.left + 800;
 
-		image->DrawEx(0, &src, &dst, col, 0.0f);
+		image->DrawEx(63, &src, &dst, col, 0.0f);
+
 
 		if (m_fAlpha == 1.0f) {
 
 			m_iDelay++;
 
-			m_strTemp.resize(textmgr->m_Tutorial_Text[m_iDrawingStageID].size());
+			switch (m_iDrawingStage)
+			{
+			case STAGE_TYPE::TUTORIAL: {
+				if (m_iChar_Line < textmgr->m_Tutorial_Text[m_iDrawingStageID].size()) {
+					if (m_iChar_Pos < textmgr->m_Tutorial_Text[m_iDrawingStageID][m_iChar_Line].length()) {
+						if (m_iDelay > m_iTextSpeed) {
+							unsigned char lead = textmgr->m_Tutorial_Text[m_iDrawingStageID][m_iChar_Line][m_iChar_Pos];
+							if (lead < 128) {
+								m_iChar_Size = 1;
+							}
+							else if (lead < 224) {
+								m_iChar_Size = 2;
+							}
+							else if (lead < 240) {
+								m_iChar_Size = 3;
+							}
+							else {
+								m_iChar_Size = 4;
+							}
 
-			if (m_iChar_Line < textmgr->m_Tutorial_Text[m_iDrawingStageID].size()) {
-				if (m_iChar_Pos < textmgr->m_Tutorial_Text[m_iDrawingStageID][m_iChar_Line].length()) {
-					if (m_iDelay > m_iTextSpeed) {
-						unsigned char lead = textmgr->m_Tutorial_Text[m_iDrawingStageID][m_iChar_Line][m_iChar_Pos];
-						if (lead < 128) {
-							m_iChar_Size = 1;
-						}
-						else if (lead < 224) {
-							m_iChar_Size = 2;
-						}
-						else if (lead < 240) {
-							m_iChar_Size = 3;
-						}
-						else {
-							m_iChar_Size = 4;
-						}
+							sprintf_s(c, "%s", textmgr->m_Tutorial_Text[m_iDrawingStageID][m_iChar_Line].substr(m_iChar_Pos, m_iChar_Size).c_str());
+							m_strTemp[m_iChar_Line] += c;
 
-						sprintf_s(c, "%s", textmgr->m_Tutorial_Text[m_iDrawingStageID][m_iChar_Line].substr(m_iChar_Pos, m_iChar_Size).c_str());
-						m_strTemp[m_iChar_Line] += c;
-
-						m_iChar_Pos += m_iChar_Size;
+							m_iChar_Pos += m_iChar_Size;
+						}
+					}
+					else {
+						m_iChar_Pos = 0;
+						m_iChar_Line++;
+						m_bCharaChangeFlg = false;
 					}
 				}
 				else {
-					m_iChar_Pos = 0;
-					m_iChar_Line++;
+					FadeOut();
+					StopDraw();
 				}
+
+				if (m_iDelay > m_iTextSpeed)
+					m_iDelay = 0;
+
+				char linec[32];
+				sprintf_s(linec, "%d", m_iChar_Line);
+				if (textmgr->isCtrlLine(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line) && !m_bCharaChangeFlg) {
+					char *namet = textmgr->GetCharName(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line);
+					m_strTemp.clear();
+					m_strTemp.resize(textmgr->m_Tutorial_Text[m_iDrawingStageID].size());
+					m_strTempName.clear();
+					m_strTempName += namet;
+					m_bCharaChangeFlg = true;
+					m_iCurrentLine = m_iChar_Line;
+				}
+				break;
 			}
-			else {
-				FadeOut();
-				StopDraw();
-			}
+			case STAGE_TYPE::SION: {
+				if (m_iChar_Line < textmgr->m_Sion_Text[m_iDrawingStageID].size()) {
+					if (m_iChar_Pos < textmgr->m_Sion_Text[m_iDrawingStageID][m_iChar_Line].length()) {
+						if (m_iDelay > m_iTextSpeed) {
+							unsigned char lead = textmgr->m_Sion_Text[m_iDrawingStageID][m_iChar_Line][m_iChar_Pos];
+							if (lead < 128) {
+								m_iChar_Size = 1;
+							}
+							else if (lead < 224) {
+								m_iChar_Size = 2;
+							}
+							else if (lead < 240) {
+								m_iChar_Size = 3;
+							}
+							else {
+								m_iChar_Size = 4;
+							}
 
-			if (m_iDelay > m_iTextSpeed)
-				m_iDelay = 0;
+							sprintf_s(c, "%s", textmgr->m_Sion_Text[m_iDrawingStageID][m_iChar_Line].substr(m_iChar_Pos, m_iChar_Size).c_str());
+							m_strTemp[m_iChar_Line] += c;
 
-
-			char linec[32];
-			sprintf_s(linec, "%d", m_iChar_Line);
-			for (auto nameitr = textmgr->m_Tutorial_Control[m_iDrawingStageID].begin(); nameitr != textmgr->m_Tutorial_Control[m_iDrawingStageID].end(); ++nameitr) {
-				if ((*nameitr).find(linec) != -1) {
-					(*nameitr).erase((*nameitr).begin());
-					if ("標準" != (*nameitr)) {
-						//m_strTempName
+							m_iChar_Pos += m_iChar_Size;
+						}
+					}
+					else {
+						m_iChar_Pos = 0;
+						m_iChar_Line++;
+						m_bCharaChangeFlg = false;
 					}
 				}
+				else {
+					FadeOut();
+					StopDraw();
+				}
+
+				if (m_iDelay > m_iTextSpeed)
+					m_iDelay = 0;
+
+				char linec[32];
+				sprintf_s(linec, "%d", m_iChar_Line);
+				if (textmgr->isCtrlLine(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line) && !m_bCharaChangeFlg) {
+					char *namet = textmgr->GetCharName(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line);
+					m_strTemp.clear();
+					m_strTemp.resize(textmgr->m_Sion_Text[m_iDrawingStageID].size());
+					m_strTempName.clear();
+					m_strTempName += namet;
+					m_bCharaChangeFlg = true;
+					m_iCurrentLine = m_iChar_Line;
+				}
+				break;
+			}
+			case STAGE_TYPE::KOUNE: {
+				if (m_iChar_Line < textmgr->m_Koune_Text[m_iDrawingStageID].size()) {
+					if (m_iChar_Pos < textmgr->m_Koune_Text[m_iDrawingStageID][m_iChar_Line].length()) {
+						if (m_iDelay > m_iTextSpeed) {
+							unsigned char lead = textmgr->m_Koune_Text[m_iDrawingStageID][m_iChar_Line][m_iChar_Pos];
+							if (lead < 128) {
+								m_iChar_Size = 1;
+							}
+							else if (lead < 224) {
+								m_iChar_Size = 2;
+							}
+							else if (lead < 240) {
+								m_iChar_Size = 3;
+							}
+							else {
+								m_iChar_Size = 4;
+							}
+
+							sprintf_s(c, "%s", textmgr->m_Koune_Text[m_iDrawingStageID][m_iChar_Line].substr(m_iChar_Pos, m_iChar_Size).c_str());
+							m_strTemp[m_iChar_Line] += c;
+
+							m_iChar_Pos += m_iChar_Size;
+						}
+					}
+					else {
+						m_iChar_Pos = 0;
+						m_iChar_Line++;
+						m_bCharaChangeFlg = false;
+					}
+				}
+				else {
+					FadeOut();
+					StopDraw();
+				}
+
+				if (m_iDelay > m_iTextSpeed)
+					m_iDelay = 0;
+
+				char linec[32];
+				sprintf_s(linec, "%d", m_iChar_Line);
+				if (textmgr->isCtrlLine(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line) && !m_bCharaChangeFlg) {
+					char *namet = textmgr->GetCharName(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line);
+					m_strTemp.clear();
+					m_strTemp.resize(textmgr->m_Koune_Text[m_iDrawingStageID].size());
+					m_strTempName.clear();
+					m_strTempName += namet;
+					m_bCharaChangeFlg = true;
+					m_iCurrentLine = m_iChar_Line;
+				}
+				break;
+			}
+			case STAGE_TYPE::MERUERU: {
+				if (m_iChar_Line < textmgr->m_Merueru_Text[m_iDrawingStageID].size()) {
+					if (m_iChar_Pos < textmgr->m_Merueru_Text[m_iDrawingStageID][m_iChar_Line].length()) {
+						if (m_iDelay > m_iTextSpeed) {
+							unsigned char lead = textmgr->m_Merueru_Text[m_iDrawingStageID][m_iChar_Line][m_iChar_Pos];
+							if (lead < 128) {
+								m_iChar_Size = 1;
+							}
+							else if (lead < 224) {
+								m_iChar_Size = 2;
+							}
+							else if (lead < 240) {
+								m_iChar_Size = 3;
+							}
+							else {
+								m_iChar_Size = 4;
+							}
+
+							sprintf_s(c, "%s", textmgr->m_Merueru_Text[m_iDrawingStageID][m_iChar_Line].substr(m_iChar_Pos, m_iChar_Size).c_str());
+							m_strTemp[m_iChar_Line] += c;
+
+							m_iChar_Pos += m_iChar_Size;
+						}
+					}
+					else {
+						m_iChar_Pos = 0;
+						m_iChar_Line++;
+						m_bCharaChangeFlg = false;
+					}
+				}
+				else {
+					FadeOut();
+					StopDraw();
+				}
+
+				if (m_iDelay > m_iTextSpeed)
+					m_iDelay = 0;
+
+				char linec[32];
+				sprintf_s(linec, "%d", m_iChar_Line);
+				if (textmgr->isCtrlLine(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line) && !m_bCharaChangeFlg) {
+					char *namet = textmgr->GetCharName(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line);
+					m_strTemp.clear();
+					m_strTemp.resize(textmgr->m_Merueru_Text[m_iDrawingStageID].size());
+					m_strTempName.clear();
+					m_strTempName += namet;
+					m_bCharaChangeFlg = true;
+					m_iCurrentLine = m_iChar_Line;
+				}
+				break;
+			}
 			}
 
-			sprintf_s(tmpname, "%s", tmpname);
+			sprintf_s(tmpname, "%s", m_strTempName.c_str());
 			float col[4] = { 1.0f,1.0f,1.0f,m_fAlpha };
-			font->StrDraw(tmpname, WINDOW_SIZE_W / 2 - 400, WINDOW_SIZE_H / 2 + 100, 16, col);
+			font->StrDraw(tmpname, WINDOW_SIZE_W / 2 - 300, WINDOW_SIZE_H / 2 + 150, 16, col);
 
-			for (unsigned int i = 0; i < m_strTemp.size(); i++) {
+			for (unsigned int i = 0; i < m_strTemp.size(); ++i) {
 				sprintf_s(tmp, "%s", m_strTemp[i].c_str());
 				float col[4] = { 1.0f,1.0f,1.0f,m_fAlpha };
-				font->StrDrawEx(tmp, WINDOW_SIZE_W / 2 - 300, (WINDOW_SIZE_H / 2 + 200) + (i * 16), 16, col,i);
+				font->StrDraw(tmp, WINDOW_SIZE_W / 2 - 300, (WINDOW_SIZE_H / 2 + 200) + ((i - m_iCurrentLine) * 16), 16, col);
 			}
 		}
 	}
@@ -178,17 +354,49 @@ void COverlay::Draw()
 
 void COverlay::talkDraw(int stage, int stageID)
 {
+	if (m_iDrawingStage == stage && m_iDrawingStageID == stageID)
+		return;
+
+	if (m_fAlpha == 0.0f)
+		FadeIn();
 	m_iDrawFlg = 1;
+	m_bDrawing = true;
 	m_iDrawingStage = stage;
 	m_iDrawingStageID = stageID;
+	m_strTempName.resize(32);
+
+	switch (stage)
+	{
+	case STAGE_TYPE::TUTORIAL:
+		m_strTemp.resize(textmgr->m_Tutorial_Text[m_iDrawingStageID].size());
+		break;
+	case STAGE_TYPE::SION:
+		m_strTemp.resize(textmgr->m_Sion_Text[m_iDrawingStageID].size());
+		break;
+	case STAGE_TYPE::KOUNE:
+		m_strTemp.resize(textmgr->m_Koune_Text[m_iDrawingStageID].size());
+		break;
+	case STAGE_TYPE::MERUERU:
+		m_strTemp.resize(textmgr->m_Merueru_Text[m_iDrawingStageID].size());
+		break;
+	}
 }
 
 void COverlay::StopDraw() {
 	if (m_iDrawFlg == 1) {
 		m_iChar_Pos = 0;
 		m_iChar_Size = 0;
+		m_iChar_Line = 0;
+		m_iDelay = 0;
+		m_iCurrentLine = 0;
+
+		m_bCharaChangeFlg = false;
 		m_strTemp.clear();
+		m_strTempName.clear();
 		m_iDrawFlg = 0;
+		m_iDrawingStage = -1;
+		m_iDrawingStageID = -1;
+		m_bDrawing = false;
 	}
 }
 

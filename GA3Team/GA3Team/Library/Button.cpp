@@ -1,7 +1,7 @@
 #include "../main.h"
 
-//各ボタンの参照リスト
-list<Button*> Button::m_push_button_list;
+//全ボタンへの参照リスト定義
+list<Button*> Button::m_button_list;
 
 //初期化
 //引数：
@@ -9,18 +9,29 @@ list<Button*> Button::m_push_button_list;
 //y=ボタンのY位置
 //w=ボタンの幅
 //h=ボタンの高さ
-void Button::Init(int x, int y, int w, int h) {
+//overlap_flg=重なり判定を入れるかどうか
+void Button::Init(int x, int y, int w, int h, bool overlap_flg) {
 	m_iXpos=x;  //ボタンの位置X
 	m_iYpos=y;  //ボタンの位置Y
 	m_iWidth=w; //ボタンの幅
 	m_iHeight=h;//ボタンの高さ
 
-	//このボタンへの参照を追加
-	m_push_button_list.push_back(this);
+	m_bOnceFlg = false;//クリックした際一度だけ反応するためのフラグ
 
-	//描画優先順にソート
-	Pr pr;
-	m_push_button_list.sort(pr);
+	//重なり判定用処理
+	if (overlap_flg) {
+		//このボタンへの参照を追加
+		m_button_list.push_back(this);
+
+		//push_backしたイテレータを保存しておく
+		//今push_backしたイテレータは末尾（end()）よりも一つ前に存在する
+		m_my_itr = m_button_list.end();
+		m_my_itr--;
+
+		//描画優先順にソート
+		Pr pr;
+		m_button_list.sort(pr);
+	}
 }
 
 bool Button::Push() //ボタンが押された時

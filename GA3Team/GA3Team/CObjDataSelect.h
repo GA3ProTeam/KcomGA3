@@ -38,7 +38,7 @@ private:
 	ButtonDataSelect* m_obj_titlebackbutton;				//戻るボタン
 	ButtonDataSelect* m_obj_deletebutton;					//初期化するボタン
 
-	int m_ititle_choice;	//はじめからつづきからどちらが選ばれたか
+	int m_inext_scene;	//はじめからつづきからどちらが選ばれたか
 	int m_button_y;			//セーブデータ表示位置
 	
 	bool m_icreateflg;		//ボタンが作成されたか確認
@@ -47,18 +47,14 @@ private:
 
 	bool m_bselect_flg[MAX_SAVEDATA];  //(つづきから)ボタンが選択できるかどうか
 
-	//カラー情報
-	float col[4];
-	int text_size_playername[MAX_SAVEDATA]; //仮
-	int text_size_progress[MAX_SAVEDATA]; //仮
+	//プレイヤー名文字サイズ
+	int text_size_playername[MAX_SAVEDATA]; 
 
 	//データ表示用
 	char m_cplayername[MAX_SAVEDATA][256];
 
-	char m_csave_playername[MAX_SAVEDATA][256];					   //プレイヤーネーム
-	int  m_iplayerprogress[MAX_SAVEDATA][CHAR_PROGRESS];	   //キャラクター進行度
-
-	//char load_progress[MAX_SAVEDATA][32];
+	char m_csave_playername[MAX_SAVEDATA][256];			//プレイヤーネーム
+	int  m_iplayerprogress[MAX_SAVEDATA][CHAR_PROGRESS];//キャラクター進行度
 
 
 	CharacterData charaData[MAX_SAVEDATA];
@@ -67,7 +63,8 @@ private:
 	int iLoad_flg;
 	int iTitle_flg;
 
-	int m_iprogress_cnt[MAX_SAVEDATA];
+	int m_iprogress_cnt[MAX_SAVEDATA][3];
+
 	int m_Load_KouneClearflg[MAX_SAVEDATA][10];
 	int m_Load_SionClearflg[MAX_SAVEDATA][10];
 	int m_Load_MelueruClearflg[MAX_SAVEDATA][10];

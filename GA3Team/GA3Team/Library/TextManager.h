@@ -3,8 +3,9 @@
 #ifndef __TEXTMANAGER_H__
 #define __TEXTMANAGER_H__
 
+//
 
-class CTextManager{
+class CTextManager {
 private:
 	int linecount = 0;
 	int textlen = 0;
@@ -34,7 +35,8 @@ public:
 	CTextManager();
 
 	void LoadText();
-	int GetCtrlLine(int line);
+	bool isCtrlLine(int stage, int stageID,int linecount);
+	char *GetCharName(int stage, int stageID, int linecount);
 };
 
 #endif // !__TEXTMANAGER_H__

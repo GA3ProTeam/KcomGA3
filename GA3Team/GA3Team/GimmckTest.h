@@ -7,15 +7,21 @@ class CObjMenuTab;
 class GimmickTest :public Gimmick
 {
 public:
-	GimmickTest() {};
-	~GimmickTest() {};
+	//GimmickTest() {};
+	//~GimmickTest() {};
+	//void Destructor();			//デストラクタ
+	//void Action();				//アクション
+	//void Draw();
+	//void Init(int xpos, int ypos, int widht, int height, int balloonnum);
 private:
-	void Destructor();			//デストラクタ
-	void Action();				//アクション
-	void Draw();
+	//Balloon *bbb;
+     //Balloon *ccc;
+	//Balloon *aaa
+	
 };
 
 //-----------チュートリアル（博士）ステージ↓-------------------------
+
 
 //博士
 class GimmickDoctor :public Gimmick {
@@ -61,9 +67,9 @@ public:
 private:
 
 };
-//-----------チュートリアル（博士）ステージ↑-------------------------
+//-----------チュートリアル（博士）ステージ↑--------------------------------------------------------------------------------------------
 
-//-----------シオンステージ↓-----------------------------------------
+//-----------シオンステージ↓------------------------------------------------------------------------------------------------------------------
 //ステージ1↓
 
 //おばちゃん
@@ -207,6 +213,7 @@ public:
 	GimmickGranny() {};
 	~GimmickGranny() {};
 
+	void Init(int xpos, int ypos, int widht, int height, int balloonnum);//イニシャライズ
 	void Destructor();//デストラクタ
 	void Action();//アクション
 	void Draw();//描画
@@ -222,6 +229,7 @@ public:
 	GimmickMynah() {};
 	~GimmickMynah() {};
 
+	void Init(int xpos, int ypos, int widht, int height, int balloonnum);//イニシャライズ
 	void Destructor();	//デストラクタ
 	void Action();		//アクション
 	void Draw();		//ドロー
@@ -237,6 +245,7 @@ public:
 	GimmickShelf() {};
 	~GimmickShelf() {};
 
+	void Init(int xpos, int ypos, int widht, int height, int balloonnum);//イニシャライズ
 	void Destructor();	//デストラクタ
 	void Action();		//アクション
 	void Draw();		//ドロー
@@ -252,6 +261,7 @@ public:
 	GimmickWindchime() {};
 	~GimmickWindchime() {};
 
+	void Init(int xpos, int ypos, int widht, int height, int balloonnum);//イニシャライズ
 	void Destructor();	//デストラクタ
 	void Action();		//アクション
 	void Draw();		//ドロー
@@ -320,9 +330,9 @@ private:
 
 //ステージ6↑
 
-//-----------シオンステージ↑-----------------------------------------
+//-----------シオンステージ↑------------------------------------------------------------------------------------------------------------------
 
-//-----------コウネステージ↓-----------------------------------------
+//-----------コウネステージ↓------------------------------------------------------------------------------------------------------------------
 
 
 //ステージ1↓
@@ -403,54 +413,53 @@ private:
 //ステージ6↓
 //ステージ6↑
 
-//-----------コウネステージ↑-----------------------------------------
+//-----------コウネステージ↑------------------------------------------------------------------------------------------------------------------
 
-//-----------メルエルステージ↓-----------------------------------------
-
+//-----------メルエルステージ↓------------------------------------------------------------------------------------------------------------------
 
 //ステージ1↓
-class GimmickTelevision : public Gimmick
-{
+class GimmickTelevision : public Gimmick{
 public:
 	GimmickTelevision() {};
 	~GimmickTelevision() {};
+
+	void Init(int xpos, int ypos, int widht, int height, int balloonnum);//イニシャライズ
 	void Destructor();//デストラクタ
 	void Action();//アクション
 	void Draw();//描画
 
 
 };
-class GimmickOven : public Gimmick
-{
+class GimmickOven : public Gimmick{
 public:
 	GimmickOven() {};
 	~GimmickOven() {};
+	void Init(int xpos, int ypos, int widht, int height, int balloonnum);//イニシャライズ
 	void Destructor();//デストラクタ
 	void Action();//アクション
 	void Draw();//描画
 
 
 };
-class GimmickKatsuo : public Gimmick
-{
+class GimmickKatsuo : public Gimmick{
 public:
 	GimmickKatsuo() {};
 	~GimmickKatsuo() {};
+	void Init(int xpos, int ypos, int widht, int height, int balloonnum);//イニシャライズ
 	void Destructor();//デストラクタ
 	void Action();//アクション
 	void Draw();//描画
 
 
 };
-class GimmickDoor : public Gimmick
-{
+class GimmickDoor : public Gimmick{
 public:
 	GimmickDoor() {};
 	~GimmickDoor() {};
+	void Init(int xpos, int ypos, int widht, int height, int balloonnum);//イニシャライズ
 	void Destructor();//デストラクタ
 	void Action();//アクション
 	void Draw();//描画
-
 
 };
 //ステージ1↑
@@ -472,6 +481,6 @@ public:
 //ステージ6↓
 //ステージ6↑
 
-//-----------メルエルステージ↑-----------------------------------------
+//-----------メルエルステージ↑------------------------------------------------------------------------------------------------------------------
 
 #endif // !__GIMMCKTEST__

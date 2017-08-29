@@ -840,127 +840,127 @@ void Gimmickfiretruck::Draw()
 ////ステージ3↑
 //
 ////ステージ4↓
-void GimmickMysteryman::Destructor() {}	//デストラクタ
-void GimmickMysteryman::Action() {
-	//メニュータブへの参照取得
-
-	CObjMenuTab* tab = (CObjMenuTab*)Obj()->GetObj(OBJ_MENUTAB);
-	if (SavedataManeger()->CurrentData->m_bSionflg[6] = false) {
-		SavedataManeger()->CurrentData->m_bSionflg[6] = true;
-		Overlay()->talkDraw(SION, SION4_START);
-	}
-	if (Input()->m_x > m_iXpos&& Input()->m_x < (m_iXpos + m_iWidth)
-		&& Input()->m_y > m_iYpos && Input()->m_y < (m_iYpos + m_iHeight)) {
-		
-
-		//マウスドラッグ中にマウスボタンが離された
-		if (!Input()->GetMouButtonL() && tab->GetHaveSound()) {
-
-			if (!Input()->GetMouButtonL() && tab->GetHaveSound()) {
-				if (SavedataManeger()->CurrentData->m_bSionflg[7] = true && SoundManager()->GetSound(tab->GetGiveSound())) {
-					Overlay()->talkDraw(SION, SION4_NAZONAZO_BICYCLE);
-					SavedataManeger()->CurrentData->m_bSionflg[8] = true;
-				}
-				else {
-					Overlay()->talkDraw(SION, SION4_NAZONAZO_BAT);
-				}
-				if (SavedataManeger()->CurrentData->m_bSionflg[8] = true && SoundManager()->GetSound(tab->GetGiveSound())) {
-					Overlay()->talkDraw(SION, SION4_NAZONAZO_FIRETRUCK);
-					SavedataManeger()->CurrentData->m_bSionClearflg[3];
-				}
-				else {
-					Overlay()->talkDraw(SION, SION4_NAZONAZO_BAT);
-				}
-			}
-		}
-		else if (Input()->GetMouButtonL()) {
-			//2問目出題
-			if (SavedataManeger()->CurrentData->m_bSionflg[8] = true) {
-				Overlay()->talkDraw(SION, SION4_NAZONAZO_FLAG2_NO);
-				Overlay()->talkDraw(SION, HAKASE_1);
-			}
-			//1問目出題
-			else if (SavedataManeger()->CurrentData->m_bSionflg[7] = true) {
-				Overlay()->talkDraw(SION, SION4_NAZONAZO_FLAG1_YES);
-			}
-			//1問目を出される前
-			else if (SavedataManeger()->CurrentData->m_bSionflg[7] = false) {
-				Overlay()->talkDraw(SION, SION4_NAZONAZO_FLAG1_NO);
-				SavedataManeger()->CurrentData->m_bSionflg[7] = true;
-			}
-		}
-	}
-
-
-
-}		//アクション
-void GimmickMysteryman::Draw() {
-	//-------------------------ギミック(本体)を描画-------------------------------
-	float col[4] = { 1.0,1.0,1.0,1.0 };
-	//切り取り先座標
-	m_dst.top = 0; m_dst.left = 0;
-	m_dst.bottom = 200; m_dst.right = 200;
-
-	//転送先座標
-	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
-	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
-	//描画
-	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
-
-
-}		//ドロー
-
-
-		//バイク
-void GimmickBike::Destructor() {}	//デストラクタ
-void GimmickBike::Action() {
-	//吹き出しが押されたか確認
-	if (ball[0].OnPush) {
-		SoundManager()->SoundSave(0);
-	}
-}	//アクション
-
-
-void GimmickBike::Draw() {
-
-	//-------------------------ギミック(本体)を描画-------------------------------
-	float col[4] = { 1.0,1.0,1.0,1.0 };
-	//切り取り先座標
-	m_dst.top = 0; m_dst.left = 0;
-	m_dst.bottom = 200; m_dst.right = 200;
-
-	//転送先座標
-	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
-	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
-	//描画
-	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
-}		//ドロー
-
-
-		//扉
-void GimmickDoor::Destructor() {}	//デストラクタ
-void GimmickDoor::Action() {
-	//吹き出しが押されたか確認
-	if (ball[0].OnPush) {
-		SoundManager()->SoundSave(0);
-	}
-}//アクション
-
-void GimmickDoor::Draw() {
-	//-------------------------ギミック(本体)を描画-------------------------------
-	float col[4] = { 1.0,1.0,1.0,1.0 };
-	//切り取り先座標
-	m_dst.top = 0; m_dst.left = 0;
-	m_dst.bottom = 200; m_dst.right = 200;
-
-	//転送先座標
-	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
-	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
-	//描画
-	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
-
-
-}		//ドロー
+//void GimmickMysteryman::Destructor() {}	//デストラクタ
+//void GimmickMysteryman::Action() {
+//	//メニュータブへの参照取得
+//
+//	CObjMenuTab* tab = (CObjMenuTab*)Obj()->GetObj(OBJ_MENUTAB);
+//	if (SavedataManeger()->CurrentData->m_bSionflg[6] = false) {
+//		SavedataManeger()->CurrentData->m_bSionflg[6] = true;
+//		Overlay()->talkDraw(SION, SION4_START);
+//	}
+//	if (Input()->m_x > m_iXpos&& Input()->m_x < (m_iXpos + m_iWidth)
+//		&& Input()->m_y > m_iYpos && Input()->m_y < (m_iYpos + m_iHeight)) {
+//		
+//
+//		//マウスドラッグ中にマウスボタンが離された
+//		if (!Input()->GetMouButtonL() && tab->GetHaveSound()) {
+//
+//			if (!Input()->GetMouButtonL() && tab->GetHaveSound()) {
+//				if (SavedataManeger()->CurrentData->m_bSionflg[7] = true && SoundManager()->GetSound(tab->GetGiveSound())) {
+//					Overlay()->talkDraw(SION, SION4_NAZONAZO_BICYCLE);
+//					SavedataManeger()->CurrentData->m_bSionflg[8] = true;
+//				}
+//				else {
+//					Overlay()->talkDraw(SION, SION4_NAZONAZO_BAT);
+//				}
+//				if (SavedataManeger()->CurrentData->m_bSionflg[8] = true && SoundManager()->GetSound(tab->GetGiveSound())) {
+//					Overlay()->talkDraw(SION, SION4_NAZONAZO_FIRETRUCK);
+//					SavedataManeger()->CurrentData->m_bSionClearflg[3];
+//				}
+//				else {
+//					Overlay()->talkDraw(SION, SION4_NAZONAZO_BAT);
+//				}
+//			}
+//		}
+//		else if (Input()->GetMouButtonL()) {
+//			//2問目出題
+//			if (SavedataManeger()->CurrentData->m_bSionflg[8] = true) {
+//				Overlay()->talkDraw(SION, SION4_NAZONAZO_FLAG2_NO);
+//				Overlay()->talkDraw(SION, HAKASE_1);
+//			}
+//			//1問目出題
+//			else if (SavedataManeger()->CurrentData->m_bSionflg[7] = true) {
+//				Overlay()->talkDraw(SION, SION4_NAZONAZO_FLAG1_YES);
+//			}
+//			//1問目を出される前
+//			else if (SavedataManeger()->CurrentData->m_bSionflg[7] = false) {
+//				Overlay()->talkDraw(SION, SION4_NAZONAZO_FLAG1_NO);
+//				SavedataManeger()->CurrentData->m_bSionflg[7] = true;
+//			}
+//		}
+//	}
+//
+//
+//
+//}		//アクション
+//void GimmickMysteryman::Draw() {
+//	//-------------------------ギミック(本体)を描画-------------------------------
+//	float col[4] = { 1.0,1.0,1.0,1.0 };
+//	//切り取り先座標
+//	m_dst.top = 0; m_dst.left = 0;
+//	m_dst.bottom = 200; m_dst.right = 200;
+//
+//	//転送先座標
+//	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
+//	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
+//	//描画
+//	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
+//
+//
+//}		//ドロー
+//
+//
+//		//バイク
+//void GimmickBike::Destructor() {}	//デストラクタ
+//void GimmickBike::Action() {
+//	//吹き出しが押されたか確認
+//	if (ball[0].OnPush) {
+//		SoundManager()->SoundSave(0);
+//	}
+//}	//アクション
+//
+//
+//void GimmickBike::Draw() {
+//
+//	//-------------------------ギミック(本体)を描画-------------------------------
+//	float col[4] = { 1.0,1.0,1.0,1.0 };
+//	//切り取り先座標
+//	m_dst.top = 0; m_dst.left = 0;
+//	m_dst.bottom = 200; m_dst.right = 200;
+//
+//	//転送先座標
+//	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
+//	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
+//	//描画
+//	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
+//}		//ドロー
+//
+//
+//		//扉
+//void GimmickDoor::Destructor() {}	//デストラクタ
+//void GimmickDoor::Action() {
+//	//吹き出しが押されたか確認
+//	if (ball[0].OnPush) {
+//		SoundManager()->SoundSave(0);
+//	}
+//}//アクション
+//
+//void GimmickDoor::Draw() {
+//	//-------------------------ギミック(本体)を描画-------------------------------
+//	float col[4] = { 1.0,1.0,1.0,1.0 };
+//	//切り取り先座標
+//	m_dst.top = 0; m_dst.left = 0;
+//	m_dst.bottom = 200; m_dst.right = 200;
+//
+//	//転送先座標
+//	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
+//	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
+//	//描画
+//	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
+//
+//
+//}		//ドロー
 //		//ステージ4↑
 
 //
@@ -978,9 +978,9 @@ void GimmickDoor::Draw() {
 //
 ////-----------コウネステージ↓-----------------------------------------
 //
-//
-////ステージ1↓
-////犬のデストラクタ
+
+//ステージ1↓
+//犬のデストラクタ
 //void GimmickDog::Destructor()
 //{
 //
@@ -1061,7 +1061,9 @@ void GimmickDoor::Draw() {
 //{
 //
 //	if (ball[0].OnPush) {
+//
 //		SavedataManeger()->CurrentData->m_bKouneClearflg[0] = true;
+//		Overlay()->talkDraw(KOUNE, KOUNE1_OZI_CLEAR);
 //
 //	}
 //}//マンホールの穴のドロー
@@ -1092,23 +1094,25 @@ void GimmickDoor::Draw() {
 //	if (ball[0].OnPush) {
 //		if (SavedataManeger()->CurrentData->m_bKouneflg[0] == false) {
 //			SavedataManeger()->CurrentData->m_bKouneflg[0] = true;
+//			Overlay()->talkDraw(KOUNE, KOUNE1_OZI);
 //		}
 //
 //		else if (SavedataManeger()->CurrentData->m_bKouneflg[2] == true) {
 //			SavedataManeger()->CurrentData->m_bKouneflg[3] = true;
+//			Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG3_YES);
 //			m_Status = STATUS_DELETE;
 //		}
 //		else if (SavedataManeger()->CurrentData->m_bKouneflg[1] == true) {
-//
+//			Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG2_YES);
 //
 //		}
 //		else if (SavedataManeger()->CurrentData->m_bKouneflg[2] == false && SavedataManeger()->CurrentData->m_bKouneflg[1] == true) {
-//
+//			Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG3_NO_FLAG1_YES);
 //
 //		}
 //
 //		else if (SavedataManeger()->CurrentData->m_bKouneflg[1] == false) {
-//
+//			Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG2_NO);
 //
 //		}
 //

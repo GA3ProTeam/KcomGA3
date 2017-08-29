@@ -3,7 +3,8 @@
 void COverlay::InitLoad()
 {
 	//Image
-	image->LoadImageEx("bb.png", 63, TEX_SIZE_512);
+	image->LoadImageEx("bb.png", 62, TEX_SIZE_512);
+	image->LoadImageEx("orga.png", 63, TEX_SIZE_512);
 	//コウネ1----------------------------------
 	image->LoadImageEx("おじいさんc.png", 0, TEX_SIZE_512);
 	image->LoadImageEx("マンホール.png", 1, TEX_SIZE_1024);
@@ -123,6 +124,8 @@ void COverlay::Draw()
 		src.bottom = src.top + 600;
 		src.right = src.left + 800;
 
+		image->DrawEx(62, &src, &dst, col, 0.0f);
+
 		image->DrawEx(63, &src, &dst, col, 0.0f);
 
 
@@ -157,9 +160,11 @@ void COverlay::Draw()
 						}
 					}
 					else {
-						m_iChar_Pos = 0;
-						m_iChar_Line++;
-						m_bCharaChangeFlg = false;
+						if (input->GetMouButtonLOnce()) {
+							m_iChar_Pos = 0;
+							m_iChar_Line++;
+							m_bCharaChangeFlg = false;
+						}
 					}
 				}
 				else {

@@ -557,18 +557,17 @@ public:
 	void Action();//アクション
 	void Draw();//描画
 
+};
+class GimmickDoctorroomDoor : public Gimmick{
+public:
+	GimmickDoctorroomDoor() {};
+	~GimmickDoctorroomDoor() {};
+	void Init(int xpos, int ypos, int widht, int height, int balloonnum);//イニシャライズ
+	void Destructor();//デストラクタ
+	void Action();//アクション
+	void Draw();//描画
 
 };
-//class GimmickDoor : public Gimmick{
-//public:
-//	GimmickDoor() {};
-//	~GimmickDoor() {};
-//	void Init(int xpos, int ypos, int widht, int height, int balloonnum);//イニシャライズ
-//	void Destructor();//デストラクタ
-//	void Action();//アクション
-//	void Draw();//描画
-//
-//};
 //ステージ1↑
 
 //ステージ2↓

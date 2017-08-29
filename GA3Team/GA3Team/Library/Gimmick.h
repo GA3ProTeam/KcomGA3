@@ -9,28 +9,28 @@ enum BalloonType {
 };
 //吹き出しの色(シオンの能力発動時)
 enum BalloonColor {
-	CNONE = -1,
-	NORMAL,
-	RED,
-	BLUE,
-	GREEN,
-	YELLOW,
-	ORANGE,
-	PURPLE,
-	GRAY,
-	ASH,
-	PINK,
+	CNONE  = -1, //色無し
+	NORMAL = 0,  //通常
+	RED    = 64, //赤
+	BLUE   = 128, //青
+	GREEN  = 192,//緑
+	YELLOW = 256,//黄
+	ORANGE = 320,//オレンジ
+	PURPLE = 384,//紫
+	GRAY   = 448,//灰
+	ASH    = 512,//茶
+	PINK   = 576,//ピンク
 };
 //吹き出しの形(吹き出しのチョンの部分の方向)
 enum Balloondir {
-	LOWER_LEFT, //左下
-	LOWER_RIGHT,//右下
-	UPPER_LEFT,//左上
-	UPPER_RIGHT,//右上
-	UNDER,//真下
-	UPPER,//真上
-	LEFT,//真左
-	RIGHT,//真右
+	LOWER_LEFT  = 0,   //左下
+	LOWER_RIGHT = 64,  //右下
+	UPPER_LEFT  = 128, //左上
+	UPPER_RIGHT = 192, //右上
+	UNDER       = 256, //真下
+	UPPER       = 320, //真上
+	LEFT        = 384, //真左
+	RIGHT       = 448, //真右
 	
 };
 
@@ -85,18 +85,15 @@ public:
 	void setballoontype(int balloontype, int num) { m_ball[num].m_iballoontype = balloontype; }
 
 	//吹き出し(音情報)をセットする
-	void setSound(int soundnum, int num) { m_ball[num].m_soundnum = soundnum; }
+	void setBalloonSound(int soundnum, int num) { m_ball[num].m_soundnum = soundnum; }
 
-	//吹き出しの(色情報)をセットする
-	void setColor(int color, int num) { m_ball[num].m_iballooncolor = color; }
-	
+	//吹き出しの色を変える(シオン能力発動時)
+	void changeBalloonColor(int num);
+	void changetalkDir(int num);
 
 	//描画
 	void gimmicDraw(int num);
 
-	//シオンの能力発動時音符に色をつける
-	void setballooncolor(int num);
 
-	
 };
 #endif // !__GIMMICK_H__

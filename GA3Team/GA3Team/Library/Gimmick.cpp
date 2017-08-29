@@ -52,7 +52,7 @@ void Gimmick::gimmicDraw(int num)
 	if (!Overlay()->isDraw())
 	{
 		//縦と横(x)カーソルがギミックの当たり範囲に入っているか否か
-		if ((mousex > m_src.left && mousex < (m_src.left + m_iWidth))
+		if ((mousex > m_src.left + User()->mscroll_x && mousex < (m_src.left + User()->mscroll_x + m_iWidth))
 			&& (mousey > m_src.top && mousey < (m_src.top + m_iHeight)))
 		{
 			m_iballoontime = BALLOON_KEEP_TIME;
@@ -67,17 +67,19 @@ void Gimmick::gimmicDraw(int num)
 			{
 				if (m_ball[i].m_iballoontype == talk){
 					//会話吹き出しを描画
+
+					changetalkDir(num);
 					Image()->Draw(3, &m_ball[i].m_gimsrc, &m_ball[i].m_gimdst, col, 0.0f);
 				}
 				if (m_ball[i].m_iballoontype == sound){
-					//音吹き出しを描画
-					Image()->Draw(4, &m_ball[i].m_gimsrc, &m_ball[i].m_gimdst, col, 0.0f);
 
 					//シオンの能力発動時に吹き出しの色を変える
-					/*if (User()->m_bsionability)
-					{
-						
-					}*/
+					if (User()->m_bsionability){
+						changeBalloonColor(num);
+					}
+
+					//音吹き出しを描画
+					Image()->Draw(4, &m_ball[i].m_gimsrc, &m_ball[i].m_gimdst, col, 0.0f);
 				}
 
 				//吹き出し描画中に吹き出しをクリックしたら
@@ -110,10 +112,31 @@ void Gimmick::gimmicDraw(int num)
 		}
 	}
 }
-void Gimmick::setballooncolor(int num)
+void Gimmick::changeBalloonColor(int num)
 {
 	//if(ball[num].m_iballooncolor == RED);
+	for (int i = 0; i < num; i++)
+	{
+
+		m_ball[i].m_gimdst.top = m_ball[i].m_iballoonDir;
+		m_ball[i].m_gimdst.left = m_ball[i].m_iballooncolor;
+		m_ball[i].m_gimdst.bottom = m_ball[i].m_gimdst.top+ GIMMICK_SIZE_Y;
+		m_ball[i].m_gimdst.right = m_ball[i].m_gimdst.left+ GIMMICK_SIZE_X;
+	}
 }
+void Gimmick::changetalkDir(int num)
+{
+	for (int i = 0; i < num; i++)
+	{
+		m_ball[i].m_gimdst.top = 0;
+		m_ball[i].m_gimdst.left = m_ball[i].m_iballoonDir;
+		m_ball[i].m_gimdst.bottom = m_ball[i].m_gimdst.top + GIMMICK_SIZE_Y;
+		m_ball[i].m_gimdst.right = m_ball[i].m_gimdst.left + GIMMICK_SIZE_X;
+	}
+}
+
+
+
 void InitBall(Balloon* balloon , int gimX, int gimY, int balltype, int soundnum, int color, int Dir)
 {
 	balloon->m_iGimXpos = gimX;

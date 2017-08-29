@@ -3,8 +3,9 @@
 void COverlay::InitLoad()
 {
 	//Image
+	image->LoadImageEx("bb.png", 59, TEX_SIZE_512);
 	image->LoadImageEx("orga2.png", 60, TEX_SIZE_1024);
-	image->LoadImageEx("bb.png", 61, TEX_SIZE_512);
+	image->LoadImageEx("yjt.png", 61, TEX_SIZE_512);
 	image->LoadImageEx("orga.png", 62, TEX_SIZE_512);
 	image->LoadImageEx("atsumori.png", 63, TEX_SIZE_256);
 	//コウネ1----------------------------------
@@ -115,10 +116,12 @@ void COverlay::Draw()
 		RECT backsrc,backdst;
 		RECT leftsrc, leftdst;
 		RECT rightsrc, rightdst;
-		RECT centersrc, centerdst;
+		
+		//RECT centersrc, centerdst;
 
 		float waitcol[4] = { 1.0f,1.0f,1.0f,m_fWaitAlpha };
 		RECT waitsrc, waitdst;
+		RECT ballonsrc, ballondst;
 
 		//-------------------背景------------------------
 		//切り取り座標
@@ -169,6 +172,7 @@ void COverlay::Draw()
 		//-------------------右キャラ終---------------------
 
 		//-------------------中キャラ----------------------
+		/*
 		//切り取り座標
 		centerdst.top = 0;
 		centerdst.left = 0;
@@ -182,7 +186,23 @@ void COverlay::Draw()
 		centersrc.right = centersrc.left + 250;
 
 		image->DrawEx(62, &centersrc, &centerdst, col, 0.0f);
+		*/
 		//-------------------中キャラ終---------------------
+
+		//-------------------吹き出し-----------------------
+		//切り取り座標
+		ballondst.top = 0;
+		ballondst.left = 0;
+		ballondst.bottom = ballondst.top + 512;
+		ballondst.right = ballondst.left + 512;
+		//転送先座標
+		ballonsrc.top = WINDOW_SIZE_H - 150;
+		ballonsrc.left = 100;
+		ballonsrc.bottom = ballonsrc.top + 100;
+		ballonsrc.right = ballonsrc.left + (WINDOW_SIZE_W - 150);
+
+		image->DrawEx(59, &ballonsrc, &ballondst, col, 0.0f);
+		//-------------------吹き出し終--------------------
 
 		//-------------------待機インジケータ---------------
 		//切り取り座標
@@ -191,7 +211,7 @@ void COverlay::Draw()
 		waitdst.bottom = waitdst.top + 256;
 		waitdst.right = waitdst.left + 256;
 		//転送先座標
-		waitsrc.top = WINDOW_SIZE_H - 100;
+		waitsrc.top = WINDOW_SIZE_H - 125;
 		waitsrc.left = WINDOW_SIZE_W - 150;
 		waitsrc.bottom = waitsrc.top + 64;
 		waitsrc.right = waitsrc.left + 96;

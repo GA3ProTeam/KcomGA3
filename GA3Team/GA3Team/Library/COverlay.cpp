@@ -69,6 +69,8 @@ void COverlay::Action()
 
 		if (m_fAlpha < 0.0f) {
 			m_iFadeFlg = 0;
+			m_iDrawFlg = 0;
+			m_bDrawing = false;
 			m_fAlpha = 0.0f;
 		}
 	}
@@ -137,6 +139,11 @@ void COverlay::Draw()
 
 		image->DrawEx(63, &waitsrc, &dst, waitcol, 0.0f);
 
+		char tmpbool[64] = { 0 };
+		sprintf_s(tmpbool, "%d", input->GetMouButtonL() ? 1 : 0);
+		font->StrDraw(tmpbool, 0, 0, 16, col);
+
+
 
 		if (m_fAlpha == 1.0f) {
 
@@ -198,9 +205,21 @@ void COverlay::Draw()
 					}
 				}
 				else {
-					if (input->GetMouButtonLOnce()) {
+					if (input->GetMouButtonL()) {
 						FadeOut();
 						StopDraw();
+					}
+					else {
+						if (m_iDelay > m_iTextSpeed) {
+							if (!m_bNextWaiting) {
+								m_fWaitAlpha = 1.0f;
+								m_bNextWaiting = true;
+							}
+							else {
+								m_fWaitAlpha = 0.0f;
+								m_bNextWaiting = false;
+							}
+						}
 					}
 				}
 
@@ -278,6 +297,18 @@ void COverlay::Draw()
 						FadeOut();
 						StopDraw();
 					}
+					else {
+						if (m_iDelay > m_iTextSpeed) {
+							if (!m_bNextWaiting) {
+								m_fWaitAlpha = 1.0f;
+								m_bNextWaiting = true;
+							}
+							else {
+								m_fWaitAlpha = 0.0f;
+								m_bNextWaiting = false;
+							}
+						}
+					}
 				}
 
 				if (m_iDelay > m_iTextSpeed)
@@ -353,6 +384,18 @@ void COverlay::Draw()
 					if (input->GetMouButtonLOnce()) {
 						FadeOut();
 						StopDraw();
+					}
+					else {
+						if (m_iDelay > m_iTextSpeed) {
+							if (!m_bNextWaiting) {
+								m_fWaitAlpha = 1.0f;
+								m_bNextWaiting = true;
+							}
+							else {
+								m_fWaitAlpha = 0.0f;
+								m_bNextWaiting = false;
+							}
+						}
 					}
 				}
 
@@ -430,6 +473,18 @@ void COverlay::Draw()
 						FadeOut();
 						StopDraw();
 					}
+					else {
+						if (m_iDelay > m_iTextSpeed) {
+							if (!m_bNextWaiting) {
+								m_fWaitAlpha = 1.0f;
+								m_bNextWaiting = true;
+							}
+							else {
+								m_fWaitAlpha = 0.0f;
+								m_bNextWaiting = false;
+							}
+						}
+					}
 				}
 
 				if (m_iDelay > m_iTextSpeed)
@@ -504,10 +559,8 @@ void COverlay::StopDraw() {
 		m_bCharaChangeFlg = false;
 		m_strTemp.clear();
 		m_strTempName.clear();
-		m_iDrawFlg = 0;
 		m_iDrawingStage = -1;
 		m_iDrawingStageID = -1;
-		m_bDrawing = false;
 	}
 }
 

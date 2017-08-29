@@ -139,11 +139,9 @@ void COverlay::Draw()
 
 		image->DrawEx(63, &waitsrc, &dst, waitcol, 0.0f);
 
-		char tmpbool[64] = { 0 };
-		sprintf_s(tmpbool, "%d", input->GetMouButtonL() ? 1 : 0);
-		font->StrDraw(tmpbool, 0, 0, 16, col);
-
-
+		//char tmpbool[64] = { 0 };
+		//sprintf_s(tmpbool, "%d", input->GetMouButtonL() ? 1 : 0);
+		//font->StrDraw(tmpbool, 0, 0, 16, col);
 
 		if (m_fAlpha == 1.0f) {
 
@@ -293,7 +291,7 @@ void COverlay::Draw()
 					}
 				}
 				else {
-					if (input->GetMouButtonLOnce()) {
+					if (input->GetMouButtonL()) {
 						FadeOut();
 						StopDraw();
 					}
@@ -381,7 +379,7 @@ void COverlay::Draw()
 					}
 				}
 				else {
-					if (input->GetMouButtonLOnce()) {
+					if (input->GetMouButtonL()) {
 						FadeOut();
 						StopDraw();
 					}
@@ -469,7 +467,7 @@ void COverlay::Draw()
 					}
 				}
 				else {
-					if (input->GetMouButtonLOnce()) {
+					if (input->GetMouButtonL()) {
 						FadeOut();
 						StopDraw();
 					}

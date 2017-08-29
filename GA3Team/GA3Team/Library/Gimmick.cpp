@@ -135,8 +135,16 @@ void Gimmick::changetalkDir(int num)
 	}
 }
 
-
-
+//吹き出し構造体(Balloon)の初期化関数
+//引数：
+//balloon	=初期化する吹き出しへの参照アドレス（例：&m_ball[0] , &m_ball[1]）
+//以下の引数は初期化する値です。
+//gimX		=ギミックのX座標
+//gimY		=ギミックのY座標
+//balltype	=吹き出しの種類
+//soundnum	=ギミックが持っている音情報(ない場合は　EXCEPTION　を入れる)
+//color		=シオンの能力発動時の色情報
+//Dir		=吹き出しの向き
 void InitBall(Balloon* balloon , int gimX, int gimY, int balltype, int soundnum, int color, int Dir)
 {
 	balloon->m_iGimXpos = gimX;

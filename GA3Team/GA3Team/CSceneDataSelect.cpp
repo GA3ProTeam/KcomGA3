@@ -5,8 +5,8 @@ void CSceneDataSelect::InitScene()
 {
 
 	//このシーンで表示させるイメージ情報
-	Image()->LoadImage("タイトルタブ仮画像.png", 0, TEX_SIZE_64);
-	Image()->LoadImage("戻りボタン.png", 1, TEX_SIZE_512);
+	Image()->LoadImage("タイトルタブ仮画像.png", 0, TEX_SIZE_64);	//仮
+//	Image()->LoadImage("戻りボタン.png", 1, TEX_SIZE_512);
 	Image()->LoadImage("コウネ.png", 2, TEX_SIZE_1024); //コウネ進行度
 	Image()->LoadImage("メルエル.png", 3, TEX_SIZE_1024); //メルエル進行度
 	Image()->LoadImage("シオン.png", 4, TEX_SIZE_1024); //シオン進行度

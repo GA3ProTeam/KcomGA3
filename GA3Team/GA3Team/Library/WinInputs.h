@@ -14,7 +14,8 @@ class CWinInputs
 		bool GetMouButtonL();
 		bool GetMouButtonR();
 		bool GetMouButtonM();
-
+		bool GetMouButtonLOnce();
+		bool GetMouButtonROnce();
 		
 		int  m_x,m_y;		//マウス座標
 
@@ -22,6 +23,8 @@ class CWinInputs
 		bool  m_ButtonL;	//マウスクリック
 		bool  m_ButtonR;
 		bool  m_ButtonM;
+		bool  m_ButtonLOnceflg;
+		bool  m_ButtonROnceflg;
 		BYTE m_KeyBoard[256];//キーボード配列
 
 };

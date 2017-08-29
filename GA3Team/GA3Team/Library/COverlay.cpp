@@ -360,6 +360,7 @@ void COverlay::talkDraw(int stage, int stageID)
 	if (m_fAlpha == 0.0f)
 		FadeIn();
 	m_iDrawFlg = 1;
+	m_bDrawing = true;
 	m_iDrawingStage = stage;
 	m_iDrawingStageID = stageID;
 	m_strTempName.resize(32);
@@ -395,6 +396,7 @@ void COverlay::StopDraw() {
 		m_iDrawFlg = 0;
 		m_iDrawingStage = -1;
 		m_iDrawingStageID = -1;
+		m_bDrawing = false;
 	}
 }
 

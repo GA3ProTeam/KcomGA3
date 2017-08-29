@@ -59,7 +59,7 @@ void GimmickDoctor::Init(int xpos, int ypos, int widht, int height, int balloonn
 	InitBall(&m_ball[0], m_iWidth - 50, -48, talk, 1, RED, LOWER_LEFT);
 
 	//会話「ようこそ！ここは・・・」
-	Overlay()->talkDraw(TUTORIAL, HAKASE_FLAG_1_2);
+	Overlay()->talkDraw(TUTORIAL, HAKASE_1);
 }
 
 //デストラクタ
@@ -81,8 +81,7 @@ void GimmickDoctor::Action() {
 	//レコーダー入手後（フラグ1達成後）
 	else if (SavedataManeger()->CurrentData->m_btutoriaruflg[0] &&
 		!SavedataManeger()->CurrentData->m_btutoriaruflg[1]) {
-		//会話「それはこの研究所が開発したレコーダー・・・」
-		Overlay()->talkDraw(TUTORIAL, HAKASE_FLAG_1_1);
+		
 
 		//音を録音していない（フラグ2未達成）状態で、会話
 		if (m_ball[0].OnPush) {
@@ -237,6 +236,9 @@ void GimmickRecorder::Action() {
 		SavedataManeger()->CurrentData->m_btutoriaruflg[0] = true;
 		//レコーダー破棄
 		m_Status = STATUS_DELETE;
+
+		//会話「それはこの研究所が開発したレコーダー・・・」
+		Overlay()->talkDraw(TUTORIAL, HAKASE_FLAG_1_1);
 	}
 }
 

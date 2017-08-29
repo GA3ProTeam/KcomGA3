@@ -6,8 +6,8 @@
 #define _HAS_ITERATOR_DEBUGGING	(0) 
 
 //vs2015_warning
-#pragma warning ( disable : 4005 )
-#pragma warning ( disable : 4838 )
+#pragma warning (disable : 4005)
+#pragma warning (disable : 4838)
 #define _CRT_SECURE_NO_WARNINGS
 
 //ヘッダー
@@ -132,9 +132,20 @@ enum OBJ_NAME
 	GIMMICK_MANHOLECOVER,
 	GIMMICK_MANHOLEHOLE,
 	GIMMICK_OLDMAN,
+	GIMMICK_CHILDREN,
+	GIMMICK_GRANNY,
+	GIMMICK_MYNAH,
+	GIMMICK_SHELF,
+	GIMMICK_WINDCHIME,
+	GIMMICK_EARPHONE,
+	GIMMICK_KOUNE,
+	GIMMICK_CAT,
+	GIMMICK_BICYCLE,
+	GIMMICK_FIRETRUCK,
 	GIMMICK_DOCTOR,
 	GIMMICK_RECORDER,
 	GIMMICK_COMPUTER,
+
 };
 //----------------------
 enum STAGE_TYPE {
@@ -175,6 +186,8 @@ enum STAGE_TYPE {
 
 //当たり判定の複数同時判定量
 #define MAX_HITS	15
+
+#define STAGE_MAX 6
 
 
 //一つのギミックがもてる吹き出しの最大数
@@ -309,7 +322,7 @@ class CUserData
 		//----ユーザーが持つデータ-------
 		//int mSeveData;//サンプルセーブデータ
 		int mscroll_x;
-		int mititle_choice; //始め方の選択
+		int m_iNext_Scene; //次のシーン
 		
 		bool m_bsionability;
 		bool m_bkouneability;

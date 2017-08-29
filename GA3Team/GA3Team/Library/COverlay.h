@@ -106,8 +106,6 @@ private:
 	unsigned int m_iChar_Line;
 	vector<string> m_strTemp;
 	string m_strTempName;
-	vector<vector<string>> *m_CurrentText;
-	vector<vector<string>> *m_CurrentControlText;
 	int m_iDelay;
 	int m_iTextSpeed;
 	int m_iCurrentLine;

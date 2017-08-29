@@ -58,7 +58,8 @@ void GimmickDoctor::Init(int xpos, int ypos, int widht, int height, int balloonn
 	//吹き出しの初期化
 	InitBall(&m_ball[0], m_iWidth - 50, -48, talk, 1, RED, LOWER_LEFT);
 
-	Overlay()->talkDraw(HAKASE_1, 0);
+	//会話「ようこそ！ここは・・・」
+	Overlay()->talkDraw(TUTORIAL, HAKASE_FLAG_1_2);
 }
 
 //デストラクタ
@@ -72,7 +73,8 @@ void GimmickDoctor::Action() {
 	CObjMenuTab* tab = (CObjMenuTab*)Obj()->GetObj(OBJ_MENUTAB);
 
 	if (!SavedataManeger()->CurrentData->m_btutoriaruflg[0]) {
-		//会話「ようこそ！ここは・・・」
+		
+		
 		
 		
 	}
@@ -80,7 +82,7 @@ void GimmickDoctor::Action() {
 	else if (SavedataManeger()->CurrentData->m_btutoriaruflg[0] &&
 		!SavedataManeger()->CurrentData->m_btutoriaruflg[1]) {
 		//会話「それはこの研究所が開発したレコーダー・・・」
-		Overlay()->talkDraw(HAKASE_FLAG_1_1, 0);
+		Overlay()->talkDraw(TUTORIAL, HAKASE_FLAG_1_1);
 
 		//音を録音していない（フラグ2未達成）状態で、会話
 		if (m_ball[0].OnPush) {

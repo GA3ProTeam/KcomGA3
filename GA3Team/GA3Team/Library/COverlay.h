@@ -2,6 +2,14 @@
 
 #ifndef __CTALKOVERLAY_H__
 #define __CTALKOVERLAY_H__
+//----------------------
+enum STAGE_TYPE {
+	TUTORIAL = 0,
+	SION,
+	KOUNE,
+	MERUERU,
+};
+
 
 //talkDraw‚Ìˆø”‚Ég‚¤—ñ‹“
 enum tolknum

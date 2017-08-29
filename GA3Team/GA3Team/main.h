@@ -147,13 +147,6 @@ enum OBJ_NAME
 	GIMMICK_COMPUTER,
 
 };
-//----------------------
-enum STAGE_TYPE {
-	TUTORIAL = 0,
-	SION,
-	KOUNE,
-	MERUERU,
-};
 
 
 //----------------------

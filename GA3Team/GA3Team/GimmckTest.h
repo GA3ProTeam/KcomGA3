@@ -304,20 +304,20 @@ private:
 };
 
 //ドア
-class GimmickDoor :public Gimmick
-{
-public:
-	GimmickDoor() {};
-	~GimmickDoor() {};
-
-	void Init();
-	void Destructor();	//デストラクタ
-	void Action();		//アクション
-	void Draw();		//ドロー
-
-private:
-
-};
+//class GimmickDoor :public Gimmick
+//{
+//public:
+//	GimmickDoor() {};
+//	~GimmickDoor() {};
+//
+//	void Init();
+//	void Destructor();	//デストラクタ
+//	void Action();		//アクション
+//	void Draw();		//ドロー
+//
+//private:
+//
+//};
 //ステージ4↑
 
 

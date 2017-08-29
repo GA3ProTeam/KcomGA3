@@ -91,8 +91,8 @@ void CObjDataSelect::Action()
 	if (iTitle_flg == 0) {
 		m_obj_titlebackbutton = new ButtonDataSelect();
 		Obj()->InsertObj(m_obj_titlebackbutton, OBJ_BUTTON_DATASELECT, 0, this->m_pScene, HIT_BOX_OFF);
-		m_obj_titlebackbutton->Init(30, 525, 150, 150, true, 1, 512, 512);
-
+//		m_obj_titlebackbutton->Init(30, 525, 150, 150, true, 1, 512, 512);
+		m_obj_titlebackbutton->Init(30, 525, 150, 50, true, 0, 64, 64); //‰¼ì¬
 		iTitle_flg = 1;
 	}
 

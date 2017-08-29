@@ -93,13 +93,6 @@ void CObjTitle::Draw()
 	Font()->StrDraw("title", 0, 0, 16, coltext);
 	Font()->StrDraw(x, 0, 16, 16, coltext);
 	Font()->StrDraw(y, 0, 32, 16, coltext);
-	
-
-	//シーン移動仮
-	//if (m_ititle_choice == NEW || m_ititle_choice == LOAD) {
-	//	//シーン移動　→データセレクトへ
-	//	Manager()->Pop(new CSceneDataSelect());
-	//}
 
 	//テスト用表示
 	float coldbg[4] = { 1.0f,1.0f,1.0f,1.0f };

@@ -57,7 +57,6 @@ void GimmickDoctor::Init(int xpos, int ypos, int widht, int height, int balloonn
 
 	//吹き出しの初期化
 	InitBall(&m_ball[0], m_iWidth - 50, -48, talk, 1, RED,LOWER_LEFT);
-	InitBall(&m_ball[1], m_iWidth + 14, -48, sound, 1, RED, LOWER_LEFT);
 }
 
 //デストラクタ
@@ -70,30 +69,26 @@ void GimmickDoctor::Action() {
 	//メニュータブへの参照取得
 	CObjMenuTab* tab = (CObjMenuTab*)Obj()->GetObj(OBJ_MENUTAB);
 
-	////チュートリアルのフェイズ
-	//switch (g_itutorial_phase) {
-	//case 0:
-	//	{
+	if (!SavedataManeger()->CurrentData->m_btutoriaruflg[0]) {
+		//会話「ようこそ！ここは・・・」
 
-	//	}
-	//	break;
-
-	//case 1:
-	//	{
-	//
-	//	}
-	//	break;
-
-	//}
-
-	//博士に話しかけず録音から再生まで達成（フラグ2○　フラグ3×）
-	if (SavedataManeger()->CurrentData->m_btutoriaruflg[1] &&
-		!SavedataManeger()->CurrentData->m_btutoriaruflg[2] &&
-		SavedataManeger()->CurrentData->m_btutorial) {
-		//会話「わしは録音をするようにいったはずなのだが・・・」
 	}
-	else if (SavedataManeger()->CurrentData->m_btutorial) {
-		//会話「ふむふむ・・・。この音！・・・」
+	//レコーダー入手後（フラグ1達成後）
+	else if (SavedataManeger()->CurrentData->m_btutoriaruflg[0] &&
+			!SavedataManeger()->CurrentData->m_btutoriaruflg[1]) {
+		//会話「それはこの研究所が開発したレコーダー・・・」
+
+		//音を録音していない（フラグ2未達成）状態で、会話
+		if (m_ball[0].OnPush) {
+			//会話「話を聞いていなかったのかね？・・・」
+		}
+	}
+	//音を録音後（フラグ2達成後）、会話
+	else if (SavedataManeger()->CurrentData->m_btutoriaruflg[1] && m_ball[0].OnPush) {
+		//会話「うむ、言われたことはできるようなのだな・・・」
+
+		//録音した後、会話した（フラグ3達成）
+		SavedataManeger()->CurrentData->m_btutoriaruflg[2] = true;
 	}
 	//音を再生
 	else if (!SavedataManeger()->CurrentData->m_btutorial) {
@@ -101,7 +96,7 @@ void GimmickDoctor::Action() {
 		CObjMenuTab* tab = (CObjMenuTab*)Obj()->GetObj(OBJ_MENUTAB);
 
 		//音ボタンドラッグ処理-------------------------------------------------------
-		//マウスドラッグ中にマウスボタンが離された
+		//音ボタンドラッグ中にマウスボタンが離された
 		if (!Input()->GetMouButtonL() && tab->GetHaveSound()) {
 			//マウスがギミック範囲内か確認
 			if (Input()->m_x > m_iXpos&& Input()->m_x < (m_iXpos + m_iWidth)
@@ -115,25 +110,19 @@ void GimmickDoctor::Action() {
 		}
 		//---------------------------------------------------------------------------
 	}
-	//音を録音後（フラグ2達成後）、会話
-	else if (SavedataManeger()->CurrentData->m_btutoriaruflg[1] && m_ball[0].OnPush) {
-		//会話「うむ、言われたことはできるようなのだな・・・」
-		
-	}
-	//フラグ2を達成していなくて、会話
-	else if (!SavedataManeger()->CurrentData->m_btutoriaruflg[1] && m_ball[0].OnPush) {
-		//会話「話を聞いていなかったのかね？・・・」
-		
-	}
-	//フラグ1達成後
-	else if (SavedataManeger()->CurrentData->m_btutoriaruflg[0]) {
-		//会話「それはこの研究所が開発したレコーダー・・・」
+	else if (SavedataManeger()->CurrentData->m_btutorial) {
 
-	}
-	else {
-		//会話「ようこそ！ここは・・・」
+		//博士に話しかけず録音から再生まで達成（フラグ2○　フラグ3×）
+		if (!SavedataManeger()->CurrentData->m_btutoriaruflg[2]) {
+			//会話「わしは録音をするようにいったはずなのだが・・・」
+		}
+		//話しかけた後、再生した
+		else {
+			//会話「ふむふむ・・・。この音！・・・」
+		}
 		
 	}
+
 }
 
 //ドロー
@@ -174,7 +163,8 @@ void GimmickComputer::Init(int xpos, int ypos, int widht, int height, int balloo
 	//親クラスのInit関数を呼ぶ
 	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
 
-	
+	//吹き出しの初期化
+	InitBall(&m_ball[0], m_iWidth - 50, -48, sound, 1, RED, LOWER_LEFT);
 }
 
 //デストラクタ
@@ -184,15 +174,11 @@ void GimmickComputer::Destructor() {
 
 //アクション
 void GimmickComputer::Action() {
-	
-
 	//まだパソコンの音を録音していない
-	if (!SavedataManeger()->CurrentData->m_btutoriaruflg[1]) {
-		//音符吹き出しが押された
-		if (m_ball[0].OnPush) {
-			//フラグ2達成
-			SavedataManeger()->CurrentData->m_btutoriaruflg[1] = true;
-		}
+	//音符吹き出しが押された
+	if (m_ball[0].OnPush) {
+		//フラグ2達成
+		SavedataManeger()->CurrentData->m_btutoriaruflg[1] = true;
 	}
 }
 
@@ -218,9 +204,7 @@ void GimmickComputer::Draw() {
 	//---------------------------------------------------------------------------
 
 	//吹き出し描画＆動作---------------------------------------------------------
-//	Balloon *aaa = InitBall(m_iWidth - 50, -48, sound, 1, RED);
-//	this->gimmicDraw(aaa, 0);
-//	delete aaa;
+	this->gimmicDraw(1);
 	//---------------------------------------------------------------------------
 }
 
@@ -229,6 +213,9 @@ void GimmickComputer::Draw() {
 void GimmickRecorder::Init(int xpos, int ypos, int widht, int height, int balloonnum) {
 	//親クラスのInit関数を呼ぶ
 	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
+
+	//吹き出しの初期化
+	InitBall(&m_ball[0], m_iWidth - 50, -48, talk, 1, RED, LOWER_LEFT);
 }
 
 //デストラクタ
@@ -269,9 +256,7 @@ void GimmickRecorder::Draw() {
 	//---------------------------------------------------------------------------
 
 	//吹き出し描画＆動作---------------------------------------------------------
-//	Balloon *aaa = InitBall(m_iWidth - 50, -48, talk, 1, RED);
-//	this->gimmicDraw(aaa, 0);
-//	delete aaa;
+	this->gimmicDraw(1);
 	//---------------------------------------------------------------------------
 }
 //-----------チュートリアル（博士）ステージ↑-------------------------

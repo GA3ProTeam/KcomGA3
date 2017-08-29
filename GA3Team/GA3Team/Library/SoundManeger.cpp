@@ -14,11 +14,20 @@ void CSoundManeger::SoundDelete(int slotNum/*削除する音スロットの番号*/)//音を消
 }
 void CSoundManeger::SoundSave(int soundNum/*音の番号*/) //音をセーブする
 {
-	//中身が0の配列を探す
+	static bool flg = false;
+	//同じ音が入っていないか確認する
+	for (int i = 0; i < 3; i++){
+		if (SoundSlot[i] == soundNum){
+			flg = true;
+		}
+	}
+
+	//中身が入ってなかったら音情報をスロットに入れる
 	for (int i = 0; i < 3; i++)
 	{
-		if (SoundSlot[i] == 0) {
+		if (SoundSlot[i] == 0 && !flg) {
 			SoundSlot[i] = soundNum;
+			flg = false;
 			break;
 		}
 	}

@@ -35,7 +35,7 @@ public:
 	void Draw();		//ドロー
 
 private:
-	Balloon *m_ball;//吹き出し
+
 };
 
 //パソコン

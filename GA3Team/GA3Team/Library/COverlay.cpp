@@ -4,37 +4,44 @@ void COverlay::InitLoad()
 {
 	//Image
 	image->LoadImageEx("bb.png", 0, TEX_SIZE_512);
-	//コウネステージ1--------------------------------------
-	/*image->LoadImageEx("おじいさん.png", 1, TEX_SIZE_512);
-	image->LoadImageEx("マンホール.png", 2, TEX_SIZE_1024);
-	image->LoadImageEx("マンホールの穴.png", 3, TEX_SIZE_1024);
-	//コウネステージ2--------------------------------------
-	image->LoadImageEx("強気少年.png", 4, TEX_SIZE_512);
-	image->LoadImageEx("女の子c.png", 5, TEX_SIZE_512);
-	//コウネステージ3-------------------------------------
-	image->LoadImageEx("優しい少女.png", 6, TEX_SIZE_);
-	//シオンステージ1--------------------------------------
-	//シオンステージ2-------------------------------------
-	image->LoadImageEx("イヤホン男.png", 7, TEX_SIZE_512);
-	image->LoadImageEx("自転車.png", 8, TEX_SIZE_512);
-	//シオンステージ3-------------------------------------
-	image->LoadImageEx("おばあちゃんc.png", 9, TEX_SIZE_512);
-	//シオンステージ4-------------------------------------
-	image->LoadImageEx("なぞなぞさん.png", 1, TEX_SIZE_512);
-
-	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);
-	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);
-	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);
-	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);
-	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);
-	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);
-	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);
-	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);
-	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);
-	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);
-	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);
-	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);
-	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);*/
+	//コウネ1----------------------------------
+	image->LoadImageEx("おじいさんc.png", 0, TEX_SIZE_512);
+	image->LoadImageEx("マンホール.png", 1, TEX_SIZE_1024);
+	image->LoadImageEx("マンホールの穴.png", 2, TEX_SIZE_1024);
+	//コウネ2-----------------------------------
+	image->LoadImageEx("強気少年.png", 3, TEX_SIZE_512);
+	image->LoadImageEx("女の子.png", 4, TEX_SIZE_512);
+	//コウネ3----------------------------------------
+	image->LoadImageEx("優しい少女.png", 5, TEX_SIZE_512);
+	//シオン2--------------------------------------
+	image->LoadImageEx("イヤホン男.png", 6, TEX_SIZE_512);
+	image->LoadImageEx("自転車.png", 7, TEX_SIZE_512);
+	//シオン3--------------------------------------
+	image->LoadImageEx("おばあちゃんc.png", 8, TEX_SIZE_512);
+	//シオン4--------------------------------------
+	image->LoadImageEx("なぞなぞさん.png", 9, TEX_SIZE_512);
+	//メルエル1-----------------------------------
+	image->LoadImageEx("カツオc.png", 10, TEX_SIZE_512);
+	image->LoadImageEx("ドアc.png", 11, TEX_SIZE_512);
+	image->LoadImageEx("棚.png", 12, TEX_SIZE_512);
+	image->LoadImageEx("電子レンジ.png", 13, TEX_SIZE_512);
+	image->LoadImageEx("博士c.png", 14, TEX_SIZE_512);
+	//動物------------------------------------------
+	image->LoadImageEx("動物まとめ.png", 15, TEX_SIZE_1024);
+	//メインキャラクター----------------------------
+	image->LoadImageEx("コウネ立ち.png", 16, TEX_SIZE_1024);
+	image->LoadImageEx("シオン立ち.png",17, TEX_SIZE_1024);
+	image->LoadImageEx("メルエルc立ち.png", 18, TEX_SIZE_512);
+	//データセレクト--------------------------------
+	image->LoadImageEx("コウネ.png", 19, TEX_SIZE_1024);
+	image->LoadImageEx("メルエル.png", 20, TEX_SIZE_512);
+	//吹き出し系統-----------------------------------
+	image->LoadImageEx("アイコン.png", 21, TEX_SIZE_1024);
+	image->LoadImageEx("会話吹き出しまとめ.png", 22, TEX_SIZE_1024);
+	//ステージ
+	image->LoadImageEx("シオンステージ-1.png", 23, TEX_SIZE_1024);
+	image->LoadImageEx("コウネステージ-1.png", 24, TEX_SIZE_1024);
+	image->LoadImageEx("研究所　背景.png", 25, TEX_SIZE_1024);
 
 }
 
@@ -144,6 +151,7 @@ void COverlay::Draw()
 				else {
 					m_iChar_Pos = 0;
 					m_iChar_Line++;
+					m_bCharaChangeFlg = false;
 				}
 			}
 			else {
@@ -154,26 +162,24 @@ void COverlay::Draw()
 			if (m_iDelay > m_iTextSpeed)
 				m_iDelay = 0;
 
-
 			char linec[32];
 			sprintf_s(linec, "%d", m_iChar_Line);
-			for (auto nameitr = textmgr->m_Tutorial_Control[m_iDrawingStageID].begin(); nameitr != textmgr->m_Tutorial_Control[m_iDrawingStageID].end(); ++nameitr) {
-				if ((*nameitr).find(linec) != -1) {
-					(*nameitr).erase((*nameitr).begin());
-					if ("標準" != (*nameitr)) {
-						m_strTempName = (*nameitr).c_str();
-					}else if("標準" == (*nameitr)){
-						m_strTemp.clear();
-						m_strTemp.resize(m_iChar_Line);
-					}
-				}
+			if (textmgr->isCtrlLine(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line) && !m_bCharaChangeFlg) {
+				char *namet = textmgr->GetCharName(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line);
+				m_strTemp.clear();
+				m_strTemp.resize(textmgr->m_Tutorial_Text[m_iDrawingStageID].size());
+				m_strTempName.clear();
+				m_strTempName += namet;
+				m_bCharaChangeFlg = true;
 			}
+			
+			
 
 			sprintf_s(tmpname, "%s", m_strTempName.c_str());
 			float col[4] = { 1.0f,1.0f,1.0f,m_fAlpha };
 			font->StrDraw(tmpname, WINDOW_SIZE_W / 2 - 300, WINDOW_SIZE_H / 2 + 150, 16, col);
 
-			for (unsigned int i = 0; i < m_strTemp.size(); i++) {
+			for (unsigned int i = 0; i < m_strTemp.size();++i) {
 				sprintf_s(tmp, "%s", m_strTemp[i].c_str());
 				float col[4] = { 1.0f,1.0f,1.0f,m_fAlpha };
 				font->StrDraw(tmp, WINDOW_SIZE_W / 2 - 300, (WINDOW_SIZE_H / 2 + 200) + (i * 16), 16, col);

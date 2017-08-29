@@ -106,14 +106,25 @@ void CTextManager::LoadText()
 		//êßå‰ï∂éöÉZÉbÉg
 		std::vector<std::string>::iterator itr = tmpData.begin();
 		while (itr != tmpData.end()) {
-			if ((*itr).find("[1_") != -1 || (*itr).find("[2_") != -1) {
+			if ((*itr).find("[1_") != -1) {
 				(*itr).pop_back();
 				(*itr).erase((*itr).begin(), (*itr).begin() + 3);
 				int index = distance(tmpData.begin(), itr);
-				char contemp[64];
-				sprintf_s(contemp, "%d%s", index, (*itr).c_str());
-				tmpControl.push_back(contemp);
+				char emotemp[64];
+				char nametemp[64];
+				sprintf_s(nametemp, "%d%s@", index, (*itr).c_str());
 				itr = tmpData.erase(itr);
+				if ((*itr).find("[2_") != -1) {
+					(*itr).pop_back();
+					(*itr).erase((*itr).begin(), (*itr).begin() + 3);
+					sprintf_s(emotemp, "%s",(*itr).c_str());
+					strcat(nametemp, emotemp);
+					tmpControl.push_back(nametemp);
+					itr = tmpData.erase(itr);
+				}
+				else {
+					return;
+				}
 			}
 			else {
 				itr++;
@@ -127,9 +138,58 @@ void CTextManager::LoadText()
 	}
 }
 
-int CTextManager::GetCtrlLine(int line)
+bool CTextManager::isCtrlLine(int stage, int stageID, int linecount)
 {
-	return 0;
+	char linec[64];
+	sprintf_s(linec, "%d", linecount);
 
+	switch (stage)
+	{
+	case STAGE_TYPE::TUTORIAL:
+		for (auto itr = m_Tutorial_Control[stageID].begin(); itr != m_Tutorial_Control[stageID].end(); ++itr) {
+			if ((*itr).find(linec) != -1) {
+				return true;
+			}
+		}
+		break;
+	case STAGE_TYPE::SION:
+		break;
+	case STAGE_TYPE::KOUNE:
+		break;
+	case STAGE_TYPE::MERUERU:
+		break;
+	}
 
+	return false;
+}
+
+char *CTextManager::GetCharName(int stage, int stageID, int linecount)
+{
+	char *str = new char[32];
+	char linec[64];
+	sprintf_s(linec, "%d", linecount);
+
+	switch (stage)
+	{
+	case STAGE_TYPE::TUTORIAL:
+		for (auto itr = m_Tutorial_Control[stageID].begin(); itr != m_Tutorial_Control[stageID].end(); ++itr) {
+			if ((*itr).find(linec) != -1) {
+				string st((*itr));
+				st.erase(st.begin());
+				if ((*itr).find("@") != -1) {
+					string stb = st.substr(0,st.find("@"));
+					strcpy(str, stb.c_str());
+				}
+			}
+		}
+		break;
+	case STAGE_TYPE::SION:
+		break;
+	case STAGE_TYPE::KOUNE:
+		break;
+	case STAGE_TYPE::MERUERU:
+		break;
+	}
+
+	return str;
 }

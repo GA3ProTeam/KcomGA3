@@ -414,21 +414,61 @@ private:
 //窓口
 class GimmickWindow : public Gimmick
 {
+private:
+
+public:
+	GimmickWindow() {};
+	~GimmickWindow() {};
+
+	void Init(int xpos, int ypos, int widht, int height, int balloonnum);//イニシャライズ
+	void Destructor();	//デストラクタ
+	void Action();		//アクション
+	void Draw();		//ドロー
 
 };
 //旅行客
 class GimmickTourist : public Gimmick
 {
+private:
+
+public:
+	GimmickTourist() {};
+	~GimmickTourist() {};
+
+	void Init(int xpos, int ypos, int widht, int height, int balloonnum);//イニシャライズ
+	void Destructor();	//デストラクタ
+	void Action();		//アクション
+	void Draw();		//ドロー
 
 };
 //改札
 class GimmickExamination : public Gimmick
 {
+private:
+
+public:
+	GimmickExamination() {};
+	~GimmickExamination() {};
+
+	void Init(int xpos, int ypos, int widht, int height, int balloonnum);//イニシャライズ
+	void Destructor();	//デストラクタ
+	void Action();		//アクション
+	void Draw();		//ドロー
 
 };
 //女の子
 class GimmickGirl : public Gimmick
 {
+private:
+
+public:
+	GimmickGirl() {};
+	~GimmickGirl() {};
+
+	void Init(int xpos, int ypos, int widht, int height, int balloonnum);//イニシャライズ
+	void Destructor();	//デストラクタ
+	void Action();		//アクション
+	void Draw();		//ドロー
 
 };
 

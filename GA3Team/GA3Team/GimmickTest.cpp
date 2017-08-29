@@ -1053,6 +1053,61 @@ void GimmickAunt::Draw() {
 ////ステージ5↑
 //
 ////ステージ6↓
+//窓口
+void GimmickWindow::Init(int xpos, int ypos, int widht, int height, int balloonnum)
+{
+}
+void GimmickWindow::Destructor()
+{
+}
+void GimmickWindow::Action()
+{
+}
+void GimmickWindow::Draw()
+{
+}
+
+//旅行客
+void GimmickTourist::Init(int xpos, int ypos, int windht, int height, int balloonnum)
+{
+}
+void GimmickTourist::Destructor()
+{
+}
+void GimmickTourist::Action()
+{
+}
+void GimmickTourist::Draw()
+{
+}
+
+//改札
+void GimmickExamination::Init(int xpos,int ypos,int windht,int height,int balloonnum)
+{
+}
+void GimmickExamination::Destructor()
+{
+}
+void GimmickExamination::Action()
+{
+}
+void GimmickExamination::Draw()
+{
+}
+
+//女の子
+void GimmickGirl::Init(int xpos, int ypos, int windht, int height, int balloonnum)
+{
+}
+void GimmickExamination::Destructor()
+{
+}
+void GimmickExamination::Action()
+{
+}
+void GimmickExamination::Draw()
+{
+}
 ////ステージ6↑
 //
 ////-----------コウネステージ↑-----------------------------------------

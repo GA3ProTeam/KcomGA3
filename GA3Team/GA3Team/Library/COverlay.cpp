@@ -3,32 +3,45 @@
 void COverlay::InitLoad()
 {
 	//Image
-	image->LoadImageEx("bb.png", 0, TEX_SIZE_512);
-
-	/*image->LoadImageEx("はじめから.png", 0, TEX_SIZE_512);
-	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);
-
-	image->LoadImageEx("戻りボタン.png", 1, TEX_SIZE_512);
-	image->LoadImageEx("破棄ボタン.png", 1, TEX_SIZE_512);
-	image->LoadImageEx(".png", 1, TEX_SIZE_512);
-	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_);
-	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);
-	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);
-	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);
-	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);
-	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);
-	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);
-	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);
-	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);
-	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);
-	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);
-	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);
-	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);
-	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);
-	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);
-	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);
-	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);
-	image->LoadImageEx("つづきから.png", 1, TEX_SIZE_512);*/
+	image->LoadImageEx("bb.png", 63, TEX_SIZE_512);
+	//コウネ1----------------------------------
+	image->LoadImageEx("おじいさんc.png", 0, TEX_SIZE_512);
+	image->LoadImageEx("マンホール.png", 1, TEX_SIZE_1024);
+	image->LoadImageEx("マンホールの穴.png", 2, TEX_SIZE_1024);
+	//コウネ2-----------------------------------
+	image->LoadImageEx("強気少年.png", 3, TEX_SIZE_512);
+	image->LoadImageEx("女の子.png", 4, TEX_SIZE_512);
+	//コウネ3----------------------------------------
+	image->LoadImageEx("優しい少女.png", 5, TEX_SIZE_512);
+	//シオン2--------------------------------------
+	image->LoadImageEx("イヤホン男.png", 6, TEX_SIZE_512);
+	image->LoadImageEx("自転車.png", 7, TEX_SIZE_512);
+	//シオン3--------------------------------------
+	image->LoadImageEx("おばあちゃんc.png", 8, TEX_SIZE_512);
+	//シオン4--------------------------------------
+	image->LoadImageEx("なぞなぞさん.png", 9, TEX_SIZE_512);
+	//メルエル1-----------------------------------
+	image->LoadImageEx("カツオc.png", 10, TEX_SIZE_512);
+	image->LoadImageEx("ドアc.png", 11, TEX_SIZE_512);
+	image->LoadImageEx("棚.png", 12, TEX_SIZE_512);
+	image->LoadImageEx("電子レンジ.png", 13, TEX_SIZE_512);
+	image->LoadImageEx("博士c.png", 14, TEX_SIZE_512);
+	//動物------------------------------------------
+	image->LoadImageEx("動物まとめ.png", 15, TEX_SIZE_1024);
+	//メインキャラクター----------------------------
+	image->LoadImageEx("コウネ立ち.png", 16, TEX_SIZE_1024);
+	image->LoadImageEx("シオン立ち.png",17, TEX_SIZE_1024);
+	image->LoadImageEx("メルエルc立ち.png", 18, TEX_SIZE_512);
+	//データセレクト--------------------------------
+	image->LoadImageEx("コウネ.png", 19, TEX_SIZE_1024);
+	image->LoadImageEx("メルエル.png", 20, TEX_SIZE_512);
+	//吹き出し系統-----------------------------------
+	image->LoadImageEx("アイコン.png", 21, TEX_SIZE_1024);
+	image->LoadImageEx("会話吹き出しまとめ.png", 22, TEX_SIZE_1024);
+	//ステージ
+	image->LoadImageEx("シオンステージ-1.png", 23, TEX_SIZE_1024);
+	image->LoadImageEx("コウネステージ-1.png", 24, TEX_SIZE_1024);
+	image->LoadImageEx("研究所　背景.png", 25, TEX_SIZE_1024);
 
 }
 
@@ -84,6 +97,7 @@ void COverlay::Draw()
 
 		image->DrawEx(0, &src, &dst, col, 0.0f);
 	}
+	//talk overlay
 	else if (m_iDrawFlg == 1) {
 		char c[8];
 		char tmp[128];
@@ -106,7 +120,9 @@ void COverlay::Draw()
 		src.bottom = src.top + 600;
 		src.right = src.left + 800;
 
-		image->DrawEx(0, &src, &dst, col, 0.0f);
+		image->DrawEx(63, &src, &dst, col, 0.0f);
+
+
 
 		if (m_fAlpha == 1.0f) {
 
@@ -158,6 +174,7 @@ void COverlay::Draw()
 				m_strTempName.clear();
 				m_strTempName += namet;
 				m_bCharaChangeFlg = true;
+				m_iCurrentLine = m_iChar_Line;
 			}
 			
 			
@@ -166,10 +183,10 @@ void COverlay::Draw()
 			float col[4] = { 1.0f,1.0f,1.0f,m_fAlpha };
 			font->StrDraw(tmpname, WINDOW_SIZE_W / 2 - 300, WINDOW_SIZE_H / 2 + 150, 16, col);
 
-			for (unsigned int i = 0; i < m_strTemp.size();) {
+			for (unsigned int i = 0; i < m_strTemp.size();++i) {
 				sprintf_s(tmp, "%s", m_strTemp[i].c_str());
 				float col[4] = { 1.0f,1.0f,1.0f,m_fAlpha };
-				font->StrDraw(tmp, WINDOW_SIZE_W / 2 - 300, (WINDOW_SIZE_H / 2 + 200) + (i * 16), 16, col);
+				font->StrDraw(tmp, WINDOW_SIZE_W / 2 - 300, (WINDOW_SIZE_H / 2 + 200) + ((i - m_iCurrentLine) * 16), 16, col);
 			}
 		}
 	}

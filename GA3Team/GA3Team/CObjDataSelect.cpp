@@ -152,9 +152,23 @@ void CObjDataSelect::Draw()
 			}
 
 			//切り取り座標
-			m_rDst_Koune.top   = 0; m_rDst_Koune.left   = m_iprogress_cnt[i][0] * 64; m_rDst_Koune.bottom   = m_rDst_Koune.top   + 64; m_rDst_Koune.right   = m_rDst_Koune.left   + 64; //コウネ
-			m_rDst_Sion.top    = 0; m_rDst_Sion.left    = m_iprogress_cnt[i][1] * 64; m_rDst_Sion.bottom    = m_rDst_Sion.top    + 64; m_rDst_Sion.right    = m_rDst_Sion.left    + 64; //シオン
-			m_rDst_Melueru.top = 0; m_rDst_Melueru.left = m_iprogress_cnt[i][2] * 64; m_rDst_Melueru.bottom = m_rDst_Melueru.top + 64; m_rDst_Melueru.right = m_rDst_Melueru.left + 64; //メリエル
+			m_rDst_Koune.top   = 0; m_rDst_Koune.left   = m_iprogress_cnt[i][0] * 220; m_rDst_Koune.bottom   = m_rDst_Koune.top   + 300; m_rDst_Koune.right   = m_rDst_Koune.left   + 210; //コウネ
+			m_rDst_Sion.top    = 0; m_rDst_Sion.left    = m_iprogress_cnt[i][1] * 220; m_rDst_Sion.bottom    = m_rDst_Sion.top    + 300; m_rDst_Sion.right    = m_rDst_Sion.left    + 210; //シオン
+			m_rDst_Melueru.top = 0; m_rDst_Melueru.left = m_iprogress_cnt[i][2] * 220; m_rDst_Melueru.bottom = m_rDst_Melueru.top + 300; m_rDst_Melueru.right = m_rDst_Melueru.left + 210; //メリエル
+		
+			//進行度が4以上の場合
+			if (m_iprogress_cnt[i][0] > 3) {
+				m_iprogress_cnt[i][0] -= 4;
+				m_rDst_Koune.top = 305; m_rDst_Koune.left = m_iprogress_cnt[i][0] * 220; m_rDst_Koune.bottom = m_rDst_Koune.top + 300; m_rDst_Koune.right = m_rDst_Koune.left + 210; //コウネ
+			}
+			if (m_iprogress_cnt[i][1] > 3) {
+				m_iprogress_cnt[i][1] -= 4;
+				m_rDst_Sion.top = 305; m_rDst_Sion.left = m_iprogress_cnt[i][1] * 220; m_rDst_Sion.bottom = m_rDst_Sion.top + 300; m_rDst_Sion.right = m_rDst_Sion.left + 210; //シオン
+			}
+			if (m_iprogress_cnt[i][2] > 3) {
+				m_iprogress_cnt[i][2] -= 4;
+				m_rDst_Melueru.top = 305; m_rDst_Melueru.left = m_iprogress_cnt[i][2] * 220; m_rDst_Melueru.bottom = m_rDst_Melueru.top + 300; m_rDst_Melueru.right = m_rDst_Melueru.left + 210; //メリエル
+			}
 
 			//等倍																																											//↓等倍
 			m_rSrc_Koune.top = (i * 150) + 100;   m_rSrc_Koune.left = 400;   m_rSrc_Koune.bottom = m_rSrc_Koune.top + 64;    m_rSrc_Koune.right = m_rSrc_Koune.left + 64;	//コウネ
@@ -204,8 +218,8 @@ void CObjDataSelect::Draw()
 			
 			//描画
 			Image()->Draw(2, &m_rSrc_Koune, &m_rDst_Koune, coldraw, 0.0f);  //コウネ
-			Image()->Draw(2, &m_rSrc_Sion, &m_rDst_Sion, coldraw, 0.0f);	//シオン
-			Image()->Draw(2, &m_rSrc_Melueru, &m_rDst_Melueru, coldraw, 0.0f);	//メルエル
+			Image()->Draw(3, &m_rSrc_Sion, &m_rDst_Sion, coldraw, 0.0f);	//シオン
+			Image()->Draw(4, &m_rSrc_Melueru, &m_rDst_Melueru, coldraw, 0.0f);	//メルエル
 
 			}
 		}

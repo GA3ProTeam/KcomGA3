@@ -3,7 +3,7 @@
 void COverlay::InitLoad()
 {
 	//Image
-	image->LoadImageEx("bb.png", 0, TEX_SIZE_512);
+	image->LoadImageEx("bb.png", 63, TEX_SIZE_512);
 	//コウネ1----------------------------------
 	image->LoadImageEx("おじいさんc.png", 0, TEX_SIZE_512);
 	image->LoadImageEx("マンホール.png", 1, TEX_SIZE_1024);
@@ -97,6 +97,7 @@ void COverlay::Draw()
 
 		image->DrawEx(0, &src, &dst, col, 0.0f);
 	}
+	//talk overlay
 	else if (m_iDrawFlg == 1) {
 		char c[8];
 		char tmp[128];
@@ -119,7 +120,9 @@ void COverlay::Draw()
 		src.bottom = src.top + 600;
 		src.right = src.left + 800;
 
-		image->DrawEx(0, &src, &dst, col, 0.0f);
+		image->DrawEx(63, &src, &dst, col, 0.0f);
+
+
 
 		if (m_fAlpha == 1.0f) {
 
@@ -171,6 +174,7 @@ void COverlay::Draw()
 				m_strTempName.clear();
 				m_strTempName += namet;
 				m_bCharaChangeFlg = true;
+				m_iCurrentLine = m_iChar_Line;
 			}
 			
 			
@@ -182,7 +186,7 @@ void COverlay::Draw()
 			for (unsigned int i = 0; i < m_strTemp.size();++i) {
 				sprintf_s(tmp, "%s", m_strTemp[i].c_str());
 				float col[4] = { 1.0f,1.0f,1.0f,m_fAlpha };
-				font->StrDraw(tmp, WINDOW_SIZE_W / 2 - 300, (WINDOW_SIZE_H / 2 + 200) + (i * 16), 16, col);
+				font->StrDraw(tmp, WINDOW_SIZE_W / 2 - 300, (WINDOW_SIZE_H / 2 + 200) + ((i - m_iCurrentLine) * 16), 16, col);
 			}
 		}
 	}

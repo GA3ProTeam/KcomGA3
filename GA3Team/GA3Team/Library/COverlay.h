@@ -98,8 +98,11 @@ private:
 	unsigned int m_iChar_Line;
 	vector<string> m_strTemp;
 	string m_strTempName;
+	vector<vector<string>> *m_CurrentText;
+	vector<vector<string>> *m_CurrentControlText;
 	int m_iDelay;
 	int m_iTextSpeed;
+	int m_iCurrentLine;
 
 	//ÉtÉâÉOéÆä«óùóp
 	bool m_bDrawing;
@@ -112,7 +115,7 @@ public:
 	//
 	COverlay(CDrawTexture *i, CDrawFont *f, CWinInputs *w, CSoundManeger *s, CTextManager *t)
 		: image(i), font(f), input(w), soundmgr(s), textmgr(t),
-		m_bDrawing(false),m_bCharaChangeFlg(false), m_iDrawFlg(-1), m_iFadeFlg(0), m_x(0), m_y(0), m_fAlpha(0.0f),m_iChar_Size(0), m_iChar_Pos(0),m_iChar_Line(0), m_iDelay(0), m_iTextSpeed(7)
+		m_bDrawing(false),m_bCharaChangeFlg(false), m_iDrawFlg(-1), m_iFadeFlg(0), m_x(0), m_y(0), m_fAlpha(0.0f),m_iChar_Size(0), m_iChar_Pos(0),m_iChar_Line(0), m_iDelay(0), m_iTextSpeed(7),m_iCurrentLine(0)
 	{}
 	
 	//----------------ìÆçÏån----------------

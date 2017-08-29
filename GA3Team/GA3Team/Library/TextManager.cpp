@@ -5,7 +5,6 @@ CTextManager::CTextManager()
 	//チュートリアル
 	filePath_tutorial.push_back("Text\\tyu-toriaru\\hakase_1.bin");
 	filePath_tutorial.push_back("Text\\tyu-toriaru\\hakase_flag_1_1.bin");
-	filePath_tutorial.push_back("Text\\tyu-toriaru\\hakase_flag_1_2.bin");
 	filePath_tutorial.push_back("Text\\tyu-toriaru\\hakase_flag_2_1_no.bin");
 	filePath_tutorial.push_back("Text\\tyu-toriaru\\hakase_flag_2_1_yes.bin");
 	filePath_tutorial.push_back("Text\\tyu-toriaru\\hakase_flag_2_yes_3_no.bin");

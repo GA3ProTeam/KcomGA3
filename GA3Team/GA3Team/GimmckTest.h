@@ -517,12 +517,11 @@ public:
 	void Action();//アクション
 	void Draw();//描画
 
-
 };
-class GimmickDoor : public Gimmick{
+class GimmickDoctorroomDoor : public Gimmick{
 public:
-	GimmickDoor() {};
-	~GimmickDoor() {};
+	GimmickDoctorroomDoor() {};
+	~GimmickDoctorroomDoor() {};
 	void Init(int xpos, int ypos, int widht, int height, int balloonnum);//イニシャライズ
 	void Destructor();//デストラクタ
 	void Action();//アクション

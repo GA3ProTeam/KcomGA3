@@ -2,26 +2,18 @@
 
 #ifndef __CTALKOVERLAY_H__
 #define __CTALKOVERLAY_H__
-//----------------------
-enum STAGE_TYPE {
-	TUTORIAL = 0,
-	SION,
-	KOUNE,
-	MERUERU,
-};
-
 
 //talkDrawの引数に使う列挙
 enum tutorial
 {
 	//チュートリアル
 	HAKASE_1,
+	HAKASE_CLEAR,
 	HAKASE_FLAG_1_1,
 	HAKASE_FLAG_1_2,
 	HAKASE_FLAG_2_1_NO,
 	HAKASE_FLAG_2_1_YES,
 	HAKASE_FLAG_2_YES_3_NO,
-	HAKASE_CLEAR
 };
 enum sion
 {

@@ -107,10 +107,11 @@ void COverlay::Draw()
 		char tmp[128];
 		char tmpname[64] = { 0 };
 
-		RECT src, dst;
+		RECT src,waitsrc, dst;
 
 		//カラー情報
 		float col[4] = { 1.0f,1.0f,1.0f,m_fAlpha };
+		float waitcol[4] = { 1.0f,1.0f,1.0f,m_fWaitAlpha };
 
 		//切り取り座標
 		dst.top = 0;
@@ -119,14 +120,22 @@ void COverlay::Draw()
 		dst.right = dst.left + 512;
 
 		//転送先座標
-		src.top = m_y;
-		src.left = m_x;
+		src.top = 0;
+		src.left = 0;
 		src.bottom = src.top + 600;
 		src.right = src.left + 800;
 
 		image->DrawEx(62, &src, &dst, col, 0.0f);
 
 		image->DrawEx(63, &src, &dst, col, 0.0f);
+
+		//転送先座標
+		waitsrc.top = WINDOW_SIZE_H - 100;
+		waitsrc.left = WINDOW_SIZE_W - 200;
+		waitsrc.bottom = waitsrc.top + 64;
+		waitsrc.right = waitsrc.left + 64;
+
+		image->DrawEx(63, &waitsrc, &dst, waitcol, 0.0f);
 
 
 		if (m_fAlpha == 1.0f) {
@@ -163,7 +172,20 @@ void COverlay::Draw()
 						if (input->GetMouButtonLOnce()) {
 							m_iChar_Pos = 0;
 							m_iChar_Line++;
+							m_bNextWaiting = false;
 							m_bCharaChangeFlg = false;
+						}
+						else {
+							if (m_iDelay > m_iTextSpeed) {
+								if (!m_bNextWaiting) {
+									m_fWaitAlpha = 1.0f;
+									m_bNextWaiting = true;
+								}
+								else {
+									m_fWaitAlpha = 0.0f;
+									m_bNextWaiting = false;
+								}
+							}
 						}
 					}
 				}

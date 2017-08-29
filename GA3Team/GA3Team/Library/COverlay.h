@@ -2,18 +2,25 @@
 
 #ifndef __CTALKOVERLAY_H__
 #define __CTALKOVERLAY_H__
+//----------------------
+enum STAGE_TYPE {
+	TUTORIAL = 0,
+	SION,
+	KOUNE,
+	MERUERU,
+};
+
 
 //talkDrawの引数に使う列挙
-enum tolknum
+enum tutorial
 {
 	//チュートリアル
 	HAKASE_1,
-	HAKASE_CLEAR,
 	HAKASE_FLAG_1_1,
-	HAKASE_FLAG_1_2,
 	HAKASE_FLAG_2_1_NO,
 	HAKASE_FLAG_2_1_YES,
 	HAKASE_FLAG_2_YES_3_NO,
+	HAKASE_CLEAR
 };
 enum sion
 {
@@ -87,6 +94,17 @@ enum merueru
 	MERUERU_START,
 };
 
+//---------------------------
+//左キャラの横マージン
+#define TALK_CHARA_LEFT_MARGIN_X	50
+//左キャラの縦マージン
+#define TALK_CHARA_LEFT_MARGIN_Y	100
+//右キャラの横マージン
+#define TALK_CHARA_RIGHT_MARGIN_X	300
+//右キャラの縦マージン
+#define TALK_CHARA_RIGHT_MARGIN_Y	100
+
+//---------------------------
 class COverlay{
 private:
 	//CObj配下と同じようにアクセスできるように
@@ -97,8 +115,7 @@ private:
 	CTextManager *textmgr;
 
 	//描画用
-	int m_x, m_y;
-	float m_fAlpha;
+	float m_fAlpha,m_fWaitAlpha;
 
 	//文字表示用
 	unsigned int m_iChar_Size;
@@ -109,6 +126,7 @@ private:
 	int m_iDelay;
 	int m_iTextSpeed;
 	int m_iCurrentLine;
+	bool m_bNextWaiting;
 
 	//フラグ式管理用
 	bool m_bDrawing;
@@ -121,7 +139,21 @@ public:
 	//
 	COverlay(CDrawTexture *i, CDrawFont *f, CWinInputs *w, CSoundManeger *s, CTextManager *t)
 		: image(i), font(f), input(w), soundmgr(s), textmgr(t),
-		m_bDrawing(false),m_bCharaChangeFlg(false),m_iDrawingStage(-1),m_iDrawingStageID(-1), m_iDrawFlg(-1), m_iFadeFlg(0), m_x(0), m_y(0), m_fAlpha(0.0f),m_iChar_Size(0), m_iChar_Pos(0),m_iChar_Line(0), m_iDelay(0), m_iTextSpeed(7),m_iCurrentLine(0)
+		m_bDrawing(false),
+		m_bNextWaiting(false),
+		m_bCharaChangeFlg(false),
+		m_iDrawingStage(-1),
+		m_iDrawingStageID(-1), 
+		m_iDrawFlg(-1), 
+		m_iFadeFlg(0), 
+		m_iChar_Size(0), 
+		m_iChar_Pos(0),
+		m_iChar_Line(0), 
+		m_iTextSpeed(7),
+		m_iDelay(0), 
+		m_iCurrentLine(0),
+		m_fAlpha(0.0f),
+		m_fWaitAlpha(0.0f)
 	{}
 	
 	//----------------動作系----------------
@@ -133,6 +165,8 @@ public:
 	//描画
 	void Draw();
 	//トークの描画有効
+	//stage = enum[STAGE_TYPE]
+	//stageID = enum[tutorial,koune,sion,merueru]
 	void talkDraw(int stage,int stageID);
 	//描画無効
 	void StopDraw();

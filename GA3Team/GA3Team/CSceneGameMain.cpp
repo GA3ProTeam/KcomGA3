@@ -64,15 +64,10 @@ void CSceneGameMain::InitScene()
 	m_gimmick_test->Init(100,200,64,64,1);
 
 	//Audio()->LoopStart(0);
-
-	TextManager()->LoadText();
-
-	/*Overlay()->talkDraw(TUTORIAL, 0);
-	Overlay()->FadeIn();*/
 }
 
 //ƒV[ƒ“ŽÀs
 void CSceneGameMain::Scene()
 {
-	
+	Overlay()->talkDraw(TUTORIAL, 0);
 }

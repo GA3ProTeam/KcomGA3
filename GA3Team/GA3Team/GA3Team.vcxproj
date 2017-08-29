@@ -136,7 +136,7 @@
     <ClCompile Include="CSceneGameMain.cpp" />
     <ClCompile Include="CSceneStageSelect.cpp" />
     <ClCompile Include="CSceneTitle.cpp" />
-    <ClCompile Include="GimmckTest.cpp" />
+    <ClCompile Include="GimmickTest.cpp" />
     <ClCompile Include="Library\Audio.cpp" />
     <ClCompile Include="Library\Button.cpp" />
     <ClCompile Include="Library\COverlay.cpp" />

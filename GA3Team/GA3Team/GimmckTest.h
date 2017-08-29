@@ -124,6 +124,7 @@ class Gimmickearphone : public Gimmick
 public:
 	Gimmickearphone() {};
 	~Gimmickearphone() {};
+	void Init(int xpos, int ypos, int widht, int height, int balloonnum);
 	void Destructor();//デストラクタ
 	void Action();//アクション
 	void Draw();//描画
@@ -137,6 +138,7 @@ class Gimmickkoune : public Gimmick
 public:
 	Gimmickkoune() {};
 	~Gimmickkoune() {};
+	void Init(int xpos, int ypos, int widht, int height, int balloonnum);
 	void Destructor();//デストラクタ
 	void Action();//アクション
 	void Draw();//描画
@@ -150,7 +152,7 @@ class Gimmickcat : public Gimmick
 public:
 	Gimmickcat() {};
 	~Gimmickcat() {};
-
+	void Init(int xpos, int ypos, int widht, int height, int balloonnum);
 	void Destructor();	//デストラクタ
 	void Action();		//アクション
 	void Draw();		//ドロー
@@ -163,7 +165,7 @@ class Gimmickbicycle : public Gimmick
 public:
 	Gimmickbicycle() {};
 	~Gimmickbicycle() {};
-
+	void Init(int xpos, int ypos, int widht, int height, int balloonnum);
 	void Destructor();	//デストラクタ
 	void Action();		//アクション
 	void Draw();		//ドロー
@@ -176,7 +178,7 @@ class Gimmickfiretruck : public Gimmick
 public:
 	Gimmickfiretruck() {};
 	~Gimmickfiretruck() {};
-
+	void Init(int xpos, int ypos, int widht, int height, int balloonnum);
 	void Destructor();	//デストラクタ
 	void Action();		//アクション
 	void Draw();		//ドロー
@@ -191,9 +193,6 @@ class GimmickChildren : public Gimmick
 {
 private:
 	int m_iChild_ID;//子供を区別するための変数
-
-	//1個の場合
-	Balloon *aaa;
 
 public:
 	GimmickChildren() {};
@@ -211,13 +210,12 @@ public:
 class GimmickGranny : public Gimmick
 {
 private:
-	//1個の場合
-	Balloon *aaa;
 
 public:
 	GimmickGranny() {};
 	~GimmickGranny() {};
 
+	void Init(int xpos, int ypos, int widht, int height, int balloonnum);//イニシャライズ
 	void Destructor();//デストラクタ
 	void Action();//アクション
 	void Draw();//描画
@@ -228,13 +226,12 @@ public:
 class GimmickMynah : public Gimmick
 {
 private:
-	//1個の場合
-	Balloon *aaa;
 
 public:
 	GimmickMynah() {};
 	~GimmickMynah() {};
 
+	void Init(int xpos, int ypos, int widht, int height, int balloonnum);//イニシャライズ
 	void Destructor();	//デストラクタ
 	void Action();		//アクション
 	void Draw();		//ドロー
@@ -245,15 +242,12 @@ public:
 class GimmickShelf : public Gimmick
 {
 private:
-	//複数のバルーン
-	Balloon *aaa;
-	Balloon *bbb;
-	Balloon *ccc;
 
 public:
 	GimmickShelf() {};
 	~GimmickShelf() {};
 
+	void Init(int xpos, int ypos, int widht, int height, int balloonnum);//イニシャライズ
 	void Destructor();	//デストラクタ
 	void Action();		//アクション
 	void Draw();		//ドロー
@@ -264,13 +258,12 @@ public:
 class GimmickWindchime : public Gimmick
 {
 private:
-	//1個の場合
-	Balloon *aaa;
 
 public:
 	GimmickWindchime() {};
 	~GimmickWindchime() {};
 
+	void Init(int xpos, int ypos, int widht, int height, int balloonnum);//イニシャライズ
 	void Destructor();	//デストラクタ
 	void Action();		//アクション
 	void Draw();		//ドロー
@@ -281,7 +274,52 @@ public:
 
 
 //ステージ4↓
+//なぞなぞさん
+class GimmickMysteryman :public Gimmick
+{
+public:
+	GimmickMysteryman() {};
+	~GimmickMysteryman() {};
 
+	void Destructor();	//デストラクタ
+	void Action();		//アクション
+	void Draw();		//ドロー
+
+private:
+
+};
+
+
+//バイク
+class GimmickBike :public Gimmick
+{
+public:
+	GimmickBike() {};
+	~GimmickBike() {};
+
+	void Destructor();	//デストラクタ
+	void Action();		//アクション
+	void Draw();		//ドロー
+
+private:
+
+};
+
+//ドア
+class GimmickDoor :public Gimmick
+{
+public:
+	GimmickDoor() {};
+	~GimmickDoor() {};
+
+	void Init();
+	void Destructor();	//デストラクタ
+	void Action();		//アクション
+	void Draw();		//ドロー
+
+private:
+
+};
 //ステージ4↑
 
 
@@ -375,6 +413,27 @@ private:
 //ステージ5↑
 
 //ステージ6↓
+//窓口
+class GimmickWindow : public Gimmick
+{
+
+};
+//旅行客
+class GimmickTourist : public Gimmick
+{
+
+};
+//改札
+class GimmickExamination : public Gimmick
+{
+
+};
+//女の子
+class GimmickGirl : public Gimmick
+{
+
+};
+
 //ステージ6↑
 
 //-----------コウネステージ↑------------------------------------------------------------------------------------------------------------------

@@ -3,6 +3,7 @@
 void COverlay::InitLoad()
 {
 	//Image
+	image->LoadImageEx("orga2.png", 60, TEX_SIZE_1024);
 	image->LoadImageEx("bb.png", 61, TEX_SIZE_512);
 	image->LoadImageEx("orga.png", 62, TEX_SIZE_512);
 	image->LoadImageEx("atsumori.png", 63, TEX_SIZE_256);
@@ -146,17 +147,17 @@ void COverlay::Draw()
 		leftsrc.top = TALK_CHARA_LEFT_MARGIN_Y;
 		leftsrc.left = TALK_CHARA_LEFT_MARGIN_X;
 		leftsrc.bottom = leftsrc.top + 300;
-		leftsrc.right = leftsrc.left + 300;
+		leftsrc.right = leftsrc.left + 250;
 
 		image->DrawEx(62, &leftsrc, &leftdst, col, 0.0f);
 		//-------------------左キャラ終---------------------
 
 		//-------------------右キャラ----------------------
 		//切り取り座標
-		rightdst.top = 0;
-		rightdst.left = 0;
-		rightdst.bottom = rightdst.top + 350;
-		rightdst.right = rightdst.left + 200;
+		rightdst.top = 70;
+		rightdst.left = 380;
+		rightdst.bottom = rightdst.top + 235;
+		rightdst.right = rightdst.left + 274;
 
 		//転送先座標
 		rightsrc.top = TALK_CHARA_RIGHT_MARGIN_Y;
@@ -164,7 +165,7 @@ void COverlay::Draw()
 		rightsrc.bottom = rightsrc.top + 300;
 		rightsrc.right = rightsrc.left + 300;
 
-		image->DrawEx(62, &rightsrc, &rightdst, col, 0.0f);
+		image->DrawEx(60, &rightsrc, &rightdst, col, 0.0f);
 		//-------------------右キャラ終---------------------
 
 		//-------------------中キャラ----------------------
@@ -176,9 +177,9 @@ void COverlay::Draw()
 
 		//転送先座標
 		centersrc.top = TALK_CHARA_LEFT_MARGIN_Y;
-		centersrc.left = TALK_CHARA_LEFT_MARGIN_X;
+		centersrc.left = WINDOW_SIZE_W/2-100;
 		centersrc.bottom = centersrc.top + 300;
-		centersrc.right = centersrc.left + 300;
+		centersrc.right = centersrc.left + 250;
 
 		image->DrawEx(62, &centersrc, &centerdst, col, 0.0f);
 		//-------------------中キャラ終---------------------

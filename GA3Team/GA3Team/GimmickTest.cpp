@@ -1445,7 +1445,7 @@ void GimmickKatsuo::Draw()
 }
 
 //GimmickDoor
-void GimmickDoor::Init(int xpos, int ypos, int widht, int height, int balloonnum) {
+void GimmickDoctorroomDoor::Init(int xpos, int ypos, int widht, int height, int balloonnum) {
 	//親クラスのInit関数を呼ぶ
 	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
 
@@ -1453,12 +1453,12 @@ void GimmickDoor::Init(int xpos, int ypos, int widht, int height, int balloonnum
 	InitBall(&m_ball[0], m_iWidth - 50, -48, talk, 1, RED, LOWER_LEFT);
 }
 
-void GimmickDoor::Destructor()
+void GimmickDoctorroomDoor::Destructor()
 {
 
 }
 
-void GimmickDoor::Action()
+void GimmickDoctorroomDoor::Action()
 {
 
 	//レンジ音使用でステージクリア
@@ -1477,7 +1477,7 @@ void GimmickDoor::Action()
 
 }
 
-void GimmickDoor::Draw()
+void GimmickDoctorroomDoor::Draw()
 {
 	float col[4] = { 1.0f,1.0f,1.0f,1.0f };
 

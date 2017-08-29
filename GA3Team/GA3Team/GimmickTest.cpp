@@ -917,9 +917,9 @@ void GimmickMysteryman::Draw() {
 void GimmickBike::Destructor() {}	//デストラクタ
 void GimmickBike::Action() {
 	//吹き出しが押されたか確認
-	if (ball[0].OnPush) {
-		SoundManager()->SoundSave(0);
-	}
+	//if (ball[0].OnPush) {
+	//	SoundManager()->SoundSave(0);
+	//}
 }	//アクション
 
 
@@ -943,9 +943,9 @@ void GimmickBike::Draw() {
 void GimmickDoor::Destructor() {}	//デストラクタ
 void GimmickDoor::Action() {
 	//吹き出しが押されたか確認
-	if (ball[0].OnPush) {
-		SoundManager()->SoundSave(0);
-	}
+	//if (ball[0].OnPush) {
+	//	SoundManager()->SoundSave(0);
+	//}
 }//アクション
 
 void GimmickDoor::Draw() {
@@ -1224,13 +1224,13 @@ void GimmickGirl::Init(int xpos, int ypos, int widht, int height, int balloonnum
 	InitBall(&m_ball[0], 48, -48, talk, EXCEPTION, CNONE, LOWER_LEFT);
 
 }
-void GimmickExamination::Destructor()
+void GimmickGirl::Destructor()
 {
 }
-void GimmickExamination::Action()
+void GimmickGirl::Action()
 {
 }
-void GimmickExamination::Draw()
+void GimmickGirl::Draw()
 {
 }
 //ステージ6↑

@@ -51,12 +51,20 @@ void GimmickTest::Draw()
 //-----------チュートリアル（博士）ステージ↓--------------------------
 //博士
 //イニシャライズ
+//引数：
+//xpos			=ギミックのX座標
+//ypos			=ギミックのY座標
+//width			=ギミックの幅
+//height		=ギミックの高さ
+//balloon_num	=吹き出しの数
 void GimmickDoctor::Init(int xpos, int ypos, int widht, int height, int balloonnum) {
 	//親クラスのInit関数を呼ぶ
 	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
 
 	//吹き出しの初期化
 	InitBall(&m_ball[0], m_iWidth - 50, -48, talk, 1, RED,LOWER_LEFT);
+
+	
 }
 
 //デストラクタ
@@ -71,12 +79,16 @@ void GimmickDoctor::Action() {
 
 	if (!SavedataManeger()->CurrentData->m_btutoriaruflg[0]) {
 		//会話「ようこそ！ここは・・・」
+		Overlay()->talkDraw(TUTORIAL, 0);
+		Overlay()->FadeIn();
 
 	}
 	//レコーダー入手後（フラグ1達成後）
 	else if (SavedataManeger()->CurrentData->m_btutoriaruflg[0] &&
 			!SavedataManeger()->CurrentData->m_btutoriaruflg[1]) {
 		//会話「それはこの研究所が開発したレコーダー・・・」
+		/*Overlay()->talkDraw(TUTORIAL, 1);
+		Overlay()->FadeIn();*/
 
 		//音を録音していない（フラグ2未達成）状態で、会話
 		if (m_ball[0].OnPush) {
@@ -146,12 +158,10 @@ void GimmickDoctor::Draw() {
 	Image()->Draw(5, &m_src, &m_dst, col, 0.0f);
 	//---------------------------------------------------------------------------
 
-	//レコーダーを取得した後から吹き出し出現
-	//if (SavedataManeger()->CurrentData->m_btutoriaruflg[0]) {
-		//吹き出し描画＆動作---------------------------------------------------------
-		this->gimmicDraw(2);
-		//---------------------------------------------------------------------------
-	//}
+	//吹き出し描画＆動作---------------------------------------------------------
+	this->gimmicDraw(1);
+	//---------------------------------------------------------------------------
+	
 
 	//【会話終了時】
 	SavedataManeger()->CurrentData->m_btutoriaruflg[0];

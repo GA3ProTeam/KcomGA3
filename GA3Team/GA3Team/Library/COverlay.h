@@ -122,6 +122,7 @@ private:
 
 	//•`‰æ—p
 	float m_fAlpha,m_fWaitAlpha;
+	float m_fDefColor[4], m_fBackColor[4], m_fLeftColor[4], m_fRightColor[4], m_fWaitColor[4], m_fBallonColor[4];
 
 	//•¶Žš•\Ž¦—p
 	unsigned int m_iChar_Size;

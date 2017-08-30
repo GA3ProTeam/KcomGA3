@@ -131,6 +131,8 @@ void GimmickDoctor::Action() {
 		else {
 			//会話「ふむふむ・・・。この音！・・・」
 			Overlay()->talkDraw(TUTORIAL, HAKASE_CLEAR);
+
+
 		}
 
 	}
@@ -1170,6 +1172,105 @@ void Gimmickfiretruck::Draw()
 ////ステージ2↑
 //
 ////ステージ3↓
+//子猫----------------------------------------------------
+//デストラクタ
+void GimmickKitten::Destructor()
+{
+
+}
+//アクション
+void GimmickKitten::Action()
+{
+
+}
+//ドロー
+void GimmickKitten::Draw()
+{
+	float col[4] = { 1.0,1.0,1.0,1.0 };
+
+	//切り取り先座標
+	m_dst.top = 0; m_dst.left = 0;
+	m_dst.bottom = 200; m_dst.right = 200;
+
+	//転送先座標
+	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
+	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
+	//描画
+	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
+
+	//Balloon *aaa = InitBall(48, -48, sound, 1, RED, LOWER_LEFT);
+//
+//	gimmicDraw(aaa, 0);
+//	delete aaa;
+}
+//--------------------------------------------------------
+
+//蝉------------------------------------------------------
+//デストラクタ
+void GimmickCicada::Destructor()
+{
+
+}
+//アクション
+void GimmickCicada::Action()
+{
+
+}
+//ドロー
+void GimmickCicada::Draw()
+{
+	float col[4] = { 1.0,1.0,1.0,1.0 };
+
+	//切り取り先座標
+	m_dst.top = 0; m_dst.left = 0;
+	m_dst.bottom = 200; m_dst.right = 200;
+
+	//転送先座標
+	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
+	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
+	//描画
+	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
+
+	//Balloon *aaa = InitBall(48, -48, sound, 1, RED, LOWER_LEFT);
+	//
+	//	gimmicDraw(aaa, 0);
+	//	delete aaa;
+}
+//--------------------------------------------------------
+
+//少女----------------------------------------------------
+//デストラクタ
+void GimmickLittleGirl::Destructor()
+{
+
+}
+//アクション
+void GimmickLittleGirl::Action()
+{
+
+}
+//ドロー
+void GimmickLittleGirl::Draw()
+{
+	float col[4] = { 1.0,1.0,1.0,1.0 };
+
+	//切り取り先座標
+	m_dst.top = 0; m_dst.left = 0;
+	m_dst.bottom = 200; m_dst.right = 200;
+
+	//転送先座標
+	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
+	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
+	//描画
+	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
+
+	//Balloon *aaa = InitBall(48, -48, sound, 1, RED, LOWER_LEFT);
+	//
+	//	gimmicDraw(aaa, 0);
+	//	delete aaa;
+}
+//--------------------------------------------------------
+
 ////ステージ3↑
 //
 //

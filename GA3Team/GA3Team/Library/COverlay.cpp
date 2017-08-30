@@ -289,7 +289,8 @@ void COverlay::Draw()
 						m_strTempName += namet;
 						m_bCharaChangeFlg = true;
 						m_iCurrentLine = m_iChar_Line;
-						delete namet, expt;
+						delete namet;
+						delete expt;
 					}
 					break;
 				}
@@ -379,7 +380,8 @@ void COverlay::Draw()
 						m_strTempName += namet;
 						m_bCharaChangeFlg = true;
 						m_iCurrentLine = m_iChar_Line;
-						delete namet, expt;
+						delete namet;
+						delete expt;
 					}
 					break;
 				}
@@ -469,7 +471,8 @@ void COverlay::Draw()
 						m_strTempName += namet;
 						m_bCharaChangeFlg = true;
 						m_iCurrentLine = m_iChar_Line;
-						delete namet, expt;
+						delete namet;
+						delete expt;
 					}
 					break;
 				}
@@ -559,7 +562,8 @@ void COverlay::Draw()
 						m_strTempName += namet;
 						m_bCharaChangeFlg = true;
 						m_iCurrentLine = m_iChar_Line;
-						delete namet, expt;
+						delete namet;
+						delete expt;
 					}
 					break;
 				}

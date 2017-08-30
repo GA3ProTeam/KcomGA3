@@ -13,7 +13,7 @@ void Gimmick::Init(int xpos, int ypos, int widht, int height, int balloonnum)
 	//吹き出し生成
 	m_ball = new Balloon[m_iballoonnum];
 	//吹き出し初期化
-	memset(m_ball, 0, sizeof(Balloon));
+	memset(m_ball, 0, sizeof(Balloon) * m_iballoonnum);
 }
 
 //描画
@@ -56,7 +56,7 @@ void Gimmick::gimmicDraw(int num)
 			m_iballoontime = BALLOON_KEEP_TIME;
 			if (!Input()->GetMouButtonL() && m_menu_tab->GetHaveSound()) {
 				//ドラッグしていた効果音をギミックに聞かせる
-				Audio()->Start(m_menu_tab->GetGiveSound());
+				SoundManager()->StartSound(m_menu_tab->GetGiveSound());
 				m_getsound = true;
 			}
 		}

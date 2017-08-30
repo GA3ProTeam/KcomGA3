@@ -32,6 +32,13 @@ void CSoundManeger::SoundSave(int soundNum/*音の番号*/) //音をセーブする
 		}
 	}
 }
+
+//音を再生する
+void CSoundManeger::StartSound(int slotNum/*再生する音のスロット番号*/)
+{
+	g_Audio->Start(SoundSlot[slotNum]);
+}
+
 int  CSoundManeger::GetSound(int slotNum/*引き出すスロットの番号*/)
 {
 	return SoundSlot[slotNum];

@@ -76,7 +76,7 @@ void Gimmick::gimmicDraw(int num)
 				m_ball[i].OnPush = false;
 				//”ÍˆÍ“à‚É‚ ‚é‚©‚È‚¢‚©
 				if ((mousex > m_ball[i].m_gimsrc.left&& mousex < m_ball[i].m_gimsrc.right)
-					&& (mousey > m_ball[i].m_gimsrc.top && mousey < m_ball[i].m_gimsrc.right)){
+					&& (mousey > m_ball[i].m_gimsrc.top && mousey < m_ball[i].m_gimsrc.bottom)){
 					flg = true;
 				}
 				else {

@@ -173,9 +173,24 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 
 		break;
 	case 32:
+		
+//		//コウネステージ３ ギミック生成
+//		//子猫
+//		m_gimmick_kitten = new GimmickKitten();
+//		Obj()->InsertObj(m_gimmick_kitten, GIMMICK_KITTEN, 5, this->m_pScene, HIT_BOX_OFF);
+//		m_gimmick_kitten->Init(0, 0, 0, 0, 1);
+//
+//		//蝉
+//		m_gimmick_cicada = new GimmickCicada();
+//		Obj()->InsertObj(m_gimmick_cicada, GIMMICK_CICADA, 5, this->m_pScene, HIT_BOX_OFF);
+//		m_gimmick_cicada->Init(0, 0, 0, 0, 1);
+//
+//		//少女
+//		m_gimmick_little_girl = new GimmickLittleGirl();
+//		Obj()->InsertObj(m_gimmick_little_girl, GIMMICK_LITTLEGIRL, 5, this->m_pScene, HIT_BOX_OFF);
+//		m_gimmick_little_girl->Init(0, 0, 0, 0, 1);
 
-
-
+		
 		break;
 	case 33:
 

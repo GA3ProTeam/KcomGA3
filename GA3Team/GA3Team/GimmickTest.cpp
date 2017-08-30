@@ -80,6 +80,7 @@ void GimmickDoctor::Action() {
 	else if (SavedataManeger()->CurrentData->m_btutoriaruflg[0] &&
 		!SavedataManeger()->CurrentData->m_btutoriaruflg[1]) {
 		
+		SavedataManeger()->Writesavedata();
 
 		//音を録音していない（フラグ2未達成）状態で、会話
 		if (m_ball[0].OnPush) {

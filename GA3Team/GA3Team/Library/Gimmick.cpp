@@ -21,11 +21,6 @@ void Gimmick::gimmicDraw(int num)
 {
 	static bool flg = false;
 	static bool onceflg = false;//クリックした際一度だけ反応するためのフラグ
-
-	//m_ball[num] = *ball1;
-
-	//memcmp(&m_ball[num], ball1, sizeof(Balloon));
-
 	//マウスの座標を取得
 	int mousex = Input()->m_x;
 	int mousey = Input()->m_y;
@@ -67,26 +62,21 @@ void Gimmick::gimmicDraw(int num)
 			{
 				if (m_ball[i].m_iballoontype == talk){
 					//会話吹き出しを描画
-
 					changetalkDir(num);
-					Image()->Draw(3, &m_ball[i].m_gimsrc, &m_ball[i].m_gimdst, col, 0.0f);
+					Image()->DrawEx(21, &m_ball[i].m_gimsrc, &m_ball[i].m_gimdst, col, 0.0f);
 				}
 				if (m_ball[i].m_iballoontype == sound){
-
 					//シオンの能力発動時に吹き出しの色を変える
-					if (User()->m_bsionability){
+					//if (User()->m_bsionability) {
 						changeBalloonColor(num);
-					}
-
+					//}
 					//音吹き出しを描画
-					Image()->Draw(4, &m_ball[i].m_gimsrc, &m_ball[i].m_gimdst, col, 0.0f);
+					Image()->DrawEx(21, &m_ball[i].m_gimsrc, &m_ball[i].m_gimdst,col, 0.0f);
 				}
 				m_ball[i].OnPush = false;
-
 				//範囲内にあるかないか
 				if ((mousex > m_ball[i].m_gimsrc.left&& mousex < m_ball[i].m_gimsrc.right)
-					&& (mousey > m_ball[i].m_gimsrc.top && mousey < m_ball[i].m_gimsrc.right))
-				{
+					&& (mousey > m_ball[i].m_gimsrc.top && mousey < m_ball[i].m_gimsrc.bottom)){
 					flg = true;
 				}
 				else {
@@ -95,31 +85,24 @@ void Gimmick::gimmicDraw(int num)
 				if (flg)
 				{
 					//左クリックされたら
-					if (Input()->GetMouButtonL())
-					{
+					if (Input()->GetMouButtonL()){
 						onceflg = true;
 					}
 					//左クリックされていない　&&　一回クリックされていたなら
-					else if (!Input()->GetMouButtonL() && onceflg)
-					{
+					else if (!Input()->GetMouButtonL() && onceflg){
 						if (m_ball[i].m_iballoontype == sound && m_ball[i].m_soundnum != EXCEPTION)
 							SoundManager()->SoundSave(m_ball[i].m_soundnum);
 						onceflg = false;
 						m_ball[i].OnPush = true;
-
 					}
 				}
-
 			}
 		}
 	}
 }
 void Gimmick::changeBalloonColor(int num)
 {
-	//if(ball[num].m_iballooncolor == RED);
-	for (int i = 0; i < num; i++)
-	{
-
+	for (int i = 0; i < num; i++){
 		m_ball[i].m_gimdst.top = m_ball[i].m_iballoonDir;
 		m_ball[i].m_gimdst.left = m_ball[i].m_iballooncolor;
 		m_ball[i].m_gimdst.bottom = m_ball[i].m_gimdst.top+ GIMMICK_SIZE_Y;
@@ -128,8 +111,7 @@ void Gimmick::changeBalloonColor(int num)
 }
 void Gimmick::changetalkDir(int num)
 {
-	for (int i = 0; i < num; i++)
-	{
+	for (int i = 0; i < num; i++){
 		m_ball[i].m_gimdst.top = 0;
 		m_ball[i].m_gimdst.left = m_ball[i].m_iballoonDir;
 		m_ball[i].m_gimdst.bottom = m_ball[i].m_gimdst.top + GIMMICK_SIZE_Y;

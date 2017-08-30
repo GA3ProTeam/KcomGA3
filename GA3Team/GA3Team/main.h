@@ -163,11 +163,11 @@ enum OBJ_NAME
 #define PIXEL_SIZE_H	600
 
 //一つのシーンで読み込めるイメージ総数
-#define SCENE_IMG_MAX	64
+#define SCENE_IMG_MAX	192
 //一列の文字列最大出力
 #define STR_LEN_MAX		128
 //一つのシーンで読み込める音楽総数
-#define SCENE_AUDIO_MAX	32
+#define SCENE_AUDIO_MAX	192
 //効果音の同時出力最大数
 #define SCENE_AUDIO_EFFCT_MAX	8
 

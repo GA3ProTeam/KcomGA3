@@ -72,10 +72,8 @@ void GimmickDoctor::Action() {
 	//メニュータブへの参照取得
 	CObjMenuTab* tab = (CObjMenuTab*)Obj()->GetObj(OBJ_MENUTAB);
 
+	//初回動作
 	if (!SavedataManeger()->CurrentData->m_btutoriaruflg[0]) {
-		
-		
-		
 		
 	}
 	//レコーダー入手後（フラグ1達成後）
@@ -90,7 +88,8 @@ void GimmickDoctor::Action() {
 		}
 	}
 	//音を録音後（フラグ2達成後）、会話
-	else if (SavedataManeger()->CurrentData->m_btutoriaruflg[1]) {
+	else if (SavedataManeger()->CurrentData->m_btutoriaruflg[1] &&
+			!SavedataManeger()->CurrentData->m_btutoriaruflg[2]) {
 		
 		if (m_ball[0].OnPush) {
 			//会話「うむ、言われたことはできるようなのだな・・・」
@@ -159,11 +158,11 @@ void GimmickDoctor::Draw() {
 	//---------------------------------------------------------------------------
 
 	//レコーダーを取得した後から吹き出し出現
-	//if (SavedataManeger()->CurrentData->m_btutoriaruflg[0]) {
-	//吹き出し描画＆動作---------------------------------------------------------
-	this->gimmicDraw(2);
-	//---------------------------------------------------------------------------
-	//}
+	if (SavedataManeger()->CurrentData->m_btutoriaruflg[0]) {
+		//吹き出し描画＆動作---------------------------------------------------------
+		this->gimmicDraw(2);
+		//---------------------------------------------------------------------------
+	}
 
 	//【会話終了時】
 	SavedataManeger()->CurrentData->m_btutoriaruflg[0];
@@ -186,7 +185,6 @@ void GimmickComputer::Destructor() {
 
 //アクション
 void GimmickComputer::Action() {
-	//まだパソコンの音を録音していない
 	//音符吹き出しが押された
 	if (m_ball[0].OnPush) {
 		//フラグ2達成
@@ -216,6 +214,7 @@ void GimmickComputer::Draw() {
 	//---------------------------------------------------------------------------
 
 	//吹き出し描画＆動作---------------------------------------------------------
+
 	this->gimmicDraw(1);
 	//---------------------------------------------------------------------------
 }
@@ -625,8 +624,12 @@ void Gimmickfiretruck::Draw()
 //			//Audio()->Start(tab->GetGiveSound());
 //			switch (m_iChild_ID) {
 //			case 1://強気な男の子
+//				Overlay()->talkDraw(SION, SION3_FLAG_NO_CHILD1);
+//
 //				   //if (tab->GetGiveSound() == /*正解の音*/) {
 //				SavedataManeger()->CurrentData->m_bSionflg[3] = true;
+//
+//				Overlay()->talkDraw(SION, SION3_FLAG_YES_CHILD1);
 //				//	break;
 //				//}
 //				//else {
@@ -635,8 +638,12 @@ void Gimmickfiretruck::Draw()
 //				break;
 //
 //			case 2://優しい女の子
+//				Overlay()->talkDraw(SION, SION3_FLAG_NO_CHILD2);
+//
 //				   //if (tab->GetGiveSound() == /*正解の音*/) {
 //				SavedataManeger()->CurrentData->m_bSionflg[4] = true;
+//
+//				Overlay()->talkDraw(SION, SION3_FLAG_YES_CHILD2);
 //				//	break;
 //				//}
 //				//else {
@@ -646,8 +653,12 @@ void Gimmickfiretruck::Draw()
 //				break;
 //
 //			case 3://弱気な男の子
+//				Overlay()->talkDraw(SION, SION3_FLAG_NO_CHILD3);
+//
 //				   //if (tab->GetGiveSound() == /*正解の音*/) {
 //				SavedataManeger()->CurrentData->m_bSionflg[5] = true;
+//
+//				Overlay()->talkDraw(SION, SION3_FLAG_YES_CHILD3);
 //				//	break;
 //				//}
 //				//else {
@@ -721,6 +732,8 @@ void Gimmickfiretruck::Draw()
 //}
 //void GimmickGranny::Action()//アクション
 //{
+//	Overlay()->talkDraw(SION, SION3_OBATYAN);
+//
 //}
 //void GimmickGranny::Draw()//描画
 //{

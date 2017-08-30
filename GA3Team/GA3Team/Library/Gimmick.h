@@ -31,7 +31,6 @@ enum Balloondir {
 	UPPER       = 320, //真上
 	LEFT        = 384, //真左
 	RIGHT       = 448, //真右
-	
 };
 
 //吹き出し構造体
@@ -49,14 +48,11 @@ typedef struct
 }Balloon;
 
 //プロトタイプ宣言
-
 //吹き出し構造体(Balloon)の初期化関数
 void InitBall(Balloon* balloon, int gimX, int gimY, int balltype, int soundnum, int color, int Dir);
 
 //ギミッククラス(基底)
 class Gimmick : public CObj {
-private:
-
 protected:
 	Balloon* m_ball;//吹き出し
 	bool m_bCursor;	    //ギミックにカーソルが当たっているかのフラグ
@@ -79,20 +75,15 @@ public:
 		//吹き出し破棄
 		delete[] m_ball;
 	}
-
 	//吹き出しの種類をセットする
 	void setballoontype(int balloontype, int num) { m_ball[num].m_iballoontype = balloontype; }
-
 	//吹き出し(音情報)をセットする
 	void setBalloonSound(int soundnum, int num) { m_ball[num].m_soundnum = soundnum; }
-
 	//吹き出しの色を変える(シオン能力発動時)
 	void changeBalloonColor(int num);
+	//吹き出し(会話)の形を変える
 	void changetalkDir(int num);
-
 	//描画
 	void gimmicDraw(int num);
-
-
 };
 #endif // !__GIMMICK_H__

@@ -1226,6 +1226,29 @@ void GimmickTourist::Destructor()
 }
 void GimmickTourist::Action()
 {
+	CObjMenuTab* tab = (CObjMenuTab*)Obj()->GetObj(OBJ_MENUTAB);
+	if (Input()->m_x > m_iXpos&& Input()->m_x < (m_iXpos + m_iWidth)
+		&& Input()->m_y > m_iYpos && Input()->m_y < (m_iYpos + m_iHeight)) {
+		//マウスドラッグ中にマウスボタンが離された
+		if (!Input()->GetMouButtonL() && tab->GetHaveSound()) {
+			//ドラッグしていた効果音をギミックに聞かせる
+			//Audio()->Start(tab->GetGiveSound());
+			if (SavedataManeger()->CurrentData->m_bKouneflg[20] == false && 
+				tab->GetGiveSound() == /*ホイッスル*/) {
+				SavedataManeger()->CurrentData->m_bKouneflg[20] = true;
+			}
+			if (SavedataManeger()->CurrentData->m_bKouneflg[20] == true &&
+				SavedataManeger()->CurrentData->m_bKouneflg[21] == false) {
+				if (tab->GetGiveSound() == /*お菓子の音(音大)*/) {
+				}
+				if (tab->GetGiveSound() == /*お菓子の音(音中)*/) {
+				}
+				if (tab->GetGiveSound() == /*お菓子の音(音小)*/) {
+				}
+			}
+		}
+	}
+
 }
 void GimmickTourist::Draw()
 {

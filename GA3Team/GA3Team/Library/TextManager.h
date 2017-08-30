@@ -36,7 +36,8 @@ public:
 
 	void LoadText();
 	bool isCtrlLine(int stage, int stageID,int linecount);
-	char *GetCharName(int stage, int stageID, int linecount);
+	char *GetCharaName(int stage, int stageID, int linecount);
+	char *GetCharaExp(int stage, int stageID, int linecount);
 };
 
 #endif // !__TEXTMANAGER_H__

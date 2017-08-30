@@ -101,6 +101,8 @@ enum merueru
 };
 
 //---------------------------
+//定数宣言エリア
+
 //左キャラの横マージン
 #define TALK_CHARA_LEFT_MARGIN_X	50
 //左キャラの縦マージン
@@ -122,7 +124,9 @@ private:
 
 	//描画用
 	float m_fAlpha,m_fWaitAlpha;
-	float m_fDefColor[4], m_fBackColor[4], m_fLeftColor[4], m_fRightColor[4], m_fWaitColor[4], m_fBallonColor[4];
+	float m_fDefColor[4], m_fBackColor[4], m_fWaitColor[4], m_fBallonColor[4];
+	float m_fLeftColor[4], m_fRightColor[4];
+	int m_iLeftCharaImageID, m_iRightCharaImageID;
 
 	//文字表示用
 	unsigned int m_iChar_Size;
@@ -159,6 +163,8 @@ public:
 		m_iTextSpeed(7),
 		m_iDelay(0), 
 		m_iCurrentLine(0),
+		m_iLeftCharaImageID(-1),
+		m_iRightCharaImageID(-1),
 		m_fAlpha(0.0f),
 		m_fWaitAlpha(0.0f)
 	{}

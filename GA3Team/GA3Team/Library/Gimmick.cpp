@@ -8,6 +8,8 @@ void Gimmick::Init(int xpos, int ypos, int widht, int height, int balloonnum)
 	m_iHeight = height;	//ギミック高さの初期化
 	m_iballoonnum = balloonnum;//吹き出しの総数
 
+	m_menu_tab = (CObjMenuTab*)Obj()->GetObj(OBJ_MENUTAB);//メニュータブへの参照セット
+	m_getsound = false;
 	//吹き出し生成
 	m_ball = new Balloon[m_iballoonnum];
 	//吹き出し初期化
@@ -32,10 +34,10 @@ void Gimmick::gimmicDraw(int num)
 	//転送先座標
 	for (int i = 0; i < /*m_iballoonnum*/num; i++)
 	{
-		m_ball[i].m_gimdst.top = 0;
-		m_ball[i].m_gimdst.left = 0;
-		m_ball[i].m_gimdst.bottom = 330;
-		m_ball[i].m_gimdst.right = 400;
+		//m_ball[i].m_gimdst.top = 0;
+		//m_ball[i].m_gimdst.left = 0;
+		//m_ball[i].m_gimdst.bottom = 330;
+		//m_ball[i].m_gimdst.right = 400;
 
 		m_ball[i].m_gimsrc.top = m_iYpos + m_ball[i].m_iGimYpos;
 		m_ball[i].m_gimsrc.left = m_iXpos + m_ball[i].m_iGimXpos + User()->mscroll_x;
@@ -46,13 +48,20 @@ void Gimmick::gimmicDraw(int num)
 	//OverRayが起動してたらあたり判定をなくす
 	if (!Overlay()->isDraw())
 	{
+
 		//縦と横(x)カーソルがギミックの当たり範囲に入っているか否か
 		if ((mousex > m_src.left + User()->mscroll_x && mousex < (m_src.left + User()->mscroll_x + m_iWidth))
 			&& (mousey > m_src.top && mousey < (m_src.top + m_iHeight)))
 		{
 			m_iballoontime = BALLOON_KEEP_TIME;
+			if (!Input()->GetMouButtonL() && m_menu_tab->GetHaveSound()) {
+				//ドラッグしていた効果音をギミックに聞かせる
+				Audio()->Start(m_menu_tab->GetGiveSound());
+				m_getsound = true;
+			}
 		}
 		else {
+			m_getsound = false;
 			m_iballoontime--;
 		}
 

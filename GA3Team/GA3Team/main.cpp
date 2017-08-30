@@ -8,7 +8,7 @@ BOOL CALLBACK DlgProc(HWND hDlg, UINT Msg, WPARAM wParam, LPARAM lParam);
 //Main関数
 int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR szCmdLine, int nCmdShow)
 {
-	char Name[] = { "失礼いたしました、熱盛と出てしまいました" };
+	char Name[] = { "Sound Researcher" };
 	//ウィンドウステータス
 	WNDCLASSEX wcex = {
 		sizeof(WNDCLASSEX),

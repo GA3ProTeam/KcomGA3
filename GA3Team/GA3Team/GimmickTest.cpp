@@ -624,8 +624,12 @@ void Gimmickfiretruck::Draw()
 //			//Audio()->Start(tab->GetGiveSound());
 //			switch (m_iChild_ID) {
 //			case 1://強気な男の子
+//				Overlay()->talkDraw(SION, SION3_FLAG_NO_CHILD1);
+//
 //				   //if (tab->GetGiveSound() == /*正解の音*/) {
 //				SavedataManeger()->CurrentData->m_bSionflg[3] = true;
+//
+//				Overlay()->talkDraw(SION, SION3_FLAG_YES_CHILD1);
 //				//	break;
 //				//}
 //				//else {
@@ -634,8 +638,12 @@ void Gimmickfiretruck::Draw()
 //				break;
 //
 //			case 2://優しい女の子
+//				Overlay()->talkDraw(SION, SION3_FLAG_NO_CHILD2);
+//
 //				   //if (tab->GetGiveSound() == /*正解の音*/) {
 //				SavedataManeger()->CurrentData->m_bSionflg[4] = true;
+//
+//				Overlay()->talkDraw(SION, SION3_FLAG_YES_CHILD2);
 //				//	break;
 //				//}
 //				//else {
@@ -645,8 +653,12 @@ void Gimmickfiretruck::Draw()
 //				break;
 //
 //			case 3://弱気な男の子
+//				Overlay()->talkDraw(SION, SION3_FLAG_NO_CHILD3);
+//
 //				   //if (tab->GetGiveSound() == /*正解の音*/) {
 //				SavedataManeger()->CurrentData->m_bSionflg[5] = true;
+//
+//				Overlay()->talkDraw(SION, SION3_FLAG_YES_CHILD3);
 //				//	break;
 //				//}
 //				//else {
@@ -720,6 +732,8 @@ void Gimmickfiretruck::Draw()
 //}
 //void GimmickGranny::Action()//アクション
 //{
+//	Overlay()->talkDraw(SION, SION3_OBATYAN);
+//
 //}
 //void GimmickGranny::Draw()//描画
 //{
@@ -986,9 +1000,9 @@ void Gimmickfiretruck::Draw()
 //
 ////-----------コウネステージ↓-----------------------------------------
 //
-//
-////ステージ1↓
-////犬のデストラクタ
+
+//ステージ1↓
+//犬のデストラクタ
 //void GimmickDog::Destructor()
 //{
 //
@@ -1069,7 +1083,9 @@ void Gimmickfiretruck::Draw()
 //{
 //
 //	if (ball[0].OnPush) {
+//
 //		SavedataManeger()->CurrentData->m_bKouneClearflg[0] = true;
+//		Overlay()->talkDraw(KOUNE, KOUNE1_OZI_CLEAR);
 //
 //	}
 //}//マンホールの穴のドロー
@@ -1100,23 +1116,25 @@ void Gimmickfiretruck::Draw()
 //	if (ball[0].OnPush) {
 //		if (SavedataManeger()->CurrentData->m_bKouneflg[0] == false) {
 //			SavedataManeger()->CurrentData->m_bKouneflg[0] = true;
+//			Overlay()->talkDraw(KOUNE, KOUNE1_OZI);
 //		}
 //
 //		else if (SavedataManeger()->CurrentData->m_bKouneflg[2] == true) {
 //			SavedataManeger()->CurrentData->m_bKouneflg[3] = true;
+//			Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG3_YES);
 //			m_Status = STATUS_DELETE;
 //		}
 //		else if (SavedataManeger()->CurrentData->m_bKouneflg[1] == true) {
-//
+//			Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG2_YES);
 //
 //		}
 //		else if (SavedataManeger()->CurrentData->m_bKouneflg[2] == false && SavedataManeger()->CurrentData->m_bKouneflg[1] == true) {
-//
+//			Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG3_NO_FLAG1_YES);
 //
 //		}
 //
 //		else if (SavedataManeger()->CurrentData->m_bKouneflg[1] == false) {
-//
+//			Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG2_NO);
 //
 //		}
 //

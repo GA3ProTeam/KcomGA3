@@ -50,6 +50,9 @@ using namespace std;
 //enum()マクロ
 #define ESTR(var) #var
 
+#define malloc(X) _malloc_dbg(X,_NORMAL_BLOCK,__FILE__,__LINE__) 
+#define new ::new(_NORMAL_BLOCK, __FILE__, __LINE__) 
+
 //列挙型
 //テクスチャイメージサイズ　８乗ｵﾝﾘ-設定
 enum TEX_SIZE

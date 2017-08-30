@@ -211,15 +211,15 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 		
 	//チュートリアル（博士）ステージ--------------------------
 	case 40:
-		////博士
-		//m_gimmick_doctor = new GimmickDoctor();
-		//Obj()->InsertObj(m_gimmick_doctor, GIMMICK_DOCTOR, 5, this->m_pScene, HIT_BOX_OFF);
-		//m_gimmick_doctor->Init(100, 200, 120, 220, 2);
+		//博士
+		m_gimmick_doctor = new GimmickDoctor();
+		Obj()->InsertObj(m_gimmick_doctor, GIMMICK_DOCTOR, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_doctor->Init(100, 200, 120, 220, 2);
 
-		////レコーダー
-		//m_gimmick_recorder = new GimmickRecorder();
-		//Obj()->InsertObj(m_gimmick_recorder, GIMMICK_RECORDER, 5, this->m_pScene, HIT_BOX_OFF);
-		//m_gimmick_recorder->Init(350, 260, 200, 100, 1);
+		//レコーダー
+		m_gimmick_recorder = new GimmickRecorder();
+		Obj()->InsertObj(m_gimmick_recorder, GIMMICK_RECORDER, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_recorder->Init(350, 260, 200, 100, 1);
 
 		//パソコン
 		m_gimmick_computer = new GimmickComputer();

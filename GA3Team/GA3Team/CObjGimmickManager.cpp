@@ -173,9 +173,24 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 
 		break;
 	case 32:
+		
+//		//コウネステージ３ ギミック生成
+//		//子猫
+//		m_gimmick_kitten = new GimmickKitten();
+//		Obj()->InsertObj(m_gimmick_kitten, GIMMICK_KITTEN, 5, this->m_pScene, HIT_BOX_OFF);
+//		m_gimmick_kitten->Init(0, 0, 0, 0, 1);
+//
+//		//蝉
+//		m_gimmick_cicada = new GimmickCicada();
+//		Obj()->InsertObj(m_gimmick_cicada, GIMMICK_CICADA, 5, this->m_pScene, HIT_BOX_OFF);
+//		m_gimmick_cicada->Init(0, 0, 0, 0, 1);
+//
+//		//少女
+//		m_gimmick_little_girl = new GimmickLittleGirl();
+//		Obj()->InsertObj(m_gimmick_little_girl, GIMMICK_LITTLEGIRL, 5, this->m_pScene, HIT_BOX_OFF);
+//		m_gimmick_little_girl->Init(0, 0, 0, 0, 1);
 
-
-
+		
 		break;
 	case 33:
 
@@ -196,15 +211,15 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 		
 	//チュートリアル（博士）ステージ--------------------------
 	case 40:
-		//博士
-		m_gimmick_doctor = new GimmickDoctor();
-		Obj()->InsertObj(m_gimmick_doctor, GIMMICK_DOCTOR, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_doctor->Init(100, 200, 120, 220, 2);
+		////博士
+		//m_gimmick_doctor = new GimmickDoctor();
+		//Obj()->InsertObj(m_gimmick_doctor, GIMMICK_DOCTOR, 5, this->m_pScene, HIT_BOX_OFF);
+		//m_gimmick_doctor->Init(100, 200, 120, 220, 2);
 
-		//レコーダー
-		m_gimmick_recorder = new GimmickRecorder();
-		Obj()->InsertObj(m_gimmick_recorder, GIMMICK_RECORDER, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_recorder->Init(350, 260, 200, 100, 1);
+		////レコーダー
+		//m_gimmick_recorder = new GimmickRecorder();
+		//Obj()->InsertObj(m_gimmick_recorder, GIMMICK_RECORDER, 5, this->m_pScene, HIT_BOX_OFF);
+		//m_gimmick_recorder->Init(350, 260, 200, 100, 1);
 
 		//パソコン
 		m_gimmick_computer = new GimmickComputer();

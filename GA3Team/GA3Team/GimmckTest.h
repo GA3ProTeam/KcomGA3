@@ -402,7 +402,7 @@ private:
 //ステージ2↑
 
 //ステージ3↓
-/*
+
 //①九官鳥
 
 //②おばあちゃん
@@ -410,42 +410,45 @@ private:
 //③少女
 class GimmickLittleGirl : public Gimmick
 {
-	GimmickLittleGirl() {};
-	~GimmickLittleGirl() {};
-
-	void Init(int xpos, int ypos, int widht, int height, int balloonnum);//イニシャライズ
-	void Destructor();//デストラクタ
-	void Action();//アクション
-	void Draw();//描画
+	public:
+		GimmickLittleGirl() {}
+		~GimmickLittleGirl() {}
+	private:
+		void Init(int xpos, int ypos, int widht, int height, int balloonnum);//イニシャライズ
+		void Destructor();//デストラクタ
+		void Action();//アクション
+		void Draw();//描画
 };
 
 //④子猫
 class GimmickKitten : public Gimmick
 {
-	GimmickKitten() {};
-	~GimmickKitten() {};
-
-	void Init(int xpos, int ypos, int widht, int height, int balloonnum);//イニシャライズ
-	void Destructor();//デストラクタ
-	void Action();//アクション
-	void Draw();//描画
+	public:
+		GimmickKitten() {}
+		~GimmickKitten() {}
+	private:
+		void Init(int xpos, int ypos, int widht, int height, int balloonnum);//イニシャライズ
+		void Destructor();//デストラクタ
+		void Action();//アクション
+		void Draw();//描画
 };
 
 //⑤蝉
 class GimmickCicada : public Gimmick
 {
-	GimmickCicada() {};
-	~GimmickCicada() {};
-
-	void Init(int xpos, int ypos, int widht, int height, int balloonnum);//イニシャライズ
-	void Destructor();//デストラクタ
-	void Action();//アクション
-	void Draw();//描画
+	public:
+		GimmickCicada() {}
+		~GimmickCicada() {}
+	private:
+		void Init(int xpos, int ypos, int widht, int height, int balloonnum);//イニシャライズ
+		void Destructor();//デストラクタ
+		void Action();//アクション
+		void Draw();//描画
 };
 
 //⑥風鈴
 
-*/
+
 //ステージ3↑
 
 

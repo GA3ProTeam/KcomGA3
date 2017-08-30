@@ -470,7 +470,7 @@ char *CTextManager::GetCharaName(int stage, int stageID, int linecount)
 	return str;
 }
 
-char * CTextManager::GetCharaExp(int stage, int stageID, int linecount)
+char *CTextManager::GetCharaExp(int stage, int stageID, int linecount)
 {
 	char *str = new char[32];
 	char linec[64];

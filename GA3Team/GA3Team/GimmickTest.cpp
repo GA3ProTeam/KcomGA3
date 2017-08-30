@@ -1196,7 +1196,7 @@ void GimmickKitten::Draw()
 	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
 	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
 	//•`‰æ
-	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
+	//Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
 
 	//Balloon *aaa = InitBall(48, -48, sound, 1, RED, LOWER_LEFT);
 //
@@ -1229,7 +1229,7 @@ void GimmickCicada::Draw()
 	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
 	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
 	//•`‰æ
-	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
+	//Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
 
 	//Balloon *aaa = InitBall(48, -48, sound, 1, RED, LOWER_LEFT);
 	//
@@ -1262,7 +1262,7 @@ void GimmickLittleGirl::Draw()
 	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
 	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
 	//•`‰æ
-	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
+	//Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
 
 	//Balloon *aaa = InitBall(48, -48, sound, 1, RED, LOWER_LEFT);
 	//

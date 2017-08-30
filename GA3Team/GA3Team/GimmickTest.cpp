@@ -80,6 +80,7 @@ void GimmickDoctor::Action() {
 	else if (SavedataManeger()->CurrentData->m_btutoriaruflg[0] &&
 		!SavedataManeger()->CurrentData->m_btutoriaruflg[1]) {
 		
+		SavedataManeger()->Writesavedata();
 
 		//音を録音していない（フラグ2未達成）状態で、会話
 		if (m_ball[0].OnPush) {
@@ -1177,92 +1178,102 @@ void Gimmickfiretruck::Draw()
 ////ステージ5↓
 ////ステージ5↑
 //
-////ステージ6↓
-////窓口
-//void GimmickWindow::Init(int xpos, int ypos, int widht, int height, int balloonnum)
-//{
-//	//親クラスのInit関数を呼ぶ
-//	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
-//
-//	//吹き出しの初期化
-//	InitBall(&m_ball[0], 48, -48, talk, EXCEPTION, CNONE, LOWER_LEFT);
-//
-//}
-//void GimmickWindow::Destructor()
-//{
-//}
-//void GimmickWindow::Action()
-//{
-//}
-//void GimmickWindow::Draw()
-//{
-//	//吹き出しの描画＆動作
-//	this->gimmicDraw(1);
-//}
-//
-////旅行客
-//void GimmickTourist::Init(int xpos, int ypos, int widht, int height, int balloonnum)
-//{
-//	//親クラスのInit関数を呼ぶ
-//	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
-//
-//	//吹き出しの初期化
-//	InitBall(&m_ball[0], 48, -48, talk, EXCEPTION, CNONE, LOWER_LEFT);
-//
-//}
-//void GimmickTourist::Destructor()
-//{
-//}
-//void GimmickTourist::Action()
-//{
-//}
-//void GimmickTourist::Draw()
-//{
-//	this->gimmicDraw(1);
-//}
-//
-////改札
-//void GimmickExamination::Init(int xpos,int ypos,int widht,int height,int balloonnum)
-//{
-//	//親クラスのInit関数を呼ぶ
-//	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
-//
-//	//吹き出しの初期化
-//	InitBall(&m_ball[0], 48, -48, talk, EXCEPTION, CNONE, LOWER_LEFT);
-//
-//}
-//void GimmickExamination::Destructor()
-//{
-//}
-//void GimmickExamination::Action()
-//{
-//}
-//void GimmickExamination::Draw()
-//{
-//	this->gimmicDraw(1);
-//}
-//
-////女の子
-//void GimmickGirl::Init(int xpos, int ypos, int widht, int height, int balloonnum)
-//{
-//	//親クラスのInit関数を呼ぶ
-//	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
-//
-//	//吹き出しの初期化
-//	InitBall(&m_ball[0], 48, -48, talk, EXCEPTION, CNONE, LOWER_LEFT);
-//
-//}
-//void GimmickExamination::Destructor()
-//{
-//}
-//void GimmickExamination::Action()
-//{
-//}
-//void GimmickExamination::Draw()
-//{
-//	this->gimmicDraw(1);
-//}
-////ステージ6↑
+//ステージ6↓
+//窓口
+void GimmickWindow::Init(int xpos, int ypos, int widht, int height, int balloonnum)
+{
+	//親クラスのInit関数を呼ぶ
+	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
+
+	//吹き出しの初期化
+	InitBall(&m_ball[0], 48, -48, talk, EXCEPTION, CNONE, LOWER_LEFT);
+
+}
+void GimmickWindow::Destructor()
+{
+}
+void GimmickWindow::Action()
+{
+	CObjMenuTab* tab = (CObjMenuTab*)Obj()->GetObj(OBJ_MENUTAB);
+	if (Input()->m_x > m_iXpos&& Input()->m_x < (m_iXpos + m_iWidth)
+		&& Input()->m_y > m_iYpos && Input()->m_y < (m_iYpos + m_iHeight)) {
+		//マウスドラッグ中にマウスボタンが離された
+		if (!Input()->GetMouButtonL() && tab->GetHaveSound()) {
+			//ドラッグしていた効果音をギミックに聞かせる
+			//Audio()->Start(tab->GetGiveSound());
+		}
+	}
+
+}
+void GimmickWindow::Draw()
+{
+	//吹き出しの描画＆動作
+	this->gimmicDraw(1);
+}
+
+//旅行客
+void GimmickTourist::Init(int xpos, int ypos, int widht, int height, int balloonnum)
+{
+	//親クラスのInit関数を呼ぶ
+	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
+
+	//吹き出しの初期化
+	InitBall(&m_ball[0], 48, -48, talk, EXCEPTION, CNONE, LOWER_LEFT);
+
+}
+void GimmickTourist::Destructor()
+{
+}
+void GimmickTourist::Action()
+{
+}
+void GimmickTourist::Draw()
+{
+	this->gimmicDraw(1);
+}
+
+//改札
+void GimmickExamination::Init(int xpos,int ypos,int widht,int height,int balloonnum)
+{
+	//親クラスのInit関数を呼ぶ
+	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
+
+	//吹き出しの初期化
+	InitBall(&m_ball[0], 48, -48, talk, EXCEPTION, CNONE, LOWER_LEFT);
+
+}
+void GimmickExamination::Destructor()
+{
+}
+void GimmickExamination::Action()
+{
+}
+void GimmickExamination::Draw()
+{
+	this->gimmicDraw(1);
+}
+
+//女の子
+void GimmickGirl::Init(int xpos, int ypos, int widht, int height, int balloonnum)
+{
+	//親クラスのInit関数を呼ぶ
+	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
+
+	//吹き出しの初期化
+	InitBall(&m_ball[0], 48, -48, talk, EXCEPTION, CNONE, LOWER_LEFT);
+
+}
+void GimmickGirl::Destructor()
+{
+}
+void GimmickGirl::Action()
+{
+}
+void GimmickGirl::Draw()
+{
+	this->gimmicDraw(1);
+}
+//ステージ6↑
 //
 ////-----------コウネステージ↑-----------------------------------------
 //

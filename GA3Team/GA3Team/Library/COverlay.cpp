@@ -289,6 +289,7 @@ void COverlay::Draw()
 						m_strTempName += namet;
 						m_bCharaChangeFlg = true;
 						m_iCurrentLine = m_iChar_Line;
+						delete namet, expt;
 					}
 					break;
 				}
@@ -371,12 +372,14 @@ void COverlay::Draw()
 					sprintf_s(linec, "%d", m_iChar_Line);
 					if (textmgr->isCtrlLine(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line) && !m_bCharaChangeFlg) {
 						char *namet = textmgr->GetCharaName(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line);
+						char *expt = textmgr->GetCharaExp(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line);
 						m_strTemp.clear();
 						m_strTemp.resize(textmgr->m_Sion_Text[m_iDrawingStageID].size());
 						m_strTempName.clear();
 						m_strTempName += namet;
 						m_bCharaChangeFlg = true;
 						m_iCurrentLine = m_iChar_Line;
+						delete namet, expt;
 					}
 					break;
 				}
@@ -459,12 +462,14 @@ void COverlay::Draw()
 					sprintf_s(linec, "%d", m_iChar_Line);
 					if (textmgr->isCtrlLine(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line) && !m_bCharaChangeFlg) {
 						char *namet = textmgr->GetCharaName(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line);
+						char *expt = textmgr->GetCharaExp(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line);
 						m_strTemp.clear();
 						m_strTemp.resize(textmgr->m_Koune_Text[m_iDrawingStageID].size());
 						m_strTempName.clear();
 						m_strTempName += namet;
 						m_bCharaChangeFlg = true;
 						m_iCurrentLine = m_iChar_Line;
+						delete namet, expt;
 					}
 					break;
 				}
@@ -547,12 +552,14 @@ void COverlay::Draw()
 					sprintf_s(linec, "%d", m_iChar_Line);
 					if (textmgr->isCtrlLine(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line) && !m_bCharaChangeFlg) {
 						char *namet = textmgr->GetCharaName(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line);
+						char *expt = textmgr->GetCharaExp(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line);
 						m_strTemp.clear();
 						m_strTemp.resize(textmgr->m_Merueru_Text[m_iDrawingStageID].size());
 						m_strTempName.clear();
 						m_strTempName += namet;
 						m_bCharaChangeFlg = true;
 						m_iCurrentLine = m_iChar_Line;
+						delete namet, expt;
 					}
 					break;
 				}

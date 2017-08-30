@@ -214,8 +214,9 @@ void GimmickComputer::Draw() {
 	//---------------------------------------------------------------------------
 
 	//吹き出し描画＆動作---------------------------------------------------------
-
-	this->gimmicDraw(1);
+	if (SavedataManeger()->CurrentData->m_btutoriaruflg[0]) {
+		this->gimmicDraw(1);
+	}
 	//---------------------------------------------------------------------------
 }
 
@@ -240,6 +241,7 @@ void GimmickRecorder::Action() {
 	if (m_ball[0].OnPush) {
 		//フラグ1達成
 		SavedataManeger()->CurrentData->m_btutoriaruflg[0] = true;
+
 		//レコーダー破棄
 		m_Status = STATUS_DELETE;
 

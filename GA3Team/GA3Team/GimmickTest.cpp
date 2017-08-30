@@ -618,8 +618,12 @@ void Gimmickfiretruck::Draw()
 //			//Audio()->Start(tab->GetGiveSound());
 //			switch (m_iChild_ID) {
 //			case 1://強気な男の子
+//				Overlay()->talkDraw(SION, SION3_FLAG_NO_CHILD1);
+//
 //				   //if (tab->GetGiveSound() == /*正解の音*/) {
 //				SavedataManeger()->CurrentData->m_bSionflg[3] = true;
+//
+//				Overlay()->talkDraw(SION, SION3_FLAG_YES_CHILD1);
 //				//	break;
 //				//}
 //				//else {
@@ -628,8 +632,12 @@ void Gimmickfiretruck::Draw()
 //				break;
 //
 //			case 2://優しい女の子
+//				Overlay()->talkDraw(SION, SION3_FLAG_NO_CHILD2);
+//
 //				   //if (tab->GetGiveSound() == /*正解の音*/) {
 //				SavedataManeger()->CurrentData->m_bSionflg[4] = true;
+//
+//				Overlay()->talkDraw(SION, SION3_FLAG_YES_CHILD2);
 //				//	break;
 //				//}
 //				//else {
@@ -639,8 +647,12 @@ void Gimmickfiretruck::Draw()
 //				break;
 //
 //			case 3://弱気な男の子
+//				Overlay()->talkDraw(SION, SION3_FLAG_NO_CHILD3);
+//
 //				   //if (tab->GetGiveSound() == /*正解の音*/) {
 //				SavedataManeger()->CurrentData->m_bSionflg[5] = true;
+//
+//				Overlay()->talkDraw(SION, SION3_FLAG_YES_CHILD3);
 //				//	break;
 //				//}
 //				//else {
@@ -714,6 +726,8 @@ void Gimmickfiretruck::Draw()
 //}
 //void GimmickGranny::Action()//アクション
 //{
+//	Overlay()->talkDraw(SION, SION3_OBATYAN);
+//
 //}
 //void GimmickGranny::Draw()//描画
 //{

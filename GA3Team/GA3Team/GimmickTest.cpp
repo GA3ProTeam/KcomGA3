@@ -72,10 +72,8 @@ void GimmickDoctor::Action() {
 	//メニュータブへの参照取得
 	CObjMenuTab* tab = (CObjMenuTab*)Obj()->GetObj(OBJ_MENUTAB);
 
+	//初回動作
 	if (!SavedataManeger()->CurrentData->m_btutoriaruflg[0]) {
-		
-		
-		
 		
 	}
 	//レコーダー入手後（フラグ1達成後）
@@ -90,7 +88,8 @@ void GimmickDoctor::Action() {
 		}
 	}
 	//音を録音後（フラグ2達成後）、会話
-	else if (SavedataManeger()->CurrentData->m_btutoriaruflg[1]) {
+	else if (SavedataManeger()->CurrentData->m_btutoriaruflg[1] &&
+			!SavedataManeger()->CurrentData->m_btutoriaruflg[2]) {
 		
 		if (m_ball[0].OnPush) {
 			//会話「うむ、言われたことはできるようなのだな・・・」
@@ -159,11 +158,11 @@ void GimmickDoctor::Draw() {
 	//---------------------------------------------------------------------------
 
 	//レコーダーを取得した後から吹き出し出現
-	//if (SavedataManeger()->CurrentData->m_btutoriaruflg[0]) {
-	//吹き出し描画＆動作---------------------------------------------------------
-	this->gimmicDraw(2);
-	//---------------------------------------------------------------------------
-	//}
+	if (SavedataManeger()->CurrentData->m_btutoriaruflg[0]) {
+		//吹き出し描画＆動作---------------------------------------------------------
+		this->gimmicDraw(2);
+		//---------------------------------------------------------------------------
+	}
 
 	//【会話終了時】
 	SavedataManeger()->CurrentData->m_btutoriaruflg[0];
@@ -186,7 +185,6 @@ void GimmickComputer::Destructor() {
 
 //アクション
 void GimmickComputer::Action() {
-	//まだパソコンの音を録音していない
 	//音符吹き出しが押された
 	if (m_ball[0].OnPush) {
 		//フラグ2達成
@@ -216,6 +214,7 @@ void GimmickComputer::Draw() {
 	//---------------------------------------------------------------------------
 
 	//吹き出し描画＆動作---------------------------------------------------------
+
 	this->gimmicDraw(1);
 	//---------------------------------------------------------------------------
 }

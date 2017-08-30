@@ -63,15 +63,15 @@ void Gimmick::gimmicDraw(int num)
 				if (m_ball[i].m_iballoontype == talk){
 					//会話吹き出しを描画
 					changetalkDir(num);
-					Image()->Draw(21, &m_ball[i].m_gimsrc, &m_ball[i].m_gimdst, col, 0.0f);
+					Image()->DrawEx(21, &m_ball[i].m_gimsrc, &m_ball[i].m_gimdst, col, 0.0f);
 				}
 				if (m_ball[i].m_iballoontype == sound){
 					//シオンの能力発動時に吹き出しの色を変える
-					if (User()->m_bsionability){
+					//if (User()->m_bsionability) {
 						changeBalloonColor(num);
-					}
+					//}
 					//音吹き出しを描画
-					Image()->Draw(21, &m_ball[i].m_gimsrc, &m_ball[i].m_gimdst,col, 0.0f);
+					Image()->DrawEx(21, &m_ball[i].m_gimsrc, &m_ball[i].m_gimdst,col, 0.0f);
 				}
 				m_ball[i].OnPush = false;
 				//範囲内にあるかないか

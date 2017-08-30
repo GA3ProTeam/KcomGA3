@@ -86,14 +86,19 @@ void GimmickDoctor::Action() {
 		//音を録音していない（フラグ2未達成）状態で、会話
 		if (m_ball[0].OnPush) {
 			//会話「話を聞いていなかったのかね？・・・」
+			Overlay()->talkDraw(TUTORIAL, HAKASE_FLAG_2_1_NO);
 		}
 	}
 	//音を録音後（フラグ2達成後）、会話
-	else if (SavedataManeger()->CurrentData->m_btutoriaruflg[1] && m_ball[0].OnPush) {
-		//会話「うむ、言われたことはできるようなのだな・・・」
+	else if (SavedataManeger()->CurrentData->m_btutoriaruflg[1]) {
+		
+		if (m_ball[0].OnPush) {
+			//会話「うむ、言われたことはできるようなのだな・・・」
+			Overlay()->talkDraw(TUTORIAL, HAKASE_FLAG_2_1_YES);
 
-		//録音した後、会話した（フラグ3達成）
-		SavedataManeger()->CurrentData->m_btutoriaruflg[2] = true;
+			//録音した後、会話した（フラグ3達成）
+			SavedataManeger()->CurrentData->m_btutoriaruflg[2] = true;
+		}
 	}
 	//音を再生
 	else if (!SavedataManeger()->CurrentData->m_btutorial) {
@@ -120,10 +125,12 @@ void GimmickDoctor::Action() {
 		//博士に話しかけず録音から再生まで達成（フラグ2○　フラグ3×）
 		if (!SavedataManeger()->CurrentData->m_btutoriaruflg[2]) {
 			//会話「わしは録音をするようにいったはずなのだが・・・」
+			Overlay()->talkDraw(TUTORIAL, HAKASE_FLAG_2_YES_3_NO);
 		}
 		//話しかけた後、再生した
 		else {
 			//会話「ふむふむ・・・。この音！・・・」
+			Overlay()->talkDraw(TUTORIAL, HAKASE_CLEAR);
 		}
 
 	}
@@ -994,9 +1001,9 @@ void Gimmickfiretruck::Draw()
 //
 ////-----------コウネステージ↓-----------------------------------------
 //
-//
-////ステージ1↓
-////犬のデストラクタ
+
+//ステージ1↓
+//犬のデストラクタ
 //void GimmickDog::Destructor()
 //{
 //
@@ -1077,7 +1084,9 @@ void Gimmickfiretruck::Draw()
 //{
 //
 //	if (ball[0].OnPush) {
+//
 //		SavedataManeger()->CurrentData->m_bKouneClearflg[0] = true;
+//		Overlay()->talkDraw(KOUNE, KOUNE1_OZI_CLEAR);
 //
 //	}
 //}//マンホールの穴のドロー
@@ -1108,23 +1117,25 @@ void Gimmickfiretruck::Draw()
 //	if (ball[0].OnPush) {
 //		if (SavedataManeger()->CurrentData->m_bKouneflg[0] == false) {
 //			SavedataManeger()->CurrentData->m_bKouneflg[0] = true;
+//			Overlay()->talkDraw(KOUNE, KOUNE1_OZI);
 //		}
 //
 //		else if (SavedataManeger()->CurrentData->m_bKouneflg[2] == true) {
 //			SavedataManeger()->CurrentData->m_bKouneflg[3] = true;
+//			Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG3_YES);
 //			m_Status = STATUS_DELETE;
 //		}
 //		else if (SavedataManeger()->CurrentData->m_bKouneflg[1] == true) {
-//
+//			Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG2_YES);
 //
 //		}
 //		else if (SavedataManeger()->CurrentData->m_bKouneflg[2] == false && SavedataManeger()->CurrentData->m_bKouneflg[1] == true) {
-//
+//			Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG3_NO_FLAG1_YES);
 //
 //		}
 //
 //		else if (SavedataManeger()->CurrentData->m_bKouneflg[1] == false) {
-//
+//			Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG2_NO);
 //
 //		}
 //

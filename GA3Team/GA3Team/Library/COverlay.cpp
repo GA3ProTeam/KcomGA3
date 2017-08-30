@@ -47,6 +47,37 @@ void COverlay::InitLoad()
 	image->LoadImageEx("コウネステージ-1.png", 24, TEX_SIZE_1024);
 	image->LoadImageEx("研究所　背景.png", 25, TEX_SIZE_1024);
 
+	//透過・暗転初期化
+	m_fDefColor[0] = 1.0f;
+	m_fDefColor[1] = 1.0f;
+	m_fDefColor[2] = 1.0f;
+	m_fDefColor[3] = m_fAlpha;
+
+	m_fBackColor[0] = 1.0f;
+	m_fBackColor[1] = 1.0f;
+	m_fBackColor[2] = 1.0f;
+	m_fBackColor[3] = m_fAlpha;
+
+	m_fLeftColor[0] = 0.5f;
+	m_fLeftColor[1] = 0.5f;
+	m_fLeftColor[2] = 0.5f;
+	m_fLeftColor[3] = m_fAlpha;
+
+	m_fRightColor[0] = 0.5f;
+	m_fRightColor[1] = 0.5f;
+	m_fRightColor[2] = 0.5f;
+	m_fRightColor[3] = m_fAlpha;
+
+	m_fWaitColor[0] = 1.0f;
+	m_fWaitColor[1] = 1.0f;
+	m_fWaitColor[2] = 1.0f;
+	m_fWaitColor[3] = m_fWaitAlpha;
+
+	m_fBallonColor[0] = 1.0f;
+	m_fBallonColor[1] = 1.0f;
+	m_fBallonColor[2] = 1.0f;
+	m_fBallonColor[3] = m_fAlpha;
+
 }
 
 void COverlay::Action()
@@ -112,18 +143,9 @@ void COverlay::Draw()
 		char tmp[128];
 		char tmpname[64] = { 0 };
 
-		float col[4] = { 1.0f,1.0f,1.0f,m_fAlpha };
-		RECT backsrc,backdst;
-		RECT leftsrc, leftdst;
-		RECT rightsrc, rightdst;
-		
-		//RECT centersrc, centerdst;
-
-		float waitcol[4] = { 1.0f,1.0f,1.0f,m_fWaitAlpha };
-		RECT waitsrc, waitdst;
-		RECT ballonsrc, ballondst;
-
 		//-------------------背景------------------------
+		RECT backsrc, backdst;
+		m_fBackColor[3] = m_fAlpha;
 		//切り取り座標
 		backdst.top = 0;
 		backdst.left = 0;
@@ -136,10 +158,420 @@ void COverlay::Draw()
 		backsrc.bottom = backsrc.top + 600;
 		backsrc.right = backsrc.left + 800;
 
-		image->DrawEx(61, &backsrc, &backdst, col, 0.0f);
+		image->DrawEx(61, &backsrc, &backdst, m_fBackColor, 0.0f);
 		//-------------------背景終------------------------
 
+		//-------------------吹き出し-----------------------
+		RECT ballonsrc, ballondst;
+		m_fBallonColor[3] = m_fAlpha;
+		//切り取り座標
+		ballondst.top = 0;
+		ballondst.left = 0;
+		ballondst.bottom = ballondst.top + 512;
+		ballondst.right = ballondst.left + 512;
+		//転送先座標
+		ballonsrc.top = WINDOW_SIZE_H - 150;
+		ballonsrc.left = 100;
+		ballonsrc.bottom = ballonsrc.top + 100;
+		ballonsrc.right = ballonsrc.left + (WINDOW_SIZE_W - 150);
+
+		image->DrawEx(59, &ballonsrc, &ballondst, m_fBallonColor, 0.0f);
+		//-------------------吹き出し終--------------------
+
+		//-------------------待機インジケータ---------------
+		RECT waitsrc, waitdst;
+		m_fWaitColor[3] = m_fWaitAlpha;
+		//切り取り座標
+		waitdst.top = 0;
+		waitdst.left = 0;
+		waitdst.bottom = waitdst.top + 256;
+		waitdst.right = waitdst.left + 256;
+		//転送先座標
+		waitsrc.top = WINDOW_SIZE_H - 125;
+		waitsrc.left = WINDOW_SIZE_W - 150;
+		waitsrc.bottom = waitsrc.top + 64;
+		waitsrc.right = waitsrc.left + 96;
+
+		image->DrawEx(63, &waitsrc, &waitdst, m_fWaitColor, 0.0f);
+		//-------------------待機インジケータ終-------------
+
+		//------------------------テキスト処理開始---------------------------
+		if (m_fAlpha == 1.0f) {
+
+			m_iDelay++;
+
+			switch (m_iDrawingStage)
+			{
+				case STAGE_TYPE::TUTORIAL: {
+					if (m_iChar_Line < textmgr->m_Tutorial_Text[m_iDrawingStageID].size()) {
+						if (m_iChar_Pos < textmgr->m_Tutorial_Text[m_iDrawingStageID][m_iChar_Line].length()) {
+							if (input->GetMouButtonLOnce()) {
+								m_strTemp[m_iChar_Line].clear();
+								m_strTemp[m_iChar_Line] += textmgr->m_Tutorial_Text[m_iDrawingStageID][m_iChar_Line];
+								m_iChar_Pos = textmgr->m_Tutorial_Text[m_iDrawingStageID][m_iChar_Line].length() + 1;
+							}
+							else {
+								if (m_iDelay > m_iTextSpeed) {
+									unsigned char lead = textmgr->m_Tutorial_Text[m_iDrawingStageID][m_iChar_Line][m_iChar_Pos];
+									if (lead < 128) {
+										m_iChar_Size = 1;
+									}
+									else if (lead < 224) {
+										m_iChar_Size = 2;
+									}
+									else if (lead < 240) {
+										m_iChar_Size = 3;
+									}
+									else {
+										m_iChar_Size = 4;
+									}
+
+									sprintf_s(c, "%s", textmgr->m_Tutorial_Text[m_iDrawingStageID][m_iChar_Line].substr(m_iChar_Pos, m_iChar_Size).c_str());
+									m_strTemp[m_iChar_Line] += c;
+
+									m_iChar_Pos += m_iChar_Size;
+								}
+							}
+						}
+						else {
+							if (input->GetMouButtonLOnce()) {
+								m_iChar_Pos = 0;
+								m_iChar_Line++;
+								m_fWaitAlpha = 0.0f;
+								m_bNextWaiting = false;
+								m_bCharaChangeFlg = false;
+							}
+							else {
+								if (m_iDelay > m_iTextSpeed) {
+									if (!m_bNextWaiting) {
+										m_fWaitAlpha = 1.0f;
+										m_bNextWaiting = true;
+									}
+									else {
+										m_fWaitAlpha = 0.0f;
+										m_bNextWaiting = false;
+									}
+								}
+							}
+						}
+					}
+					else {
+						if (input->GetMouButtonL()) {
+							FadeOut();
+							StopDraw();
+						}
+						else {
+							if (m_iDelay > m_iTextSpeed) {
+								if (!m_bNextWaiting) {
+									m_fWaitAlpha = 1.0f;
+									m_bNextWaiting = true;
+								}
+								else {
+									m_fWaitAlpha = 0.0f;
+									m_bNextWaiting = false;
+								}
+							}
+						}
+					}
+
+					if (m_iDelay > m_iTextSpeed)
+						m_iDelay = 0;
+
+					char linec[32];
+					sprintf_s(linec, "%d", m_iChar_Line);
+					if (textmgr->isCtrlLine(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line) && !m_bCharaChangeFlg) {
+						char *namet = textmgr->GetCharName(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line);
+						m_strTemp.clear();
+						m_strTemp.resize(textmgr->m_Tutorial_Text[m_iDrawingStageID].size());
+						m_strTempName.clear();
+						m_strTempName += namet;
+						m_bCharaChangeFlg = true;
+						m_iCurrentLine = m_iChar_Line;
+					}
+					break;
+				}
+				case STAGE_TYPE::SION: {
+					if (m_iChar_Line < textmgr->m_Sion_Text[m_iDrawingStageID].size()) {
+						if (m_iChar_Pos < textmgr->m_Sion_Text[m_iDrawingStageID][m_iChar_Line].length()) {
+							if (input->GetMouButtonLOnce()) {
+								m_strTemp[m_iChar_Line].clear();
+								m_strTemp[m_iChar_Line] += textmgr->m_Sion_Text[m_iDrawingStageID][m_iChar_Line];
+								m_iChar_Pos = textmgr->m_Sion_Text[m_iDrawingStageID][m_iChar_Line].length() + 1;
+							}
+							else {
+								if (m_iDelay > m_iTextSpeed) {
+									unsigned char lead = textmgr->m_Sion_Text[m_iDrawingStageID][m_iChar_Line][m_iChar_Pos];
+									if (lead < 128) {
+										m_iChar_Size = 1;
+									}
+									else if (lead < 224) {
+										m_iChar_Size = 2;
+									}
+									else if (lead < 240) {
+										m_iChar_Size = 3;
+									}
+									else {
+										m_iChar_Size = 4;
+									}
+
+									sprintf_s(c, "%s", textmgr->m_Sion_Text[m_iDrawingStageID][m_iChar_Line].substr(m_iChar_Pos, m_iChar_Size).c_str());
+									m_strTemp[m_iChar_Line] += c;
+
+									m_iChar_Pos += m_iChar_Size;
+								}
+							}
+						}
+						else {
+							if (input->GetMouButtonLOnce()) {
+								m_iChar_Pos = 0;
+								m_iChar_Line++;
+								m_fWaitAlpha = 0.0f;
+								m_bNextWaiting = false;
+								m_bCharaChangeFlg = false;
+							}
+							else {
+								if (m_iDelay > m_iTextSpeed) {
+									if (!m_bNextWaiting) {
+										m_fWaitAlpha = 1.0f;
+										m_bNextWaiting = true;
+									}
+									else {
+										m_fWaitAlpha = 0.0f;
+										m_bNextWaiting = false;
+									}
+								}
+							}
+						}
+					}
+					else {
+						if (input->GetMouButtonL()) {
+							FadeOut();
+							StopDraw();
+						}
+						else {
+							if (m_iDelay > m_iTextSpeed) {
+								if (!m_bNextWaiting) {
+									m_fWaitAlpha = 1.0f;
+									m_bNextWaiting = true;
+								}
+								else {
+									m_fWaitAlpha = 0.0f;
+									m_bNextWaiting = false;
+								}
+							}
+						}
+					}
+
+					if (m_iDelay > m_iTextSpeed)
+						m_iDelay = 0;
+
+					char linec[32];
+					sprintf_s(linec, "%d", m_iChar_Line);
+					if (textmgr->isCtrlLine(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line) && !m_bCharaChangeFlg) {
+						char *namet = textmgr->GetCharName(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line);
+						m_strTemp.clear();
+						m_strTemp.resize(textmgr->m_Sion_Text[m_iDrawingStageID].size());
+						m_strTempName.clear();
+						m_strTempName += namet;
+						m_bCharaChangeFlg = true;
+						m_iCurrentLine = m_iChar_Line;
+					}
+					break;
+				}
+				case STAGE_TYPE::KOUNE: {
+					if (m_iChar_Line < textmgr->m_Koune_Text[m_iDrawingStageID].size()) {
+						if (m_iChar_Pos < textmgr->m_Koune_Text[m_iDrawingStageID][m_iChar_Line].length()) {
+							if (input->GetMouButtonLOnce()) {
+								m_strTemp[m_iChar_Line].clear();
+								m_strTemp[m_iChar_Line] += textmgr->m_Koune_Text[m_iDrawingStageID][m_iChar_Line];
+								m_iChar_Pos = textmgr->m_Koune_Text[m_iDrawingStageID][m_iChar_Line].length() + 1;
+							}
+							else {
+								if (m_iDelay > m_iTextSpeed) {
+									unsigned char lead = textmgr->m_Koune_Text[m_iDrawingStageID][m_iChar_Line][m_iChar_Pos];
+									if (lead < 128) {
+										m_iChar_Size = 1;
+									}
+									else if (lead < 224) {
+										m_iChar_Size = 2;
+									}
+									else if (lead < 240) {
+										m_iChar_Size = 3;
+									}
+									else {
+										m_iChar_Size = 4;
+									}
+
+									sprintf_s(c, "%s", textmgr->m_Koune_Text[m_iDrawingStageID][m_iChar_Line].substr(m_iChar_Pos, m_iChar_Size).c_str());
+									m_strTemp[m_iChar_Line] += c;
+
+									m_iChar_Pos += m_iChar_Size;
+								}
+							}
+						}
+						else {
+							if (input->GetMouButtonLOnce()) {
+								m_iChar_Pos = 0;
+								m_iChar_Line++;
+								m_fWaitAlpha = 0.0f;
+								m_bNextWaiting = false;
+								m_bCharaChangeFlg = false;
+							}
+							else {
+								if (m_iDelay > m_iTextSpeed) {
+									if (!m_bNextWaiting) {
+										m_fWaitAlpha = 1.0f;
+										m_bNextWaiting = true;
+									}
+									else {
+										m_fWaitAlpha = 0.0f;
+										m_bNextWaiting = false;
+									}
+								}
+							}
+						}
+					}
+					else {
+						if (input->GetMouButtonL()) {
+							FadeOut();
+							StopDraw();
+						}
+						else {
+							if (m_iDelay > m_iTextSpeed) {
+								if (!m_bNextWaiting) {
+									m_fWaitAlpha = 1.0f;
+									m_bNextWaiting = true;
+								}
+								else {
+									m_fWaitAlpha = 0.0f;
+									m_bNextWaiting = false;
+								}
+							}
+						}
+					}
+
+					if (m_iDelay > m_iTextSpeed)
+						m_iDelay = 0;
+
+					char linec[32];
+					sprintf_s(linec, "%d", m_iChar_Line);
+					if (textmgr->isCtrlLine(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line) && !m_bCharaChangeFlg) {
+						char *namet = textmgr->GetCharName(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line);
+						m_strTemp.clear();
+						m_strTemp.resize(textmgr->m_Koune_Text[m_iDrawingStageID].size());
+						m_strTempName.clear();
+						m_strTempName += namet;
+						m_bCharaChangeFlg = true;
+						m_iCurrentLine = m_iChar_Line;
+					}
+					break;
+				}
+				case STAGE_TYPE::MERUERU: {
+					if (m_iChar_Line < textmgr->m_Merueru_Text[m_iDrawingStageID].size()) {
+						if (m_iChar_Pos < textmgr->m_Merueru_Text[m_iDrawingStageID][m_iChar_Line].length()) {
+							if (input->GetMouButtonLOnce()) {
+								m_strTemp[m_iChar_Line].clear();
+								m_strTemp[m_iChar_Line] += textmgr->m_Merueru_Text[m_iDrawingStageID][m_iChar_Line];
+								m_iChar_Pos = textmgr->m_Merueru_Text[m_iDrawingStageID][m_iChar_Line].length() + 1;
+							}
+							else {
+								if (m_iDelay > m_iTextSpeed) {
+									unsigned char lead = textmgr->m_Merueru_Text[m_iDrawingStageID][m_iChar_Line][m_iChar_Pos];
+									if (lead < 128) {
+										m_iChar_Size = 1;
+									}
+									else if (lead < 224) {
+										m_iChar_Size = 2;
+									}
+									else if (lead < 240) {
+										m_iChar_Size = 3;
+									}
+									else {
+										m_iChar_Size = 4;
+									}
+
+									sprintf_s(c, "%s", textmgr->m_Merueru_Text[m_iDrawingStageID][m_iChar_Line].substr(m_iChar_Pos, m_iChar_Size).c_str());
+									m_strTemp[m_iChar_Line] += c;
+
+									m_iChar_Pos += m_iChar_Size;
+								}
+							}
+						}
+						else {
+							if (input->GetMouButtonLOnce()) {
+								m_iChar_Pos = 0;
+								m_iChar_Line++;
+								m_fWaitAlpha = 0.0f;
+								m_bNextWaiting = false;
+								m_bCharaChangeFlg = false;
+							}
+							else {
+								if (m_iDelay > m_iTextSpeed) {
+									if (!m_bNextWaiting) {
+										m_fWaitAlpha = 1.0f;
+										m_bNextWaiting = true;
+									}
+									else {
+										m_fWaitAlpha = 0.0f;
+										m_bNextWaiting = false;
+									}
+								}
+							}
+						}
+					}
+					else {
+						if (input->GetMouButtonL()) {
+							FadeOut();
+							StopDraw();
+						}
+						else {
+							if (m_iDelay > m_iTextSpeed) {
+								if (!m_bNextWaiting) {
+									m_fWaitAlpha = 1.0f;
+									m_bNextWaiting = true;
+								}
+								else {
+									m_fWaitAlpha = 0.0f;
+									m_bNextWaiting = false;
+								}
+							}
+						}
+					}
+
+					if (m_iDelay > m_iTextSpeed)
+						m_iDelay = 0;
+
+					char linec[32];
+					sprintf_s(linec, "%d", m_iChar_Line);
+					if (textmgr->isCtrlLine(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line) && !m_bCharaChangeFlg) {
+						char *namet = textmgr->GetCharName(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line);
+						m_strTemp.clear();
+						m_strTemp.resize(textmgr->m_Merueru_Text[m_iDrawingStageID].size());
+						m_strTempName.clear();
+						m_strTempName += namet;
+						m_bCharaChangeFlg = true;
+						m_iCurrentLine = m_iChar_Line;
+					}
+					break;
+				}
+			}
+
+			sprintf_s(tmpname, "%s", m_strTempName.c_str());
+			float col[4] = { 1.0f,1.0f,1.0f,m_fAlpha };
+			font->StrDraw(tmpname, WINDOW_SIZE_W / 2 - 300, WINDOW_SIZE_H / 2 + 150, 16, col);
+
+			for (unsigned int i = 0; i < m_strTemp.size(); ++i) {
+				sprintf_s(tmp, "%s", m_strTemp[i].c_str());
+				float col[4] = { 1.0f,1.0f,1.0f,m_fAlpha };
+				font->StrDraw(tmp, WINDOW_SIZE_W / 2 - 300, (WINDOW_SIZE_H / 2 + 200) + ((i - m_iCurrentLine) * 16), 16, col);
+			}
+		}
+		//------------------------テキスト処理終了---------------------------
+
+		//------------------------キャラビジュアル表示処理---------------------------
 		//-------------------左キャラ----------------------
+		RECT leftsrc, leftdst;
+		m_fLeftColor[3] = m_fAlpha;
 		//切り取り座標
 		leftdst.top = 0;
 		leftdst.left = 0;
@@ -152,10 +584,12 @@ void COverlay::Draw()
 		leftsrc.bottom = leftsrc.top + 300;
 		leftsrc.right = leftsrc.left + 250;
 
-		image->DrawEx(62, &leftsrc, &leftdst, col, 0.0f);
+		image->DrawEx(62, &leftsrc, &leftdst, m_fLeftColor, 0.0f);
 		//-------------------左キャラ終---------------------
 
 		//-------------------右キャラ----------------------
+		RECT rightsrc, rightdst;
+		m_fRightColor[3] = m_fAlpha;
 		//切り取り座標
 		rightdst.top = 70;
 		rightdst.left = 380;
@@ -168,11 +602,13 @@ void COverlay::Draw()
 		rightsrc.bottom = rightsrc.top + 300;
 		rightsrc.right = rightsrc.left + 300;
 
-		image->DrawEx(60, &rightsrc, &rightdst, col, 0.0f);
+		image->DrawEx(60, &rightsrc, &rightdst, m_fRightColor, 0.0f);
 		//-------------------右キャラ終---------------------
 
 		//-------------------中キャラ----------------------
 		/*
+		RECT centersrc, centerdst;
+		m_fCenterColor[3] = m_fAlpha;
 		//切り取り座標
 		centerdst.top = 0;
 		centerdst.left = 0;
@@ -188,411 +624,7 @@ void COverlay::Draw()
 		image->DrawEx(62, &centersrc, &centerdst, col, 0.0f);
 		*/
 		//-------------------中キャラ終---------------------
-
-		//-------------------吹き出し-----------------------
-		//切り取り座標
-		ballondst.top = 0;
-		ballondst.left = 0;
-		ballondst.bottom = ballondst.top + 512;
-		ballondst.right = ballondst.left + 512;
-		//転送先座標
-		ballonsrc.top = WINDOW_SIZE_H - 150;
-		ballonsrc.left = 100;
-		ballonsrc.bottom = ballonsrc.top + 100;
-		ballonsrc.right = ballonsrc.left + (WINDOW_SIZE_W - 150);
-
-		image->DrawEx(59, &ballonsrc, &ballondst, col, 0.0f);
-		//-------------------吹き出し終--------------------
-
-		//-------------------待機インジケータ---------------
-		//切り取り座標
-		waitdst.top = 0;
-		waitdst.left = 0;
-		waitdst.bottom = waitdst.top + 256;
-		waitdst.right = waitdst.left + 256;
-		//転送先座標
-		waitsrc.top = WINDOW_SIZE_H - 125;
-		waitsrc.left = WINDOW_SIZE_W - 150;
-		waitsrc.bottom = waitsrc.top + 64;
-		waitsrc.right = waitsrc.left + 96;
-
-		image->DrawEx(63, &waitsrc, &waitdst, waitcol, 0.0f);
-		//-------------------待機インジケータ終-------------
-
-		//char tmpbool[64] = { 0 };
-		//sprintf_s(tmpbool, "%d", input->GetMouButtonL() ? 1 : 0);
-		//font->StrDraw(tmpbool, 0, 0, 16, col);
-
-		if (m_fAlpha == 1.0f) {
-
-			m_iDelay++;
-
-			switch (m_iDrawingStage)
-			{
-			case STAGE_TYPE::TUTORIAL: {
-				if (m_iChar_Line < textmgr->m_Tutorial_Text[m_iDrawingStageID].size()) {
-					if (m_iChar_Pos < textmgr->m_Tutorial_Text[m_iDrawingStageID][m_iChar_Line].length()) {
-						if (input->GetMouButtonLOnce()) {
-							m_strTemp[m_iChar_Line].clear();
-							m_strTemp[m_iChar_Line] += textmgr->m_Tutorial_Text[m_iDrawingStageID][m_iChar_Line];
-							m_iChar_Pos = textmgr->m_Tutorial_Text[m_iDrawingStageID][m_iChar_Line].length() + 1;
-						}
-						else {
-							if (m_iDelay > m_iTextSpeed) {
-								unsigned char lead = textmgr->m_Tutorial_Text[m_iDrawingStageID][m_iChar_Line][m_iChar_Pos];
-								if (lead < 128) {
-									m_iChar_Size = 1;
-								}
-								else if (lead < 224) {
-									m_iChar_Size = 2;
-								}
-								else if (lead < 240) {
-									m_iChar_Size = 3;
-								}
-								else {
-									m_iChar_Size = 4;
-								}
-
-								sprintf_s(c, "%s", textmgr->m_Tutorial_Text[m_iDrawingStageID][m_iChar_Line].substr(m_iChar_Pos, m_iChar_Size).c_str());
-								m_strTemp[m_iChar_Line] += c;
-
-								m_iChar_Pos += m_iChar_Size;
-							}
-						}
-					}
-					else {
-						if (input->GetMouButtonLOnce()) {
-							m_iChar_Pos = 0;
-							m_iChar_Line++;
-							m_fWaitAlpha = 0.0f;
-							m_bNextWaiting = false;
-							m_bCharaChangeFlg = false;
-						}
-						else {
-							if (m_iDelay > m_iTextSpeed) {
-								if (!m_bNextWaiting) {
-									m_fWaitAlpha = 1.0f;
-									m_bNextWaiting = true;
-								}
-								else {
-									m_fWaitAlpha = 0.0f;
-									m_bNextWaiting = false;
-								}
-							}
-						}
-					}
-				}
-				else {
-					if (input->GetMouButtonL()) {
-						FadeOut();
-						StopDraw();
-					}
-					else {
-						if (m_iDelay > m_iTextSpeed) {
-							if (!m_bNextWaiting) {
-								m_fWaitAlpha = 1.0f;
-								m_bNextWaiting = true;
-							}
-							else {
-								m_fWaitAlpha = 0.0f;
-								m_bNextWaiting = false;
-							}
-						}
-					}
-				}
-
-				if (m_iDelay > m_iTextSpeed)
-					m_iDelay = 0;
-
-				char linec[32];
-				sprintf_s(linec, "%d", m_iChar_Line);
-				if (textmgr->isCtrlLine(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line) && !m_bCharaChangeFlg) {
-					char *namet = textmgr->GetCharName(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line);
-					m_strTemp.clear();
-					m_strTemp.resize(textmgr->m_Tutorial_Text[m_iDrawingStageID].size());
-					m_strTempName.clear();
-					m_strTempName += namet;
-					m_bCharaChangeFlg = true;
-					m_iCurrentLine = m_iChar_Line;
-				}
-				break;
-			}
-			case STAGE_TYPE::SION: {
-				if (m_iChar_Line < textmgr->m_Sion_Text[m_iDrawingStageID].size()) {
-					if (m_iChar_Pos < textmgr->m_Sion_Text[m_iDrawingStageID][m_iChar_Line].length()) {
-						if (input->GetMouButtonLOnce()) {
-							m_strTemp[m_iChar_Line].clear();
-							m_strTemp[m_iChar_Line] += textmgr->m_Sion_Text[m_iDrawingStageID][m_iChar_Line];
-							m_iChar_Pos = textmgr->m_Sion_Text[m_iDrawingStageID][m_iChar_Line].length() + 1;
-						}
-						else {
-							if (m_iDelay > m_iTextSpeed) {
-								unsigned char lead = textmgr->m_Sion_Text[m_iDrawingStageID][m_iChar_Line][m_iChar_Pos];
-								if (lead < 128) {
-									m_iChar_Size = 1;
-								}
-								else if (lead < 224) {
-									m_iChar_Size = 2;
-								}
-								else if (lead < 240) {
-									m_iChar_Size = 3;
-								}
-								else {
-									m_iChar_Size = 4;
-								}
-
-								sprintf_s(c, "%s", textmgr->m_Sion_Text[m_iDrawingStageID][m_iChar_Line].substr(m_iChar_Pos, m_iChar_Size).c_str());
-								m_strTemp[m_iChar_Line] += c;
-
-								m_iChar_Pos += m_iChar_Size;
-							}
-						}
-					}
-					else {
-						if (input->GetMouButtonLOnce()) {
-							m_iChar_Pos = 0;
-							m_iChar_Line++;
-							m_fWaitAlpha = 0.0f;
-							m_bNextWaiting = false;
-							m_bCharaChangeFlg = false;
-						}
-						else {
-							if (m_iDelay > m_iTextSpeed) {
-								if (!m_bNextWaiting) {
-									m_fWaitAlpha = 1.0f;
-									m_bNextWaiting = true;
-								}
-								else {
-									m_fWaitAlpha = 0.0f;
-									m_bNextWaiting = false;
-								}
-							}
-						}
-					}
-				}
-				else {
-					if (input->GetMouButtonL()) {
-						FadeOut();
-						StopDraw();
-					}
-					else {
-						if (m_iDelay > m_iTextSpeed) {
-							if (!m_bNextWaiting) {
-								m_fWaitAlpha = 1.0f;
-								m_bNextWaiting = true;
-							}
-							else {
-								m_fWaitAlpha = 0.0f;
-								m_bNextWaiting = false;
-							}
-						}
-					}
-				}
-
-				if (m_iDelay > m_iTextSpeed)
-					m_iDelay = 0;
-
-				char linec[32];
-				sprintf_s(linec, "%d", m_iChar_Line);
-				if (textmgr->isCtrlLine(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line) && !m_bCharaChangeFlg) {
-					char *namet = textmgr->GetCharName(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line);
-					m_strTemp.clear();
-					m_strTemp.resize(textmgr->m_Sion_Text[m_iDrawingStageID].size());
-					m_strTempName.clear();
-					m_strTempName += namet;
-					m_bCharaChangeFlg = true;
-					m_iCurrentLine = m_iChar_Line;
-				}
-				break;
-			}
-			case STAGE_TYPE::KOUNE: {
-				if (m_iChar_Line < textmgr->m_Koune_Text[m_iDrawingStageID].size()) {
-					if (m_iChar_Pos < textmgr->m_Koune_Text[m_iDrawingStageID][m_iChar_Line].length()) {
-						if (input->GetMouButtonLOnce()) {
-							m_strTemp[m_iChar_Line].clear();
-							m_strTemp[m_iChar_Line] += textmgr->m_Koune_Text[m_iDrawingStageID][m_iChar_Line];
-							m_iChar_Pos = textmgr->m_Koune_Text[m_iDrawingStageID][m_iChar_Line].length() + 1;
-						}
-						else {
-							if (m_iDelay > m_iTextSpeed) {
-								unsigned char lead = textmgr->m_Koune_Text[m_iDrawingStageID][m_iChar_Line][m_iChar_Pos];
-								if (lead < 128) {
-									m_iChar_Size = 1;
-								}
-								else if (lead < 224) {
-									m_iChar_Size = 2;
-								}
-								else if (lead < 240) {
-									m_iChar_Size = 3;
-								}
-								else {
-									m_iChar_Size = 4;
-								}
-
-								sprintf_s(c, "%s", textmgr->m_Koune_Text[m_iDrawingStageID][m_iChar_Line].substr(m_iChar_Pos, m_iChar_Size).c_str());
-								m_strTemp[m_iChar_Line] += c;
-
-								m_iChar_Pos += m_iChar_Size;
-							}
-						}
-					}
-					else {
-						if (input->GetMouButtonLOnce()) {
-							m_iChar_Pos = 0;
-							m_iChar_Line++;
-							m_fWaitAlpha = 0.0f;
-							m_bNextWaiting = false;
-							m_bCharaChangeFlg = false;
-						}
-						else {
-							if (m_iDelay > m_iTextSpeed) {
-								if (!m_bNextWaiting) {
-									m_fWaitAlpha = 1.0f;
-									m_bNextWaiting = true;
-								}
-								else {
-									m_fWaitAlpha = 0.0f;
-									m_bNextWaiting = false;
-								}
-							}
-						}
-					}
-				}
-				else {
-					if (input->GetMouButtonL()) {
-						FadeOut();
-						StopDraw();
-					}
-					else {
-						if (m_iDelay > m_iTextSpeed) {
-							if (!m_bNextWaiting) {
-								m_fWaitAlpha = 1.0f;
-								m_bNextWaiting = true;
-							}
-							else {
-								m_fWaitAlpha = 0.0f;
-								m_bNextWaiting = false;
-							}
-						}
-					}
-				}
-
-				if (m_iDelay > m_iTextSpeed)
-					m_iDelay = 0;
-
-				char linec[32];
-				sprintf_s(linec, "%d", m_iChar_Line);
-				if (textmgr->isCtrlLine(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line) && !m_bCharaChangeFlg) {
-					char *namet = textmgr->GetCharName(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line);
-					m_strTemp.clear();
-					m_strTemp.resize(textmgr->m_Koune_Text[m_iDrawingStageID].size());
-					m_strTempName.clear();
-					m_strTempName += namet;
-					m_bCharaChangeFlg = true;
-					m_iCurrentLine = m_iChar_Line;
-				}
-				break;
-			}
-			case STAGE_TYPE::MERUERU: {
-				if (m_iChar_Line < textmgr->m_Merueru_Text[m_iDrawingStageID].size()) {
-					if (m_iChar_Pos < textmgr->m_Merueru_Text[m_iDrawingStageID][m_iChar_Line].length()) {
-						if (input->GetMouButtonLOnce()) {
-							m_strTemp[m_iChar_Line].clear();
-							m_strTemp[m_iChar_Line] += textmgr->m_Merueru_Text[m_iDrawingStageID][m_iChar_Line];
-							m_iChar_Pos = textmgr->m_Merueru_Text[m_iDrawingStageID][m_iChar_Line].length() + 1;
-						}
-						else {
-							if (m_iDelay > m_iTextSpeed) {
-								unsigned char lead = textmgr->m_Merueru_Text[m_iDrawingStageID][m_iChar_Line][m_iChar_Pos];
-								if (lead < 128) {
-									m_iChar_Size = 1;
-								}
-								else if (lead < 224) {
-									m_iChar_Size = 2;
-								}
-								else if (lead < 240) {
-									m_iChar_Size = 3;
-								}
-								else {
-									m_iChar_Size = 4;
-								}
-
-								sprintf_s(c, "%s", textmgr->m_Merueru_Text[m_iDrawingStageID][m_iChar_Line].substr(m_iChar_Pos, m_iChar_Size).c_str());
-								m_strTemp[m_iChar_Line] += c;
-
-								m_iChar_Pos += m_iChar_Size;
-							}
-						}
-					}
-					else {
-						if (input->GetMouButtonLOnce()) {
-							m_iChar_Pos = 0;
-							m_iChar_Line++;
-							m_fWaitAlpha = 0.0f;
-							m_bNextWaiting = false;
-							m_bCharaChangeFlg = false;
-						}
-						else {
-							if (m_iDelay > m_iTextSpeed) {
-								if (!m_bNextWaiting) {
-									m_fWaitAlpha = 1.0f;
-									m_bNextWaiting = true;
-								}
-								else {
-									m_fWaitAlpha = 0.0f;
-									m_bNextWaiting = false;
-								}
-							}
-						}
-					}
-				}
-				else {
-					if (input->GetMouButtonL()) {
-						FadeOut();
-						StopDraw();
-					}
-					else {
-						if (m_iDelay > m_iTextSpeed) {
-							if (!m_bNextWaiting) {
-								m_fWaitAlpha = 1.0f;
-								m_bNextWaiting = true;
-							}
-							else {
-								m_fWaitAlpha = 0.0f;
-								m_bNextWaiting = false;
-							}
-						}
-					}
-				}
-
-				if (m_iDelay > m_iTextSpeed)
-					m_iDelay = 0;
-
-				char linec[32];
-				sprintf_s(linec, "%d", m_iChar_Line);
-				if (textmgr->isCtrlLine(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line) && !m_bCharaChangeFlg) {
-					char *namet = textmgr->GetCharName(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line);
-					m_strTemp.clear();
-					m_strTemp.resize(textmgr->m_Merueru_Text[m_iDrawingStageID].size());
-					m_strTempName.clear();
-					m_strTempName += namet;
-					m_bCharaChangeFlg = true;
-					m_iCurrentLine = m_iChar_Line;
-				}
-				break;
-			}
-			}
-
-			sprintf_s(tmpname, "%s", m_strTempName.c_str());
-			float col[4] = { 1.0f,1.0f,1.0f,m_fAlpha };
-			font->StrDraw(tmpname, WINDOW_SIZE_W / 2 - 300, WINDOW_SIZE_H / 2 + 150, 16, col);
-
-			for (unsigned int i = 0; i < m_strTemp.size(); ++i) {
-				sprintf_s(tmp, "%s", m_strTemp[i].c_str());
-				float col[4] = { 1.0f,1.0f,1.0f,m_fAlpha };
-				font->StrDraw(tmp, WINDOW_SIZE_W / 2 - 300, (WINDOW_SIZE_H / 2 + 200) + ((i - m_iCurrentLine) * 16), 16, col);
-			}
-		}
+		//------------------------キャラビジュアル表示処理終了---------------------------
 	}
 }
 

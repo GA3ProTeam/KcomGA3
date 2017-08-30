@@ -56,7 +56,7 @@ void Gimmick::gimmicDraw(int num)
 			m_iballoontime = BALLOON_KEEP_TIME;
 			if (!Input()->GetMouButtonL() && m_menu_tab->GetHaveSound()) {
 				//ドラッグしていた効果音をギミックに聞かせる
-				Audio()->Start(m_menu_tab->GetGiveSound());
+				SoundManager()->StartSound(m_menu_tab->GetGiveSound());
 				m_getsound = true;
 			}
 		}

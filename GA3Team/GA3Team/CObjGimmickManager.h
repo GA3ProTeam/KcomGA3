@@ -94,10 +94,10 @@ private:
 
 
 	//ステージ5↓
-	GimmickMysteryDoor* m_gimmick_mysterydoor;
-	GimmickMechanic* m_gimmick_mechanic;
-	GimmickSoundComputer* m_gimmick_soundcomputer;
-	GimmickMusician* m_gimmick_musician;
+//	GimmickMysteryDoor* m_gimmick_mysterydoor;
+//	GimmickMechanic* m_gimmick_mechanic;
+//	GimmickSoundComputer* m_gimmick_soundcomputer;
+//	GimmickMusician* m_gimmick_musician;
 	//ステージ5↑
 
 	//コウネステージ↑

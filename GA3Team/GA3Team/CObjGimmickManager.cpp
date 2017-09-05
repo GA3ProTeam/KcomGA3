@@ -109,7 +109,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 		Obj()->InsertObj(m_gimmick_katsuo, GIMMICK_KATSUO, 5, this->m_pScene, HIT_BOX_OFF);
 		m_gimmick_katsuo->Init(-100, 200, 64, 64, 1);
 
-		m_gimmick_door = new GimmickDoor();
+		m_gimmick_door = new GimmickDoctorroomDoor();
 		Obj()->InsertObj(m_gimmick_door, GIMMICK_DOOR, 5, this->m_pScene, HIT_BOX_OFF);
 		m_gimmick_door->Init(400, 150, 100, 300, 1);
 		*/

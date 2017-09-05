@@ -46,7 +46,7 @@ void COverlay::InitLoad()
 	//ステージ
 	image->LoadImageEx("シオンステージ-1.png", 23, TEX_SIZE_1024);
 	image->LoadImageEx("コウネステージ-1.png", 24, TEX_SIZE_1024);
-	image->LoadImageEx("研究所　背景.png", 25, TEX_SIZE_1024);
+	image->LoadImageEx("研究所背景.png", 25, TEX_SIZE_1024);
 
 	//透過・暗転初期化
 	m_fDefColor[0] = 1.0f;

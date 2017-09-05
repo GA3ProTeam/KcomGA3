@@ -457,6 +457,61 @@ class GimmickCicada : public Gimmick
 
 
 //ステージ5↓
+//①ドア
+class GimmickMysteryDoor : public Gimmick
+{
+public:
+	GimmickMysteryDoor() {};
+	~GimmickMysteryDoor() {};
+
+	//void Init();
+	void Destructor();	//デストラクタ
+	void Action();		//アクション
+	void Draw();		//描画
+private:
+
+};
+//②メカニック
+class GimmickMechanic : public Gimmick
+{
+public:
+	GimmickMechanic() {};
+	~GimmickMechanic() {};
+
+	//void Init();
+	void Destructor();  //デストラクタ
+	void Action();      //アクション
+	void Draw();		//描画
+private:
+
+};
+//③パソコン
+class GimmickSoundComputer : public Gimmick
+{
+public:
+	GimmickSoundComputer() {};
+	~GimmickSoundComputer() {};
+
+	//void Init();
+	void Destructor();  //デストラクタ
+	void Action();		//アクション
+	void Draw();		//描画
+private:
+};
+//④演奏家
+class GimmickMusician : public Gimmick
+{
+public:
+	GimmickMusician() {};
+	~GimmickMusician() {};
+
+	//void Init();
+	void Destructor();  //デストラクタ
+	void Action();		//アクション
+	void Draw();		//描画
+private:
+
+};
 //ステージ5↑
 
 //ステージ6↓

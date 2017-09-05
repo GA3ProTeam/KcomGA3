@@ -58,84 +58,85 @@ void GimmickDoctor::Init(int xpos, int ypos, int widht, int height, int balloonn
 	//吹き出しの初期化
 	InitBall(&m_ball[0], m_iWidth - 50, -48, talk, 1, RED, LOWER_LEFT);
 
-	//会話「ようこそ！ここは・・・」
-	Overlay()->talkDraw(TUTORIAL, HAKASE_1);
+	////会話「ようこそ！ここは・・・」
+	//Overlay()->talkDraw(TUTORIAL, HAKASE_1);
 }
 
 //デストラクタ
 void GimmickDoctor::Destructor() {
-
+	
 }
 
 //アクション
 void GimmickDoctor::Action() {
-	//メニュータブへの参照取得
-	CObjMenuTab* tab = (CObjMenuTab*)Obj()->GetObj(OBJ_MENUTAB);
 
-	//初回動作
-	if (!SavedataManeger()->CurrentData->m_btutoriaruflg[0]) {
-		
-	}
-	//レコーダー入手後（フラグ1達成後）
-	else if (SavedataManeger()->CurrentData->m_btutoriaruflg[0] &&
-		!SavedataManeger()->CurrentData->m_btutoriaruflg[1]) {
-		
-		SavedataManeger()->Writesavedata();
+	////初回動作
+	//if (!SavedataManeger()->CurrentData->m_btutoriaruflg[0]) {
 
-		//音を録音していない（フラグ2未達成）状態で、会話
-		if (m_ball[0].OnPush) {
-			//会話「話を聞いていなかったのかね？・・・」
-			Overlay()->talkDraw(TUTORIAL, HAKASE_FLAG_2_1_NO);
-		}
-	}
-	//音を録音後（フラグ2達成後）、会話
-	else if (SavedataManeger()->CurrentData->m_btutoriaruflg[1] &&
-			!SavedataManeger()->CurrentData->m_btutoriaruflg[2]) {
-		
-		if (m_ball[0].OnPush) {
-			//会話「うむ、言われたことはできるようなのだな・・・」
-			Overlay()->talkDraw(TUTORIAL, HAKASE_FLAG_2_1_YES);
+	//}
+	////レコーダー入手後（フラグ1達成後）
+	//else if (SavedataManeger()->CurrentData->m_btutoriaruflg[0] &&
+	//	!SavedataManeger()->CurrentData->m_btutoriaruflg[1]) {
+	//	
+	//	SavedataManeger()->Writesavedata();
 
-			//録音した後、会話した（フラグ3達成）
-			SavedataManeger()->CurrentData->m_btutoriaruflg[2] = true;
-		}
-	}
-	//音を再生
-	else if (!SavedataManeger()->CurrentData->m_btutorial) {
-		//メニュータブへの参照取得
-		CObjMenuTab* tab = (CObjMenuTab*)Obj()->GetObj(OBJ_MENUTAB);
+	//	//音を録音していない（フラグ2未達成）状態で、会話
+	//	if (m_ball[0].OnPush) {
+	//		//会話「話を聞いていなかったのかね？・・・」
+	//		Overlay()->talkDraw(TUTORIAL, HAKASE_FLAG_2_1_NO);
+	//	}
+	//}
+	////音を録音後（フラグ2達成後）、会話
+	//else if (SavedataManeger()->CurrentData->m_btutoriaruflg[1] &&
+	//		!SavedataManeger()->CurrentData->m_btutoriaruflg[2]) {
+	//	
+	//	if (m_ball[0].OnPush) {
+	//		//会話「うむ、言われたことはできるようなのだな・・・」
+	//		Overlay()->talkDraw(TUTORIAL, HAKASE_FLAG_2_1_YES);
 
-		//音ボタンドラッグ処理-------------------------------------------------------
-		//音ボタンドラッグ中にマウスボタンが離された
-		if (!Input()->GetMouButtonL() && tab->GetHaveSound()) {
-			//マウスがギミック範囲内か確認
-			if (Input()->m_x > m_iXpos&& Input()->m_x < (m_iXpos + m_iWidth)
-				&& Input()->m_y > m_iYpos && Input()->m_y < (m_iYpos + m_iHeight)) {
+	//		//録音した後、会話した（フラグ3達成）
+	//		SavedataManeger()->CurrentData->m_btutoriaruflg[2] = true;
+	//	}
+	//}
+	////音を再生
+	//else if (!SavedataManeger()->CurrentData->m_btutorial) {
 
-				//チュートリアルにはパソコンしかないので、音番号判定は無し
+	//	//音ボタンドラッグ処理-------------------------------------------------------
+	//	if (m_getsound != -1) {
+	//		int a = 0;
 
-				//チュートリアルクリア
-				SavedataManeger()->CurrentData->m_btutorial = true;
-			}
-		}
-		//---------------------------------------------------------------------------
-	}
-	else if (SavedataManeger()->CurrentData->m_btutorial) {
+	//	}
 
-		//博士に話しかけず録音から再生まで達成（フラグ2○　フラグ3×）
-		if (!SavedataManeger()->CurrentData->m_btutoriaruflg[2]) {
-			//会話「わしは録音をするようにいったはずなのだが・・・」
-			Overlay()->talkDraw(TUTORIAL, HAKASE_FLAG_2_YES_3_NO);
-		}
-		//話しかけた後、再生した
-		else {
-			//会話「ふむふむ・・・。この音！・・・」
-			Overlay()->talkDraw(TUTORIAL, HAKASE_CLEAR);
+	//	////音ボタンドラッグ中にマウスボタンが離された
+	//	//if (!Input()->GetMouButtonL() && tab->GetHaveSound()) {
+	//	//	//マウスがギミック範囲内か確認
+	//	//	if (Input()->m_x > m_iXpos&& Input()->m_x < (m_iXpos + m_iWidth)
+	//	//		&& Input()->m_y > m_iYpos && Input()->m_y < (m_iYpos + m_iHeight)) {
+
+	//	//		//チュートリアルにはパソコンしかないので、音番号判定は無し
+
+	//	//		//チュートリアルクリア
+	//	//		SavedataManeger()->CurrentData->m_btutorial = true;
+	//	//	}
+	//	//}
+	//	//---------------------------------------------------------------------------
+	//}
+	//else if (SavedataManeger()->CurrentData->m_btutorial) {
+
+	//	//博士に話しかけず録音から再生まで達成（フラグ2○　フラグ3×）
+	//	if (!SavedataManeger()->CurrentData->m_btutoriaruflg[2]) {
+	//		//会話「わしは録音をするようにいったはずなのだが・・・」
+	//		Overlay()->talkDraw(TUTORIAL, HAKASE_FLAG_2_YES_3_NO);
+	//	}
+	//	//話しかけた後、再生した
+	//	else {
+	//		//会話「ふむふむ・・・。この音！・・・」
+	//		Overlay()->talkDraw(TUTORIAL, HAKASE_CLEAR);
 
 
-		}
+	//	}
 
-	}
+	//}
 
 }
 
@@ -160,12 +161,17 @@ void GimmickDoctor::Draw() {
 	Image()->Draw(5, &m_src, &m_dst, col, 0.0f);
 	//---------------------------------------------------------------------------
 
-	//レコーダーを取得した後から吹き出し出現
-	if (SavedataManeger()->CurrentData->m_btutoriaruflg[0]) {
-		//吹き出し描画＆動作---------------------------------------------------------
-		this->gimmicDraw(2);
-		//---------------------------------------------------------------------------
-	}
+	////レコーダーを取得した後から吹き出し出現
+	//if (SavedataManeger()->CurrentData->m_btutoriaruflg[0]) {
+	//	//吹き出し描画＆動作---------------------------------------------------------
+	//	this->gimmicDraw(1);
+	//	//---------------------------------------------------------------------------
+	//}
+
+
+	//吹き出し描画＆動作---------------------------------------------------------
+	this->gimmicDraw(1);
+	//---------------------------------------------------------------------------
 
 	//【会話終了時】
 	SavedataManeger()->CurrentData->m_btutoriaruflg[0];
@@ -188,11 +194,11 @@ void GimmickComputer::Destructor() {
 
 //アクション
 void GimmickComputer::Action() {
-	//音符吹き出しが押された
-	if (m_ball[0].OnPush) {
-		//フラグ2達成
-		SavedataManeger()->CurrentData->m_btutoriaruflg[1] = true;
-	}
+	////音符吹き出しが押された
+	//if (m_ball[0].OnPush) {
+	//	//フラグ2達成
+	//	SavedataManeger()->CurrentData->m_btutoriaruflg[1] = true;
+	//}
 }
 
 //ドロー
@@ -216,10 +222,14 @@ void GimmickComputer::Draw() {
 	Image()->Draw(5, &m_src, &m_dst, col, 0.0f);
 	//---------------------------------------------------------------------------
 
+	////吹き出し描画＆動作---------------------------------------------------------
+	//if (SavedataManeger()->CurrentData->m_btutoriaruflg[0]) {
+	//	this->gimmicDraw(1);
+	//}
+	////---------------------------------------------------------------------------
+
 	//吹き出し描画＆動作---------------------------------------------------------
-	if (SavedataManeger()->CurrentData->m_btutoriaruflg[0]) {
-		this->gimmicDraw(1);
-	}
+	this->gimmicDraw(1);
 	//---------------------------------------------------------------------------
 }
 
@@ -240,17 +250,17 @@ void GimmickRecorder::Destructor() {
 
 //アクション
 void GimmickRecorder::Action() {
-	//吹き出しが押されたか確認
-	if (m_ball[0].OnPush) {
-		//フラグ1達成
-		SavedataManeger()->CurrentData->m_btutoriaruflg[0] = true;
+	////吹き出しが押されたか確認
+	//if (m_ball[0].OnPush) {
+	//	//フラグ1達成
+	//	SavedataManeger()->CurrentData->m_btutoriaruflg[0] = true;
 
-		//レコーダー破棄
-		m_Status = STATUS_DELETE;
+	//	//レコーダー破棄
+	//	m_Status = STATUS_DELETE;
 
-		//会話「それはこの研究所が開発したレコーダー・・・」
-		Overlay()->talkDraw(TUTORIAL, HAKASE_FLAG_1_1);
-	}
+	//	//会話「それはこの研究所が開発したレコーダー・・・」
+	//	Overlay()->talkDraw(TUTORIAL, HAKASE_FLAG_1_1);
+	//}
 }
 
 //ドロー
@@ -1226,7 +1236,7 @@ void GimmickKitten::Init(int xpos, int ypos, int widht, int height, int balloonn
 //デストラクタ
 void GimmickKitten::Destructor()
 {
-
+	delete[] m_ball;
 }
 //アクション
 void GimmickKitten::Action()
@@ -1266,7 +1276,7 @@ void GimmickCicada::Init(int xpos, int ypos, int widht, int height, int balloonn
 //デストラクタ
 void GimmickCicada::Destructor()
 {
-
+	delete[] m_ball;
 }
 //アクション
 void GimmickCicada::Action()
@@ -1305,7 +1315,7 @@ void GimmickLittleGirl::Init(int xpos, int ypos, int widht, int height, int ball
 //デストラクタ
 void GimmickLittleGirl::Destructor()
 {
-
+	delete[] m_ball;
 }
 //アクション
 void GimmickLittleGirl::Action()

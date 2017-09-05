@@ -9,7 +9,7 @@ void Gimmick::Init(int xpos, int ypos, int widht, int height, int balloonnum)
 	m_iballoonnum = balloonnum;//吹き出しの総数
 
 	m_menu_tab = (CObjMenuTab*)Obj()->GetObj(OBJ_MENUTAB);//メニュータブへの参照セット
-	m_getsound = false;
+	m_getsound = -1;
 	//吹き出し生成
 	m_ball = new Balloon[m_iballoonnum];
 	//吹き出し初期化
@@ -57,11 +57,12 @@ void Gimmick::gimmicDraw(int num)
 			if (!Input()->GetMouButtonL() && m_menu_tab->GetHaveSound()) {
 				//ドラッグしていた効果音をギミックに聞かせる
 				SoundManager()->StartSound(m_menu_tab->GetGiveSound());
-				m_getsound = true;
+				//ドラッグした効果音番号を取得
+				m_getsound = SoundManager()->GetSound(m_menu_tab->GetGiveSound());
 			}
 		}
 		else {
-			m_getsound = false;
+			m_getsound = -1;
 			m_iballoontime--;
 		}
 

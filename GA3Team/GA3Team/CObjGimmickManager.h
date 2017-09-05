@@ -68,8 +68,8 @@ private:
 	//メルエルステージ↓
 	//ステージ1↓
 	GimmickTelevision* m_gimmick_television;
-	GimmickOven* m_gimmick_oven;
 	GimmickKatsuo* m_gimmick_katsuo;
+	GimmickOven* m_gimmick_oven;
 	GimmickDoctorroomDoor* m_gimmick_door;
 
 	//ステージ1↑

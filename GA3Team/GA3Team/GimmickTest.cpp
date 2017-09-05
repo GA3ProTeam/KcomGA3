@@ -1420,7 +1420,7 @@ void GimmickTelevision::Init(int xpos, int ypos, int widht, int height, int ball
 
 void GimmickTelevision::Destructor()
 {
-
+	delete[] m_ball;
 }
 
 void GimmickTelevision::Action()
@@ -1448,7 +1448,7 @@ void GimmickTelevision::Draw()
 	//転送先座標
 	m_src.top = m_iYpos;
 	m_src.bottom = m_src.top + m_iHeight;
-	m_src.left = m_iXpos;
+	m_src.left = m_iXpos + User()->mscroll_x;
 	m_src.right = m_src.left + m_iWidth;
 
 	//描画
@@ -1471,7 +1471,7 @@ void GimmickOven::Init(int xpos, int ypos, int widht, int height, int balloonnum
 
 void GimmickOven::Destructor()
 {
-
+	delete[] m_ball;
 }
 
 void GimmickOven::Action()
@@ -1492,18 +1492,18 @@ void GimmickOven::Draw()
 	//ギミック本体描画-----------------------------------------------------------
 	//切り取り先座標
 	m_dst.top = 0;
-	m_dst.bottom = m_dst.top + 200;
+	m_dst.bottom = m_dst.top + 512;
 	m_dst.left = 0;
-	m_dst.right = m_dst.left + 200;
+	m_dst.right = m_dst.left + 1024;
 
 	//転送先座標
 	m_src.top = m_iYpos;
 	m_src.bottom = m_src.top + m_iHeight;
-	m_src.left = m_iXpos;
+	m_src.left = m_iXpos + User()->mscroll_x;
 	m_src.right = m_src.left + m_iWidth;
 
 	//描画
-	Image()->Draw(5, &m_src, &m_dst, col, 0.0f);
+	Image()->Draw(6, &m_src, &m_dst, col, 0.0f);
 	//---------------------------------------------------------------------------
 
 	//吹き出し描画＆動作---------------------------------------------------------
@@ -1522,7 +1522,7 @@ void GimmickKatsuo::Init(int xpos, int ypos, int widht, int height, int balloonn
 
 void GimmickKatsuo::Destructor()
 {
-
+	delete[] m_ball;
 }
 
 void GimmickKatsuo::Action()
@@ -1586,18 +1586,18 @@ void GimmickKatsuo::Draw()
 	//ギミック本体描画-----------------------------------------------------------
 	//切り取り先座標
 	m_dst.top = 0;
-	m_dst.bottom = m_dst.top + 200;
+	m_dst.bottom = m_dst.top + 512;
 	m_dst.left = 0;
-	m_dst.right = m_dst.left + 200;
+	m_dst.right = m_dst.left + 512;
 
 	//転送先座標
 	m_src.top = m_iYpos;
 	m_src.bottom = m_src.top + m_iHeight;
-	m_src.left = m_iXpos;
+	m_src.left = m_iXpos + User()->mscroll_x;
 	m_src.right = m_src.left + m_iWidth;
 
 	//描画
-	Image()->Draw(5, &m_src, &m_dst, col, 0.0f);
+	Image()->Draw(12, &m_src, &m_dst, col, 0.0f);
 	//---------------------------------------------------------------------------
 
 	//吹き出し描画＆動作---------------------------------------------------------
@@ -1616,7 +1616,7 @@ void GimmickDoctorroomDoor::Init(int xpos, int ypos, int widht, int height, int 
 
 void GimmickDoctorroomDoor::Destructor()
 {
-
+	delete[] m_ball;
 }
 
 void GimmickDoctorroomDoor::Action()
@@ -1645,18 +1645,18 @@ void GimmickDoctorroomDoor::Draw()
 	//ギミック本体描画-----------------------------------------------------------
 	//切り取り先座標
 	m_dst.top = 0;
-	m_dst.bottom = m_dst.top + 200;
+	m_dst.bottom = m_dst.top + 512;
 	m_dst.left = 0;
-	m_dst.right = m_dst.left + 200;
+	m_dst.right = m_dst.left + 512;
 
 	//転送先座標
 	m_src.top = m_iYpos;
 	m_src.bottom = m_src.top + m_iHeight;
-	m_src.left = m_iXpos;
+	m_src.left = m_iXpos + User()->mscroll_x;
 	m_src.right = m_src.left + m_iWidth;
 
 	//描画
-	Image()->Draw(5, &m_src, &m_dst, col, 0.0f);
+	Image()->Draw(13, &m_src, &m_dst, col, 0.0f);
 	//---------------------------------------------------------------------------
 
 	//吹き出し描画＆動作---------------------------------------------------------

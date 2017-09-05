@@ -42,11 +42,11 @@ void COverlay::InitLoad()
 	image->LoadImageEx("メルエル.png", 20, TEX_SIZE_512);
 	//吹き出し系統-----------------------------------
 	image->LoadImageEx("アイコン.png", 21, TEX_SIZE_1024);
-	image->LoadImageEx("会話吹き出しまとめ.png", 22, TEX_SIZE_1024);
+	image->LoadImageEx("会話吹き出し.png", 22, TEX_SIZE_1024);
 	//ステージ
 	image->LoadImageEx("シオンステージ-1.png", 23, TEX_SIZE_1024);
 	image->LoadImageEx("コウネステージ-1.png", 24, TEX_SIZE_1024);
-	image->LoadImageEx("研究所　背景.png", 25, TEX_SIZE_1024);
+	image->LoadImageEx("研究所背景.png", 25, TEX_SIZE_1024);
 
 	//透過・暗転初期化
 	m_fDefColor[0] = 1.0f;
@@ -79,6 +79,61 @@ void COverlay::InitLoad()
 	m_fBallonColor[2] = 1.0f;
 	m_fBallonColor[3] = m_fAlpha;
 
+	//吹き出しsrc設定
+	m_RBalloon_src[TALKBALLOON_NORMAL_LEFT].top = 200;
+	m_RBalloon_src[TALKBALLOON_NORMAL_LEFT].left = 0;
+	m_RBalloon_src[TALKBALLOON_NORMAL_LEFT].bottom = 400;
+	m_RBalloon_src[TALKBALLOON_NORMAL_LEFT].right = 600;
+
+	m_RBalloon_src[TALKBALLOON_NORMAL_RIGHT].top = 0;
+	m_RBalloon_src[TALKBALLOON_NORMAL_RIGHT].left = 0;
+	m_RBalloon_src[TALKBALLOON_NORMAL_RIGHT].bottom = 200;
+	m_RBalloon_src[TALKBALLOON_NORMAL_RIGHT].right = 600;
+
+	m_RBalloon_src[TALKBALLOON_CLOUD_LEFT].top = 400;
+	m_RBalloon_src[TALKBALLOON_CLOUD_LEFT].left = 0;
+	m_RBalloon_src[TALKBALLOON_CLOUD_LEFT].bottom = 600;
+	m_RBalloon_src[TALKBALLOON_CLOUD_LEFT].right = 600;
+
+	m_RBalloon_src[TALKBALLOON_CLOUD_RIGHT].top = 600;
+	m_RBalloon_src[TALKBALLOON_CLOUD_RIGHT].left = 0;
+	m_RBalloon_src[TALKBALLOON_CLOUD_RIGHT].bottom = 800;
+	m_RBalloon_src[TALKBALLOON_CLOUD_RIGHT].right = 600;
+
+	m_RBalloon_src[TALKBALLOON_SQUARE].top = 800;
+	m_RBalloon_src[TALKBALLOON_SQUARE].left = 0;
+	m_RBalloon_src[TALKBALLOON_SQUARE].bottom = 1000;
+	m_RBalloon_src[TALKBALLOON_SQUARE].right = 600;
+
+	//吹き出しdst設定
+	m_RBalloon_dst[TALKBALLOON_NORMAL_LEFT].top = 200;
+	m_RBalloon_dst[TALKBALLOON_NORMAL_LEFT].left = 0;
+	m_RBalloon_dst[TALKBALLOON_NORMAL_LEFT].bottom = 400;
+	m_RBalloon_dst[TALKBALLOON_NORMAL_LEFT].right = 600;
+
+	m_RBalloon_dst[TALKBALLOON_NORMAL_RIGHT].top = 0;
+	m_RBalloon_dst[TALKBALLOON_NORMAL_RIGHT].left = 0;
+	m_RBalloon_dst[TALKBALLOON_NORMAL_RIGHT].bottom = 200;
+	m_RBalloon_dst[TALKBALLOON_NORMAL_RIGHT].right = 600;
+
+	m_RBalloon_dst[TALKBALLOON_CLOUD_LEFT].top = 400;
+	m_RBalloon_dst[TALKBALLOON_CLOUD_LEFT].left = 0;
+	m_RBalloon_dst[TALKBALLOON_CLOUD_LEFT].bottom = 600;
+	m_RBalloon_dst[TALKBALLOON_CLOUD_LEFT].right = 600;
+
+	m_RBalloon_dst[TALKBALLOON_CLOUD_RIGHT].top = 600;
+	m_RBalloon_dst[TALKBALLOON_CLOUD_RIGHT].left = 0;
+	m_RBalloon_dst[TALKBALLOON_CLOUD_RIGHT].bottom = 800;
+	m_RBalloon_dst[TALKBALLOON_CLOUD_RIGHT].right = 600;
+
+	m_RBalloon_dst[TALKBALLOON_SQUARE].top = 800;
+	m_RBalloon_dst[TALKBALLOON_SQUARE].left = 0;
+	m_RBalloon_dst[TALKBALLOON_SQUARE].bottom = 1000;
+	m_RBalloon_dst[TALKBALLOON_SQUARE].right = 600;
+
+	//暗転判断用char初期化
+	memset(m_cLeftCharaName, '\0', sizeof(char) * 64);
+	memset(m_cRightCharaName, '\0', sizeof(char) * 64);
 }
 
 void COverlay::Action()
@@ -107,6 +162,7 @@ void COverlay::Action()
 			m_iDrawFlg = 0;
 			m_bDrawing = false;
 			m_fAlpha = 0.0f;
+			m_iDrawingCT = 30;
 		}
 	}
 	//------------------------------
@@ -163,20 +219,15 @@ void COverlay::Draw()
 		//-------------------背景終------------------------
 
 		//-------------------吹き出し-----------------------
-		RECT ballonsrc, ballondst;
+		RECT ballonsrc;
 		m_fBallonColor[3] = m_fAlpha;
-		//切り取り座標
-		ballondst.top = 0;
-		ballondst.left = 0;
-		ballondst.bottom = ballondst.top + 512;
-		ballondst.right = ballondst.left + 512;
 		//転送先座標
-		ballonsrc.top = WINDOW_SIZE_H - 150;
+		ballonsrc.top = WINDOW_SIZE_H - 200;
 		ballonsrc.left = 100;
-		ballonsrc.bottom = ballonsrc.top + 100;
-		ballonsrc.right = ballonsrc.left + (WINDOW_SIZE_W - 150);
+		ballonsrc.bottom = ballonsrc.top + 200;
+		ballonsrc.right = ballonsrc.left + 600;
 
-		image->DrawEx(59, &ballonsrc, &ballondst, m_fBallonColor, 0.0f);
+		image->DrawEx(22, &ballonsrc, &m_RBalloon_src[TALKBALLOON_NORMAL_LEFT], m_fBallonColor, 0.0f);
 		//-------------------吹き出し終--------------------
 
 		//-------------------待機インジケータ---------------
@@ -570,12 +621,12 @@ void COverlay::Draw()
 			}
 
 			sprintf_s(tmpname, "%s", m_strTempName.c_str());
-			float col[4] = { 1.0f,1.0f,1.0f,m_fAlpha };
+			float col[4] = { 0.0f,0.0f,0.0f,m_fAlpha };
 			font->StrDraw(tmpname, WINDOW_SIZE_W / 2 - 300, WINDOW_SIZE_H / 2 + 150, 16, col);
 
 			for (unsigned int i = 0; i < m_strTemp.size(); ++i) {
 				sprintf_s(tmp, "%s", m_strTemp[i].c_str());
-				float col[4] = { 1.0f,1.0f,1.0f,m_fAlpha };
+				float col[4] = { 0.0f,0.0f,0.0f,m_fAlpha };
 				font->StrDraw(tmp, WINDOW_SIZE_W / 2 - 300, (WINDOW_SIZE_H / 2 + 200) + ((i - m_iCurrentLine) * 16), 16, col);
 			}
 		}
@@ -593,7 +644,7 @@ void COverlay::Draw()
 
 		//転送先座標
 		leftsrc.top = TALK_CHARA_LEFT_MARGIN_Y;
-		leftsrc.left = TALK_CHARA_LEFT_MARGIN_X;
+		leftsrc.left = 0;
 		leftsrc.bottom = leftsrc.top + 300;
 		leftsrc.right = leftsrc.left + 250;
 
@@ -643,6 +694,11 @@ void COverlay::Draw()
 
 void COverlay::talkDraw(int stage, int stageID)
 {
+	if (m_iDrawingCT > 0) {
+		m_iDrawingCT--;
+		return;
+	}
+
 	if (m_iDrawingStage == stage && m_iDrawingStageID == stageID && m_fAlpha != 0.0f)
 		return;
 

@@ -19,6 +19,7 @@ void CSceneGameMain::InitScene()
 	Image()->LoadImage("消防車.png", 11, TEX_SIZE_1024);//消防車
 	Image()->LoadImage("カツオc.png", 12, TEX_SIZE_512);//カツオ
 	Image()->LoadImage("ドアc.png", 13, TEX_SIZE_512);//博士の部屋のドア
+	Image()->LoadImage("研究所　背景.png", 14, TEX_SIZE_512);//博士の部屋
 	//Image()->LoadImage("boss.png",2,TEX_SIZE_256);
 
 	//文字データ作成
@@ -49,20 +50,18 @@ void CSceneGameMain::InitScene()
 	Obj()->InsertObj(m_obj_menutab, OBJ_MENUTAB, 5, this, HIT_BOX_OFF);
 	m_obj_menutab->Init(400);
 
+	m_obj_Rscroll = new ButtonRScrollScreen();
+	m_obj_Rscroll->Init();
+	Obj()->InsertObj(m_obj_Rscroll, BUTTON_RSCROLL_SCREEN, 5, this, HIT_BOX_OFF);
+
+	m_obj_Lscroll = new ButtonLScrollScreen();
+	m_obj_Lscroll->Init();
+	Obj()->InsertObj(m_obj_Lscroll, BUTTON_LSCROLL_SCREEN, 5, this, HIT_BOX_OFF);
 
 	m_obj_gimmickmanager = new CObjGimmickManager();
 	Obj()->InsertObj(m_obj_gimmickmanager, OBJ_GIMMICK_MANAGER, 0, this, HIT_BOX_OFF);
 	m_obj_gimmickmanager->Init(0,0);
 
-	m_obj_Rscroll = new ButtonRScrollScreen();
-	m_obj_Rscroll->Init();
-	Obj()->InsertObj(m_obj_Rscroll, BUTTON_RSCROLL_SCREEN, 0, this, HIT_BOX_OFF);
-
-	m_obj_Lscroll = new ButtonLScrollScreen();
-	m_obj_Lscroll->Init();
-	Obj()->InsertObj(m_obj_Lscroll, BUTTON_LSCROLL_SCREEN, 0, this, HIT_BOX_OFF);
-	
-	
 	m_gimmick_test = new GimmickTest();
 	Obj()->InsertObj(m_gimmick_test, OBJ_GIMMICK_TEST, 5, this, HIT_BOX_OFF);
 	m_gimmick_test->Init(100,200,64,64,1);

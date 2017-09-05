@@ -1173,6 +1173,12 @@ void Gimmickfiretruck::Draw()
 //
 ////ステージ3↓
 //子猫----------------------------------------------------
+//イニシャライズ
+void GimmickKitten::Init(int xpos, int ypos, int widht, int height, int balloonnum)
+{
+//	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
+//	InitBall(m_ball,48, -48, sound, 1, RED, LOWER_LEFT);
+}
 //デストラクタ
 void GimmickKitten::Destructor()
 {
@@ -1196,16 +1202,20 @@ void GimmickKitten::Draw()
 	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
 	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
 	//描画
-	//Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
+//	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
 
-	//Balloon *aaa = InitBall(48, -48, sound, 1, RED, LOWER_LEFT);
-//
-//	gimmicDraw(aaa, 0);
-//	delete aaa;
+//	this->gimmicDraw(0);
+
 }
 //--------------------------------------------------------
 
 //蝉------------------------------------------------------
+//イニシャライズ
+void GimmickCicada::Init(int xpos, int ypos, int widht, int height, int balloonnum)
+{
+//	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
+//	InitBall(m_ball,48, -48, sound, 1, RED, LOWER_LEFT);
+}
 //デストラクタ
 void GimmickCicada::Destructor()
 {
@@ -1229,16 +1239,19 @@ void GimmickCicada::Draw()
 	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
 	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
 	//描画
-	//Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
+//	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
 
-	//Balloon *aaa = InitBall(48, -48, sound, 1, RED, LOWER_LEFT);
-	//
-	//	gimmicDraw(aaa, 0);
-	//	delete aaa;
+//	this->gimmicDraw(0);
 }
 //--------------------------------------------------------
 
 //少女----------------------------------------------------
+//イニシャライズ
+void GimmickLittleGirl::Init(int xpos, int ypos, int widht, int height, int balloonnum)
+{
+//	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
+//	InitBall(m_ball,48, -48, sound, 1, RED, LOWER_LEFT);
+}
 //デストラクタ
 void GimmickLittleGirl::Destructor()
 {
@@ -1262,12 +1275,9 @@ void GimmickLittleGirl::Draw()
 	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
 	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
 	//描画
-	//Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
+//	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
 
-	//Balloon *aaa = InitBall(48, -48, sound, 1, RED, LOWER_LEFT);
-	//
-	//	gimmicDraw(aaa, 0);
-	//	delete aaa;
+//	this->gimmicDraw(0);
 }
 //--------------------------------------------------------
 

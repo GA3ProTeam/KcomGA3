@@ -1186,7 +1186,7 @@ void GimmickKitten::Init(int xpos, int ypos, int widht, int height, int balloonn
 //デストラクタ
 void GimmickKitten::Destructor()
 {
-
+	delete[] m_ball;
 }
 //アクション
 void GimmickKitten::Action()
@@ -1226,7 +1226,7 @@ void GimmickCicada::Init(int xpos, int ypos, int widht, int height, int balloonn
 //デストラクタ
 void GimmickCicada::Destructor()
 {
-
+	delete[] m_ball;
 }
 //アクション
 void GimmickCicada::Action()
@@ -1265,7 +1265,7 @@ void GimmickLittleGirl::Init(int xpos, int ypos, int widht, int height, int ball
 //デストラクタ
 void GimmickLittleGirl::Destructor()
 {
-
+	delete[] m_ball;
 }
 //アクション
 void GimmickLittleGirl::Action()

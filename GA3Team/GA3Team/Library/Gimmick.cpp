@@ -13,7 +13,7 @@ void Gimmick::Init(int xpos, int ypos, int widht, int height, int balloonnum)
 	//‚«o‚µ¶¬
 	m_ball = new Balloon[m_iballoonnum];
 	//‚«o‚µ‰Šú‰»
-	memset(m_ball, 0, sizeof(Balloon)*m_iballoonnum);
+	memset(m_ball, 0, sizeof(Balloon) * m_iballoonnum);
 }
 
 //•`‰æ

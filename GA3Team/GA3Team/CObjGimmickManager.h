@@ -28,6 +28,10 @@ class GimmickLittleGirl;
 class GimmickDoctor;
 class GimmickRecorder;
 class GimmickComputer;
+class GimmickMysteryDoor;
+class GimmickMechanic;
+class GimmickSoundComputer;
+class GimmickMusician;
 
 class CObjGimmickManager : public CObj
 {
@@ -95,11 +99,11 @@ private:
 
 
 	//ステージ5↓
-//	GimmickMysteryDoor* m_gimmick_mysterydoor;
-//	GimmickMechanic* m_gimmick_mechanic;
-//	GimmickSoundComputer* m_gimmick_soundcomputer;
-//	GimmickMusician* m_gimmick_musician;
-	//ステージ5↑
+	GimmickMysteryDoor*   m_gimmick_mysterydoor;
+	GimmickMechanic*      m_gimmick_mechanic;
+	GimmickSoundComputer* m_gimmick_soundcomputer;
+	GimmickMusician*      m_gimmick_musician;
+	//ステージ5↑   
 
 	//コウネステージ↑
 

@@ -16,7 +16,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 	*/
 	SavedataManeger()->Setcurrentdata();
 
-	m_Stage_ID = 40;
+	m_Stage_ID = 20;
 
 	switch (m_Stage_ID) {
 
@@ -96,7 +96,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 	//-メルエルステージ---------------------------------------
 
 	case 20:
-		
+
 		m_gimmick_television = new GimmickTelevision();
 		Obj()->InsertObj(m_gimmick_television, GIMMICK_TELEVISION, 5, this->m_pScene, HIT_BOX_OFF);
 		m_gimmick_television->Init(50, 300, 250, 125, 1);
@@ -107,11 +107,11 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 
 		m_gimmick_katsuo = new GimmickKatsuo();
 		Obj()->InsertObj(m_gimmick_katsuo, GIMMICK_KATSUO, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_katsuo->Init(-180, 170, 150, 300, 1);
+		m_gimmick_katsuo->Init(-180, 170, 200, 400, 1);
 
 		m_gimmick_door = new GimmickDoctorroomDoor();
 		Obj()->InsertObj(m_gimmick_door, GIMMICK_DOOR, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_door->Init(250, 100, 400, 400, 1);
+		m_gimmick_door->Init(280, 90, 400, 400, 1);
 		
 		break;
 	case 21:
@@ -245,5 +245,73 @@ void CObjGimmickManager::Action() {
 
 //ドロー
 void CObjGimmickManager::Draw() {
-	
+	float col[4] = { 1.0f,1.0f,1.0f,1.0f };
+	RECT m_src;		//転送先座標
+	RECT m_dst;		//切り取り座標
+
+
+	//背景描画
+	switch (m_Stage_ID) {
+	//-シオンステージ-----------------------------------------
+	case 10:
+		break;
+	case 11:
+		break;
+	case 12:
+		break;
+	case 13:
+		break;
+	case 14:
+		break;
+	case 15:
+		break;
+	//-メルエルステージ---------------------------------------
+	case 20:
+
+		//切り取り座標
+		m_dst.top = 340;
+		m_dst.bottom = m_dst.top + 680;
+		m_dst.left = 0;
+		m_dst.right = m_dst.left + 1024;
+
+		//転送先座標
+		m_src.top = 0;
+		m_src.bottom = m_src.top + 600;
+		m_src.left = -400 + User()->mscroll_x;
+		m_src.right = m_src.left + 1200;
+
+		//背景描画
+		Image()->DrawEx(25, &m_src, &m_dst, col, 0.0f);
+
+
+
+
+
+		break;
+	case 21:
+		break;
+	case 22:
+		break;
+	case 23:
+		break;
+	case 24:
+		break;
+	case 25:
+		break;
+	//-コウネステージ-----------------------------------------
+	case 30:
+		break;
+	case 31:
+		break;
+	case 32:
+		break;
+	case 33:
+		break;
+	case 34:
+		break;
+	case 35:
+		break;
+	}
+
+
 }

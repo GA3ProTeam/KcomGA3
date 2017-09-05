@@ -28,13 +28,13 @@ class GimmickLittleGirl;
 class GimmickDoctor;
 class GimmickRecorder;
 class GimmickComputer;
+class GimmickMysteryman;
+class GimmickBike;
+class GimmickDoor;
 class GimmickMysteryDoor;
 class GimmickMechanic;
 class GimmickSoundComputer;
 class GimmickMusician;
-class GimmickMysteryman;
-class GimmickBike;
-class GimmickDoor;
 
 class CObjGimmickManager : public CObj
 {

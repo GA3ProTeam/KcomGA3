@@ -27,6 +27,9 @@ class GimmickLittleGirl;
 class GimmickDoctor;
 class GimmickRecorder;
 class GimmickComputer;
+class GimmickMysteryman;
+class GimmickBike;
+class GimmickDoor;
 
 class CObjGimmickManager : public CObj
 {
@@ -58,6 +61,12 @@ private:
 	GimmickShelf* m_gimmick_shelf;
 	GimmickWindchime* m_gimmick_windchime;
 	//ステージ3↑
+	//ステージ4↓
+	GimmickMysteryman* m_gimmick_mysteryman;
+	GimmickBike* m_gimmick_bike;
+	GimmickDoor* m_gimmick_door;
+
+	//ステージ4↑
 	//シオンステージ1↑
 
 
@@ -69,7 +78,7 @@ private:
 	GimmickTelevision* m_gimmick_television;
 	GimmickOven* m_gimmick_oven;
 	GimmickKatsuo* m_gimmick_katsuo;
-	GimmickDoor* m_gimmick_door;
+//	GimmickDoor* m_gimmick_door;
 
 	//ステージ1↑
 	//メルエルステージ↑

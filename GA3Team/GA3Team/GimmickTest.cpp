@@ -1,6 +1,7 @@
 #include "main.h"
 //テスト用↓
 int g_itutorial_phase = 0;
+
 //void GimmickTest::Init(int xpos, int ypos, int widht, int height, int balloonnum)
 //{
 ////1個の場合----------------------------------------------------------------
@@ -842,6 +843,10 @@ void Gimmickfiretruck::Draw()
 ////ステージ3↑
 //
 ////ステージ4↓
+void GimmickMysteryman::Init(int xpos, int ypos, int widht, int height, int balloonnum) {
+	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
+	InitBall(m_ball, m_iWidth - 50, m_iHeight - 48, talk, 1, ASH, UPPER_LEFT);
+}
 void GimmickMysteryman::Destructor() {}	//デストラクタ
 void GimmickMysteryman::Action() {
 	//メニュータブへの参照取得
@@ -897,6 +902,7 @@ void GimmickMysteryman::Action() {
 
 }		//アクション
 void GimmickMysteryman::Draw() {
+	this->gimmicDraw(1);
 	//-------------------------ギミック(本体)を描画-------------------------------
 	float col[4] = { 1.0,1.0,1.0,1.0 };
 	//切り取り先座標
@@ -907,24 +913,27 @@ void GimmickMysteryman::Draw() {
 	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
 	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
 	//描画
-	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
+	Image()->Draw(12, &m_src, &m_dst, col, 0.0f);
 
 
 }		//ドロー
 
 
 		//バイク
+void GimmickBike::Init(int xpos, int ypos, int widht, int height, int balloonnum){
+	Gimmick::Init(xpos,ypos,widht,height,balloonnum);
+	InitBall(m_ball,  m_iWidth- 50, m_iHeight -48, sound, 1, ASH, UPPER_LEFT);
+	
+	
+}
 void GimmickBike::Destructor() {}	//デストラクタ
 void GimmickBike::Action() {
-	//吹き出しが押されたか確認
-	if (ball[0].OnPush) {
-		SoundManager()->SoundSave(0);
-	}
+
 }	//アクション
 
 
 void GimmickBike::Draw() {
-
+this->gimmicDraw(1);
 	//-------------------------ギミック(本体)を描画-------------------------------
 	float col[4] = { 1.0,1.0,1.0,1.0 };
 	//切り取り先座標
@@ -935,20 +944,23 @@ void GimmickBike::Draw() {
 	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
 	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
 	//描画
-	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
+	Image()->Draw(13, &m_src, &m_dst, col, 0.0f);
 }		//ドロー
 
 
 		//扉
+void GimmickDoor::Init(int xpos, int ypos, int widht, int height, int balloonnum){
+	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
+	InitBall(&m_ball[0], m_iWidth - 50, m_iHeight-48, sound, 1, ASH, LOWER_LEFT);
+}
 void GimmickDoor::Destructor() {}	//デストラクタ
 void GimmickDoor::Action() {
 	//吹き出しが押されたか確認
-	if (ball[0].OnPush) {
-		SoundManager()->SoundSave(0);
-	}
+
 }//アクション
 
 void GimmickDoor::Draw() {
+	this->gimmicDraw(1);
 	//-------------------------ギミック(本体)を描画-------------------------------
 	float col[4] = { 1.0,1.0,1.0,1.0 };
 	//切り取り先座標
@@ -980,167 +992,159 @@ void GimmickDoor::Draw() {
 //
 ////-----------コウネステージ↓-----------------------------------------
 //
-
+//
 //ステージ1↓
 //犬のデストラクタ
-//void GimmickDog::Destructor()
-//{
-//
-//}	
-////犬のアクション
-//void GimmickDog::Action() 
-//{
-//
-//	if (ball[0].OnPush) {
-//
-//
-//
-//
-//
-//
-//	}
-//}
-////犬のドロー
-//void GimmickDog::Draw() 
-//{
-//	float col[4] = { 1.0,1.0,1.0,1.0 };
-//	//切り取り先座標
-//	m_dst.top = 0; m_dst.left = 0;
-//	m_dst.bottom = 200; m_dst.right = 200;
-//
-//	//転送先座標
-//	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
-//	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
-//	//描画
-//	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
-//	Balloon *aaa = InitBall(48, -48, sound, 1, RED, LOWER_LEFT);
-//
-//	gimmicDraw(aaa, 0);
-//	delete aaa;
-//}	
-////マンホールの蓋のデストラクタ
-//void GimmickManholeCover::Destructor() 
-//{
-//
-//}	
-////マンホールの蓋のアクション
-//void GimmickManholeCover::Action() 
-//{
-//	if (ball[0].OnPush) {
-//		if (SavedataManeger()->CurrentData->m_bKouneflg[3] == true) {
-//			m_Status = STATUS_DELETE;
-//		}
-//	}
-//}		
-////マンホールの蓋のドロー
-//void GimmickManholeCover::Draw() 
-//{
-//	float col[4] = { 1.0,1.0,1.0,1.0 };
-//	//切り取り先座標
-//	m_dst.top = 0; m_dst.left = 0;
-//	m_dst.bottom = 200; m_dst.right = 200;
-//
-//	//転送先座標
-//	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
-//	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
-//	//描画
-//	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
-//	Balloon *aaa = InitBall(48, -48, sound, 1, RED, LOWER_LEFT);
-//
-//	gimmicDraw(aaa, 0);
-//	delete aaa;
-//}//マンホールの穴のデストラクタ
-//void GimmickManholeHole::Init() 
-//{
-//	m_Status = STATUS_SLEEP;
-//
-//}
-//void GimmickManholeHole::Destructor() 
-//{
-//
-//}//マンホールの穴のアクション
-//void GimmickManholeHole::Action()
-//{
-//
-//	if (ball[0].OnPush) {
-//
-//		SavedataManeger()->CurrentData->m_bKouneClearflg[0] = true;
-//		Overlay()->talkDraw(KOUNE, KOUNE1_OZI_CLEAR);
-//
-//	}
-//}//マンホールの穴のドロー
-//void GimmickManholeHole::Draw()
-//{
-//	float col[4] = { 1.0,1.0,1.0,1.0 };
-//	//切り取り先座標
-//	m_dst.top = 0; m_dst.left = 0;
-//	m_dst.bottom = 200; m_dst.right = 200;
-//
-//	//転送先座標
-//	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
-//	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
-//	//描画
-//	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
-//	Balloon *aaa = InitBall(48, -48, sound, 1, RED, LOWER_LEFT);
-//
-//	gimmicDraw(aaa, 0);
-//	delete aaa;
-//}//老人のデストラクタ
-//void GimmickOldman::Destructor()
-//{
-//
-//}//老人のアクション
-//void GimmickOldman::Action()
-//{
-//	
-//	if (ball[0].OnPush) {
-//		if (SavedataManeger()->CurrentData->m_bKouneflg[0] == false) {
-//			SavedataManeger()->CurrentData->m_bKouneflg[0] = true;
-//			Overlay()->talkDraw(KOUNE, KOUNE1_OZI);
-//		}
-//
-//		else if (SavedataManeger()->CurrentData->m_bKouneflg[2] == true) {
-//			SavedataManeger()->CurrentData->m_bKouneflg[3] = true;
-//			Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG3_YES);
-//			m_Status = STATUS_DELETE;
-//		}
-//		else if (SavedataManeger()->CurrentData->m_bKouneflg[1] == true) {
-//			Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG2_YES);
-//
-//		}
-//		else if (SavedataManeger()->CurrentData->m_bKouneflg[2] == false && SavedataManeger()->CurrentData->m_bKouneflg[1] == true) {
-//			Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG3_NO_FLAG1_YES);
-//
-//		}
-//
-//		else if (SavedataManeger()->CurrentData->m_bKouneflg[1] == false) {
-//			Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG2_NO);
-//
-//		}
-//
-//		else {
-//
-//		}
-//		
-//	}
-//}//老人のドロー
-//void GimmickOldman::Draw()
-//{
-//	float col[4] = { 1.0,1.0,1.0,1.0 };
-//	//切り取り先座標
-//	m_dst.top = 0; m_dst.left = 0;
-//	m_dst.bottom = 200; m_dst.right = 200;
-//
-//	//転送先座標
-//	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
-//	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
-//	//描画
-//	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
-//	Balloon *aaa = InitBall(48, -48, sound, 1, RED, LOWER_LEFT);
-//
-//	gimmicDraw(aaa, 0);
-//	delete aaa;
-//}	
+void GimmickDog::Destructor()
+{
+
+}	
+//犬のアクション
+void GimmickDog::Action() 
+{
+
+	/*if (ball[0].OnPush) {
+
+
+
+
+
+
+	}*/
+}
+//犬のドロー
+void GimmickDog::Draw() 
+{
+
+	//-------------------------ギミック(本体)を描画-------------------------------
+	float col[4] = { 1.0,1.0,1.0,1.0 };
+	//切り取り先座標
+	m_dst.top = 0; m_dst.left = 0;
+	m_dst.bottom = 200; m_dst.right = 200;
+
+	//転送先座標
+	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
+	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
+	//描画
+	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
+}	
+//マンホールの蓋のデストラクタ
+void GimmickManholeCover::Destructor() 
+{
+
+}	
+//マンホールの蓋のアクション
+void GimmickManholeCover::Action() 
+{
+	//if (ball[0].OnPush) {
+	//	if (SavedataManeger()->CurrentData->m_bKouneflg[3] == true) {
+	//		m_Status = STATUS_DELETE;
+	//	}
+	//}
+}		
+//マンホールの蓋のドロー
+void GimmickManholeCover::Draw() 
+{
+
+	//-------------------------ギミック(本体)を描画-------------------------------
+	float col[4] = { 1.0,1.0,1.0,1.0 };
+	//切り取り先座標
+	m_dst.top = 0; m_dst.left = 0;
+	m_dst.bottom = 200; m_dst.right = 200;
+
+	//転送先座標
+	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
+	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
+	//描画
+	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
+}//マンホールの穴のデストラクタ
+void GimmickManholeHole::Init() 
+{
+	m_Status = STATUS_SLEEP;
+
+}
+void GimmickManholeHole::Destructor() 
+{
+
+}//マンホールの穴のアクション
+void GimmickManholeHole::Action()
+{
+
+	//if (ball[0].OnPush) {
+
+	//	SavedataManeger()->CurrentData->m_bKouneClearflg[0] = true;
+	//	Overlay()->talkDraw(KOUNE, KOUNE1_OZI_CLEAR);
+
+	//}
+}//マンホールの穴のドロー
+void GimmickManholeHole::Draw()
+{
+
+	//-------------------------ギミック(本体)を描画-------------------------------
+	float col[4] = { 1.0,1.0,1.0,1.0 };
+	//切り取り先座標
+	m_dst.top = 0; m_dst.left = 0;
+	m_dst.bottom = 200; m_dst.right = 200;
+
+	//転送先座標
+	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
+	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
+	//描画
+	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
+}//老人のデストラクタ
+void GimmickOldman::Destructor()
+{
+
+}//老人のアクション
+void GimmickOldman::Action()
+{
+
+	if(Input()->m_x > m_iXpos&& Input()->m_x < (m_iXpos + m_iWidth)
+		&& Input()->m_y > m_iYpos && Input()->m_y < (m_iYpos + m_iHeight) ){
+		if (SavedataManeger()->CurrentData->m_bKouneflg[0] == false) {
+			SavedataManeger()->CurrentData->m_bKouneflg[0] = true;
+			Overlay()->talkDraw(KOUNE, KOUNE1_OZI);
+		}
+
+		else if (SavedataManeger()->CurrentData->m_bKouneflg[2] == true) {
+			SavedataManeger()->CurrentData->m_bKouneflg[3] = true;
+			Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG3_YES);
+			m_Status = STATUS_DELETE;
+		}
+		else if (SavedataManeger()->CurrentData->m_bKouneflg[1] == true) {
+			Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG2_YES);
+
+		}
+		else if (SavedataManeger()->CurrentData->m_bKouneflg[2] == false && SavedataManeger()->CurrentData->m_bKouneflg[1] == true) {
+			Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG3_NO_FLAG1_YES);
+
+		}
+
+		else if (SavedataManeger()->CurrentData->m_bKouneflg[1] == false) {
+			Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG2_NO);
+
+		}
+
+		else {
+
+		}
+	}
+}//老人のドロー
+void GimmickOldman::Draw()
+{
+
+	//-------------------------ギミック(本体)を描画-------------------------------
+	float col[4] = { 1.0,1.0,1.0,1.0 };
+	//切り取り先座標
+	m_dst.top = 0; m_dst.left = 0;
+	m_dst.bottom = 200; m_dst.right = 200;
+
+	//転送先座標
+	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
+	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
+	//描画
+	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
+}
 ////ステージ1↑
 //
 ////ステージ2↓

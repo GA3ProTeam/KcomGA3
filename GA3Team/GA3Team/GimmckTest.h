@@ -280,7 +280,7 @@ class GimmickMysteryman :public Gimmick
 public:
 	GimmickMysteryman() {};
 	~GimmickMysteryman() {};
-
+	void Init(int xpos, int ypos, int widht, int height, int balloonnum);
 	void Destructor();	//デストラクタ
 	void Action();		//アクション
 	void Draw();		//ドロー
@@ -297,6 +297,7 @@ public:
 	GimmickBike() {};
 	~GimmickBike() {};
 
+	void Init(int xpos, int ypos, int widht, int height, int balloonnum);
 	void Destructor();	//デストラクタ
 	void Action();		//アクション
 	void Draw();		//ドロー
@@ -388,7 +389,7 @@ public:
 	GimmickDog() {};
 	~GimmickDog() {};
 
-
+	void Init();
 	void Destructor();	//デストラクタ
 	void Action();		//アクション
 	void Draw();		//ドロー

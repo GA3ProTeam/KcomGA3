@@ -75,6 +75,18 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 
 		break;
 	case 13:
+		//シオンステージ4　設定
+		m_gimmick_mysteryman = new GimmickMysteryman();
+		Obj()->InsertObj(m_gimmick_mysteryman, GIMMICK_MYSTERYMAN, 1, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_mysteryman->Init(300, 100, 60, 80, 1);
+
+		m_gimmick_bike = new GimmickBike();
+		Obj()->InsertObj(m_gimmick_bike, GIMMICK_BIKE, 1, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_bike->Init(500, 250, 200, 300, 1);
+
+		m_gimmick_door = new GimmickDoor();
+		Obj()->InsertObj(m_gimmick_door, GIMMICK_SHELF, 1, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_door->Init(500, 250, 200, 300, 1);
 
 
 
@@ -197,6 +209,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 	//チュートリアル（博士）ステージ--------------------------
 	case 40:
 		//博士
+		
 		m_gimmick_doctor = new GimmickDoctor();
 		Obj()->InsertObj(m_gimmick_doctor, GIMMICK_DOCTOR, 5, this->m_pScene, HIT_BOX_OFF);
 		m_gimmick_doctor->Init(100, 200, 120, 220, 2);
@@ -204,7 +217,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 		//レコーダー
 		m_gimmick_recorder = new GimmickRecorder();
 		Obj()->InsertObj(m_gimmick_recorder, GIMMICK_RECORDER, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_recorder->Init(350, 260, 200, 100, 1);
+		m_gimmick_recorder->Init(350, 260, 200, 100, 0);
 
 		//パソコン
 		m_gimmick_computer = new GimmickComputer();

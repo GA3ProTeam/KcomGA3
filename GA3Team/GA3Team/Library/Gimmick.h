@@ -76,14 +76,17 @@ protected:
 
 	
 public:
+	virtual ~Gimmick() {
+		//吹き出し破棄
+		delete[] m_ball;
+	}
+
 	//Init(X座標、Y座標、幅、高さ,吹き出しの数)
 	void Init(int xpos, int ypos, int widht, int height, int balloonnum);
 
 	//デストラクタ
-	void Destructor() {
-		//吹き出し破棄
-		delete[] m_ball;
-	}
+	void Destructor() {}
+
 	//吹き出しの種類をセットする
 	void setballoontype(int balloontype, int num) { m_ball[num].m_iballoontype = balloontype; }
 	//吹き出し(音情報)をセットする

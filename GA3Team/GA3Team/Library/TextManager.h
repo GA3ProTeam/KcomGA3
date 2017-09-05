@@ -12,7 +12,7 @@ private:
 	int arrsize = 0;
 	int dummy = 0;
 
-	char tmpstr[1024];
+	char tmpstr[2048];
 	char strsave[64][512];
 
 	std::vector<std::string> tmpData;

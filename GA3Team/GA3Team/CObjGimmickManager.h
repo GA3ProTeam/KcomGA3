@@ -85,6 +85,22 @@ private:
 	GimmickManholeHole*  m_gimmick_manhole_hole;
 	GimmickOldman*  m_gimmick_oldman;
 	//ステージ1↑
+
+
+	//ステージ3↓
+	GimmickKitten* m_gimmick_kitten;
+	GimmickCicada* m_gimmick_cicada;
+	GimmickLittleGirl* m_gimmick_little_girl;
+	//ステージ3↑
+
+
+	//ステージ5↓
+	GimmickMysteryDoor* m_gimmick_mysterydoor;
+	GimmickMechanic* m_gimmick_mechanic;
+	GimmickSoundComputer* m_gimmick_soundcomputer;
+	GimmickMusician* m_gimmick_musician;
+	//ステージ5↑
+
 	//コウネステージ↑
 
 

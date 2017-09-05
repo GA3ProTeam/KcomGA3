@@ -1,7 +1,7 @@
 #include "../main.h"
 
 //全ボタンへの参照リスト定義
-list<Button*> Button::m_button_list;
+//list<Button*> Button::m_button_list;
 
 //初期化
 //引数：
@@ -21,16 +21,16 @@ void Button::Init(int x, int y, int w, int h, bool overlap_flg) {
 	//重なり判定用処理
 	if (overlap_flg) {
 		//このボタンへの参照を追加
-		m_button_list.push_back(this);
+		//m_button_list.push_back(this);
 
 		//push_backしたイテレータを保存しておく
 		//今push_backしたイテレータは末尾（end()）よりも一つ前に存在する
-		m_my_itr = m_button_list.end();
-		m_my_itr--;
+		//m_my_itr = m_button_list.end();
+		//m_my_itr--;
 
 		//描画優先順にソート
-		Pr pr;
-		m_button_list.sort(pr);
+		//Pr pr;
+		//m_button_list.sort(pr);
 	}
 }
 

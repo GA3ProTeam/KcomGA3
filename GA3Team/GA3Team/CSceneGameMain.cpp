@@ -43,6 +43,11 @@ void CSceneGameMain::InitScene()
 	//m_obj_player->Init();
 	//Obj()->InsertObj(m_obj_player,OBJ_PLAYER,0,this,HIT_BOX_OFF);
 
+	m_obj_menutab = new CObjMenuTab();
+	Obj()->InsertObj(m_obj_menutab, OBJ_MENUTAB, 5, this, HIT_BOX_OFF);
+	m_obj_menutab->Init(400);
+
+
 	m_obj_gimmickmanager = new CObjGimmickManager();
 	Obj()->InsertObj(m_obj_gimmickmanager, OBJ_GIMMICK_MANAGER, 0, this, HIT_BOX_OFF);
 	m_obj_gimmickmanager->Init(0,0);
@@ -55,10 +60,7 @@ void CSceneGameMain::InitScene()
 	m_obj_Lscroll->Init();
 	Obj()->InsertObj(m_obj_Lscroll, BUTTON_LSCROLL_SCREEN, 0, this, HIT_BOX_OFF);
 	
-	m_obj_menutab = new CObjMenuTab();
-	Obj()->InsertObj(m_obj_menutab, OBJ_MENUTAB, 5, this, HIT_BOX_OFF);
-	m_obj_menutab->Init(400);
-
+	
 	m_gimmick_test = new GimmickTest();
 	Obj()->InsertObj(m_gimmick_test, OBJ_GIMMICK_TEST, 5, this, HIT_BOX_OFF);
 	m_gimmick_test->Init(100,200,64,64,1);

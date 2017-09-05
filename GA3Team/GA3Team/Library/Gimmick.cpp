@@ -8,10 +8,12 @@ void Gimmick::Init(int xpos, int ypos, int widht, int height, int balloonnum)
 	m_iHeight = height;	//ギミック高さの初期化
 	m_iballoonnum = balloonnum;//吹き出しの総数
 
+	m_menu_tab = (CObjMenuTab*)Obj()->GetObj(OBJ_MENUTAB);//メニュータブへの参照セット
+	m_getsound = false;
 	//吹き出し生成
 	m_ball = new Balloon[m_iballoonnum];
 	//吹き出し初期化
-	memset(m_ball, 0, sizeof(Balloon));
+	memset(m_ball, 0, sizeof(Balloon) * m_iballoonnum);
 }
 
 //描画
@@ -21,11 +23,6 @@ void Gimmick::gimmicDraw(int num)
 {
 	static bool flg = false;
 	static bool onceflg = false;//クリックした際一度だけ反応するためのフラグ
-
-	//m_ball[num] = *ball1;
-
-	//memcmp(&m_ball[num], ball1, sizeof(Balloon));
-
 	//マウスの座標を取得
 	int mousex = Input()->m_x;
 	int mousey = Input()->m_y;
@@ -37,10 +34,10 @@ void Gimmick::gimmicDraw(int num)
 	//転送先座標
 	for (int i = 0; i < /*m_iballoonnum*/num; i++)
 	{
-		m_ball[i].m_gimdst.top = 0;
-		m_ball[i].m_gimdst.left = 0;
-		m_ball[i].m_gimdst.bottom = 330;
-		m_ball[i].m_gimdst.right = 400;
+		//m_ball[i].m_gimdst.top = 0;
+		//m_ball[i].m_gimdst.left = 0;
+		//m_ball[i].m_gimdst.bottom = 330;
+		//m_ball[i].m_gimdst.right = 400;
 
 		m_ball[i].m_gimsrc.top = m_iYpos + m_ball[i].m_iGimYpos;
 		m_ball[i].m_gimsrc.left = m_iXpos + m_ball[i].m_iGimXpos + User()->mscroll_x;
@@ -51,13 +48,20 @@ void Gimmick::gimmicDraw(int num)
 	//OverRayが起動してたらあたり判定をなくす
 	if (!Overlay()->isDraw())
 	{
+
 		//縦と横(x)カーソルがギミックの当たり範囲に入っているか否か
 		if ((mousex > m_src.left + User()->mscroll_x && mousex < (m_src.left + User()->mscroll_x + m_iWidth))
 			&& (mousey > m_src.top && mousey < (m_src.top + m_iHeight)))
 		{
 			m_iballoontime = BALLOON_KEEP_TIME;
+			if (!Input()->GetMouButtonL() && m_menu_tab->GetHaveSound()) {
+				//ドラッグしていた効果音をギミックに聞かせる
+				SoundManager()->StartSound(m_menu_tab->GetGiveSound());
+				m_getsound = true;
+			}
 		}
 		else {
+			m_getsound = false;
 			m_iballoontime--;
 		}
 
@@ -67,25 +71,21 @@ void Gimmick::gimmicDraw(int num)
 			{
 				if (m_ball[i].m_iballoontype == talk){
 					//会話吹き出しを描画
-
 					changetalkDir(num);
-					Image()->Draw(3, &m_ball[i].m_gimsrc, &m_ball[i].m_gimdst, col, 0.0f);
+					Image()->DrawEx(21, &m_ball[i].m_gimsrc, &m_ball[i].m_gimdst, col, 0.0f);
 				}
 				if (m_ball[i].m_iballoontype == sound){
-
 					//シオンの能力発動時に吹き出しの色を変える
-					if (User()->m_bsionability){
+					//if (User()->m_bsionability) {
 						changeBalloonColor(num);
-					}
-
+					//}
 					//音吹き出しを描画
-					Image()->Draw(4, &m_ball[i].m_gimsrc, &m_ball[i].m_gimdst, col, 0.0f);
+					Image()->DrawEx(21, &m_ball[i].m_gimsrc, &m_ball[i].m_gimdst,col, 0.0f);
 				}
-
-				//吹き出し描画中に吹き出しをクリックしたら
+				m_ball[i].OnPush = false;
+				//範囲内にあるかないか
 				if ((mousex > m_ball[i].m_gimsrc.left&& mousex < m_ball[i].m_gimsrc.right)
-					&& (mousey > m_ball[i].m_gimsrc.top && mousey < m_ball[i].m_gimsrc.right))
-				{
+					&& (mousey > m_ball[i].m_gimsrc.top && mousey < m_ball[i].m_gimsrc.bottom)){
 					flg = true;
 				}
 				else {
@@ -94,18 +94,15 @@ void Gimmick::gimmicDraw(int num)
 				if (flg)
 				{
 					//左クリックされたら
-					if (Input()->GetMouButtonL())
-					{
+					if (Input()->GetMouButtonL()){
 						onceflg = true;
 					}
 					//左クリックされていない　&&　一回クリックされていたなら
-					else if (!Input()->GetMouButtonL() && onceflg)
-					{
+					else if (!Input()->GetMouButtonL() && onceflg){
 						if (m_ball[i].m_iballoontype == sound && m_ball[i].m_soundnum != EXCEPTION)
 							SoundManager()->SoundSave(m_ball[i].m_soundnum);
 						onceflg = false;
 						m_ball[i].OnPush = true;
-
 					}
 				}
 			}
@@ -114,10 +111,7 @@ void Gimmick::gimmicDraw(int num)
 }
 void Gimmick::changeBalloonColor(int num)
 {
-	//if(ball[num].m_iballooncolor == RED);
-	for (int i = 0; i < num; i++)
-	{
-
+	for (int i = 0; i < num; i++){
 		m_ball[i].m_gimdst.top = m_ball[i].m_iballoonDir;
 		m_ball[i].m_gimdst.left = m_ball[i].m_iballooncolor;
 		m_ball[i].m_gimdst.bottom = m_ball[i].m_gimdst.top+ GIMMICK_SIZE_Y;
@@ -126,8 +120,7 @@ void Gimmick::changeBalloonColor(int num)
 }
 void Gimmick::changetalkDir(int num)
 {
-	for (int i = 0; i < num; i++)
-	{
+	for (int i = 0; i < num; i++){
 		m_ball[i].m_gimdst.top = 0;
 		m_ball[i].m_gimdst.left = m_ball[i].m_iballoonDir;
 		m_ball[i].m_gimdst.bottom = m_ball[i].m_gimdst.top + GIMMICK_SIZE_Y;

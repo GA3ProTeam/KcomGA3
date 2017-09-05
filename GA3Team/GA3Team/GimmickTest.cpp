@@ -72,28 +72,33 @@ void GimmickDoctor::Action() {
 	//メニュータブへの参照取得
 	CObjMenuTab* tab = (CObjMenuTab*)Obj()->GetObj(OBJ_MENUTAB);
 
+	//初回動作
 	if (!SavedataManeger()->CurrentData->m_btutoriaruflg[0]) {
-		
-		
-		
 		
 	}
 	//レコーダー入手後（フラグ1達成後）
 	else if (SavedataManeger()->CurrentData->m_btutoriaruflg[0] &&
 		!SavedataManeger()->CurrentData->m_btutoriaruflg[1]) {
 		
+		SavedataManeger()->Writesavedata();
 
 		//音を録音していない（フラグ2未達成）状態で、会話
 		if (m_ball[0].OnPush) {
 			//会話「話を聞いていなかったのかね？・・・」
+			Overlay()->talkDraw(TUTORIAL, HAKASE_FLAG_2_1_NO);
 		}
 	}
 	//音を録音後（フラグ2達成後）、会話
-	else if (SavedataManeger()->CurrentData->m_btutoriaruflg[1] && m_ball[0].OnPush) {
-		//会話「うむ、言われたことはできるようなのだな・・・」
+	else if (SavedataManeger()->CurrentData->m_btutoriaruflg[1] &&
+			!SavedataManeger()->CurrentData->m_btutoriaruflg[2]) {
+		
+		if (m_ball[0].OnPush) {
+			//会話「うむ、言われたことはできるようなのだな・・・」
+			Overlay()->talkDraw(TUTORIAL, HAKASE_FLAG_2_1_YES);
 
-		//録音した後、会話した（フラグ3達成）
-		SavedataManeger()->CurrentData->m_btutoriaruflg[2] = true;
+			//録音した後、会話した（フラグ3達成）
+			SavedataManeger()->CurrentData->m_btutoriaruflg[2] = true;
+		}
 	}
 	//音を再生
 	else if (!SavedataManeger()->CurrentData->m_btutorial) {
@@ -120,10 +125,14 @@ void GimmickDoctor::Action() {
 		//博士に話しかけず録音から再生まで達成（フラグ2○　フラグ3×）
 		if (!SavedataManeger()->CurrentData->m_btutoriaruflg[2]) {
 			//会話「わしは録音をするようにいったはずなのだが・・・」
+			Overlay()->talkDraw(TUTORIAL, HAKASE_FLAG_2_YES_3_NO);
 		}
 		//話しかけた後、再生した
 		else {
 			//会話「ふむふむ・・・。この音！・・・」
+			Overlay()->talkDraw(TUTORIAL, HAKASE_CLEAR);
+
+
 		}
 
 	}
@@ -152,11 +161,11 @@ void GimmickDoctor::Draw() {
 	//---------------------------------------------------------------------------
 
 	//レコーダーを取得した後から吹き出し出現
-	//if (SavedataManeger()->CurrentData->m_btutoriaruflg[0]) {
-	//吹き出し描画＆動作---------------------------------------------------------
-	this->gimmicDraw(2);
-	//---------------------------------------------------------------------------
-	//}
+	if (SavedataManeger()->CurrentData->m_btutoriaruflg[0]) {
+		//吹き出し描画＆動作---------------------------------------------------------
+		this->gimmicDraw(2);
+		//---------------------------------------------------------------------------
+	}
 
 	//【会話終了時】
 	SavedataManeger()->CurrentData->m_btutoriaruflg[0];
@@ -174,12 +183,11 @@ void GimmickComputer::Init(int xpos, int ypos, int widht, int height, int balloo
 
 //デストラクタ
 void GimmickComputer::Destructor() {
-
+	delete[] m_ball;
 }
 
 //アクション
 void GimmickComputer::Action() {
-	//まだパソコンの音を録音していない
 	//音符吹き出しが押された
 	if (m_ball[0].OnPush) {
 		//フラグ2達成
@@ -209,7 +217,9 @@ void GimmickComputer::Draw() {
 	//---------------------------------------------------------------------------
 
 	//吹き出し描画＆動作---------------------------------------------------------
-	this->gimmicDraw(1);
+	if (SavedataManeger()->CurrentData->m_btutoriaruflg[0]) {
+		this->gimmicDraw(1);
+	}
 	//---------------------------------------------------------------------------
 }
 
@@ -234,6 +244,7 @@ void GimmickRecorder::Action() {
 	if (m_ball[0].OnPush) {
 		//フラグ1達成
 		SavedataManeger()->CurrentData->m_btutoriaruflg[0] = true;
+
 		//レコーダー破棄
 		m_Status = STATUS_DELETE;
 
@@ -618,8 +629,12 @@ void Gimmickfiretruck::Draw()
 //			//Audio()->Start(tab->GetGiveSound());
 //			switch (m_iChild_ID) {
 //			case 1://強気な男の子
+//				Overlay()->talkDraw(SION, SION3_FLAG_NO_CHILD1);
+//
 //				   //if (tab->GetGiveSound() == /*正解の音*/) {
 //				SavedataManeger()->CurrentData->m_bSionflg[3] = true;
+//
+//				Overlay()->talkDraw(SION, SION3_FLAG_YES_CHILD1);
 //				//	break;
 //				//}
 //				//else {
@@ -628,8 +643,12 @@ void Gimmickfiretruck::Draw()
 //				break;
 //
 //			case 2://優しい女の子
+//				Overlay()->talkDraw(SION, SION3_FLAG_NO_CHILD2);
+//
 //				   //if (tab->GetGiveSound() == /*正解の音*/) {
 //				SavedataManeger()->CurrentData->m_bSionflg[4] = true;
+//
+//				Overlay()->talkDraw(SION, SION3_FLAG_YES_CHILD2);
 //				//	break;
 //				//}
 //				//else {
@@ -639,8 +658,12 @@ void Gimmickfiretruck::Draw()
 //				break;
 //
 //			case 3://弱気な男の子
+//				Overlay()->talkDraw(SION, SION3_FLAG_NO_CHILD3);
+//
 //				   //if (tab->GetGiveSound() == /*正解の音*/) {
 //				SavedataManeger()->CurrentData->m_bSionflg[5] = true;
+//
+//				Overlay()->talkDraw(SION, SION3_FLAG_YES_CHILD3);
 //				//	break;
 //				//}
 //				//else {
@@ -714,6 +737,8 @@ void Gimmickfiretruck::Draw()
 //}
 //void GimmickGranny::Action()//アクション
 //{
+//	Overlay()->talkDraw(SION, SION3_OBATYAN);
+//
 //}
 //void GimmickGranny::Draw()//描画
 //{
@@ -980,9 +1005,9 @@ void Gimmickfiretruck::Draw()
 //
 ////-----------コウネステージ↓-----------------------------------------
 //
-//
-////ステージ1↓
-////犬のデストラクタ
+
+//ステージ1↓
+//犬のデストラクタ
 //void GimmickDog::Destructor()
 //{
 //
@@ -1063,7 +1088,9 @@ void Gimmickfiretruck::Draw()
 //{
 //
 //	if (ball[0].OnPush) {
+//
 //		SavedataManeger()->CurrentData->m_bKouneClearflg[0] = true;
+//		Overlay()->talkDraw(KOUNE, KOUNE1_OZI_CLEAR);
 //
 //	}
 //}//マンホールの穴のドロー
@@ -1094,23 +1121,25 @@ void Gimmickfiretruck::Draw()
 //	if (ball[0].OnPush) {
 //		if (SavedataManeger()->CurrentData->m_bKouneflg[0] == false) {
 //			SavedataManeger()->CurrentData->m_bKouneflg[0] = true;
+//			Overlay()->talkDraw(KOUNE, KOUNE1_OZI);
 //		}
 //
 //		else if (SavedataManeger()->CurrentData->m_bKouneflg[2] == true) {
 //			SavedataManeger()->CurrentData->m_bKouneflg[3] = true;
+//			Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG3_YES);
 //			m_Status = STATUS_DELETE;
 //		}
 //		else if (SavedataManeger()->CurrentData->m_bKouneflg[1] == true) {
-//
+//			Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG2_YES);
 //
 //		}
 //		else if (SavedataManeger()->CurrentData->m_bKouneflg[2] == false && SavedataManeger()->CurrentData->m_bKouneflg[1] == true) {
-//
+//			Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG3_NO_FLAG1_YES);
 //
 //		}
 //
 //		else if (SavedataManeger()->CurrentData->m_bKouneflg[1] == false) {
-//
+//			Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG2_NO);
 //
 //		}
 //
@@ -1143,6 +1172,105 @@ void Gimmickfiretruck::Draw()
 ////ステージ2↑
 //
 ////ステージ3↓
+//子猫----------------------------------------------------
+//デストラクタ
+void GimmickKitten::Destructor()
+{
+
+}
+//アクション
+void GimmickKitten::Action()
+{
+
+}
+//ドロー
+void GimmickKitten::Draw()
+{
+	float col[4] = { 1.0,1.0,1.0,1.0 };
+
+	//切り取り先座標
+	m_dst.top = 0; m_dst.left = 0;
+	m_dst.bottom = 200; m_dst.right = 200;
+
+	//転送先座標
+	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
+	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
+	//描画
+	//Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
+
+	//Balloon *aaa = InitBall(48, -48, sound, 1, RED, LOWER_LEFT);
+//
+//	gimmicDraw(aaa, 0);
+//	delete aaa;
+}
+//--------------------------------------------------------
+
+//蝉------------------------------------------------------
+//デストラクタ
+void GimmickCicada::Destructor()
+{
+
+}
+//アクション
+void GimmickCicada::Action()
+{
+
+}
+//ドロー
+void GimmickCicada::Draw()
+{
+	float col[4] = { 1.0,1.0,1.0,1.0 };
+
+	//切り取り先座標
+	m_dst.top = 0; m_dst.left = 0;
+	m_dst.bottom = 200; m_dst.right = 200;
+
+	//転送先座標
+	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
+	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
+	//描画
+	//Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
+
+	//Balloon *aaa = InitBall(48, -48, sound, 1, RED, LOWER_LEFT);
+	//
+	//	gimmicDraw(aaa, 0);
+	//	delete aaa;
+}
+//--------------------------------------------------------
+
+//少女----------------------------------------------------
+//デストラクタ
+void GimmickLittleGirl::Destructor()
+{
+
+}
+//アクション
+void GimmickLittleGirl::Action()
+{
+
+}
+//ドロー
+void GimmickLittleGirl::Draw()
+{
+	float col[4] = { 1.0,1.0,1.0,1.0 };
+
+	//切り取り先座標
+	m_dst.top = 0; m_dst.left = 0;
+	m_dst.bottom = 200; m_dst.right = 200;
+
+	//転送先座標
+	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
+	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
+	//描画
+	//Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
+
+	//Balloon *aaa = InitBall(48, -48, sound, 1, RED, LOWER_LEFT);
+	//
+	//	gimmicDraw(aaa, 0);
+	//	delete aaa;
+}
+//--------------------------------------------------------
+
 ////ステージ3↑
 //
 //
@@ -1169,6 +1297,16 @@ void Gimmickfiretruck::Draw()
 //}
 //void GimmickWindow::Action()
 //{
+//	CObjMenuTab* tab = (CObjMenuTab*)Obj()->GetObj(OBJ_MENUTAB);
+//	if (Input()->m_x > m_iXpos&& Input()->m_x < (m_iXpos + m_iWidth)
+//		&& Input()->m_y > m_iYpos && Input()->m_y < (m_iYpos + m_iHeight)) {
+//		//マウスドラッグ中にマウスボタンが離された
+//		if (!Input()->GetMouButtonL() && tab->GetHaveSound()) {
+//			//ドラッグしていた効果音をギミックに聞かせる
+//			//Audio()->Start(tab->GetGiveSound());
+//		}
+//	}
+//
 //}
 //void GimmickWindow::Draw()
 //{
@@ -1191,6 +1329,29 @@ void Gimmickfiretruck::Draw()
 //}
 //void GimmickTourist::Action()
 //{
+//	CObjMenuTab* tab = (CObjMenuTab*)Obj()->GetObj(OBJ_MENUTAB);
+//	if (Input()->m_x > m_iXpos&& Input()->m_x < (m_iXpos + m_iWidth)
+//		&& Input()->m_y > m_iYpos && Input()->m_y < (m_iYpos + m_iHeight)) {
+//		//マウスドラッグ中にマウスボタンが離された
+//		if (!Input()->GetMouButtonL() && tab->GetHaveSound()) {
+//			//ドラッグしていた効果音をギミックに聞かせる
+//			//Audio()->Start(tab->GetGiveSound());
+//			if (SavedataManeger()->CurrentData->m_bKouneflg[20] == false && 
+//				tab->GetGiveSound() == /*ホイッスル*/) {
+//				SavedataManeger()->CurrentData->m_bKouneflg[20] = true;
+//			}
+//			if (SavedataManeger()->CurrentData->m_bKouneflg[20] == true &&
+//				SavedataManeger()->CurrentData->m_bKouneflg[21] == false) {
+//				if (tab->GetGiveSound() == /*お菓子の音(音大)*/) {
+//				}
+//				if (tab->GetGiveSound() == /*お菓子の音(音中)*/) {
+//				}
+//				if (tab->GetGiveSound() == /*お菓子の音(音小)*/) {
+//				}
+//			}
+//		}
+//	}
+//
 //}
 //void GimmickTourist::Draw()
 //{
@@ -1228,13 +1389,13 @@ void Gimmickfiretruck::Draw()
 //	InitBall(&m_ball[0], 48, -48, talk, EXCEPTION, CNONE, LOWER_LEFT);
 //
 //}
-//void GimmickExamination::Destructor()
+//void GimmickGirl::Destructor()
 //{
 //}
-//void GimmickExamination::Action()
+//void GimmickGirl::Action()
 //{
 //}
-//void GimmickExamination::Draw()
+//void GimmickGirl::Draw()
 //{
 //	this->gimmicDraw(1);
 //}

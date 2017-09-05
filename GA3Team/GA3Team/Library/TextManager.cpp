@@ -410,7 +410,7 @@ bool CTextManager::isCtrlLine(int stage, int stageID, int linecount)
 	return false;
 }
 
-char *CTextManager::GetCharName(int stage, int stageID, int linecount)
+char *CTextManager::GetCharaName(int stage, int stageID, int linecount)
 {
 	char *str = new char[32];
 	char linec[64];
@@ -467,6 +467,69 @@ char *CTextManager::GetCharName(int stage, int stageID, int linecount)
 		}
 		break;
 	}
+	return str;
+}
 
+char *CTextManager::GetCharaExp(int stage, int stageID, int linecount)
+{
+	char *str = new char[32];
+	char linec[64];
+	sprintf_s(linec, "%d", linecount);
+
+	switch (stage)
+	{
+	case STAGE_TYPE::TUTORIAL:
+		for (auto itr = m_Tutorial_Control[stageID].begin(); itr != m_Tutorial_Control[stageID].end(); ++itr) {
+			if ((*itr).find(linec) != -1) {
+				string st((*itr));
+				st.erase(st.begin());
+				if ((*itr).find("@") != -1) {
+					string stb = st.substr(st.find("@"), st.size());
+					stb.erase(stb.begin());
+					strcpy(str, stb.c_str());
+				}
+			}
+		}
+		break;
+	case STAGE_TYPE::SION:
+		for (auto itr = m_Sion_Control[stageID].begin(); itr != m_Sion_Control[stageID].end(); ++itr) {
+			if ((*itr).find(linec) != -1) {
+				string st((*itr));
+				st.erase(st.begin());
+				if ((*itr).find("@") != -1) {
+					string stb = st.substr(st.find("@"), st.size());
+					stb.erase(stb.begin());
+					strcpy(str, stb.c_str());
+				}
+			}
+		}
+		break;
+	case STAGE_TYPE::KOUNE:
+		for (auto itr = m_Koune_Control[stageID].begin(); itr != m_Koune_Control[stageID].end(); ++itr) {
+			if ((*itr).find(linec) != -1) {
+				string st((*itr));
+				st.erase(st.begin());
+				if ((*itr).find("@") != -1) {
+					string stb = st.substr(st.find("@"), st.size());
+					stb.erase(stb.begin());
+					strcpy(str, stb.c_str());
+				}
+			}
+		}
+		break;
+	case STAGE_TYPE::MERUERU:
+		for (auto itr = m_Merueru_Control[stageID].begin(); itr != m_Merueru_Control[stageID].end(); ++itr) {
+			if ((*itr).find(linec) != -1) {
+				string st((*itr));
+				st.erase(st.begin());
+				if ((*itr).find("@") != -1) {
+					string stb = st.substr(st.find("@"), st.size());
+					stb.erase(stb.begin());
+					strcpy(str, stb.c_str());
+				}
+			}
+		}
+		break;
+	}
 	return str;
 }

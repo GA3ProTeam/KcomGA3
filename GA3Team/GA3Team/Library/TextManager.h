@@ -12,7 +12,7 @@ private:
 	int arrsize = 0;
 	int dummy = 0;
 
-	char tmpstr[1024];
+	char tmpstr[2048];
 	char strsave[64][512];
 
 	std::vector<std::string> tmpData;
@@ -36,7 +36,8 @@ public:
 
 	void LoadText();
 	bool isCtrlLine(int stage, int stageID,int linecount);
-	char *GetCharName(int stage, int stageID, int linecount);
+	char *GetCharaName(int stage, int stageID, int linecount);
+	char *GetCharaExp(int stage, int stageID, int linecount);
 };
 
 #endif // !__TEXTMANAGER_H__

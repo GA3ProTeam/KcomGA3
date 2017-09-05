@@ -68,6 +68,7 @@ CTextManager::CTextManager()
 
 void CTextManager::LoadText()
 {
+	//vector<string> exeption;
 
 	for (auto fileitr = filePath_tutorial.begin(); fileitr != filePath_tutorial.end(); ++fileitr) {
 
@@ -129,9 +130,6 @@ void CTextManager::LoadText()
 					tmpControl.push_back(nametemp);
 					itr = tmpData.erase(itr);
 				}
-				else {
-					return;
-				}
 			}
 			else {
 				itr++;
@@ -188,6 +186,12 @@ void CTextManager::LoadText()
 		//制御文字セット
 		std::vector<std::string>::iterator itr = tmpData.begin();
 		while (itr != tmpData.end()) {
+			//if ((*itr).find("{フォン") != -1) {
+			//	char t[64];
+			//	sprintf(t, "(%s)[%d]%s", (*fileitr).c_str() , distance(tmpData.begin(), itr),(*itr).c_str());
+			//	exeption.push_back(t);
+			//}
+
 			if ((*itr).find("[1_") != -1) {
 				(*itr).pop_back();
 				(*itr).erase((*itr).begin(), (*itr).begin() + 3);
@@ -204,11 +208,7 @@ void CTextManager::LoadText()
 					tmpControl.push_back(nametemp);
 					itr = tmpData.erase(itr);
 				}
-				else {
-					return;
-				}
-			}
-			else {
+			}else{
 				itr++;
 			}
 		}
@@ -263,6 +263,12 @@ void CTextManager::LoadText()
 		//制御文字セット
 		std::vector<std::string>::iterator itr = tmpData.begin();
 		while (itr != tmpData.end()) {
+			//if ((*itr).find("{フォン") != -1) {
+			//	char t[64];
+			//	sprintf(t, "(%s)[%d]%s", (*fileitr).c_str(), distance(tmpData.begin(), itr), (*itr).c_str());
+			//	exeption.push_back(t);
+			//}
+
 			if ((*itr).find("[1_") != -1) {
 				(*itr).pop_back();
 				(*itr).erase((*itr).begin(), (*itr).begin() + 3);
@@ -279,11 +285,7 @@ void CTextManager::LoadText()
 					tmpControl.push_back(nametemp);
 					itr = tmpData.erase(itr);
 				}
-				else {
-					return;
-				}
-			}
-			else {
+			}else{
 				itr++;
 			}
 		}
@@ -338,6 +340,12 @@ void CTextManager::LoadText()
 		//制御文字セット
 		std::vector<std::string>::iterator itr = tmpData.begin();
 		while (itr != tmpData.end()) {
+			//if ((*itr).find("{フォン") != -1) {
+			//	char t[64];
+			//	sprintf(t, "(%s)[%d]%s", (*fileitr).c_str(), distance(tmpData.begin(), itr), (*itr).c_str());
+			//	exeption.push_back(t);
+			//}
+
 			if ((*itr).find("[1_") != -1) {
 				(*itr).pop_back();
 				(*itr).erase((*itr).begin(), (*itr).begin() + 3);
@@ -354,11 +362,7 @@ void CTextManager::LoadText()
 					tmpControl.push_back(nametemp);
 					itr = tmpData.erase(itr);
 				}
-				else {
-					return;
-				}
-			}
-			else {
+			}else{
 				itr++;
 			}
 		}
@@ -410,7 +414,7 @@ bool CTextManager::isCtrlLine(int stage, int stageID, int linecount)
 	return false;
 }
 
-char *CTextManager::GetCharName(int stage, int stageID, int linecount)
+char *CTextManager::GetCharaName(int stage, int stageID, int linecount)
 {
 	char *str = new char[32];
 	char linec[64];
@@ -467,6 +471,69 @@ char *CTextManager::GetCharName(int stage, int stageID, int linecount)
 		}
 		break;
 	}
+	return str;
+}
 
+char *CTextManager::GetCharaExp(int stage, int stageID, int linecount)
+{
+	char *str = new char[32];
+	char linec[64];
+	sprintf_s(linec, "%d", linecount);
+
+	switch (stage)
+	{
+	case STAGE_TYPE::TUTORIAL:
+		for (auto itr = m_Tutorial_Control[stageID].begin(); itr != m_Tutorial_Control[stageID].end(); ++itr) {
+			if ((*itr).find(linec) != -1) {
+				string st((*itr));
+				st.erase(st.begin());
+				if ((*itr).find("@") != -1) {
+					string stb = st.substr(st.find("@"), st.size());
+					stb.erase(stb.begin());
+					strcpy(str, stb.c_str());
+				}
+			}
+		}
+		break;
+	case STAGE_TYPE::SION:
+		for (auto itr = m_Sion_Control[stageID].begin(); itr != m_Sion_Control[stageID].end(); ++itr) {
+			if ((*itr).find(linec) != -1) {
+				string st((*itr));
+				st.erase(st.begin());
+				if ((*itr).find("@") != -1) {
+					string stb = st.substr(st.find("@"), st.size());
+					stb.erase(stb.begin());
+					strcpy(str, stb.c_str());
+				}
+			}
+		}
+		break;
+	case STAGE_TYPE::KOUNE:
+		for (auto itr = m_Koune_Control[stageID].begin(); itr != m_Koune_Control[stageID].end(); ++itr) {
+			if ((*itr).find(linec) != -1) {
+				string st((*itr));
+				st.erase(st.begin());
+				if ((*itr).find("@") != -1) {
+					string stb = st.substr(st.find("@"), st.size());
+					stb.erase(stb.begin());
+					strcpy(str, stb.c_str());
+				}
+			}
+		}
+		break;
+	case STAGE_TYPE::MERUERU:
+		for (auto itr = m_Merueru_Control[stageID].begin(); itr != m_Merueru_Control[stageID].end(); ++itr) {
+			if ((*itr).find(linec) != -1) {
+				string st((*itr));
+				st.erase(st.begin());
+				if ((*itr).find("@") != -1) {
+					string stb = st.substr(st.find("@"), st.size());
+					stb.erase(stb.begin());
+					strcpy(str, stb.c_str());
+				}
+			}
+		}
+		break;
+	}
 	return str;
 }

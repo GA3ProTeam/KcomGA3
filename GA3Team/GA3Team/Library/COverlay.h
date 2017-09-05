@@ -10,7 +10,6 @@ enum STAGE_TYPE {
 	MERUERU,
 };
 
-
 //talkDrawの引数に使う列挙
 enum tutorial
 {
@@ -101,6 +100,8 @@ enum merueru
 };
 
 //---------------------------
+//定数宣言エリア
+
 //左キャラの横マージン
 #define TALK_CHARA_LEFT_MARGIN_X	50
 //左キャラの縦マージン
@@ -109,6 +110,18 @@ enum merueru
 #define TALK_CHARA_RIGHT_MARGIN_X	300
 //右キャラの縦マージン
 #define TALK_CHARA_RIGHT_MARGIN_Y	100
+
+//---------------------------
+//列挙宣言エリア
+//吹き出しタイプ
+enum TalkBalloon_Type
+{
+	TALKBALLOON_NORMAL_LEFT = 0,
+	TALKBALLOON_NORMAL_RIGHT,
+	TALKBALLOON_CLOUD_LEFT,
+	TALKBALLOON_CLOUD_RIGHT,
+	TALKBALLOON_SQUARE
+};
 
 //---------------------------
 class COverlay{
@@ -122,6 +135,11 @@ private:
 
 	//描画用
 	float m_fAlpha,m_fWaitAlpha;
+	float m_fDefColor[4], m_fBackColor[4], m_fWaitColor[4], m_fBallonColor[4];
+	float m_fLeftColor[4], m_fRightColor[4];
+	int m_iLeftCharaImageID, m_iRightCharaImageID;
+	char m_cLeftCharaName[64], m_cRightCharaName[64];
+	RECT m_RBalloon_src[5], m_RBalloon_dst[5];
 
 	//文字表示用
 	unsigned int m_iChar_Size;
@@ -141,6 +159,8 @@ private:
 	int m_iDrawingStageID;
 	int m_iDrawFlg;
 	int m_iFadeFlg;
+	int m_iDrawingCT;
+
 public:
 	//
 	COverlay(CDrawTexture *i, CDrawFont *f, CWinInputs *w, CSoundManeger *s, CTextManager *t)
@@ -152,12 +172,15 @@ public:
 		m_iDrawingStageID(-1), 
 		m_iDrawFlg(-1), 
 		m_iFadeFlg(0), 
+		m_iDrawingCT(0),
 		m_iChar_Size(0), 
 		m_iChar_Pos(0),
 		m_iChar_Line(0), 
 		m_iTextSpeed(7),
 		m_iDelay(0), 
 		m_iCurrentLine(0),
+		m_iLeftCharaImageID(-1),
+		m_iRightCharaImageID(-1),
 		m_fAlpha(0.0f),
 		m_fWaitAlpha(0.0f)
 	{}

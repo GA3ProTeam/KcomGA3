@@ -17,6 +17,7 @@ class GimmickTelevision;
 class GimmickOven;
 class GimmickKatsuo;
 class GimmickDoor;
+class GimmickDoctorroomDoor;
 class GimmickDog;
 class GimmickManholeCover;
 class GimmickManholeHole;
@@ -27,6 +28,10 @@ class GimmickLittleGirl;
 class GimmickDoctor;
 class GimmickRecorder;
 class GimmickComputer;
+class GimmickMysteryDoor;
+class GimmickMechanic;
+class GimmickSoundComputer;
+class GimmickMusician;
 class GimmickMysteryman;
 class GimmickBike;
 class GimmickDoor;
@@ -76,9 +81,9 @@ private:
 	//メルエルステージ↓
 	//ステージ1↓
 	GimmickTelevision* m_gimmick_television;
-	GimmickOven* m_gimmick_oven;
 	GimmickKatsuo* m_gimmick_katsuo;
-//	GimmickDoor* m_gimmick_door;
+	GimmickOven* m_gimmick_oven;
+	GimmickDoctorroomDoor* m_gimmick_door;
 
 	//ステージ1↑
 	//メルエルステージ↑
@@ -93,6 +98,22 @@ private:
 	GimmickManholeHole*  m_gimmick_manhole_hole;
 	GimmickOldman*  m_gimmick_oldman;
 	//ステージ1↑
+
+
+	//ステージ3↓
+	GimmickKitten* m_gimmick_kitten;
+	GimmickCicada* m_gimmick_cicada;
+	GimmickLittleGirl* m_gimmick_little_girl;
+	//ステージ3↑
+
+
+	//ステージ5↓
+	GimmickMysteryDoor*   m_gimmick_mysterydoor;
+	GimmickMechanic*      m_gimmick_mechanic;
+	GimmickSoundComputer* m_gimmick_soundcomputer;
+	GimmickMusician*      m_gimmick_musician;
+	//ステージ5↑   
+
 	//コウネステージ↑
 
 

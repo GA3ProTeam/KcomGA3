@@ -17,6 +17,7 @@ class GimmickTelevision;
 class GimmickOven;
 class GimmickKatsuo;
 class GimmickDoor;
+class GimmickDoctorroomDoor;
 class GimmickDog;
 class GimmickManholeCover;
 class GimmickManholeHole;
@@ -69,7 +70,7 @@ private:
 	GimmickTelevision* m_gimmick_television;
 	GimmickOven* m_gimmick_oven;
 	GimmickKatsuo* m_gimmick_katsuo;
-	GimmickDoor* m_gimmick_door;
+	GimmickDoctorroomDoor* m_gimmick_door;
 
 	//ステージ1↑
 	//メルエルステージ↑

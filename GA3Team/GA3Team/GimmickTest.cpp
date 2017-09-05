@@ -1628,7 +1628,7 @@ void GimmickDoctorroomDoor::Action()
 		//マウスドラッグ中にマウスボタンが離された
 		//if (!Input()->GetMouButtonL() && tab->GetHaveSound()) {
 
-		//SavedataManeger()->CurrentData->m_bMelueruClearflg[0] = true;
+			//SavedataManeger()->CurrentData->m_bMelueruClearflg[0] = true;
 
 
 		//}

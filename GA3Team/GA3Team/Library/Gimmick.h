@@ -56,6 +56,7 @@ void InitBall(Balloon* balloon, int gimX, int gimY, int balltype, int soundnum, 
 
 //ギミッククラス(基底)
 class Gimmick : public CObj {
+friend class CObjGimmickManager;
 protected:
 	Balloon* m_ball;//吹き出し
 	bool m_bCursor;	    //ギミックにカーソルが当たっているかのフラグ
@@ -72,7 +73,7 @@ protected:
 //----------------表示位置----------
 	RECT m_src;		//転送先座標
 	RECT m_dst;		//切り取り座標
-	bool m_getsound;  //ギミックに音をドラッグ＆ドロップされたかどうか
+	int m_getsound;  //ギミックに音をドラッグ＆ドロップされたかどうか
 
 	
 public:

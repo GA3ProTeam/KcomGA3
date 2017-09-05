@@ -413,7 +413,7 @@ class GimmickLittleGirl : public Gimmick
 	public:
 		GimmickLittleGirl() {}
 		~GimmickLittleGirl() {}
-	private:
+	
 		void Init(int xpos, int ypos, int widht, int height, int balloonnum);//イニシャライズ
 		void Destructor();//デストラクタ
 		void Action();//アクション
@@ -426,7 +426,7 @@ class GimmickKitten : public Gimmick
 	public:
 		GimmickKitten() {}
 		~GimmickKitten() {}
-	private:
+	
 		void Init(int xpos, int ypos, int widht, int height, int balloonnum);//イニシャライズ
 		void Destructor();//デストラクタ
 		void Action();//アクション
@@ -439,7 +439,7 @@ class GimmickCicada : public Gimmick
 	public:
 		GimmickCicada() {}
 		~GimmickCicada() {}
-	private:
+	
 		void Init(int xpos, int ypos, int widht, int height, int balloonnum);//イニシャライズ
 		void Destructor();//デストラクタ
 		void Action();//アクション

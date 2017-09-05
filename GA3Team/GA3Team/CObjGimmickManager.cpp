@@ -96,23 +96,23 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 	//-メルエルステージ---------------------------------------
 
 	case 20:
-		/*
+		
 		m_gimmick_television = new GimmickTelevision();
 		Obj()->InsertObj(m_gimmick_television, GIMMICK_TELEVISION, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_television->Init(100, 300, 100, 70, 1);
+		m_gimmick_television->Init(50, 300, 250, 125, 1);
 		
 		m_gimmick_oven = new GimmickOven();
 		Obj()->InsertObj(m_gimmick_oven, GIMMICK_OVEN, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_oven->Init(-100, 100, 64, 64, 1);
+		m_gimmick_oven->Init(-200, 50, 300, 150, 1);
 
 		m_gimmick_katsuo = new GimmickKatsuo();
 		Obj()->InsertObj(m_gimmick_katsuo, GIMMICK_KATSUO, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_katsuo->Init(-100, 200, 64, 64, 1);
+		m_gimmick_katsuo->Init(-180, 170, 150, 300, 1);
 
 		m_gimmick_door = new GimmickDoctorroomDoor();
 		Obj()->InsertObj(m_gimmick_door, GIMMICK_DOOR, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_door->Init(400, 150, 100, 300, 1);
-		*/
+		m_gimmick_door->Init(250, 100, 400, 400, 1);
+		
 		break;
 	case 21:
 

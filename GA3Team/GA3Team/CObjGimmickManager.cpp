@@ -178,17 +178,17 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 //		//Žq”L
 //		m_gimmick_kitten = new GimmickKitten();
 //		Obj()->InsertObj(m_gimmick_kitten, GIMMICK_KITTEN, 5, this->m_pScene, HIT_BOX_OFF);
-//		m_gimmick_kitten->Init(0, 0, 0, 0, 1);
+//		m_gimmick_kitten->Init(400, 120, 100, 100, 1);
 //
 //		//ä
 //		m_gimmick_cicada = new GimmickCicada();
 //		Obj()->InsertObj(m_gimmick_cicada, GIMMICK_CICADA, 5, this->m_pScene, HIT_BOX_OFF);
-//		m_gimmick_cicada->Init(0, 0, 0, 0, 1);
+//		m_gimmick_cicada->Init(500, 120, 100, 100, 1);
 //
 //		//­—
 //		m_gimmick_little_girl = new GimmickLittleGirl();
 //		Obj()->InsertObj(m_gimmick_little_girl, GIMMICK_LITTLEGIRL, 5, this->m_pScene, HIT_BOX_OFF);
-//		m_gimmick_little_girl->Init(0, 0, 0, 0, 1);
+//		m_gimmick_little_girl->Init(600, 120, 100, 100, 1);
 
 		
 		break;

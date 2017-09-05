@@ -1172,12 +1172,16 @@ void Gimmickfiretruck::Draw()
 ////ステージ2↑
 //
 ////ステージ3↓
+
+/*
 //子猫----------------------------------------------------
 //イニシャライズ
 void GimmickKitten::Init(int xpos, int ypos, int widht, int height, int balloonnum)
 {
-//	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
-//	InitBall(m_ball,48, -48, sound, 1, RED, LOWER_LEFT);
+	//親クラスのInit関数を呼ぶ
+	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
+	//吹き出しの初期化
+	InitBall(&m_ball[0],48, -48, sound, 1, RED, LOWER_LEFT);
 }
 //デストラクタ
 void GimmickKitten::Destructor()
@@ -1201,10 +1205,11 @@ void GimmickKitten::Draw()
 	//転送先座標
 	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
 	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
-	//描画
-//	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
 
-//	this->gimmicDraw(0);
+	//描画
+	Image()->Draw(5, &m_src, &m_dst, col, 0.0f);
+	//吹き出し描画
+	this->gimmicDraw(1);
 
 }
 //--------------------------------------------------------
@@ -1213,8 +1218,10 @@ void GimmickKitten::Draw()
 //イニシャライズ
 void GimmickCicada::Init(int xpos, int ypos, int widht, int height, int balloonnum)
 {
-//	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
-//	InitBall(m_ball,48, -48, sound, 1, RED, LOWER_LEFT);
+	//親クラスのInit関数を呼ぶ
+	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
+	//吹き出しの初期化
+	InitBall(&m_ball[0],48, -48, sound, 1, RED, LOWER_LEFT);
 }
 //デストラクタ
 void GimmickCicada::Destructor()
@@ -1238,10 +1245,11 @@ void GimmickCicada::Draw()
 	//転送先座標
 	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
 	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
-	//描画
-//	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
 
-//	this->gimmicDraw(0);
+	//描画
+	Image()->Draw(5, &m_src, &m_dst, col, 0.0f);
+	//吹き出し描画
+	this->gimmicDraw(1);
 }
 //--------------------------------------------------------
 
@@ -1249,8 +1257,10 @@ void GimmickCicada::Draw()
 //イニシャライズ
 void GimmickLittleGirl::Init(int xpos, int ypos, int widht, int height, int balloonnum)
 {
-//	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
-//	InitBall(m_ball,48, -48, sound, 1, RED, LOWER_LEFT);
+	//親クラスのInit関数を呼ぶ
+	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
+	//吹き出しの初期化
+	InitBall(&m_ball[0],48, -48, talk, 1, RED, LOWER_LEFT);
 }
 //デストラクタ
 void GimmickLittleGirl::Destructor()
@@ -1274,11 +1284,15 @@ void GimmickLittleGirl::Draw()
 	//転送先座標
 	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
 	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
-	//描画
-//	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
 
-//	this->gimmicDraw(0);
+	//描画
+	Image()->Draw(5, &m_src, &m_dst, col, 0.0f);
+	//吹き出し描画
+	this->gimmicDraw(1);
 }
+
+*/
+
 //--------------------------------------------------------
 
 ////ステージ3↑

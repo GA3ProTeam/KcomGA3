@@ -257,7 +257,8 @@ void CObjGimmickManager::Action() {
 	enum TUTORIAL_NUMBER {
 		TUTORIAL_WELCOM_TALK,				//博士開始メッセージ
 		TUTORIAL_WELCOM_TALK_END,			//開始時メッセージ終了
-		TUTORIAL_RECORDER_GET,				//レコーダー入手
+		TUTORIAL_RECORDER_GET_TALK,			//レコーダー入手後会話
+		TUTORIAL_RECORDER_GET_TALK_END,		//レコーダー入手後会話終了
 		TUTORIAL_SOUND_REC,					//音録音
 		TUTORIAL_SOUND_REC_AFTER_TALK,		//音を録音した後、会話
 		TUTORIAL_SOUND_REC_AFTER_TALK_END,	//音を録音した後の会話終了
@@ -267,7 +268,7 @@ void CObjGimmickManager::Action() {
 	};
 
 	//イベント進行度
-	static int m_itutorialflg = TUTORIAL_WELCOM_TALK;
+	static int m_itutorialflg = TUTORIAL_RECORDER_GET_TALK_END;
 
 	//テスト用（チュートリアルステージ）
 	switch (m_Stage_ID) {
@@ -288,13 +289,23 @@ void CObjGimmickManager::Action() {
 
 				//レコーダー入手
 				if (m_gimmick_recorder->m_ball[0].OnPush) {
-					m_itutorialflg = TUTORIAL_RECORDER_GET;
+					m_itutorialflg = TUTORIAL_RECORDER_GET_TALK;
 					m_gimmick_recorder->m_Status = STATUS_DELETE;//レコーダー削除
 				}
 
 			}
-			//レコーダー入手後（フラグ1達成後）
-			else if (m_itutorialflg == TUTORIAL_RECORDER_GET) {
+			//レコーダー入手後会話
+			else if (m_itutorialflg == TUTORIAL_RECORDER_GET_TALK) {
+				//博士「それはこの研究所が開発したレコーダー・・・」
+				Overlay()->talkDraw(TUTORIAL, HAKASE_FLAG_1_1);
+
+				//会話終了
+				if (!Overlay()->isDraw()) {
+					m_itutorialflg = TUTORIAL_RECORDER_GET_TALK_END;
+				}
+			}
+			//会話終了（フラグ1達成後）
+			else if (m_itutorialflg == TUTORIAL_RECORDER_GET_TALK_END) {
 
 				//音を録音
 				if (m_gimmick_computer->m_ball[0].OnPush) {

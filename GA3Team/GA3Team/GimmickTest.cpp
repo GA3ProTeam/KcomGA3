@@ -190,7 +190,7 @@ void GimmickComputer::Init(int xpos, int ypos, int widht, int height, int balloo
 
 //デストラクタ
 void GimmickComputer::Destructor() {
-	delete[] m_ball;
+	
 }
 
 //アクション

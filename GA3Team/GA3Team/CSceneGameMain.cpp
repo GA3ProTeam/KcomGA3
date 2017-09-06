@@ -17,6 +17,8 @@ void CSceneGameMain::InitScene()
 	Image()->LoadImage("猫.png", 9, TEX_SIZE_1024);//猫
 	Image()->LoadImage("自転車.png", 10, TEX_SIZE_1024);//自転車
 	Image()->LoadImage("消防車.png", 11, TEX_SIZE_1024);//消防車
+	Image()->LoadImage("タイトルタブ仮画像.png", 12, TEX_SIZE_64);//自転車
+	Image()->LoadImage("データ削除仮画像.png", 13, TEX_SIZE_64);//消防車
 	Image()->LoadImage("カツオc.png", 12, TEX_SIZE_512);//カツオ
 	Image()->LoadImage("ドアc.png", 13, TEX_SIZE_512);//博士の部屋のドア
 	Image()->LoadImage("研究所　背景.png", 14, TEX_SIZE_512);//博士の部屋

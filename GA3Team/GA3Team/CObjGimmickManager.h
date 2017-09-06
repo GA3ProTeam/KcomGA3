@@ -28,6 +28,9 @@ class GimmickLittleGirl;
 class GimmickDoctor;
 class GimmickRecorder;
 class GimmickComputer;
+class GimmickMysteryman;
+class GimmickBike;
+class GimmickDoor;
 class GimmickMysteryDoor;
 class GimmickMechanic;
 class GimmickSoundComputer;
@@ -63,6 +66,12 @@ private:
 	GimmickShelf* m_gimmick_shelf;
 	GimmickWindchime* m_gimmick_windchime;
 	//ステージ3↑
+	//ステージ4↓
+	GimmickMysteryman* m_gimmick_mysteryman;
+	GimmickBike* m_gimmick_bike;
+	GimmickDoor* m_gimmick_door_Sion4;
+
+	//ステージ4↑
 	//シオンステージ1↑
 
 

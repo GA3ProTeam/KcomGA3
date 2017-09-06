@@ -84,9 +84,9 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 		Obj()->InsertObj(m_gimmick_bike, GIMMICK_BIKE, 1, this->m_pScene, HIT_BOX_OFF);
 		m_gimmick_bike->Init(500, 250, 200, 300, 1);
 
-		m_gimmick_door = new GimmickDoor();
-		Obj()->InsertObj(m_gimmick_door, GIMMICK_SHELF, 1, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_door->Init(500, 250, 200, 300, 1);
+		m_gimmick_door_Sion4 = new GimmickDoor();
+		Obj()->InsertObj(m_gimmick_door_Sion4, GIMMICK_SHELF, 1, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_door_Sion4->Init(500, 250, 200, 300, 1);
 
 
 

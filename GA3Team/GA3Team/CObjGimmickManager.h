@@ -69,7 +69,7 @@ private:
 	//ステージ4↓
 	GimmickMysteryman* m_gimmick_mysteryman;
 	GimmickBike* m_gimmick_bike;
-	GimmickDoor* m_gimmick_door;
+	GimmickDoor* m_gimmick_door_Sion4;
 
 	//ステージ4↑
 	//シオンステージ1↑

@@ -14,7 +14,7 @@ void CSoundManeger::SoundDelete(int slotNum/*削除する音スロットの番号*/)//音を消
 }
 void CSoundManeger::SoundSave(int soundNum/*音の番号*/) //音をセーブする
 {
-	static bool flg = false;
+	bool flg = false;
 	//同じ音が入っていないか確認する
 	for (int i = 0; i < 3; i++){
 		if (SoundSlot[i] == soundNum){
@@ -27,7 +27,6 @@ void CSoundManeger::SoundSave(int soundNum/*音の番号*/) //音をセーブする
 	{
 		if (SoundSlot[i] == -1 && !flg) {
 			SoundSlot[i] = soundNum;
-			flg = false;
 			break;
 		}
 	}

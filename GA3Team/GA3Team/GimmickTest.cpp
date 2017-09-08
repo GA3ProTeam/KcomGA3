@@ -1498,7 +1498,7 @@ void GimmickTelevision::Init(int xpos, int ypos, int widht, int height, int ball
 
 void GimmickTelevision::Destructor()
 {
-	delete[] m_ball;
+	//delete[] m_ball;
 }
 
 void GimmickTelevision::Action()
@@ -1549,7 +1549,7 @@ void GimmickOven::Init(int xpos, int ypos, int widht, int height, int balloonnum
 
 void GimmickOven::Destructor()
 {
-	delete[] m_ball;
+	//delete[] m_ball;
 }
 
 void GimmickOven::Action()
@@ -1600,7 +1600,7 @@ void GimmickKatsuo::Init(int xpos, int ypos, int widht, int height, int balloonn
 
 void GimmickKatsuo::Destructor()
 {
-	delete[] m_ball;
+	//delete[] m_ball;
 }
 
 void GimmickKatsuo::Action()
@@ -1694,7 +1694,7 @@ void GimmickDoctorroomDoor::Init(int xpos, int ypos, int widht, int height, int 
 
 void GimmickDoctorroomDoor::Destructor()
 {
-	delete[] m_ball;
+	//delete[] m_ball;
 }
 
 void GimmickDoctorroomDoor::Action()

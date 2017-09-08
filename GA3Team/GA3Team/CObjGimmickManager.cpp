@@ -16,7 +16,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 	*/
 	SavedataManeger()->Setcurrentdata();
 
-	m_Stage_ID = 12;
+	m_Stage_ID = 40;
 
 	switch (m_Stage_ID) {
 
@@ -51,7 +51,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 
 	case 12:
 		//シオンのステージ3のギミック生成
-		for (int i = 0; i < 3; i++) {
+		/*for (int i = 0; i < 3; i++) {
 			m_gimmick_children = new GimmickChildren(); 
 			Obj()->InsertObj(m_gimmick_children, GIMMICK_CHILDREN, 5, this->m_pScene, HIT_BOX_OFF);
 			m_gimmick_children->Init(100+(80*i), 350, 70, 100, 1,i+1);
@@ -70,7 +70,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 		
 		m_gimmick_windchime = new GimmickWindchime();
 		Obj()->InsertObj(m_gimmick_windchime, GIMMICK_WINDCHIME, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_windchime->Init(230, 100, 60, 80, 1);
+		m_gimmick_windchime->Init(230, 100, 60, 80, 1);*/
 
 
 		break;
@@ -109,7 +109,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 
 	case 20:
 
-		m_gimmick_television = new GimmickTelevision();
+	/*	m_gimmick_television = new GimmickTelevision();
 		Obj()->InsertObj(m_gimmick_television, GIMMICK_TELEVISION, 5, this->m_pScene, HIT_BOX_OFF);
 		m_gimmick_television->Init(50, 300, 250, 125, 1);
 		
@@ -124,7 +124,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 		m_gimmick_door = new GimmickDoctorroomDoor();
 		Obj()->InsertObj(m_gimmick_door, GIMMICK_DOOR, 5, this->m_pScene, HIT_BOX_OFF);
 		m_gimmick_door->Init(280, 90, 400, 400, 1);
-		
+		*/
 		break;
 	case 21:
 
@@ -232,7 +232,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 		//レコーダー
 		m_gimmick_recorder = new GimmickRecorder();
 		Obj()->InsertObj(m_gimmick_recorder, GIMMICK_RECORDER, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_recorder->Init(350, 260, 200, 100, 0);
+		m_gimmick_recorder->Init(350, 260, 200, 100, 1);
 
 		//パソコン
 		m_gimmick_computer = new GimmickComputer();
@@ -268,7 +268,7 @@ void CObjGimmickManager::Action() {
 	};
 
 	//イベント進行度
-	static int m_itutorialflg = TUTORIAL_RECORDER_GET_TALK_END;
+	static int m_itutorialflg = TUTORIAL_WELCOM_TALK;
 
 	//テスト用（チュートリアルステージ）
 	switch (m_Stage_ID) {

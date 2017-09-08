@@ -10,10 +10,14 @@ void Gimmick::Init(int xpos, int ypos, int widht, int height, int balloonnum)
 
 	m_menu_tab = (CObjMenuTab*)Obj()->GetObj(OBJ_MENUTAB);//メニュータブへの参照セット
 	m_getsound = -1;
-	//吹き出し生成
-	m_ball = new Balloon[m_iballoonnum];
-	//吹き出し初期化
-	memset(m_ball, 0, sizeof(Balloon) * m_iballoonnum);
+
+	//吹き出しを1つ以上生成するなら
+	if (m_iballoonnum > 0) {
+		//吹き出し生成
+		m_ball = new Balloon[m_iballoonnum];
+		//吹き出し初期化
+		memset(m_ball, 0, sizeof(Balloon) * m_iballoonnum);
+	}
 }
 
 //描画

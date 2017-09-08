@@ -68,7 +68,7 @@ void Gimmick::gimmicDraw(int num)
 			m_iballoontime = BALLOON_KEEP_TIME;
 			if (!Input()->GetMouButtonL() && m_menu_tab->GetGiveSound() != -1) {
 				//ドラッグしていた効果音をギミックに聞かせる
-				//SoundManager()->StartSound(m_menu_tab->GetGiveSound());
+				SoundManager()->StartSound(m_menu_tab->GetGiveSound());
 				//ドラッグした効果音番号を取得
 				m_getsound = SoundManager()->GetSound(m_menu_tab->GetGiveSound());
 			}

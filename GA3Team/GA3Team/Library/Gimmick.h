@@ -58,11 +58,11 @@ void InitBall(Balloon* balloon, int gimX, int gimY, int balltype, int soundnum, 
 class Gimmick : public CObj {
 friend class CObjGimmickManager;
 protected:
-	Balloon* m_ball;//吹き出し
+	Balloon* m_ball;	//吹き出し
 	bool m_bCursor;	    //ギミックにカーソルが当たっているかのフラグ
 	int m_iballoontime;	//吹き出しの維持時間
 	int m_iballoonnum;  //吹き出しの数
-
+	
 	CObjMenuTab* m_menu_tab;//メニュータブへの参照
 
 //-----------------判定-------------
@@ -71,10 +71,10 @@ protected:
 	int m_iWidth;	//ギミック幅
 	int m_iHeight;	//ギミック高さ
 //----------------表示位置----------
-	RECT m_src;		//転送先座標
-	RECT m_dst;		//切り取り座標
-	int m_getsound;  //ギミックに音をドラッグ＆ドロップされたかどうか
-
+	RECT m_src;			//転送先座標
+	RECT m_dst;			//切り取り座標
+	int m_getsound;		//ギミックに音をドラッグ＆ドロップされたかどうか
+	bool m_bActionFlg;	//ギミック動作フラグ
 	
 public:
 	//デストラクタ

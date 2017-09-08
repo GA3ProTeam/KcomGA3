@@ -1554,7 +1554,6 @@ void GimmickOven::Destructor()
 
 void GimmickOven::Action()
 {
-
 	if (m_ball[0].OnPush) {
 		if (SavedataManeger()->CurrentData->m_bMelueruflg[2]) {
 			//ƒŒƒ“ƒW‰¹“üè

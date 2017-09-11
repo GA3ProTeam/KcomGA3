@@ -104,6 +104,8 @@ void Gimmick::gimmicDraw(int num)
 				else {
 					flg = false;
 				}
+
+				//マウスが範囲内にある
 				if (flg)
 				{
 					//左クリックされたら
@@ -117,6 +119,10 @@ void Gimmick::gimmicDraw(int num)
 						onceflg = false;
 						m_ball[i].OnPush = true;
 					}
+				}
+				//マウスが範囲外
+				else {
+					onceflg = false;
 				}
 			}
 		}

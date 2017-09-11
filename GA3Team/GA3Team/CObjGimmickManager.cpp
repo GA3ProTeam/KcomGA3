@@ -253,141 +253,141 @@ void CObjGimmickManager::Destructor() {
 
 //アクション
 void CObjGimmickManager::Action() {
-	////イベント番号
-	//enum TUTORIAL_NUMBER {
-	//	TUTORIAL_WELCOM_TALK,				//博士開始メッセージ
-	//	TUTORIAL_WELCOM_TALK_END,			//開始時メッセージ終了
-	//	TUTORIAL_RECORDER_GET_TALK,			//レコーダー入手後会話
-	//	TUTORIAL_RECORDER_GET_TALK_END,		//レコーダー入手後会話終了
-	//	TUTORIAL_SOUND_REC,					//音録音
-	//	TUTORIAL_SOUND_REC_AFTER_TALK,		//音を録音した後、会話
-	//	TUTORIAL_SOUND_REC_AFTER_TALK_END,	//音を録音した後の会話終了
-	//	TUTORIAL_SOUND_REC_AND_PLAY,		//音を録音した後、会話せずに再生までこなした
-	//	TUTORIAL_SOUND_REC_TALK_PLAY,		//音を録音した後、会話してから再生した
-	//	TUTORIAL_CLEAR,						//チュートリアルクリア
-	//};
+	//イベント番号
+	enum TUTORIAL_NUMBER {
+		TUTORIAL_WELCOM_TALK,				//博士開始メッセージ
+		TUTORIAL_WELCOM_TALK_END,			//開始時メッセージ終了
+		TUTORIAL_RECORDER_GET_TALK,			//レコーダー入手後会話
+		TUTORIAL_RECORDER_GET_TALK_END,		//レコーダー入手後会話終了
+		TUTORIAL_SOUND_REC,					//音録音
+		TUTORIAL_SOUND_REC_AFTER_TALK,		//音を録音した後、会話
+		TUTORIAL_SOUND_REC_AFTER_TALK_END,	//音を録音した後の会話終了
+		TUTORIAL_SOUND_REC_AND_PLAY,		//音を録音した後、会話せずに再生までこなした
+		TUTORIAL_SOUND_REC_TALK_PLAY,		//音を録音した後、会話してから再生した
+		TUTORIAL_CLEAR,						//チュートリアルクリア
+	};
 
-	////イベント進行度
-	//static int m_itutorialflg = TUTORIAL_SOUND_REC_AFTER_TALK_END;
+	//イベント進行度
+	static int m_itutorialflg = TUTORIAL_WELCOM_TALK;
 
-	////テスト用（チュートリアルステージ）
-	//switch (m_Stage_ID) {
-	//case 40:
-	//	{
-	//		//【初回動作】
-	//		if (m_itutorialflg == TUTORIAL_WELCOM_TALK) {
-	//			//博士「ようこそ！ここは・・・」
-	//			Overlay()->talkDraw(TUTORIAL, HAKASE_1);
+	//テスト用（チュートリアルステージ）
+	switch (m_Stage_ID) {
+	case 40:
+		{
+			//【初回動作】
+			if (m_itutorialflg == TUTORIAL_WELCOM_TALK) {
+				//博士「ようこそ！ここは・・・」
+				Overlay()->talkDraw(TUTORIAL, HAKASE_1);
 
-	//			//会話終了
-	//			if (Overlay()->NextWait()) {
-	//				m_itutorialflg = TUTORIAL_WELCOM_TALK_END;
-	//			}
-	//		}
-	//		//【博士の開始メッセージ終了後】
-	//		else if (m_itutorialflg == TUTORIAL_WELCOM_TALK_END) {
+				//会話終了
+				if (Overlay()->NextWait()) {
+					m_itutorialflg = TUTORIAL_WELCOM_TALK_END;
+				}
+			}
+			//【博士の開始メッセージ終了後】
+			else if (m_itutorialflg == TUTORIAL_WELCOM_TALK_END) {
 
-	//			//博士、コンピューター　動作停止
-	//			m_gimmick_doctor->m_bActionFlg = false;
-	//			m_gimmick_computer->m_bActionFlg = false;
+				//博士、コンピューター　動作停止
+				m_gimmick_doctor->m_bActionFlg = false;
+				m_gimmick_computer->m_bActionFlg = false;
 
-	//			//レコーダー入手
-	//			if (m_gimmick_recorder->m_ball[0].OnPush) {
-	//				m_itutorialflg = TUTORIAL_RECORDER_GET_TALK;
-	//				m_gimmick_recorder->m_Status = STATUS_DELETE;//レコーダー削除
+				//レコーダー入手
+				if (m_gimmick_recorder->m_ball[0].OnPush) {
+					m_itutorialflg = TUTORIAL_RECORDER_GET_TALK;
+					m_gimmick_recorder->m_Status = STATUS_DELETE;//レコーダー削除
 
-	//				//博士、コンピューター　動作再開
-	//				m_gimmick_doctor->m_bActionFlg = true;
-	//				m_gimmick_computer->m_bActionFlg = true;
-	//			}
+					//博士、コンピューター　動作再開
+					m_gimmick_doctor->m_bActionFlg = true;
+					m_gimmick_computer->m_bActionFlg = true;
+				}
 
-	//		}
-	//		//【レコーダー入手後会話】
-	//		else if (m_itutorialflg == TUTORIAL_RECORDER_GET_TALK) {
-	//			//博士「それはこの研究所が開発したレコーダー・・・」
-	//			Overlay()->talkDraw(TUTORIAL, HAKASE_FLAG_1_1);
+			}
+			//【レコーダー入手後会話】
+			else if (m_itutorialflg == TUTORIAL_RECORDER_GET_TALK) {
+				//博士「それはこの研究所が開発したレコーダー・・・」
+				Overlay()->talkDraw(TUTORIAL, HAKASE_FLAG_1_1);
 
-	//			//会話終了
-	//			if (Overlay()->NextWait()) {
-	//				m_itutorialflg = TUTORIAL_RECORDER_GET_TALK_END;
-	//			}
-	//		}
-	//		//【会話終了（フラグ1達成後）】
-	//		else if (m_itutorialflg == TUTORIAL_RECORDER_GET_TALK_END) {
+				//会話終了
+				if (Overlay()->NextWait()) {
+					m_itutorialflg = TUTORIAL_RECORDER_GET_TALK_END;
+				}
+			}
+			//【会話終了（フラグ1達成後）】
+			else if (m_itutorialflg == TUTORIAL_RECORDER_GET_TALK_END) {
 
-	//			//音を録音
-	//			if (m_gimmick_computer->m_ball[0].OnPush) {
-	//				m_itutorialflg = TUTORIAL_SOUND_REC;
-	//			}
+				//音を録音
+				if (m_gimmick_computer->m_ball[0].OnPush) {
+					m_itutorialflg = TUTORIAL_SOUND_REC;
+				}
 
-	//			//音を録音していない（フラグ2未達成）状態で、博士と会話
-	//			if (m_gimmick_doctor->m_ball[0].OnPush) {
-	//				//博士「話を聞いていなかったのかね？・・・」
-	//				Overlay()->talkDraw(TUTORIAL, HAKASE_FLAG_2_1_NO);
-	//			}
+				//音を録音していない（フラグ2未達成）状態で、博士と会話
+				if (m_gimmick_doctor->m_ball[0].OnPush) {
+					//博士「話を聞いていなかったのかね？・・・」
+					Overlay()->talkDraw(TUTORIAL, HAKASE_FLAG_2_1_NO);
+				}
 
-	//			//再度博士の会話をスタンバイ
-	//			Overlay()->NextWait();
+				//再度博士の会話をスタンバイ
+				Overlay()->NextWait();
 
-	//		}
-	//		//【音を録音後（フラグ2達成後）】
-	//		else if (m_itutorialflg == TUTORIAL_SOUND_REC) {
+			}
+			//【音を録音後（フラグ2達成後）】
+			else if (m_itutorialflg == TUTORIAL_SOUND_REC) {
 
-	//			//博士と会話
-	//			if (m_gimmick_doctor->m_ball[0].OnPush) {
-	//				//録音した後、会話した（フラグ3達成）
-	//				m_itutorialflg = TUTORIAL_SOUND_REC_AFTER_TALK;
-	//			}
-	//			//博士と会話していない状態で、再生も行う
-	//			else {
-	//				//音ボタンドラッグ
-	//				if (m_gimmick_doctor->m_getsound != -1) {
-	//					m_itutorialflg = TUTORIAL_SOUND_REC_AND_PLAY;
-	//				}
-	//			}
+				//博士と会話
+				if (m_gimmick_doctor->m_ball[0].OnPush) {
+					//録音した後、会話した（フラグ3達成）
+					m_itutorialflg = TUTORIAL_SOUND_REC_AFTER_TALK;
+				}
+				//博士と会話していない状態で、再生も行う
+				else {
+					//音ボタンドラッグ
+					if (m_gimmick_doctor->m_getsound != -1) {
+						m_itutorialflg = TUTORIAL_SOUND_REC_AND_PLAY;
+					}
+				}
 
-	//		}
-	//		//【録音後、博士と会話した場合】
-	//		else if (m_itutorialflg == TUTORIAL_SOUND_REC_AFTER_TALK) {
+			}
+			//【録音後、博士と会話した場合】
+			else if (m_itutorialflg == TUTORIAL_SOUND_REC_AFTER_TALK) {
 
-	//			//会話「うむ、言われたことはできるようなのだな・・・」
-	//			Overlay()->talkDraw(TUTORIAL, HAKASE_FLAG_2_1_YES);
+				//会話「うむ、言われたことはできるようなのだな・・・」
+				Overlay()->talkDraw(TUTORIAL, HAKASE_FLAG_2_1_YES);
 
-	//			//会話終了
-	//			if (Overlay()->NextWait()) {
-	//				m_itutorialflg = TUTORIAL_SOUND_REC_AFTER_TALK_END;
-	//			}
-	//		}
-	//		//【録音後、博士との会話終了時】
-	//		else if (m_itutorialflg == TUTORIAL_SOUND_REC_AFTER_TALK_END) {
-	//			//音ボタンドラッグ
-	//			if (m_gimmick_doctor->m_getsound != -1) {
-	//				m_itutorialflg = TUTORIAL_SOUND_REC_TALK_PLAY;
-	//			}
-	//		}
-	//		//【録音後、博士と会話した後、再生】
-	//		else if (m_itutorialflg == TUTORIAL_SOUND_REC_TALK_PLAY) {
+				//会話終了
+				if (Overlay()->NextWait()) {
+					m_itutorialflg = TUTORIAL_SOUND_REC_AFTER_TALK_END;
+				}
+			}
+			//【録音後、博士との会話終了時】
+			else if (m_itutorialflg == TUTORIAL_SOUND_REC_AFTER_TALK_END) {
+				//音ボタンドラッグ
+				if (m_gimmick_doctor->m_getsound != -1) {
+					m_itutorialflg = TUTORIAL_SOUND_REC_TALK_PLAY;
+				}
+			}
+			//【録音後、博士と会話した後、再生】
+			else if (m_itutorialflg == TUTORIAL_SOUND_REC_TALK_PLAY) {
 
-	//			//会話「ふむふむ・・・。この音！・・・」
-	//			Overlay()->talkDraw(TUTORIAL, HAKASE_CLEAR);
+				//会話「ふむふむ・・・。この音！・・・」
+				Overlay()->talkDraw(TUTORIAL, HAKASE_CLEAR);
 
-	//			//チュートリアルクリア
-	//			m_itutorialflg = TUTORIAL_CLEAR;
+				//チュートリアルクリア
+				m_itutorialflg = TUTORIAL_CLEAR;
 
-	//		}
-	//		//【録音後、博士と会話せずに、再生（フラグ2○　フラグ3×）】
-	//		else if (m_itutorialflg == TUTORIAL_SOUND_REC_AND_PLAY) {
+			}
+			//【録音後、博士と会話せずに、再生（フラグ2○　フラグ3×）】
+			else if (m_itutorialflg == TUTORIAL_SOUND_REC_AND_PLAY) {
 
-	//			//会話「わしは録音をするようにいったはずなのだが・・・」
-	//			Overlay()->talkDraw(TUTORIAL, HAKASE_FLAG_2_YES_3_NO);
+				//会話「わしは録音をするようにいったはずなのだが・・・」
+				Overlay()->talkDraw(TUTORIAL, HAKASE_FLAG_2_YES_3_NO);
 
-	//			//チュートリアルクリア
-	//			m_itutorialflg = TUTORIAL_CLEAR;
+				//チュートリアルクリア
+				m_itutorialflg = TUTORIAL_CLEAR;
 
-	//		}
-	//	}
-	//	break;
-	//}
+			}
+		}
+		break;
+	}
 }
 
 //ドロー

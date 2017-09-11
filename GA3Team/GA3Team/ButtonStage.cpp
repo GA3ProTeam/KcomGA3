@@ -2,11 +2,6 @@
 
 //イニシャライズ
 void ButtonStage::Init(int x, int y, int w, int h, bool bSelFlg, CObjStageTab* sStage_Tab ,int iStageNumber){
-	m_iXpos = x;    //ボタンの位置X
-	m_iYpos = y;    //ボタンの位置Y
-	m_iWidth = w;   //ボタンの幅
-	m_iHeight = h;  //ボタンの高さ
-
 	//ステージ番号を設定
 	m_iStageNumber = iStageNumber;
 
@@ -41,6 +36,9 @@ void ButtonStage::Init(int x, int y, int w, int h, bool bSelFlg, CObjStageTab* s
 		m_fCol[2] = 0.5f;
 		m_fCol[3] = 1.0f;
 	}
+
+	//親クラスを初期化
+	Button::Init(x, y, w, h, false);
 }
 
 //デストラクタ

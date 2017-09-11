@@ -154,7 +154,7 @@ private:
 
 	//フラグ式管理用
 	bool m_bDrawing;
-	//bool m_bNextFlg;
+	bool m_bNextFlg;
 	bool m_bCharaChangeFlg;
 	int m_iDrawingStage;
 	int m_iDrawingStageID;
@@ -167,7 +167,7 @@ public:
 	COverlay(CDrawTexture *i, CDrawFont *f, CWinInputs *w, CSoundManeger *s, CTextManager *t)
 		: image(i), font(f), input(w), soundmgr(s), textmgr(t),
 		m_bDrawing(false),
-		//m_bNextFlg(true),
+		m_bNextFlg(true),
 		m_bNextWaiting(false),
 		m_bCharaChangeFlg(false),
 		m_iDrawingStage(-1),
@@ -202,7 +202,7 @@ public:
 	void talkDraw(int stage,int stageID);
 
 	//次のメッセージを描画するまでスタンバイ
-	//bool NextWait();
+	bool NextWait();
 
 	//描画無効
 	void StopDraw();

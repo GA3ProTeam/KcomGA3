@@ -1356,15 +1356,14 @@ void GimmickLittleGirl::Draw()
 //
 ////ステージ5↓
 //①ドア
-//void GimmickMysteryDoor::Init(int xpos, int ypos, int widht, int height, int balloonnum) {
+void GimmickMysteryDoor::Init(int xpos, int ypos, int widht, int height, int balloonnum) {
 	//親クラスのInit関数を呼ぶ
-/*	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
+	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
 	//吹き出しの初期化
 	InitBall(&m_ball[0], 48, -48, sound, 1, RED, LOWER_LEFT);
-	//}
+}
 //①ドアのデストラクタ
-/*
-void GimmickMysteryDoor::Destructor() {
+void GimmickMysteryDoor::Destructor(){
 
 }
 //①ドアのアクション
@@ -1384,70 +1383,73 @@ void GimmickMysteryDoor::Action() {
 	 機械音B...音量を上げると"B'"
 	 */
 
-	 /*	int m_idoorgimmick[3] = { 1,2,1 }; //ドアの謎解き初期値(スタート/リセット)
-	 //
-	 //int m_idoor_reset = false;
-	 //m_idoor_reset = User()->m_iDoor_reset;
-	 //if(m_idoor_reset == true){
-	 //  m_idoorgimmick[3] = { 1,2,1 };
-	 //}
+	int m_idoorgimmick[3] = { 1,2,1 }; //ドアの謎解き初期値(スタート/リセット)
 
-	 if (!Input()->GetMouButtonL() && tab->GetHaveSound()) {
-		 //マウスがギミック範囲内か確認
-		 if (Input()->m_x > m_iXpos&& Input()->m_x < (m_iXpos + m_iWidth)
-		 && Input()->m_y > m_iYpos && Input()->m_y < (m_iYpos + m_iHeight)) {
-
-		 //扉の謎解き...ランプの処理...音番号判定
-		//機械音A
-		 /*switch () {
-			case 0:
-				m_idoorgimmick[0] += 1; //左端...明
-				m_idoorgimmick[1] -= 1; //中央...暗
-
-				break;
-
-		 //機械音A'
-			 case 1:
-				m_idoorgimmick[1] -= 1; //中央...暗
-				m_idoorgimmick[2] += 1; //右端...明
-
-				break;
-
-		//機械音B
-			 case 2:
-				 m_idoorgimmick[0] -= 1; //左端...暗
-				 m_idoorgimmick[2] -= 1; //右端...暗
-
-				 break;
-
-		 //機械音B'
-			 case 3:
-				 m_idoorgimmick[1] += 1; //中央...明
-
-				 break;
-		 }*/
-
-		 //ランプの色は"0未満(灰色)"、"2を超えない(緑)"
-		 /*for (int i = 0; i < 3; i++) {
-		 if (m_idoorgimmick[i] > 2) {
-			 m_idoorgimmick[i] = 2;
-		 }
-		 if (m_idoorgimmick[i] < 0) {
-			 m_idoorgimmick[i] = 0;
-		 }
+	int m_idoor_reset = false;
+	//m_idoor_reset = User()->m_iDoor_reset;
+	if (m_idoor_reset == true) {
+		m_idoorgimmick[0] = 1;
+		m_idoorgimmick[1] = 2;
+		m_idoorgimmick[2] = 1;
 	}
 
-	 //ランプが全て緑で点灯
-	 // └メカニック...会話
-	 //　　└ステージクリア
-	 if (m_idoorgimmick[0] == 2 && m_idoorgimmick[1] == 2 && m_idoorgimmick[2] == 2) {
-		//ドアの謎解きをクリア
-		//Overlay()->talkDraw(KOUNE, ); //「開けられたんだね！」
-		//int m_iKoune_5_Clear = true; //クリア判定のif文変更
+	if (!Input()->GetMouButtonL() && tab->GetHaveSound()) {
+		//マウスがギミック範囲内か確認
+		if (Input()->m_x > m_iXpos&& Input()->m_x < (m_iXpos + m_iWidth)
+			&& Input()->m_y > m_iYpos && Input()->m_y < (m_iYpos + m_iHeight)) {
 
-		SavedataManeger()->CurrentData->m_bKouneClearflg[4] = true; //コウネステージ5 クリア
-	 }
+			//扉の謎解き...ランプの処理...音番号判定
+		   //機械音A
+			/*switch () {
+			   case 0:
+				   m_idoorgimmick[0] += 1; //左端...明
+				   m_idoorgimmick[1] -= 1; //中央...暗
 
+				   break;
+
+			//機械音A'
+				case 1:
+				   m_idoorgimmick[1] -= 1; //中央...暗
+				   m_idoorgimmick[2] += 1; //右端...明
+
+				   break;
+
+		   //機械音B
+				case 2:
+					m_idoorgimmick[0] -= 1; //左端...暗
+					m_idoorgimmick[2] -= 1; //右端...暗
+
+					break;
+
+			//機械音B'
+				case 3:
+					m_idoorgimmick[1] += 1; //中央...明
+
+					break;
+			}*/
+
+			//ランプの色は"0未満(灰色)"、"2を超えない(緑)"
+			for (int i = 0; i < 3; i++) {
+				if (m_idoorgimmick[i] > 2) {
+					m_idoorgimmick[i] = 2;
+				}
+				if (m_idoorgimmick[i] < 0) {
+					m_idoorgimmick[i] = 0;
+				}
+			}
+
+			//ランプが全て緑で点灯
+			// └メカニック...会話
+			//　　└ステージクリア
+			if (m_idoorgimmick[0] == 2 && m_idoorgimmick[1] == 2 && m_idoorgimmick[2] == 2) {
+				//ドアの 謎解きをクリア
+				//Overlay()->talkDraw(KOUNE, ); //「開けられたんだね！」
+				//int m_iKoune_5_Clear = true; //クリア判定のif文変更
+
+				SavedataManeger()->CurrentData->m_bKouneClearflg[4] = true; //コウネステージ5 クリア
+			}
+		}
+	}
 }
 //①ドアの描画
 void GimmickMysteryDoor::Draw() {
@@ -1474,15 +1476,15 @@ void GimmickMysteryDoor::Draw() {
 }
 //---------------------------
 //②メカニック
-/*void GimmickMechanic::Init(int xpos, int ypos, int widht, int height, int balloonnum) {
+void GimmickMechanic::Init(int xpos, int ypos, int widht, int height, int balloonnum) {
 	//親クラスのInit関数を呼ぶ
 	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
 	//吹き出しの初期化
 	InitBall(&m_ball[0],48, -48, sound, 1, RED, LOWER_LEFT);
 
-}*/
+}
 //②メカニックのデストラクタ
-/*void GimmickMechanic::Destructor() {
+void GimmickMechanic::Destructor() {
 
 }
 //②メカニックのアクション
@@ -1508,7 +1510,7 @@ void GimmickMechanic::Action() {
 	//マスクが壊れていて使用できない⇒メカニックとの会話
 	//　└メカニック...作業用に何か曲を持ってきてほしい
 	// 　　└""フラグ2回収""
-	//if(Input()->GetMouButtonL()){ //能力使用(仮) 一度のみ
+	if(Input()->GetMouButtonL()){ //能力使用(仮) 一度のみ
 		if (SavedataManeger()->CurrentData->m_bKouneflg[17] == true && SavedataManeger()->CurrentData->m_bKouneflg[18] == false) {
 			//Overlay()->talkDraw(KOUNE, ); //「マスクが壊れたのかい？」
 			SavedataManeger()->CurrentData->m_bKouneflg[18] = true;
@@ -1534,7 +1536,7 @@ void GimmickMechanic::Action() {
 	//フラグ1○の状態で話しかける
 	// └ドアの謎解きをリセットするか聞く
 	//    └ギミック：ドアに変更
-	if (Input()->GetMouButtonL()) {
+	if(Input()->GetMouButtonL()) {
 		 //マウスがギミック範囲内か確認
 		 if (Input()->m_x > m_iXpos&& Input()->m_x < (m_iXpos + m_iWidth)
 			 && Input()->m_y > m_iYpos && Input()->m_y < (m_iYpos + m_iHeight)) {
@@ -1583,14 +1585,14 @@ void GimmickMechanic::Draw() {
 }
 //---------------------------
 //③パソコン
-/*void GimmickSoundComputer::Init(int xpos, int ypos, int widht, int height, int balloonnum) {
+void GimmickSoundComputer::Init(int xpos, int ypos, int widht, int height, int balloonnum) {
 	//親クラスのInit関数を呼ぶ
 	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
 	//吹き出しの初期化
 	InitBall(&m_ball[0],48, -48, sound, 1, RED, LOWER_LEFT);
-}*/
+}
 //③パソコンのデストラクタ
-/*void GimmickSoundComputer::Destructor() {
+void GimmickSoundComputer::Destructor() {
 
 }
 //③パソコンのアクション
@@ -1598,9 +1600,9 @@ void GimmickSoundComputer::Action() {
 
 	//能力の使用で機械音の音量変更
 	//　└メカニックから修理済みのマスクを受け取っている場合のみ有効
-	if () {
+	//if () {
 
-	}
+	//}
 
 }
 //③パソコンの描画
@@ -1628,12 +1630,12 @@ void GimmickSoundComputer::Draw() {
 }
 //---------------------------
 //④演奏家
-//void GimmickMusician::Init(int xpos, int ypos, int widht, int height, int balloonnum) {
+void GimmickMusician::Init(int xpos, int ypos, int widht, int height, int balloonnum) {
 	//親クラスのInit関数を呼ぶ
 	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
 	//吹き出しの初期化
 	InitBall(&m_ball[0],48, -48, sound, 1, RED, LOWER_LEFT);
-//}
+}
 //④演奏家のデストラクタ
 void GimmickMusician::Destructor() {
 
@@ -1660,12 +1662,12 @@ void GimmickMusician::Action() {
 			// └演奏家が演奏を聞かせてくれる
 			//    └""フラグ3回収""
 			if (!m_isoundhave) {
-				Overlay()->talkDraw(KOUNE, ); //「演奏を聴いていく？」
+				//Overlay()->talkDraw(KOUNE, ); //「演奏を聴いていく？」
 				SavedataManeger()->CurrentData->m_bKouneflg[19] = true;
 			}
 			if (m_isoundhave) {
 				//音を所持している
-				Overlay()->talkDraw(KOUNE, ); //「いろいろな音が聴こえる」
+				//Overlay()->talkDraw(KOUNE, ); //「いろいろな音が聴こえる」
 			}
 		}
 
@@ -1694,7 +1696,7 @@ void GimmickMusician::Draw() {
 	//-------------------------
 
 }
-*/
+
 ////ステージ5↑
 //
 ////ステージ6↓

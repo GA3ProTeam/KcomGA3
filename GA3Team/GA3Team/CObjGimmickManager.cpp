@@ -109,7 +109,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 
 	case 20:
 
-	/*	m_gimmick_television = new GimmickTelevision();
+		/*m_gimmick_television = new GimmickTelevision();
 		Obj()->InsertObj(m_gimmick_television, GIMMICK_TELEVISION, 5, this->m_pScene, HIT_BOX_OFF);
 		m_gimmick_television->Init(50, 300, 250, 125, 1);
 		
@@ -123,8 +123,8 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 
 		m_gimmick_door = new GimmickDoctorroomDoor();
 		Obj()->InsertObj(m_gimmick_door, GIMMICK_DOOR, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_door->Init(280, 90, 400, 400, 1);
-		*/
+		m_gimmick_door->Init(280, 90, 400, 400, 1);*/
+		
 		break;
 	case 21:
 
@@ -264,7 +264,6 @@ void CObjGimmickManager::Action() {
 		TUTORIAL_SOUND_REC_AFTER_TALK_END,	//音を録音した後の会話終了
 		TUTORIAL_SOUND_REC_AND_PLAY,		//音を録音した後、会話せずに再生までこなした
 		TUTORIAL_SOUND_REC_TALK_PLAY,		//音を録音した後、会話してから再生した
-		TUTORIAL_CLEAR,						//チュートリアルクリア
 	};
 
 	//イベント進行度
@@ -274,6 +273,26 @@ void CObjGimmickManager::Action() {
 	switch (m_Stage_ID) {
 	case 40:
 		{
+		//	//スタート時
+		//	if (m_itutorialflg == TUTORIAL_WELCOM_TALK) {
+		//		if (/*何かをした*/) {
+		//			m_itutorialflg = TUTORIAL_WELCOM_TALK_END;
+		//		}
+		//	}
+		//	else if (m_itutorialflg == TUTORIAL_WELCOM_TALK_END) {
+		//		if (/*何かをした*/) {
+		//			m_itutorialflg = TUTORIAL_RECORDER_GET_TALK;
+		//		}
+		//	}
+		//	else if (m_itutorialflg == TUTORIAL_RECORDER_GET_TALK) {
+
+		//	}
+
+		//}
+		//break;
+
+
+
 			//【初回動作】
 			if (m_itutorialflg == TUTORIAL_WELCOM_TALK) {
 				//博士「ようこそ！ここは・・・」
@@ -372,7 +391,7 @@ void CObjGimmickManager::Action() {
 				Overlay()->talkDraw(TUTORIAL, HAKASE_CLEAR);
 
 				//チュートリアルクリア
-				m_itutorialflg = TUTORIAL_CLEAR;
+				SavedataManeger()->CurrentData->m_btutorial = true;
 
 			}
 			//【録音後、博士と会話せずに、再生（フラグ2○　フラグ3×）】
@@ -382,7 +401,7 @@ void CObjGimmickManager::Action() {
 				Overlay()->talkDraw(TUTORIAL, HAKASE_FLAG_2_YES_3_NO);
 
 				//チュートリアルクリア
-				m_itutorialflg = TUTORIAL_CLEAR;
+				SavedataManeger()->CurrentData->m_btutorial = true;
 
 			}
 		}

@@ -1669,14 +1669,6 @@ void GimmickMysteryDoor::Action() {
 
 	int m_idoorgimmick[3] = { 1,2,1 }; //ドアの謎解き初期値(スタート)
 
-	bool m_idoor_reset = false;
-	//m_idoor_reset = User()->m_iDoor_reset;
-	if (m_idoor_reset == true) { //ドアの初期値リセット
-		m_idoorgimmick[0] = 1;
-		m_idoorgimmick[1] = 2;
-		m_idoorgimmick[2] = 1;
-	}
-
 	if (!Input()->GetMouButtonL() && tab->GetHaveSound()) {
 		//マウスがギミック範囲内か確認
 		if (Input()->m_x > m_iXpos&& Input()->m_x < (m_iXpos + m_iWidth)
@@ -1733,6 +1725,35 @@ void GimmickMysteryDoor::Action() {
 			}
 		}
 	}
+
+	//フラグ1○の状態で話しかける
+	// └ドアの謎解きをリセットするか聞く
+	if (SavedataManeger()->CurrentData->m_bKouneflg[17] == true) {
+		if (Input()->GetMouButtonL()) {
+			//マウスがギミック範囲内か確認
+			if (Input()->m_x > m_iXpos&& Input()->m_x < (m_iXpos + m_iWidth)
+				&& Input()->m_y > m_iYpos && Input()->m_y < (m_iYpos + m_iHeight)) {
+
+				//Overlay()->talkDraw(KOUNE, ); //「リセット？」
+
+				//選択肢のボタン表示(2択)
+				//if () {
+					//「うなずく」...リセットする
+				m_idoorgimmick[0] = 1; //左
+				m_idoorgimmick[1] = 2; //中央
+				m_idoorgimmick[2] = 1; //右
+
+				//Overlay()->talkDraw(KOUNE, ); //「おっけー」
+			//}
+			//if(){
+				//「首を振る」...リセットしない
+				//Overlay()->talkDraw(KOUNE, ); //「がんばってねー」
+			//}
+
+			}
+		}
+	}
+
 }
 //①ドアの描画
 void GimmickMysteryDoor::Draw() {
@@ -1815,32 +1836,6 @@ void GimmickMechanic::Action() {
 		 //メカニック...曲が好みではない
 		 //Overlay()->talkDraw(KOUNE, ); //「なんだか違う」
 
-	}
-
-
-	//フラグ1○の状態で話しかける
-	// └ドアの謎解きをリセットするか聞く
-	//    └ギミック：ドアに変更
-	if(Input()->GetMouButtonL()) {
-		 //マウスがギミック範囲内か確認
-		 if (Input()->m_x > m_iXpos&& Input()->m_x < (m_iXpos + m_iWidth)
-			 && Input()->m_y > m_iYpos && Input()->m_y < (m_iYpos + m_iHeight)) {
-
-			 //Overlay()->talkDraw(KOUNE, ); //「リセット？」
-
-			 //「うなずく」...リセットする
-			 //m_idoorgimmick[0] = 1; //左
-			 //m_idoorgimmick[1] = 2; //中央
-			 //m_idoorgimmick[2] = 1; //右
-			 //int m_idoorreset = true;
-			 ////User()->m_iDoorreset = m_idoorreset;
-
-			 //Overlay()->talkDraw(KOUNE, ); //「おっけー」
-
-			 //「首を振る」...リセットしない
-			 //Overlay()->talkDraw(KOUNE, ); //「がんばってねー」
-
-		 }
 	}
 
 }

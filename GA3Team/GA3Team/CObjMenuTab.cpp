@@ -103,7 +103,7 @@ void CObjMenuTab::Action()
 		//SavedataManeger()->Savedata[SavedataManeger()->SelectedData].m_bSionflg[0] = true;
 		SavedataManeger()->Writesavedata();
 
-		Manager()->Pop(new CSceneTitle());//タイトルに戻る
+		Manager()->Pop(new CSceneStageSelect());//ステージ選択に戻る
 
 	}
 	else if(m_bOpenClose){

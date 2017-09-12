@@ -186,21 +186,36 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 		break;
 	case 32:
 		
-//		//コウネステージ３ ギミック生成
-//		//子猫
-//		m_gimmick_kitten = new GimmickKitten();
-//		Obj()->InsertObj(m_gimmick_kitten, GIMMICK_KITTEN, 5, this->m_pScene, HIT_BOX_OFF);
-//		m_gimmick_kitten->Init(400, 120, 100, 100, 1);
-//
-//		//蝉
-//		m_gimmick_cicada = new GimmickCicada();
-//		Obj()->InsertObj(m_gimmick_cicada, GIMMICK_CICADA, 5, this->m_pScene, HIT_BOX_OFF);
-//		m_gimmick_cicada->Init(500, 120, 100, 100, 1);
-//
-//		//少女
-//		m_gimmick_little_girl = new GimmickLittleGirl();
-//		Obj()->InsertObj(m_gimmick_little_girl, GIMMICK_LITTLEGIRL, 5, this->m_pScene, HIT_BOX_OFF);
-//		m_gimmick_little_girl->Init(600, 120, 100, 100, 1);
+		//コウネステージ３ ギミック生成
+		//おばあちゃん
+		m_gimmick_granny = new GimmickGranny();
+		Obj()->InsertObj(m_gimmick_granny, GIMMICK_GRANNY, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_granny->Init(0, 0, 100, 100, 1);
+
+		//九官鳥
+		m_gimmick_mynah = new GimmickMynah();
+		Obj()->InsertObj(m_gimmick_mynah, GIMMICK_MYNAH, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_mynah->Init(0, 0, 100, 100, 1);
+
+		//風鈴
+		m_gimmick_windchime = new GimmickWindchime();
+		Obj()->InsertObj(m_gimmick_windchime, GIMMICK_WINDCHIME, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_windchime->Init(0, 0, 100, 100, 1);
+
+		//子猫
+		m_gimmick_kitten = new GimmickKitten();
+		Obj()->InsertObj(m_gimmick_kitten, GIMMICK_KITTEN, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_kitten->Init(400, 120, 100, 100, 1);
+
+		//蝉
+		m_gimmick_cicada = new GimmickCicada();
+		Obj()->InsertObj(m_gimmick_cicada, GIMMICK_CICADA, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_cicada->Init(500, 120, 100, 100, 1);
+
+		//少女
+		m_gimmick_little_girl = new GimmickLittleGirl();
+		Obj()->InsertObj(m_gimmick_little_girl, GIMMICK_LITTLEGIRL, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_little_girl->Init(600, 120, 100, 100, 1);
 
 		
 		break;
@@ -264,7 +279,6 @@ void CObjGimmickManager::Action() {
 		TUTORIAL_SOUND_REC_AFTER_TALK_END,	//音を録音した後の会話終了
 		TUTORIAL_SOUND_REC_AND_PLAY,		//音を録音した後、会話せずに再生までこなした
 		TUTORIAL_SOUND_REC_TALK_PLAY,		//音を録音した後、会話してから再生した
-		TUTORIAL_CLEAR,						//チュートリアルクリア
 	};
 
 	//イベント進行度
@@ -372,7 +386,7 @@ void CObjGimmickManager::Action() {
 				Overlay()->talkDraw(TUTORIAL, HAKASE_CLEAR);
 
 				//チュートリアルクリア
-				m_itutorialflg = TUTORIAL_CLEAR;
+				SavedataManeger()->CurrentData->m_btutorial=true;
 
 			}
 			//【録音後、博士と会話せずに、再生（フラグ2○　フラグ3×）】
@@ -382,7 +396,7 @@ void CObjGimmickManager::Action() {
 				Overlay()->talkDraw(TUTORIAL, HAKASE_FLAG_2_YES_3_NO);
 
 				//チュートリアルクリア
-				m_itutorialflg = TUTORIAL_CLEAR;
+				SavedataManeger()->CurrentData->m_btutorial = true;
 
 			}
 		}

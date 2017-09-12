@@ -330,6 +330,7 @@ void CObjGimmickManager::Action() {
 		KOUNE3_TALK_GRANNY_FLG1,				//おばあちゃんとの会話1(フラグ1)
 		KOUNE3_TALK_GRANNY_FLG1_END,			//おばあちゃんとの会話1(フラグ1)終了
 		KOUNE3_TALK_GRANNY_KITTEN,				//おばあちゃんに子猫の鳴き声を聞かせる
+		KOUNE3_TALK_GRANNY_KITTEN_END,			//おばあちゃんに子猫の鳴き声を聞かせる終了
 		KOUNE3_TALK_GRANNY_FLG2,				//おばあちゃんとの会話2(フラグ2)
 		KOUNE3_TALK_GRANNY_FLG2_END,			//おばあちゃんとの会話2(フラグ2)終了
 		KOUNE3_TALK_GRANNY_FLG3,				//おばあちゃんとの会話3(フラグ3)
@@ -350,10 +351,25 @@ void CObjGimmickManager::Action() {
 		KOUNE3_TALK_MYNAH_FLG3_NORMAL_END,		//九官鳥を調べたときの会話(フラグ3)終了
 		KOUNE3_TALK_MYNAH_FLG3_SMALL,			//九官鳥に小さくした音を聞かせる
 		KOUNE3_TALK_MYNAH_FLG3_SMALL_END,		//九官鳥に小さくした音を聞かせる終了
+		//少女
+		KOUNE3_TALK_LITTLEGIRL_FLG0,			//少女との会話(フラグ0)
+		KOUNE3_TALK_LITTLEGIRL_FLG0_END,		//少女との会話(フラグ0)終了
+		KOUNE3_TALK_LITTLEGIRL_KITTEN,			//少女に子猫の鳴き声を聞かせる
+		KOUNE3_TALK_LITTLEGIRL_KITTEN_END,		//少女に子猫の鳴き声を聞かせる終了
+		KOUNE3_TALK_LITTLEGIRL_FLG2,			//少女との会話(フラグ2)
+		KOUNE3_TALK_LITTLEGIRL_FLG2_END,		//少女との会話(フラグ2)終了
+		KOUNE3_TALK_LITTLEGIRL_FLG3,			//少女との会話(フラグ3)
+		KOUNE3_TALK_LITTLEGIRL_FLG3_END,		//少女との会話(フラグ3)終了
+		//クリア
+		KOUNE3_TALK_CLAER,						//クリア条件達成での会話
+		KOUNE3_TALK_CLAER_END,					//クリア条件達成での会話終了
+
 		//-----------------------------------------------------------------------------------------------
-		
+
 		//録音-------------------------------------------------------------------------------------------
 		KOUNE3_SOUND_REC_KITTEN,				//子猫の鳴き声を録音
+		KOUNE3_SOUND_REC_CICADA,				//蝉の音を録音
+		KOUNE3_SOUND_REC_WINDCHIME,				//風鈴の音を録音
 
 		//-----------------------------------------------------------------------------------------------
 

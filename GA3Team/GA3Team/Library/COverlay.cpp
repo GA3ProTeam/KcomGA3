@@ -952,13 +952,13 @@ void COverlay::Draw()
 
 void COverlay::talkDraw(int stage, int stageID)
 {
-	if (m_iDrawingCT > 0) {
+	/*if (m_iDrawingCT > 0) {
 		m_iDrawingCT--;
 		return;
-	}
+	}*/
 
 	//スタンバイするまで次のメッセージを描画しない
-	//if (!m_bNextFlg) return;
+	if (!m_bNextFlg) return;
 
 	if (m_iDrawingStage == stage && m_iDrawingStageID == stageID && m_fAlpha != 0.0f)
 		return;

@@ -71,6 +71,56 @@ void GimmickDoctor::Destructor() {
 //アクション
 void GimmickDoctor::Action() {
 
+	////スタート時
+	//if (SavedataManeger()->CurrentData->m_btutoriaruflg[0] &&
+	//	!SavedataManeger()->CurrentData->m_btutoriaruflg[1]) {
+
+	//	if (/*何かをした*/) {
+	//		SavedataManeger()->CurrentData->m_btutoriaruflg[1]=true;//フラグ1を立てる
+	//	}
+	//}
+	////フラグ1達成後
+	//else if (SavedataManeger()->CurrentData->m_btutoriaruflg[1] &&
+	//	!SavedataManeger()->CurrentData->m_btutoriaruflg[2]) {
+
+	//	if (/*何かをした*/) {
+	//		SavedataManeger()->CurrentData->m_btutoriaruflg[2] = true;//フラグ2を立てる
+
+	//	}
+	//}
+	////フラグ2達成後
+	//else if (SavedataManeger()->CurrentData->m_btutoriaruflg[2] && 
+	//	!SavedataManeger()->CurrentData->m_btutoriaruflg[3]) {
+
+	//	if (/*何かをした*/) {
+	//		//ステージクリアフラグを立てる
+	//		SavedataManeger()->CurrentData->m_btutorial = true;
+	//	}
+	//}
+
+
+	////レコーダー入手後（フラグ1達成後）
+	//if (SavedataManeger()->CurrentData->m_btutoriaruflg[0] &&
+	//	!SavedataManeger()->CurrentData->m_btutoriaruflg[1]) {
+
+	//	//音を録音していない（フラグ2未達成）状態で、会話
+	//	if (m_ball[0].OnPush) {
+	//		//会話「話を聞いていなかったのかね？・・・」
+	//		Overlay()->talkDraw(TUTORIAL, HAKASE_FLAG_2_1_NO);
+	//	}
+	//}
+	////音を録音後（フラグ2達成後）、会話
+	//else if (SavedataManeger()->CurrentData->m_btutoriaruflg[1] &&
+	//		!SavedataManeger()->CurrentData->m_btutoriaruflg[2]) {
+
+	//	if (m_ball[0].OnPush) {
+	//		//会話「うむ、言われたことはできるようなのだな・・・」
+	//		Overlay()->talkDraw(TUTORIAL, HAKASE_FLAG_2_1_YES);
+
+	//		//録音した後、会話した（フラグ3達成）
+	//		SavedataManeger()->CurrentData->m_btutoriaruflg[2] = true;
+	//	}
+	//}
 	////初回動作
 	//if (!SavedataManeger()->CurrentData->m_btutoriaruflg[0]) {
 
@@ -253,14 +303,14 @@ void GimmickRecorder::Destructor() {
 void GimmickRecorder::Action() {
 	////吹き出しが押されたか確認
 	//if (m_ball[0].OnPush) {
-	//	//フラグ1達成
-	//	SavedataManeger()->CurrentData->m_btutoriaruflg[0] = true;
-
 	//	//レコーダー破棄
 	//	m_Status = STATUS_DELETE;
 
 	//	//会話「それはこの研究所が開発したレコーダー・・・」
 	//	Overlay()->talkDraw(TUTORIAL, HAKASE_FLAG_1_1);
+
+	//	//フラグ1達成
+	//	SavedataManeger()->CurrentData->m_btutoriaruflg[0] = true;
 	//}
 }
 

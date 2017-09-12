@@ -1751,17 +1751,17 @@ void GimmickMysteryDoor::Action() {
 
 	//フラグ1○の状態で話しかける
 	// └ドアの謎解きをリセットするか聞く
-	if (SavedataManeger()->CurrentData->m_bKouneflg[17] == true) {
-		if (Input()->GetMouButtonL()) {
-			//マウスがギミック範囲内か確認
-			if (Input()->m_x > m_iXpos&& Input()->m_x < (m_iXpos + m_iWidth)
-				&& Input()->m_y > m_iYpos && Input()->m_y < (m_iYpos + m_iHeight)) {
+	if(SavedataManeger()->CurrentData->m_bKouneflg[17] == true){
+	if (Input()->GetMouButtonL()) {
+		//マウスがギミック範囲内か確認
+		if (Input()->m_x > m_iXpos&& Input()->m_x < (m_iXpos + m_iWidth)
+			&& Input()->m_y > m_iYpos && Input()->m_y < (m_iYpos + m_iHeight)) {
 
-				//Overlay()->talkDraw(KOUNE, ); //「リセット？」
+			//Overlay()->talkDraw(KOUNE, ); //「リセット？」
 
-				//選択肢のボタン表示(2択)
-				//if () {
-					//「うなずく」...リセットする
+			//選択肢のボタン表示(2択)
+			//if () {
+				//「うなずく」...リセットする
 				m_idoorgimmick[0] = 1; //左
 				m_idoorgimmick[1] = 2; //中央
 				m_idoorgimmick[2] = 1; //右
@@ -1773,8 +1773,8 @@ void GimmickMysteryDoor::Action() {
 				//Overlay()->talkDraw(KOUNE, ); //「がんばってねー」
 			//}
 
-			}
 		}
+	}
 	}
 
 }

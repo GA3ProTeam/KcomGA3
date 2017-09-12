@@ -35,6 +35,8 @@ class GimmickMysteryDoor;
 class GimmickMechanic;
 class GimmickSoundComputer;
 class GimmickMusician;
+class GimmickAunt;
+
 
 class CObjGimmickManager : public CObj
 {
@@ -52,6 +54,10 @@ private:
 	int m_Stage_ID;			//ステージの番号
 
 	//シオンステージ↓
+	//ステージ1↓
+	GimmickAunt* m_gimmick_aunt;
+
+	//ステージ1↑
 	//ステージ2↓
 	Gimmickearphone* m_gimmick_earphone;
 	Gimmickkoune* m_gimmick_koune;
@@ -73,6 +79,7 @@ private:
 
 	//ステージ4↑
 	//シオンステージ1↑
+	//シオンステージ↑
 
 
 

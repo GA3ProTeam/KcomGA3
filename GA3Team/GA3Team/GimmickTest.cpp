@@ -1504,13 +1504,12 @@ void GimmickMechanic::Action() {
 	 //マスクが壊れていて使用できない⇒メカニックとの会話
 	 //　└メカニック...作業用に何か曲を持ってきてほしい
 	 // 　　└""フラグ2回収""
-	 //if(Input()->GetMouButtonL()){ //能力使用(仮)
-	 if (SavedataManeger()->CurrentData->m_bKouneflg[17]) {
-		 //Overlay()->talkDraw(KOUNE, ); //「マスクが壊れたのかい？」
-		 SavedataManeger()->CurrentData->m_bKouneflg[18] = true;
-	 }else{ //一度入っていたらもう入らない
-		;
-	 }
+	 //if(Input()->GetMouButtonL()){ //能力使用(仮) 一度のみ
+		if (SavedataManeger()->CurrentData->m_bKouneflg[17] == true && SavedataManeger()->CurrentData->m_bKouneflg[18] == false) {
+			 //Overlay()->talkDraw(KOUNE, ); //「マスクが壊れたのかい？」
+			 SavedataManeger()->CurrentData->m_bKouneflg[18] = true;
+		}
+	}
 }
 
 //メカニックに曲を渡す

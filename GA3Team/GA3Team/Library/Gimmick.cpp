@@ -1,5 +1,6 @@
 #include "../main.h"
 
+//初期化
 void Gimmick::Init(int xpos, int ypos, int widht, int height, int balloonnum)
 {
 	m_iXpos = xpos;	//ギミックの位置の初期化(X)
@@ -9,11 +10,19 @@ void Gimmick::Init(int xpos, int ypos, int widht, int height, int balloonnum)
 	m_iballoonnum = balloonnum;//吹き出しの総数
 
 	m_menu_tab = (CObjMenuTab*)Obj()->GetObj(OBJ_MENUTAB);//メニュータブへの参照セット
-	m_getsound = -1;
+	m_getsound = -1;		//ドラッグされていない（-1）
+	m_bActionFlg = true;	//初期は動作する状態
+	
 	//吹き出し生成
-	m_ball = new Balloon[m_iballoonnum];
-	//吹き出し初期化
-	memset(m_ball, 0, sizeof(Balloon) * m_iballoonnum);
+	if (m_iballoonnum > 0) {
+		m_ball = new Balloon[m_iballoonnum];
+		//吹き出し初期化
+		memset(m_ball, 0, sizeof(Balloon) * m_iballoonnum);
+	}
+	//生成しない場合は、NULLで初期化
+	else {
+		m_ball = NULL;
+	}
 }
 
 //描画
@@ -21,6 +30,9 @@ void Gimmick::Init(int xpos, int ypos, int widht, int height, int balloonnum)
 //num=描画する吹き出しの数
 void Gimmick::gimmicDraw(int num)
 {
+	//ギミックが動作状態か確認
+	if (!m_bActionFlg) return;
+
 	static bool flg = false;
 	static bool onceflg = false;//クリックした際一度だけ反応するためのフラグ
 	//マウスの座標を取得
@@ -54,7 +66,7 @@ void Gimmick::gimmicDraw(int num)
 			&& (mousey > m_src.top && mousey < (m_src.top + m_iHeight)))
 		{
 			m_iballoontime = BALLOON_KEEP_TIME;
-			if (!Input()->GetMouButtonL() && m_menu_tab->GetHaveSound()) {
+			if (!Input()->GetMouButtonL() && m_menu_tab->GetGiveSound() != -1) {
 				//ドラッグしていた効果音をギミックに聞かせる
 				SoundManager()->StartSound(m_menu_tab->GetGiveSound());
 				//ドラッグした効果音番号を取得
@@ -92,6 +104,8 @@ void Gimmick::gimmicDraw(int num)
 				else {
 					flg = false;
 				}
+
+				//マウスが範囲内にある
 				if (flg)
 				{
 					//左クリックされたら
@@ -105,6 +119,10 @@ void Gimmick::gimmicDraw(int num)
 						onceflg = false;
 						m_ball[i].OnPush = true;
 					}
+				}
+				//マウスが範囲外
+				else {
+					onceflg = false;
 				}
 			}
 		}

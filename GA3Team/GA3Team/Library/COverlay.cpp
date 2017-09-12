@@ -699,6 +699,9 @@ void COverlay::talkDraw(int stage, int stageID)
 		return;
 	}
 
+	//スタンバイするまで次のメッセージを描画しない
+	//if (!m_bNextFlg) return;
+
 	if (m_iDrawingStage == stage && m_iDrawingStageID == stageID && m_fAlpha != 0.0f)
 		return;
 
@@ -706,6 +709,7 @@ void COverlay::talkDraw(int stage, int stageID)
 		FadeIn();
 	m_iDrawFlg = 1;
 	m_bDrawing = true;
+	m_bNextFlg = false;//次のメッセージをスタンバイするまで待つ
 	m_iDrawingStage = stage;
 	m_iDrawingStageID = stageID;
 	m_strTempName.resize(32);
@@ -725,6 +729,19 @@ void COverlay::talkDraw(int stage, int stageID)
 		m_strTemp.resize(textmgr->m_Merueru_Text[m_iDrawingStageID].size());
 		break;
 	}
+}
+
+//次のメッセージを描画するまでスタンバイ
+//戻り値：
+//次のメッセージへ進める状態ならtrueを返す
+bool COverlay::NextWait() {
+	//描画終了時
+	if (!m_bDrawing) {
+		//次のメッセージに移行するフラグを立てる
+		m_bNextFlg = true;
+		return true;
+	}
+	return false;
 }
 
 void COverlay::StopDraw() {

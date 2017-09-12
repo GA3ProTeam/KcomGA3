@@ -165,7 +165,7 @@ void CObjMenuTab::Draw()
 
 		//‰¹‚ğŠi”[‚·‚é•”•ª‚Ì•`‰æ
 		for (int i = 0; i < 3; i++) {
-			if(SoundManager()->GetSound(i) != 0) {
+			if(SoundManager()->GetSound(i) != -1) {
 				//Ø‚èæ‚èæÀ•W
 				m_rDst.top = 64; m_rDst.left = 128;
 				m_rDst.bottom = m_rDst.top + 64; m_rDst.right = m_rDst.left + 64;

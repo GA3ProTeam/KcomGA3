@@ -4,11 +4,6 @@
 
 //イニシャライズ
 void ButtonPlayer::Init(int x, int y, int w, int h, int m_iButtonID, CObjStageTab* sStage_Tab) {
-	m_iXpos = x;    //ボタンの位置X
-	m_iYpos = y;    //ボタンの位置Y
-	m_iWidth = w;   //ボタンの幅
-	m_iHeight = h;  //ボタンの高さ
-
 	//カラー情報初期化
 	m_fCol[0] = 0.5f;
 	m_fCol[1] = 0.5f;
@@ -17,6 +12,9 @@ void ButtonPlayer::Init(int x, int y, int w, int h, int m_iButtonID, CObjStageTa
 
 	m_iCharacterNumber = m_iButtonID;//キャラクター番号
 	m_sStage_Tab = sStage_Tab;//ステージタブへの参照セット
+
+	//親クラスを初期化
+	Button::Init(x, y, w, h, true);
 }
 
 //Destructor
@@ -26,11 +24,8 @@ void ButtonPlayer::Destructor() {
 //action
 void ButtonPlayer::Action() 
 {
-	//ボタンが押されたかどうか確認
-	Push();
-
-	//押されている
-	if (m_bStatus) {
+	//ボタンが押された
+	if (Push()) {
 		//キャラクター番号をステージタブに転送
 		m_sStage_Tab->SetCharacterNum(m_iCharacterNumber);
 	}

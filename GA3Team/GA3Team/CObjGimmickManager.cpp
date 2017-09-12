@@ -16,7 +16,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 	*/
 	SavedataManeger()->Setcurrentdata();
 
-	m_Stage_ID = 12;
+	m_Stage_ID = 40;
 
 	switch (m_Stage_ID) {
 
@@ -50,27 +50,27 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 		break;
 
 	case 12:
-		////シオンのステージ3のギミック生成
-		//for (int i = 0; i < 3; i++) {
-		//	m_gimmick_children = new GimmickChildren(); 
-		//	Obj()->InsertObj(m_gimmick_children, GIMMICK_CHILDREN, 5, this->m_pScene, HIT_BOX_OFF);
-		//	m_gimmick_children->Init(100+(80*i), 350, 70, 100, 1,i+1);
-		//}
-		//m_gimmick_granny = new GimmickGranny();
-		//Obj()->InsertObj(m_gimmick_granny, GIMMICK_GRANNY, 5, this->m_pScene, HIT_BOX_OFF);
-		//m_gimmick_granny->Init(350, 220, 70, 100, 1);
-		//
-		//m_gimmick_mynah = new GimmickMynah();
-		//Obj()->InsertObj(m_gimmick_mynah, GIMMICK_MYNAH, 5, this->m_pScene, HIT_BOX_OFF);
-		//m_gimmick_mynah->Init(500, 200, 50, 70, 1);
-		//
-		//m_gimmick_shelf = new GimmickShelf();
-		//Obj()->InsertObj(m_gimmick_shelf, GIMMICK_SHELF, 5, this->m_pScene, HIT_BOX_OFF);
-		//m_gimmick_shelf->Init(600, 280, 100, 170, 3);
-		//
-		//m_gimmick_windchime = new GimmickWindchime();
-		//Obj()->InsertObj(m_gimmick_windchime, GIMMICK_WINDCHIME, 5, this->m_pScene, HIT_BOX_OFF);
-		//m_gimmick_windchime->Init(230, 100, 60, 80, 1);
+		//シオンのステージ3のギミック生成
+		/*for (int i = 0; i < 3; i++) {
+			m_gimmick_children = new GimmickChildren(); 
+			Obj()->InsertObj(m_gimmick_children, GIMMICK_CHILDREN, 5, this->m_pScene, HIT_BOX_OFF);
+			m_gimmick_children->Init(100+(80*i), 350, 70, 100, 1,i+1);
+		}
+		m_gimmick_granny = new GimmickGranny();
+		Obj()->InsertObj(m_gimmick_granny, GIMMICK_GRANNY, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_granny->Init(350, 220, 70, 100, 1);
+		
+		m_gimmick_mynah = new GimmickMynah();
+		Obj()->InsertObj(m_gimmick_mynah, GIMMICK_MYNAH, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_mynah->Init(500, 200, 50, 70, 1);
+		
+		m_gimmick_shelf = new GimmickShelf();
+		Obj()->InsertObj(m_gimmick_shelf, GIMMICK_SHELF, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_shelf->Init(600, 280, 100, 170, 3);
+		
+		m_gimmick_windchime = new GimmickWindchime();
+		Obj()->InsertObj(m_gimmick_windchime, GIMMICK_WINDCHIME, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_windchime->Init(230, 100, 60, 80, 1);*/
 
 
 		break;
@@ -109,7 +109,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 
 	case 20:
 
-		m_gimmick_television = new GimmickTelevision();
+	/*	m_gimmick_television = new GimmickTelevision();
 		Obj()->InsertObj(m_gimmick_television, GIMMICK_TELEVISION, 5, this->m_pScene, HIT_BOX_OFF);
 		m_gimmick_television->Init(50, 300, 250, 125, 1);
 		
@@ -124,7 +124,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 		m_gimmick_door = new GimmickDoctorroomDoor();
 		Obj()->InsertObj(m_gimmick_door, GIMMICK_DOOR, 5, this->m_pScene, HIT_BOX_OFF);
 		m_gimmick_door->Init(280, 90, 400, 400, 1);
-		
+		*/
 		break;
 	case 21:
 
@@ -232,7 +232,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 		//レコーダー
 		m_gimmick_recorder = new GimmickRecorder();
 		Obj()->InsertObj(m_gimmick_recorder, GIMMICK_RECORDER, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_recorder->Init(350, 260, 200, 100, 0);
+		m_gimmick_recorder->Init(350, 260, 200, 100, 1);
 
 		//パソコン
 		m_gimmick_computer = new GimmickComputer();
@@ -268,43 +268,51 @@ void CObjGimmickManager::Action() {
 	};
 
 	//イベント進行度
-	static int m_itutorialflg = TUTORIAL_RECORDER_GET_TALK_END;
+	static int m_itutorialflg = TUTORIAL_WELCOM_TALK;
 
 	//テスト用（チュートリアルステージ）
 	switch (m_Stage_ID) {
 	case 40:
 		{
-			//初回動作
+			//【初回動作】
 			if (m_itutorialflg == TUTORIAL_WELCOM_TALK) {
 				//博士「ようこそ！ここは・・・」
 				Overlay()->talkDraw(TUTORIAL, HAKASE_1);
 
 				//会話終了
-				if (!Overlay()->isDraw()) {
+				if (Overlay()->NextWait()) {
 					m_itutorialflg = TUTORIAL_WELCOM_TALK_END;
 				}
 			}
-			//博士の開始メッセージ終了後
+			//【博士の開始メッセージ終了後】
 			else if (m_itutorialflg == TUTORIAL_WELCOM_TALK_END) {
+
+				//博士、コンピューター　動作停止
+				m_gimmick_doctor->m_bActionFlg = false;
+				m_gimmick_computer->m_bActionFlg = false;
 
 				//レコーダー入手
 				if (m_gimmick_recorder->m_ball[0].OnPush) {
 					m_itutorialflg = TUTORIAL_RECORDER_GET_TALK;
 					m_gimmick_recorder->m_Status = STATUS_DELETE;//レコーダー削除
+
+					//博士、コンピューター　動作再開
+					m_gimmick_doctor->m_bActionFlg = true;
+					m_gimmick_computer->m_bActionFlg = true;
 				}
 
 			}
-			//レコーダー入手後会話
+			//【レコーダー入手後会話】
 			else if (m_itutorialflg == TUTORIAL_RECORDER_GET_TALK) {
 				//博士「それはこの研究所が開発したレコーダー・・・」
 				Overlay()->talkDraw(TUTORIAL, HAKASE_FLAG_1_1);
 
 				//会話終了
-				if (!Overlay()->isDraw()) {
+				if (Overlay()->NextWait()) {
 					m_itutorialflg = TUTORIAL_RECORDER_GET_TALK_END;
 				}
 			}
-			//会話終了（フラグ1達成後）
+			//【会話終了（フラグ1達成後）】
 			else if (m_itutorialflg == TUTORIAL_RECORDER_GET_TALK_END) {
 
 				//音を録音
@@ -318,8 +326,11 @@ void CObjGimmickManager::Action() {
 					Overlay()->talkDraw(TUTORIAL, HAKASE_FLAG_2_1_NO);
 				}
 
+				//再度博士の会話をスタンバイ
+				Overlay()->NextWait();
+
 			}
-			//音を録音後（フラグ2達成後）
+			//【音を録音後（フラグ2達成後）】
 			else if (m_itutorialflg == TUTORIAL_SOUND_REC) {
 
 				//博士と会話
@@ -336,24 +347,25 @@ void CObjGimmickManager::Action() {
 				}
 
 			}
-			//録音後、博士と会話した場合
+			//【録音後、博士と会話した場合】
 			else if (m_itutorialflg == TUTORIAL_SOUND_REC_AFTER_TALK) {
+
 				//会話「うむ、言われたことはできるようなのだな・・・」
 				Overlay()->talkDraw(TUTORIAL, HAKASE_FLAG_2_1_YES);
 
 				//会話終了
-				if (!Overlay()->isDraw()) {
+				if (Overlay()->NextWait()) {
 					m_itutorialflg = TUTORIAL_SOUND_REC_AFTER_TALK_END;
 				}
 			}
-			//録音後、博士との会話終了時
+			//【録音後、博士との会話終了時】
 			else if (m_itutorialflg == TUTORIAL_SOUND_REC_AFTER_TALK_END) {
 				//音ボタンドラッグ
 				if (m_gimmick_doctor->m_getsound != -1) {
 					m_itutorialflg = TUTORIAL_SOUND_REC_TALK_PLAY;
 				}
 			}
-			//録音後、博士と会話した後、再生
+			//【録音後、博士と会話した後、再生】
 			else if (m_itutorialflg == TUTORIAL_SOUND_REC_TALK_PLAY) {
 
 				//会話「ふむふむ・・・。この音！・・・」
@@ -363,7 +375,7 @@ void CObjGimmickManager::Action() {
 				m_itutorialflg = TUTORIAL_CLEAR;
 
 			}
-			//録音後、博士と会話せずに、再生（フラグ2○　フラグ3×）
+			//【録音後、博士と会話せずに、再生（フラグ2○　フラグ3×）】
 			else if (m_itutorialflg == TUTORIAL_SOUND_REC_AND_PLAY) {
 
 				//会話「わしは録音をするようにいったはずなのだが・・・」

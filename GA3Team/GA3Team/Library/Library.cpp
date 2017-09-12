@@ -66,6 +66,7 @@ bool InitLibrary()
 	//------------------------------------------------
 
 	g_SoundManeger = new CSoundManeger();
+	g_SoundManeger->Init();
 
 	g_TextManager = new CTextManager();
 	g_TextManager->LoadText();

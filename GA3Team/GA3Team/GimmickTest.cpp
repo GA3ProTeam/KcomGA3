@@ -1357,6 +1357,327 @@ void GimmickLittleGirl::Draw()
 //
 //
 ////ステージ5↓
+//①ドア
+//void GimmickMysteryDoor::Init() {
+
+//}
+//①ドアのデストラクタ
+/*
+void GimmickMysteryDoor::Destructor() {
+
+}
+//①ドアのアクション
+void GimmickMysteryDoor::Action() {
+
+	//メニュータブへの参照取得
+	CObjMenuTab* tab = (CObjMenuTab*)Obj()->GetObj(OBJ_MENUTAB);
+
+	/*ランプの色...3つ全てを緑にすると扉が開く
+		└0...灰色
+　		  1...黄色
+		  2...緑
+	 ※ランプの色は灰色以下、緑以上にはならない
+	 */
+	 /*
+	 機械音A...音量を下げると"A'"
+	 機械音B...音量を上げると"B'"
+	 */
+
+	 /*	int m_idoorgimmick[3] = { 1,2,1 }; //ドアの謎解き初期値(スタート/リセット)
+	 //
+	 //int m_idoor_reset = false;
+	 //m_idoor_reset = User()->m_iDoor_reset;
+	 //if(m_idoor_reset == true){
+	 //  m_idoorgimmick[3] = { 1,2,1 };
+	 //}
+
+	 if (!Input()->GetMouButtonL() && tab->GetHaveSound()) {
+		 //マウスがギミック範囲内か確認
+		 if (Input()->m_x > m_iXpos&& Input()->m_x < (m_iXpos + m_iWidth)
+		 && Input()->m_y > m_iYpos && Input()->m_y < (m_iYpos + m_iHeight)) {
+
+		 //扉の謎解き...ランプの処理...音番号判定
+		//機械音A
+		 /*switch () {
+			case 0:
+				m_idoorgimmick[0] += 1; //左端...明
+				m_idoorgimmick[1] -= 1; //中央...暗
+
+				break;
+
+		 //機械音A'
+			 case 1:
+				m_idoorgimmick[1] -= 1; //中央...暗
+				m_idoorgimmick[2] += 1; //右端...明
+
+				break;
+
+		//機械音B
+			 case 2:
+				 m_idoorgimmick[0] -= 1; //左端...暗
+				 m_idoorgimmick[2] -= 1; //右端...暗
+
+				 break;
+
+		 //機械音B'
+			 case 3:
+				 m_idoorgimmick[1] += 1; //中央...明
+
+				 break;
+		 }*/
+
+		 //ランプの色は"0未満(灰色)"、"2を超えない(緑)"
+		 /*			for (int i = 0; i < 3; i++) {
+		 if (m_idoorgimmick[i] > 2) {
+			 m_idoorgimmick[i] = 2;
+		 }
+		 if (m_idoorgimmick[i] < 0) {
+			 m_idoorgimmick[i] = 0;
+		 }
+	}
+
+	 //ランプが全て緑で点灯
+	 // └メカニック...会話
+	 //　　└ステージクリア
+	 if (m_idoorgimmick[0] == 2 && m_idoorgimmick[1] == 2 && m_idoorgimmick[2] == 2) {
+		SavedataManeger()->CurrentData->m_bKouneClearflg[4] = true; //コウネステージ5 クリア
+	 }
+
+}
+//①ドアの描画
+void GimmickMysteryDoor::Draw() {
+
+	//切り取り先座標
+	m_dst.top = 0;
+	m_dst.bottom = 0;
+	m_dst.left = 0;
+	m_dst.right = 0;
+
+	//転送先座標
+	m_src.top = 0;
+	m_src.bottom = m_src.top + 0;
+	m_src.left = 0;
+	m_src.right = m_src.left + 0;
+
+	//描画
+	//Image()->Draw(0, &m_src, &m_dst, col, 0.0f); //描画値変更
+
+}
+//---------------------------
+//②メカニック
+/*void GimmickMechanic::Init(int xpos, int ypos, int widht, int height, int balloonnum) {
+Gimmick::Init(xpos, ypos, widht, height, balloonnum);
+
+//吹き出しの初期化
+InitBall(&m_ball[0], m_iWidth - 50, -48, talk, 1, RED, LOWER_LEFT);
+
+}*/
+//②メカニックのデストラクタ
+/*void GimmickMechanic::Destructor() {
+
+}
+//②メカニックのアクション
+void GimmickMechanic::Action() {
+
+	 //メニュータブ取得
+	 CObjMenuTab* tab = (CObjMenuTab*)Obj()->GetObj(OBJ_MENUTAB);
+
+	 //駅に向かうための扉の前でメカニックに話しかけられる
+	 // └システムの動作を見たいから扉を開けてみてほしい
+	 //    └""フラグ1回収""
+	 if (Input()->GetMouButtonL()) {
+		 //マウスがギミック範囲内か確認
+		 if (Input()->m_x > m_iXpos&& Input()->m_x < (m_iXpos + m_iWidth)
+			 && Input()->m_y > m_iYpos && Input()->m_y < (m_iYpos + m_iHeight)) {
+			 //Overlay()->talkDraw(KOUNE, ); //「駅に行きたいのかな？」
+			 SavedataManeger()->CurrentData->m_bKouneflg[17] = true;
+		 }
+	 }
+
+
+	 //能力を使う
+	 //マスクが壊れていて使用できない⇒メカニックとの会話
+	 //　└メカニック...作業用に何か曲を持ってきてほしい
+	 // 　　└""フラグ2回収""
+	 //if(Input()->GetMouButtonL()){ //能力使用(仮)
+	 if (SavedataManeger()->CurrentData->m_bKouneflg[17]) {
+		 //Overlay()->talkDraw(KOUNE, ); //「マスクが壊れたのかい？」
+		 SavedataManeger()->CurrentData->m_bKouneflg[18] = true;
+	 }
+}
+
+//メカニックに曲を渡す
+//フラグ3回収済み
+if (SavedataManeger()->CurrentData->m_bKouneflg[19]) {
+	 //メカニック...修理したマスクを渡す
+	 //　　　　　　　└音量の変更ができるようになる
+	 //Overlay()->talkDraw(KOUNE, ); //「これなら作業が捗る！」
+	 //
+
+}//フラグ3未回収
+else {
+	 //メカニック...曲が好みではない
+	 //Overlay()->talkDraw(KOUNE, ); //「なんだか違う」
+
+}
+
+
+//フラグ1○の状態で話しかける
+// └ドアの謎解きをリセットするか聞く
+//    └ギミック：ドアに変更
+if (Input()->GetMouButtonL()) {
+	 //マウスがギミック範囲内か確認
+	 if (Input()->m_x > m_iXpos&& Input()->m_x < (m_iXpos + m_iWidth)
+		 && Input()->m_y > m_iYpos && Input()->m_y < (m_iYpos + m_iHeight)) {
+
+		 //Overlay()->talkDraw(KOUNE, ); //「リセット？」
+
+		 //「うなずく」...リセットする
+		 //m_idoorgimmick[0] = 1; //左
+		 //m_idoorgimmick[1] = 2; //中央
+		 //m_idoorgimmick[2] = 1; //右
+		 // └int m_idoorreset = true;
+		 //   //User()->m_iDoorreset = m_idoorreset;
+
+		 //Overlay()->talkDraw(KOUNE, ); //「おっけー」
+
+		 //「首を振る」...リセットしない
+		 //Overlay()->talkDraw(KOUNE, ); //「がんばってねー」
+
+	 }
+}
+
+//ドアの謎解きをクリアしたら
+// └ギミック：ドアに変更
+//Overlay()->talkDraw(KOUNE, ); //「開けられたんだね！」
+//int m_iKoune_5_Clear = true; //クリア判定のif文変更
+
+}
+//②メカニックの描画
+void GimmickMechanic::Draw() {
+
+	//切り取り先座標
+	m_dst.top = 0;
+	m_dst.bottom = 0;
+	m_dst.left = 0;
+	m_dst.right = 0;
+
+	//転送先座標
+	m_src.top = 0;
+	m_src.bottom = m_src.top + 0;
+	m_src.left = 0;
+	m_src.right = m_src.left + 0;
+
+	//描画
+	//Image()->Draw(0, &m_src, &m_dst, col, 0.0f); //描画値変更
+
+	//吹き出し描画＆動作-------
+	this->gimmicDraw(1);
+	//-------------------------
+
+
+}
+//---------------------------
+//③パソコン
+/*void GimmickSoundComputer::Init(int xpos, int ypos, int widht, int height, int balloonnum) {
+	//吹き出しの初期化
+	InitBall(&m_ball[0], m_iWidth - 50, -48, talk, 1, RED, LOWER_LEFT);
+}*/
+//③パソコンのデストラクタ
+/*void GimmickSoundComputer::Destructor() {
+
+}
+//③パソコンのアクション
+void GimmickSoundComputer::Action() {
+
+	//能力の使用で機械音の音量変更
+	//　└メカニックから修理済みのマスクを受け取っている場合のみ有効
+	if () {
+
+	}
+
+}
+//③パソコンの描画
+void GimmickSoundComputer::Draw() {
+
+	//切り取り先座標
+	m_dst.top = 0;
+	m_dst.bottom = 0;
+	m_dst.left = 0;
+	m_dst.right = 0;
+
+	//転送先座標
+	m_src.top = 0;
+	m_src.bottom = m_src.top + 0;
+	m_src.left = 0;
+	m_src.right = m_src.left + 0;
+
+	//描画
+	//Image()->Draw(0, &m_src, &m_dst, col, 0.0f); //描画値変更
+
+}
+//---------------------------
+//④演奏家
+//void GimmickMusician::Init() {
+
+//}
+//④演奏家のデストラクタ
+void GimmickMusician::Destructor() {
+
+}
+//④演奏家のアクション
+void GimmickMusician::Action() {
+
+	int m_isoundhave; //何か音を持っているか
+
+	if (Input()->GetMouButtonL()) {
+		//マウスがギミック範囲内か確認
+		if (Input()->m_x > m_iXpos&& Input()->m_x < (m_iXpos + m_iWidth)
+			&& Input()->m_y > m_iYpos && Input()->m_y < (m_iYpos + m_iHeight)) {
+
+			m_isoundhave = false;
+
+			for (int i = 0; i < 3; i++) {
+				if (SoundManager()->GetSound(i)) {
+					m_isoundhave = true;
+				}
+			}
+
+			//音を所持していない
+			// └演奏家が演奏を聞かせてくれる
+			//    └""フラグ3回収""
+			if (!m_isoundhave) {
+				Overlay()->talkDraw(KOUNE, ); //「演奏を聴いていく？」
+				SavedataManeger()->CurrentData->m_bKouneflg[19] = true;
+			}
+			if (m_isoundhave) {
+				//音を所持している
+				Overlay()->talkDraw(KOUNE, ); //「いろいろな音が聴こえる」
+			}
+		}
+
+	}
+}
+//④演奏家の描画(最初：画面外)
+void GimmickMusician::Draw() {
+
+	//切り取り先座標
+	m_dst.top = 0;
+	m_dst.bottom = 0;
+	m_dst.left = 0;
+	m_dst.right = 0;
+
+	//転送先座標
+	m_src.top = 0;
+	m_src.bottom = m_src.top + 0;
+	m_src.left = 0;
+	m_src.right = m_src.left + 0;
+
+	//描画
+	//Image()->Draw(0, &m_src, &m_dst, col, 0.0f); //描画値変更
+
+}
+*/
 ////ステージ5↑
 //
 ////ステージ6↓
@@ -1498,7 +1819,7 @@ void GimmickTelevision::Init(int xpos, int ypos, int widht, int height, int ball
 
 void GimmickTelevision::Destructor()
 {
-	delete[] m_ball;
+	//delete[] m_ball;
 }
 
 void GimmickTelevision::Action()
@@ -1549,12 +1870,11 @@ void GimmickOven::Init(int xpos, int ypos, int widht, int height, int balloonnum
 
 void GimmickOven::Destructor()
 {
-	delete[] m_ball;
+	//delete[] m_ball;
 }
 
 void GimmickOven::Action()
 {
-
 	if (m_ball[0].OnPush) {
 		if (SavedataManeger()->CurrentData->m_bMelueruflg[2]) {
 			//レンジ音入手
@@ -1600,7 +1920,7 @@ void GimmickKatsuo::Init(int xpos, int ypos, int widht, int height, int balloonn
 
 void GimmickKatsuo::Destructor()
 {
-	delete[] m_ball;
+	//delete[] m_ball;
 }
 
 void GimmickKatsuo::Action()
@@ -1694,7 +2014,7 @@ void GimmickDoctorroomDoor::Init(int xpos, int ypos, int widht, int height, int 
 
 void GimmickDoctorroomDoor::Destructor()
 {
-	delete[] m_ball;
+	//delete[] m_ball;
 }
 
 void GimmickDoctorroomDoor::Action()

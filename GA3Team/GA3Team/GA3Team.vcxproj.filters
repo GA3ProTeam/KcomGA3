@@ -251,12 +251,6 @@
     <ClInclude Include="Library\CSavedata.h">
       <Filter>ライブラリ ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="GimmickAunt.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="GimmickTelevision.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="Library\COverlay.h">
       <Filter>ライブラリ ファイル</Filter>
     </ClInclude>

@@ -465,7 +465,7 @@ class GimmickMysteryDoor : public Gimmick
 		GimmickMysteryDoor() {};
 		~GimmickMysteryDoor() {};
 
-		//void Init();
+		void Init(int xpos, int ypos, int widht, int height, int balloonnum);
 		void Destructor();	//デストラクタ
 		void Action();		//アクション
 		void Draw();		//描画
@@ -479,7 +479,7 @@ class GimmickMechanic : public Gimmick
 		GimmickMechanic() {};
 		~GimmickMechanic() {};
 
-		//void Init();
+		void Init(int xpos, int ypos, int widht, int height, int balloonnum);
 		void Destructor();  //デストラクタ
 		void Action();      //アクション
 		void Draw();		//描画
@@ -493,7 +493,7 @@ class GimmickSoundComputer : public Gimmick
 		GimmickSoundComputer() {};
 		~GimmickSoundComputer() {};
 
-		//void Init();
+		void Init(int xpos, int ypos, int widht, int height, int balloonnum);
 		void Destructor();  //デストラクタ
 		void Action();		//アクション
 		void Draw();		//描画
@@ -506,7 +506,7 @@ class GimmickMusician : public Gimmick
 		GimmickMusician() {};
 		~GimmickMusician() {};
 
-		//void Init();
+		void Init(int xpos, int ypos, int widht, int height, int balloonnum);
 		void Destructor();  //デストラクタ
 		void Action();		//アクション
 		void Draw();		//描画

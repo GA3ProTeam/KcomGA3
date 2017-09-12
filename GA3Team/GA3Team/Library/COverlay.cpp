@@ -8,45 +8,47 @@ void COverlay::InitLoad()
 	image->LoadImageEx("yjt.png", 61, TEX_SIZE_512);
 	image->LoadImageEx("orga.png", 62, TEX_SIZE_512);
 	image->LoadImageEx("atsumori.png", 63, TEX_SIZE_256);
-
+	
+	//空白画像
+	image->LoadImageEx("null.png", 0, TEX_SIZE_512);
 	//コウネ1----------------------------------
-	image->LoadImageEx("おじいさんc.png", 0, TEX_SIZE_512);
-	image->LoadImageEx("マンホール.png", 1, TEX_SIZE_1024);
-	image->LoadImageEx("マンホールの穴.png", 2, TEX_SIZE_1024);
+	image->LoadImageEx("おじいさんc.png", 1, TEX_SIZE_512);
+	image->LoadImageEx("マンホール.png", 2, TEX_SIZE_1024);
+	image->LoadImageEx("マンホールの穴.png", 3, TEX_SIZE_1024);
 	//コウネ2-----------------------------------
-	image->LoadImageEx("強気少年.png", 3, TEX_SIZE_512);
-	image->LoadImageEx("女の子.png", 4, TEX_SIZE_512);
+	image->LoadImageEx("強気少年.png", 4, TEX_SIZE_512);
+	image->LoadImageEx("女の子.png", 5, TEX_SIZE_512);
 	//コウネ3----------------------------------------
-	image->LoadImageEx("優しい少女.png", 5, TEX_SIZE_512);
+	image->LoadImageEx("優しい少女.png", 6, TEX_SIZE_512);
 	//シオン2--------------------------------------
-	image->LoadImageEx("イヤホン男.png", 6, TEX_SIZE_512);
-	image->LoadImageEx("自転車.png", 7, TEX_SIZE_512);
+	image->LoadImageEx("イヤホン男.png", 7, TEX_SIZE_512);
+	image->LoadImageEx("自転車.png", 8, TEX_SIZE_512);
 	//シオン3--------------------------------------
-	image->LoadImageEx("おばあちゃんc.png", 8, TEX_SIZE_512);
+	image->LoadImageEx("おばあちゃんc.png", 9, TEX_SIZE_512);
 	//シオン4--------------------------------------
-	image->LoadImageEx("なぞなぞさん.png", 9, TEX_SIZE_512);
+	image->LoadImageEx("なぞなぞさん.png", 10, TEX_SIZE_512);
 	//メルエル1-----------------------------------
-	image->LoadImageEx("カツオc.png", 10, TEX_SIZE_512);
-	image->LoadImageEx("ドアc.png", 11, TEX_SIZE_512);
-	image->LoadImageEx("棚.png", 12, TEX_SIZE_512);
-	image->LoadImageEx("電子レンジ.png", 13, TEX_SIZE_512);
-	image->LoadImageEx("博士c.png", 14, TEX_SIZE_512);
+	image->LoadImageEx("カツオc.png", 11, TEX_SIZE_512);
+	image->LoadImageEx("ドアc.png", 12, TEX_SIZE_512);
+	image->LoadImageEx("棚.png", 13, TEX_SIZE_512);
+	image->LoadImageEx("電子レンジ.png", 14, TEX_SIZE_512);
+	image->LoadImageEx("博士c.png", 15, TEX_SIZE_512);
 	//動物------------------------------------------
-	image->LoadImageEx("動物まとめ.png", 15, TEX_SIZE_1024);
+	image->LoadImageEx("動物まとめ.png", 16, TEX_SIZE_1024);
 	//メインキャラクター----------------------------
-	image->LoadImageEx("コウネ立ち.png", 16, TEX_SIZE_1024);
-	image->LoadImageEx("シオン立ち.png", 17, TEX_SIZE_1024);
-	image->LoadImageEx("メルエルc立ち.png", 18, TEX_SIZE_512);
+	image->LoadImageEx("コウネ立ち.png", 17, TEX_SIZE_1024);
+	image->LoadImageEx("シオン立ち.png", 18, TEX_SIZE_1024);
+	image->LoadImageEx("メルエルc立ち.png", 19, TEX_SIZE_512);
 	//データセレクト--------------------------------
-	image->LoadImageEx("コウネ.png", 19, TEX_SIZE_1024);
-	image->LoadImageEx("メルエル.png", 20, TEX_SIZE_512);
+	image->LoadImageEx("コウネ.png", 20, TEX_SIZE_1024);
+	image->LoadImageEx("メルエル.png", 21, TEX_SIZE_512);
 	//吹き出し系統-----------------------------------
-	image->LoadImageEx("アイコン.png", 21, TEX_SIZE_1024);
-	image->LoadImageEx("会話吹き出し.png", 22, TEX_SIZE_1024);
+	image->LoadImageEx("アイコン.png", 22, TEX_SIZE_1024);
+	image->LoadImageEx("会話吹き出し.png", 23, TEX_SIZE_1024);
 	//ステージ
-	image->LoadImageEx("シオンステージ-1.png", 23, TEX_SIZE_1024);
-	image->LoadImageEx("コウネステージ-1.png", 24, TEX_SIZE_1024);
-	image->LoadImageEx("研究所背景.png", 25, TEX_SIZE_1024);
+	image->LoadImageEx("シオンステージ-1.png", 24, TEX_SIZE_1024);
+	image->LoadImageEx("コウネステージ-1.png", 25, TEX_SIZE_1024);
+	image->LoadImageEx("研究所背景.png", 26, TEX_SIZE_1024);
 
 	//透過・暗転初期化
 	m_fDefColor[0] = 1.0f;
@@ -239,8 +241,8 @@ void COverlay::Draw()
 		waitdst.bottom = waitdst.top + 256;
 		waitdst.right = waitdst.left + 256;
 		//転送先座標
-		waitsrc.top = WINDOW_SIZE_H - 125;
-		waitsrc.left = WINDOW_SIZE_W - 150;
+		waitsrc.top = WINDOW_SIZE_H - 100;
+		waitsrc.left = WINDOW_SIZE_W - 250;
 		waitsrc.bottom = waitsrc.top + 64;
 		waitsrc.right = waitsrc.left + 96;
 
@@ -340,6 +342,43 @@ void COverlay::Draw()
 						m_strTempName += namet;
 						m_bCharaChangeFlg = true;
 						m_iCurrentLine = m_iChar_Line;
+
+						if (!strlen(m_cLeftCharaName)) {
+							strcpy_s(m_cLeftCharaName, namet);
+							m_fLeftColor[0] = 1.0f;
+							m_fLeftColor[1] = 1.0f;
+							m_fLeftColor[2] = 1.0f;
+							m_fRightColor[0] = 0.5f;
+							m_fRightColor[1] = 0.5f;
+							m_fRightColor[2] = 0.5f;
+						}
+						else if (!strlen(m_cRightCharaName) && strcmp(m_cLeftCharaName, namet)) {
+							strcpy_s(m_cRightCharaName, namet);
+							m_fLeftColor[0] = 0.5f;
+							m_fLeftColor[1] = 0.5f;
+							m_fLeftColor[2] = 0.5f;
+							m_fRightColor[0] = 1.0f;
+							m_fRightColor[1] = 1.0f;
+							m_fRightColor[2] = 1.0f;
+						}
+
+						if (!strcmp(m_cLeftCharaName, namet) && strcmp(m_cRightCharaName, namet)) {
+							m_fLeftColor[0] = 1.0f;
+							m_fLeftColor[1] = 1.0f;
+							m_fLeftColor[2] = 1.0f;
+							m_fRightColor[0] = 0.5f;
+							m_fRightColor[1] = 0.5f;
+							m_fRightColor[2] = 0.5f;
+						}
+						else if (strcmp(m_cLeftCharaName, namet) && !strcmp(m_cRightCharaName, namet)) {
+							m_fLeftColor[0] = 0.5f;
+							m_fLeftColor[1] = 0.5f;
+							m_fLeftColor[2] = 0.5f;
+							m_fRightColor[0] = 1.0f;
+							m_fRightColor[1] = 1.0f;
+							m_fRightColor[2] = 1.0f;
+						}
+
 						delete namet;
 						delete expt;
 					}
@@ -431,6 +470,43 @@ void COverlay::Draw()
 						m_strTempName += namet;
 						m_bCharaChangeFlg = true;
 						m_iCurrentLine = m_iChar_Line;
+
+						if (!strlen(m_cLeftCharaName)) {
+							strcpy_s(m_cLeftCharaName, namet);
+							m_fLeftColor[0] = 1.0f;
+							m_fLeftColor[1] = 1.0f;
+							m_fLeftColor[2] = 1.0f;
+							m_fRightColor[0] = 0.5f;
+							m_fRightColor[1] = 0.5f;
+							m_fRightColor[2] = 0.5f;
+						}
+						else if (!strlen(m_cRightCharaName) && strcmp(m_cLeftCharaName,namet)) {
+							strcpy_s(m_cRightCharaName, namet);
+							m_fLeftColor[0] = 0.5f;
+							m_fLeftColor[1] = 0.5f;
+							m_fLeftColor[2] = 0.5f;
+							m_fRightColor[0] = 1.0f;
+							m_fRightColor[1] = 1.0f;
+							m_fRightColor[2] = 1.0f;
+						}
+
+						if(!strcmp(m_cLeftCharaName,namet) && strcmp(m_cRightCharaName,namet)){
+							m_fLeftColor[0] = 1.0f;
+							m_fLeftColor[1] = 1.0f;
+							m_fLeftColor[2] = 1.0f;
+							m_fRightColor[0] = 0.5f;
+							m_fRightColor[1] = 0.5f;
+							m_fRightColor[2] = 0.5f;
+						}
+						else if (strcmp(m_cLeftCharaName, namet) && !strcmp(m_cRightCharaName, namet)) {
+							m_fLeftColor[0] = 0.5f;
+							m_fLeftColor[1] = 0.5f;
+							m_fLeftColor[2] = 0.5f;
+							m_fRightColor[0] = 1.0f;
+							m_fRightColor[1] = 1.0f;
+							m_fRightColor[2] = 1.0f;
+						}
+
 						delete namet;
 						delete expt;
 					}
@@ -522,6 +598,43 @@ void COverlay::Draw()
 						m_strTempName += namet;
 						m_bCharaChangeFlg = true;
 						m_iCurrentLine = m_iChar_Line;
+
+						if (!strlen(m_cLeftCharaName)) {
+							strcpy_s(m_cLeftCharaName, namet);
+							m_fLeftColor[0] = 1.0f;
+							m_fLeftColor[1] = 1.0f;
+							m_fLeftColor[2] = 1.0f;
+							m_fRightColor[0] = 0.5f;
+							m_fRightColor[1] = 0.5f;
+							m_fRightColor[2] = 0.5f;
+						}
+						else if (!strlen(m_cRightCharaName) && strcmp(m_cLeftCharaName, namet)) {
+							strcpy_s(m_cRightCharaName, namet);
+							m_fLeftColor[0] = 0.5f;
+							m_fLeftColor[1] = 0.5f;
+							m_fLeftColor[2] = 0.5f;
+							m_fRightColor[0] = 1.0f;
+							m_fRightColor[1] = 1.0f;
+							m_fRightColor[2] = 1.0f;
+						}
+
+						if (!strcmp(m_cLeftCharaName, namet) && strcmp(m_cRightCharaName, namet)) {
+							m_fLeftColor[0] = 1.0f;
+							m_fLeftColor[1] = 1.0f;
+							m_fLeftColor[2] = 1.0f;
+							m_fRightColor[0] = 0.5f;
+							m_fRightColor[1] = 0.5f;
+							m_fRightColor[2] = 0.5f;
+						}
+						else if (strcmp(m_cLeftCharaName, namet) && !strcmp(m_cRightCharaName, namet)) {
+							m_fLeftColor[0] = 0.5f;
+							m_fLeftColor[1] = 0.5f;
+							m_fLeftColor[2] = 0.5f;
+							m_fRightColor[0] = 1.0f;
+							m_fRightColor[1] = 1.0f;
+							m_fRightColor[2] = 1.0f;
+						}
+
 						delete namet;
 						delete expt;
 					}
@@ -613,6 +726,43 @@ void COverlay::Draw()
 						m_strTempName += namet;
 						m_bCharaChangeFlg = true;
 						m_iCurrentLine = m_iChar_Line;
+
+						if (!strlen(m_cLeftCharaName)) {
+							strcpy_s(m_cLeftCharaName, namet);
+							m_fLeftColor[0] = 1.0f;
+							m_fLeftColor[1] = 1.0f;
+							m_fLeftColor[2] = 1.0f;
+							m_fRightColor[0] = 0.5f;
+							m_fRightColor[1] = 0.5f;
+							m_fRightColor[2] = 0.5f;
+						}
+						else if (!strlen(m_cRightCharaName) && strcmp(m_cLeftCharaName, namet)) {
+							strcpy_s(m_cRightCharaName, namet);
+							m_fLeftColor[0] = 0.5f;
+							m_fLeftColor[1] = 0.5f;
+							m_fLeftColor[2] = 0.5f;
+							m_fRightColor[0] = 1.0f;
+							m_fRightColor[1] = 1.0f;
+							m_fRightColor[2] = 1.0f;
+						}
+
+						if (!strcmp(m_cLeftCharaName, namet) && strcmp(m_cRightCharaName, namet)) {
+							m_fLeftColor[0] = 1.0f;
+							m_fLeftColor[1] = 1.0f;
+							m_fLeftColor[2] = 1.0f;
+							m_fRightColor[0] = 0.5f;
+							m_fRightColor[1] = 0.5f;
+							m_fRightColor[2] = 0.5f;
+						}
+						else if (strcmp(m_cLeftCharaName, namet) && !strcmp(m_cRightCharaName, namet)) {
+							m_fLeftColor[0] = 0.5f;
+							m_fLeftColor[1] = 0.5f;
+							m_fLeftColor[2] = 0.5f;
+							m_fRightColor[0] = 1.0f;
+							m_fRightColor[1] = 1.0f;
+							m_fRightColor[2] = 1.0f;
+						}
+
 						delete namet;
 						delete expt;
 					}
@@ -622,12 +772,12 @@ void COverlay::Draw()
 
 			sprintf_s(tmpname, "%s", m_strTempName.c_str());
 			float col[4] = { 0.0f,0.0f,0.0f,m_fAlpha };
-			font->StrDraw(tmpname, WINDOW_SIZE_W / 2 - 300, WINDOW_SIZE_H / 2 + 150, 16, col);
+			font->StrDraw(tmpname, WINDOW_SIZE_W / 2 - 225, WINDOW_SIZE_H / 2 + 150, 16, col);
 
 			for (unsigned int i = 0; i < m_strTemp.size(); ++i) {
 				sprintf_s(tmp, "%s", m_strTemp[i].c_str());
 				float col[4] = { 0.0f,0.0f,0.0f,m_fAlpha };
-				font->StrDraw(tmp, WINDOW_SIZE_W / 2 - 300, (WINDOW_SIZE_H / 2 + 200) + ((i - m_iCurrentLine) * 16), 16, col);
+				font->StrDraw(tmp, WINDOW_SIZE_W / 2 - 225, (WINDOW_SIZE_H / 2 + 200) + ((i - m_iCurrentLine) * 16), 16, col);
 			}
 		}
 		//------------------------テキスト処理終了---------------------------
@@ -666,7 +816,7 @@ void COverlay::Draw()
 		rightsrc.bottom = rightsrc.top + 300;
 		rightsrc.right = rightsrc.left + 300;
 
-		image->DrawEx(60, &rightsrc, &rightdst, m_fRightColor, 0.0f);
+		image->DrawEx(191, &rightsrc, &rightdst, m_fRightColor, 0.0f);
 		//-------------------右キャラ終---------------------
 
 		//-------------------中キャラ----------------------
@@ -699,6 +849,9 @@ void COverlay::talkDraw(int stage, int stageID)
 		return;
 	}
 
+	//スタンバイするまで次のメッセージを描画しない
+	//if (!m_bNextFlg) return;
+
 	if (m_iDrawingStage == stage && m_iDrawingStageID == stageID && m_fAlpha != 0.0f)
 		return;
 
@@ -706,6 +859,7 @@ void COverlay::talkDraw(int stage, int stageID)
 		FadeIn();
 	m_iDrawFlg = 1;
 	m_bDrawing = true;
+	m_bNextFlg = false;//次のメッセージをスタンバイするまで待つ
 	m_iDrawingStage = stage;
 	m_iDrawingStageID = stageID;
 	m_strTempName.resize(32);
@@ -727,6 +881,19 @@ void COverlay::talkDraw(int stage, int stageID)
 	}
 }
 
+//次のメッセージを描画するまでスタンバイ
+//戻り値：
+//次のメッセージへ進める状態ならtrueを返す
+bool COverlay::NextWait() {
+	//描画終了時
+	if (!m_bDrawing) {
+		//次のメッセージに移行するフラグを立てる
+		m_bNextFlg = true;
+		return true;
+	}
+	return false;
+}
+
 void COverlay::StopDraw() {
 	if (m_iDrawFlg == 1) {
 		m_iChar_Pos = 0;
@@ -738,8 +905,20 @@ void COverlay::StopDraw() {
 		m_bCharaChangeFlg = false;
 		m_strTemp.clear();
 		m_strTempName.clear();
+		memset(m_cLeftCharaName, '\0', sizeof(m_cLeftCharaName));
+		memset(m_cRightCharaName, '\0', sizeof(m_cRightCharaName));
 		m_iDrawingStage = -1;
 		m_iDrawingStageID = -1;
+
+		m_fLeftColor[0] = 0.5f;
+		m_fLeftColor[1] = 0.5f;
+		m_fLeftColor[2] = 0.5f;
+		m_fLeftColor[3] = m_fAlpha;
+
+		m_fRightColor[0] = 0.5f;
+		m_fRightColor[1] = 0.5f;
+		m_fRightColor[2] = 0.5f;
+		m_fRightColor[3] = m_fAlpha;
 	}
 }
 

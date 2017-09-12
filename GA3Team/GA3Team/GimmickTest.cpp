@@ -1428,7 +1428,7 @@ void GimmickMysteryDoor::Draw() {
 	//“]‘—æÀ•W
 	m_src.top = 400;
 	m_src.bottom = m_src.top + 300;
-	m_src.left = 300;
+	m_src.left = 400;
 	m_src.right = m_src.left + 200;
 
 	//•`‰æ
@@ -1542,7 +1542,7 @@ void GimmickMechanic::Draw() {
 	m_src.right = m_src.left + 100;
 
 	//•`‰æ
-	Image()->Draw(1, &m_src, &m_dst, col, 0.0f); //•`‰æ’l•ÏX
+	Image()->DrawEx(1, &m_src, &m_dst, col, 0.0f); //•`‰æ’l•ÏX
 
 	//‚«o‚µ•`‰æ•“®ì-------
 	this->gimmicDraw(1);
@@ -1590,7 +1590,7 @@ void GimmickSoundComputer::Draw() {
 	m_src.right = m_src.left + 100;
 
 	//•`‰æ
-	Image()->Draw(14, &m_src, &m_dst, col, 0.0f); //•`‰æ’l•ÏX
+	Image()->DrawEx(14, &m_src, &m_dst, col, 0.0f); //•`‰æ’l•ÏX
 
 	//‚«o‚µ•`‰æ•“®ì-------
 	this->gimmicDraw(1);
@@ -1660,7 +1660,7 @@ void GimmickMusician::Draw() {
 	m_src.right = m_src.left + 0;
 
 	//•`‰æ
-	Image()->Draw(9, &m_src, &m_dst, col, 0.0f); //•`‰æ’l•ÏX
+	Image()->DrawEx(9, &m_src, &m_dst, col, 0.0f); //•`‰æ’l•ÏX
 
 	//‚«o‚µ•`‰æ•“®ì-------
 	this->gimmicDraw(1);

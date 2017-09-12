@@ -1426,7 +1426,7 @@ void GimmickMysteryDoor::Draw() {
 	m_dst.right = 512;
 
 	//ì]ëóêÊç¿ïW
-	m_src.top = 500;
+	m_src.top = 400;
 	m_src.bottom = m_src.top + 300;
 	m_src.left = 300;
 	m_src.right = m_src.left + 200;

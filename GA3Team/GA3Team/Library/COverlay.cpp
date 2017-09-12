@@ -81,7 +81,7 @@ void COverlay::InitLoad()
 	m_fBallonColor[2] = 1.0f;
 	m_fBallonColor[3] = m_fAlpha;
 
-	//吹き出しsrc設定
+	//吹き出しsrc設定(切り取り）
 	m_RBalloon_src[TALKBALLOON_NORMAL_LEFT].top = 200;
 	m_RBalloon_src[TALKBALLOON_NORMAL_LEFT].left = 0;
 	m_RBalloon_src[TALKBALLOON_NORMAL_LEFT].bottom = 400;
@@ -107,21 +107,21 @@ void COverlay::InitLoad()
 	m_RBalloon_src[TALKBALLOON_SQUARE].bottom = 1000;
 	m_RBalloon_src[TALKBALLOON_SQUARE].right = 600;
 
-	//吹き出しdst設定
-	m_RBalloon_dst[TALKBALLOON_NORMAL_LEFT].top = 200;
-	m_RBalloon_dst[TALKBALLOON_NORMAL_LEFT].left = 0;
-	m_RBalloon_dst[TALKBALLOON_NORMAL_LEFT].bottom = 400;
-	m_RBalloon_dst[TALKBALLOON_NORMAL_LEFT].right = 600;
+	//吹き出しdst設定(貼り付け)
+	m_RBalloon_dst[TALKBALLOON_NORMAL_LEFT].top = WINDOW_SIZE_H - 200;
+	m_RBalloon_dst[TALKBALLOON_NORMAL_LEFT].left = 100;
+	m_RBalloon_dst[TALKBALLOON_NORMAL_LEFT].bottom = m_RBalloon_dst[TALKBALLOON_NORMAL_LEFT].top + 200;
+	m_RBalloon_dst[TALKBALLOON_NORMAL_LEFT].right = m_RBalloon_dst[TALKBALLOON_NORMAL_LEFT].left + 600;
 
-	m_RBalloon_dst[TALKBALLOON_NORMAL_RIGHT].top = 0;
-	m_RBalloon_dst[TALKBALLOON_NORMAL_RIGHT].left = 0;
-	m_RBalloon_dst[TALKBALLOON_NORMAL_RIGHT].bottom = 200;
-	m_RBalloon_dst[TALKBALLOON_NORMAL_RIGHT].right = 600;
+	m_RBalloon_dst[TALKBALLOON_NORMAL_RIGHT].top = WINDOW_SIZE_H - 210;
+	m_RBalloon_dst[TALKBALLOON_NORMAL_RIGHT].left = 125;
+	m_RBalloon_dst[TALKBALLOON_NORMAL_RIGHT].bottom = m_RBalloon_dst[TALKBALLOON_NORMAL_RIGHT].top + 200;
+	m_RBalloon_dst[TALKBALLOON_NORMAL_RIGHT].right = m_RBalloon_dst[TALKBALLOON_NORMAL_RIGHT].left + 600;
 
-	m_RBalloon_dst[TALKBALLOON_CLOUD_LEFT].top = 400;
-	m_RBalloon_dst[TALKBALLOON_CLOUD_LEFT].left = 0;
-	m_RBalloon_dst[TALKBALLOON_CLOUD_LEFT].bottom = 600;
-	m_RBalloon_dst[TALKBALLOON_CLOUD_LEFT].right = 600;
+	m_RBalloon_dst[TALKBALLOON_CLOUD_LEFT].top = WINDOW_SIZE_H - 225;
+	m_RBalloon_dst[TALKBALLOON_CLOUD_LEFT].left = 125;
+	m_RBalloon_dst[TALKBALLOON_CLOUD_LEFT].bottom = m_RBalloon_dst[TALKBALLOON_CLOUD_LEFT].top + 200;
+	m_RBalloon_dst[TALKBALLOON_CLOUD_LEFT].right = m_RBalloon_dst[TALKBALLOON_CLOUD_LEFT].left + 600;
 
 	m_RBalloon_dst[TALKBALLOON_CLOUD_RIGHT].top = 600;
 	m_RBalloon_dst[TALKBALLOON_CLOUD_RIGHT].left = 0;
@@ -223,13 +223,8 @@ void COverlay::Draw()
 		//-------------------吹き出し-----------------------
 		RECT ballonsrc;
 		m_fBallonColor[3] = m_fAlpha;
-		//転送先座標
-		ballonsrc.top = WINDOW_SIZE_H - 200;
-		ballonsrc.left = 100;
-		ballonsrc.bottom = ballonsrc.top + 200;
-		ballonsrc.right = ballonsrc.left + 600;
 
-		image->DrawEx(22, &ballonsrc, &m_RBalloon_src[TALKBALLOON_NORMAL_LEFT], m_fBallonColor, 0.0f);
+		image->DrawEx(EX_OTHER_BALLOON, &m_RBalloon_dst[m_iCurrentBalloon], &m_RBalloon_src[m_iCurrentBalloon], m_fBallonColor, 0.0f);
 		//-------------------吹き出し終--------------------
 
 		//-------------------待機インジケータ---------------
@@ -351,6 +346,7 @@ void COverlay::Draw()
 							m_fRightColor[0] = 0.5f;
 							m_fRightColor[1] = 0.5f;
 							m_fRightColor[2] = 0.5f;
+							m_iCurrentBalloon = TALKBALLOON_NORMAL_LEFT;
 						}
 						else if (!strlen(m_cRightCharaName) && strcmp(m_cLeftCharaName, namet)) {
 							strcpy_s(m_cRightCharaName, namet);
@@ -360,6 +356,7 @@ void COverlay::Draw()
 							m_fRightColor[0] = 1.0f;
 							m_fRightColor[1] = 1.0f;
 							m_fRightColor[2] = 1.0f;
+							m_iCurrentBalloon = TALKBALLOON_NORMAL_RIGHT;
 						}
 
 						if (!strcmp(m_cLeftCharaName, namet) && strcmp(m_cRightCharaName, namet)) {
@@ -369,14 +366,16 @@ void COverlay::Draw()
 							m_fRightColor[0] = 0.5f;
 							m_fRightColor[1] = 0.5f;
 							m_fRightColor[2] = 0.5f;
+							m_iCurrentBalloon = TALKBALLOON_NORMAL_LEFT;
 						}
 						else if (strcmp(m_cLeftCharaName, namet) && !strcmp(m_cRightCharaName, namet)) {
 							m_fLeftColor[0] = 0.5f;
 							m_fLeftColor[1] = 0.5f;
-							m_fLeftColor[2] = 0.5f;
-							m_fRightColor[0] = 1.0f;
-							m_fRightColor[1] = 1.0f;
-							m_fRightColor[2] = 1.0f;
+m_fLeftColor[2] = 0.5f;
+m_fRightColor[0] = 1.0f;
+m_fRightColor[1] = 1.0f;
+m_fRightColor[2] = 1.0f;
+m_iCurrentBalloon = TALKBALLOON_NORMAL_RIGHT;
 						}
 
 						delete namet;
@@ -462,6 +461,7 @@ void COverlay::Draw()
 					char linec[32];
 					sprintf_s(linec, "%d", m_iChar_Line);
 					if (textmgr->isCtrlLine(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line) && !m_bCharaChangeFlg) {
+						string tmpsearch;
 						char *namet = textmgr->GetCharaName(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line);
 						char *expt = textmgr->GetCharaExp(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line);
 						m_strTemp.clear();
@@ -471,6 +471,8 @@ void COverlay::Draw()
 						m_bCharaChangeFlg = true;
 						m_iCurrentLine = m_iChar_Line;
 
+						tmpsearch += expt;
+
 						if (!strlen(m_cLeftCharaName)) {
 							strcpy_s(m_cLeftCharaName, namet);
 							m_fLeftColor[0] = 1.0f;
@@ -479,8 +481,15 @@ void COverlay::Draw()
 							m_fRightColor[0] = 0.5f;
 							m_fRightColor[1] = 0.5f;
 							m_fRightColor[2] = 0.5f;
+
+							if (tmpsearch.find("内心") != -1) {
+								m_iCurrentBalloon = TALKBALLOON_CLOUD_LEFT;
+							}
+							else {
+								m_iCurrentBalloon = TALKBALLOON_NORMAL_LEFT;
+							}
 						}
-						else if (!strlen(m_cRightCharaName) && strcmp(m_cLeftCharaName,namet)) {
+						else if (!strlen(m_cRightCharaName) && strcmp(m_cLeftCharaName, namet)) {
 							strcpy_s(m_cRightCharaName, namet);
 							m_fLeftColor[0] = 0.5f;
 							m_fLeftColor[1] = 0.5f;
@@ -488,15 +497,27 @@ void COverlay::Draw()
 							m_fRightColor[0] = 1.0f;
 							m_fRightColor[1] = 1.0f;
 							m_fRightColor[2] = 1.0f;
+							if (tmpsearch.find("内心") != -1) {
+								m_iCurrentBalloon = TALKBALLOON_CLOUD_RIGHT;
+							}
+							else {
+								m_iCurrentBalloon = TALKBALLOON_NORMAL_RIGHT;
+							}
 						}
 
-						if(!strcmp(m_cLeftCharaName,namet) && strcmp(m_cRightCharaName,namet)){
+						if (!strcmp(m_cLeftCharaName, namet) && strcmp(m_cRightCharaName, namet)) {
 							m_fLeftColor[0] = 1.0f;
 							m_fLeftColor[1] = 1.0f;
 							m_fLeftColor[2] = 1.0f;
 							m_fRightColor[0] = 0.5f;
 							m_fRightColor[1] = 0.5f;
 							m_fRightColor[2] = 0.5f;
+							if (tmpsearch.find("内心") != -1) {
+								m_iCurrentBalloon = TALKBALLOON_CLOUD_LEFT;
+							}
+							else {
+								m_iCurrentBalloon = TALKBALLOON_NORMAL_LEFT;
+							}
 						}
 						else if (strcmp(m_cLeftCharaName, namet) && !strcmp(m_cRightCharaName, namet)) {
 							m_fLeftColor[0] = 0.5f;
@@ -505,6 +526,12 @@ void COverlay::Draw()
 							m_fRightColor[0] = 1.0f;
 							m_fRightColor[1] = 1.0f;
 							m_fRightColor[2] = 1.0f;
+							if (tmpsearch.find("内心") != -1) {
+								m_iCurrentBalloon = TALKBALLOON_CLOUD_RIGHT;
+							}
+							else {
+								m_iCurrentBalloon = TALKBALLOON_NORMAL_RIGHT;
+							}
 						}
 
 						delete namet;
@@ -607,6 +634,7 @@ void COverlay::Draw()
 							m_fRightColor[0] = 0.5f;
 							m_fRightColor[1] = 0.5f;
 							m_fRightColor[2] = 0.5f;
+							m_iCurrentBalloon = TALKBALLOON_NORMAL_LEFT;
 						}
 						else if (!strlen(m_cRightCharaName) && strcmp(m_cLeftCharaName, namet)) {
 							strcpy_s(m_cRightCharaName, namet);
@@ -616,6 +644,7 @@ void COverlay::Draw()
 							m_fRightColor[0] = 1.0f;
 							m_fRightColor[1] = 1.0f;
 							m_fRightColor[2] = 1.0f;
+							m_iCurrentBalloon = TALKBALLOON_NORMAL_RIGHT;
 						}
 
 						if (!strcmp(m_cLeftCharaName, namet) && strcmp(m_cRightCharaName, namet)) {
@@ -625,6 +654,7 @@ void COverlay::Draw()
 							m_fRightColor[0] = 0.5f;
 							m_fRightColor[1] = 0.5f;
 							m_fRightColor[2] = 0.5f;
+							m_iCurrentBalloon = TALKBALLOON_NORMAL_LEFT;
 						}
 						else if (strcmp(m_cLeftCharaName, namet) && !strcmp(m_cRightCharaName, namet)) {
 							m_fLeftColor[0] = 0.5f;
@@ -633,6 +663,7 @@ void COverlay::Draw()
 							m_fRightColor[0] = 1.0f;
 							m_fRightColor[1] = 1.0f;
 							m_fRightColor[2] = 1.0f;
+							m_iCurrentBalloon = TALKBALLOON_NORMAL_RIGHT;
 						}
 
 						delete namet;
@@ -735,6 +766,7 @@ void COverlay::Draw()
 							m_fRightColor[0] = 0.5f;
 							m_fRightColor[1] = 0.5f;
 							m_fRightColor[2] = 0.5f;
+							m_iCurrentBalloon = TALKBALLOON_NORMAL_LEFT;
 						}
 						else if (!strlen(m_cRightCharaName) && strcmp(m_cLeftCharaName, namet)) {
 							strcpy_s(m_cRightCharaName, namet);
@@ -744,6 +776,7 @@ void COverlay::Draw()
 							m_fRightColor[0] = 1.0f;
 							m_fRightColor[1] = 1.0f;
 							m_fRightColor[2] = 1.0f;
+							m_iCurrentBalloon = TALKBALLOON_NORMAL_RIGHT;
 						}
 
 						if (!strcmp(m_cLeftCharaName, namet) && strcmp(m_cRightCharaName, namet)) {
@@ -753,6 +786,7 @@ void COverlay::Draw()
 							m_fRightColor[0] = 0.5f;
 							m_fRightColor[1] = 0.5f;
 							m_fRightColor[2] = 0.5f;
+							m_iCurrentBalloon = TALKBALLOON_NORMAL_LEFT;
 						}
 						else if (strcmp(m_cLeftCharaName, namet) && !strcmp(m_cRightCharaName, namet)) {
 							m_fLeftColor[0] = 0.5f;
@@ -761,6 +795,7 @@ void COverlay::Draw()
 							m_fRightColor[0] = 1.0f;
 							m_fRightColor[1] = 1.0f;
 							m_fRightColor[2] = 1.0f;
+							m_iCurrentBalloon = TALKBALLOON_NORMAL_RIGHT;
 						}
 
 						delete namet;
@@ -798,7 +833,7 @@ void COverlay::Draw()
 		leftsrc.bottom = leftsrc.top + 300;
 		leftsrc.right = leftsrc.left + 250;
 
-		image->DrawEx(62, &leftsrc, &leftdst, m_fLeftColor, 0.0f);
+		image->DrawEx(m_iLeftCharaImageID, &leftsrc, &leftdst, m_fLeftColor, 0.0f);
 		//-------------------左キャラ終---------------------
 
 		//-------------------右キャラ----------------------
@@ -816,7 +851,7 @@ void COverlay::Draw()
 		rightsrc.bottom = rightsrc.top + 300;
 		rightsrc.right = rightsrc.left + 300;
 
-		image->DrawEx(191, &rightsrc, &rightdst, m_fRightColor, 0.0f);
+		image->DrawEx(m_iRightCharaImageID, &rightsrc, &rightdst, m_fRightColor, 0.0f);
 		//-------------------右キャラ終---------------------
 
 		//-------------------中キャラ----------------------

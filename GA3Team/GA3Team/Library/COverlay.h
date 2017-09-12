@@ -99,6 +99,36 @@ enum merueru
 	MERUERU_KATUO_3,
 };
 
+enum DrawExID{
+	EX_NULL = 0,
+	EX_KOUNE_OJICHAN,
+	EX_KOUNE_MANHOLE,
+	EX_KOUNE_MANHOLE_HOLE,
+	EX_KOUNE_STRONG_BOY,
+	EX_KOUNE_GIRL,
+	EX_KOUNE_FRIENDLY_GIRL,
+	EX_SION_EARPHONE_MAN,
+	EX_SION_BYCYCLE,
+	EX_SION_OLD_LADY,
+	EX_SION_QUIZ_MAN,
+	EX_MERUERU_KATSUO,
+	EX_MERUERU_DOOR,
+	EX_MERUERU_TANA,
+	EX_MERUERU_MICROWAVE,
+	EX_MERUERU_HAKASE,
+	EX_OTHER_ANIMAL,
+	EX_OTHER_KOUNE_CHARA,
+	EX_OTHER_SION_CHARA,
+	EX_OTHER_MERUERU_CHARA,
+	EX_OTHER_KOUNE_DATA,
+	EX_OTHER_MERUERU_DATA,
+	EX_OTHER_ICON,
+	EX_OTHER_BALLOON,
+	EX_STAGE_SION_STAGE1,
+	EX_STAGE_KOUNE_STAGE1,
+	EX_STAGE_LAB,
+};
+
 //---------------------------
 //íËêîêÈåæÉGÉäÉA
 
@@ -138,6 +168,7 @@ private:
 	float m_fDefColor[4], m_fBackColor[4], m_fWaitColor[4], m_fBallonColor[4];
 	float m_fLeftColor[4], m_fRightColor[4];
 	int m_iLeftCharaImageID, m_iRightCharaImageID;
+	int m_iCurrentBalloon;
 	char m_cLeftCharaName[64], m_cRightCharaName[64];
 	RECT m_RBalloon_src[5], m_RBalloon_dst[5];
 
@@ -181,8 +212,9 @@ public:
 		m_iTextSpeed(7),
 		m_iDelay(0), 
 		m_iCurrentLine(0),
-		m_iLeftCharaImageID(-1),
-		m_iRightCharaImageID(-1),
+		m_iCurrentBalloon(0),
+		m_iLeftCharaImageID(0),
+		m_iRightCharaImageID(0),
 		m_fAlpha(0.0f),
 		m_fWaitAlpha(0.0f)
 	{}

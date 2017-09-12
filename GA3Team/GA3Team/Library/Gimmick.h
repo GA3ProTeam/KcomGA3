@@ -79,8 +79,8 @@ protected:
 public:
 	//デストラクタ
 	virtual ~Gimmick() {
-		//吹き出し破棄
-		if(m_ball) delete[] m_ball;
+		////吹き出し破棄
+		//if(m_ball) delete[] m_ball;
 	}
 
 	//Init(X座標、Y座標、幅、高さ,吹き出しの数)

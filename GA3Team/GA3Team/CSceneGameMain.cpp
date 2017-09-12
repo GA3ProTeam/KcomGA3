@@ -6,7 +6,7 @@ void CSceneGameMain::InitScene()
 
 	//このシーンで表示させるイメージ情報
 	Image()->LoadImage("gamemain_kari.png",0,TEX_SIZE_256);
-	Image()->LoadImage("メニュータブ(仮).png",1,TEX_SIZE_256);
+	Image()->LoadImage("メニュータブ(仮).png",1,TEX_SIZE_1024);
 	Image()->LoadImage("黒犬c.png", 2, TEX_SIZE_256);//テスト用
 	Image()->LoadImage("吹き出し仮.png", 3, TEX_SIZE_512);//テスト用
 	Image()->LoadImage("吹き出し音符.png", 4, TEX_SIZE_512);//テスト用
@@ -17,12 +17,18 @@ void CSceneGameMain::InitScene()
 	Image()->LoadImage("猫.png", 9, TEX_SIZE_1024);//猫
 	Image()->LoadImage("自転車.png", 10, TEX_SIZE_1024);//自転車
 	Image()->LoadImage("消防車.png", 11, TEX_SIZE_1024);//消防車
-	Image()->LoadImage("タイトルタブ仮画像.png", 15, TEX_SIZE_64);//自転車
-	Image()->LoadImage("データ削除仮画像.png", 16, TEX_SIZE_64);//消防車
 	Image()->LoadImage("カツオc.png", 12, TEX_SIZE_512);//カツオ
 	Image()->LoadImage("ドアc.png", 13, TEX_SIZE_512);//博士の部屋のドア
 	Image()->LoadImage("研究所　背景.png", 14, TEX_SIZE_512);//博士の部屋
 	//Image()->LoadImage("boss.png",2,TEX_SIZE_256);
+
+	//コウネ3 テスト画像
+	Image()->LoadImage("優しい少女.png", 15, TEX_SIZE_512);
+	Image()->LoadImage("おばあちゃんc.png", 16, TEX_SIZE_512);
+	Image()->LoadImage("動物まとめ.png", 17, TEX_SIZE_512);
+
+	Image()->LoadImage("タイトルタブ仮画像.png", 18, TEX_SIZE_64);
+	Image()->LoadImage("データ削除仮画像.png", 19, TEX_SIZE_64);
 
 	//文字データ作成
 	//Font()->SetStrTex("ボスHP：");2

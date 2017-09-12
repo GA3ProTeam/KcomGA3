@@ -22,8 +22,27 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 
 	//-シオンステージ-----------------------------------------
 	case 10:
-		//シオンのステージ1のギミック生成
-		
+		////シオンのステージ1のギミック生成
+		//m_gimmick_earphone = new Gimmickearphone();
+		//Obj()->InsertObj(m_gimmick_earphone, GIMMICK_EARPHONE, 5, this->m_pScene, HIT_BOX_OFF);
+		//m_gimmick_earphone->Init(350, 250, 70, 100, 1);
+		//おばあちゃん生成
+		/*m_gimmick_aunt = new GimmickAunt();
+		Obj()->InsertObj(m_gimmick_aunt, GIMMICK_AUNT, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_aunt->Init(-110, 220, 70, 100, 1);*/
+		////すずめ生成
+		//m_gimmick_cat = new Gimmickcat();
+		//Obj()->InsertObj(m_gimmick_cat, GIMMICK_CAT, 5, this->m_pScene, HIT_BOX_OFF);
+		//m_gimmick_cat->Init(550, 120, 70, 100, 1);
+		////犬A(番犬)生成
+		//m_gimmick_bicycle = new Gimmickbicycle();
+		//Obj()->InsertObj(m_gimmick_bicycle, GIMMICK_BICYCLE, 5, this->m_pScene, HIT_BOX_OFF);
+		//m_gimmick_bicycle->Init(100, 300, 300, 300, 1);
+		////インターホン生成
+		//m_gimmick_firetruck = new Gimmickfiretruck();
+		//Obj()->InsertObj(m_gimmick_firetruck, GIMMICK_FIRETRUCK, 5, this->m_pScene, HIT_BOX_OFF);
+		//m_gimmick_firetruck->Init(-400, 220, 70, 100, 1);
+		//break;
 
 		break;
 	case 11:
@@ -75,18 +94,18 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 
 		break;
 	case 13:
-		//シオンステージ4　設定
-		m_gimmick_mysteryman = new GimmickMysteryman();
-		Obj()->InsertObj(m_gimmick_mysteryman, GIMMICK_MYSTERYMAN, 1, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_mysteryman->Init(300, 100, 60, 80, 1);
+		////シオンステージ4　設定
+		//m_gimmick_mysteryman = new GimmickMysteryman();
+		//Obj()->InsertObj(m_gimmick_mysteryman, GIMMICK_MYSTERYMAN, 1, this->m_pScene, HIT_BOX_OFF);
+		//m_gimmick_mysteryman->Init(300, 100, 60, 80, 1);
 
-		m_gimmick_bike = new GimmickBike();
-		Obj()->InsertObj(m_gimmick_bike, GIMMICK_BIKE, 1, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_bike->Init(500, 250, 200, 300, 1);
+		//m_gimmick_bike = new GimmickBike();
+		//Obj()->InsertObj(m_gimmick_bike, GIMMICK_BIKE, 1, this->m_pScene, HIT_BOX_OFF);
+		//m_gimmick_bike->Init(500, 250, 200, 300, 1);
 
-		m_gimmick_door_Sion4 = new GimmickDoor();
-		Obj()->InsertObj(m_gimmick_door_Sion4, GIMMICK_SHELF, 1, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_door_Sion4->Init(500, 250, 200, 300, 1);
+		//m_gimmick_door_Sion4 = new GimmickDoor();
+		//Obj()->InsertObj(m_gimmick_door_Sion4, GIMMICK_SHELF, 1, this->m_pScene, HIT_BOX_OFF);
+		//m_gimmick_door_Sion4->Init(500, 250, 200, 300, 1);
 
 
 
@@ -109,7 +128,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 
 	case 20:
 
-		/*m_gimmick_television = new GimmickTelevision();
+	/*	m_gimmick_television = new GimmickTelevision();
 		Obj()->InsertObj(m_gimmick_television, GIMMICK_TELEVISION, 5, this->m_pScene, HIT_BOX_OFF);
 		m_gimmick_television->Init(50, 300, 250, 125, 1);
 		
@@ -123,8 +142,8 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 
 		m_gimmick_door = new GimmickDoctorroomDoor();
 		Obj()->InsertObj(m_gimmick_door, GIMMICK_DOOR, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_door->Init(280, 90, 400, 400, 1);*/
-		
+		m_gimmick_door->Init(280, 90, 400, 400, 1);
+		*/
 		break;
 	case 21:
 
@@ -186,21 +205,38 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 		break;
 	case 32:
 		
-//		//コウネステージ３ ギミック生成
-//		//子猫
-//		m_gimmick_kitten = new GimmickKitten();
-//		Obj()->InsertObj(m_gimmick_kitten, GIMMICK_KITTEN, 5, this->m_pScene, HIT_BOX_OFF);
-//		m_gimmick_kitten->Init(400, 120, 100, 100, 1);
-//
-//		//蝉
-//		m_gimmick_cicada = new GimmickCicada();
-//		Obj()->InsertObj(m_gimmick_cicada, GIMMICK_CICADA, 5, this->m_pScene, HIT_BOX_OFF);
-//		m_gimmick_cicada->Init(500, 120, 100, 100, 1);
-//
-//		//少女
-//		m_gimmick_little_girl = new GimmickLittleGirl();
-//		Obj()->InsertObj(m_gimmick_little_girl, GIMMICK_LITTLEGIRL, 5, this->m_pScene, HIT_BOX_OFF);
-//		m_gimmick_little_girl->Init(600, 120, 100, 100, 1);
+		//User()->mscroll_x = 400;
+
+		////コウネステージ３ ギミック生成
+		////おばあちゃん
+		//m_gimmick_granny = new GimmickGranny();
+		//Obj()->InsertObj(m_gimmick_granny, GIMMICK_GRANNY, 5, this->m_pScene, HIT_BOX_OFF);
+		//m_gimmick_granny->Init(-50, 150, 150, 300, 1);
+
+		////九官鳥
+		//m_gimmick_mynah = new GimmickMynah();
+		//Obj()->InsertObj(m_gimmick_mynah, GIMMICK_MYNAH, 5, this->m_pScene, HIT_BOX_OFF);
+		//m_gimmick_mynah->Init(200, 100, 100, 100, 1);
+
+		////風鈴
+		//m_gimmick_windchime = new GimmickWindchime();
+		//Obj()->InsertObj(m_gimmick_windchime, GIMMICK_WINDCHIME, 5, this->m_pScene, HIT_BOX_OFF);
+		//m_gimmick_windchime->Init(-230, 25, 70, 110, 1);
+
+		////子猫
+		//m_gimmick_kitten = new GimmickKitten();
+		//Obj()->InsertObj(m_gimmick_kitten, GIMMICK_KITTEN, 5, this->m_pScene, HIT_BOX_OFF);
+		//m_gimmick_kitten->Init(500, 450, 100, 100, 1);
+
+		////蝉
+		//m_gimmick_cicada = new GimmickCicada();
+		//Obj()->InsertObj(m_gimmick_cicada, GIMMICK_CICADA, 5, this->m_pScene, HIT_BOX_OFF);
+		//m_gimmick_cicada->Init(650, 250, 50, 80, 1);
+
+		////少女
+		//m_gimmick_little_girl = new GimmickLittleGirl();
+		//Obj()->InsertObj(m_gimmick_little_girl, GIMMICK_LITTLEGIRL, 5, this->m_pScene, HIT_BOX_OFF);
+		//m_gimmick_little_girl->Init(-330, 300, 150, 230, 1);
 
 		
 		break;
@@ -210,7 +246,23 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 
 		break;
 	case 34:
-
+		////コウネステージ5
+		////①ドア
+		//m_gimmick_mysterydoor = new GimmickMysteryDoor();
+		//Obj()->InsertObj(m_gimmick_mysterydoor,GIMMICK_MYSTERYDOOR, 5, this->m_pScene, HIT_BOX_OFF);
+		//m_gimmick_mysterydoor->Init(0, 0, 0, 0, 1);
+		////②メカニック
+		//m_gimmick_mechanic = new GimmickMechanic();
+		//Obj()->InsertObj(m_gimmick_mechanic, GIMMICK_MECHANIC, 5, this->m_pScene, HIT_BOX_OFF);
+		//m_gimmick_mechanic->Init(0, 0, 0, 0, 1);
+		////③パソコン
+		//m_gimmick_soundcomputer = new GimmickSoundComputer();
+		//Obj()->InsertObj(m_gimmick_soundcomputer, GIMMICK_SOUNDCOMPUTER, 5, this->m_pScene, HIT_BOX_OFF);
+		//m_gimmick_soundcomputer->Init(0, 0, 0, 0, 1);
+		////④演奏家
+		//m_gimmick_musician = new GimmickMusician();
+		//Obj()->InsertObj(m_gimmick_musician, GIMMICK_MUSICIAN, 5, this->m_pScene, HIT_BOX_OFF);
+		//m_gimmick_musician->Init(0, 0, 0, 0, 1);
 
 
 		break;
@@ -253,7 +305,7 @@ void CObjGimmickManager::Destructor() {
 
 //アクション
 void CObjGimmickManager::Action() {
-	//イベント番号
+	//イベント番号(チュートリアルステージ)
 	enum TUTORIAL_NUMBER {
 		TUTORIAL_WELCOM_TALK,				//博士開始メッセージ
 		TUTORIAL_WELCOM_TALK_END,			//開始時メッセージ終了
@@ -266,11 +318,65 @@ void CObjGimmickManager::Action() {
 		TUTORIAL_SOUND_REC_TALK_PLAY,		//音を録音した後、会話してから再生した
 	};
 
+	//イベント番号(コウネ3ステージ)
+	enum KOUNE3_NUMBER
+	{
+		//会話シーン-------------------------------------------------------------------------------------
+		KOUNE3_TALK_START,						//ステージ開始時トーク
+		KOUNE3_TALK_START_END,					//ステージ開始時トーク終了
+		//おばあちゃん
+		KOUNE3_TALK_GRANNY_FLG0,				//おばあちゃんとの会話0(フラグ0)
+		KOUNE3_TALK_GRANNY_FLG0_END,			//おばあちゃんとの会話0(フラグ0)終了
+		KOUNE3_TALK_GRANNY_FLG1,				//おばあちゃんとの会話1(フラグ1)
+		KOUNE3_TALK_GRANNY_FLG1_END,			//おばあちゃんとの会話1(フラグ1)終了
+		KOUNE3_TALK_GRANNY_KITTEN,				//おばあちゃんに子猫の鳴き声を聞かせる
+		KOUNE3_TALK_GRANNY_FLG2,				//おばあちゃんとの会話2(フラグ2)
+		KOUNE3_TALK_GRANNY_FLG2_END,			//おばあちゃんとの会話2(フラグ2)終了
+		KOUNE3_TALK_GRANNY_FLG3,				//おばあちゃんとの会話3(フラグ3)
+		KOUNE3_TALK_GRANNY_FLG3_END,			//おばあちゃんとの会話3(フラグ3)終了
+		//子猫
+		KOUNE3_TALK_KITTEN_CHECK,				//子猫を調べたときの会話
+		KOUNE3_TALK_KITTEN_CHECKEND,			//子猫を調べたときの会話終了
+		KOUNE3_TALK_KITTEN_OTHER_SOUND,			//子猫に指定外の音を聞かせる
+		KOUNE3_TALK_KITTEN_OTHER_SOUND_END,		//子猫に指定外の音を聞かせる
+		KOUNE3_TALK_KITTEN_DOG,					//子猫に犬の鳴き声を聞かせる
+		KOUNE3_TALK_KITTEN_DOG_END,				//子猫に犬の鳴き声を聞かせる
+		//九官鳥
+		KOUNE3_TALK_MYNAH_CHECK,				//九官鳥を調べたときの会話
+		KOUNE3_TALK_MYNAH_CHECK_END,			//九官鳥を調べたときの会話終了
+		KOUNE3_TALK_MYNAH_SONG_NOTCLAER,		//九官鳥に歌を聞かせる(クリア条件未達成)
+		KOUNE3_TALK_MYNAH_SONG_NOTCLAER_END,	//九官鳥に歌を聞かせる(クリア条件未達成)終了
+		KOUNE3_TALK_MYNAH_FLG3_NORMAL,			//九官鳥を調べたときの会話(フラグ3)
+		KOUNE3_TALK_MYNAH_FLG3_NORMAL_END,		//九官鳥を調べたときの会話(フラグ3)終了
+		KOUNE3_TALK_MYNAH_FLG3_SMALL,			//九官鳥に小さくした音を聞かせる
+		KOUNE3_TALK_MYNAH_FLG3_SMALL_END,		//九官鳥に小さくした音を聞かせる終了
+		//-----------------------------------------------------------------------------------------------
+		
+		//録音-------------------------------------------------------------------------------------------
+		KOUNE3_SOUND_REC_KITTEN,				//子猫の鳴き声を録音
+
+		//-----------------------------------------------------------------------------------------------
+
+	};
+
 	//イベント進行度
+	//チュートリアルステージ
 	static int m_itutorialflg = TUTORIAL_WELCOM_TALK;
 
-	//テスト用（チュートリアルステージ）
+	//コウネ3ステージ
+	static int m_Koune3_flg = KOUNE3_TALK_START;
+
+	
 	switch (m_Stage_ID) {
+	case 32:
+	{
+
+		break;
+	}
+
+		
+
+	//テスト用（チュートリアルステージ）
 	case 40:
 		{
 		//	//スタート時
@@ -391,7 +497,7 @@ void CObjGimmickManager::Action() {
 				Overlay()->talkDraw(TUTORIAL, HAKASE_CLEAR);
 
 				//チュートリアルクリア
-				SavedataManeger()->CurrentData->m_btutorial = true;
+				SavedataManeger()->CurrentData->m_btutorial=true;
 
 			}
 			//【録音後、博士と会話せずに、再生（フラグ2○　フラグ3×）】
@@ -407,6 +513,7 @@ void CObjGimmickManager::Action() {
 		}
 		break;
 	}
+
 }
 
 //ドロー

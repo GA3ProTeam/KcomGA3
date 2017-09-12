@@ -29,20 +29,18 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR szCmdL
 		return false;
 
 	//ウィンドウ作成
-	LONG winWidth = WINDOW_SIZE_W +
-		GetSystemMetrics(SM_CXEDGE) +
-		GetSystemMetrics(SM_CXBORDER) +
-		GetSystemMetrics(SM_CXDLGFRAME);
-	LONG winHeight = WINDOW_SIZE_H +
-		GetSystemMetrics(SM_CYEDGE) +
-		GetSystemMetrics(SM_CYBORDER) +
-		GetSystemMetrics(SM_CYDLGFRAME) +
-		GetSystemMetrics(SM_CYCAPTION);
-
 	if (!(hWnd = CreateWindow(Name, Name, WS_OVERLAPPEDWINDOW & ~(WS_MAXIMIZEBOX | WS_SIZEBOX),
-		CW_USEDEFAULT, 0, winWidth, winHeight, 0, 0, hInstance, 0)))
+		CW_USEDEFAULT, 0, WINDOW_SIZE_W, WINDOW_SIZE_H, 0, 0, hInstance, 0)))
 		return false;
 	ShowWindow(hWnd, SW_SHOW);
+
+	//サイズ補正
+	RECT size, wndsize;
+	GetClientRect(hWnd, &size);
+	GetWindowRect(hWnd, &wndsize);
+	wndsize.right = wndsize.right - wndsize.left;
+	wndsize.bottom = wndsize.bottom - wndsize.top;
+	SetWindowPos(hWnd, NULL, 0, 0, WINDOW_SIZE_W + wndsize.right - size.right, WINDOW_SIZE_H + wndsize.bottom - size.bottom, SWP_NOMOVE | SWP_NOREPOSITION | SWP_NOZORDER);
 
 	//ゲームエンジン関連の初期化---------------------
 	InitLibrary();

@@ -87,14 +87,15 @@ public:
 class GimmickBird : public Gimmick
 {
 private:
+
 public:
-void Init();//イニシャライズ
-void Destructor();//デストラクタ
-void Action();//アクション
-void Draw();//描画
+	void Init(int xpos, int ypos, int widht, int height, int balloonnum);//イニシャライズ	
+	void Destructor();//デストラクタ
+	void Action();//アクション
+	void Draw();//描画
 };
 //犬(番犬)
-class GimmickDog : public Gimmick
+class Gimmickwatchdog : public Gimmick
 {
 private:
 public:
@@ -112,8 +113,8 @@ void Init();//イニシャライズ
 void Destructor();//デストラクタ
 void Action();//アクション
 void Draw();//描画
-};
-*/
+};*/
+
 
 //ステージ1↑
 
@@ -215,10 +216,10 @@ public:
 	GimmickGranny() {};
 	~GimmickGranny() {};
 
-	void Init(int xpos, int ypos, int widht, int height, int balloonnum);//イニシャライズ
-	void Destructor();//デストラクタ
-	void Action();//アクション
-	void Draw();//描画
+	//void Init(int xpos, int ypos, int widht, int height, int balloonnum);//イニシャライズ
+	//void Destructor();//デストラクタ
+	//void Action();//アクション
+	//void Draw();//描画
 
 };
 
@@ -231,10 +232,10 @@ public:
 	GimmickMynah() {};
 	~GimmickMynah() {};
 
-	void Init(int xpos, int ypos, int widht, int height, int balloonnum);//イニシャライズ
-	void Destructor();	//デストラクタ
-	void Action();		//アクション
-	void Draw();		//ドロー
+	//void Init(int xpos, int ypos, int widht, int height, int balloonnum);//イニシャライズ
+	//void Destructor();	//デストラクタ
+	//void Action();		//アクション
+	//void Draw();		//ドロー
 
 };
 
@@ -263,10 +264,10 @@ public:
 	GimmickWindchime() {};
 	~GimmickWindchime() {};
 
-	void Init(int xpos, int ypos, int widht, int height, int balloonnum);//イニシャライズ
-	void Destructor();	//デストラクタ
-	void Action();		//アクション
-	void Draw();		//ドロー
+	//void Init(int xpos, int ypos, int widht, int height, int balloonnum);//イニシャライズ
+	//void Destructor();	//デストラクタ
+	//void Action();		//アクション
+	//void Draw();		//ドロー
 
 };
 
@@ -467,7 +468,7 @@ class GimmickMysteryDoor : public Gimmick
 		GimmickMysteryDoor() {};
 		~GimmickMysteryDoor() {};
 
-		//void Init();
+		void Init(int xpos, int ypos, int widht, int height, int balloonnum);
 		void Destructor();	//デストラクタ
 		void Action();		//アクション
 		void Draw();		//描画
@@ -481,7 +482,7 @@ class GimmickMechanic : public Gimmick
 		GimmickMechanic() {};
 		~GimmickMechanic() {};
 
-		//void Init();
+		void Init(int xpos, int ypos, int widht, int height, int balloonnum);
 		void Destructor();  //デストラクタ
 		void Action();      //アクション
 		void Draw();		//描画
@@ -495,7 +496,7 @@ class GimmickSoundComputer : public Gimmick
 		GimmickSoundComputer() {};
 		~GimmickSoundComputer() {};
 
-		//void Init();
+		void Init(int xpos, int ypos, int widht, int height, int balloonnum);
 		void Destructor();  //デストラクタ
 		void Action();		//アクション
 		void Draw();		//描画
@@ -508,7 +509,7 @@ class GimmickMusician : public Gimmick
 		GimmickMusician() {};
 		~GimmickMusician() {};
 
-		//void Init();
+		void Init(int xpos, int ypos, int widht, int height, int balloonnum);
 		void Destructor();  //デストラクタ
 		void Action();		//アクション
 		void Draw();		//描画

@@ -281,7 +281,7 @@ class GimmickMysteryman :public Gimmick
 public:
 	GimmickMysteryman() {};
 	~GimmickMysteryman() {};
-
+	void Init(int xpos, int ypos, int widht, int height, int balloonnum);
 	void Destructor();	//デストラクタ
 	void Action();		//アクション
 	void Draw();		//ドロー
@@ -298,6 +298,7 @@ public:
 	GimmickBike() {};
 	~GimmickBike() {};
 
+	void Init(int xpos, int ypos, int widht, int height, int balloonnum);
 	void Destructor();	//デストラクタ
 	void Action();		//アクション
 	void Draw();		//ドロー
@@ -389,7 +390,7 @@ public:
 	GimmickDog() {};
 	~GimmickDog() {};
 
-
+	void Init();
 	void Destructor();	//デストラクタ
 	void Action();		//アクション
 	void Draw();		//ドロー
@@ -414,7 +415,7 @@ class GimmickLittleGirl : public Gimmick
 	public:
 		GimmickLittleGirl() {}
 		~GimmickLittleGirl() {}
-	private:
+	
 		void Init(int xpos, int ypos, int widht, int height, int balloonnum);//イニシャライズ
 		void Destructor();//デストラクタ
 		void Action();//アクション
@@ -427,7 +428,7 @@ class GimmickKitten : public Gimmick
 	public:
 		GimmickKitten() {}
 		~GimmickKitten() {}
-	private:
+	
 		void Init(int xpos, int ypos, int widht, int height, int balloonnum);//イニシャライズ
 		void Destructor();//デストラクタ
 		void Action();//アクション
@@ -440,7 +441,7 @@ class GimmickCicada : public Gimmick
 	public:
 		GimmickCicada() {}
 		~GimmickCicada() {}
-	private:
+	
 		void Init(int xpos, int ypos, int widht, int height, int balloonnum);//イニシャライズ
 		void Destructor();//デストラクタ
 		void Action();//アクション
@@ -458,6 +459,61 @@ class GimmickCicada : public Gimmick
 
 
 //ステージ5↓
+//①ドア
+class GimmickMysteryDoor : public Gimmick
+{
+	public:
+		GimmickMysteryDoor() {};
+		~GimmickMysteryDoor() {};
+
+		void Init(int xpos, int ypos, int widht, int height, int balloonnum);
+		void Destructor();	//デストラクタ
+		void Action();		//アクション
+		void Draw();		//描画
+	private:
+
+};
+//②メカニック
+class GimmickMechanic : public Gimmick
+{
+	public:
+		GimmickMechanic() {};
+		~GimmickMechanic() {};
+
+		void Init(int xpos, int ypos, int widht, int height, int balloonnum);
+		void Destructor();  //デストラクタ
+		void Action();      //アクション
+		void Draw();		//描画
+	private:
+
+};
+//③パソコン
+class GimmickSoundComputer : public Gimmick
+{
+	public:
+		GimmickSoundComputer() {};
+		~GimmickSoundComputer() {};
+
+		void Init(int xpos, int ypos, int widht, int height, int balloonnum);
+		void Destructor();  //デストラクタ
+		void Action();		//アクション
+		void Draw();		//描画
+	private:
+};
+//④演奏家
+class GimmickMusician : public Gimmick
+{
+	public:
+		GimmickMusician() {};
+		~GimmickMusician() {};
+
+		void Init(int xpos, int ypos, int widht, int height, int balloonnum);
+		void Destructor();  //デストラクタ
+		void Action();		//アクション
+		void Draw();		//描画
+	private:
+
+};
 //ステージ5↑
 
 //ステージ6↓

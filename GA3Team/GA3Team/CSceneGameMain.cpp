@@ -17,8 +17,11 @@ void CSceneGameMain::InitScene()
 	Image()->LoadImage("”L.png", 9, TEX_SIZE_1024);//”L
 	Image()->LoadImage("Ž©“]ŽÔ.png", 10, TEX_SIZE_1024);//Ž©“]ŽÔ
 	Image()->LoadImage("Á–hŽÔ.png", 11, TEX_SIZE_1024);//Á–hŽÔ
-	Image()->LoadImage("“®•¨‚Ü‚Æ‚ß.png",12, TEX_SIZE_1024);//Á–hŽÔ
-
+	Image()->LoadImage("ƒ^ƒCƒgƒ‹ƒ^ƒu‰¼‰æ‘œ.png", 15, TEX_SIZE_64);//Ž©“]ŽÔ
+	Image()->LoadImage("ƒf[ƒ^íœ‰¼‰æ‘œ.png", 16, TEX_SIZE_64);//Á–hŽÔ
+	Image()->LoadImage("ƒJƒcƒIc.png", 12, TEX_SIZE_512);//ƒJƒcƒI
+	Image()->LoadImage("ƒhƒAc.png", 13, TEX_SIZE_512);//”ŽŽm‚Ì•”‰®‚ÌƒhƒA
+	Image()->LoadImage("Œ¤‹†Š@”wŒi.png", 14, TEX_SIZE_512);//”ŽŽm‚Ì•”‰®
 	//Image()->LoadImage("boss.png",2,TEX_SIZE_256);
 
 	//•¶Žšƒf[ƒ^ì¬
@@ -49,20 +52,18 @@ void CSceneGameMain::InitScene()
 	Obj()->InsertObj(m_obj_menutab, OBJ_MENUTAB, 5, this, HIT_BOX_OFF);
 	m_obj_menutab->Init(400);
 
+	m_obj_Rscroll = new ButtonRScrollScreen();
+	m_obj_Rscroll->Init();
+	Obj()->InsertObj(m_obj_Rscroll, BUTTON_RSCROLL_SCREEN, 5, this, HIT_BOX_OFF);
+
+	m_obj_Lscroll = new ButtonLScrollScreen();
+	m_obj_Lscroll->Init();
+	Obj()->InsertObj(m_obj_Lscroll, BUTTON_LSCROLL_SCREEN, 5, this, HIT_BOX_OFF);
 
 	m_obj_gimmickmanager = new CObjGimmickManager();
 	Obj()->InsertObj(m_obj_gimmickmanager, OBJ_GIMMICK_MANAGER, 0, this, HIT_BOX_OFF);
 	m_obj_gimmickmanager->Init(0,0);
 
-	m_obj_Rscroll = new ButtonRScrollScreen();
-	m_obj_Rscroll->Init();
-	Obj()->InsertObj(m_obj_Rscroll, BUTTON_RSCROLL_SCREEN, 0, this, HIT_BOX_OFF);
-
-	m_obj_Lscroll = new ButtonLScrollScreen();
-	m_obj_Lscroll->Init();
-	Obj()->InsertObj(m_obj_Lscroll, BUTTON_LSCROLL_SCREEN, 0, this, HIT_BOX_OFF);
-	
-	
 	m_gimmick_test = new GimmickTest();
 	Obj()->InsertObj(m_gimmick_test, OBJ_GIMMICK_TEST, 5, this, HIT_BOX_OFF);
 	m_gimmick_test->Init(100,200,64,64,1);

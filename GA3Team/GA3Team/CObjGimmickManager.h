@@ -3,13 +3,13 @@
 #define __C_OBJ_GIMIMICKMANAGER_H__
 
 //使用オブジェクトのプロトタイプ宣言
-class Gimmickearphone;
-class Gimmickkoune;
-class Gimmickcat;
-class Gimmickbicycle;
-class Gimmickfiretruck;
-class GimmickChildren;
-class GimmickGranny;
+class Gimmickearphone;		
+class Gimmickkoune;			
+class Gimmickcat;			
+class Gimmickbicycle;		
+class Gimmickfiretruck;		
+class GimmickChildren;		
+class GimmickGranny;		
 class GimmickMynah;
 class GimmickShelf;
 class GimmickWindchime;
@@ -17,6 +17,7 @@ class GimmickTelevision;
 class GimmickOven;
 class GimmickKatsuo;
 class GimmickDoor;
+class GimmickDoctorroomDoor;
 class GimmickDog;
 class GimmickManholeCover;
 class GimmickManholeHole;
@@ -27,6 +28,13 @@ class GimmickLittleGirl;
 class GimmickDoctor;
 class GimmickRecorder;
 class GimmickComputer;
+class GimmickMysteryman;
+class GimmickBike;
+class GimmickDoor;
+class GimmickMysteryDoor;
+class GimmickMechanic;
+class GimmickSoundComputer;
+class GimmickMusician;
 class GimmickAunt;
 
 
@@ -64,6 +72,13 @@ private:
 	GimmickShelf* m_gimmick_shelf;
 	GimmickWindchime* m_gimmick_windchime;
 	//ステージ3↑
+	//ステージ4↓
+	GimmickMysteryman* m_gimmick_mysteryman;
+	GimmickBike* m_gimmick_bike;
+	GimmickDoor* m_gimmick_door_Sion4;
+
+	//ステージ4↑
+	//シオンステージ1↑
 	//シオンステージ↑
 
 
@@ -73,9 +88,9 @@ private:
 	//メルエルステージ↓
 	//ステージ1↓
 	GimmickTelevision* m_gimmick_television;
-	GimmickOven* m_gimmick_oven;
 	GimmickKatsuo* m_gimmick_katsuo;
-	GimmickDoor* m_gimmick_door;
+	GimmickOven* m_gimmick_oven;
+	GimmickDoctorroomDoor* m_gimmick_door;
 
 	//ステージ1↑
 	//メルエルステージ↑
@@ -97,6 +112,14 @@ private:
 	GimmickCicada* m_gimmick_cicada;
 	GimmickLittleGirl* m_gimmick_little_girl;
 	//ステージ3↑
+
+
+	//ステージ5↓
+	GimmickMysteryDoor*   m_gimmick_mysterydoor;
+	GimmickMechanic*      m_gimmick_mechanic;
+	GimmickSoundComputer* m_gimmick_soundcomputer;
+	GimmickMusician*      m_gimmick_musician;
+	//ステージ5↑   
 
 	//コウネステージ↑
 

@@ -56,12 +56,13 @@ void InitBall(Balloon* balloon, int gimX, int gimY, int balltype, int soundnum, 
 
 //ギミッククラス(基底)
 class Gimmick : public CObj {
+friend class CObjGimmickManager;
 protected:
-	Balloon* m_ball;//吹き出し
+	Balloon* m_ball;	//吹き出し
 	bool m_bCursor;	    //ギミックにカーソルが当たっているかのフラグ
 	int m_iballoontime;	//吹き出しの維持時間
 	int m_iballoonnum;  //吹き出しの数
-
+	
 	CObjMenuTab* m_menu_tab;//メニュータブへの参照
 
 //-----------------判定-------------
@@ -70,20 +71,24 @@ protected:
 	int m_iWidth;	//ギミック幅
 	int m_iHeight;	//ギミック高さ
 //----------------表示位置----------
-	RECT m_src;		//転送先座標
-	RECT m_dst;		//切り取り座標
-	bool m_getsound;  //ギミックに音をドラッグ＆ドロップされたかどうか
-
+	RECT m_src;			//転送先座標
+	RECT m_dst;			//切り取り座標
+	int m_getsound;		//ギミックに音をドラッグ＆ドロップされたかどうか
+	bool m_bActionFlg;	//ギミック動作フラグ
 	
 public:
+	//デストラクタ
+	virtual ~Gimmick() {
+		//吹き出し破棄
+		if(m_ball) delete[] m_ball;
+	}
+
 	//Init(X座標、Y座標、幅、高さ,吹き出しの数)
 	void Init(int xpos, int ypos, int widht, int height, int balloonnum);
 
 	//デストラクタ
-	void Destructor() {
-		//吹き出し破棄
-		delete[] m_ball;
-	}
+	void Destructor() {}
+
 	//吹き出しの種類をセットする
 	void setballoontype(int balloontype, int num) { m_ball[num].m_iballoontype = balloontype; }
 	//吹き出し(音情報)をセットする

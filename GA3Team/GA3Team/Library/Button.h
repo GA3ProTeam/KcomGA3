@@ -5,11 +5,11 @@
 class Button : public CObj{
 private:
 	//全ボタンへの参照リスト
-	//static list<Button*> m_button_list;
+	static list<Button*> m_button_list;
 
 	//自分自身のイテレータ保存用
 	//（リストからこのボタンへの参照を削除するとき、このボタンを一発で特定するためのもの）
-	//list<Button*>::iterator m_my_itr;
+	list<Button*>::iterator m_my_itr;
 	
 	//クリックした際一度だけ反応するためのフラグ
 	bool m_bOnceFlg;
@@ -25,13 +25,13 @@ public:
 	void Init(int x, int y, int w, int h, bool overlap_flg);//初期化
 		//デストラクタ
 	virtual ~Button() {
-			//自分がリストに登録されている場合のみ、削除
-		//if (m_my_itr._Ptr) m_button_list.erase(m_my_itr);
-	
+		//自分がリストに登録されている場合のみ、削除
+		if (m_my_itr._Ptr) m_button_list.erase(m_my_itr);
 	}
 	
 	bool Push();//ボタンの押下判定
-	bool Rangedetection();//ボタンの範囲にカーソルが入っているかどうか調べる
+	bool Rangedetection();//ボタンの範囲にマウスが入っているかどうか調べる
+	bool OverlapButtonPush();//自分より上にあるボタンが押されるか確認
 };
 
 #endif

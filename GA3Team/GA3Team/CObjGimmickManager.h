@@ -3,13 +3,13 @@
 #define __C_OBJ_GIMIMICKMANAGER_H__
 
 //使用オブジェクトのプロトタイプ宣言
-class Gimmickearphone;
-class Gimmickkoune;
-class Gimmickcat;
-class Gimmickbicycle;
-class Gimmickfiretruck;
-class GimmickChildren;
-class GimmickGranny;
+class Gimmickearphone;		
+class Gimmickkoune;			
+class Gimmickcat;			
+class Gimmickbicycle;		
+class Gimmickfiretruck;		
+class GimmickChildren;		
+class GimmickGranny;		
 class GimmickMynah;
 class GimmickShelf;
 class GimmickWindchime;

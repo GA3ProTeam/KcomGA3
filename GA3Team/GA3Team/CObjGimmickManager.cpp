@@ -205,36 +205,38 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 		break;
 	case 32:
 		
+		User()->mscroll_x = 400;
+
 		//コウネステージ３ ギミック生成
 		//おばあちゃん
 		m_gimmick_granny = new GimmickGranny();
 		Obj()->InsertObj(m_gimmick_granny, GIMMICK_GRANNY, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_granny->Init(0, 0, 100, 100, 1);
+		m_gimmick_granny->Init(-50, 150, 150, 300, 1);
 
 		//九官鳥
 		m_gimmick_mynah = new GimmickMynah();
 		Obj()->InsertObj(m_gimmick_mynah, GIMMICK_MYNAH, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_mynah->Init(0, 0, 100, 100, 1);
+		m_gimmick_mynah->Init(200, 100, 100, 100, 1);
 
 		//風鈴
 		m_gimmick_windchime = new GimmickWindchime();
 		Obj()->InsertObj(m_gimmick_windchime, GIMMICK_WINDCHIME, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_windchime->Init(0, 0, 100, 100, 1);
+		m_gimmick_windchime->Init(-230, 25, 70, 110, 1);
 
 		//子猫
 		m_gimmick_kitten = new GimmickKitten();
 		Obj()->InsertObj(m_gimmick_kitten, GIMMICK_KITTEN, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_kitten->Init(400, 120, 100, 100, 1);
+		m_gimmick_kitten->Init(500, 450, 100, 100, 1);
 
 		//蝉
 		m_gimmick_cicada = new GimmickCicada();
 		Obj()->InsertObj(m_gimmick_cicada, GIMMICK_CICADA, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_cicada->Init(500, 120, 100, 100, 1);
+		m_gimmick_cicada->Init(650, 250, 50, 80, 1);
 
 		//少女
 		m_gimmick_little_girl = new GimmickLittleGirl();
 		Obj()->InsertObj(m_gimmick_little_girl, GIMMICK_LITTLEGIRL, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_little_girl->Init(600, 120, 100, 100, 1);
+		m_gimmick_little_girl->Init(-330, 300, 150, 230, 1);
 
 		
 		break;
@@ -437,6 +439,7 @@ void CObjGimmickManager::Action() {
 		}
 		break;
 	}
+
 }
 
 //ドロー

@@ -87,14 +87,15 @@ public:
 class GimmickBird : public Gimmick
 {
 private:
+
 public:
-void Init();//イニシャライズ
-void Destructor();//デストラクタ
-void Action();//アクション
-void Draw();//描画
+	void Init(int xpos, int ypos, int widht, int height, int balloonnum);//イニシャライズ	
+	void Destructor();//デストラクタ
+	void Action();//アクション
+	void Draw();//描画
 };
 //犬(番犬)
-class GimmickDog : public Gimmick
+class Gimmickwatchdog : public Gimmick
 {
 private:
 public:
@@ -112,8 +113,8 @@ void Init();//イニシャライズ
 void Destructor();//デストラクタ
 void Action();//アクション
 void Draw();//描画
-};
-*/
+};*/
+
 
 //ステージ1↑
 

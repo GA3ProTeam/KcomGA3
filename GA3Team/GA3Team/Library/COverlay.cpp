@@ -221,7 +221,6 @@ void COverlay::Draw()
 		//-------------------”wŒiI------------------------
 
 		//-------------------‚«o‚µ-----------------------
-		RECT ballonsrc;
 		m_fBallonColor[3] = m_fAlpha;
 
 		image->DrawEx(EX_OTHER_BALLOON, &m_RBalloon_dst[m_iCurrentBalloon], &m_RBalloon_src[m_iCurrentBalloon], m_fBallonColor, 0.0f);

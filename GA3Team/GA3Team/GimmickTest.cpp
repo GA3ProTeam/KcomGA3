@@ -1383,11 +1383,11 @@ void GimmickMysteryDoor::Action() {
 	 機械音B...音量を上げると"B'"
 	 */
 
-	int m_idoorgimmick[3] = { 1,2,1 }; //ドアの謎解き初期値(スタート/リセット)
+	int m_idoorgimmick[3] = { 1,2,1 }; //ドアの謎解き初期値(スタート)
 
 	int m_idoor_reset = false;
 	//m_idoor_reset = User()->m_iDoor_reset;
-	if (m_idoor_reset == true) {
+	if (m_idoor_reset == true) { //ドアの初期値リセット
 		m_idoorgimmick[0] = 1;
 		m_idoorgimmick[1] = 2;
 		m_idoorgimmick[2] = 1;
@@ -1444,7 +1444,6 @@ void GimmickMysteryDoor::Action() {
 			if (m_idoorgimmick[0] == 2 && m_idoorgimmick[1] == 2 && m_idoorgimmick[2] == 2) {
 				//ドアの 謎解きをクリア
 				//Overlay()->talkDraw(KOUNE, ); //「開けられたんだね！」
-				//int m_iKoune_5_Clear = true; //クリア判定のif文変更
 
 				SavedataManeger()->CurrentData->m_bKouneClearflg[4] = true; //コウネステージ5 クリア
 			}
@@ -1454,20 +1453,22 @@ void GimmickMysteryDoor::Action() {
 //①ドアの描画
 void GimmickMysteryDoor::Draw() {
 
+	float col[4] = { 1.0,1.0,1.0,1.0 };
+
 	//切り取り先座標
 	m_dst.top = 0;
-	m_dst.bottom = 0;
+	m_dst.bottom = 512;
 	m_dst.left = 0;
-	m_dst.right = 0;
+	m_dst.right = 512;
 
 	//転送先座標
-	m_src.top = 0;
-	m_src.bottom = m_src.top + 0;
-	m_src.left = 0;
-	m_src.right = m_src.left + 0;
+	m_src.top = 500;
+	m_src.bottom = m_src.top + 300;
+	m_src.left = 300;
+	m_src.right = m_src.left + 200;
 
 	//描画
-	//Image()->Draw(0, &m_src, &m_dst, col, 0.0f); //描画値変更
+	Image()->DrawEx(12, &m_src, &m_dst, col, 0.0f); //描画値変更
 
 	//吹き出し描画＆動作-------
 	this->gimmicDraw(1);
@@ -1562,20 +1563,22 @@ void GimmickMechanic::Action() {
 //②メカニックの描画
 void GimmickMechanic::Draw() {
 
+	float col[4] = { 1.0,1.0,1.0,1.0 };
+
 	//切り取り先座標
 	m_dst.top = 0;
-	m_dst.bottom = 0;
+	m_dst.bottom = 200;
 	m_dst.left = 0;
-	m_dst.right = 0;
+	m_dst.right = 360;
 
 	//転送先座標
-	m_src.top = 0;
-	m_src.bottom = m_src.top + 0;
-	m_src.left = 0;
-	m_src.right = m_src.left + 0;
+	m_src.top = 400;
+	m_src.bottom = m_src.top + 150;
+	m_src.left = 100;
+	m_src.right = m_src.left + 100;
 
 	//描画
-	//Image()->Draw(0, &m_src, &m_dst, col, 0.0f); //描画値変更
+	Image()->Draw(1, &m_src, &m_dst, col, 0.0f); //描画値変更
 
 	//吹き出し描画＆動作-------
 	this->gimmicDraw(1);
@@ -1608,20 +1611,22 @@ void GimmickSoundComputer::Action() {
 //③パソコンの描画
 void GimmickSoundComputer::Draw() {
 
+	float col[4] = { 1.0,1.0,1.0,1.0 };
+
 	//切り取り先座標
 	m_dst.top = 0;
-	m_dst.bottom = 0;
+	m_dst.bottom = 512;
 	m_dst.left = 0;
-	m_dst.right = 0;
+	m_dst.right = 512;
 
 	//転送先座標
-	m_src.top = 0;
-	m_src.bottom = m_src.top + 0;
-	m_src.left = 0;
-	m_src.right = m_src.left + 0;
+	m_src.top = 300;
+	m_src.bottom = m_src.top + 100;
+	m_src.left = 500;
+	m_src.right = m_src.left + 100;
 
 	//描画
-	//Image()->Draw(0, &m_src, &m_dst, col, 0.0f); //描画値変更
+	Image()->Draw(14, &m_src, &m_dst, col, 0.0f); //描画値変更
 
 	//吹き出し描画＆動作-------
 	this->gimmicDraw(1);
@@ -1676,11 +1681,13 @@ void GimmickMusician::Action() {
 //④演奏家の描画(最初：画面外)
 void GimmickMusician::Draw() {
 
+	float col[4] = { 1.0,1.0,1.0,1.0 };
+
 	//切り取り先座標
 	m_dst.top = 0;
-	m_dst.bottom = 0;
+	m_dst.bottom = 200;
 	m_dst.left = 0;
-	m_dst.right = 0;
+	m_dst.right = 360;
 
 	//転送先座標
 	m_src.top = 0;
@@ -1689,7 +1696,7 @@ void GimmickMusician::Draw() {
 	m_src.right = m_src.left + 0;
 
 	//描画
-	//Image()->Draw(0, &m_src, &m_dst, col, 0.0f); //描画値変更
+	Image()->Draw(9, &m_src, &m_dst, col, 0.0f); //描画値変更
 
 	//吹き出し描画＆動作-------
 	this->gimmicDraw(1);

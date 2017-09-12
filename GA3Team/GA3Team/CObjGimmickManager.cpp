@@ -388,6 +388,7 @@ void CObjGimmickManager::Action() {
 		}
 		break;
 	}
+
 }
 
 //ƒhƒ[

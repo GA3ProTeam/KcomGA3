@@ -16,7 +16,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 	*/
 	SavedataManeger()->Setcurrentdata();
 
-	m_Stage_ID = 32;
+	m_Stage_ID = 40;
 
 	switch (m_Stage_ID) {
 
@@ -286,7 +286,7 @@ void CObjGimmickManager::Destructor() {
 
 //アクション
 void CObjGimmickManager::Action() {
-	//イベント番号
+	//イベント番号(チュートリアルステージ)
 	enum TUTORIAL_NUMBER {
 		TUTORIAL_WELCOM_TALK,				//博士開始メッセージ
 		TUTORIAL_WELCOM_TALK_END,			//開始時メッセージ終了
@@ -299,11 +299,65 @@ void CObjGimmickManager::Action() {
 		TUTORIAL_SOUND_REC_TALK_PLAY,		//音を録音した後、会話してから再生した
 	};
 
+	//イベント番号(コウネ3ステージ)
+	enum KOUNE3_NUMBER
+	{
+		//会話シーン-------------------------------------------------------------------------------------
+		KOUNE3_TALK_START,						//ステージ開始時トーク
+		KOUNE3_TALK_START_END,					//ステージ開始時トーク終了
+		//おばあちゃん
+		KOUNE3_TALK_GRANNY_FLG0,				//おばあちゃんとの会話0(フラグ0)
+		KOUNE3_TALK_GRANNY_FLG0_END,			//おばあちゃんとの会話0(フラグ0)終了
+		KOUNE3_TALK_GRANNY_FLG1,				//おばあちゃんとの会話1(フラグ1)
+		KOUNE3_TALK_GRANNY_FLG1_END,			//おばあちゃんとの会話1(フラグ1)終了
+		KOUNE3_TALK_GRANNY_KITTEN,				//おばあちゃんに子猫の鳴き声を聞かせる
+		KOUNE3_TALK_GRANNY_FLG2,				//おばあちゃんとの会話2(フラグ2)
+		KOUNE3_TALK_GRANNY_FLG2_END,			//おばあちゃんとの会話2(フラグ2)終了
+		KOUNE3_TALK_GRANNY_FLG3,				//おばあちゃんとの会話3(フラグ3)
+		KOUNE3_TALK_GRANNY_FLG3_END,			//おばあちゃんとの会話3(フラグ3)終了
+		//子猫
+		KOUNE3_TALK_KITTEN_CHECK,				//子猫を調べたときの会話
+		KOUNE3_TALK_KITTEN_CHECKEND,			//子猫を調べたときの会話終了
+		KOUNE3_TALK_KITTEN_OTHER_SOUND,			//子猫に指定外の音を聞かせる
+		KOUNE3_TALK_KITTEN_OTHER_SOUND_END,		//子猫に指定外の音を聞かせる
+		KOUNE3_TALK_KITTEN_DOG,					//子猫に犬の鳴き声を聞かせる
+		KOUNE3_TALK_KITTEN_DOG_END,				//子猫に犬の鳴き声を聞かせる
+		//九官鳥
+		KOUNE3_TALK_MYNAH_CHECK,				//九官鳥を調べたときの会話
+		KOUNE3_TALK_MYNAH_CHECK_END,			//九官鳥を調べたときの会話終了
+		KOUNE3_TALK_MYNAH_SONG_NOTCLAER,		//九官鳥に歌を聞かせる(クリア条件未達成)
+		KOUNE3_TALK_MYNAH_SONG_NOTCLAER_END,	//九官鳥に歌を聞かせる(クリア条件未達成)終了
+		KOUNE3_TALK_MYNAH_FLG3_NORMAL,			//九官鳥を調べたときの会話(フラグ3)
+		KOUNE3_TALK_MYNAH_FLG3_NORMAL_END,		//九官鳥を調べたときの会話(フラグ3)終了
+		KOUNE3_TALK_MYNAH_FLG3_SMALL,			//九官鳥に小さくした音を聞かせる
+		KOUNE3_TALK_MYNAH_FLG3_SMALL_END,		//九官鳥に小さくした音を聞かせる終了
+		//-----------------------------------------------------------------------------------------------
+		
+		//録音-------------------------------------------------------------------------------------------
+		KOUNE3_SOUND_REC_KITTEN,				//子猫の鳴き声を録音
+
+		//-----------------------------------------------------------------------------------------------
+
+	};
+
 	//イベント進行度
+	//チュートリアルステージ
 	static int m_itutorialflg = TUTORIAL_WELCOM_TALK;
 
-	//テスト用（チュートリアルステージ）
+	//コウネ3ステージ
+	static int m_Koune3_flg = KOUNE3_TALK_START;
+
+	
 	switch (m_Stage_ID) {
+	case 32:
+	{
+
+		break;
+	}
+
+		
+
+	//テスト用（チュートリアルステージ）
 	case 40:
 		{
 			//【初回動作】

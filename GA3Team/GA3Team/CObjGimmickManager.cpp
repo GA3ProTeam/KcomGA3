@@ -50,27 +50,27 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 		break;
 
 	case 12:
-		//シオンのステージ3のギミック生成
-		for (int i = 0; i < 3; i++) {
-			m_gimmick_children = new GimmickChildren(); 
-			Obj()->InsertObj(m_gimmick_children, GIMMICK_CHILDREN, 5, this->m_pScene, HIT_BOX_OFF);
-			m_gimmick_children->Init(100+(80*i), 350, 70, 100, 1,i+1);
-		}
-		m_gimmick_granny = new GimmickGranny();
-		Obj()->InsertObj(m_gimmick_granny, GIMMICK_GRANNY, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_granny->Init(350, 220, 70, 100, 1);
-		
-		m_gimmick_mynah = new GimmickMynah();
-		Obj()->InsertObj(m_gimmick_mynah, GIMMICK_MYNAH, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_mynah->Init(500, 200, 50, 70, 1);
-		
-		m_gimmick_shelf = new GimmickShelf();
-		Obj()->InsertObj(m_gimmick_shelf, GIMMICK_SHELF, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_shelf->Init(600, 280, 100, 170, 3);
-		
-		m_gimmick_windchime = new GimmickWindchime();
-		Obj()->InsertObj(m_gimmick_windchime, GIMMICK_WINDCHIME, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_windchime->Init(230, 100, 60, 80, 1);
+		////シオンのステージ3のギミック生成
+		//for (int i = 0; i < 3; i++) {
+		//	m_gimmick_children = new GimmickChildren(); 
+		//	Obj()->InsertObj(m_gimmick_children, GIMMICK_CHILDREN, 5, this->m_pScene, HIT_BOX_OFF);
+		//	m_gimmick_children->Init(100+(80*i), 350, 70, 100, 1,i+1);
+		//}
+		//m_gimmick_granny = new GimmickGranny();
+		//Obj()->InsertObj(m_gimmick_granny, GIMMICK_GRANNY, 5, this->m_pScene, HIT_BOX_OFF);
+		//m_gimmick_granny->Init(350, 220, 70, 100, 1);
+		//
+		//m_gimmick_mynah = new GimmickMynah();
+		//Obj()->InsertObj(m_gimmick_mynah, GIMMICK_MYNAH, 5, this->m_pScene, HIT_BOX_OFF);
+		//m_gimmick_mynah->Init(500, 200, 50, 70, 1);
+		//
+		//m_gimmick_shelf = new GimmickShelf();
+		//Obj()->InsertObj(m_gimmick_shelf, GIMMICK_SHELF, 5, this->m_pScene, HIT_BOX_OFF);
+		//m_gimmick_shelf->Init(600, 280, 100, 170, 3);
+		//
+		//m_gimmick_windchime = new GimmickWindchime();
+		//Obj()->InsertObj(m_gimmick_windchime, GIMMICK_WINDCHIME, 5, this->m_pScene, HIT_BOX_OFF);
+		//m_gimmick_windchime->Init(230, 100, 60, 80, 1);
 
 
 		break;

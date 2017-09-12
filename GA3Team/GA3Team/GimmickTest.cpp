@@ -1428,7 +1428,7 @@ void GimmickMysteryDoor::Action() {
 		 }*/
 
 		 //ランプの色は"0未満(灰色)"、"2を超えない(緑)"
-		 /*			for (int i = 0; i < 3; i++) {
+		 /*for (int i = 0; i < 3; i++) {
 		 if (m_idoorgimmick[i] > 2) {
 			 m_idoorgimmick[i] = 2;
 		 }

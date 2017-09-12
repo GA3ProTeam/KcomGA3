@@ -1441,6 +1441,10 @@ void GimmickMysteryDoor::Action() {
 	 // └メカニック...会話
 	 //　　└ステージクリア
 	 if (m_idoorgimmick[0] == 2 && m_idoorgimmick[1] == 2 && m_idoorgimmick[2] == 2) {
+		//ドアの謎解きをクリア
+		//Overlay()->talkDraw(KOUNE, ); //「開けられたんだね！」
+		//int m_iKoune_5_Clear = true; //クリア判定のif文変更
+
 		SavedataManeger()->CurrentData->m_bKouneClearflg[4] = true; //コウネステージ5 クリア
 	 }
 
@@ -1500,63 +1504,57 @@ void GimmickMechanic::Action() {
 	 }
 
 
-	 //能力を使う
-	 //マスクが壊れていて使用できない⇒メカニックとの会話
-	 //　└メカニック...作業用に何か曲を持ってきてほしい
-	 // 　　└""フラグ2回収""
-	 //if(Input()->GetMouButtonL()){ //能力使用(仮) 一度のみ
+	//能力を使う
+	//マスクが壊れていて使用できない⇒メカニックとの会話
+	//　└メカニック...作業用に何か曲を持ってきてほしい
+	// 　　└""フラグ2回収""
+	//if(Input()->GetMouButtonL()){ //能力使用(仮) 一度のみ
 		if (SavedataManeger()->CurrentData->m_bKouneflg[17] == true && SavedataManeger()->CurrentData->m_bKouneflg[18] == false) {
-			 //Overlay()->talkDraw(KOUNE, ); //「マスクが壊れたのかい？」
-			 SavedataManeger()->CurrentData->m_bKouneflg[18] = true;
+			//Overlay()->talkDraw(KOUNE, ); //「マスクが壊れたのかい？」
+			SavedataManeger()->CurrentData->m_bKouneflg[18] = true;
 		}
 	}
-}
 
-//メカニックに曲を渡す
-//フラグ3回収済み
-if (SavedataManeger()->CurrentData->m_bKouneflg[19]) {
-	 //メカニック...修理したマスクを渡す
-	 //　　　　　　　└音量の変更ができるようになる
-	 //Overlay()->talkDraw(KOUNE, ); //「これなら作業が捗る！」
-	 //
+	//メカニックに曲を渡す
+	//フラグ3回収済み
+	if (SavedataManeger()->CurrentData->m_bKouneflg[19]) {
+		 //メカニック...修理したマスクを渡す
+		 //　　　　　　　└音量の変更ができるようになる
+		 //Overlay()->talkDraw(KOUNE, ); //「これなら作業が捗る！」
+		 //能力を使用できるようにする
 
-}//フラグ3未回収
-else {
-	 //メカニック...曲が好みではない
-	 //Overlay()->talkDraw(KOUNE, ); //「なんだか違う」
+	}//フラグ3未回収
+	else {
+		 //メカニック...曲が好みではない
+		 //Overlay()->talkDraw(KOUNE, ); //「なんだか違う」
 
-}
+	}
 
 
-//フラグ1○の状態で話しかける
-// └ドアの謎解きをリセットするか聞く
-//    └ギミック：ドアに変更
-if (Input()->GetMouButtonL()) {
-	 //マウスがギミック範囲内か確認
-	 if (Input()->m_x > m_iXpos&& Input()->m_x < (m_iXpos + m_iWidth)
-		 && Input()->m_y > m_iYpos && Input()->m_y < (m_iYpos + m_iHeight)) {
+	//フラグ1○の状態で話しかける
+	// └ドアの謎解きをリセットするか聞く
+	//    └ギミック：ドアに変更
+	if (Input()->GetMouButtonL()) {
+		 //マウスがギミック範囲内か確認
+		 if (Input()->m_x > m_iXpos&& Input()->m_x < (m_iXpos + m_iWidth)
+			 && Input()->m_y > m_iYpos && Input()->m_y < (m_iYpos + m_iHeight)) {
 
-		 //Overlay()->talkDraw(KOUNE, ); //「リセット？」
+			 //Overlay()->talkDraw(KOUNE, ); //「リセット？」
 
-		 //「うなずく」...リセットする
-		 //m_idoorgimmick[0] = 1; //左
-		 //m_idoorgimmick[1] = 2; //中央
-		 //m_idoorgimmick[2] = 1; //右
-		 // └int m_idoorreset = true;
-		 //   //User()->m_iDoorreset = m_idoorreset;
+			 //「うなずく」...リセットする
+			 //m_idoorgimmick[0] = 1; //左
+			 //m_idoorgimmick[1] = 2; //中央
+			 //m_idoorgimmick[2] = 1; //右
+			 //int m_idoorreset = true;
+			 ////User()->m_iDoorreset = m_idoorreset;
 
-		 //Overlay()->talkDraw(KOUNE, ); //「おっけー」
+			 //Overlay()->talkDraw(KOUNE, ); //「おっけー」
 
-		 //「首を振る」...リセットしない
-		 //Overlay()->talkDraw(KOUNE, ); //「がんばってねー」
+			 //「首を振る」...リセットしない
+			 //Overlay()->talkDraw(KOUNE, ); //「がんばってねー」
 
-	 }
-}
-
-//ドアの謎解きをクリアしたら
-// └ギミック：ドアに変更
-//Overlay()->talkDraw(KOUNE, ); //「開けられたんだね！」
-//int m_iKoune_5_Clear = true; //クリア判定のif文変更
+		 }
+	}
 
 }
 //②メカニックの描画

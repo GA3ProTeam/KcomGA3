@@ -17,6 +17,8 @@ void CSceneGameMain::InitScene()
 	Image()->LoadImage("”L.png", 9, TEX_SIZE_1024);//”L
 	Image()->LoadImage("©“]Ô.png", 10, TEX_SIZE_1024);//©“]Ô
 	Image()->LoadImage("Á–hÔ.png", 11, TEX_SIZE_1024);//Á–hÔ
+	Image()->LoadImage("“®•¨‚Ü‚Æ‚ß.png",12, TEX_SIZE_1024);//Á–hÔ
+
 	//Image()->LoadImage("boss.png",2,TEX_SIZE_256);
 
 	//•¶šƒf[ƒ^ì¬

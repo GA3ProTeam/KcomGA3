@@ -16,14 +16,33 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 	*/
 	SavedataManeger()->Setcurrentdata();
 
-	m_Stage_ID = 40;
+	m_Stage_ID = 10;
 
 	switch (m_Stage_ID) {
 
 	//-シオンステージ-----------------------------------------
 	case 10:
-		//シオンのステージ1のギミック生成
-		
+		////シオンのステージ1のギミック生成
+		//m_gimmick_earphone = new Gimmickearphone();
+		//Obj()->InsertObj(m_gimmick_earphone, GIMMICK_EARPHONE, 5, this->m_pScene, HIT_BOX_OFF);
+		//m_gimmick_earphone->Init(350, 250, 70, 100, 1);
+		//おばあちゃん生成
+		m_gimmick_aunt = new GimmickAunt();
+		Obj()->InsertObj(m_gimmick_aunt, GIMMICK_AUNT, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_aunt->Init(-110, 220, 70, 100, 1);
+		////すずめ生成
+		//m_gimmick_cat = new Gimmickcat();
+		//Obj()->InsertObj(m_gimmick_cat, GIMMICK_CAT, 5, this->m_pScene, HIT_BOX_OFF);
+		//m_gimmick_cat->Init(550, 120, 70, 100, 1);
+		////犬A(番犬)生成
+		//m_gimmick_bicycle = new Gimmickbicycle();
+		//Obj()->InsertObj(m_gimmick_bicycle, GIMMICK_BICYCLE, 5, this->m_pScene, HIT_BOX_OFF);
+		//m_gimmick_bicycle->Init(100, 300, 300, 300, 1);
+		////インターホン生成
+		//m_gimmick_firetruck = new Gimmickfiretruck();
+		//Obj()->InsertObj(m_gimmick_firetruck, GIMMICK_FIRETRUCK, 5, this->m_pScene, HIT_BOX_OFF);
+		//m_gimmick_firetruck->Init(-400, 220, 70, 100, 1);
+		//break;
 
 		break;
 	case 11:

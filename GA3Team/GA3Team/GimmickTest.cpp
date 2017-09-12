@@ -982,13 +982,13 @@ void GimmickMysteryman::Draw() {
 	float col[4] = { 1.0,1.0,1.0,1.0 };
 	//切り取り先座標
 	m_dst.top = 0; m_dst.left = 0;
-	m_dst.bottom = 200; m_dst.right = 200;
+	m_dst.bottom = 380; m_dst.right = 200;
 
 	//転送先座標
 	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
 	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
 	//描画
-	Image()->Draw(12, &m_src, &m_dst, col, 0.0f);
+	Image()->DrawEx(9, &m_src, &m_dst, col, 0.0f);
 
 
 }		//ドロー
@@ -1016,10 +1016,10 @@ this->gimmicDraw(1);
 	m_dst.bottom = 200; m_dst.right = 200;
 
 	//転送先座標
-	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
+	m_src.top = m_iYpos; m_src.left = 200;//m_iXpos + User()->mscroll_x;
 	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
 	//描画
-	Image()->Draw(13, &m_src, &m_dst, col, 0.0f);
+	Image()->DrawEx(9, &m_src, &m_dst, col, 0.0f);
 }		//ドロー
 
 
@@ -1046,7 +1046,7 @@ void GimmickDoor::Draw() {
 	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
 	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
 	//描画
-	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
+	Image()->DrawEx(9, &m_src, &m_dst, col, 0.0f);
 
 
 }		//ドロー
@@ -1069,6 +1069,13 @@ void GimmickDoor::Draw() {
 //
 //
 //ステージ1↓
+void GimmickDog::Init(int xpos, int ypos, int widht, int height, int balloonnum)
+{
+	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
+	InitBall(m_ball, m_iWidth - 50, m_iHeight - 48, sound, 1, RED, UPPER_LEFT);
+}
+
+
 //犬のデストラクタ
 void GimmickDog::Destructor()
 {
@@ -1095,15 +1102,23 @@ void GimmickDog::Draw()
 	float col[4] = { 1.0,1.0,1.0,1.0 };
 	//切り取り先座標
 	m_dst.top = 0; m_dst.left = 0;
-	m_dst.bottom = 200; m_dst.right = 200;
+	m_dst.bottom = 185; m_dst.right = 440;
 
 	//転送先座標
 	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
 	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
 	//描画
-	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
+	Image()->DrawEx(15, &m_src, &m_dst, col, 0.0f);
 }	
 //マンホールの蓋のデストラクタ
+void GimmickManholeCover::Init(int xpos, int ypos, int widht, int height, int balloonnum)
+{
+	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
+	InitBall(m_ball, m_iWidth - 50, m_iHeight - 48, sound, 1, RED, UPPER_LEFT);
+
+}
+
+
 void GimmickManholeCover::Destructor() 
 {
 
@@ -1125,18 +1140,19 @@ void GimmickManholeCover::Draw()
 	float col[4] = { 1.0,1.0,1.0,1.0 };
 	//切り取り先座標
 	m_dst.top = 0; m_dst.left = 0;
-	m_dst.bottom = 200; m_dst.right = 200;
+	m_dst.bottom = 185; m_dst.right = 440;
 
 	//転送先座標
 	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
 	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
 	//描画
-	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
+	Image()->DrawEx(1, &m_src, &m_dst, col, 0.0f);
 }//マンホールの穴のデストラクタ
-void GimmickManholeHole::Init() 
+void GimmickManholeHole::Init(int xpos, int ypos, int widht, int height, int balloonnum)
 {
+	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
+	InitBall(m_ball, m_iWidth - 50, m_iHeight - 48, sound, 1, RED, UPPER_LEFT);
 	m_Status = STATUS_SLEEP;
-
 }
 void GimmickManholeHole::Destructor() 
 {
@@ -1165,8 +1181,16 @@ void GimmickManholeHole::Draw()
 	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
 	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
 	//描画
-	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
+	Image()->DrawEx(1, &m_src, &m_dst, col, 0.0f);
 }//老人のデストラクタ
+void GimmickOldman::Init(int xpos, int ypos, int widht, int height, int balloonnum)
+{
+	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
+	InitBall(m_ball, m_iWidth - 50, m_iHeight - 48, talk, 1, RED, UPPER_LEFT);
+	m_Status = STATUS_SLEEP;
+}
+
+
 void GimmickOldman::Destructor()
 {
 
@@ -1218,7 +1242,7 @@ void GimmickOldman::Draw()
 	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
 	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
 	//描画
-	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
+	Image()->DrawEx(0, &m_src, &m_dst, col, 0.0f);
 }
 ////ステージ1↑
 //

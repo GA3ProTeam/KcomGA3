@@ -346,6 +346,7 @@ public:
 	GimmickOldman() {};
 	~GimmickOldman() {};
 
+	void Init(int xpos, int ypos, int widht, int height, int balloonnum);
 	void Destructor();	//デストラクタ
 	void Action();		//アクション
 	void Draw();		//ドロー
@@ -360,6 +361,7 @@ public:
 	GimmickManholeCover() {};
 	~GimmickManholeCover() {};
 
+	void Init(int xpos, int ypos, int widht, int height, int balloonnum);
 	void Destructor();	//デストラクタ
 	void Action();		//アクション
 	void Draw();		//ドロー
@@ -374,7 +376,7 @@ public:
 	GimmickManholeHole() {};
 	~GimmickManholeHole() {};
 
-	void Init();
+	void Init(int xpos, int ypos, int widht, int height, int balloonnum);
 	void Destructor();	//デストラクタ
 	void Action();		//アクション
 	void Draw();		//ドロー
@@ -389,7 +391,7 @@ public:
 	GimmickDog() {};
 	~GimmickDog() {};
 
-	void Init();
+	void Init(int xpos, int ypos, int widht, int height, int balloonnum);
 	void Destructor();	//デストラクタ
 	void Action();		//アクション
 	void Draw();		//ドロー

@@ -25,6 +25,8 @@ void COverlay::InitLoad()
 	image->LoadImageEx("おばあちゃんc.png", 8, TEX_SIZE_512);
 	//シオン4--------------------------------------
 	image->LoadImageEx("なぞなぞさん.png", 9, TEX_SIZE_512);
+	//image->LoadImageEx("バイク.png", 9, TEX_SIZE_512);
+	//image->LoadImageEx("シオン4ドア.png", 9, TEX_SIZE_512);
 	//メルエル1-----------------------------------
 	image->LoadImageEx("カツオc.png", 10, TEX_SIZE_512);
 	image->LoadImageEx("ドアc.png", 11, TEX_SIZE_512);

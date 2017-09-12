@@ -1669,7 +1669,7 @@ void GimmickMysteryDoor::Action() {
 
 	int m_idoorgimmick[3] = { 1,2,1 }; //ドアの謎解き初期値(スタート)
 
-	int m_idoor_reset = false;
+	bool m_idoor_reset = false;
 	//m_idoor_reset = User()->m_iDoor_reset;
 	if (m_idoor_reset == true) { //ドアの初期値リセット
 		m_idoorgimmick[0] = 1;

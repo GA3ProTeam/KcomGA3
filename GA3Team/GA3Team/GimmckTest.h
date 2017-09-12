@@ -216,10 +216,10 @@ public:
 	GimmickGranny() {};
 	~GimmickGranny() {};
 
-	void Init(int xpos, int ypos, int widht, int height, int balloonnum);//イニシャライズ
-	void Destructor();//デストラクタ
-	void Action();//アクション
-	void Draw();//描画
+	//void Init(int xpos, int ypos, int widht, int height, int balloonnum);//イニシャライズ
+	//void Destructor();//デストラクタ
+	//void Action();//アクション
+	//void Draw();//描画
 
 };
 
@@ -232,10 +232,10 @@ public:
 	GimmickMynah() {};
 	~GimmickMynah() {};
 
-	void Init(int xpos, int ypos, int widht, int height, int balloonnum);//イニシャライズ
-	void Destructor();	//デストラクタ
-	void Action();		//アクション
-	void Draw();		//ドロー
+	//void Init(int xpos, int ypos, int widht, int height, int balloonnum);//イニシャライズ
+	//void Destructor();	//デストラクタ
+	//void Action();		//アクション
+	//void Draw();		//ドロー
 
 };
 
@@ -264,10 +264,10 @@ public:
 	GimmickWindchime() {};
 	~GimmickWindchime() {};
 
-	void Init(int xpos, int ypos, int widht, int height, int balloonnum);//イニシャライズ
-	void Destructor();	//デストラクタ
-	void Action();		//アクション
-	void Draw();		//ドロー
+	//void Init(int xpos, int ypos, int widht, int height, int balloonnum);//イニシャライズ
+	//void Destructor();	//デストラクタ
+	//void Action();		//アクション
+	//void Draw();		//ドロー
 
 };
 

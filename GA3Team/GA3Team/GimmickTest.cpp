@@ -1356,9 +1356,12 @@ void GimmickLittleGirl::Draw()
 //
 ////ステージ5↓
 //①ドア
-//void GimmickMysteryDoor::Init() {
-
-//}
+//void GimmickMysteryDoor::Init(int xpos, int ypos, int widht, int height, int balloonnum) {
+	//親クラスのInit関数を呼ぶ
+/*	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
+	//吹き出しの初期化
+	InitBall(&m_ball[0], 48, -48, sound, 1, RED, LOWER_LEFT);
+	//}
 //①ドアのデストラクタ
 /*
 void GimmickMysteryDoor::Destructor() {
@@ -1464,10 +1467,10 @@ void GimmickMysteryDoor::Draw() {
 //---------------------------
 //②メカニック
 /*void GimmickMechanic::Init(int xpos, int ypos, int widht, int height, int balloonnum) {
-Gimmick::Init(xpos, ypos, widht, height, balloonnum);
-
-//吹き出しの初期化
-InitBall(&m_ball[0], m_iWidth - 50, -48, talk, 1, RED, LOWER_LEFT);
+	//親クラスのInit関数を呼ぶ
+	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
+	//吹き出しの初期化
+	InitBall(&m_ball[0],48, -48, sound, 1, RED, LOWER_LEFT);
 
 }*/
 //②メカニックのデストラクタ
@@ -1501,6 +1504,8 @@ void GimmickMechanic::Action() {
 	 if (SavedataManeger()->CurrentData->m_bKouneflg[17]) {
 		 //Overlay()->talkDraw(KOUNE, ); //「マスクが壊れたのかい？」
 		 SavedataManeger()->CurrentData->m_bKouneflg[18] = true;
+	 }else{ //一度入っていたらもう入らない
+		;
 	 }
 }
 
@@ -1578,8 +1583,10 @@ void GimmickMechanic::Draw() {
 //---------------------------
 //③パソコン
 /*void GimmickSoundComputer::Init(int xpos, int ypos, int widht, int height, int balloonnum) {
+	//親クラスのInit関数を呼ぶ
+	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
 	//吹き出しの初期化
-	InitBall(&m_ball[0], m_iWidth - 50, -48, talk, 1, RED, LOWER_LEFT);
+	InitBall(&m_ball[0],48, -48, sound, 1, RED, LOWER_LEFT);
 }*/
 //③パソコンのデストラクタ
 /*void GimmickSoundComputer::Destructor() {
@@ -1616,8 +1623,11 @@ void GimmickSoundComputer::Draw() {
 }
 //---------------------------
 //④演奏家
-//void GimmickMusician::Init() {
-
+//void GimmickMusician::Init(int xpos, int ypos, int widht, int height, int balloonnum) {
+	//親クラスのInit関数を呼ぶ
+	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
+	//吹き出しの初期化
+	InitBall(&m_ball[0],48, -48, sound, 1, RED, LOWER_LEFT);
 //}
 //④演奏家のデストラクタ
 void GimmickMusician::Destructor() {

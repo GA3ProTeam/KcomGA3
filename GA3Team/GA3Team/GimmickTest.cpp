@@ -1503,6 +1503,8 @@ void GimmickMechanic::Action() {
 	 if (SavedataManeger()->CurrentData->m_bKouneflg[17]) {
 		 //Overlay()->talkDraw(KOUNE, ); //「マスクが壊れたのかい？」
 		 SavedataManeger()->CurrentData->m_bKouneflg[18] = true;
+	 }else{ //一度入っていたらもう入らない
+		;
 	 }
 }
 

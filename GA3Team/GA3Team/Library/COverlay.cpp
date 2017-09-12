@@ -8,7 +8,7 @@ void COverlay::InitLoad()
 	image->LoadImageEx("yjt.png", 61, TEX_SIZE_512);
 	image->LoadImageEx("orga.png", 62, TEX_SIZE_512);
 	image->LoadImageEx("atsumori.png", 63, TEX_SIZE_256);
-	
+
 	//空白画像
 	image->LoadImageEx("null.png", 0, TEX_SIZE_512);
 	//コウネ1----------------------------------
@@ -251,63 +251,44 @@ void COverlay::Draw()
 
 			switch (m_iDrawingStage)
 			{
-				case STAGE_TYPE::TUTORIAL: {
-					if (m_iChar_Line < textmgr->m_Tutorial_Text[m_iDrawingStageID].size()) {
-						if (m_iChar_Pos < textmgr->m_Tutorial_Text[m_iDrawingStageID][m_iChar_Line].length()) {
-							if (input->GetMouButtonLOnce()) {
-								m_strTemp[m_iChar_Line].clear();
-								m_strTemp[m_iChar_Line] += textmgr->m_Tutorial_Text[m_iDrawingStageID][m_iChar_Line];
-								m_iChar_Pos = textmgr->m_Tutorial_Text[m_iDrawingStageID][m_iChar_Line].length() + 1;
-							}
-							else {
-								if (m_iDelay > m_iTextSpeed) {
-									unsigned char lead = textmgr->m_Tutorial_Text[m_iDrawingStageID][m_iChar_Line][m_iChar_Pos];
-									if (lead < 128) {
-										m_iChar_Size = 1;
-									}
-									else if (lead < 224) {
-										m_iChar_Size = 2;
-									}
-									else if (lead < 240) {
-										m_iChar_Size = 3;
-									}
-									else {
-										m_iChar_Size = 4;
-									}
-
-									sprintf_s(c, "%s", textmgr->m_Tutorial_Text[m_iDrawingStageID][m_iChar_Line].substr(m_iChar_Pos, m_iChar_Size).c_str());
-									m_strTemp[m_iChar_Line] += c;
-
-									m_iChar_Pos += m_iChar_Size;
-								}
-							}
+			case STAGE_TYPE::TUTORIAL: {
+				if (m_iChar_Line < textmgr->m_Tutorial_Text[m_iDrawingStageID].size()) {
+					if (m_iChar_Pos < textmgr->m_Tutorial_Text[m_iDrawingStageID][m_iChar_Line].length()) {
+						if (input->GetMouButtonLOnce()) {
+							m_strTemp[m_iChar_Line].clear();
+							m_strTemp[m_iChar_Line] += textmgr->m_Tutorial_Text[m_iDrawingStageID][m_iChar_Line];
+							m_iChar_Pos = textmgr->m_Tutorial_Text[m_iDrawingStageID][m_iChar_Line].length() + 1;
 						}
 						else {
-							if (input->GetMouButtonLOnce()) {
-								m_iChar_Pos = 0;
-								m_iChar_Line++;
-								m_fWaitAlpha = 0.0f;
-								m_bNextWaiting = false;
-								m_bCharaChangeFlg = false;
-							}
-							else {
-								if (m_iDelay > m_iTextSpeed) {
-									if (!m_bNextWaiting) {
-										m_fWaitAlpha = 1.0f;
-										m_bNextWaiting = true;
-									}
-									else {
-										m_fWaitAlpha = 0.0f;
-										m_bNextWaiting = false;
-									}
+							if (m_iDelay > m_iTextSpeed) {
+								unsigned char lead = textmgr->m_Tutorial_Text[m_iDrawingStageID][m_iChar_Line][m_iChar_Pos];
+								if (lead < 128) {
+									m_iChar_Size = 1;
 								}
+								else if (lead < 224) {
+									m_iChar_Size = 2;
+								}
+								else if (lead < 240) {
+									m_iChar_Size = 3;
+								}
+								else {
+									m_iChar_Size = 4;
+								}
+
+								sprintf_s(c, "%s", textmgr->m_Tutorial_Text[m_iDrawingStageID][m_iChar_Line].substr(m_iChar_Pos, m_iChar_Size).c_str());
+								m_strTemp[m_iChar_Line] += c;
+
+								m_iChar_Pos += m_iChar_Size;
 							}
 						}
 					}
 					else {
-						if (input->GetMouButtonL()) {
-							FadeOut();
-							StopDraw();
+						if (input->GetMouButtonLOnce()) {
+							m_iChar_Pos = 0;
+							m_iChar_Line++;
+							m_fWaitAlpha = 0.0f;
+							m_bNextWaiting = false;
+							m_bCharaChangeFlg = false;
 						}
 						else {
 							if (m_iDelay > m_iTextSpeed) {
@@ -322,124 +303,148 @@ void COverlay::Draw()
 							}
 						}
 					}
-
-					if (m_iDelay > m_iTextSpeed)
-						m_iDelay = 0;
-
-					char linec[32];
-					sprintf_s(linec, "%d", m_iChar_Line);
-					if (textmgr->isCtrlLine(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line) && !m_bCharaChangeFlg) {
-						char *namet = textmgr->GetCharaName(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line);
-						char *expt = textmgr->GetCharaExp(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line);
-						m_strTemp.clear();
-						m_strTemp.resize(textmgr->m_Tutorial_Text[m_iDrawingStageID].size());
-						m_strTempName.clear();
-						m_strTempName += namet;
-						m_bCharaChangeFlg = true;
-						m_iCurrentLine = m_iChar_Line;
-
-						if (!strlen(m_cLeftCharaName)) {
-							strcpy_s(m_cLeftCharaName, namet);
-							m_fLeftColor[0] = 1.0f;
-							m_fLeftColor[1] = 1.0f;
-							m_fLeftColor[2] = 1.0f;
-							m_fRightColor[0] = 0.5f;
-							m_fRightColor[1] = 0.5f;
-							m_fRightColor[2] = 0.5f;
-							m_iCurrentBalloon = TALKBALLOON_NORMAL_LEFT;
-						}
-						else if (!strlen(m_cRightCharaName) && strcmp(m_cLeftCharaName, namet)) {
-							strcpy_s(m_cRightCharaName, namet);
-							m_fLeftColor[0] = 0.5f;
-							m_fLeftColor[1] = 0.5f;
-							m_fLeftColor[2] = 0.5f;
-							m_fRightColor[0] = 1.0f;
-							m_fRightColor[1] = 1.0f;
-							m_fRightColor[2] = 1.0f;
-							m_iCurrentBalloon = TALKBALLOON_NORMAL_RIGHT;
-						}
-
-						if (!strcmp(m_cLeftCharaName, namet) && strcmp(m_cRightCharaName, namet)) {
-							m_fLeftColor[0] = 1.0f;
-							m_fLeftColor[1] = 1.0f;
-							m_fLeftColor[2] = 1.0f;
-							m_fRightColor[0] = 0.5f;
-							m_fRightColor[1] = 0.5f;
-							m_fRightColor[2] = 0.5f;
-							m_iCurrentBalloon = TALKBALLOON_NORMAL_LEFT;
-						}
-						else if (strcmp(m_cLeftCharaName, namet) && !strcmp(m_cRightCharaName, namet)) {
-							m_fLeftColor[0] = 0.5f;
-							m_fLeftColor[1] = 0.5f;
-m_fLeftColor[2] = 0.5f;
-m_fRightColor[0] = 1.0f;
-m_fRightColor[1] = 1.0f;
-m_fRightColor[2] = 1.0f;
-m_iCurrentBalloon = TALKBALLOON_NORMAL_RIGHT;
-						}
-
-						delete namet;
-						delete expt;
-					}
-					break;
 				}
-				case STAGE_TYPE::SION: {
-					if (m_iChar_Line < textmgr->m_Sion_Text[m_iDrawingStageID].size()) {
-						if (m_iChar_Pos < textmgr->m_Sion_Text[m_iDrawingStageID][m_iChar_Line].length()) {
-							if (input->GetMouButtonLOnce()) {
-								m_strTemp[m_iChar_Line].clear();
-								m_strTemp[m_iChar_Line] += textmgr->m_Sion_Text[m_iDrawingStageID][m_iChar_Line];
-								m_iChar_Pos = textmgr->m_Sion_Text[m_iDrawingStageID][m_iChar_Line].length() + 1;
+				else {
+					if (input->GetMouButtonL()) {
+						FadeOut();
+						StopDraw();
+					}
+					else {
+						if (m_iDelay > m_iTextSpeed) {
+							if (!m_bNextWaiting) {
+								m_fWaitAlpha = 1.0f;
+								m_bNextWaiting = true;
 							}
 							else {
-								if (m_iDelay > m_iTextSpeed) {
-									unsigned char lead = textmgr->m_Sion_Text[m_iDrawingStageID][m_iChar_Line][m_iChar_Pos];
-									if (lead < 128) {
-										m_iChar_Size = 1;
-									}
-									else if (lead < 224) {
-										m_iChar_Size = 2;
-									}
-									else if (lead < 240) {
-										m_iChar_Size = 3;
-									}
-									else {
-										m_iChar_Size = 4;
-									}
-
-									sprintf_s(c, "%s", textmgr->m_Sion_Text[m_iDrawingStageID][m_iChar_Line].substr(m_iChar_Pos, m_iChar_Size).c_str());
-									m_strTemp[m_iChar_Line] += c;
-
-									m_iChar_Pos += m_iChar_Size;
-								}
-							}
-						}
-						else {
-							if (input->GetMouButtonLOnce()) {
-								m_iChar_Pos = 0;
-								m_iChar_Line++;
 								m_fWaitAlpha = 0.0f;
 								m_bNextWaiting = false;
-								m_bCharaChangeFlg = false;
 							}
-							else {
-								if (m_iDelay > m_iTextSpeed) {
-									if (!m_bNextWaiting) {
-										m_fWaitAlpha = 1.0f;
-										m_bNextWaiting = true;
-									}
-									else {
-										m_fWaitAlpha = 0.0f;
-										m_bNextWaiting = false;
-									}
+						}
+					}
+				}
+
+				if (m_iDelay > m_iTextSpeed)
+					m_iDelay = 0;
+
+				char linec[32];
+				sprintf_s(linec, "%d", m_iChar_Line);
+				if (textmgr->isCtrlLine(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line) && !m_bCharaChangeFlg) {
+					string tmpsearch;
+					char *namet = textmgr->GetCharaName(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line);
+					char *expt = textmgr->GetCharaExp(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line);
+					m_strTemp.clear();
+					m_strTemp.resize(textmgr->m_Tutorial_Text[m_iDrawingStageID].size());
+					m_strTempName.clear();
+					m_strTempName += namet;
+					m_bCharaChangeFlg = true;
+					m_iCurrentLine = m_iChar_Line;
+
+					tmpsearch += expt;
+
+					if (!strlen(m_cLeftCharaName)) {
+						strcpy_s(m_cLeftCharaName, namet);
+						m_fLeftColor[0] = 1.0f;
+						m_fLeftColor[1] = 1.0f;
+						m_fLeftColor[2] = 1.0f;
+						m_fRightColor[0] = 0.5f;
+						m_fRightColor[1] = 0.5f;
+						m_fRightColor[2] = 0.5f;
+
+						if (tmpsearch.find("内心") != -1) {
+							m_iCurrentBalloon = TALKBALLOON_CLOUD_LEFT;
+						}
+						else {
+							m_iCurrentBalloon = TALKBALLOON_NORMAL_LEFT;
+						}
+					}
+					else if (!strlen(m_cRightCharaName) && strcmp(m_cLeftCharaName, namet)) {
+						strcpy_s(m_cRightCharaName, namet);
+						m_fLeftColor[0] = 0.5f;
+						m_fLeftColor[1] = 0.5f;
+						m_fLeftColor[2] = 0.5f;
+						m_fRightColor[0] = 1.0f;
+						m_fRightColor[1] = 1.0f;
+						m_fRightColor[2] = 1.0f;
+						if (tmpsearch.find("内心") != -1) {
+							m_iCurrentBalloon = TALKBALLOON_CLOUD_RIGHT;
+						}
+						else {
+							m_iCurrentBalloon = TALKBALLOON_NORMAL_RIGHT;
+						}
+					}
+
+					if (!strcmp(m_cLeftCharaName, namet) && strcmp(m_cRightCharaName, namet)) {
+						m_fLeftColor[0] = 1.0f;
+						m_fLeftColor[1] = 1.0f;
+						m_fLeftColor[2] = 1.0f;
+						m_fRightColor[0] = 0.5f;
+						m_fRightColor[1] = 0.5f;
+						m_fRightColor[2] = 0.5f;
+						if (tmpsearch.find("内心") != -1) {
+							m_iCurrentBalloon = TALKBALLOON_CLOUD_LEFT;
+						}
+						else {
+							m_iCurrentBalloon = TALKBALLOON_NORMAL_LEFT;
+						}
+					}
+					else if (strcmp(m_cLeftCharaName, namet) && !strcmp(m_cRightCharaName, namet)) {
+						m_fLeftColor[0] = 0.5f;
+						m_fLeftColor[1] = 0.5f;
+						m_fLeftColor[2] = 0.5f;
+						m_fRightColor[0] = 1.0f;
+						m_fRightColor[1] = 1.0f;
+						m_fRightColor[2] = 1.0f;
+						if (tmpsearch.find("内心") != -1) {
+							m_iCurrentBalloon = TALKBALLOON_CLOUD_RIGHT;
+						}
+						else {
+							m_iCurrentBalloon = TALKBALLOON_NORMAL_RIGHT;
+						}
+					}
+
+					delete namet;
+					delete expt;
+				}
+				break;
+			}
+			case STAGE_TYPE::SION: {
+				if (m_iChar_Line < textmgr->m_Sion_Text[m_iDrawingStageID].size()) {
+					if (m_iChar_Pos < textmgr->m_Sion_Text[m_iDrawingStageID][m_iChar_Line].length()) {
+						if (input->GetMouButtonLOnce()) {
+							m_strTemp[m_iChar_Line].clear();
+							m_strTemp[m_iChar_Line] += textmgr->m_Sion_Text[m_iDrawingStageID][m_iChar_Line];
+							m_iChar_Pos = textmgr->m_Sion_Text[m_iDrawingStageID][m_iChar_Line].length() + 1;
+						}
+						else {
+							if (m_iDelay > m_iTextSpeed) {
+								unsigned char lead = textmgr->m_Sion_Text[m_iDrawingStageID][m_iChar_Line][m_iChar_Pos];
+								if (lead < 128) {
+									m_iChar_Size = 1;
 								}
+								else if (lead < 224) {
+									m_iChar_Size = 2;
+								}
+								else if (lead < 240) {
+									m_iChar_Size = 3;
+								}
+								else {
+									m_iChar_Size = 4;
+								}
+
+								sprintf_s(c, "%s", textmgr->m_Sion_Text[m_iDrawingStageID][m_iChar_Line].substr(m_iChar_Pos, m_iChar_Size).c_str());
+								m_strTemp[m_iChar_Line] += c;
+
+								m_iChar_Pos += m_iChar_Size;
 							}
 						}
 					}
 					else {
-						if (input->GetMouButtonL()) {
-							FadeOut();
-							StopDraw();
+						if (input->GetMouButtonLOnce()) {
+							m_iChar_Pos = 0;
+							m_iChar_Line++;
+							m_fWaitAlpha = 0.0f;
+							m_bNextWaiting = false;
+							m_bCharaChangeFlg = false;
 						}
 						else {
 							if (m_iDelay > m_iTextSpeed) {
@@ -454,148 +459,148 @@ m_iCurrentBalloon = TALKBALLOON_NORMAL_RIGHT;
 							}
 						}
 					}
-
-					if (m_iDelay > m_iTextSpeed)
-						m_iDelay = 0;
-
-					char linec[32];
-					sprintf_s(linec, "%d", m_iChar_Line);
-					if (textmgr->isCtrlLine(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line) && !m_bCharaChangeFlg) {
-						string tmpsearch;
-						char *namet = textmgr->GetCharaName(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line);
-						char *expt = textmgr->GetCharaExp(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line);
-						m_strTemp.clear();
-						m_strTemp.resize(textmgr->m_Sion_Text[m_iDrawingStageID].size());
-						m_strTempName.clear();
-						m_strTempName += namet;
-						m_bCharaChangeFlg = true;
-						m_iCurrentLine = m_iChar_Line;
-
-						tmpsearch += expt;
-
-						if (!strlen(m_cLeftCharaName)) {
-							strcpy_s(m_cLeftCharaName, namet);
-							m_fLeftColor[0] = 1.0f;
-							m_fLeftColor[1] = 1.0f;
-							m_fLeftColor[2] = 1.0f;
-							m_fRightColor[0] = 0.5f;
-							m_fRightColor[1] = 0.5f;
-							m_fRightColor[2] = 0.5f;
-
-							if (tmpsearch.find("内心") != -1) {
-								m_iCurrentBalloon = TALKBALLOON_CLOUD_LEFT;
-							}
-							else {
-								m_iCurrentBalloon = TALKBALLOON_NORMAL_LEFT;
-							}
-						}
-						else if (!strlen(m_cRightCharaName) && strcmp(m_cLeftCharaName, namet)) {
-							strcpy_s(m_cRightCharaName, namet);
-							m_fLeftColor[0] = 0.5f;
-							m_fLeftColor[1] = 0.5f;
-							m_fLeftColor[2] = 0.5f;
-							m_fRightColor[0] = 1.0f;
-							m_fRightColor[1] = 1.0f;
-							m_fRightColor[2] = 1.0f;
-							if (tmpsearch.find("内心") != -1) {
-								m_iCurrentBalloon = TALKBALLOON_CLOUD_RIGHT;
-							}
-							else {
-								m_iCurrentBalloon = TALKBALLOON_NORMAL_RIGHT;
-							}
-						}
-
-						if (!strcmp(m_cLeftCharaName, namet) && strcmp(m_cRightCharaName, namet)) {
-							m_fLeftColor[0] = 1.0f;
-							m_fLeftColor[1] = 1.0f;
-							m_fLeftColor[2] = 1.0f;
-							m_fRightColor[0] = 0.5f;
-							m_fRightColor[1] = 0.5f;
-							m_fRightColor[2] = 0.5f;
-							if (tmpsearch.find("内心") != -1) {
-								m_iCurrentBalloon = TALKBALLOON_CLOUD_LEFT;
-							}
-							else {
-								m_iCurrentBalloon = TALKBALLOON_NORMAL_LEFT;
-							}
-						}
-						else if (strcmp(m_cLeftCharaName, namet) && !strcmp(m_cRightCharaName, namet)) {
-							m_fLeftColor[0] = 0.5f;
-							m_fLeftColor[1] = 0.5f;
-							m_fLeftColor[2] = 0.5f;
-							m_fRightColor[0] = 1.0f;
-							m_fRightColor[1] = 1.0f;
-							m_fRightColor[2] = 1.0f;
-							if (tmpsearch.find("内心") != -1) {
-								m_iCurrentBalloon = TALKBALLOON_CLOUD_RIGHT;
-							}
-							else {
-								m_iCurrentBalloon = TALKBALLOON_NORMAL_RIGHT;
-							}
-						}
-
-						delete namet;
-						delete expt;
-					}
-					break;
 				}
-				case STAGE_TYPE::KOUNE: {
-					if (m_iChar_Line < textmgr->m_Koune_Text[m_iDrawingStageID].size()) {
-						if (m_iChar_Pos < textmgr->m_Koune_Text[m_iDrawingStageID][m_iChar_Line].length()) {
-							if (input->GetMouButtonLOnce()) {
-								m_strTemp[m_iChar_Line].clear();
-								m_strTemp[m_iChar_Line] += textmgr->m_Koune_Text[m_iDrawingStageID][m_iChar_Line];
-								m_iChar_Pos = textmgr->m_Koune_Text[m_iDrawingStageID][m_iChar_Line].length() + 1;
+				else {
+					if (input->GetMouButtonL()) {
+						FadeOut();
+						StopDraw();
+					}
+					else {
+						if (m_iDelay > m_iTextSpeed) {
+							if (!m_bNextWaiting) {
+								m_fWaitAlpha = 1.0f;
+								m_bNextWaiting = true;
 							}
 							else {
-								if (m_iDelay > m_iTextSpeed) {
-									unsigned char lead = textmgr->m_Koune_Text[m_iDrawingStageID][m_iChar_Line][m_iChar_Pos];
-									if (lead < 128) {
-										m_iChar_Size = 1;
-									}
-									else if (lead < 224) {
-										m_iChar_Size = 2;
-									}
-									else if (lead < 240) {
-										m_iChar_Size = 3;
-									}
-									else {
-										m_iChar_Size = 4;
-									}
-
-									sprintf_s(c, "%s", textmgr->m_Koune_Text[m_iDrawingStageID][m_iChar_Line].substr(m_iChar_Pos, m_iChar_Size).c_str());
-									m_strTemp[m_iChar_Line] += c;
-
-									m_iChar_Pos += m_iChar_Size;
-								}
-							}
-						}
-						else {
-							if (input->GetMouButtonLOnce()) {
-								m_iChar_Pos = 0;
-								m_iChar_Line++;
 								m_fWaitAlpha = 0.0f;
 								m_bNextWaiting = false;
-								m_bCharaChangeFlg = false;
 							}
-							else {
-								if (m_iDelay > m_iTextSpeed) {
-									if (!m_bNextWaiting) {
-										m_fWaitAlpha = 1.0f;
-										m_bNextWaiting = true;
-									}
-									else {
-										m_fWaitAlpha = 0.0f;
-										m_bNextWaiting = false;
-									}
+						}
+					}
+				}
+
+				if (m_iDelay > m_iTextSpeed)
+					m_iDelay = 0;
+
+				char linec[32];
+				sprintf_s(linec, "%d", m_iChar_Line);
+				if (textmgr->isCtrlLine(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line) && !m_bCharaChangeFlg) {
+					string tmpsearch;
+					char *namet = textmgr->GetCharaName(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line);
+					char *expt = textmgr->GetCharaExp(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line);
+					m_strTemp.clear();
+					m_strTemp.resize(textmgr->m_Sion_Text[m_iDrawingStageID].size());
+					m_strTempName.clear();
+					m_strTempName += namet;
+					m_bCharaChangeFlg = true;
+					m_iCurrentLine = m_iChar_Line;
+
+					tmpsearch += expt;
+
+					if (!strlen(m_cLeftCharaName)) {
+						strcpy_s(m_cLeftCharaName, namet);
+						m_fLeftColor[0] = 1.0f;
+						m_fLeftColor[1] = 1.0f;
+						m_fLeftColor[2] = 1.0f;
+						m_fRightColor[0] = 0.5f;
+						m_fRightColor[1] = 0.5f;
+						m_fRightColor[2] = 0.5f;
+
+						if (tmpsearch.find("内心") != -1) {
+							m_iCurrentBalloon = TALKBALLOON_CLOUD_LEFT;
+						}
+						else {
+							m_iCurrentBalloon = TALKBALLOON_NORMAL_LEFT;
+						}
+					}
+					else if (!strlen(m_cRightCharaName) && strcmp(m_cLeftCharaName, namet)) {
+						strcpy_s(m_cRightCharaName, namet);
+						m_fLeftColor[0] = 0.5f;
+						m_fLeftColor[1] = 0.5f;
+						m_fLeftColor[2] = 0.5f;
+						m_fRightColor[0] = 1.0f;
+						m_fRightColor[1] = 1.0f;
+						m_fRightColor[2] = 1.0f;
+						if (tmpsearch.find("内心") != -1) {
+							m_iCurrentBalloon = TALKBALLOON_CLOUD_RIGHT;
+						}
+						else {
+							m_iCurrentBalloon = TALKBALLOON_NORMAL_RIGHT;
+						}
+					}
+
+					if (!strcmp(m_cLeftCharaName, namet) && strcmp(m_cRightCharaName, namet)) {
+						m_fLeftColor[0] = 1.0f;
+						m_fLeftColor[1] = 1.0f;
+						m_fLeftColor[2] = 1.0f;
+						m_fRightColor[0] = 0.5f;
+						m_fRightColor[1] = 0.5f;
+						m_fRightColor[2] = 0.5f;
+						if (tmpsearch.find("内心") != -1) {
+							m_iCurrentBalloon = TALKBALLOON_CLOUD_LEFT;
+						}
+						else {
+							m_iCurrentBalloon = TALKBALLOON_NORMAL_LEFT;
+						}
+					}
+					else if (strcmp(m_cLeftCharaName, namet) && !strcmp(m_cRightCharaName, namet)) {
+						m_fLeftColor[0] = 0.5f;
+						m_fLeftColor[1] = 0.5f;
+						m_fLeftColor[2] = 0.5f;
+						m_fRightColor[0] = 1.0f;
+						m_fRightColor[1] = 1.0f;
+						m_fRightColor[2] = 1.0f;
+						if (tmpsearch.find("内心") != -1) {
+							m_iCurrentBalloon = TALKBALLOON_CLOUD_RIGHT;
+						}
+						else {
+							m_iCurrentBalloon = TALKBALLOON_NORMAL_RIGHT;
+						}
+					}
+
+					delete namet;
+					delete expt;
+				}
+				break;
+			}
+			case STAGE_TYPE::KOUNE: {
+				if (m_iChar_Line < textmgr->m_Koune_Text[m_iDrawingStageID].size()) {
+					if (m_iChar_Pos < textmgr->m_Koune_Text[m_iDrawingStageID][m_iChar_Line].length()) {
+						if (input->GetMouButtonLOnce()) {
+							m_strTemp[m_iChar_Line].clear();
+							m_strTemp[m_iChar_Line] += textmgr->m_Koune_Text[m_iDrawingStageID][m_iChar_Line];
+							m_iChar_Pos = textmgr->m_Koune_Text[m_iDrawingStageID][m_iChar_Line].length() + 1;
+						}
+						else {
+							if (m_iDelay > m_iTextSpeed) {
+								unsigned char lead = textmgr->m_Koune_Text[m_iDrawingStageID][m_iChar_Line][m_iChar_Pos];
+								if (lead < 128) {
+									m_iChar_Size = 1;
 								}
+								else if (lead < 224) {
+									m_iChar_Size = 2;
+								}
+								else if (lead < 240) {
+									m_iChar_Size = 3;
+								}
+								else {
+									m_iChar_Size = 4;
+								}
+
+								sprintf_s(c, "%s", textmgr->m_Koune_Text[m_iDrawingStageID][m_iChar_Line].substr(m_iChar_Pos, m_iChar_Size).c_str());
+								m_strTemp[m_iChar_Line] += c;
+
+								m_iChar_Pos += m_iChar_Size;
 							}
 						}
 					}
 					else {
-						if (input->GetMouButtonL()) {
-							FadeOut();
-							StopDraw();
+						if (input->GetMouButtonLOnce()) {
+							m_iChar_Pos = 0;
+							m_iChar_Line++;
+							m_fWaitAlpha = 0.0f;
+							m_bNextWaiting = false;
+							m_bCharaChangeFlg = false;
 						}
 						else {
 							if (m_iDelay > m_iTextSpeed) {
@@ -610,124 +615,148 @@ m_iCurrentBalloon = TALKBALLOON_NORMAL_RIGHT;
 							}
 						}
 					}
-
-					if (m_iDelay > m_iTextSpeed)
-						m_iDelay = 0;
-
-					char linec[32];
-					sprintf_s(linec, "%d", m_iChar_Line);
-					if (textmgr->isCtrlLine(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line) && !m_bCharaChangeFlg) {
-						char *namet = textmgr->GetCharaName(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line);
-						char *expt = textmgr->GetCharaExp(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line);
-						m_strTemp.clear();
-						m_strTemp.resize(textmgr->m_Koune_Text[m_iDrawingStageID].size());
-						m_strTempName.clear();
-						m_strTempName += namet;
-						m_bCharaChangeFlg = true;
-						m_iCurrentLine = m_iChar_Line;
-
-						if (!strlen(m_cLeftCharaName)) {
-							strcpy_s(m_cLeftCharaName, namet);
-							m_fLeftColor[0] = 1.0f;
-							m_fLeftColor[1] = 1.0f;
-							m_fLeftColor[2] = 1.0f;
-							m_fRightColor[0] = 0.5f;
-							m_fRightColor[1] = 0.5f;
-							m_fRightColor[2] = 0.5f;
-							m_iCurrentBalloon = TALKBALLOON_NORMAL_LEFT;
-						}
-						else if (!strlen(m_cRightCharaName) && strcmp(m_cLeftCharaName, namet)) {
-							strcpy_s(m_cRightCharaName, namet);
-							m_fLeftColor[0] = 0.5f;
-							m_fLeftColor[1] = 0.5f;
-							m_fLeftColor[2] = 0.5f;
-							m_fRightColor[0] = 1.0f;
-							m_fRightColor[1] = 1.0f;
-							m_fRightColor[2] = 1.0f;
-							m_iCurrentBalloon = TALKBALLOON_NORMAL_RIGHT;
-						}
-
-						if (!strcmp(m_cLeftCharaName, namet) && strcmp(m_cRightCharaName, namet)) {
-							m_fLeftColor[0] = 1.0f;
-							m_fLeftColor[1] = 1.0f;
-							m_fLeftColor[2] = 1.0f;
-							m_fRightColor[0] = 0.5f;
-							m_fRightColor[1] = 0.5f;
-							m_fRightColor[2] = 0.5f;
-							m_iCurrentBalloon = TALKBALLOON_NORMAL_LEFT;
-						}
-						else if (strcmp(m_cLeftCharaName, namet) && !strcmp(m_cRightCharaName, namet)) {
-							m_fLeftColor[0] = 0.5f;
-							m_fLeftColor[1] = 0.5f;
-							m_fLeftColor[2] = 0.5f;
-							m_fRightColor[0] = 1.0f;
-							m_fRightColor[1] = 1.0f;
-							m_fRightColor[2] = 1.0f;
-							m_iCurrentBalloon = TALKBALLOON_NORMAL_RIGHT;
-						}
-
-						delete namet;
-						delete expt;
-					}
-					break;
 				}
-				case STAGE_TYPE::MERUERU: {
-					if (m_iChar_Line < textmgr->m_Merueru_Text[m_iDrawingStageID].size()) {
-						if (m_iChar_Pos < textmgr->m_Merueru_Text[m_iDrawingStageID][m_iChar_Line].length()) {
-							if (input->GetMouButtonLOnce()) {
-								m_strTemp[m_iChar_Line].clear();
-								m_strTemp[m_iChar_Line] += textmgr->m_Merueru_Text[m_iDrawingStageID][m_iChar_Line];
-								m_iChar_Pos = textmgr->m_Merueru_Text[m_iDrawingStageID][m_iChar_Line].length() + 1;
+				else {
+					if (input->GetMouButtonL()) {
+						FadeOut();
+						StopDraw();
+					}
+					else {
+						if (m_iDelay > m_iTextSpeed) {
+							if (!m_bNextWaiting) {
+								m_fWaitAlpha = 1.0f;
+								m_bNextWaiting = true;
 							}
 							else {
-								if (m_iDelay > m_iTextSpeed) {
-									unsigned char lead = textmgr->m_Merueru_Text[m_iDrawingStageID][m_iChar_Line][m_iChar_Pos];
-									if (lead < 128) {
-										m_iChar_Size = 1;
-									}
-									else if (lead < 224) {
-										m_iChar_Size = 2;
-									}
-									else if (lead < 240) {
-										m_iChar_Size = 3;
-									}
-									else {
-										m_iChar_Size = 4;
-									}
-
-									sprintf_s(c, "%s", textmgr->m_Merueru_Text[m_iDrawingStageID][m_iChar_Line].substr(m_iChar_Pos, m_iChar_Size).c_str());
-									m_strTemp[m_iChar_Line] += c;
-
-									m_iChar_Pos += m_iChar_Size;
-								}
-							}
-						}
-						else {
-							if (input->GetMouButtonLOnce()) {
-								m_iChar_Pos = 0;
-								m_iChar_Line++;
 								m_fWaitAlpha = 0.0f;
 								m_bNextWaiting = false;
-								m_bCharaChangeFlg = false;
 							}
-							else {
-								if (m_iDelay > m_iTextSpeed) {
-									if (!m_bNextWaiting) {
-										m_fWaitAlpha = 1.0f;
-										m_bNextWaiting = true;
-									}
-									else {
-										m_fWaitAlpha = 0.0f;
-										m_bNextWaiting = false;
-									}
+						}
+					}
+				}
+
+				if (m_iDelay > m_iTextSpeed)
+					m_iDelay = 0;
+
+				char linec[32];
+				sprintf_s(linec, "%d", m_iChar_Line);
+				if (textmgr->isCtrlLine(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line) && !m_bCharaChangeFlg) {
+					string tmpsearch;
+					char *namet = textmgr->GetCharaName(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line);
+					char *expt = textmgr->GetCharaExp(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line);
+					m_strTemp.clear();
+					m_strTemp.resize(textmgr->m_Koune_Text[m_iDrawingStageID].size());
+					m_strTempName.clear();
+					m_strTempName += namet;
+					m_bCharaChangeFlg = true;
+					m_iCurrentLine = m_iChar_Line;
+
+					tmpsearch += expt;
+
+					if (!strlen(m_cLeftCharaName)) {
+						strcpy_s(m_cLeftCharaName, namet);
+						m_fLeftColor[0] = 1.0f;
+						m_fLeftColor[1] = 1.0f;
+						m_fLeftColor[2] = 1.0f;
+						m_fRightColor[0] = 0.5f;
+						m_fRightColor[1] = 0.5f;
+						m_fRightColor[2] = 0.5f;
+
+						if (tmpsearch.find("内心") != -1) {
+							m_iCurrentBalloon = TALKBALLOON_CLOUD_LEFT;
+						}
+						else {
+							m_iCurrentBalloon = TALKBALLOON_NORMAL_LEFT;
+						}
+					}
+					else if (!strlen(m_cRightCharaName) && strcmp(m_cLeftCharaName, namet)) {
+						strcpy_s(m_cRightCharaName, namet);
+						m_fLeftColor[0] = 0.5f;
+						m_fLeftColor[1] = 0.5f;
+						m_fLeftColor[2] = 0.5f;
+						m_fRightColor[0] = 1.0f;
+						m_fRightColor[1] = 1.0f;
+						m_fRightColor[2] = 1.0f;
+						if (tmpsearch.find("内心") != -1) {
+							m_iCurrentBalloon = TALKBALLOON_CLOUD_RIGHT;
+						}
+						else {
+							m_iCurrentBalloon = TALKBALLOON_NORMAL_RIGHT;
+						}
+					}
+
+					if (!strcmp(m_cLeftCharaName, namet) && strcmp(m_cRightCharaName, namet)) {
+						m_fLeftColor[0] = 1.0f;
+						m_fLeftColor[1] = 1.0f;
+						m_fLeftColor[2] = 1.0f;
+						m_fRightColor[0] = 0.5f;
+						m_fRightColor[1] = 0.5f;
+						m_fRightColor[2] = 0.5f;
+						if (tmpsearch.find("内心") != -1) {
+							m_iCurrentBalloon = TALKBALLOON_CLOUD_LEFT;
+						}
+						else {
+							m_iCurrentBalloon = TALKBALLOON_NORMAL_LEFT;
+						}
+					}
+					else if (strcmp(m_cLeftCharaName, namet) && !strcmp(m_cRightCharaName, namet)) {
+						m_fLeftColor[0] = 0.5f;
+						m_fLeftColor[1] = 0.5f;
+						m_fLeftColor[2] = 0.5f;
+						m_fRightColor[0] = 1.0f;
+						m_fRightColor[1] = 1.0f;
+						m_fRightColor[2] = 1.0f;
+						if (tmpsearch.find("内心") != -1) {
+							m_iCurrentBalloon = TALKBALLOON_CLOUD_RIGHT;
+						}
+						else {
+							m_iCurrentBalloon = TALKBALLOON_NORMAL_RIGHT;
+						}
+					}
+
+					delete namet;
+					delete expt;
+				}
+				break;
+			}
+			case STAGE_TYPE::MERUERU: {
+				if (m_iChar_Line < textmgr->m_Merueru_Text[m_iDrawingStageID].size()) {
+					if (m_iChar_Pos < textmgr->m_Merueru_Text[m_iDrawingStageID][m_iChar_Line].length()) {
+						if (input->GetMouButtonLOnce()) {
+							m_strTemp[m_iChar_Line].clear();
+							m_strTemp[m_iChar_Line] += textmgr->m_Merueru_Text[m_iDrawingStageID][m_iChar_Line];
+							m_iChar_Pos = textmgr->m_Merueru_Text[m_iDrawingStageID][m_iChar_Line].length() + 1;
+						}
+						else {
+							if (m_iDelay > m_iTextSpeed) {
+								unsigned char lead = textmgr->m_Merueru_Text[m_iDrawingStageID][m_iChar_Line][m_iChar_Pos];
+								if (lead < 128) {
+									m_iChar_Size = 1;
 								}
+								else if (lead < 224) {
+									m_iChar_Size = 2;
+								}
+								else if (lead < 240) {
+									m_iChar_Size = 3;
+								}
+								else {
+									m_iChar_Size = 4;
+								}
+
+								sprintf_s(c, "%s", textmgr->m_Merueru_Text[m_iDrawingStageID][m_iChar_Line].substr(m_iChar_Pos, m_iChar_Size).c_str());
+								m_strTemp[m_iChar_Line] += c;
+
+								m_iChar_Pos += m_iChar_Size;
 							}
 						}
 					}
 					else {
-						if (input->GetMouButtonL()) {
-							FadeOut();
-							StopDraw();
+						if (input->GetMouButtonLOnce()) {
+							m_iChar_Pos = 0;
+							m_iChar_Line++;
+							m_fWaitAlpha = 0.0f;
+							m_bNextWaiting = false;
+							m_bCharaChangeFlg = false;
 						}
 						else {
 							if (m_iDelay > m_iTextSpeed) {
@@ -742,67 +771,110 @@ m_iCurrentBalloon = TALKBALLOON_NORMAL_RIGHT;
 							}
 						}
 					}
-
-					if (m_iDelay > m_iTextSpeed)
-						m_iDelay = 0;
-
-					char linec[32];
-					sprintf_s(linec, "%d", m_iChar_Line);
-					if (textmgr->isCtrlLine(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line) && !m_bCharaChangeFlg) {
-						char *namet = textmgr->GetCharaName(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line);
-						char *expt = textmgr->GetCharaExp(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line);
-						m_strTemp.clear();
-						m_strTemp.resize(textmgr->m_Merueru_Text[m_iDrawingStageID].size());
-						m_strTempName.clear();
-						m_strTempName += namet;
-						m_bCharaChangeFlg = true;
-						m_iCurrentLine = m_iChar_Line;
-
-						if (!strlen(m_cLeftCharaName)) {
-							strcpy_s(m_cLeftCharaName, namet);
-							m_fLeftColor[0] = 1.0f;
-							m_fLeftColor[1] = 1.0f;
-							m_fLeftColor[2] = 1.0f;
-							m_fRightColor[0] = 0.5f;
-							m_fRightColor[1] = 0.5f;
-							m_fRightColor[2] = 0.5f;
-							m_iCurrentBalloon = TALKBALLOON_NORMAL_LEFT;
-						}
-						else if (!strlen(m_cRightCharaName) && strcmp(m_cLeftCharaName, namet)) {
-							strcpy_s(m_cRightCharaName, namet);
-							m_fLeftColor[0] = 0.5f;
-							m_fLeftColor[1] = 0.5f;
-							m_fLeftColor[2] = 0.5f;
-							m_fRightColor[0] = 1.0f;
-							m_fRightColor[1] = 1.0f;
-							m_fRightColor[2] = 1.0f;
-							m_iCurrentBalloon = TALKBALLOON_NORMAL_RIGHT;
-						}
-
-						if (!strcmp(m_cLeftCharaName, namet) && strcmp(m_cRightCharaName, namet)) {
-							m_fLeftColor[0] = 1.0f;
-							m_fLeftColor[1] = 1.0f;
-							m_fLeftColor[2] = 1.0f;
-							m_fRightColor[0] = 0.5f;
-							m_fRightColor[1] = 0.5f;
-							m_fRightColor[2] = 0.5f;
-							m_iCurrentBalloon = TALKBALLOON_NORMAL_LEFT;
-						}
-						else if (strcmp(m_cLeftCharaName, namet) && !strcmp(m_cRightCharaName, namet)) {
-							m_fLeftColor[0] = 0.5f;
-							m_fLeftColor[1] = 0.5f;
-							m_fLeftColor[2] = 0.5f;
-							m_fRightColor[0] = 1.0f;
-							m_fRightColor[1] = 1.0f;
-							m_fRightColor[2] = 1.0f;
-							m_iCurrentBalloon = TALKBALLOON_NORMAL_RIGHT;
-						}
-
-						delete namet;
-						delete expt;
-					}
-					break;
 				}
+				else {
+					if (input->GetMouButtonL()) {
+						FadeOut();
+						StopDraw();
+					}
+					else {
+						if (m_iDelay > m_iTextSpeed) {
+							if (!m_bNextWaiting) {
+								m_fWaitAlpha = 1.0f;
+								m_bNextWaiting = true;
+							}
+							else {
+								m_fWaitAlpha = 0.0f;
+								m_bNextWaiting = false;
+							}
+						}
+					}
+				}
+
+				if (m_iDelay > m_iTextSpeed)
+					m_iDelay = 0;
+
+				char linec[32];
+				sprintf_s(linec, "%d", m_iChar_Line);
+				if (textmgr->isCtrlLine(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line) && !m_bCharaChangeFlg) {
+					string tmpsearch;
+					char *namet = textmgr->GetCharaName(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line);
+					char *expt = textmgr->GetCharaExp(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line);
+					m_strTemp.clear();
+					m_strTemp.resize(textmgr->m_Merueru_Text[m_iDrawingStageID].size());
+					m_strTempName.clear();
+					m_strTempName += namet;
+					m_bCharaChangeFlg = true;
+					m_iCurrentLine = m_iChar_Line;
+
+					tmpsearch += expt;
+
+					if (!strlen(m_cLeftCharaName)) {
+						strcpy_s(m_cLeftCharaName, namet);
+						m_fLeftColor[0] = 1.0f;
+						m_fLeftColor[1] = 1.0f;
+						m_fLeftColor[2] = 1.0f;
+						m_fRightColor[0] = 0.5f;
+						m_fRightColor[1] = 0.5f;
+						m_fRightColor[2] = 0.5f;
+
+						if (tmpsearch.find("内心") != -1) {
+							m_iCurrentBalloon = TALKBALLOON_CLOUD_LEFT;
+						}
+						else {
+							m_iCurrentBalloon = TALKBALLOON_NORMAL_LEFT;
+						}
+					}
+					else if (!strlen(m_cRightCharaName) && strcmp(m_cLeftCharaName, namet)) {
+						strcpy_s(m_cRightCharaName, namet);
+						m_fLeftColor[0] = 0.5f;
+						m_fLeftColor[1] = 0.5f;
+						m_fLeftColor[2] = 0.5f;
+						m_fRightColor[0] = 1.0f;
+						m_fRightColor[1] = 1.0f;
+						m_fRightColor[2] = 1.0f;
+						if (tmpsearch.find("内心") != -1) {
+							m_iCurrentBalloon = TALKBALLOON_CLOUD_RIGHT;
+						}
+						else {
+							m_iCurrentBalloon = TALKBALLOON_NORMAL_RIGHT;
+						}
+					}
+
+					if (!strcmp(m_cLeftCharaName, namet) && strcmp(m_cRightCharaName, namet)) {
+						m_fLeftColor[0] = 1.0f;
+						m_fLeftColor[1] = 1.0f;
+						m_fLeftColor[2] = 1.0f;
+						m_fRightColor[0] = 0.5f;
+						m_fRightColor[1] = 0.5f;
+						m_fRightColor[2] = 0.5f;
+						if (tmpsearch.find("内心") != -1) {
+							m_iCurrentBalloon = TALKBALLOON_CLOUD_LEFT;
+						}
+						else {
+							m_iCurrentBalloon = TALKBALLOON_NORMAL_LEFT;
+						}
+					}
+					else if (strcmp(m_cLeftCharaName, namet) && !strcmp(m_cRightCharaName, namet)) {
+						m_fLeftColor[0] = 0.5f;
+						m_fLeftColor[1] = 0.5f;
+						m_fLeftColor[2] = 0.5f;
+						m_fRightColor[0] = 1.0f;
+						m_fRightColor[1] = 1.0f;
+						m_fRightColor[2] = 1.0f;
+						if (tmpsearch.find("内心") != -1) {
+							m_iCurrentBalloon = TALKBALLOON_CLOUD_RIGHT;
+						}
+						else {
+							m_iCurrentBalloon = TALKBALLOON_NORMAL_RIGHT;
+						}
+					}
+
+					delete namet;
+					delete expt;
+				}
+				break;
+			}
 			}
 
 			sprintf_s(tmpname, "%s", m_strTempName.c_str());

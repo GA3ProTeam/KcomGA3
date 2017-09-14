@@ -90,7 +90,7 @@ private:
 	GimmickTelevision* m_gimmick_television;
 	GimmickKatsuo* m_gimmick_katsuo;
 	GimmickOven* m_gimmick_oven;
-	GimmickDoctorroomDoor* m_gimmick_door;
+	GimmickDoctorroomDoor* m_gimmick_doctorroomdoor;
 
 	//ステージ1↑
 	//メルエルステージ↑

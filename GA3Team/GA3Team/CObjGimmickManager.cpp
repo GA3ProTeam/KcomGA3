@@ -16,7 +16,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 	*/
 	SavedataManeger()->Setcurrentdata();
 
-	m_Stage_ID = 30;
+	m_Stage_ID = 20;
 
 	switch (m_Stage_ID) {
 
@@ -128,7 +128,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 
 	case 20:
 
-	/*	m_gimmick_television = new GimmickTelevision();
+		m_gimmick_television = new GimmickTelevision();
 		Obj()->InsertObj(m_gimmick_television, GIMMICK_TELEVISION, 5, this->m_pScene, HIT_BOX_OFF);
 		m_gimmick_television->Init(50, 300, 250, 125, 1);
 		
@@ -140,10 +140,10 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 		Obj()->InsertObj(m_gimmick_katsuo, GIMMICK_KATSUO, 5, this->m_pScene, HIT_BOX_OFF);
 		m_gimmick_katsuo->Init(-180, 170, 200, 400, 1);
 
-		m_gimmick_door = new GimmickDoctorroomDoor();
-		Obj()->InsertObj(m_gimmick_door, GIMMICK_DOOR, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_door->Init(280, 90, 400, 400, 1);
-		*/
+		m_gimmick_doctorroomdoor = new GimmickDoctorroomDoor();
+		Obj()->InsertObj(m_gimmick_doctorroomdoor, GIMMICK_DOOR, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_doctorroomdoor->Init(280, 90, 400, 400, 1);
+		
 		break;
 	case 21:
 
@@ -403,9 +403,9 @@ void CObjGimmickManager::Action() {
 		static int m_iMerueru1 = MERUERU1_WELCOM_TALK;
 		m_gimmick_oven->m_bActionFlg = false;
 		m_gimmick_oven->m_bActionFlg = false;
+		//m_iMerueru1 = MERUERU1_KATSUO_TALK1;
 
-
-
+		
 		//‰‰ñ‰ï˜b
 		if (m_iMerueru1 == MERUERU1_WELCOM_TALK) {
 			
@@ -416,7 +416,7 @@ void CObjGimmickManager::Action() {
 				m_iMerueru1 = MERUERU1_KATSUO_TALK1;
 			}
 		}
-
+		
 		//ƒJƒcƒI‰ï˜b
 		if (m_gimmick_katsuo->m_ball[0].OnPush) {
 
@@ -495,24 +495,7 @@ void CObjGimmickManager::Action() {
 
 			//}
 		}
-
-
-
-
-
-
-
-
-
-
 	}
-
-
-
-
-
-
-
 	case 32:
 	{
 
@@ -699,7 +682,7 @@ void CObjGimmickManager::Draw() {
 		m_src.right = m_src.left + 1200;
 
 		//”wŒi•`‰æ
-		Image()->DrawEx(25, &m_src, &m_dst, col, 0.0f);
+		Image()->DrawEx(26, &m_src, &m_dst, col, 0.0f);
 
 
 

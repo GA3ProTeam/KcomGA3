@@ -2202,13 +2202,14 @@ void GimmickTelevision::Destructor()
 
 void GimmickTelevision::Action()
 {
-
+	/*
 	if (m_ball[0].OnPush) {
 
 		//テレビ音取得
-		SoundManager()->SoundSave(1/*ここ未定*/);
+		SoundManager()->SoundSave(1ここ未定);
 
 	}
+	*/
 }
 
 void GimmickTelevision::Draw()
@@ -2253,12 +2254,14 @@ void GimmickOven::Destructor()
 
 void GimmickOven::Action()
 {
+	/*
 	if (m_ball[0].OnPush) {
 		if (SavedataManeger()->CurrentData->m_bMelueruflg[2]) {
 			//レンジ音入手
-			SoundManager()->SoundSave(1/*ここ未定*/);
+			SoundManager()->SoundSave(1ここ未定);
 		}
 	}
+	*/
 }
 
 void GimmickOven::Draw()
@@ -2303,7 +2306,7 @@ void GimmickKatsuo::Destructor()
 
 void GimmickKatsuo::Action()
 {
-
+	/*
 	if (m_ball[0].OnPush) {
 
 		//会話1
@@ -2353,6 +2356,7 @@ void GimmickKatsuo::Action()
 
 
 	}
+	*/
 }
 
 void GimmickKatsuo::Draw()
@@ -2397,7 +2401,7 @@ void GimmickDoctorroomDoor::Destructor()
 
 void GimmickDoctorroomDoor::Action()
 {
-
+	/*
 	//レンジ音使用でステージクリア
 	if (Input()->m_x > m_iXpos&& Input()->m_x < (m_iXpos + m_iWidth)
 		&& Input()->m_y > m_iYpos && Input()->m_y < (m_iYpos + m_iHeight)) {
@@ -2411,7 +2415,7 @@ void GimmickDoctorroomDoor::Action()
 	}
 
 
-
+	*/
 }
 
 void GimmickDoctorroomDoor::Draw()

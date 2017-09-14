@@ -401,9 +401,8 @@ void CObjGimmickManager::Action() {
 	case 20:
 	{
 		static int m_iMerueru1 = MERUERU1_WELCOM_TALK;
-		//m_gimmick_oven->
-
-
+		m_gimmick_oven->m_bActionFlg = false;
+		m_gimmick_oven->m_bActionFlg = false;
 
 
 
@@ -453,14 +452,49 @@ void CObjGimmickManager::Action() {
 				//会話終了
 				if (Overlay()->NextWait()) {
 					m_iMerueru1 = MERUERU1_KATSUO_TALK_END;
+
+					m_gimmick_oven->m_bActionFlg = true;
+					m_gimmick_oven->m_bActionFlg = true;
+
 				}
+			}
+
+			//口笛音取得
+			if (m_iMerueru1 == MERUERU1_KATSUO_TALK_END) {
+
+
+
 			}
 		}
 
+		//テレビ音取得
+		if (m_gimmick_television->m_ball[0].OnPush) {
 
 
 
 
+		}
+		//レンジ音取得
+		if (m_gimmick_oven->m_ball[0].OnPush) {
+
+
+
+
+		}
+
+		//レンジ音使用でステージクリア
+		if (Input()->m_x > m_gimmick_doctorroomdoor->m_iXpos&& 
+			Input()->m_x < (m_gimmick_doctorroomdoor->m_iXpos + m_gimmick_doctorroomdoor->m_iWidth)&& 
+			Input()->m_y > m_gimmick_doctorroomdoor->m_iYpos && 
+			Input()->m_y < (m_gimmick_doctorroomdoor->m_iYpos + m_gimmick_doctorroomdoor->m_iHeight)) {
+			//マウスドラッグ中にマウスボタンが離された
+			//if (!Input()->GetMouButtonL() && tab->GetHaveSound()) {
+
+			//SavedataManeger()->CurrentData->m_bMelueruClearflg[0] = true;
+
+
+			//}
+		}
 
 
 

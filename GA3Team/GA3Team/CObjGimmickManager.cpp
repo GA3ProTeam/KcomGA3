@@ -377,7 +377,7 @@ void CObjGimmickManager::Action() {
 		MERUERU1_KATSUO_TALK1,					//カツオ会話1
 		MERUERU1_KATSUO_TALK2,					//カツオ会話2
 		MERUERU1_KATSUO_TALK3,					//カツオ会話3
-		MERUERU1_KATSUO_TALK_END,					//カツオ会話終了
+		MERUERU1_KATSUO_TALK_END,				//カツオ会話終了
 	};
 
 
@@ -394,6 +394,91 @@ void CObjGimmickManager::Action() {
 
 	
 	switch (m_Stage_ID) {
+
+
+
+	//メルエル1
+	case 20:
+	{
+		static int m_iMerueru1 = MERUERU1_WELCOM_TALK;
+		//m_gimmick_oven->
+
+
+
+
+
+		//初回会話
+		if (m_iMerueru1 == MERUERU1_WELCOM_TALK) {
+			
+			Overlay()->talkDraw(MERUERU, MERUERU_START);
+
+			//会話終了
+			if (Overlay()->NextWait()) {
+				m_iMerueru1 = MERUERU1_KATSUO_TALK1;
+			}
+		}
+
+		//カツオ会話
+		if (m_gimmick_katsuo->m_ball[0].OnPush) {
+
+			//会話1能力なし
+			if (m_iMerueru1 == MERUERU1_KATSUO_TALK1 &&
+				!User()->m_bmerueruability) {
+				Overlay()->talkDraw(MERUERU, MERUERU_KATUO_1_OFF);
+				//会話終了
+				Overlay()->NextWait();
+			}
+			//会話1能力あり
+			else if ( m_iMerueru1 == MERUERU1_KATSUO_TALK1 &&
+				User()->m_bmerueruability ) {
+				Overlay()->talkDraw(MERUERU, MERUERU_KATUO_1_ON);
+				//会話終了
+				if (Overlay()->NextWait()) {
+					m_iMerueru1 = MERUERU1_KATSUO_TALK2;
+				}
+			}
+
+			//会話2
+			if ( m_iMerueru1 == MERUERU1_KATSUO_TALK2 ) {
+				Overlay()->talkDraw(MERUERU, MERUERU_KATUO_2);
+				//会話終了
+				if (Overlay()->NextWait()) {
+					m_iMerueru1 = MERUERU1_KATSUO_TALK3;
+				}
+			}
+
+			//会話3
+			if (m_iMerueru1 == MERUERU1_KATSUO_TALK3) {
+				Overlay()->talkDraw(MERUERU, MERUERU_KATUO_3);
+				//会話終了
+				if (Overlay()->NextWait()) {
+					m_iMerueru1 = MERUERU1_KATSUO_TALK_END;
+				}
+			}
+		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	}
+
+
+
+
+
+
+
 	case 32:
 	{
 

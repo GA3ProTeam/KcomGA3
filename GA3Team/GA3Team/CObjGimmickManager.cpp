@@ -371,6 +371,19 @@ void CObjGimmickManager::Action() {
 		//-----------------------------------------------------------------------------------------------
 
 	};
+	//イベント番号(メルエルステージ1)
+	enum MERUERU1_NUMBER {
+		MERUERU1_WELCOM_TALK,					//開始会話
+		MERUERU1_KATSUO_TALK1,					//カツオ会話1
+		MERUERU1_KATSUO_TALK2,					//カツオ会話2
+		MERUERU1_KATSUO_TALK3,					//カツオ会話3
+		MERUERU1_KATSUO_TALK_END,					//カツオ会話終了
+	};
+
+
+
+
+
 
 	//イベント進行度
 	//チュートリアルステージ

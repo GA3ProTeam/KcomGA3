@@ -8,6 +8,8 @@ void CObjMenuTab::Init(int openclosey)
 	m_igivesound = -1;//音なし
 	m_icnt = 0;
 
+	m_bGarbageActionFlg = true;//ゴミ箱動作
+
 	m_openclose_x = 736;//開閉ボタンのX
 	m_openclose_y = openclosey;//開閉ボタンのY
 
@@ -63,13 +65,15 @@ void CObjMenuTab::Action()
 
 	if (m_bOpenClose) {
 		//ゴミ箱動作----------------------------------------------------------------
-		//ゴミ箱ボタンの範囲内にマウスがあるか確認
-		if (Input()->m_x > m_isoundx + 192 && Input()->m_x < (m_isoundx + 192 + 64)
-			&& Input()->m_y > m_isoundy && Input()->m_y < (m_isoundy + 64)) {
-			//マウスドラッグ中にマウスボタンが離された
-			if (!Input()->GetMouButtonL() && m_bhavesound) {
-				//ドラッグしていた効果音を削除
-				SoundManager()->SoundDelete(m_igivesound);
+		if (m_bGarbageActionFlg) {
+			//ゴミ箱ボタンの範囲内にマウスがあるか確認
+			if (Input()->m_x > m_isoundx + 192 && Input()->m_x < (m_isoundx + 192 + 64)
+				&& Input()->m_y > m_isoundy && Input()->m_y < (m_isoundy + 64)) {
+				//マウスドラッグ中にマウスボタンが離された
+				if (!Input()->GetMouButtonL() && m_bhavesound) {
+					//ドラッグしていた効果音を削除
+					SoundManager()->SoundDelete(m_igivesound);
+				}
 			}
 		}
 		//--------------------------------------------------------------------------
@@ -92,8 +96,8 @@ void CObjMenuTab::Action()
 			m_bhavesound = false;
 			m_igivesound = -1;
 		}
+		//--------------------------------------------------------------------------
 	}
-	//--------------------------------------------------------------------------
 
 	//タイトルに戻るボタン動作--------------------------------------------------
 	//タブが開いた後、すぐに反応させないようにする

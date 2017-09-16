@@ -10,6 +10,9 @@ private:
 	//連打回避のためのカウント
 	int m_icnt;
 
+	//ゴミ箱動作フラグ
+	bool m_bGarbageActionFlg;
+
 	//音を持っている間、他の音を持たないようにするフラグ
 	bool m_bhavesound;
 	int m_igivesound;//音の種類
@@ -43,7 +46,8 @@ public:
 	//開閉フラグをとる
 	bool GetOpenCloseFlg() { return m_bOpenClose; };
 
-
+	//ゴミ箱動作フラグ切り替え
+	void SetGarbageActionFlg(bool flg) { m_bGarbageActionFlg = flg; }
 };
 
 #endif

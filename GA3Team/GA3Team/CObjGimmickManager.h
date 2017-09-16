@@ -36,7 +36,7 @@ class GimmickMechanic;
 class GimmickSoundComputer;
 class GimmickMusician;
 class GimmickAunt;
-
+class CObjDesk;
 
 class CObjGimmickManager : public CObj
 {
@@ -130,6 +130,7 @@ private:
 	GimmickDoctor* m_gimmick_doctor;
 	GimmickRecorder* m_gimmick_recorder;
 	GimmickComputer* m_gimmick_computer;
+	CObjDesk*		 m_obj_desk;
 	//チュートリアル↑
 
 

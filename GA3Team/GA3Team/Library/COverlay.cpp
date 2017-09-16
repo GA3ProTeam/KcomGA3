@@ -3,6 +3,7 @@
 void COverlay::InitLoad()
 {
 	//Image
+	image->LoadImageEx("各ステージで使用するギミック仮画像.png", 58, TEX_SIZE_1024);
 	image->LoadImageEx("bb.png", 59, TEX_SIZE_512);
 	image->LoadImageEx("orga2.png", 60, TEX_SIZE_1024);
 	image->LoadImageEx("yjt.png", 61, TEX_SIZE_512);

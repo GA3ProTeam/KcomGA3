@@ -44,14 +44,16 @@ public:
 	CObjGimmickManager() {};
 	~CObjGimmickManager() {};
 
-	//			　選択キャラ, 　　　ステージID
-	void Init(int select_chara, int stage_id);		//イニシャライズ
+	//		  選択キャラ, 　ステージID　	  メニュータブへの参照
+	void Init(int select_chara, int stage_id, CObjMenuTab* pMenuTab);//イニシャライズ
 	void Destructor();	//デストラクタ
 	void Action();		//アクション
 	void Draw();		//ドロー
 private:
 
 	int m_Stage_ID;			//ステージの番号
+
+	CObjMenuTab* m_pMenuTab;//メニュータブへの参照
 
 	//シオンステージ↓
 	//ステージ1↓

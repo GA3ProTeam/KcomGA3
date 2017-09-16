@@ -1,9 +1,14 @@
 #include "main.h"
 
 //イニシャライズ
-void CObjGimmickManager::Init(int select_chara, int stage_id) {
+//引数：
+//select_chara	= 選択したキャラクター番号
+//stage_id		= 選択したステージ番号
+//pMenuTab		= メニュータブへの参照
+void CObjGimmickManager::Init(int select_chara, int stage_id, CObjMenuTab* pMenuTab) {
 	
-
+	//メニュータブへの参照セット
+	m_pMenuTab = pMenuTab;
 
 	m_Stage_ID = ((select_chara + 1) * 10) + stage_id;
 

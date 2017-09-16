@@ -12,8 +12,8 @@ void Gimmick::Init(int xpos, int ypos, int widht, int height, int balloonnum)
 	m_menu_tab = (CObjMenuTab*)Obj()->GetObj(OBJ_MENUTAB);//メニュータブへの参照セット
 	m_getsound = -1;		//ドラッグされていない（-1）
 	m_bActionFlg = true;	//初期は動作する状態
-	
-	//吹き出し生成
+
+							//吹き出し生成
 	if (m_iballoonnum > 0) {
 		m_ball = new Balloon[m_iballoonnum];
 		//吹き出し初期化
@@ -33,14 +33,14 @@ void Gimmick::gimmicDraw(int num)
 	//ギミックが動作状態か確認
 	if (!m_bActionFlg) return;
 
-	static bool flg = false;
-	static bool onceflg = false;//クリックした際一度だけ反応するためのフラグ
+	bool flg = false;//範囲内にマウスがあるかのフラグ
+
 	//マウスの座標を取得
 	int mousex = Input()->m_x;
 	int mousey = Input()->m_y;
 
 	float col[4] = { 1.0f,1.0f,1.0f,1.0f };
-	
+
 	//-----------------------吹き出し描画------------------------
 
 	//転送先座標
@@ -62,7 +62,7 @@ void Gimmick::gimmicDraw(int num)
 	{
 
 		//縦と横(x)カーソルがギミックの当たり範囲に入っているか否か
-		if ((mousex > m_src.left/* + User()->mscroll_x */&& mousex < (m_src.left/* + User()->mscroll_x */+ m_iWidth))
+		if ((mousex > m_src.left/* + User()->mscroll_x */&& mousex < (m_src.left/* + User()->mscroll_x */ + m_iWidth))
 			&& (mousey > m_src.top && mousey < (m_src.top + m_iHeight)))
 		{
 			m_iballoontime = BALLOON_KEEP_TIME;
@@ -82,23 +82,26 @@ void Gimmick::gimmicDraw(int num)
 		if (m_iballoontime >= 0) {
 			for (int i = 0; i < m_iballoonnum; i++)
 			{
-				if (m_ball[i].m_iballoontype == talk){
+				if (m_ball[i].m_iballoontype == talk) {
 					//会話吹き出しを描画
 					changetalkDir(num);
 					Image()->DrawEx(22, &m_ball[i].m_gimsrc, &m_ball[i].m_gimdst, col, 0.0f);
 				}
-				if (m_ball[i].m_iballoontype == sound){
+				if (m_ball[i].m_iballoontype == sound) {
 					//シオンの能力発動時に吹き出しの色を変える
 					//if (User()->m_bsionability) {
-						changeBalloonColor(num);
+					changeBalloonColor(num);
 					//}
 					//音吹き出しを描画
-					Image()->DrawEx(22, &m_ball[i].m_gimsrc, &m_ball[i].m_gimdst,col, 0.0f);
+					Image()->DrawEx(22, &m_ball[i].m_gimsrc, &m_ball[i].m_gimdst, col, 0.0f);
 				}
+
+				//押していない状態に初期化
 				m_ball[i].OnPush = false;
+
 				//範囲内にあるかないか
 				if ((mousex > m_ball[i].m_gimsrc.left&& mousex < m_ball[i].m_gimsrc.right)
-					&& (mousey > m_ball[i].m_gimsrc.top && mousey < m_ball[i].m_gimsrc.bottom)){
+					&& (mousey > m_ball[i].m_gimsrc.top && mousey < m_ball[i].m_gimsrc.bottom)) {
 					flg = true;
 				}
 				else {
@@ -109,20 +112,20 @@ void Gimmick::gimmicDraw(int num)
 				if (flg)
 				{
 					//左クリックされたら
-					if (Input()->GetMouButtonL()){
-						onceflg = true;
+					if (Input()->GetMouButtonL()) {
+						m_ball[i].m_bOnceFlg = true;//一回クリックフラグを立てる
 					}
 					//左クリックされていない　&&　一回クリックされていたなら
-					else if (!Input()->GetMouButtonL() && onceflg){
+					else if (!Input()->GetMouButtonL() && m_ball[i].m_bOnceFlg) {
 						if (m_ball[i].m_iballoontype == sound && m_ball[i].m_soundnum != EXCEPTION)
 							SoundManager()->SoundSave(m_ball[i].m_soundnum);
-						onceflg = false;
-						m_ball[i].OnPush = true;
+						m_ball[i].m_bOnceFlg = false;
+						m_ball[i].OnPush = true;//押下フラグオン
 					}
 				}
 				//マウスが範囲外
 				else {
-					onceflg = false;
+					m_ball[i].m_bOnceFlg = false;//一回クリックフラグを戻しておく
 				}
 			}
 		}
@@ -130,16 +133,16 @@ void Gimmick::gimmicDraw(int num)
 }
 void Gimmick::changeBalloonColor(int num)
 {
-	for (int i = 0; i < num; i++){
+	for (int i = 0; i < num; i++) {
 		m_ball[i].m_gimdst.top = m_ball[i].m_iballoonDir;
 		m_ball[i].m_gimdst.left = m_ball[i].m_iballooncolor;
-		m_ball[i].m_gimdst.bottom = m_ball[i].m_gimdst.top+ GIMMICK_SIZE_Y;
-		m_ball[i].m_gimdst.right = m_ball[i].m_gimdst.left+ GIMMICK_SIZE_X;
+		m_ball[i].m_gimdst.bottom = m_ball[i].m_gimdst.top + GIMMICK_SIZE_Y;
+		m_ball[i].m_gimdst.right = m_ball[i].m_gimdst.left + GIMMICK_SIZE_X;
 	}
 }
 void Gimmick::changetalkDir(int num)
 {
-	for (int i = 0; i < num; i++){
+	for (int i = 0; i < num; i++) {
 		m_ball[i].m_gimdst.top = 0;
 		m_ball[i].m_gimdst.left = m_ball[i].m_iballoonDir;
 		m_ball[i].m_gimdst.bottom = m_ball[i].m_gimdst.top + GIMMICK_SIZE_Y;
@@ -157,7 +160,7 @@ void Gimmick::changetalkDir(int num)
 //soundnum	=ギミックが持っている音情報(ない場合は　EXCEPTION　を入れる)
 //color		=シオンの能力発動時の色情報
 //Dir		=吹き出しの向き
-void InitBall(Balloon* balloon , int gimX, int gimY, int balltype, int soundnum, int color, int Dir)
+void InitBall(Balloon* balloon, int gimX, int gimY, int balltype, int soundnum, int color, int Dir)
 {
 	balloon->m_iGimXpos = gimX;
 	balloon->m_iGimYpos = gimY;
@@ -165,4 +168,5 @@ void InitBall(Balloon* balloon , int gimX, int gimY, int balltype, int soundnum,
 	balloon->m_soundnum = soundnum;
 	balloon->m_iballooncolor = color;
 	balloon->m_iballoonDir = Dir;
+	balloon->m_bOnceFlg = false;
 }

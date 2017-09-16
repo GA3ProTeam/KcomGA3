@@ -90,6 +90,7 @@ void CObjMenuTab::Action()
 		}//マウス左クリックが離されたら、ドラッグ終了
 		else if (!Input()->GetMouButtonL()) {
 			m_bhavesound = false;
+			m_igivesound = -1;
 		}
 	}
 	//--------------------------------------------------------------------------

@@ -35,7 +35,7 @@ void Gimmick::gimmicDraw(int num)
 
 	bool flg = false;//範囲内にマウスがあるかのフラグ
 
-	//マウスの座標を取得
+					 //マウスの座標を取得
 	int mousex = Input()->m_x;
 	int mousey = Input()->m_y;
 
@@ -60,6 +60,8 @@ void Gimmick::gimmicDraw(int num)
 	//OverRayが起動してたらあたり判定をなくす
 	if (!Overlay()->isDraw())
 	{
+		//ドラッグされた音番号を元に戻す（初期化）
+		m_getsound = -1;
 
 		//縦と横(x)カーソルがギミックの当たり範囲に入っているか否か
 		if ((mousex > m_src.left/* + User()->mscroll_x */&& mousex < (m_src.left/* + User()->mscroll_x */ + m_iWidth))
@@ -74,7 +76,6 @@ void Gimmick::gimmicDraw(int num)
 			}
 		}
 		else {
-			m_getsound = -1;
 			m_iballoontime--;
 		}
 

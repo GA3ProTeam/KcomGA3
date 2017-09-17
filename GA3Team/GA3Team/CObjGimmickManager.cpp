@@ -4,11 +4,20 @@
 //引数：
 //select_chara	= 選択したキャラクター番号
 //stage_id		= 選択したステージ番号
+//pLScroll		= 画面左スクロールボタンへの参照
+//pRScroll		= 画面右スクロールボタンへの参照
 //pMenuTab		= メニュータブへの参照
-void CObjGimmickManager::Init(int select_chara, int stage_id, CObjMenuTab* pMenuTab) {
+void CObjGimmickManager::Init(int select_chara, int stage_id,
+	ButtonLScrollScreen* pLScroll, ButtonRScrollScreen* pRScroll, CObjMenuTab* pMenuTab) {
 	
 	//メニュータブへの参照セット
 	m_pMenuTab = pMenuTab;
+
+	//画面左スクロールボタンへの参照セット
+	m_pLScroll = pLScroll;
+
+	//画面右スクロールボタンへの参照セット
+	m_pRScroll = pRScroll;
 
 	m_Stage_ID = ((select_chara + 1) * 10) + stage_id;
 

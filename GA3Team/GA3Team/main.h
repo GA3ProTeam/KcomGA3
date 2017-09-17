@@ -329,8 +329,8 @@ class CUserData
 		int m_iCurrentChara; //選択したキャラクター番号
 
 		//----ユーザーが持つデータ-------
-		//int mSeveData;//サンプルセーブデータ
-		int mscroll_x;
+		//int mSeveData;   //サンプルセーブデータ
+		int mscroll_x;	   //画面スクロール値
 		int m_iNext_Scene; //次のシーン
 		
 		bool m_bsionability;

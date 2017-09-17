@@ -10,15 +10,17 @@ public:
 	CObjGimmickManager() {};
 	~CObjGimmickManager() {};
 
-	//		  選択キャラ, 　ステージID　	  メニュータブへの参照
-	void Init(int select_chara, int stage_id, CObjMenuTab* pMenuTab);//イニシャライズ
+	//		  選択キャラ, 　ステージID　	  画面左スクロールボタンへの参照 画面右スクロールボタンへの参照 メニュータブへの参照
+	void Init(int select_chara, int stage_id, ButtonLScrollScreen* pLScroll, ButtonRScrollScreen* pRScroll, CObjMenuTab* pMenuTab);//イニシャライズ
 	void Destructor();	//デストラクタ
 	void Action();		//アクション
 	void Draw();		//ドロー
 private:
 
-	int m_Stage_ID;			//ステージの番号
+	int m_Stage_ID;//ステージの番号
 
+	ButtonLScrollScreen* m_pLScroll;//画面左スクロールボタンへの参照
+	ButtonRScrollScreen* m_pRScroll;//画面右スクロールボタンへの参照
 	CObjMenuTab* m_pMenuTab;//メニュータブへの参照
 
 	//シオンステージ↓

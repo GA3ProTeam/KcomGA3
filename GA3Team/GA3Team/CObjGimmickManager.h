@@ -2,41 +2,7 @@
 #ifndef __C_OBJ_GIMIMICKMANAGER_H__
 #define __C_OBJ_GIMIMICKMANAGER_H__
 
-//使用オブジェクトのプロトタイプ宣言
-class Gimmickearphone;		
-class Gimmickkoune;			
-class Gimmickcat;			
-class Gimmickbicycle;		
-class Gimmickfiretruck;		
-class GimmickChildren;		
-class GimmickGranny;		
-class GimmickMynah;
-class GimmickShelf;
-class GimmickWindchime;
-class GimmickTelevision;
-class GimmickOven;
-class GimmickKatsuo;
-class GimmickDoor;
-class GimmickDoctorroomDoor;
-class GimmickDog;
-class GimmickManholeCover;
-class GimmickManholeHole;
-class GimmickOldman;
-class GimmickKitten;
-class GimmickCicada;
-class GimmickLittleGirl;
-class GimmickDoctor;
-class GimmickRecorder;
-class GimmickComputer;
-class GimmickMysteryman;
-class GimmickBike;
-class GimmickDoor;
-class GimmickMysteryDoor;
-class GimmickMechanic;
-class GimmickSoundComputer;
-class GimmickMusician;
-class GimmickAunt;
-class CObjDesk;
+//【クラス宣言は必要なくなりました。】
 
 class CObjGimmickManager : public CObj
 {

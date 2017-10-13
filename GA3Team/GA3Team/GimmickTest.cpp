@@ -893,7 +893,6 @@ void Gimmickfiretruck::Draw()
 //void GimmickChildren::Action()//アクション
 //{
 //	
-//	CObjMenuTab* tab= (CObjMenuTab*)Obj()->GetObj(OBJ_MENUTAB);
 //
 //	switch (m_iChild_ID) {
 //	case 1://強気な男の子

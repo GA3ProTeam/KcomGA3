@@ -1890,9 +1890,11 @@ void GimmickMysteryDoor::Action() {
 		if (Input()->m_x > m_iXpos&& Input()->m_x < (m_iXpos + m_iWidth)
 			&& Input()->m_y > m_iYpos && Input()->m_y < (m_iYpos + m_iHeight)) {
 
+			//int Sound_num = GetSound; //‰¹”Ô†Žæ“¾
+
 			//”à‚Ì“ä‰ð‚«...ƒ‰ƒ“ƒv‚Ìˆ—...‰¹”Ô†”»’è
 		   //‹@ŠB‰¹A
-			/*switch () {
+			/*switch (Sound_num) {
 			   case 0:
 				   m_idoorgimmick[0] += 1; //¶’[...–¾
 				   m_idoorgimmick[1] -= 1; //’†‰›...ˆÃ

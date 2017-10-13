@@ -331,6 +331,7 @@ class CUserData
 		//----ユーザーが持つデータ-------
 		//int mSeveData;   //サンプルセーブデータ
 		int mscroll_x;	   //画面スクロール値
+		int mscroll_speed; //画面スクロールスピード
 		int m_iNext_Scene; //次のシーン
 		
 		bool m_bsionability;

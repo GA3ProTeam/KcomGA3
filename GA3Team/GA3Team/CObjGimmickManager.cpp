@@ -416,6 +416,7 @@ void CObjGimmickManager::Action() {
 	case 20:
 	{
 		static int m_iMerueru1 = MERUERU1_WELCOM_TALK;
+		//static int m_iMerueru1 = MERUERU1_KATSUO_TALK1;
 		m_gimmick_oven->m_bActionFlg = false;
 		m_gimmick_oven->m_bActionFlg = false;
 		//m_iMerueru1 = MERUERU1_KATSUO_TALK1;

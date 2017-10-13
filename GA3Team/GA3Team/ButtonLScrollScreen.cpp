@@ -4,7 +4,7 @@
 //引数：
 //scroll_min   = 画面左スクロール上限
 //scroll_speed = スクロール速度
-void ButtonLScrollScreen::Init(int scroll_min, int scroll_speed) {
+void ButtonLScrollScreen::Init(int scroll_min/*, int scroll_speed*/) {
 	//各変数初期化
 
 	m_Button_x = 0;
@@ -15,15 +15,15 @@ void ButtonLScrollScreen::Init(int scroll_min, int scroll_speed) {
 	m_iWidth = 64;   //ボタンの幅
 	m_iHeight = 64;  //ボタンの高さ
 
-	m_iScrollSpeed = scroll_speed;	//スクロール速度
-	m_iScrollMin = scroll_min;		//画面左スクロール上限
+	User()->mscroll_speed += scroll_min / 10;	//スクロールスピード
+	m_iScrollMin = scroll_min;	//画面左スクロール上限
+	m_iScrollflg = false;		//スクロールフラグ
 }
 
 //デストラクタ
 void ButtonLScrollScreen::Destructor() {
 
 }
-
 
 //アクション
 void ButtonLScrollScreen::Action() {
@@ -35,11 +35,21 @@ void ButtonLScrollScreen::Action() {
 	c++;
 	}
 	*/
-
 	if (Push()) {
-		//画面を左へスクロール（オブジェクトを右へ進める）
-		User()->mscroll_x += m_iScrollSpeed;
+		//スクロール有効
+		m_iScrollflg = true;
+		m_iScrollSpeed = User()->mscroll_speed;
 	}
+
+	if (m_iScrollflg) {
+
+		User()->mscroll_x += m_iScrollSpeed;
+
+		m_iScrollSpeed = m_iScrollSpeed*0.92;
+
+	}
+
+
 
 	//スクロールの上限を超さないようにする
 	//（最大値を表すのに変数名をMaxではなく、あえてm_iScroll{Min}としているのは、
@@ -47,7 +57,7 @@ void ButtonLScrollScreen::Action() {
 	if (User()->mscroll_x > m_iScrollMin) {
 
 		User()->mscroll_x = m_iScrollMin;
-
+		m_iScrollflg = false;	//スクロール無効
 	}
 
 }
@@ -75,7 +85,7 @@ void ButtonLScrollScreen::Draw() {
 //スクロールステータス設定
 //scroll_min   = 画面左スクロール上限
 //scroll_speed = スクロール速度
-void ButtonLScrollScreen::SetScroll(int scroll_min, int scroll_speed) {
+void ButtonLScrollScreen::SetScroll(int scroll_min/*, int scroll_speed*/) {
 	m_iScrollMin = scroll_min;		//画面左スクロール上限
-	m_iScrollSpeed = scroll_speed;	//スクロール速度
+	//m_iScrollSpeed = scroll_speed;	//スクロール速度
 }

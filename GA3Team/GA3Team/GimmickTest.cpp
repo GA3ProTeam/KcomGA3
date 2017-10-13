@@ -2122,7 +2122,7 @@ void GimmickTelevision::Draw()
 	m_src.right = m_src.left + m_iWidth;
 
 	//描画
-	Image()->Draw(5, &m_src, &m_dst, col, 0.0f);
+	Image()->DrawEx(EX_MERUERU_MICROWAVE, &m_src, &m_dst, col, 0.0f);
 	//---------------------------------------------------------------------------
 
 	//吹き出し描画＆動作---------------------------------------------------------
@@ -2163,9 +2163,9 @@ void GimmickOven::Draw()
 	//ギミック本体描画-----------------------------------------------------------
 	//切り取り先座標
 	m_dst.top = 0;
-	m_dst.bottom = m_dst.top + 512;
+	m_dst.bottom = m_dst.top + 256;
 	m_dst.left = 0;
-	m_dst.right = m_dst.left + 1024;
+	m_dst.right = m_dst.left + 512;
 
 	//転送先座標
 	m_src.top = m_iYpos;
@@ -2174,7 +2174,7 @@ void GimmickOven::Draw()
 	m_src.right = m_src.left + m_iWidth;
 
 	//描画
-	Image()->Draw(6, &m_src, &m_dst, col, 0.0f);
+	Image()->DrawEx(EX_MERUERU_MICROWAVE, &m_src, &m_dst, col, 0.0f);
 	//---------------------------------------------------------------------------
 
 	//吹き出し描画＆動作---------------------------------------------------------
@@ -2269,7 +2269,7 @@ void GimmickKatsuo::Draw()
 	m_src.right = m_src.left + m_iWidth;
 
 	//描画
-	Image()->Draw(12, &m_src, &m_dst, col, 0.0f);
+	Image()->DrawEx(EX_MERUERU_KATSUO, &m_src, &m_dst, col, 0.0f);
 	//---------------------------------------------------------------------------
 
 	//吹き出し描画＆動作---------------------------------------------------------
@@ -2328,7 +2328,7 @@ void GimmickDoctorroomDoor::Draw()
 	m_src.right = m_src.left + m_iWidth;
 
 	//描画
-	Image()->Draw(13, &m_src, &m_dst, col, 0.0f);
+	Image()->DrawEx(EX_MERUERU_DOOR, &m_src, &m_dst, col, 0.0f);
 	//---------------------------------------------------------------------------
 
 	//吹き出し描画＆動作---------------------------------------------------------

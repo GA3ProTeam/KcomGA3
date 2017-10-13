@@ -91,11 +91,11 @@ void GimmickDoctor::Draw() {
 	Image()->DrawEx(58, &m_src, &m_dst, col, 0.0f);
 	//---------------------------------------------------------------------------
 
+	//ギミック名前描画
+	Font()->StrDraw("博士", m_iXpos, m_iYpos, 20, col);
+
 	//ギミックの動作＆吹き出しの動作・描画
 	this->gimmicDraw(1);
-
-	//【会話終了時】
-	SavedataManeger()->CurrentData->m_btutoriaruflg[0];
 }
 
 //パソコン
@@ -138,6 +138,9 @@ void GimmickComputer::Draw() {
 	//描画
 	Image()->DrawEx(58, &m_src, &m_dst, col, 0.0f);
 	//---------------------------------------------------------------------------
+
+	//ギミック名前描画
+	Font()->StrDraw("パソコン", m_iXpos, m_iYpos, 20, col);
 
 	//ギミックの動作＆吹き出しの動作・描画
 	this->gimmicDraw(1);
@@ -183,6 +186,9 @@ void GimmickRecorder::Draw() {
 	//描画
 	Image()->DrawEx(58, &m_src, &m_dst, col, 0.0f);
 	//---------------------------------------------------------------------------
+
+	//ギミック名前描画
+	Font()->StrDraw("レコーダー", m_iXpos, m_iYpos, 20, col);
 
 	//ギミックの動作＆吹き出しの動作・描画
 	this->gimmicDraw(1);
@@ -230,6 +236,9 @@ void CObjDesk::Draw() {
 	//描画
 	Image()->DrawEx(58, &m_src, &m_dst, col, 0.0f);
 	//---------------------------------------------------------------------------
+
+	//ギミック名前描画
+	Font()->StrDraw("机", m_iXpos, m_iYpos, 20, col);
 }
 //-----------チュートリアル（博士）ステージ↑-------------------------
 
@@ -1468,6 +1477,248 @@ void GimmickOldman::Draw()
 ////ステージ1↑
 //
 ////ステージ2↓
+//女の子
+//イニシャライズ
+void GimmickGirl_Koune2::Init(int xpos, int ypos, int widht, int height, int balloonnum) {
+	//親クラスのInit関数を呼ぶ
+	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
+
+	//吹き出しの初期化
+	InitBall(&m_ball[0], m_iWidth - 50, -48, talk, 1, RED, LOWER_LEFT);
+}
+
+//デストラクタ
+void GimmickGirl_Koune2::Destructor() {
+
+}
+
+//アクション
+void GimmickGirl_Koune2::Action() {
+
+}
+
+//ドロー
+void GimmickGirl_Koune2::Draw() {
+	float col[4] = { 1.0f,1.0f,1.0f,1.0f };
+
+	//ギミック本体描画-----------------------------------------------------------
+	//動作フラグが立っているときのみ描画
+	if (this->m_bActionFlg) {
+		//切り取り先座標
+		m_dst.top = 0;
+		m_dst.bottom = m_dst.top + 64;
+		m_dst.left = 0;
+		m_dst.right = m_dst.left + 64;
+
+		//転送先座標
+		m_src.top = m_iYpos;
+		m_src.bottom = m_src.top + m_iHeight;
+		m_src.left = m_iXpos + User()->mscroll_x;
+		m_src.right = m_src.left + m_iWidth;
+
+		//描画
+		Image()->DrawEx(58, &m_src, &m_dst, col, 0.0f);
+	}
+	//---------------------------------------------------------------------------
+
+	//ギミック名前描画
+	Font()->StrDraw("女の子", m_src.left, m_src.top, 20, col);
+
+	//ギミックの動作＆吹き出しの動作・描画
+	this->gimmicDraw(1);
+}
+
+//シオン
+//イニシャライズ
+void GimmickSion::Init(int xpos, int ypos, int widht, int height, int balloonnum) {
+	//親クラスのInit関数を呼ぶ
+	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
+
+	//吹き出しの初期化
+	InitBall(&m_ball[0], m_iWidth - 50, -48, talk, 1, RED, LOWER_LEFT);
+}
+
+//デストラクタ
+void GimmickSion::Destructor() {
+
+}
+
+//アクション
+void GimmickSion::Action() {
+
+}
+
+//ドロー
+void GimmickSion::Draw() {
+	float col[4] = { 1.0f,1.0f,1.0f,1.0f };
+
+	//ギミック本体描画-----------------------------------------------------------
+	//切り取り先座標
+	m_dst.top = 64;
+	m_dst.bottom = m_dst.top + 64;
+	m_dst.left = 0;
+	m_dst.right = m_dst.left + 64;
+
+	//転送先座標
+	m_src.top = m_iYpos;
+	m_src.bottom = m_src.top + m_iHeight;
+	m_src.left = m_iXpos + User()->mscroll_x;
+	m_src.right = m_src.left + m_iWidth;
+
+	//描画
+	Image()->DrawEx(58, &m_src, &m_dst, col, 0.0f);
+	//---------------------------------------------------------------------------
+
+	//ギミック名前描画
+	Font()->StrDraw("シオン", m_src.left, m_src.top, 20, col);
+
+	//ギミックの動作＆吹き出しの動作・描画
+	this->gimmicDraw(1);
+}
+
+//少年A
+//イニシャライズ
+void GimmickBoyA::Init(int xpos, int ypos, int widht, int height, int balloonnum) {
+	//親クラスのInit関数を呼ぶ
+	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
+
+	//吹き出しの初期化
+	InitBall(&m_ball[0], m_iWidth - 50, -48, talk, 1, RED, LOWER_LEFT);
+}
+
+//デストラクタ
+void GimmickBoyA::Destructor() {
+
+}
+
+//アクション
+void GimmickBoyA::Action() {
+
+}
+
+//ドロー
+void GimmickBoyA::Draw() {
+	float col[4] = { 1.0f,1.0f,1.0f,1.0f };
+
+	//ギミック本体描画-----------------------------------------------------------
+	//切り取り先座標
+	m_dst.top = 128;
+	m_dst.bottom = m_dst.top + 64;
+	m_dst.left = 0;
+	m_dst.right = m_dst.left + 64;
+
+	//転送先座標
+	m_src.top = m_iYpos;
+	m_src.bottom = m_src.top + m_iHeight;
+	m_src.left = m_iXpos + User()->mscroll_x;
+	m_src.right = m_src.left + m_iWidth;
+
+	//描画
+	Image()->DrawEx(58, &m_src, &m_dst, col, 0.0f);
+	//---------------------------------------------------------------------------
+
+	//ギミック名前描画
+	Font()->StrDraw("少年A", m_src.left, m_src.top, 20, col);
+
+	//ギミックの動作＆吹き出しの動作・描画
+	this->gimmicDraw(1);
+}
+
+//少年B
+//イニシャライズ
+void GimmickBoyB::Init(int xpos, int ypos, int widht, int height, int balloonnum) {
+	//親クラスのInit関数を呼ぶ
+	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
+
+	//吹き出しの初期化
+	InitBall(&m_ball[0], m_iWidth - 50, -48, talk, 1, RED, LOWER_LEFT);
+}
+
+//デストラクタ
+void GimmickBoyB::Destructor() {
+
+}
+
+//アクション
+void GimmickBoyB::Action() {
+
+}
+
+//ドロー
+void GimmickBoyB::Draw() {
+	float col[4] = { 1.0f,1.0f,1.0f,1.0f };
+
+	//ギミック本体描画-----------------------------------------------------------
+	//切り取り先座標
+	m_dst.top = 192;
+	m_dst.bottom = m_dst.top + 64;
+	m_dst.left = 0;
+	m_dst.right = m_dst.left + 64;
+
+	//転送先座標
+	m_src.top = m_iYpos;
+	m_src.bottom = m_src.top + m_iHeight;
+	m_src.left = m_iXpos + User()->mscroll_x;
+	m_src.right = m_src.left + m_iWidth;
+
+	//描画
+	Image()->DrawEx(58, &m_src, &m_dst, col, 0.0f);
+	//---------------------------------------------------------------------------
+
+	//ギミック名前描画
+	Font()->StrDraw("少年B", m_src.left, m_src.top, 20, col);
+
+	//ギミックの動作＆吹き出しの動作・描画
+	this->gimmicDraw(1);
+}
+
+//窓
+//イニシャライズ
+void GimmickWindow_Koune2::Init(int xpos, int ypos, int widht, int height, int balloonnum) {
+	//親クラスのInit関数を呼ぶ
+	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
+
+	//吹き出しの初期化
+	InitBall(&m_ball[0], m_iWidth - 50, -48, talk, 1, RED, LOWER_LEFT);
+}
+
+//デストラクタ
+void GimmickWindow_Koune2::Destructor() {
+
+}
+
+//アクション
+void GimmickWindow_Koune2::Action() {
+
+}
+
+//ドロー
+void GimmickWindow_Koune2::Draw() {
+	float col[4] = { 1.0f,1.0f,1.0f,1.0f };
+
+	//ギミック本体描画-----------------------------------------------------------
+	//切り取り先座標
+	m_dst.top = 256;
+	m_dst.bottom = m_dst.top + 64;
+	m_dst.left = 0;
+	m_dst.right = m_dst.left + 64;
+
+	//転送先座標
+	m_src.top = m_iYpos;
+	m_src.bottom = m_src.top + m_iHeight;
+	m_src.left = m_iXpos + User()->mscroll_x;
+	m_src.right = m_src.left + m_iWidth;
+
+	//描画
+	Image()->DrawEx(58, &m_src, &m_dst, col, 0.0f);
+	//---------------------------------------------------------------------------
+
+	//ギミック名前描画
+	Font()->StrDraw("窓", m_src.left, m_src.top, 20, col);
+
+	//ギミックの動作＆吹き出しの動作・描画
+	this->gimmicDraw(1);
+}
 ////ステージ2↑
 //
 ////ステージ3↓

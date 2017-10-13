@@ -30,7 +30,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 	*/
 	SavedataManeger()->Setcurrentdata();
 
-	m_Stage_ID = 20;
+	m_Stage_ID = 40;
 
 	switch (m_Stage_ID) {
 
@@ -210,7 +210,37 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 
 		break;
 	case 31:
+		//コウネステージ２　ギミック生成
+		//女の子
+		m_gimmick_girl_koune2 = new GimmickGirl_Koune2();
+		Obj()->InsertObj(m_gimmick_girl_koune2, GIMMICK_GIRL_KOUNE2, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_girl_koune2->Init(595, 275, 130, 195, 1);
+		//非表示＆動作不可に
+		m_gimmick_girl_koune2->m_bActionFlg = false;
 
+		//シオン
+		m_gimmick_sion = new GimmickSion();
+		Obj()->InsertObj(m_gimmick_sion, GIMMICK_SION, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_sion->Init(925, 275, 130, 195, 1);
+
+		//少年A
+		m_gimmick_boy_a = new GimmickBoyA();
+		Obj()->InsertObj(m_gimmick_boy_a, GIMMICK_BOY_A, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_boy_a->Init(50, 270, 130, 195, 1);
+
+		//少年B
+		m_gimmick_boy_b = new GimmickBoyB();
+		Obj()->InsertObj(m_gimmick_boy_b, GIMMICK_BOY_B, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_boy_b->Init(240, 270, 130, 195, 1);
+
+		//窓
+		m_gimmick_window_koune2 = new GimmickWindow_Koune2();
+		Obj()->InsertObj(m_gimmick_window_koune2, GIMMICK_WINDOW_KOUNE2, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_window_koune2->Init(930, 150, 250, 200, 1);
+
+		//スクロールステータス設定
+		m_pLScroll->SetScroll(0, 10);
+		m_pRScroll->SetScroll(400, 10);
 
 
 		break;
@@ -412,6 +442,76 @@ void CObjGimmickManager::Action() {
 
 	
 	switch (m_Stage_ID) {
+	//	//-シオンステージ-----------------------------------------
+	//case 10:
+	//	break;
+	//case 11:
+	//	break;
+	//case 12:
+	//	if(m_gimmick_granny->m_ball[0].OnPush) {
+	//			Overlay()->talkDraw(SION, SION3_OBATYAN);
+	//		}
+
+	//	switch (m_gimmick_children->GetChild_ID) {
+	//	case 1://強気な男の子
+	//		//if (m_getsound == /*ほしい音*/) {
+	//		//	SavedataManeger()->CurrentData->m_bSionflg[3] = true;
+	//		//}
+
+	//		if (SavedataManeger()->CurrentData->m_bSionflg[3] == true && m_gimmick_children->m_ball[0].OnPush) {
+	//			Overlay()->talkDraw(SION, SION3_FLAG_YES_CHILD1);
+	//		}
+	//		else if (m_gimmick_children->m_ball[0].OnPush) {
+	//			Overlay()->talkDraw(SION, SION3_FLAG_NO_CHILD1);
+	//		}
+	//		break;
+
+	//	case 2://優しい女の子
+	//		//if (m_getsound == /*ほしい音*/) {
+	//		//	SavedataManeger()->CurrentData->m_bSionflg[4] = true;
+	//		//}
+
+	//		if (SavedataManeger()->CurrentData->m_bSionflg[4] == true && m_gimmick_children->m_ball[0].OnPush) {
+	//			Overlay()->talkDraw(SION, SION3_FLAG_YES_CHILD2);
+	//		}
+	//		else if (m_gimmick_children->m_ball[0].OnPush) {
+	//			Overlay()->talkDraw(SION, SION3_FLAG_NO_CHILD2);
+	//		}
+
+	//		break;
+
+	//	case 3://弱気な男の子
+	//		//if (m_getsound == /*ほしい音*/) {
+	//		//	SavedataManeger()->CurrentData->m_bSionflg[5] = true;
+	//		//}
+
+	//		if (SavedataManeger()->CurrentData->m_bSionflg[5] == true && m_gimmick_children->m_ball[0].OnPush) {
+	//			Overlay()->talkDraw(SION, SION3_FLAG_YES_CHILD3);
+	//		}
+	//		else if (m_gimmick_children->m_ball[0].OnPush) {
+	//			Overlay()->talkDraw(SION, SION3_FLAG_NO_CHILD3);
+	//		}
+
+	//		break;
+
+	//	}
+
+	//	if (SavedataManeger()->CurrentData->m_bSionflg[3] == true && 
+	//		SavedataManeger()->CurrentData->m_bSionflg[4] == true && 
+	//		SavedataManeger()->CurrentData->m_bSionflg[5] == true) {
+
+	//		Overlay()->talkDraw(SION, SION3_CLEAR);
+
+	//		SavedataManeger()->CurrentData->m_bSionClearflg[2] = true;
+	//	}
+
+		//break;
+	case 13:
+		break;
+	case 14:
+		break;
+	case 15:
+		break;
 	//メルエル1
 	case 20:
 	{
@@ -512,11 +612,32 @@ void CObjGimmickManager::Action() {
 			//}
 		}
 	}
+	case 21:
+		break;
+	case 22:
+		break;
+	case 23:
+		break;
+	case 24:
+		break;
+	case 25:
+		break;
+	//-コウネステージ-----------------------------------------
+	case 30:
+		break;
+	case 31:
+		break;
 	case 32:
 	{
 
 		break;
 	}
+	case 33:
+		break;
+	case 34:
+		break;
+	case 35:
+		break;
 
 	//チュートリアルステージ（博士）
 	case 40:

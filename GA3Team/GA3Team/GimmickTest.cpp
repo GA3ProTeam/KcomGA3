@@ -1437,7 +1437,7 @@ void GimmickDog::Draw()
 	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
 	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
 	//描画
-	Image()->DrawEx(15, &m_src, &m_dst, col, 0.0f);
+	Image()->DrawEx(16, &m_src, &m_dst, col, 0.0f);
 }	
 //マンホールの蓋のデストラクタ
 void GimmickManholeCover::Init(int xpos, int ypos, int widht, int height, int balloonnum)
@@ -1475,7 +1475,7 @@ void GimmickManholeCover::Draw()
 	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
 	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
 	//描画
-	Image()->DrawEx(1, &m_src, &m_dst, col, 0.0f);
+	Image()->DrawEx(2, &m_src, &m_dst, col, 0.0f);
 }//マンホールの穴のデストラクタ
 void GimmickManholeHole::Init(int xpos, int ypos, int widht, int height, int balloonnum)
 {
@@ -1510,7 +1510,7 @@ void GimmickManholeHole::Draw()
 	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
 	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
 	//描画
-	Image()->DrawEx(1, &m_src, &m_dst, col, 0.0f);
+	Image()->DrawEx(3, &m_src, &m_dst, col, 0.0f);
 }//老人のデストラクタ
 void GimmickOldman::Init(int xpos, int ypos, int widht, int height, int balloonnum)
 {

@@ -182,12 +182,12 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 		m_gimmick_dog->Init(500, 300, 140, 100, 1);
 		
 		m_gimmick_manhole_cover = new GimmickManholeCover();
-		Obj()->InsertObj(m_gimmick_manhole_cover, GIMMICK_MANHOLECOVER, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_manhole_cover->Init(100, 400, 120, 40, 1);
+		Obj()->InsertObj(m_gimmick_manhole_cover, GIMMICK_MANHOLECOVER, 2, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_manhole_cover->Init(100, 400, 120, 40, 2);
 		
 		m_gimmick_manhole_hole = new GimmickManholeHole();
-		Obj()->InsertObj(m_gimmick_manhole_hole, GIMMICK_MANHOLEHOLE, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_manhole_hole->Init(100, 400, 120, 40, 1);
+		Obj()->InsertObj(m_gimmick_manhole_hole, GIMMICK_MANHOLEHOLE, 3, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_manhole_hole->Init(100, 400, 120, 40, 3);
 
 		m_gimmick_oldman = new GimmickOldman();
 		Obj()->InsertObj(m_gimmick_oldman, GIMMICK_OLDMAN, 5, this->m_pScene, HIT_BOX_OFF);
@@ -601,7 +601,7 @@ void CObjGimmickManager::Draw() {
 		m_src.right = m_src.left + 1200;
 
 		//”wŒi•`‰æ
-		Image()->DrawEx(24, &m_src, &m_dst, col, 0.0f);
+		Image()->DrawEx(25, &m_src, &m_dst, col, 0.0f);
 break;
 
 	case 31:

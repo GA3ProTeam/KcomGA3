@@ -120,7 +120,7 @@ void CTextManager::LoadText()
 				int index = distance(tmpData.begin(), itr);
 				char emotemp[64];
 				char nametemp[64];
-				sprintf_s(nametemp, "%d%s@", index, (*itr).c_str());
+				sprintf_s(nametemp, "%02d%s@", index, (*itr).c_str());
 				itr = tmpData.erase(itr);
 				if ((*itr).find("[2_") != -1) {
 					(*itr).pop_back();
@@ -198,7 +198,7 @@ void CTextManager::LoadText()
 				int index = distance(tmpData.begin(), itr);
 				char emotemp[64];
 				char nametemp[64];
-				sprintf_s(nametemp, "%d%s@", index, (*itr).c_str());
+				sprintf_s(nametemp, "%02d%s@", index, (*itr).c_str());
 				itr = tmpData.erase(itr);
 				if ((*itr).find("[2_") != -1) {
 					(*itr).pop_back();
@@ -275,7 +275,7 @@ void CTextManager::LoadText()
 				int index = distance(tmpData.begin(), itr);
 				char emotemp[64];
 				char nametemp[64];
-				sprintf_s(nametemp, "%d%s@", index, (*itr).c_str());
+				sprintf_s(nametemp, "%02d%s@", index, (*itr).c_str());
 				itr = tmpData.erase(itr);
 				if ((*itr).find("[2_") != -1) {
 					(*itr).pop_back();
@@ -352,7 +352,7 @@ void CTextManager::LoadText()
 				int index = distance(tmpData.begin(), itr);
 				char emotemp[64];
 				char nametemp[64];
-				sprintf_s(nametemp, "%d%s@", index, (*itr).c_str());
+				sprintf_s(nametemp, "%02d%s@", index, (*itr).c_str());
 				itr = tmpData.erase(itr);
 				if ((*itr).find("[2_") != -1) {
 					(*itr).pop_back();
@@ -418,7 +418,7 @@ char *CTextManager::GetCharaName(int stage, int stageID, int linecount)
 {
 	char *str = new char[32];
 	char linec[64];
-	sprintf_s(linec, "%d", linecount);
+	sprintf_s(linec, "%02d", linecount);
 
 	switch (stage)
 	{
@@ -426,7 +426,7 @@ char *CTextManager::GetCharaName(int stage, int stageID, int linecount)
 		for (auto itr = m_Tutorial_Control[stageID].begin(); itr != m_Tutorial_Control[stageID].end(); ++itr) {
 			if ((*itr).find(linec) != -1) {
 				string st((*itr));
-				st.erase(st.begin());
+				st.erase(st.begin(),st.begin()+2);
 				if ((*itr).find("@") != -1) {
 					string stb = st.substr(0,st.find("@"));
 					strcpy(str, stb.c_str());
@@ -438,7 +438,7 @@ char *CTextManager::GetCharaName(int stage, int stageID, int linecount)
 		for (auto itr = m_Sion_Control[stageID].begin(); itr != m_Sion_Control[stageID].end(); ++itr) {
 			if ((*itr).find(linec) != -1) {
 				string st((*itr));
-				st.erase(st.begin());
+				st.erase(st.begin(), st.begin() + 2);
 				if ((*itr).find("@") != -1) {
 					string stb = st.substr(0, st.find("@"));
 					strcpy(str, stb.c_str());
@@ -450,7 +450,7 @@ char *CTextManager::GetCharaName(int stage, int stageID, int linecount)
 		for (auto itr = m_Koune_Control[stageID].begin(); itr != m_Koune_Control[stageID].end(); ++itr) {
 			if ((*itr).find(linec) != -1) {
 				string st((*itr));
-				st.erase(st.begin());
+				st.erase(st.begin(), st.begin() + 2);
 				if ((*itr).find("@") != -1) {
 					string stb = st.substr(0, st.find("@"));
 					strcpy(str, stb.c_str());
@@ -462,7 +462,7 @@ char *CTextManager::GetCharaName(int stage, int stageID, int linecount)
 		for (auto itr = m_Merueru_Control[stageID].begin(); itr != m_Merueru_Control[stageID].end(); ++itr) {
 			if ((*itr).find(linec) != -1) {
 				string st((*itr));
-				st.erase(st.begin());
+				st.erase(st.begin(), st.begin() + 2);
 				if ((*itr).find("@") != -1) {
 					string stb = st.substr(0, st.find("@"));
 					strcpy(str, stb.c_str());
@@ -478,7 +478,7 @@ char *CTextManager::GetCharaExp(int stage, int stageID, int linecount)
 {
 	char *str = new char[32];
 	char linec[64];
-	sprintf_s(linec, "%d", linecount);
+	sprintf_s(linec, "%02d", linecount);
 
 	switch (stage)
 	{
@@ -486,7 +486,7 @@ char *CTextManager::GetCharaExp(int stage, int stageID, int linecount)
 		for (auto itr = m_Tutorial_Control[stageID].begin(); itr != m_Tutorial_Control[stageID].end(); ++itr) {
 			if ((*itr).find(linec) != -1) {
 				string st((*itr));
-				st.erase(st.begin());
+				st.erase(st.begin(), st.begin() + 2);
 				if ((*itr).find("@") != -1) {
 					string stb = st.substr(st.find("@"), st.size());
 					stb.erase(stb.begin());
@@ -499,7 +499,7 @@ char *CTextManager::GetCharaExp(int stage, int stageID, int linecount)
 		for (auto itr = m_Sion_Control[stageID].begin(); itr != m_Sion_Control[stageID].end(); ++itr) {
 			if ((*itr).find(linec) != -1) {
 				string st((*itr));
-				st.erase(st.begin());
+				st.erase(st.begin(), st.begin() + 2);
 				if ((*itr).find("@") != -1) {
 					string stb = st.substr(st.find("@"), st.size());
 					stb.erase(stb.begin());
@@ -512,7 +512,7 @@ char *CTextManager::GetCharaExp(int stage, int stageID, int linecount)
 		for (auto itr = m_Koune_Control[stageID].begin(); itr != m_Koune_Control[stageID].end(); ++itr) {
 			if ((*itr).find(linec) != -1) {
 				string st((*itr));
-				st.erase(st.begin());
+				st.erase(st.begin(), st.begin() + 2);
 				if ((*itr).find("@") != -1) {
 					string stb = st.substr(st.find("@"), st.size());
 					stb.erase(stb.begin());
@@ -525,7 +525,7 @@ char *CTextManager::GetCharaExp(int stage, int stageID, int linecount)
 		for (auto itr = m_Merueru_Control[stageID].begin(); itr != m_Merueru_Control[stageID].end(); ++itr) {
 			if ((*itr).find(linec) != -1) {
 				string st((*itr));
-				st.erase(st.begin());
+				st.erase(st.begin(), st.begin() + 2);
 				if ((*itr).find("@") != -1) {
 					string stb = st.substr(st.find("@"), st.size());
 					stb.erase(stb.begin());

@@ -1,17 +1,22 @@
 #include "main.h"
 
 //イニシャライズ
-void ButtonRScrollScreen::Init() {
+//引数：
+//scroll_max   = 画面右スクロール上限
+//scroll_speed = スクロール速度
+void ButtonRScrollScreen::Init(int scroll_max, int scroll_speed) {
+	//各変数初期化
 
-
-	m_Button_x = WINDOW_SIZE_W-64;
-	m_Button_y = WINDOW_SIZE_H-64;
+	m_Button_x = WINDOW_SIZE_W - 64;
+	m_Button_y = WINDOW_SIZE_H - 64;
 
 	m_iXpos = m_Button_x;    //ボタンの位置X
 	m_iYpos = m_Button_y;    //ボタンの位置Y
 	m_iWidth = 64;   //ボタンの幅
 	m_iHeight = 64;  //ボタンの高さ
 
+	m_iScrollSpeed = scroll_speed;	//スクロール速度
+	m_iScrollMax = -scroll_max;		//画面右スクロール上限
 }
 
 //デストラクタ
@@ -24,20 +29,21 @@ void ButtonRScrollScreen::Destructor() {
 void ButtonRScrollScreen::Action() {
 
 	if (Push()) {
-		User()->mscroll_x -= 10;
+		//画面を右へスクロール（オブジェクトを左へ進める）
+		User()->mscroll_x -= m_iScrollSpeed;
 	}
 
-	if (User()->mscroll_x < 0) {
+	//最小値を下回らないようにする
+	//（最小値を表すのに変数名をMinではなく、あえてm_iScroll{Max}としているのは、
+	//「右端」というのを直感的にわかりやすくしたためです。）
+	if (User()->mscroll_x < m_iScrollMax) {
 
-		User()->mscroll_x = 0;
+		User()->mscroll_x = m_iScrollMax;
 
 	}
-
-
 
 	//デバッグ用
 	sprintf(strsave, "%d", User()->mscroll_x);
-
 }
 
 //ドロー
@@ -61,4 +67,12 @@ void ButtonRScrollScreen::Draw() {
 	Font()->StrDraw(strsave, 0, 500, 16, col);
 
 
+}
+
+//スクロールステータス設定
+//scroll_max   = 画面右スクロール上限
+//scroll_speed = スクロール速度
+void ButtonRScrollScreen::SetScroll(int scroll_max, int scroll_speed) {
+	m_iScrollMax = -scroll_max;		//画面右スクロール上限
+	m_iScrollSpeed = scroll_speed;	//スクロール速度
 }

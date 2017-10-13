@@ -2,41 +2,7 @@
 #ifndef __C_OBJ_GIMIMICKMANAGER_H__
 #define __C_OBJ_GIMIMICKMANAGER_H__
 
-//使用オブジェクトのプロトタイプ宣言
-class Gimmickearphone;		
-class Gimmickkoune;			
-class Gimmickcat;			
-class Gimmickbicycle;		
-class Gimmickfiretruck;		
-class GimmickChildren;		
-class GimmickGranny;		
-class GimmickMynah;
-class GimmickShelf;
-class GimmickWindchime;
-class GimmickTelevision;
-class GimmickOven;
-class GimmickKatsuo;
-class GimmickDoor;
-class GimmickDoctorroomDoor;
-class GimmickDog;
-class GimmickManholeCover;
-class GimmickManholeHole;
-class GimmickOldman;
-class GimmickKitten;
-class GimmickCicada;
-class GimmickLittleGirl;
-class GimmickDoctor;
-class GimmickRecorder;
-class GimmickComputer;
-class GimmickMysteryman;
-class GimmickBike;
-class GimmickDoor;
-class GimmickMysteryDoor;
-class GimmickMechanic;
-class GimmickSoundComputer;
-class GimmickMusician;
-class GimmickAunt;
-
+//【クラス宣言は必要なくなりました。】
 
 class CObjGimmickManager : public CObj
 {
@@ -44,14 +10,18 @@ public:
 	CObjGimmickManager() {};
 	~CObjGimmickManager() {};
 
-	//			　選択キャラ, 　　　ステージID
-	void Init(int select_chara, int stage_id);		//イニシャライズ
+	//		  選択キャラ, 　ステージID　	  画面左スクロールボタンへの参照 画面右スクロールボタンへの参照 メニュータブへの参照
+	void Init(int select_chara, int stage_id, ButtonLScrollScreen* pLScroll, ButtonRScrollScreen* pRScroll, CObjMenuTab* pMenuTab);//イニシャライズ
 	void Destructor();	//デストラクタ
 	void Action();		//アクション
 	void Draw();		//ドロー
 private:
 
-	int m_Stage_ID;			//ステージの番号
+	int m_Stage_ID;//ステージの番号
+
+	ButtonLScrollScreen* m_pLScroll;//画面左スクロールボタンへの参照
+	ButtonRScrollScreen* m_pRScroll;//画面右スクロールボタンへの参照
+	CObjMenuTab* m_pMenuTab;//メニュータブへの参照
 
 	//シオンステージ↓
 	//ステージ1↓
@@ -128,6 +98,7 @@ private:
 	GimmickDoctor* m_gimmick_doctor;
 	GimmickRecorder* m_gimmick_recorder;
 	GimmickComputer* m_gimmick_computer;
+	CObjDesk*		 m_obj_desk;
 	//チュートリアル↑
 
 

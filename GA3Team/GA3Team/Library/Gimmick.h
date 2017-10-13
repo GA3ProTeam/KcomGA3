@@ -12,28 +12,28 @@ enum BalloonType {
 };
 //吹き出しの色(シオンの能力発動時)
 enum BalloonColor {
-	CNONE  = -1, //色無し
+	CNONE = -1, //色無し
 	NORMAL = 0,  //通常
-	RED    = 64, //赤
-	BLUE   = 128, //青
-	GREEN  = 192,//緑
+	RED = 64, //赤
+	BLUE = 128, //青
+	GREEN = 192,//緑
 	YELLOW = 256,//黄
 	ORANGE = 320,//オレンジ
 	PURPLE = 384,//紫
-	GRAY   = 448,//灰
-	ASH    = 512,//茶
-	PINK   = 576,//ピンク
+	GRAY = 448,//灰
+	ASH = 512,//茶
+	PINK = 576,//ピンク
 };
 //吹き出しの形(吹き出しのチョンの部分の方向)
 enum Balloondir {
-	LOWER_LEFT  = 0,   //左下
+	LOWER_LEFT = 0,   //左下
 	LOWER_RIGHT = 64,  //右下
-	UPPER_LEFT  = 128, //左上
+	UPPER_LEFT = 128, //左上
 	UPPER_RIGHT = 192, //右上
-	UNDER       = 256, //真下
-	UPPER       = 320, //真上
-	LEFT        = 384, //真左
-	RIGHT       = 448, //真右
+	UNDER = 256, //真下
+	UPPER = 320, //真上
+	LEFT = 384, //真左
+	RIGHT = 448, //真右
 };
 
 //吹き出し構造体
@@ -48,6 +48,7 @@ typedef struct
 	RECT m_gimsrc;		//転送先座標
 	int m_soundnum;     //ギミックが持っている音情報					 
 	bool OnPush;        //押されたかどうかを判断する
+	bool m_bOnceFlg;	//クリックした際一度だけ反応するためのフラグ
 }Balloon;
 
 //プロトタイプ宣言
@@ -56,26 +57,26 @@ void InitBall(Balloon* balloon, int gimX, int gimY, int balltype, int soundnum, 
 
 //ギミッククラス(基底)
 class Gimmick : public CObj {
-friend class CObjGimmickManager;
+	friend class CObjGimmickManager;
 protected:
 	Balloon* m_ball;	//吹き出し
 	bool m_bCursor;	    //ギミックにカーソルが当たっているかのフラグ
 	int m_iballoontime;	//吹き出しの維持時間
 	int m_iballoonnum;  //吹き出しの数
-	
+
 	CObjMenuTab* m_menu_tab;//メニュータブへの参照
 
-//-----------------判定-------------
+							//-----------------判定-------------
 	int m_iXpos;	//ギミックの位置(X)
 	int m_iYpos;	//ギミックの位置(Y)
 	int m_iWidth;	//ギミック幅
 	int m_iHeight;	//ギミック高さ
-//----------------表示位置----------
+					//----------------表示位置----------
 	RECT m_src;			//転送先座標
 	RECT m_dst;			//切り取り座標
 	int m_getsound;		//ギミックに音をドラッグ＆ドロップされたかどうか
 	bool m_bActionFlg;	//ギミック動作フラグ
-	
+
 public:
 	//デストラクタ
 	virtual ~Gimmick() {

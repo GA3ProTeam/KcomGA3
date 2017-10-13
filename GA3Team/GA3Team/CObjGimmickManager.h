@@ -76,6 +76,13 @@ private:
 	GimmickOldman*  m_gimmick_oldman;
 	//ステージ1↑
 
+	//ステージ2↓
+	GimmickGirl_Koune2*		m_gimmick_girl_koune2;
+	GimmickSion*			m_gimmick_sion;
+	GimmickBoyA*			m_gimmick_boy_a;
+	GimmickBoyB*			m_gimmick_boy_b;
+	GimmickWindow_Koune2*	m_gimmick_window_koune2;
+	//ステージ2↑
 
 	//ステージ3↓
 	GimmickKitten* m_gimmick_kitten;

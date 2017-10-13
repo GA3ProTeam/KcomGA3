@@ -424,6 +424,85 @@ private:
 //ステージ1↑
 
 //ステージ2↓
+//女の子
+class GimmickGirl_Koune2 : public Gimmick
+{
+private:
+
+public:
+	GimmickGirl_Koune2() {};
+	~GimmickGirl_Koune2() {};
+
+	void Init(int xpos, int ypos, int widht, int height, int balloonnum);//イニシャライズ
+	void Destructor();	//デストラクタ
+	void Action();		//アクション
+	void Draw();		//ドロー
+
+};
+
+//シオン
+class GimmickSion : public Gimmick
+{
+private:
+
+public:
+	GimmickSion() {};
+	~GimmickSion() {};
+
+	void Init(int xpos, int ypos, int widht, int height, int balloonnum);//イニシャライズ
+	void Destructor();	//デストラクタ
+	void Action();		//アクション
+	void Draw();		//ドロー
+
+};
+
+//少年A
+class GimmickBoyA : public Gimmick
+{
+private:
+
+public:
+	GimmickBoyA() {};
+	~GimmickBoyA() {};
+
+	void Init(int xpos, int ypos, int widht, int height, int balloonnum);//イニシャライズ
+	void Destructor();	//デストラクタ
+	void Action();		//アクション
+	void Draw();		//ドロー
+
+};
+
+//少年B
+class GimmickBoyB : public Gimmick
+{
+private:
+
+public:
+	GimmickBoyB() {};
+	~GimmickBoyB() {};
+
+	void Init(int xpos, int ypos, int widht, int height, int balloonnum);//イニシャライズ
+	void Destructor();	//デストラクタ
+	void Action();		//アクション
+	void Draw();		//ドロー
+
+};
+
+//窓
+class GimmickWindow_Koune2 : public Gimmick
+{
+private:
+
+public:
+	GimmickWindow_Koune2() {};
+	~GimmickWindow_Koune2() {};
+
+	void Init(int xpos, int ypos, int widht, int height, int balloonnum);//イニシャライズ
+	void Destructor();	//デストラクタ
+	void Action();		//アクション
+	void Draw();		//ドロー
+
+};
 //ステージ2↑
 
 //ステージ3↓

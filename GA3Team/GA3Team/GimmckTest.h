@@ -67,6 +67,27 @@ public:
 private:
 
 };
+
+//机(特にギミック動作処理等がないので、CObjクラスを継承しています。)
+class CObjDesk : public CObj {
+public:
+	CObjDesk() {}
+	~CObjDesk() {}
+
+	void Init(int x, int y, int w, int h);//イニシャライズ
+	void Destructor();			//デストラクタ
+	void Action();				//アクション
+	void Draw();				//ドロー
+
+private:
+	int m_iXpos;	//位置(X)
+	int m_iYpos;	//位置(Y)
+	int m_iWidth;	//幅
+	int m_iHeight;	//高さ
+
+	RECT m_src;//転送先座標
+	RECT m_dst;//切り取り座標
+};
 //-----------チュートリアル（博士）ステージ↑--------------------------------------------------------------------------------------------
 
 //-----------シオンステージ↓------------------------------------------------------------------------------------------------------------------
@@ -203,7 +224,7 @@ public:
 	void Destructor();//デストラクタ
 	void Action();//アクション
 	void Draw();//描画
-	//void SetSound(int sound) { m_iSoundNum = sound; };
+	int GetChild_ID() { return m_iChild_ID; };
 	
 };
 
@@ -403,6 +424,85 @@ private:
 //ステージ1↑
 
 //ステージ2↓
+//女の子
+class GimmickGirl_Koune2 : public Gimmick
+{
+private:
+
+public:
+	GimmickGirl_Koune2() {};
+	~GimmickGirl_Koune2() {};
+
+	void Init(int xpos, int ypos, int widht, int height, int balloonnum);//イニシャライズ
+	void Destructor();	//デストラクタ
+	void Action();		//アクション
+	void Draw();		//ドロー
+
+};
+
+//シオン
+class GimmickSion : public Gimmick
+{
+private:
+
+public:
+	GimmickSion() {};
+	~GimmickSion() {};
+
+	void Init(int xpos, int ypos, int widht, int height, int balloonnum);//イニシャライズ
+	void Destructor();	//デストラクタ
+	void Action();		//アクション
+	void Draw();		//ドロー
+
+};
+
+//少年A
+class GimmickBoyA : public Gimmick
+{
+private:
+
+public:
+	GimmickBoyA() {};
+	~GimmickBoyA() {};
+
+	void Init(int xpos, int ypos, int widht, int height, int balloonnum);//イニシャライズ
+	void Destructor();	//デストラクタ
+	void Action();		//アクション
+	void Draw();		//ドロー
+
+};
+
+//少年B
+class GimmickBoyB : public Gimmick
+{
+private:
+
+public:
+	GimmickBoyB() {};
+	~GimmickBoyB() {};
+
+	void Init(int xpos, int ypos, int widht, int height, int balloonnum);//イニシャライズ
+	void Destructor();	//デストラクタ
+	void Action();		//アクション
+	void Draw();		//ドロー
+
+};
+
+//窓
+class GimmickWindow_Koune2 : public Gimmick
+{
+private:
+
+public:
+	GimmickWindow_Koune2() {};
+	~GimmickWindow_Koune2() {};
+
+	void Init(int xpos, int ypos, int widht, int height, int balloonnum);//イニシャライズ
+	void Destructor();	//デストラクタ
+	void Action();		//アクション
+	void Draw();		//ドロー
+
+};
 //ステージ2↑
 
 //ステージ3↓

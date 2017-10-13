@@ -148,6 +148,7 @@ enum OBJ_NAME
 	GIMMICK_DOCTOR,
 	GIMMICK_RECORDER,
 	GIMMICK_COMPUTER,
+	OBJ_DESK,
 	GIMMICK_KITTEN,
 	GIMMICK_CICADA,
 	GIMMICK_LITTLEGIRL,
@@ -160,6 +161,12 @@ enum OBJ_NAME
 	GIMMICK_DOOR4,
 	GIMMICK_MYSTERYMAN,
 	GIMMICK_AUNT,
+
+	GIMMICK_GIRL_KOUNE2,
+	GIMMICK_SION,
+	GIMMICK_BOY_A,
+	GIMMICK_BOY_B,
+	GIMMICK_WINDOW_KOUNE2,
 };
 
 
@@ -301,6 +308,7 @@ inline RECT InitRect(LONG left, LONG top, LONG right, LONG bottom)
 #include "CObjPlayer.h"
 #include "ButtonLScrollScreen.h"
 #include "ButtonRScrollScreen.h"
+#include "GimmckTest.h"
 #include "CObjGimmickManager.h"
 //#include "GimmickKatsuo.h"
 //#include "GimmickDoor.h"
@@ -310,7 +318,7 @@ inline RECT InitRect(LONG left, LONG top, LONG right, LONG bottom)
 
 //----------------------------------------------
 
-#include "GimmckTest.h"
+
 
 
 //ユーザー・セーブ・シーン間受け渡しデータ
@@ -327,8 +335,8 @@ class CUserData
 		int m_iCurrentChara; //選択したキャラクター番号
 
 		//----ユーザーが持つデータ-------
-		//int mSeveData;//サンプルセーブデータ
-		int mscroll_x;
+		//int mSeveData;   //サンプルセーブデータ
+		int mscroll_x;	   //画面スクロール値
 		int m_iNext_Scene; //次のシーン
 		
 		bool m_bsionability;

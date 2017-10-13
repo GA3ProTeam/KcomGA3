@@ -1,18 +1,22 @@
 #include "main.h"
 
 //イニシャライズ
-void ButtonLScrollScreen::Init() {
-
+//引数：
+//scroll_min   = 画面左スクロール上限
+//scroll_speed = スクロール速度
+void ButtonLScrollScreen::Init(int scroll_min, int scroll_speed) {
+	//各変数初期化
 
 	m_Button_x = 0;
-	m_Button_y = WINDOW_SIZE_H-64;
+	m_Button_y = WINDOW_SIZE_H - 64;
 
 	m_iXpos = m_Button_x;    //ボタンの位置X
 	m_iYpos = m_Button_y;    //ボタンの位置Y
 	m_iWidth = 64;   //ボタンの幅
 	m_iHeight = 64;  //ボタンの高さ
 
-
+	m_iScrollSpeed = scroll_speed;	//スクロール速度
+	m_iScrollMin = scroll_min;		//画面左スクロール上限
 }
 
 //デストラクタ
@@ -26,18 +30,23 @@ void ButtonLScrollScreen::Action() {
 	/*
 	static int c = 0;
 	if (c == 0) {
-		SavedataManeger()->Savedata.resize(3);
-		SavedataManeger()->Loadsavedata();
-		c++;
+	SavedataManeger()->Savedata.resize(3);
+	SavedataManeger()->Loadsavedata();
+	c++;
 	}
 	*/
-	
-	if(Push()){
-		User()->mscroll_x+=10;
-	}
-	if (User()->mscroll_x > 400) {
 
-		User()->mscroll_x = 400;
+	if (Push()) {
+		//画面を左へスクロール（オブジェクトを右へ進める）
+		User()->mscroll_x += m_iScrollSpeed;
+	}
+
+	//スクロールの上限を超さないようにする
+	//（最大値を表すのに変数名をMaxではなく、あえてm_iScroll{Min}としているのは、
+	//「左端」というのを直感的にわかりやすくしたためです。）
+	if (User()->mscroll_x > m_iScrollMin) {
+
+		User()->mscroll_x = m_iScrollMin;
 
 	}
 
@@ -61,4 +70,12 @@ void ButtonLScrollScreen::Draw() {
 	Image()->Draw(0, &m_src, &m_dst, col, 0.0f);
 
 
+}
+
+//スクロールステータス設定
+//scroll_min   = 画面左スクロール上限
+//scroll_speed = スクロール速度
+void ButtonLScrollScreen::SetScroll(int scroll_min, int scroll_speed) {
+	m_iScrollMin = scroll_min;		//画面左スクロール上限
+	m_iScrollSpeed = scroll_speed;	//スクロール速度
 }

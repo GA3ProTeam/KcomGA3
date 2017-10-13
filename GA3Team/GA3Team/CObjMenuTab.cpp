@@ -8,6 +8,8 @@ void CObjMenuTab::Init(int openclosey)
 	m_igivesound = -1;//音なし
 	m_icnt = 0;
 
+	m_bGarbageActionFlg = true;//ゴミ箱動作
+
 	m_openclose_x = 736;//開閉ボタンのX
 	m_openclose_y = openclosey;//開閉ボタンのY
 
@@ -17,7 +19,7 @@ void CObjMenuTab::Init(int openclosey)
 	m_iBackTitlex = m_openclose_x;//タイトルの戻るボタンのX
 	m_iBackTitley = m_openclose_y;//タイトルの戻るボタンのY
 
-	//ボタンの位置X
+								  //ボタンの位置X
 	m_iXpos = m_openclose_x;
 	//ボタンの位置Y
 	m_iYpos = m_openclose_y;
@@ -46,7 +48,7 @@ void CObjMenuTab::Action()
 
 			m_openclose_x = 736;//閉じた後の位置をセット
 
-			//ボタンの位置の更新
+								//ボタンの位置の更新
 			m_iXpos = m_openclose_x;
 
 		}
@@ -56,20 +58,23 @@ void CObjMenuTab::Action()
 
 			m_openclose_x = 352;//開いた後の位置をセット
 
-			//ボタンの位置の更新
+								//ボタンの位置の更新
 			m_iXpos = m_openclose_x;
 		}
 	}
 
 	if (m_bOpenClose) {
+
 		//ゴミ箱動作----------------------------------------------------------------
-		//ゴミ箱ボタンの範囲内にマウスがあるか確認
-		if (Input()->m_x > m_isoundx + 192 && Input()->m_x < (m_isoundx + 192 + 64)
-			&& Input()->m_y > m_isoundy && Input()->m_y < (m_isoundy + 64)) {
-			//マウスドラッグ中にマウスボタンが離された
-			if (!Input()->GetMouButtonL() && m_bhavesound) {
-				//ドラッグしていた効果音を削除
-				SoundManager()->SoundDelete(m_igivesound);
+		if (m_bGarbageActionFlg) {
+			//ゴミ箱ボタンの範囲内にマウスがあるか確認
+			if (Input()->m_x > m_isoundx + 192 && Input()->m_x < (m_isoundx + 192 + 64)
+				&& Input()->m_y > m_isoundy && Input()->m_y < (m_isoundy + 64)) {
+				//マウスドラッグ中にマウスボタンが離された
+				if (!Input()->GetMouButtonL() && m_bhavesound) {
+					//ドラッグしていた効果音を削除
+					SoundManager()->SoundDelete(m_igivesound);
+				}
 			}
 		}
 		//--------------------------------------------------------------------------
@@ -87,18 +92,34 @@ void CObjMenuTab::Action()
 		else if (SelectPush(m_isoundx + 128, m_isoundy, 64, 64) && !m_bhavesound) {
 			m_bhavesound = true;//マウスドラッグ開始
 			m_igivesound = 2;//配列[2]番目の音を選択
-		}//マウス左クリックが離されたら、ドラッグ終了
-		else if (!Input()->GetMouButtonL()) {
-			m_bhavesound = false;
+
+		}//マウス左クリックが離されたら、ドラッグ＆ドロップ完了
+		else if (!Input()->GetMouButtonL() && m_bhavesound) {
+
+			//ドラッグ＆ドロップ終了まで１カウント待つ
+			static int drag_drop_end_count = 1;
+
+			//カウント減少
+			if (drag_drop_end_count > 0) {
+				drag_drop_end_count--;
+			}
+			//ドラッグ＆ドロップ終了
+			else {
+				m_bhavesound = false;	//マウスドラッグフラグ解除
+				m_igivesound = -1;		//持っていた音番号を初期化
+				drag_drop_end_count = 1;//カウントを元に戻しておく
+			}
+
 		}
+		//--------------------------------------------------------------------------
+
 	}
-	//--------------------------------------------------------------------------
 
 	//タイトルに戻るボタン動作--------------------------------------------------
 	//タブが開いた後、すぐに反応させないようにする
 	//タブが押されて1秒以上経つと押せるようになる
 	if (SelectPush(m_iBackTitlex, m_iBackTitley, 64, 64) && m_bOpenClose && m_icnt >= 60) {
-		
+
 
 		//SavedataManeger()->Savedata[SavedataManeger()->SelectedData].m_bSionflg[0] = true;
 		SavedataManeger()->Writesavedata();
@@ -106,7 +127,7 @@ void CObjMenuTab::Action()
 		Manager()->Pop(new CSceneStageSelect());//ステージ選択に戻る
 
 	}
-	else if(m_bOpenClose){
+	else if (m_bOpenClose) {
 		m_icnt++;
 	}
 	else {
@@ -139,11 +160,11 @@ void CObjMenuTab::Draw()
 		//機能部分を表示する場所の描画
 
 		//切り取り先座標
-		m_rDst.top = 0; m_rDst.left = 64; 
+		m_rDst.top = 0; m_rDst.left = 64;
 		m_rDst.bottom = 64; m_rDst.right = 256;
 
 		//転送先座標
-		m_rSrc.top = m_openclose_y; m_rSrc.left = m_openclose_x + 64; 
+		m_rSrc.top = m_openclose_y; m_rSrc.left = m_openclose_x + 64;
 		m_rSrc.bottom = m_rSrc.top + 64; m_rSrc.right = 800;
 
 		//描画
@@ -165,7 +186,7 @@ void CObjMenuTab::Draw()
 
 		//音を格納する部分の描画
 		for (int i = 0; i < 3; i++) {
-			if(SoundManager()->GetSound(i) != -1) {
+			if (SoundManager()->GetSound(i) != -1) {
 				//切り取り先座標
 				m_rDst.top = 64; m_rDst.left = 128;
 				m_rDst.bottom = m_rDst.top + 64; m_rDst.right = m_rDst.left + 64;
@@ -177,7 +198,7 @@ void CObjMenuTab::Draw()
 				//描画
 				Image()->Draw(1, &m_rSrc, &m_rDst, m_fCol, 0.0f);
 			}
-			else{
+			else {
 				//切り取り先座標
 				m_rDst.top = 64; m_rDst.left = 64;
 				m_rDst.bottom = m_rDst.top + 64; m_rDst.right = m_rDst.left + 64;

@@ -1,9 +1,23 @@
 #include "main.h"
 
 //イニシャライズ
-void CObjGimmickManager::Init(int select_chara, int stage_id) {
+//引数：
+//select_chara	= 選択したキャラクター番号
+//stage_id		= 選択したステージ番号
+//pLScroll		= 画面左スクロールボタンへの参照
+//pRScroll		= 画面右スクロールボタンへの参照
+//pMenuTab		= メニュータブへの参照
+void CObjGimmickManager::Init(int select_chara, int stage_id,
+	ButtonLScrollScreen* pLScroll, ButtonRScrollScreen* pRScroll, CObjMenuTab* pMenuTab) {
 	
+	//メニュータブへの参照セット
+	m_pMenuTab = pMenuTab;
 
+	//画面左スクロールボタンへの参照セット
+	m_pLScroll = pLScroll;
+
+	//画面右スクロールボタンへの参照セット
+	m_pRScroll = pRScroll;
 
 	m_Stage_ID = ((select_chara + 1) * 10) + stage_id;
 
@@ -16,7 +30,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 	*/
 	SavedataManeger()->Setcurrentdata();
 
-	m_Stage_ID = 30;
+	m_Stage_ID = 40;
 
 	switch (m_Stage_ID) {
 
@@ -128,7 +142,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 
 	case 20:
 
-	/*	m_gimmick_television = new GimmickTelevision();
+		m_gimmick_television = new GimmickTelevision();
 		Obj()->InsertObj(m_gimmick_television, GIMMICK_TELEVISION, 5, this->m_pScene, HIT_BOX_OFF);
 		m_gimmick_television->Init(50, 300, 250, 125, 1);
 		
@@ -140,10 +154,10 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 		Obj()->InsertObj(m_gimmick_katsuo, GIMMICK_KATSUO, 5, this->m_pScene, HIT_BOX_OFF);
 		m_gimmick_katsuo->Init(-180, 170, 200, 400, 1);
 
-		m_gimmick_door = new GimmickDoctorroomDoor();
-		Obj()->InsertObj(m_gimmick_door, GIMMICK_DOOR, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_door->Init(280, 90, 400, 400, 1);
-		*/
+		m_gimmick_doctorroomdoor = new GimmickDoctorroomDoor();
+		Obj()->InsertObj(m_gimmick_doctorroomdoor, GIMMICK_DOOR, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_doctorroomdoor->Init(280, 90, 400, 400, 1);
+		
 		break;
 	case 21:
 
@@ -196,7 +210,37 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 
 		break;
 	case 31:
+		//コウネステージ２　ギミック生成
+		//女の子
+		m_gimmick_girl_koune2 = new GimmickGirl_Koune2();
+		Obj()->InsertObj(m_gimmick_girl_koune2, GIMMICK_GIRL_KOUNE2, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_girl_koune2->Init(595, 275, 130, 195, 1);
+		//非表示＆動作不可に
+		m_gimmick_girl_koune2->m_bActionFlg = false;
 
+		//シオン
+		m_gimmick_sion = new GimmickSion();
+		Obj()->InsertObj(m_gimmick_sion, GIMMICK_SION, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_sion->Init(925, 275, 130, 195, 1);
+
+		//少年A
+		m_gimmick_boy_a = new GimmickBoyA();
+		Obj()->InsertObj(m_gimmick_boy_a, GIMMICK_BOY_A, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_boy_a->Init(50, 270, 130, 195, 1);
+
+		//少年B
+		m_gimmick_boy_b = new GimmickBoyB();
+		Obj()->InsertObj(m_gimmick_boy_b, GIMMICK_BOY_B, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_boy_b->Init(240, 270, 130, 195, 1);
+
+		//窓
+		m_gimmick_window_koune2 = new GimmickWindow_Koune2();
+		Obj()->InsertObj(m_gimmick_window_koune2, GIMMICK_WINDOW_KOUNE2, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_window_koune2->Init(930, 150, 250, 200, 1);
+
+		//スクロールステータス設定
+		m_pLScroll->SetScroll(0, 10);
+		m_pRScroll->SetScroll(400, 10);
 
 
 		break;
@@ -243,23 +287,23 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 
 		break;
 	case 34:
-		////コウネステージ5
-		////①ドア
-		//m_gimmick_mysterydoor = new GimmickMysteryDoor();
-		//Obj()->InsertObj(m_gimmick_mysterydoor,GIMMICK_MYSTERYDOOR, 5, this->m_pScene, HIT_BOX_OFF);
-		//m_gimmick_mysterydoor->Init(0, 0, 0, 0, 1);
-		////②メカニック
-		//m_gimmick_mechanic = new GimmickMechanic();
-		//Obj()->InsertObj(m_gimmick_mechanic, GIMMICK_MECHANIC, 5, this->m_pScene, HIT_BOX_OFF);
-		//m_gimmick_mechanic->Init(0, 0, 0, 0, 1);
-		////③パソコン
-		//m_gimmick_soundcomputer = new GimmickSoundComputer();
-		//Obj()->InsertObj(m_gimmick_soundcomputer, GIMMICK_SOUNDCOMPUTER, 5, this->m_pScene, HIT_BOX_OFF);
-		//m_gimmick_soundcomputer->Init(0, 0, 0, 0, 1);
-		////④演奏家
-		//m_gimmick_musician = new GimmickMusician();
-		//Obj()->InsertObj(m_gimmick_musician, GIMMICK_MUSICIAN, 5, this->m_pScene, HIT_BOX_OFF);
-		//m_gimmick_musician->Init(0, 0, 0, 0, 1);
+		//コウネステージ5
+		//①ドア
+		m_gimmick_mysterydoor = new GimmickMysteryDoor();
+		Obj()->InsertObj(m_gimmick_mysterydoor,GIMMICK_MYSTERYDOOR, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_mysterydoor->Init(0, 0, 0, 0, 1);
+		//②メカニック
+		m_gimmick_mechanic = new GimmickMechanic();
+		Obj()->InsertObj(m_gimmick_mechanic, GIMMICK_MECHANIC, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_mechanic->Init(0, 0, 0, 0, 1);
+		//③パソコン
+		m_gimmick_soundcomputer = new GimmickSoundComputer();
+		Obj()->InsertObj(m_gimmick_soundcomputer, GIMMICK_SOUNDCOMPUTER, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_soundcomputer->Init(0, 0, 0, 0, 1);
+		//④演奏家
+		m_gimmick_musician = new GimmickMusician();
+		Obj()->InsertObj(m_gimmick_musician, GIMMICK_MUSICIAN, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_musician->Init(0, 0, 0, 0, 1);
 
 
 		break;
@@ -273,20 +317,24 @@ void CObjGimmickManager::Init(int select_chara, int stage_id) {
 	//チュートリアル（博士）ステージ--------------------------
 	case 40:
 		//博士
-		
 		m_gimmick_doctor = new GimmickDoctor();
 		Obj()->InsertObj(m_gimmick_doctor, GIMMICK_DOCTOR, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_doctor->Init(100, 200, 120, 220, 2);
+		m_gimmick_doctor->Init(100, 200, 125, 245, 2);
 
 		//レコーダー
 		m_gimmick_recorder = new GimmickRecorder();
 		Obj()->InsertObj(m_gimmick_recorder, GIMMICK_RECORDER, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_recorder->Init(350, 260, 200, 100, 1);
+		m_gimmick_recorder->Init(368, 237, 80, 130, 1);
 
 		//パソコン
 		m_gimmick_computer = new GimmickComputer();
 		Obj()->InsertObj(m_gimmick_computer, GIMMICK_COMPUTER, 5, this->m_pScene, HIT_BOX_OFF);
 		m_gimmick_computer->Init(550, 250, 200, 200, 1);
+
+		//机
+		m_obj_desk = new CObjDesk();
+		Obj()->InsertObj(m_obj_desk, OBJ_DESK, 5, this->m_pScene, HIT_BOX_OFF);
+		m_obj_desk->Init(286, 310, 242, 145);
 		break;
 	//--------------------------------------------------------
 
@@ -371,6 +419,19 @@ void CObjGimmickManager::Action() {
 		//-----------------------------------------------------------------------------------------------
 
 	};
+	//イベント番号(メルエルステージ1)
+	enum MERUERU1_NUMBER {
+		MERUERU1_WELCOM_TALK,					//開始会話
+		MERUERU1_KATSUO_TALK1,					//カツオ会話1
+		MERUERU1_KATSUO_TALK2,					//カツオ会話2
+		MERUERU1_KATSUO_TALK3,					//カツオ会話3
+		MERUERU1_KATSUO_TALK_END,				//カツオ会話終了
+	};
+
+
+
+
+
 
 	//イベント進行度
 	//チュートリアルステージ
@@ -381,150 +442,328 @@ void CObjGimmickManager::Action() {
 
 	
 	switch (m_Stage_ID) {
+	//	//-シオンステージ-----------------------------------------
+	//case 10:
+	//	break;
+	//case 11:
+	//	break;
+	//case 12:
+	//	if(m_gimmick_granny->m_ball[0].OnPush) {
+	//			Overlay()->talkDraw(SION, SION3_OBATYAN);
+	//		}
+
+	//	switch (m_gimmick_children->GetChild_ID) {
+	//	case 1://強気な男の子
+	//		//if (m_getsound == /*ほしい音*/) {
+	//		//	SavedataManeger()->CurrentData->m_bSionflg[3] = true;
+	//		//}
+
+	//		if (SavedataManeger()->CurrentData->m_bSionflg[3] == true && m_gimmick_children->m_ball[0].OnPush) {
+	//			Overlay()->talkDraw(SION, SION3_FLAG_YES_CHILD1);
+	//		}
+	//		else if (m_gimmick_children->m_ball[0].OnPush) {
+	//			Overlay()->talkDraw(SION, SION3_FLAG_NO_CHILD1);
+	//		}
+	//		break;
+
+	//	case 2://優しい女の子
+	//		//if (m_getsound == /*ほしい音*/) {
+	//		//	SavedataManeger()->CurrentData->m_bSionflg[4] = true;
+	//		//}
+
+	//		if (SavedataManeger()->CurrentData->m_bSionflg[4] == true && m_gimmick_children->m_ball[0].OnPush) {
+	//			Overlay()->talkDraw(SION, SION3_FLAG_YES_CHILD2);
+	//		}
+	//		else if (m_gimmick_children->m_ball[0].OnPush) {
+	//			Overlay()->talkDraw(SION, SION3_FLAG_NO_CHILD2);
+	//		}
+
+	//		break;
+
+	//	case 3://弱気な男の子
+	//		//if (m_getsound == /*ほしい音*/) {
+	//		//	SavedataManeger()->CurrentData->m_bSionflg[5] = true;
+	//		//}
+
+	//		if (SavedataManeger()->CurrentData->m_bSionflg[5] == true && m_gimmick_children->m_ball[0].OnPush) {
+	//			Overlay()->talkDraw(SION, SION3_FLAG_YES_CHILD3);
+	//		}
+	//		else if (m_gimmick_children->m_ball[0].OnPush) {
+	//			Overlay()->talkDraw(SION, SION3_FLAG_NO_CHILD3);
+	//		}
+
+	//		break;
+
+	//	}
+
+	//	if (SavedataManeger()->CurrentData->m_bSionflg[3] == true && 
+	//		SavedataManeger()->CurrentData->m_bSionflg[4] == true && 
+	//		SavedataManeger()->CurrentData->m_bSionflg[5] == true) {
+
+	//		Overlay()->talkDraw(SION, SION3_CLEAR);
+
+	//		SavedataManeger()->CurrentData->m_bSionClearflg[2] = true;
+	//	}
+
+		//break;
+	case 13:
+		break;
+	case 14:
+		break;
+	case 15:
+		break;
+	//メルエル1
+	case 20:
+	{
+		static int m_iMerueru1 = MERUERU1_WELCOM_TALK;
+		m_gimmick_oven->m_bActionFlg = false;
+		m_gimmick_oven->m_bActionFlg = false;
+		//m_iMerueru1 = MERUERU1_KATSUO_TALK1;
+
+		
+		//初回会話
+		if (m_iMerueru1 == MERUERU1_WELCOM_TALK) {
+			
+			Overlay()->talkDraw(MERUERU, MERUERU_START);
+
+			//会話終了
+			if (Overlay()->NextWait()) {
+				m_iMerueru1 = MERUERU1_KATSUO_TALK1;
+			}
+		}
+		
+		//カツオ会話
+		if (m_gimmick_katsuo->m_ball[0].OnPush) {
+
+			//会話1能力なし
+			if (m_iMerueru1 == MERUERU1_KATSUO_TALK1 &&
+				!User()->m_bmerueruability) {
+				Overlay()->talkDraw(MERUERU, MERUERU_KATUO_1_OFF);
+				//会話終了
+				Overlay()->NextWait();
+			}
+			//会話1能力あり
+			else if ( m_iMerueru1 == MERUERU1_KATSUO_TALK1 &&
+				User()->m_bmerueruability ) {
+				Overlay()->talkDraw(MERUERU, MERUERU_KATUO_1_ON);
+				//会話終了
+				if (Overlay()->NextWait()) {
+					m_iMerueru1 = MERUERU1_KATSUO_TALK2;
+				}
+			}
+
+			//会話2
+			if ( m_iMerueru1 == MERUERU1_KATSUO_TALK2 ) {
+				Overlay()->talkDraw(MERUERU, MERUERU_KATUO_2);
+				//会話終了
+				if (Overlay()->NextWait()) {
+					m_iMerueru1 = MERUERU1_KATSUO_TALK3;
+				}
+			}
+
+			//会話3
+			if (m_iMerueru1 == MERUERU1_KATSUO_TALK3) {
+				Overlay()->talkDraw(MERUERU, MERUERU_KATUO_3);
+				//会話終了
+				if (Overlay()->NextWait()) {
+					m_iMerueru1 = MERUERU1_KATSUO_TALK_END;
+
+					m_gimmick_oven->m_bActionFlg = true;
+					m_gimmick_oven->m_bActionFlg = true;
+
+				}
+			}
+
+			//口笛音取得
+			if (m_iMerueru1 == MERUERU1_KATSUO_TALK_END) {
+
+
+
+			}
+		}
+
+		//テレビ音取得
+		if (m_gimmick_television->m_ball[0].OnPush) {
+
+
+
+
+		}
+		//レンジ音取得
+		if (m_gimmick_oven->m_ball[0].OnPush) {
+
+
+
+
+		}
+
+		//レンジ音使用でステージクリア
+		if (Input()->m_x > m_gimmick_doctorroomdoor->m_iXpos&& 
+			Input()->m_x < (m_gimmick_doctorroomdoor->m_iXpos + m_gimmick_doctorroomdoor->m_iWidth)&& 
+			Input()->m_y > m_gimmick_doctorroomdoor->m_iYpos && 
+			Input()->m_y < (m_gimmick_doctorroomdoor->m_iYpos + m_gimmick_doctorroomdoor->m_iHeight)) {
+			//マウスドラッグ中にマウスボタンが離された
+			//if (!Input()->GetMouButtonL() && tab->GetHaveSound()) {
+
+			//SavedataManeger()->CurrentData->m_bMelueruClearflg[0] = true;
+
+
+			//}
+		}
+	}
+	case 21:
+		break;
+	case 22:
+		break;
+	case 23:
+		break;
+	case 24:
+		break;
+	case 25:
+		break;
+	//-コウネステージ-----------------------------------------
+	case 30:
+		break;
+	case 31:
+		break;
 	case 32:
 	{
 
 		break;
 	}
+	case 33:
+		break;
+	case 34:
+		break;
+	case 35:
+		break;
 
-		
-
-	//テスト用（チュートリアルステージ）
+	//チュートリアルステージ（博士）
 	case 40:
-		{
-		//	//スタート時
-		//	if (m_itutorialflg == TUTORIAL_WELCOM_TALK) {
-		//		if (/*何かをした*/) {
-		//			m_itutorialflg = TUTORIAL_WELCOM_TALK_END;
-		//		}
-		//	}
-		//	else if (m_itutorialflg == TUTORIAL_WELCOM_TALK_END) {
-		//		if (/*何かをした*/) {
-		//			m_itutorialflg = TUTORIAL_RECORDER_GET_TALK;
-		//		}
-		//	}
-		//	else if (m_itutorialflg == TUTORIAL_RECORDER_GET_TALK) {
+	{
+		//ゴミ箱動作不可
+		m_pMenuTab->SetGarbageActionFlg(false);
 
-		//	}
+		//【初回動作】
+		if (m_itutorialflg == TUTORIAL_WELCOM_TALK) {
+			//博士「ようこそ！ここは・・・」
+			Overlay()->talkDraw(TUTORIAL, HAKASE_1);
 
-		//}
-		//break;
-
-
-
-			//【初回動作】
-			if (m_itutorialflg == TUTORIAL_WELCOM_TALK) {
-				//博士「ようこそ！ここは・・・」
-				Overlay()->talkDraw(TUTORIAL, HAKASE_1);
-
-				//会話終了
-				if (Overlay()->NextWait()) {
-					m_itutorialflg = TUTORIAL_WELCOM_TALK_END;
-				}
+			//会話終了
+			if (Overlay()->NextWait()) {
+				m_itutorialflg = TUTORIAL_WELCOM_TALK_END;
 			}
-			//【博士の開始メッセージ終了後】
-			else if (m_itutorialflg == TUTORIAL_WELCOM_TALK_END) {
+		}
+		//【博士の開始メッセージ終了後】
+		else if (m_itutorialflg == TUTORIAL_WELCOM_TALK_END) {
 
-				//博士、コンピューター　動作停止
-				m_gimmick_doctor->m_bActionFlg = false;
-				m_gimmick_computer->m_bActionFlg = false;
+			//博士、コンピューター　動作停止
+			m_gimmick_doctor->m_bActionFlg = false;
+			m_gimmick_computer->m_bActionFlg = false;
 
-				//レコーダー入手
-				if (m_gimmick_recorder->m_ball[0].OnPush) {
-					m_itutorialflg = TUTORIAL_RECORDER_GET_TALK;
-					m_gimmick_recorder->m_Status = STATUS_DELETE;//レコーダー削除
+			//レコーダー入手
+			if (m_gimmick_recorder->m_ball[0].OnPush) {
+				m_itutorialflg = TUTORIAL_RECORDER_GET_TALK;
+				m_gimmick_recorder->m_Status = STATUS_DELETE;//レコーダー削除
 
-					//博士、コンピューター　動作再開
-					m_gimmick_doctor->m_bActionFlg = true;
-					m_gimmick_computer->m_bActionFlg = true;
-				}
-
+															 //博士、コンピューター　動作再開
+				m_gimmick_doctor->m_bActionFlg = true;
+				m_gimmick_computer->m_bActionFlg = true;
 			}
-			//【レコーダー入手後会話】
-			else if (m_itutorialflg == TUTORIAL_RECORDER_GET_TALK) {
-				//博士「それはこの研究所が開発したレコーダー・・・」
-				Overlay()->talkDraw(TUTORIAL, HAKASE_FLAG_1_1);
 
-				//会話終了
-				if (Overlay()->NextWait()) {
-					m_itutorialflg = TUTORIAL_RECORDER_GET_TALK_END;
-				}
+		}
+		//【レコーダー入手後会話】
+		else if (m_itutorialflg == TUTORIAL_RECORDER_GET_TALK) {
+			//博士「それはこの研究所が開発したレコーダー・・・」
+			Overlay()->talkDraw(TUTORIAL, HAKASE_FLAG_1_1);
+
+			//会話終了
+			if (Overlay()->NextWait()) {
+				m_itutorialflg = TUTORIAL_RECORDER_GET_TALK_END;
 			}
-			//【会話終了（フラグ1達成後）】
-			else if (m_itutorialflg == TUTORIAL_RECORDER_GET_TALK_END) {
+		}
+		//【レコーダー入手後会話終了（フラグ1達成後）】
+		else if (m_itutorialflg == TUTORIAL_RECORDER_GET_TALK_END) {
 
-				//音を録音
-				if (m_gimmick_computer->m_ball[0].OnPush) {
-					m_itutorialflg = TUTORIAL_SOUND_REC;
+			//博士と会話した-----------------------------------------
+			if (m_gimmick_doctor->m_ball[0].OnPush) {
+
+				//音を録音している場合（フラグ2達成済み）
+				if (SoundManager()->HaveSound(1)) {
+					m_itutorialflg = TUTORIAL_SOUND_REC_AFTER_TALK;
 				}
-
-				//音を録音していない（フラグ2未達成）状態で、博士と会話
-				if (m_gimmick_doctor->m_ball[0].OnPush) {
+				//音を録音していない（フラグ2未達成）場合
+				else {
 					//博士「話を聞いていなかったのかね？・・・」
 					Overlay()->talkDraw(TUTORIAL, HAKASE_FLAG_2_1_NO);
 				}
-
-				//再度博士の会話をスタンバイ
-				Overlay()->NextWait();
-
 			}
-			//【音を録音後（フラグ2達成後）】
-			else if (m_itutorialflg == TUTORIAL_SOUND_REC) {
+			//再度博士の会話をスタンバイ
+			Overlay()->NextWait();
+			//-------------------------------------------------------
 
-				//博士と会話
-				if (m_gimmick_doctor->m_ball[0].OnPush) {
-					//録音した後、会話した（フラグ3達成）
-					m_itutorialflg = TUTORIAL_SOUND_REC_AFTER_TALK;
-				}
-				//博士と会話していない状態で、再生も行う
-				else {
-					//音ボタンドラッグ
-					if (m_gimmick_doctor->m_getsound != -1) {
-						m_itutorialflg = TUTORIAL_SOUND_REC_AND_PLAY;
-					}
-				}
-
+			//博士と会話していない状態で、再生も行う-----------------
+			//音ボタンドラッグ
+			if (m_gimmick_doctor->m_getsound != -1) {
+				m_itutorialflg = TUTORIAL_SOUND_REC_AND_PLAY;
 			}
-			//【録音後、博士と会話した場合】
-			else if (m_itutorialflg == TUTORIAL_SOUND_REC_AFTER_TALK) {
+			//-------------------------------------------------------
 
-				//会話「うむ、言われたことはできるようなのだな・・・」
-				Overlay()->talkDraw(TUTORIAL, HAKASE_FLAG_2_1_YES);
+		}
+		//【録音後、博士と会話した場合】
+		else if (m_itutorialflg == TUTORIAL_SOUND_REC_AFTER_TALK) {
 
-				//会話終了
-				if (Overlay()->NextWait()) {
-					m_itutorialflg = TUTORIAL_SOUND_REC_AFTER_TALK_END;
-				}
+			//会話「うむ、言われたことはできるようなのだな・・・」
+			Overlay()->talkDraw(TUTORIAL, HAKASE_FLAG_2_1_YES);
+
+			//会話終了
+			if (Overlay()->NextWait()) {
+				m_itutorialflg = TUTORIAL_SOUND_REC_AFTER_TALK_END;
 			}
-			//【録音後、博士との会話終了時】
-			else if (m_itutorialflg == TUTORIAL_SOUND_REC_AFTER_TALK_END) {
-				//音ボタンドラッグ
-				if (m_gimmick_doctor->m_getsound != -1) {
-					m_itutorialflg = TUTORIAL_SOUND_REC_TALK_PLAY;
-				}
+		}
+		//【録音後、博士との会話終了時】
+		else if (m_itutorialflg == TUTORIAL_SOUND_REC_AFTER_TALK_END) {
+			//コンピューター　動作停止
+			m_gimmick_computer->m_bActionFlg = false;
+
+
+			//音ボタンドラッグ
+			if (m_gimmick_doctor->m_getsound != -1) {
+				m_itutorialflg = TUTORIAL_SOUND_REC_TALK_PLAY;
 			}
-			//【録音後、博士と会話した後、再生】
-			else if (m_itutorialflg == TUTORIAL_SOUND_REC_TALK_PLAY) {
+		}
+		//【録音後、博士と会話した後、再生】
+		else if (m_itutorialflg == TUTORIAL_SOUND_REC_TALK_PLAY) {
 
-				//会話「ふむふむ・・・。この音！・・・」
-				Overlay()->talkDraw(TUTORIAL, HAKASE_CLEAR);
+			//会話「ふむふむ・・・。この音！・・・」
+			Overlay()->talkDraw(TUTORIAL, HAKASE_CLEAR);
 
-				//チュートリアルクリア
-				SavedataManeger()->CurrentData->m_btutorial=true;
-
-			}
-			//【録音後、博士と会話せずに、再生（フラグ2○　フラグ3×）】
-			else if (m_itutorialflg == TUTORIAL_SOUND_REC_AND_PLAY) {
-
-				//会話「わしは録音をするようにいったはずなのだが・・・」
-				Overlay()->talkDraw(TUTORIAL, HAKASE_FLAG_2_YES_3_NO);
-
+			//会話終了
+			if (Overlay()->NextWait()) {
 				//チュートリアルクリア
 				SavedataManeger()->CurrentData->m_btutorial = true;
+				//ステージセレクト画面に移行
+				Manager()->Pop(new CSceneStageSelect);
+			}
 
+		}
+		//【録音後、博士と会話せずに、再生（フラグ2○　フラグ3×）】
+		else if (m_itutorialflg == TUTORIAL_SOUND_REC_AND_PLAY) {
+
+			//会話「わしは録音をするようにいったはずなのだが・・・」
+			Overlay()->talkDraw(TUTORIAL, HAKASE_FLAG_2_YES_3_NO);
+
+			//会話終了
+			if (Overlay()->NextWait()) {
+				//チュートリアルクリア
+				SavedataManeger()->CurrentData->m_btutorial = true;
+				//ステージセレクト画面に移行
+				Manager()->Pop(new CSceneStageSelect);
 			}
 		}
 		break;
+	}
+	
 	}
 
 }
@@ -567,7 +806,7 @@ void CObjGimmickManager::Draw() {
 		m_src.right = m_src.left + 1200;
 
 		//背景描画
-		Image()->DrawEx(25, &m_src, &m_dst, col, 0.0f);
+		Image()->DrawEx(26, &m_src, &m_dst, col, 0.0f);
 
 
 

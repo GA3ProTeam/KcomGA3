@@ -127,6 +127,7 @@ enum DrawExID{
 	EX_STAGE_SION_STAGE1,
 	EX_STAGE_KOUNE_STAGE1,
 	EX_STAGE_LAB,
+	EX_STAGE_TUTORIAL,
 };
 
 //---------------------------

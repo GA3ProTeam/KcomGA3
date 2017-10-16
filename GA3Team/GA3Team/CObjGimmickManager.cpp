@@ -245,7 +245,6 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 
 		break;
 	case 32:
-		
 		//User()->mscroll_x = 400;
 
 		////コウネステージ３ ギミック生成
@@ -338,6 +337,10 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 		break;
 	//--------------------------------------------------------
 
+	case 41:
+		
+		break;
+
 	default:
 		break;
 	}
@@ -427,11 +430,6 @@ void CObjGimmickManager::Action() {
 		MERUERU1_KATSUO_TALK3,					//カツオ会話3
 		MERUERU1_KATSUO_TALK_END,				//カツオ会話終了
 	};
-
-
-
-
-
 
 	//イベント進行度
 	//チュートリアルステージ
@@ -669,6 +667,17 @@ void CObjGimmickManager::Action() {
 				//ステージセレクト画面に移行
 				Manager()->Pop(new CSceneStageSelect);
 			}
+		}
+		break;
+	}
+	case 41:
+	{
+		//博士「ようこそ！ここは・・・」
+		Overlay()->talkDraw(TUTORIAL, HAKASE_1);
+
+		//会話終了
+		if (Overlay()->NextWait()) {
+			m_itutorialflg = TUTORIAL_WELCOM_TALK_END;
 		}
 		break;
 	}

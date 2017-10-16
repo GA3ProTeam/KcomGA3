@@ -994,7 +994,7 @@ void Gimmickfiretruck::Draw()
 //	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
 //	//•`‰æ
 //	Image()->Draw(1, &m_src, &m_dst, col, 0.0f);
-//
+//@Image()->DrawEx(58, &m_src, &m_dst, col, 0.0f);
 //	//‚«o‚µ‚Ì•`‰æ•“®ì
 //	this->gimmicDraw(1);
 //

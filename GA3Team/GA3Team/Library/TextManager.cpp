@@ -3,12 +3,14 @@
 CTextManager::CTextManager()
 {
 	//チュートリアル
+	filePath_tutorial.push_back("Text\\SelectTest.bin");
 	filePath_tutorial.push_back("Text\\tyu-toriaru\\hakase_1.bin");
-	filePath_tutorial.push_back("Text\\tyu-toriaru\\hakase_flag1_1.bin");
+	filePath_tutorial.push_back("Text\\tyu-toriaru\\hakase_flag_1_1.bin");
 	filePath_tutorial.push_back("Text\\tyu-toriaru\\hakase_flag_2_1_no.bin");
 	filePath_tutorial.push_back("Text\\tyu-toriaru\\hakase_flag_2_1_yes.bin");
 	filePath_tutorial.push_back("Text\\tyu-toriaru\\hakase_flag_2_yes_3_no.bin");
 	filePath_tutorial.push_back("Text\\tyu-toriaru\\hakase_clear.bin");
+
 
 	//シオン
 	//Stage1
@@ -100,36 +102,152 @@ void CTextManager::LoadText()
 			t++;
 		}
 
-		//改行文字を排除
 		for (int j = 0; j < t; j++) {
+			//改行文字を排除
 			if (strsave[j][strlen(strsave[j]) - 1] == '\r')
 				strsave[j][strlen(strsave[j]) - 1] = '\0';
+
 		}
 
 		//vector形にまとめる
 		for (int w = 0; w < t; w++) {
 			tmpData.push_back(strsave[w]);
+
+			//タブ・空白文字を排除--------------------------------------------------
+			int char_num;
+			for (char_num = 0; char_num < tmpData[w].length(); char_num++) {
+				//タブと空白以外の文字の位置を探す
+				if (tmpData[w][char_num] != '\t' && tmpData[w][char_num] != ' ') {
+					break;
+				}
+			}
+			//先頭からタブと空白がない場所まで排除
+			if (char_num > 0) {
+				tmpData[w].erase(tmpData[w].begin(), tmpData[w].begin() + char_num);
+			}
+			//----------------------------------------------------------------------
 		}
 
 		//制御文字セット
 		std::vector<std::string>::iterator itr = tmpData.begin();
 		while (itr != tmpData.end()) {
+			//名前部分抽出
 			if ((*itr).find("[1_") != -1) {
 				(*itr).pop_back();
 				(*itr).erase((*itr).begin(), (*itr).begin() + 3);
+
 				int index = distance(tmpData.begin(), itr);
 				char emotemp[64];
 				char nametemp[64];
 				sprintf_s(nametemp, "%02d%s@", index, (*itr).c_str());
 				itr = tmpData.erase(itr);
+
+				//表情部分抽出
 				if ((*itr).find("[2_") != -1) {
 					(*itr).pop_back();
 					(*itr).erase((*itr).begin(), (*itr).begin() + 3);
-					sprintf_s(emotemp, "%s",(*itr).c_str());
+					sprintf_s(emotemp, "%s", (*itr).c_str());
+
+					//名前と表情を連結
 					strcat(nametemp, emotemp);
 					tmpControl.push_back(nametemp);
 					itr = tmpData.erase(itr);
 				}
+			}
+			else if ((*itr).find("選択肢{") != -1) {
+				//選択肢生成
+				select_data.push_back(new SelectInfo());
+				//追加した選択肢への参照を取得
+				SelectInfo* select_info = *(select_data.end() - 1);
+
+
+				//存在する行数保存
+				select_info->line = distance(tmpData.begin(), itr);
+
+				char* sel_name[5];	//各選択項目名　一時保存用
+									//（選択項目の数が最後までループしないと分からないので、
+									//　保存しておきます。）
+				//NULLで初期化
+				memset(sel_name,NULL,sizeof(sel_name));
+
+				char sel[3];	   //項目番号を文字に変換したもの　例：「1.」「2.」
+
+				int stack = 0;				 //対応する括弧調査用カウント
+				bool text_delete_flg = false;//表示テキストから除外するかどうか(選択肢タグを最初に削除するので、trueから開始)
+
+											//項目番号が見つかるまでループ
+				while (true) {
+					//項目番号を検索
+					sprintf_s(sel, "%d.", select_info->menu_num + 1);
+					if ((*itr).find(sel) != -1 && stack == 1) {//１層目の括弧の中のみ読み込む
+						//項目名取得
+						std::string name = (*itr);
+						//開始括弧を消す
+						if((*itr).find('{') != -1) name.pop_back();
+						//項目数を消す
+						name.erase(name.begin(), name.begin() + 2);
+
+						//項目名を一時メモリに保存
+						int str_len = name.length() + 1;
+						sel_name[select_info->menu_num] = new char[str_len];
+						strcpy_s(sel_name[select_info->menu_num], str_len, name.c_str());
+
+						select_info->menu_num++;//選択項目数をカウント
+						text_delete_flg = true;//この文字列はテキストから除外
+					}
+
+					//開始括弧が見つかったら、stackをカウント
+					if ((*itr).find("{") != -1) {
+						stack++;
+
+						//1層目の括弧内部のみ
+						if (stack <= 1) {
+							text_delete_flg = true;//テキストから除外
+						}
+					}
+
+					//閉じ括弧が見つかったら、stackをマイナス
+					if ((*itr).find('}') != -1) {
+						stack--;
+						//1層目の括弧内部のみ
+						if (stack <= 1) {
+							text_delete_flg = true;//この文字はテキストから除外
+						}
+					}
+
+					//文字列をテキストから除外
+					if (text_delete_flg) {
+						text_delete_flg = false;
+
+						//除外すると文字列が詰まるので、行を進めません。
+						itr = tmpData.erase(itr);
+					}
+					//除外しない
+					else {
+						//行を進める
+						itr++;
+					}
+
+					//対応する括弧を発見後、終了
+					if (stack == 0) {
+						break;
+					}
+				}
+
+				//選択項目を生成
+				select_info->menu = new SelectData[select_info->menu_num];
+
+				//一時保存メモリに格納していた項目名を代入
+				for (int num = 0; num < select_info->menu_num; num++) {
+					int str_len = strlen(sel_name[num]) + 1;
+					select_info->menu[num].str = new char[str_len];
+					strcpy_s(select_info->menu[num].str, str_len, sel_name[num]);
+					//メモリ解放
+					SAFE_DELETE_ARRAY(sel_name[num]);
+				}
+
+				//ファイル操作を最初に戻す
+				itr = tmpData.begin();
 			}
 			else {
 				itr++;
@@ -208,7 +326,8 @@ void CTextManager::LoadText()
 					tmpControl.push_back(nametemp);
 					itr = tmpData.erase(itr);
 				}
-			}else{
+			}
+			else {
 				itr++;
 			}
 		}
@@ -285,7 +404,8 @@ void CTextManager::LoadText()
 					tmpControl.push_back(nametemp);
 					itr = tmpData.erase(itr);
 				}
-			}else{
+			}
+			else {
 				itr++;
 			}
 		}
@@ -362,7 +482,8 @@ void CTextManager::LoadText()
 					tmpControl.push_back(nametemp);
 					itr = tmpData.erase(itr);
 				}
-			}else{
+			}
+			else {
 				itr++;
 			}
 		}
@@ -418,6 +539,8 @@ char *CTextManager::GetCharaName(int stage, int stageID, int linecount)
 {
 	char *str = new char[32];
 	char linec[64];
+
+	//名前検索用の番号取得
 	sprintf_s(linec, "%02d", linecount);
 
 	switch (stage)
@@ -426,9 +549,9 @@ char *CTextManager::GetCharaName(int stage, int stageID, int linecount)
 		for (auto itr = m_Tutorial_Control[stageID].begin(); itr != m_Tutorial_Control[stageID].end(); ++itr) {
 			if ((*itr).find(linec) != -1) {
 				string st((*itr));
-				st.erase(st.begin(),st.begin()+2);
+				st.erase(st.begin(), st.begin() + 2);
 				if ((*itr).find("@") != -1) {
-					string stb = st.substr(0,st.find("@"));
+					string stb = st.substr(0, st.find("@"));
 					strcpy(str, stb.c_str());
 				}
 			}

@@ -31,7 +31,7 @@ void COverlay::InitLoad()
 	//image->LoadImageEx("バイク.png", 9, TEX_SIZE_512);
 	//image->LoadImageEx("シオン4ドア.png", 9, TEX_SIZE_512);
 	//メルエル1-----------------------------------
-	image->LoadImageEx("カツオc.png", 11, TEX_SIZE_512);
+	image->LoadImageEx("カツオc.png", EX_MERUERU_KATSUO, TEX_SIZE_512);
 	image->LoadImageEx("ドアc.png", 12, TEX_SIZE_512);
 	image->LoadImageEx("棚.png", 13, TEX_SIZE_512);
 	image->LoadImageEx("電子レンジ.png", 14, TEX_SIZE_512);
@@ -52,6 +52,10 @@ void COverlay::InitLoad()
 	image->LoadImageEx("シオンステージ-1.png", 24, TEX_SIZE_1024);
 	image->LoadImageEx("コウネステージ-1.png", 25, TEX_SIZE_1024);
 	image->LoadImageEx("研究所背景.png", 26, TEX_SIZE_1024);
+
+	//チュートリアルステージ------------------------
+	image->LoadImageEx("StageTutorial.png", EX_STAGE_TUTORIAL, TEX_SIZE_1024);
+	//----------------------------------------------
 
 	//透過・暗転初期化
 	m_fDefColor[0] = 1.0f;

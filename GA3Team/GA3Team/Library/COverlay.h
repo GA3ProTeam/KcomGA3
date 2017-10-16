@@ -14,6 +14,7 @@ enum STAGE_TYPE {
 enum tutorial
 {
 	//チュートリアル
+	SELECT_TEST,
 	HAKASE_1,
 	HAKASE_FLAG_1_1,
 	HAKASE_FLAG_2_1_NO,

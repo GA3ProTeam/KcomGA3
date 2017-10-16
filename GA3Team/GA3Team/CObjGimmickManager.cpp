@@ -188,62 +188,62 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 	//--------------------------------------------------------
 
 
-	//-コウネステージ-----------------------------------------
-	case 30:
+	////-コウネステージ-----------------------------------------
+	//case 30:
 
-		m_gimmick_dog = new GimmickDog();
-		Obj()->InsertObj(m_gimmick_dog,GIMMICK_DOG , 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_dog->Init(500, 300, 140, 100, 1);
-		
-		m_gimmick_manhole_cover = new GimmickManholeCover();
-		Obj()->InsertObj(m_gimmick_manhole_cover, GIMMICK_MANHOLECOVER, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_manhole_cover->Init(100, 400, 120, 40, 1);
-		
-		m_gimmick_manhole_hole = new GimmickManholeHole();
-		Obj()->InsertObj(m_gimmick_manhole_hole, GIMMICK_MANHOLEHOLE, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_manhole_hole->Init(100, 400, 120, 40, 1);
+	//	m_gimmick_dog = new GimmickDog();
+	//	Obj()->InsertObj(m_gimmick_dog,GIMMICK_DOG , 5, this->m_pScene, HIT_BOX_OFF);
+	//	m_gimmick_dog->Init(500, 300, 140, 100, 1);
+	//	
+	//	m_gimmick_manhole_cover = new GimmickManholeCover();
+	//	Obj()->InsertObj(m_gimmick_manhole_cover, GIMMICK_MANHOLECOVER, 5, this->m_pScene, HIT_BOX_OFF);
+	//	m_gimmick_manhole_cover->Init(100, 400, 120, 40, 1);
+	//	
+	//	m_gimmick_manhole_hole = new GimmickManholeHole();
+	//	Obj()->InsertObj(m_gimmick_manhole_hole, GIMMICK_MANHOLEHOLE, 5, this->m_pScene, HIT_BOX_OFF);
+	//	m_gimmick_manhole_hole->Init(100, 400, 120, 40, 1);
 
-		m_gimmick_oldman = new GimmickOldman();
-		Obj()->InsertObj(m_gimmick_oldman, GIMMICK_OLDMAN, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_oldman->Init(100, 100, 150, 300, 1);
-		
+	//	m_gimmick_oldman = new GimmickOldman();
+	//	Obj()->InsertObj(m_gimmick_oldman, GIMMICK_OLDMAN, 5, this->m_pScene, HIT_BOX_OFF);
+	//	m_gimmick_oldman->Init(100, 100, 150, 300, 1);
+	//	
 
-		break;
-	case 31:
-		//コウネステージ２　ギミック生成
-		//女の子
-		m_gimmick_girl_koune2 = new GimmickGirl_Koune2();
-		Obj()->InsertObj(m_gimmick_girl_koune2, GIMMICK_GIRL_KOUNE2, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_girl_koune2->Init(595, 275, 130, 195, 1);
-		//非表示＆動作不可に
-		m_gimmick_girl_koune2->m_bActionFlg = false;
+	//	break;
+	//case 31:
+	//	//コウネステージ２　ギミック生成
+	//	//女の子
+	//	m_gimmick_girl_koune2 = new GimmickGirl_Koune2();
+	//	Obj()->InsertObj(m_gimmick_girl_koune2, GIMMICK_GIRL_KOUNE2, 5, this->m_pScene, HIT_BOX_OFF);
+	//	m_gimmick_girl_koune2->Init(595, 275, 130, 195, 1);
+	//	//非表示＆動作不可に
+	//	m_gimmick_girl_koune2->m_bActionFlg = false;
 
-		//シオン
-		m_gimmick_sion = new GimmickSion();
-		Obj()->InsertObj(m_gimmick_sion, GIMMICK_SION, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_sion->Init(925, 275, 130, 195, 1);
+	//	//シオン
+	//	m_gimmick_sion = new GimmickSion();
+	//	Obj()->InsertObj(m_gimmick_sion, GIMMICK_SION, 5, this->m_pScene, HIT_BOX_OFF);
+	//	m_gimmick_sion->Init(925, 275, 130, 195, 1);
 
-		//少年A
-		m_gimmick_boy_a = new GimmickBoyA();
-		Obj()->InsertObj(m_gimmick_boy_a, GIMMICK_BOY_A, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_boy_a->Init(50, 270, 130, 195, 1);
+	//	//少年A
+	//	m_gimmick_boy_a = new GimmickBoyA();
+	//	Obj()->InsertObj(m_gimmick_boy_a, GIMMICK_BOY_A, 5, this->m_pScene, HIT_BOX_OFF);
+	//	m_gimmick_boy_a->Init(50, 270, 130, 195, 1);
 
-		//少年B
-		m_gimmick_boy_b = new GimmickBoyB();
-		Obj()->InsertObj(m_gimmick_boy_b, GIMMICK_BOY_B, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_boy_b->Init(240, 270, 130, 195, 1);
+	//	//少年B
+	//	m_gimmick_boy_b = new GimmickBoyB();
+	//	Obj()->InsertObj(m_gimmick_boy_b, GIMMICK_BOY_B, 5, this->m_pScene, HIT_BOX_OFF);
+	//	m_gimmick_boy_b->Init(240, 270, 130, 195, 1);
 
-		//窓
-		m_gimmick_window_koune2 = new GimmickWindow_Koune2();
-		Obj()->InsertObj(m_gimmick_window_koune2, GIMMICK_WINDOW_KOUNE2, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_window_koune2->Init(930, 150, 250, 200, 1);
+	//	//窓
+	//	m_gimmick_window_koune2 = new GimmickWindow_Koune2();
+	//	Obj()->InsertObj(m_gimmick_window_koune2, GIMMICK_WINDOW_KOUNE2, 5, this->m_pScene, HIT_BOX_OFF);
+	//	m_gimmick_window_koune2->Init(930, 150, 250, 200, 1);
 
-		//スクロールステータス設定
-		m_pLScroll->SetScroll(0);
-		m_pRScroll->SetScroll(400);
+	//	//スクロールステータス設定
+	//	m_pLScroll->SetScroll(0, 10);
+	//	m_pRScroll->SetScroll(400, 10);
 
 
-		break;
+	//	break;
 	case 32:
 		//User()->mscroll_x = 400;
 

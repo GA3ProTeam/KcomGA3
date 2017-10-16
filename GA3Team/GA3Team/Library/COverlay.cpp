@@ -31,7 +31,7 @@ void COverlay::InitLoad()
 	//image->LoadImageEx("バイク.png", 9, TEX_SIZE_512);
 	//image->LoadImageEx("シオン4ドア.png", 9, TEX_SIZE_512);
 	//メルエル1-----------------------------------
-	image->LoadImageEx("カツオc.png", 11, TEX_SIZE_512);
+	image->LoadImageEx("カツオc.png", EX_MERUERU_KATSUO, TEX_SIZE_512);
 	image->LoadImageEx("ドアc.png", 12, TEX_SIZE_512);
 	image->LoadImageEx("棚.png", 13, TEX_SIZE_512);
 	image->LoadImageEx("電子レンジ.png", 14, TEX_SIZE_512);

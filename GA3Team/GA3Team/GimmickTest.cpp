@@ -1859,7 +1859,7 @@ void GimmickMysteryDoor::Init(int xpos, int ypos, int widht, int height, int bal
 	//親クラスのInit関数を呼ぶ
 	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
 	//吹き出しの初期化
-	InitBall(&m_ball[0], 48, -48, sound, 1, RED, LOWER_LEFT);
+	InitBall(&m_ball[0], -50, -50, talk, 1, RED, LOWER_LEFT);
 }
 //①ドアのデストラクタ
 void GimmickMysteryDoor::Destructor(){

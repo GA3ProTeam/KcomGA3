@@ -239,8 +239,8 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 		m_gimmick_window_koune2->Init(930, 150, 250, 200, 1);
 
 		//スクロールステータス設定
-		m_pLScroll->SetScroll(0, 10);
-		m_pRScroll->SetScroll(400, 10);
+		//m_pLScroll->SetScroll(0, 10);
+		//m_pRScroll->SetScroll(400, 10);
 
 
 		break;

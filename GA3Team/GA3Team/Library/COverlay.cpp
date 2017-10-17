@@ -33,7 +33,7 @@ void COverlay::InitLoad()
 	//メルエル1-----------------------------------
 	image->LoadImageEx("カツオc.png", EX_MERUERU_KATSUO, TEX_SIZE_512);
 	image->LoadImageEx("ドアc.png", 12, TEX_SIZE_512);
-	image->LoadImageEx("棚.png", 13, TEX_SIZE_512);
+	image->LoadImageEx("机.png", 13, TEX_SIZE_512);
 	image->LoadImageEx("電子レンジ.png", 14, TEX_SIZE_512);
 	image->LoadImageEx("博士c.png", 15, TEX_SIZE_512);
 	//動物------------------------------------------

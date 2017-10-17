@@ -210,6 +210,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 
 		break;
 	case 31:
+		
 		//ƒRƒEƒlƒXƒe[ƒW‚Q@ƒMƒ~ƒbƒN¶¬
 		//—‚ÌŽq
 		m_gimmick_girl_koune2 = new GimmickGirl_Koune2();
@@ -242,7 +243,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 		m_pLScroll->SetScroll(0, 10);
 		m_pRScroll->SetScroll(400, 10);
 
-
+		
 		break;
 	case 32:
 		
@@ -809,7 +810,20 @@ void CObjGimmickManager::Draw() {
 		//”wŒi•`‰æ
 		Image()->DrawEx(26, &m_src, &m_dst, col, 0.0f);
 
+		//Ø‚èŽæ‚èÀ•W
+		m_dst.top = 0;
+		m_dst.bottom = m_dst.top + 512;
+		m_dst.left = 0;
+		m_dst.right = m_dst.left + 512;
 
+		//“]‘—æÀ•W
+		m_src.top = 300;
+		m_src.bottom = m_src.top + 256;
+		m_src.left = -400 + User()->mscroll_x;
+		m_src.right = m_src.left + 256;
+
+		//”wŒi•`‰æ
+		Image()->DrawEx(EX_MERUERU_TANA, &m_src, &m_dst, col, 0.0f);
 
 
 

@@ -264,7 +264,7 @@ void GimmickAunt::Init(int xpos, int ypos, int widht, int height, int balloonnum
 	m_src.left = m_iXpos;
 	m_src.right = m_src.left + m_iWidth;
 
-	Image()->Draw(58, &m_src, &m_dst, col, 0.0f);
+	//Image()->Draw(58, &m_src, &m_dst, col, 0.0f);
 
 }
 //デストラクタ
@@ -2407,10 +2407,10 @@ void GimmickTelevision::Draw()
 
 	//ギミック本体描画-----------------------------------------------------------
 	//切り取り先座標
-	m_dst.top = 0;
-	m_dst.bottom = m_dst.top + 200;
-	m_dst.left = 0;
-	m_dst.right = m_dst.left + 200;
+	m_dst.top = 43;
+	m_dst.bottom = m_dst.top + 167;
+	m_dst.left = 20;
+	m_dst.right = m_dst.left + 245;
 
 	//転送先座標
 	m_src.top = m_iYpos;

@@ -35,7 +35,7 @@ void ButtonLScrollScreen::Action() {
 	c++;
 	}
 	*/
-	if (Push()) {
+	if (Push()|| Input()->GetVKey(VK_LEFT)) {
 		//スクロール有効
 		m_iScrollflg = true;
 		m_iScrollSpeed = User()->mscroll_speed;

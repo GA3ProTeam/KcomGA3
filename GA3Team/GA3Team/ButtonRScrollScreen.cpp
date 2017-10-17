@@ -29,7 +29,7 @@ void ButtonRScrollScreen::Destructor() {
 //アクション
 void ButtonRScrollScreen::Action() {
 	
-	if (Push()) {
+	if (Push() || Input()->GetVKey(VK_RIGHT)) {
 		//スクロール有効
 		m_iScrollflg = true;
 		m_iScrollSpeed = User()->mscroll_speed;

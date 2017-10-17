@@ -30,7 +30,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 	*/
 	SavedataManeger()->Setcurrentdata();
 
-	m_Stage_ID = 40;
+	m_Stage_ID = 20;
 
 	switch (m_Stage_ID) {
 
@@ -145,15 +145,15 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 
 		m_gimmick_television = new GimmickTelevision();
 		Obj()->InsertObj(m_gimmick_television, GIMMICK_TELEVISION, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_television->Init(50, 300, 250, 125, 1);
+		m_gimmick_television->Init(50, 200, 250, 125, 1);
 		
 		m_gimmick_oven = new GimmickOven();
 		Obj()->InsertObj(m_gimmick_oven, GIMMICK_OVEN, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_oven->Init(-200, 50, 300, 150, 1);
+		m_gimmick_oven->Init(-335, 235, 300, 150, 1);
 
 		m_gimmick_katsuo = new GimmickKatsuo();
 		Obj()->InsertObj(m_gimmick_katsuo, GIMMICK_KATSUO, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_katsuo->Init(-180, 170, 200, 400, 1);
+		m_gimmick_katsuo->Init(-120, 170, 200, 400, 1);
 
 		m_gimmick_doctorroomdoor = new GimmickDoctorroomDoor();
 		Obj()->InsertObj(m_gimmick_doctorroomdoor, GIMMICK_DOOR, 5, this->m_pScene, HIT_BOX_OFF);
@@ -514,8 +514,8 @@ void CObjGimmickManager::Action() {
 	//ƒƒ‹ƒGƒ‹1
 	case 20:
 	{
-		static int m_iMerueru1 = MERUERU1_WELCOM_TALK;
-		//static int m_iMerueru1 = MERUERU1_KATSUO_TALK1;
+		//static int m_iMerueru1 = MERUERU1_WELCOM_TALK;
+		static int m_iMerueru1 = MERUERU1_KATSUO_TALK1;
 		m_gimmick_oven->m_bActionFlg = false;
 		m_gimmick_oven->m_bActionFlg = false;
 		//m_iMerueru1 = MERUERU1_KATSUO_TALK1;
@@ -804,6 +804,7 @@ void CObjGimmickManager::Draw() {
 	//-ƒƒ‹ƒGƒ‹ƒXƒe[ƒW---------------------------------------
 	case 20:
 
+		//”wŒi
 		//Ø‚èŽæ‚èÀ•W
 		m_dst.top = 340;
 		m_dst.bottom = m_dst.top + 680;
@@ -819,20 +820,23 @@ void CObjGimmickManager::Draw() {
 		//”wŒi•`‰æ
 		Image()->DrawEx(26, &m_src, &m_dst, col, 0.0f);
 
+		//Š÷
 		//Ø‚èŽæ‚èÀ•W
-		m_dst.top = 0;
+		m_dst.top = 380;
 		m_dst.bottom = m_dst.top + 512;
 		m_dst.left = 0;
 		m_dst.right = m_dst.left + 512;
 
 		//“]‘—æÀ•W
-		m_src.top = 300;
+		m_src.top = 335;
 		m_src.bottom = m_src.top + 256;
-		m_src.left = -400 + User()->mscroll_x;
+		m_src.left = -360 + User()->mscroll_x;
 		m_src.right = m_src.left + 256;
 
 		//”wŒi•`‰æ
-		Image()->DrawEx(EX_MERUERU_TANA, &m_src, &m_dst, col, 0.0f);
+		//Image()->DrawEx(EX_MERUERU_TANA, &m_src, &m_dst, col, 0.0f);
+		Image()->DrawEx(EX_STAGE_TUTORIAL, &m_src, &m_dst, col, 0.0f);
+		
 
 
 

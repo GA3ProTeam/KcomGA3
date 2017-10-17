@@ -251,6 +251,20 @@ void GimmickAunt::Init(int xpos, int ypos, int widht, int height, int balloonnum
 	//親クラスのInit関数を呼ぶ
 	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
 
+	//ギミック本体描画---------------------------------------------------------
+	//切り取り先座標
+	m_dst.top = 0;
+	m_dst.bottom = 200;
+	m_dst.left = 0;
+	m_dst.right = 200;
+
+	//転送先座標
+	m_src.top = m_iYpos;
+	m_src.bottom = m_src.top + m_iHeight;
+	m_src.left = m_iXpos;
+	m_src.right = m_src.left + m_iWidth;
+
+	Image()->Draw(58, &m_src, &m_dst, col, 0.0f);
 
 }
 //デストラクタ

@@ -41,9 +41,10 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 		//Obj()->InsertObj(m_gimmick_earphone, GIMMICK_EARPHONE, 5, this->m_pScene, HIT_BOX_OFF);
 		//m_gimmick_earphone->Init(350, 250, 70, 100, 1);
 		//おばあちゃん生成
-		/*m_gimmick_aunt = new GimmickAunt();
-		Obj()->InsertObj(m_gimmick_aunt, GIMMICK_AUNT, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_aunt->Init(-110, 220, 70, 100, 1);*/
+		m_gimmick_aunt = new GimmickAunt();
+		Obj()->InsertObj(m_gimmick_aunt, GIMMICK_AUNT, 1, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_aunt->Init(-110, 220, 70, 100, 1);
+		/*
 		////すずめ生成
 		//m_gimmick_cat = new Gimmickcat();
 		//Obj()->InsertObj(m_gimmick_cat, GIMMICK_CAT, 5, this->m_pScene, HIT_BOX_OFF);
@@ -57,7 +58,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 		//Obj()->InsertObj(m_gimmick_firetruck, GIMMICK_FIRETRUCK, 5, this->m_pScene, HIT_BOX_OFF);
 		//m_gimmick_firetruck->Init(-400, 220, 70, 100, 1);
 		//break;
-
+		*/
 		break;
 	case 11:
 		////シオンのステージ2のギミック生成

@@ -14,6 +14,7 @@ enum STAGE_TYPE {
 enum tutorial
 {
 	//チュートリアル
+	SELECT_TEST,
 	HAKASE_1,
 	HAKASE_FLAG_1_1,
 	HAKASE_FLAG_2_1_NO,
@@ -127,6 +128,7 @@ enum DrawExID{
 	EX_STAGE_SION_STAGE1,
 	EX_STAGE_KOUNE_STAGE1,
 	EX_STAGE_LAB,
+	EX_STAGE_TUTORIAL,
 };
 
 //---------------------------

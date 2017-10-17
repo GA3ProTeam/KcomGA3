@@ -41,9 +41,10 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 		//Obj()->InsertObj(m_gimmick_earphone, GIMMICK_EARPHONE, 5, this->m_pScene, HIT_BOX_OFF);
 		//m_gimmick_earphone->Init(350, 250, 70, 100, 1);
 		//おばあちゃん生成
-		/*m_gimmick_aunt = new GimmickAunt();
-		Obj()->InsertObj(m_gimmick_aunt, GIMMICK_AUNT, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_aunt->Init(-110, 220, 70, 100, 1);*/
+		m_gimmick_aunt = new GimmickAunt();
+		Obj()->InsertObj(m_gimmick_aunt, GIMMICK_AUNT, 1, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_aunt->Init(-110, 220, 70, 100, 1);
+		/*
 		////すずめ生成
 		//m_gimmick_cat = new Gimmickcat();
 		//Obj()->InsertObj(m_gimmick_cat, GIMMICK_CAT, 5, this->m_pScene, HIT_BOX_OFF);
@@ -57,7 +58,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 		//Obj()->InsertObj(m_gimmick_firetruck, GIMMICK_FIRETRUCK, 5, this->m_pScene, HIT_BOX_OFF);
 		//m_gimmick_firetruck->Init(-400, 220, 70, 100, 1);
 		//break;
-
+		*/
 		break;
 	case 11:
 		////シオンのステージ2のギミック生成
@@ -188,65 +189,63 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 	//--------------------------------------------------------
 
 
-	//-コウネステージ-----------------------------------------
-	case 30:
+	////-コウネステージ-----------------------------------------
+	//case 30:
 
-		m_gimmick_dog = new GimmickDog();
-		Obj()->InsertObj(m_gimmick_dog,GIMMICK_DOG , 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_dog->Init(500, 300, 140, 100, 1);
-		
-		m_gimmick_manhole_cover = new GimmickManholeCover();
-		Obj()->InsertObj(m_gimmick_manhole_cover, GIMMICK_MANHOLECOVER, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_manhole_cover->Init(100, 400, 120, 40, 1);
-		
-		m_gimmick_manhole_hole = new GimmickManholeHole();
-		Obj()->InsertObj(m_gimmick_manhole_hole, GIMMICK_MANHOLEHOLE, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_manhole_hole->Init(100, 400, 120, 40, 1);
+	//	m_gimmick_dog = new GimmickDog();
+	//	Obj()->InsertObj(m_gimmick_dog,GIMMICK_DOG , 5, this->m_pScene, HIT_BOX_OFF);
+	//	m_gimmick_dog->Init(500, 300, 140, 100, 1);
+	//	
+	//	m_gimmick_manhole_cover = new GimmickManholeCover();
+	//	Obj()->InsertObj(m_gimmick_manhole_cover, GIMMICK_MANHOLECOVER, 5, this->m_pScene, HIT_BOX_OFF);
+	//	m_gimmick_manhole_cover->Init(100, 400, 120, 40, 1);
+	//	
+	//	m_gimmick_manhole_hole = new GimmickManholeHole();
+	//	Obj()->InsertObj(m_gimmick_manhole_hole, GIMMICK_MANHOLEHOLE, 5, this->m_pScene, HIT_BOX_OFF);
+	//	m_gimmick_manhole_hole->Init(100, 400, 120, 40, 1);
 
-		m_gimmick_oldman = new GimmickOldman();
-		Obj()->InsertObj(m_gimmick_oldman, GIMMICK_OLDMAN, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_oldman->Init(100, 100, 150, 300, 1);
-		
+	//	m_gimmick_oldman = new GimmickOldman();
+	//	Obj()->InsertObj(m_gimmick_oldman, GIMMICK_OLDMAN, 5, this->m_pScene, HIT_BOX_OFF);
+	//	m_gimmick_oldman->Init(100, 100, 150, 300, 1);
+	//	
 
-		break;
-	case 31:
-		
-		//コウネステージ２　ギミック生成
-		//女の子
-		m_gimmick_girl_koune2 = new GimmickGirl_Koune2();
-		Obj()->InsertObj(m_gimmick_girl_koune2, GIMMICK_GIRL_KOUNE2, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_girl_koune2->Init(595, 275, 130, 195, 1);
-		//非表示＆動作不可に
-		m_gimmick_girl_koune2->m_bActionFlg = false;
+	//	break;
+	//case 31:
+	//	//コウネステージ２　ギミック生成
+	//	//女の子
+	//	m_gimmick_girl_koune2 = new GimmickGirl_Koune2();
+	//	Obj()->InsertObj(m_gimmick_girl_koune2, GIMMICK_GIRL_KOUNE2, 5, this->m_pScene, HIT_BOX_OFF);
+	//	m_gimmick_girl_koune2->Init(595, 275, 130, 195, 1);
+	//	//非表示＆動作不可に
+	//	m_gimmick_girl_koune2->m_bActionFlg = false;
 
-		//シオン
-		m_gimmick_sion = new GimmickSion();
-		Obj()->InsertObj(m_gimmick_sion, GIMMICK_SION, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_sion->Init(925, 275, 130, 195, 1);
+	//	//シオン
+	//	m_gimmick_sion = new GimmickSion();
+	//	Obj()->InsertObj(m_gimmick_sion, GIMMICK_SION, 5, this->m_pScene, HIT_BOX_OFF);
+	//	m_gimmick_sion->Init(925, 275, 130, 195, 1);
 
-		//少年A
-		m_gimmick_boy_a = new GimmickBoyA();
-		Obj()->InsertObj(m_gimmick_boy_a, GIMMICK_BOY_A, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_boy_a->Init(50, 270, 130, 195, 1);
+	//	//少年A
+	//	m_gimmick_boy_a = new GimmickBoyA();
+	//	Obj()->InsertObj(m_gimmick_boy_a, GIMMICK_BOY_A, 5, this->m_pScene, HIT_BOX_OFF);
+	//	m_gimmick_boy_a->Init(50, 270, 130, 195, 1);
 
-		//少年B
-		m_gimmick_boy_b = new GimmickBoyB();
-		Obj()->InsertObj(m_gimmick_boy_b, GIMMICK_BOY_B, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_boy_b->Init(240, 270, 130, 195, 1);
+	//	//少年B
+	//	m_gimmick_boy_b = new GimmickBoyB();
+	//	Obj()->InsertObj(m_gimmick_boy_b, GIMMICK_BOY_B, 5, this->m_pScene, HIT_BOX_OFF);
+	//	m_gimmick_boy_b->Init(240, 270, 130, 195, 1);
 
-		//窓
-		m_gimmick_window_koune2 = new GimmickWindow_Koune2();
-		Obj()->InsertObj(m_gimmick_window_koune2, GIMMICK_WINDOW_KOUNE2, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_window_koune2->Init(930, 150, 250, 200, 1);
+	//	//窓
+	//	m_gimmick_window_koune2 = new GimmickWindow_Koune2();
+	//	Obj()->InsertObj(m_gimmick_window_koune2, GIMMICK_WINDOW_KOUNE2, 5, this->m_pScene, HIT_BOX_OFF);
+	//	m_gimmick_window_koune2->Init(930, 150, 250, 200, 1);
 
-		//スクロールステータス設定
-		m_pLScroll->SetScroll(0, 10);
-		m_pRScroll->SetScroll(400, 10);
+	//	//スクロールステータス設定
+	//	m_pLScroll->SetScroll(0, 10);
+	//	m_pRScroll->SetScroll(400, 10);
 
-		
-		break;
+
+	//	break;
 	case 32:
-		
 		//User()->mscroll_x = 400;
 
 		////コウネステージ３ ギミック生成
@@ -339,6 +338,10 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 		break;
 	//--------------------------------------------------------
 
+	case 41:
+		
+		break;
+
 	default:
 		break;
 	}
@@ -428,11 +431,6 @@ void CObjGimmickManager::Action() {
 		MERUERU1_KATSUO_TALK3,					//カツオ会話3
 		MERUERU1_KATSUO_TALK_END,				//カツオ会話終了
 	};
-
-
-
-
-
 
 	//イベント進行度
 	//チュートリアルステージ
@@ -762,6 +760,17 @@ void CObjGimmickManager::Action() {
 				//ステージセレクト画面に移行
 				Manager()->Pop(new CSceneStageSelect);
 			}
+		}
+		break;
+	}
+	case 41:
+	{
+		//博士「ようこそ！ここは・・・」
+		Overlay()->talkDraw(TUTORIAL, HAKASE_1);
+
+		//会話終了
+		if (Overlay()->NextWait()) {
+			m_itutorialflg = TUTORIAL_WELCOM_TALK_END;
 		}
 		break;
 	}

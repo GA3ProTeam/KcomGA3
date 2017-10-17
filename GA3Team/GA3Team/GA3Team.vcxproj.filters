@@ -239,9 +239,6 @@
     <ClInclude Include="Library\Gimmick.h">
       <Filter>ライブラリ ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="Library\TextManager.h">
-      <Filter>ライブラリ ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="GimmckTest.h">
       <Filter>テスト ファイル</Filter>
     </ClInclude>
@@ -259,6 +256,9 @@
     </ClInclude>
     <ClInclude Include="ButtonStage.h">
       <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\TextManager.h">
+      <Filter>ライブラリ ファイル</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

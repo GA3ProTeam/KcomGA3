@@ -104,7 +104,7 @@ public:
 	void Action();//アクション
 	void Draw();//描画
 };
-/*//鳥(小鳥)
+//鳥(小鳥)
 class GimmickBird : public Gimmick
 {
 private:
@@ -120,7 +120,7 @@ class Gimmickwatchdog : public Gimmick
 {
 private:
 public:
-void Init();//イニシャライズ
+	void Init(int xpos, int ypos, int widht, int height, int balloonnum);//イニシャライズ
 void Destructor();//デストラクタ
 void Action();//アクション
 void Draw();//描画
@@ -130,11 +130,11 @@ class GimmickInterphone : public Gimmick
 {
 private:
 public:
-void Init();//イニシャライズ
+	void Init(int xpos, int ypos, int widht, int height, int balloonnum);//イニシャライズ
 void Destructor();//デストラクタ
 void Action();//アクション
 void Draw();//描画
-};*/
+};
 
 
 //ステージ1↑

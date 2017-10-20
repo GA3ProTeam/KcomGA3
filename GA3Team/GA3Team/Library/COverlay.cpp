@@ -59,7 +59,7 @@ void COverlay::InitLoad()
 	image->LoadImageEx("StageTutorial.png", EX_STAGE_TUTORIAL, TEX_SIZE_1024);
 	//----------------------------------------------
 
-	//サウンド読み込み--------------------------------------------------------------
+	//サウンド読み込み↓---------------------------------------------------------------------------
 	//チュートリアルステージ
 	audio->LoadAudio( 0, "Sound\\チュートリアル\\fanfare3.wav");
 	//コウネステージ1
@@ -106,7 +106,8 @@ void COverlay::InitLoad()
 	//決定音
 	audio->LoadAudio(30, "Sound\\決定音\\button5.wav"); 
 	//失敗音
-	audio->LoadAudio(31, "Sound\\決定音\\button6.wav");
+	audio->LoadAudio(31, "Sound\\決定音\\キャンセル音\\Cancel.wav");
+	//サウンド読み込み↑---------------------------------------------------------------------------
 
 	m_fDefColor[0] = 1.0f;
 	m_fDefColor[1] = 1.0f;

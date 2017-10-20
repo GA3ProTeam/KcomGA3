@@ -52,6 +52,8 @@ void COverlay::InitLoad()
 	image->LoadImageEx("シオンステージ-1.png", 24, TEX_SIZE_1024);
 	image->LoadImageEx("コウネステージ-1.png", 25, TEX_SIZE_1024);
 	image->LoadImageEx("研究所背景.png", 26, TEX_SIZE_1024);
+	image->LoadImageEx("T字路右側.png", 28, TEX_SIZE_1024);
+	image->LoadImageEx("T字路左側.png", 29, TEX_SIZE_1024);
 
 	//チュートリアルステージ------------------------
 	image->LoadImageEx("StageTutorial.png", EX_STAGE_TUTORIAL, TEX_SIZE_1024);

@@ -30,7 +30,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 	*/
 	SavedataManeger()->Setcurrentdata();
 
-	m_Stage_ID = 40;
+	m_Stage_ID = 12;
 
 	switch (m_Stage_ID) {
 
@@ -38,21 +38,21 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 	case 10:
 		////シオンのステージ1のギミック生成
 		//おばちゃん生成
-		m_gimmick_aunt = new GimmickAunt();
-		Obj()->InsertObj(m_gimmick_aunt, GIMMICK_AUNT, 1, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_aunt->Init(-110, 220, 70, 100, 1);
-		//すずめ生成
-		m_gimmick_bird = new GimmickBird();
-		Obj()->InsertObj(m_gimmick_bird, GIMMICK_BIRD, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_bird->Init(550, 120, 70, 100, 1);
-		//犬A(番犬)生成
-		m_gimmick_watchdog = new Gimmickwatchdog();
-		Obj()->InsertObj(m_gimmick_bird, GIMMICK_WATCHDOG, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_bird->Init(100, 300, 300, 300, 1);
-		//インターホン生成
-		m_gimmick_interphone = new GimmickInterphone();
-		Obj()->InsertObj(m_gimmick_interphone, GIMMICK_INTERPHONE, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_interphone->Init(-400, 220, 70, 100, 1);
+		//m_gimmick_aunt = new GimmickAunt();
+		//Obj()->InsertObj(m_gimmick_aunt, GIMMICK_AUNT, 1, this->m_pScene, HIT_BOX_OFF);
+		//m_gimmick_aunt->Init(-110, 220, 70, 100, 1);
+		////すずめ生成
+		//m_gimmick_bird = new GimmickBird();
+		//Obj()->InsertObj(m_gimmick_bird, GIMMICK_BIRD, 5, this->m_pScene, HIT_BOX_OFF);
+		//m_gimmick_bird->Init(550, 120, 70, 100, 1);
+		////犬A(番犬)生成
+		//m_gimmick_watchdog = new Gimmickwatchdog();
+		//Obj()->InsertObj(m_gimmick_bird, GIMMICK_WATCHDOG, 5, this->m_pScene, HIT_BOX_OFF);
+		//m_gimmick_bird->Init(100, 300, 300, 300, 1);
+		////インターホン生成
+		//m_gimmick_interphone = new GimmickInterphone();
+		//Obj()->InsertObj(m_gimmick_interphone, GIMMICK_INTERPHONE, 5, this->m_pScene, HIT_BOX_OFF);
+		//m_gimmick_interphone->Init(-400, 220, 70, 100, 1);
 		break;
 		
 		break;
@@ -80,43 +80,44 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 		break;
 
 	case 12:
-		////シオンのステージ3のギミック生成
-		//for (int i = 0; i < 3; i++) {
-		//	m_gimmick_children = new GimmickChildren(); 
-		//	Obj()->InsertObj(m_gimmick_children, GIMMICK_CHILDREN, 5, this->m_pScene, HIT_BOX_OFF);
-		//	m_gimmick_children->Init(100+(80*i), 350, 70, 100, 1,i+1);
-		//}
-		//m_gimmick_granny = new GimmickGranny();
-		//Obj()->InsertObj(m_gimmick_granny, GIMMICK_GRANNY, 5, this->m_pScene, HIT_BOX_OFF);
-		//m_gimmick_granny->Init(350, 220, 70, 100, 1);
-		//
-		//m_gimmick_mynah = new GimmickMynah();
-		//Obj()->InsertObj(m_gimmick_mynah, GIMMICK_MYNAH, 5, this->m_pScene, HIT_BOX_OFF);
-		//m_gimmick_mynah->Init(500, 200, 50, 70, 1);
-		//
-		//m_gimmick_shelf = new GimmickShelf();
-		//Obj()->InsertObj(m_gimmick_shelf, GIMMICK_SHELF, 5, this->m_pScene, HIT_BOX_OFF);
-		//m_gimmick_shelf->Init(600, 280, 100, 170, 3);
-		//
-		//m_gimmick_windchime = new GimmickWindchime();
-		//Obj()->InsertObj(m_gimmick_windchime, GIMMICK_WINDCHIME, 5, this->m_pScene, HIT_BOX_OFF);
-		//m_gimmick_windchime->Init(230, 100, 60, 80, 1);
+		//シオンのステージ3のギミック生成
+		m_gimmick_granny = new GimmickGranny();
+		Obj()->InsertObj(m_gimmick_granny, GIMMICK_GRANNY, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_granny->Init(350, 220, 70, 100, 1);
+
+		for (int i = 0; i < 3; i++) {
+			m_gimmick_children = new GimmickChildren(); 
+			Obj()->InsertObj(m_gimmick_children, GIMMICK_CHILDREN, 5, this->m_pScene, HIT_BOX_OFF);
+			m_gimmick_children->Init(100+(80*i), 350, 70, 100, 1,i+1);
+		}
+		
+		m_gimmick_mynah = new GimmickMynah();
+		Obj()->InsertObj(m_gimmick_mynah, GIMMICK_MYNAH, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_mynah->Init(500, 200, 50, 70, 1);
+		
+		m_gimmick_shelf = new GimmickShelf();
+		Obj()->InsertObj(m_gimmick_shelf, GIMMICK_SHELF, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_shelf->Init(600, 280, 100, 170, 3);
+		
+		m_gimmick_windchime = new GimmickWindchime();
+		Obj()->InsertObj(m_gimmick_windchime, GIMMICK_WINDCHIME, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_windchime->Init(230, 100, 60, 80, 1);
 
 
 		break;
 	case 13:
-		//シオンステージ4　設定
-		m_gimmick_mysteryman = new GimmickMysteryman();
-		Obj()->InsertObj(m_gimmick_mysteryman, GIMMICK_MYSTERYMAN, 1, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_mysteryman->Init(600, 200, 150, 250, 1);
+		////シオンステージ4　設定
+		//m_gimmick_mysteryman = new GimmickMysteryman();
+		//Obj()->InsertObj(m_gimmick_mysteryman, GIMMICK_MYSTERYMAN, 1, this->m_pScene, HIT_BOX_OFF);
+		//m_gimmick_mysteryman->Init(600, 200, 150, 250, 1);
 
-		m_gimmick_bike = new GimmickBike();
-		Obj()->InsertObj(m_gimmick_bike, GIMMICK_BIKE, 1, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_bike->Init(50, 300, 250, 150, 1);
+		//m_gimmick_bike = new GimmickBike();
+		//Obj()->InsertObj(m_gimmick_bike, GIMMICK_BIKE, 1, this->m_pScene, HIT_BOX_OFF);
+		//m_gimmick_bike->Init(50, 300, 250, 150, 1);
 
-		m_gimmick_door_Sion4 = new GimmickDoor();
-		Obj()->InsertObj(m_gimmick_door_Sion4, GIMMICK_SHELF, 1, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_door_Sion4->Init(350, 150, 200, 300, 1);
+		//m_gimmick_door_Sion4 = new GimmickDoor();
+		//Obj()->InsertObj(m_gimmick_door_Sion4, GIMMICK_SHELF, 1, this->m_pScene, HIT_BOX_OFF);
+		//m_gimmick_door_Sion4->Init(350, 150, 200, 300, 1);
 
 
 
@@ -139,7 +140,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 
 	case 20:
 
-		m_gimmick_television = new GimmickTelevision();
+		/*m_gimmick_television = new GimmickTelevision();
 		Obj()->InsertObj(m_gimmick_television, GIMMICK_TELEVISION, 5, this->m_pScene, HIT_BOX_OFF);
 		m_gimmick_television->Init(50, 200, 250, 125, 1);
 		
@@ -153,7 +154,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 
 		m_gimmick_doctorroomdoor = new GimmickDoctorroomDoor();
 		Obj()->InsertObj(m_gimmick_doctorroomdoor, GIMMICK_DOOR, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_doctorroomdoor->Init(280, 90, 400, 400, 1);
+		m_gimmick_doctorroomdoor->Init(280, 90, 400, 400, 1);*/
 		
 		break;
 	case 21:
@@ -188,7 +189,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 	////-コウネステージ-----------------------------------------
 	//case 30:
 
-		m_gimmick_dog = new GimmickDog();
+		/*m_gimmick_dog = new GimmickDog();
 		Obj()->InsertObj(m_gimmick_dog,GIMMICK_DOG , 5, this->m_pScene, HIT_BOX_OFF);
 		m_gimmick_dog->Init(520, 320, 120, 100, 1);
 
@@ -202,7 +203,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 				
 		m_gimmick_manhole_cover = new GimmickManholeCover();
 		Obj()->InsertObj(m_gimmick_manhole_cover, GIMMICK_MANHOLECOVER, 2, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_manhole_cover->Init(100, 400, 220, 80, 1);
+		m_gimmick_manhole_cover->Init(100, 400, 220, 80, 1);*/
 
 
 	//	//少年B
@@ -220,7 +221,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 	//	m_pRScroll->SetScroll(400, 10);
 
 
-	//	break;
+		break;
 	case 32:
 		//User()->mscroll_x = 400;
 
@@ -265,21 +266,21 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 	case 34:
 		//コウネステージ5
 		//①ドア
-		m_gimmick_mysterydoor = new GimmickMysteryDoor();
-		Obj()->InsertObj(m_gimmick_mysterydoor,GIMMICK_MYSTERYDOOR, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_mysterydoor->Init(0, 0, 0, 0, 1);
-		//②メカニック
-		m_gimmick_mechanic = new GimmickMechanic();
-		Obj()->InsertObj(m_gimmick_mechanic, GIMMICK_MECHANIC, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_mechanic->Init(0, 0, 0, 0, 1);
-		//③パソコン
-		m_gimmick_soundcomputer = new GimmickSoundComputer();
-		Obj()->InsertObj(m_gimmick_soundcomputer, GIMMICK_SOUNDCOMPUTER, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_soundcomputer->Init(0, 0, 0, 0, 1);
-		//④演奏家
-		m_gimmick_musician = new GimmickMusician();
-		Obj()->InsertObj(m_gimmick_musician, GIMMICK_MUSICIAN, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_musician->Init(0, 0, 0, 0, 1);
+		//m_gimmick_mysterydoor = new GimmickMysteryDoor();
+		//Obj()->InsertObj(m_gimmick_mysterydoor,GIMMICK_MYSTERYDOOR, 5, this->m_pScene, HIT_BOX_OFF);
+		//m_gimmick_mysterydoor->Init(0, 0, 0, 0, 1);
+		////②メカニック
+		//m_gimmick_mechanic = new GimmickMechanic();
+		//Obj()->InsertObj(m_gimmick_mechanic, GIMMICK_MECHANIC, 5, this->m_pScene, HIT_BOX_OFF);
+		//m_gimmick_mechanic->Init(0, 0, 0, 0, 1);
+		////③パソコン
+		//m_gimmick_soundcomputer = new GimmickSoundComputer();
+		//Obj()->InsertObj(m_gimmick_soundcomputer, GIMMICK_SOUNDCOMPUTER, 5, this->m_pScene, HIT_BOX_OFF);
+		//m_gimmick_soundcomputer->Init(0, 0, 0, 0, 1);
+		////④演奏家
+		//m_gimmick_musician = new GimmickMusician();
+		//Obj()->InsertObj(m_gimmick_musician, GIMMICK_MUSICIAN, 5, this->m_pScene, HIT_BOX_OFF);
+		//m_gimmick_musician->Init(0, 0, 0, 0, 1);
 
 
 		break;
@@ -457,62 +458,62 @@ void CObjGimmickManager::Action() {
 	case 11:
 		break;
 	case 12:
-		//if(m_gimmick_granny->m_ball[0].OnPush) {
-		//		Overlay()->talkDraw(SION, SION3_OBATYAN);
-		//	}
+		if(m_gimmick_granny->m_ball[0].OnPush) {
+				Overlay()->talkDraw(SION, SION3_OBATYAN);
+			}
 
-		//switch (m_gimmick_children->GetChild_ID()) {
-		//case 1://強気な男の子
-		//	//if (m_getsound == /*ほしい音*/) {
-		//	//	SavedataManeger()->CurrentData->m_bSionflg[3] = true;
-		//	//}
+		switch (m_gimmick_children->GetChild_ID()) {
+		case 1://強気な男の子
+			//if (m_getsound == /*ほしい音*/) {
+			//	SavedataManeger()->CurrentData->m_bSionflg[3] = true;
+			//}
 
-		//	if (SavedataManeger()->CurrentData->m_bSionflg[3] == true && m_gimmick_children->m_ball[0].OnPush) {
-		//		Overlay()->talkDraw(SION, SION3_FLAG_YES_CHILD1);
-		//	}
-		//	else if (m_gimmick_children->m_ball[0].OnPush) {
-		//		Overlay()->talkDraw(SION, SION3_FLAG_NO_CHILD1);
-		//	}
-		//	break;
+			if (SavedataManeger()->CurrentData->m_bSionflg[3] == true && m_gimmick_children->m_ball[0].OnPush) {
+				Overlay()->talkDraw(SION, SION3_FLAG_YES_CHILD1);
+			}
+			else if (m_gimmick_children->m_ball[0].OnPush) {
+				Overlay()->talkDraw(SION, SION3_FLAG_NO_CHILD1);
+			}
+			break;
 
-		//case 2://優しい女の子
-		//	//if (m_getsound == /*ほしい音*/) {
-		//	//	SavedataManeger()->CurrentData->m_bSionflg[4] = true;
-		//	//}
+		case 2://優しい女の子
+			//if (m_getsound == /*ほしい音*/) {
+			//	SavedataManeger()->CurrentData->m_bSionflg[4] = true;
+			//}
 
-		//	if (SavedataManeger()->CurrentData->m_bSionflg[4] == true && m_gimmick_children->m_ball[0].OnPush) {
-		//		Overlay()->talkDraw(SION, SION3_FLAG_YES_CHILD2);
-		//	}
-		//	else if (m_gimmick_children->m_ball[0].OnPush) {
-		//		Overlay()->talkDraw(SION, SION3_FLAG_NO_CHILD2);
-		//	}
+			if (SavedataManeger()->CurrentData->m_bSionflg[4] == true && m_gimmick_children->m_ball[0].OnPush) {
+				Overlay()->talkDraw(SION, SION3_FLAG_YES_CHILD2);
+			}
+			else if (m_gimmick_children->m_ball[0].OnPush) {
+				Overlay()->talkDraw(SION, SION3_FLAG_NO_CHILD2);
+			}
 
-		//	break;
+			break;
 
-		//case 3://弱気な男の子
-		//	//if (m_getsound == /*ほしい音*/) {
-		//	//	SavedataManeger()->CurrentData->m_bSionflg[5] = true;
-		//	//}
+		case 3://弱気な男の子
+			//if (m_getsound == /*ほしい音*/) {
+			//	SavedataManeger()->CurrentData->m_bSionflg[5] = true;
+			//}
 
-		//	if (SavedataManeger()->CurrentData->m_bSionflg[5] == true && m_gimmick_children->m_ball[0].OnPush) {
-		//		Overlay()->talkDraw(SION, SION3_FLAG_YES_CHILD3);
-		//	}
-		//	else if (m_gimmick_children->m_ball[0].OnPush) {
-		//		Overlay()->talkDraw(SION, SION3_FLAG_NO_CHILD3);
-		//	}
+			if (SavedataManeger()->CurrentData->m_bSionflg[5] == true && m_gimmick_children->m_ball[0].OnPush) {
+				Overlay()->talkDraw(SION, SION3_FLAG_YES_CHILD3);
+			}
+			else if (m_gimmick_children->m_ball[0].OnPush) {
+				Overlay()->talkDraw(SION, SION3_FLAG_NO_CHILD3);
+			}
 
-		//	break;
+			break;
 
-		//}
+		}
 
-		//if (SavedataManeger()->CurrentData->m_bSionflg[3] == true && 
-		//	SavedataManeger()->CurrentData->m_bSionflg[4] == true && 
-		//	SavedataManeger()->CurrentData->m_bSionflg[5] == true) {
+		if (SavedataManeger()->CurrentData->m_bSionflg[3] == true && 
+			SavedataManeger()->CurrentData->m_bSionflg[4] == true && 
+			SavedataManeger()->CurrentData->m_bSionflg[5] == true) {
 
-		//	Overlay()->talkDraw(SION, SION3_CLEAR);
+			Overlay()->talkDraw(SION, SION3_CLEAR);
 
-		//	SavedataManeger()->CurrentData->m_bSionClearflg[2] = true;
-		//}
+			SavedataManeger()->CurrentData->m_bSionClearflg[2] = true;
+		}
 
 		break;
 	case 13:

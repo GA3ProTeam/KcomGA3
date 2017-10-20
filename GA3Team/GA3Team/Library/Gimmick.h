@@ -16,8 +16,8 @@ enum BalloonColor {
 	NORMAL = 0,  //’Êí
 	RED = 64, //Ô
 	BLUE = 128, //Â
-	GREEN = 192,//—Î
-	YELLOW = 256,//‰©
+	GREEN = 256,//—Î
+	YELLOW = 192,//‰©
 	ORANGE = 320,//ƒIƒŒƒ“ƒW
 	PURPLE = 384,//Ž‡
 	GRAY = 448,//ŠD

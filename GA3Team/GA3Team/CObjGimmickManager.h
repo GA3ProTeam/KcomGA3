@@ -48,7 +48,6 @@ private:
 	GimmickDoor* m_gimmick_door_Sion4;
 
 	//ステージ4↑
-	//シオンステージ1↑
 	//シオンステージ↑
 
 

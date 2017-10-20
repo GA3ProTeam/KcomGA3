@@ -164,6 +164,7 @@ private:
 	CWinInputs *input;
 	CSoundManeger *soundmgr;
 	CTextManager *textmgr;
+	CAudio *audio;
 
 	//•`‰æ—p
 	float m_fAlpha,m_fWaitAlpha;
@@ -197,8 +198,8 @@ private:
 
 public:
 	//
-	COverlay(CDrawTexture *i, CDrawFont *f, CWinInputs *w, CSoundManeger *s, CTextManager *t)
-		: image(i), font(f), input(w), soundmgr(s), textmgr(t),
+	COverlay(CDrawTexture *i, CDrawFont *f, CWinInputs *w, CSoundManeger *s, CTextManager *t,CAudio *a)
+		: image(i), font(f), input(w), soundmgr(s), textmgr(t), audio(a),
 		m_bDrawing(false),
 		m_bNextFlg(true),
 		m_bNextWaiting(false),

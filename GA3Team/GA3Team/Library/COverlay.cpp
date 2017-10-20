@@ -24,6 +24,7 @@ void COverlay::InitLoad()
 	//シオン2--------------------------------------
 	image->LoadImageEx("イヤホン男.png", 7, TEX_SIZE_512);
 	image->LoadImageEx("自転車.png", 8, TEX_SIZE_512);
+	image->LoadImageEx("イヤホン男自転車消防車.png", 30, TEX_SIZE_1024);
 	//シオン3--------------------------------------
 	image->LoadImageEx("おばあちゃんc.png", 9, TEX_SIZE_512);
 	//シオン4--------------------------------------

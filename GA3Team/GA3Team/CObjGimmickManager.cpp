@@ -30,78 +30,80 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 	*/
 	SavedataManeger()->Setcurrentdata();
 
-	m_Stage_ID = 12;
+	m_Stage_ID = 40;
 
 	switch (m_Stage_ID) {
 
 	//-シオンステージ-----------------------------------------
 	case 10:
 		////シオンのステージ1のギミック生成
-		//おばちゃん生成
+		////おばちゃん生成
 		//m_gimmick_aunt = new GimmickAunt();
 		//Obj()->InsertObj(m_gimmick_aunt, GIMMICK_AUNT, 1, this->m_pScene, HIT_BOX_OFF);
 		//m_gimmick_aunt->Init(-110, 220, 70, 100, 1);
+
 		////すずめ生成
 		//m_gimmick_bird = new GimmickBird();
 		//Obj()->InsertObj(m_gimmick_bird, GIMMICK_BIRD, 5, this->m_pScene, HIT_BOX_OFF);
 		//m_gimmick_bird->Init(550, 120, 70, 100, 1);
+		//
 		////犬A(番犬)生成
 		//m_gimmick_watchdog = new Gimmickwatchdog();
 		//Obj()->InsertObj(m_gimmick_bird, GIMMICK_WATCHDOG, 5, this->m_pScene, HIT_BOX_OFF);
 		//m_gimmick_bird->Init(100, 300, 300, 300, 1);
+		//
 		////インターホン生成
 		//m_gimmick_interphone = new GimmickInterphone();
 		//Obj()->InsertObj(m_gimmick_interphone, GIMMICK_INTERPHONE, 5, this->m_pScene, HIT_BOX_OFF);
 		//m_gimmick_interphone->Init(-400, 220, 70, 100, 1);
-		break;
 		
 		break;
 	case 11:
-		////シオンのステージ2のギミック生成
-		//m_gimmick_earphone = new Gimmickearphone();
-		//Obj()->InsertObj(m_gimmick_earphone, GIMMICK_EARPHONE, 5, this->m_pScene, HIT_BOX_OFF);
-		//m_gimmick_earphone->Init(350, 250, 70, 100, 1);
-		////コウネ生成
-		//m_gimmick_koune = new Gimmickkoune();
-		//Obj()->InsertObj(m_gimmick_koune, GIMMICK_KOUNE, 5, this->m_pScene, HIT_BOX_OFF);
-		//m_gimmick_koune->Init(-110, 220, 70, 100, 1);
-		////猫生成
-		//m_gimmick_cat = new Gimmickcat();
-		//Obj()->InsertObj(m_gimmick_cat, GIMMICK_CAT, 5, this->m_pScene, HIT_BOX_OFF);
-		//m_gimmick_cat->Init(550, 120, 70, 100, 1);
-		////自転車生成
-		//m_gimmick_bicycle = new Gimmickbicycle();
-		//Obj()->InsertObj(m_gimmick_bicycle, GIMMICK_BICYCLE, 5, this->m_pScene, HIT_BOX_OFF);
-		//m_gimmick_bicycle->Init(100, 300, 300, 300, 1);
-		////消防車
-		//m_gimmick_firetruck = new Gimmickfiretruck();
-		//Obj()->InsertObj(m_gimmick_firetruck, GIMMICK_FIRETRUCK, 5, this->m_pScene, HIT_BOX_OFF);
-		//m_gimmick_firetruck->Init(-400, 220, 70, 100, 1);
+		//シオンのステージ2のギミック生成
+		m_gimmick_earphone = new Gimmickearphone();
+		Obj()->InsertObj(m_gimmick_earphone, GIMMICK_EARPHONE, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_earphone->Init(650, 120, 200, 400, 1);
+		//コウネ生成
+		m_gimmick_koune = new Gimmickkoune();
+		Obj()->InsertObj(m_gimmick_koune, GIMMICK_KOUNE, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_koune->Init(-250, 150, 200, 400, 1);
+		//猫生成
+		m_gimmick_cat = new Gimmickcat();
+		Obj()->InsertObj(m_gimmick_cat, GIMMICK_CAT, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_cat->Init(550, 120, 100, 100, 1);
+		//自転車生成
+		m_gimmick_bicycle = new Gimmickbicycle();
+		Obj()->InsertObj(m_gimmick_bicycle, GIMMICK_BICYCLE, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_bicycle->Init(100, 300, 400, 250, 1);
+		//消防車
+		m_gimmick_firetruck = new Gimmickfiretruck();
+		Obj()->InsertObj(m_gimmick_firetruck, GIMMICK_FIRETRUCK, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_firetruck->Init(-430, -120, 400, 450, 1);
 		break;
 
 	case 12:
-		//シオンのステージ3のギミック生成
-		m_gimmick_granny = new GimmickGranny();
-		Obj()->InsertObj(m_gimmick_granny, GIMMICK_GRANNY, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_granny->Init(350, 220, 70, 100, 1);
+		////シオンのステージ3のギミック生成
+		//m_gimmick_granny = new GimmickGranny();
+		//Obj()->InsertObj(m_gimmick_granny, GIMMICK_GRANNY, 5, this->m_pScene, HIT_BOX_OFF);
+		//m_gimmick_granny->Init(350, 220, 70, 100, 1);
 
-		for (int i = 0; i < 3; i++) {
-			m_gimmick_children = new GimmickChildren(); 
-			Obj()->InsertObj(m_gimmick_children, GIMMICK_CHILDREN, 5, this->m_pScene, HIT_BOX_OFF);
-			m_gimmick_children->Init(100+(80*i), 350, 70, 100, 1,i+1);
-		}
-		
-		m_gimmick_mynah = new GimmickMynah();
-		Obj()->InsertObj(m_gimmick_mynah, GIMMICK_MYNAH, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_mynah->Init(500, 200, 50, 70, 1);
-		
-		m_gimmick_shelf = new GimmickShelf();
-		Obj()->InsertObj(m_gimmick_shelf, GIMMICK_SHELF, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_shelf->Init(600, 280, 100, 170, 3);
-		
-		m_gimmick_windchime = new GimmickWindchime();
-		Obj()->InsertObj(m_gimmick_windchime, GIMMICK_WINDCHIME, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_windchime->Init(230, 100, 60, 80, 1);
+		//for (int i = 0; i < 3; i++) {
+		//	m_gimmick_children = new GimmickChildren(); 
+		//	Obj()->InsertObj(m_gimmick_children, GIMMICK_CHILDREN, 5, this->m_pScene, HIT_BOX_OFF);
+		//	m_gimmick_children->Init(100+(80*i), 350, 70, 100, 1,i+1);
+		//}
+		//
+		//m_gimmick_mynah = new GimmickMynah();
+		//Obj()->InsertObj(m_gimmick_mynah, GIMMICK_MYNAH, 5, this->m_pScene, HIT_BOX_OFF);
+		//m_gimmick_mynah->Init(500, 200, 50, 70, 1);
+		//
+		//m_gimmick_shelf = new GimmickShelf();
+		//Obj()->InsertObj(m_gimmick_shelf, GIMMICK_SHELF, 5, this->m_pScene, HIT_BOX_OFF);
+		//m_gimmick_shelf->Init(600, 280, 100, 170, 3);
+		//
+		//m_gimmick_windchime = new GimmickWindchime();
+		//Obj()->InsertObj(m_gimmick_windchime, GIMMICK_WINDCHIME, 5, this->m_pScene, HIT_BOX_OFF);
+		//m_gimmick_windchime->Init(230, 100, 60, 80, 1);
 
 
 		break;
@@ -428,7 +430,12 @@ void CObjGimmickManager::Action() {
 		KOUNE5_TALK_MUSICIAN2_FLG3_FALSE_YES,	//演奏家会話2_フラグ3×_条件を満たしている
 		KOUNE5_TALK_MUSICIAN2_FLG3_FALSE_YES_END,//演奏家会話2_フラグ3×_条件を満たしている_終了
 		KOUNE5_TALK_MUSICIAN3_FLG3_TRUE,		//演奏家会話3_フラグ3○
-		//KOUNE5_TALK_MUSICIAN3_FLG3_TRUE,		//演奏家会話3_フラグ3○_終了
+		KOUNE5_TALK_MUSICIAN3_FLG3_TRUE_END,	//演奏家会話3_フラグ3○_終了
+		//録音---------
+		KOUNE5_SOUND_REC_A,						//機械音A_録音
+		KOUNE5_SOUND_REC_B,						//機械音B_録音
+		KOUNE5_SOUND_REC_Ad,					//機械音A'_録音
+		KOUNE5_SOUND_REC_Bd,					//機械音B'_録音
 	};
 
 	//イベント番号(メルエルステージ1)
@@ -444,6 +451,9 @@ void CObjGimmickManager::Action() {
 	//チュートリアルステージ
 	static int m_itutorialflg = TUTORIAL_WELCOM_TALK;
 
+	//シオンステージ1
+	static int m_Sion1_flg = 0;
+
 	//コウネステージ1
 	static int m_Koune1_flg = 0;
 
@@ -454,6 +464,8 @@ void CObjGimmickManager::Action() {
 	switch (m_Stage_ID) {
 		//-シオンステージ-----------------------------------------
 	case 10:
+
+
 		break;
 	case 11:
 		break;

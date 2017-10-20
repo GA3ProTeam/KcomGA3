@@ -895,9 +895,8 @@ void Gimmickfiretruck::Draw()
 //}
 ////ステージ2↑
 
-//
-////ステージ3↓
-////子供1、2、3
+//ステージ3↓
+//子供1、2、3
 //void GimmickChildren::Init(int xpos, int ypos, int widht, int height, int balloonnum, int child_id)///イニシャライズ
 //{
 //	m_iChild_ID = child_id;//子供の識別番号を初期化
@@ -906,7 +905,7 @@ void Gimmickfiretruck::Draw()
 //	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
 //
 //	//吹き出しの初期化
-//	InitBall(&m_ball[0],48, -48, talk, EXCEPTION, CNONE, LOWER_LEFT);
+//	InitBall(&m_ball[0],48, -48, talk, EXCEPTION, CNONE, LOWER_RIGHT);
 //
 //}
 //void GimmickChildren::Destructor()//デストラクタ
@@ -917,60 +916,60 @@ void Gimmickfiretruck::Draw()
 //{
 //	
 //
-//	switch (m_iChild_ID) {
-//	case 1://強気な男の子
-//		//if (m_getsound == /*ほしい音*/) {
-//		//	SavedataManeger()->CurrentData->m_bSionflg[3] = true;
-//		//}
+//	//switch (m_iChild_ID) {
+//	//case 1://強気な男の子
+//	//	//if (m_getsound == /*ほしい音*/) {
+//	//	//	SavedataManeger()->CurrentData->m_bSionflg[3] = true;
+//	//	//}
 //
-//		if (SavedataManeger()->CurrentData->m_bSionflg[3] == true && m_ball[0].OnPush) {
-//			Overlay()->talkDraw(SION, SION3_FLAG_YES_CHILD1);
-//		}
-//		else if (m_ball[0].OnPush) {
-//			Overlay()->talkDraw(SION, SION3_FLAG_NO_CHILD1);
-//		}
-//		break;
+//	//	if (SavedataManeger()->CurrentData->m_bSionflg[3] == true && m_ball[0].OnPush) {
+//	//		Overlay()->talkDraw(SION, SION3_FLAG_YES_CHILD1);
+//	//	}
+//	//	else if (m_ball[0].OnPush) {
+//	//		Overlay()->talkDraw(SION, SION3_FLAG_NO_CHILD1);
+//	//	}
+//	//	break;
 //
-//	case 2://優しい女の子
-//		//if (m_getsound == /*ほしい音*/) {
-//		//	SavedataManeger()->CurrentData->m_bSionflg[4] = true;
-//		//}
+//	//case 2://優しい女の子
+//	//	//if (m_getsound == /*ほしい音*/) {
+//	//	//	SavedataManeger()->CurrentData->m_bSionflg[4] = true;
+//	//	//}
 //
-//		if (SavedataManeger()->CurrentData->m_bSionflg[4] == true && m_ball[0].OnPush) {
-//			Overlay()->talkDraw(SION, SION3_FLAG_YES_CHILD2);
-//		}
-//		else if (m_ball[0].OnPush) {
-//			Overlay()->talkDraw(SION, SION3_FLAG_NO_CHILD2);
-//		}
+//	//	if (SavedataManeger()->CurrentData->m_bSionflg[4] == true && m_ball[0].OnPush) {
+//	//		Overlay()->talkDraw(SION, SION3_FLAG_YES_CHILD2);
+//	//	}
+//	//	else if (m_ball[0].OnPush) {
+//	//		Overlay()->talkDraw(SION, SION3_FLAG_NO_CHILD2);
+//	//	}
 //
-//		break;
+//	//	break;
 //
-//	case 3://弱気な男の子
-//		//if (m_getsound == /*ほしい音*/) {
-//		//	SavedataManeger()->CurrentData->m_bSionflg[5] = true;
-//		//}
+//	//case 3://弱気な男の子
+//	//	//if (m_getsound == /*ほしい音*/) {
+//	//	//	SavedataManeger()->CurrentData->m_bSionflg[5] = true;
+//	//	//}
 //
-//		if (SavedataManeger()->CurrentData->m_bSionflg[5] == true && m_ball[0].OnPush) {
-//			Overlay()->talkDraw(SION, SION3_FLAG_YES_CHILD3);
-//		}
-//		else if (m_ball[0].OnPush) {
-//			Overlay()->talkDraw(SION, SION3_FLAG_NO_CHILD3);
-//		}
+//	//	if (SavedataManeger()->CurrentData->m_bSionflg[5] == true && m_ball[0].OnPush) {
+//	//		Overlay()->talkDraw(SION, SION3_FLAG_YES_CHILD3);
+//	//	}
+//	//	else if (m_ball[0].OnPush) {
+//	//		Overlay()->talkDraw(SION, SION3_FLAG_NO_CHILD3);
+//	//	}
 //
-//		break;
+//	//	break;
 //
-//	}
+//	//}
 //
-//	
+//	//
 //
-//	if (SavedataManeger()->CurrentData->m_bSionflg[3] == true && 
-//		SavedataManeger()->CurrentData->m_bSionflg[4] == true && 
-//		SavedataManeger()->CurrentData->m_bSionflg[5] == true) {
+//	//if (SavedataManeger()->CurrentData->m_bSionflg[3] == true && 
+//	//	SavedataManeger()->CurrentData->m_bSionflg[4] == true && 
+//	//	SavedataManeger()->CurrentData->m_bSionflg[5] == true) {
 //
-//		Overlay()->talkDraw(SION, SION3_CLEAR);
+//	//	Overlay()->talkDraw(SION, SION3_CLEAR);
 //
-//		SavedataManeger()->CurrentData->m_bSionClearflg[2] = true;
-//	}
+//	//	SavedataManeger()->CurrentData->m_bSionClearflg[2] = true;
+//	//}
 //
 //
 //}
@@ -1039,7 +1038,7 @@ void Gimmickfiretruck::Draw()
 //	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
 //
 //	//吹き出しの初期化
-//	InitBall(&m_ball[0], 48, -48, talk, EXCEPTION, CNONE, LOWER_LEFT);
+//	InitBall(&m_ball[0], 48, -48, talk, EXCEPTION, CNONE, LOWER_RIGHT);
 //}
 //void GimmickGranny::Destructor()//デストラクタ
 //{
@@ -1080,7 +1079,7 @@ void Gimmickfiretruck::Draw()
 //	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
 //
 //	//吹き出しの初期化
-//	InitBall(&m_ball[0], 48, -48, sound, 1, PINK, LOWER_LEFT);
+//	InitBall(&m_ball[0], 48, -48, sound, 1, PINK, LOWER_RIGHT);
 //}
 //void GimmickMynah::Destructor()	//デストラクタ
 //{
@@ -1119,9 +1118,9 @@ void Gimmickfiretruck::Draw()
 //	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
 //
 //	//吹き出しの初期化
-//	InitBall(&m_ball[0], -48, -48, sound, 1, BLUE, LOWER_LEFT);
-//	InitBall(&m_ball[1], 0, -48, sound, 1, RED, LOWER_LEFT);
-//	InitBall(&m_ball[2], 48, -48, sound, 1, YELLOW, LOWER_LEFT);
+//	InitBall(&m_ball[0], -48, -48, sound, 1, BLUE, LOWER_RIGHT);
+//	InitBall(&m_ball[1], 0, -48, sound, 1, RED, LOWER_RIGHT);
+//	InitBall(&m_ball[2], 48, -48, sound, 1, YELLOW, LOWER_RIGHT);
 //}
 //void GimmickShelf::Destructor()	//デストラクタ
 //{
@@ -1159,7 +1158,7 @@ void Gimmickfiretruck::Draw()
 //	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
 //
 //	//吹き出しの初期化
-//	InitBall(&m_ball[0], 48, -48, sound, 1, PURPLE, LOWER_LEFT);
+//	InitBall(&m_ball[0], 48, -48, sound, 1, PURPLE, LOWER_RIGHT);
 //}
 //void GimmickWindchime::Destructor()	//デストラクタ
 //{
@@ -1189,7 +1188,7 @@ void Gimmickfiretruck::Draw()
 //	this->gimmicDraw(1);
 //
 //}
-////ステージ3↑
+//ステージ3↑
 
 ////ステージ4↓
 //void GimmickMysteryman::Init(int xpos, int ypos, int widht, int height, int balloonnum) {

@@ -30,7 +30,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 	*/
 	SavedataManeger()->Setcurrentdata();
 
-	m_Stage_ID = 40;
+	m_Stage_ID = 12;
 
 	switch (m_Stage_ID) {
 
@@ -84,27 +84,27 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 		break;
 
 	case 12:
-		//シオンのステージ3のギミック生成
-		/*for (int i = 0; i < 3; i++) {
-			m_gimmick_children = new GimmickChildren(); 
-			Obj()->InsertObj(m_gimmick_children, GIMMICK_CHILDREN, 5, this->m_pScene, HIT_BOX_OFF);
-			m_gimmick_children->Init(100+(80*i), 350, 70, 100, 1,i+1);
-		}
-		m_gimmick_granny = new GimmickGranny();
-		Obj()->InsertObj(m_gimmick_granny, GIMMICK_GRANNY, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_granny->Init(350, 220, 70, 100, 1);
-		
-		m_gimmick_mynah = new GimmickMynah();
-		Obj()->InsertObj(m_gimmick_mynah, GIMMICK_MYNAH, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_mynah->Init(500, 200, 50, 70, 1);
-		
-		m_gimmick_shelf = new GimmickShelf();
-		Obj()->InsertObj(m_gimmick_shelf, GIMMICK_SHELF, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_shelf->Init(600, 280, 100, 170, 3);
-		
-		m_gimmick_windchime = new GimmickWindchime();
-		Obj()->InsertObj(m_gimmick_windchime, GIMMICK_WINDCHIME, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_windchime->Init(230, 100, 60, 80, 1);*/
+		////シオンのステージ3のギミック生成
+		//for (int i = 0; i < 3; i++) {
+		//	m_gimmick_children = new GimmickChildren(); 
+		//	Obj()->InsertObj(m_gimmick_children, GIMMICK_CHILDREN, 5, this->m_pScene, HIT_BOX_OFF);
+		//	m_gimmick_children->Init(100+(80*i), 350, 70, 100, 1,i+1);
+		//}
+		//m_gimmick_granny = new GimmickGranny();
+		//Obj()->InsertObj(m_gimmick_granny, GIMMICK_GRANNY, 5, this->m_pScene, HIT_BOX_OFF);
+		//m_gimmick_granny->Init(350, 220, 70, 100, 1);
+		//
+		//m_gimmick_mynah = new GimmickMynah();
+		//Obj()->InsertObj(m_gimmick_mynah, GIMMICK_MYNAH, 5, this->m_pScene, HIT_BOX_OFF);
+		//m_gimmick_mynah->Init(500, 200, 50, 70, 1);
+		//
+		//m_gimmick_shelf = new GimmickShelf();
+		//Obj()->InsertObj(m_gimmick_shelf, GIMMICK_SHELF, 5, this->m_pScene, HIT_BOX_OFF);
+		//m_gimmick_shelf->Init(600, 280, 100, 170, 3);
+		//
+		//m_gimmick_windchime = new GimmickWindchime();
+		//Obj()->InsertObj(m_gimmick_windchime, GIMMICK_WINDCHIME, 5, this->m_pScene, HIT_BOX_OFF);
+		//m_gimmick_windchime->Init(230, 100, 60, 80, 1);
 
 
 		break;
@@ -441,70 +441,70 @@ void CObjGimmickManager::Action() {
 
 	
 	switch (m_Stage_ID) {
-	//	//-シオンステージ-----------------------------------------
-	//case 10:
-	//	break;
-	//case 11:
-	//	break;
-	//case 12:
-	//	if(m_gimmick_granny->m_ball[0].OnPush) {
-	//			Overlay()->talkDraw(SION, SION3_OBATYAN);
-	//		}
+		//-シオンステージ-----------------------------------------
+	case 10:
+		break;
+	case 11:
+		break;
+	case 12:
+		if(m_gimmick_granny->m_ball[0].OnPush) {
+				Overlay()->talkDraw(SION, SION3_OBATYAN);
+			}
 
-	//	switch (m_gimmick_children->GetChild_ID) {
-	//	case 1://強気な男の子
-	//		//if (m_getsound == /*ほしい音*/) {
-	//		//	SavedataManeger()->CurrentData->m_bSionflg[3] = true;
-	//		//}
+		switch (m_gimmick_children->GetChild_ID()) {
+		case 1://強気な男の子
+			//if (m_getsound == /*ほしい音*/) {
+			//	SavedataManeger()->CurrentData->m_bSionflg[3] = true;
+			//}
 
-	//		if (SavedataManeger()->CurrentData->m_bSionflg[3] == true && m_gimmick_children->m_ball[0].OnPush) {
-	//			Overlay()->talkDraw(SION, SION3_FLAG_YES_CHILD1);
-	//		}
-	//		else if (m_gimmick_children->m_ball[0].OnPush) {
-	//			Overlay()->talkDraw(SION, SION3_FLAG_NO_CHILD1);
-	//		}
-	//		break;
+			if (SavedataManeger()->CurrentData->m_bSionflg[3] == true && m_gimmick_children->m_ball[0].OnPush) {
+				Overlay()->talkDraw(SION, SION3_FLAG_YES_CHILD1);
+			}
+			else if (m_gimmick_children->m_ball[0].OnPush) {
+				Overlay()->talkDraw(SION, SION3_FLAG_NO_CHILD1);
+			}
+			break;
 
-	//	case 2://優しい女の子
-	//		//if (m_getsound == /*ほしい音*/) {
-	//		//	SavedataManeger()->CurrentData->m_bSionflg[4] = true;
-	//		//}
+		case 2://優しい女の子
+			//if (m_getsound == /*ほしい音*/) {
+			//	SavedataManeger()->CurrentData->m_bSionflg[4] = true;
+			//}
 
-	//		if (SavedataManeger()->CurrentData->m_bSionflg[4] == true && m_gimmick_children->m_ball[0].OnPush) {
-	//			Overlay()->talkDraw(SION, SION3_FLAG_YES_CHILD2);
-	//		}
-	//		else if (m_gimmick_children->m_ball[0].OnPush) {
-	//			Overlay()->talkDraw(SION, SION3_FLAG_NO_CHILD2);
-	//		}
+			if (SavedataManeger()->CurrentData->m_bSionflg[4] == true && m_gimmick_children->m_ball[0].OnPush) {
+				Overlay()->talkDraw(SION, SION3_FLAG_YES_CHILD2);
+			}
+			else if (m_gimmick_children->m_ball[0].OnPush) {
+				Overlay()->talkDraw(SION, SION3_FLAG_NO_CHILD2);
+			}
 
-	//		break;
+			break;
 
-	//	case 3://弱気な男の子
-	//		//if (m_getsound == /*ほしい音*/) {
-	//		//	SavedataManeger()->CurrentData->m_bSionflg[5] = true;
-	//		//}
+		case 3://弱気な男の子
+			//if (m_getsound == /*ほしい音*/) {
+			//	SavedataManeger()->CurrentData->m_bSionflg[5] = true;
+			//}
 
-	//		if (SavedataManeger()->CurrentData->m_bSionflg[5] == true && m_gimmick_children->m_ball[0].OnPush) {
-	//			Overlay()->talkDraw(SION, SION3_FLAG_YES_CHILD3);
-	//		}
-	//		else if (m_gimmick_children->m_ball[0].OnPush) {
-	//			Overlay()->talkDraw(SION, SION3_FLAG_NO_CHILD3);
-	//		}
+			if (SavedataManeger()->CurrentData->m_bSionflg[5] == true && m_gimmick_children->m_ball[0].OnPush) {
+				Overlay()->talkDraw(SION, SION3_FLAG_YES_CHILD3);
+			}
+			else if (m_gimmick_children->m_ball[0].OnPush) {
+				Overlay()->talkDraw(SION, SION3_FLAG_NO_CHILD3);
+			}
 
-	//		break;
+			break;
 
-	//	}
+		}
 
-	//	if (SavedataManeger()->CurrentData->m_bSionflg[3] == true && 
-	//		SavedataManeger()->CurrentData->m_bSionflg[4] == true && 
-	//		SavedataManeger()->CurrentData->m_bSionflg[5] == true) {
+		if (SavedataManeger()->CurrentData->m_bSionflg[3] == true && 
+			SavedataManeger()->CurrentData->m_bSionflg[4] == true && 
+			SavedataManeger()->CurrentData->m_bSionflg[5] == true) {
 
-	//		Overlay()->talkDraw(SION, SION3_CLEAR);
+			Overlay()->talkDraw(SION, SION3_CLEAR);
 
-	//		SavedataManeger()->CurrentData->m_bSionClearflg[2] = true;
-	//	}
+			SavedataManeger()->CurrentData->m_bSionClearflg[2] = true;
+		}
 
-		//break;
+		break;
 	case 13:
 		break;
 	case 14:

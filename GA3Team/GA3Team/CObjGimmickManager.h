@@ -26,6 +26,9 @@ private:
 	//シオンステージ↓
 	//ステージ1↓
 	GimmickAunt* m_gimmick_aunt;
+	GimmickBird* m_gimmick_bird;
+	Gimmickwatchdog* m_gimmick_watchdog;
+	GimmickInterphone* m_gimmick_interphone;
 
 	//ステージ1↑
 	//ステージ2↓

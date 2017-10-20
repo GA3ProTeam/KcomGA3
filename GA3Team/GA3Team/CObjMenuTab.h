@@ -8,7 +8,7 @@ private:
 	//開閉フラグ
 	bool m_bOpenClose;
 	//連打回避のためのカウント
-	int m_icnt;
+	int m_icnt, m_iabicnt;
 
 	//ゴミ箱動作フラグ
 	bool m_bGarbageActionFlg;
@@ -25,6 +25,10 @@ private:
 
 	int m_isoundx;//音のボタンのX
 	int m_isoundy;//音のボタンのY
+
+	int m_iability_x;//能力ボタンのX
+	int m_iability_y;//能力ボタンのY
+	bool m_bability;//能力発動フラグ
 
 	RECT m_rSrc;//転送先座標
 	RECT m_rDst;//切り取り座標

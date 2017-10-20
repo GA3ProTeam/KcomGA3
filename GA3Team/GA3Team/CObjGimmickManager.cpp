@@ -430,7 +430,12 @@ void CObjGimmickManager::Action() {
 		KOUNE5_TALK_MUSICIAN2_FLG3_FALSE_YES,	//演奏家会話2_フラグ3×_条件を満たしている
 		KOUNE5_TALK_MUSICIAN2_FLG3_FALSE_YES_END,//演奏家会話2_フラグ3×_条件を満たしている_終了
 		KOUNE5_TALK_MUSICIAN3_FLG3_TRUE,		//演奏家会話3_フラグ3○
-		//KOUNE5_TALK_MUSICIAN3_FLG3_TRUE_END,	//演奏家会話3_フラグ3○_終了
+		KOUNE5_TALK_MUSICIAN3_FLG3_TRUE_END,	//演奏家会話3_フラグ3○_終了
+		//録音---------
+		KOUNE5_SOUND_REC_A,						//機械音A_録音
+		KOUNE5_SOUND_REC_B,						//機械音B_録音
+		KOUNE5_SOUND_REC_Ad,					//機械音A'_録音
+		KOUNE5_SOUND_REC_Bd,					//機械音B'_録音
 	};
 
 	//イベント番号(メルエルステージ1)

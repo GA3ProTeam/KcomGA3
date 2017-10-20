@@ -403,6 +403,14 @@ void CObjGimmickManager::Action() {
 		//-----------------------------------------------------------------------------------------------
 
 	};
+
+	//イベント番号(コウネステージ5)
+	enum KOUNE5_NUMBER {
+		KOUNE5_TALK_START,						//ステージ開始時会話
+		KOUNE5_TALK_START_END,					//ステージ開始時会話_終了
+		//
+	};
+
 	//イベント番号(メルエルステージ1)
 	enum MERUERU1_NUMBER {
 		MERUERU1_WELCOM_TALK,					//開始会話
@@ -568,7 +576,7 @@ void CObjGimmickManager::Action() {
 		//テレビ音取得
 		if (m_gimmick_television->m_ball[0].OnPush) {
 
-
+			
 
 
 		}
@@ -581,18 +589,17 @@ void CObjGimmickManager::Action() {
 		}
 
 		//レンジ音使用でステージクリア
-		if (Input()->m_x > m_gimmick_doctorroomdoor->m_iXpos&& 
-			Input()->m_x < (m_gimmick_doctorroomdoor->m_iXpos + m_gimmick_doctorroomdoor->m_iWidth)&& 
-			Input()->m_y > m_gimmick_doctorroomdoor->m_iYpos && 
-			Input()->m_y < (m_gimmick_doctorroomdoor->m_iYpos + m_gimmick_doctorroomdoor->m_iHeight)) {
-			//マウスドラッグ中にマウスボタンが離された
-			//if (!Input()->GetMouButtonL() && tab->GetHaveSound()) {
-
-			//SavedataManeger()->CurrentData->m_bMelueruClearflg[0] = true;
+		if (m_gimmick_doctorroomdoor->m_ball[0].m_soundnum == 1)
+		{
 
 
-			//}
+
+
 		}
+
+
+
+
 	}
 	case 21:
 		break;

@@ -30,7 +30,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 	*/
 	SavedataManeger()->Setcurrentdata();
 
-	m_Stage_ID = 30;
+	m_Stage_ID = 11;
 
 	switch (m_Stage_ID) {
 
@@ -896,6 +896,47 @@ void CObjGimmickManager::Draw() {
 	case 10:
 		break;
 	case 11:
+		//‰E
+		//Ø‚èŽæ‚èÀ•W
+		m_dst.top = 0;
+		m_dst.bottom = m_dst.top + 600;
+		m_dst.left = 0;
+		m_dst.right = m_dst.left + 800;
+
+		//“]‘—æÀ•W
+		m_src.top = 0;
+		m_src.bottom = m_src.top + 600;
+		m_src.left = 0 + User()->mscroll_x;
+		m_src.right = m_src.left + 800;
+
+		//”wŒi•`‰æ
+		Image()->DrawEx(28, &m_src, &m_dst, col, 0.0f);
+
+		//¶
+		//Ø‚èŽæ‚èÀ•W
+		m_dst.top = 0;
+		m_dst.bottom = m_dst.top + 600;
+		m_dst.left = 0;
+		m_dst.right = m_dst.left + 400;
+
+		//“]‘—æÀ•W
+		m_src.top = 0;
+		m_src.bottom = m_src.top + 600;
+		m_src.left = -400 + User()->mscroll_x;
+		m_src.right = m_src.left + 400;
+
+		//”wŒi•`‰æ
+		Image()->DrawEx(29, &m_src, &m_dst, col, 0.0f);
+
+
+
+
+
+
+
+
+
+
 		break;
 	case 12:
 		break;

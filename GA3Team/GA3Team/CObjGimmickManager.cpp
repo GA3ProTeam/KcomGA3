@@ -760,7 +760,7 @@ void CObjGimmickManager::Action() {
 	}
 	case 33:
 		break;
-	case 34:
+	case 34://コウネステージ5
 		break;
 	case 35:
 		break;

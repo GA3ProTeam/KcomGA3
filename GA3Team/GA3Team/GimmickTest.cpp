@@ -1396,7 +1396,7 @@ void GimmickDog::Draw()
 void GimmickManholeCover::Init(int xpos, int ypos, int widht, int height, int balloonnum)
 {
 	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
-	InitBall(m_ball, m_iWidth - 50, m_iHeight - 48, sound, 1, RED, UPPER_LEFT);
+	InitBall(m_ball, m_iWidth - 50, m_iHeight - 48, talk, 1, RED, UPPER_LEFT);
 
 }
 
@@ -1433,7 +1433,7 @@ void GimmickManholeCover::Draw()
 void GimmickManholeHole::Init(int xpos, int ypos, int widht, int height, int balloonnum)
 {
 	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
-	InitBall(m_ball, m_iWidth - 50, m_iHeight - 48, sound, 1, RED, UPPER_LEFT);
+	InitBall(&m_ball[0], m_iWidth - 50, m_iHeight - 48, sound, 1, RED, UPPER_LEFT);
 	m_Status = STATUS_SLEEP;
 }
 void GimmickManholeHole::Destructor() 
@@ -1443,12 +1443,7 @@ void GimmickManholeHole::Destructor()
 void GimmickManholeHole::Action()
 {
 
-	//if (ball[0].OnPush) {
-
-	//	SavedataManeger()->CurrentData->m_bKouneClearflg[0] = true;
-	//	Overlay()->talkDraw(KOUNE, KOUNE1_OZI_CLEAR);
-
-	//}
+	
 }//マンホールの穴のドロー
 void GimmickManholeHole::Draw()
 {
@@ -1468,7 +1463,7 @@ void GimmickManholeHole::Draw()
 void GimmickOldman::Init(int xpos, int ypos, int widht, int height, int balloonnum)
 {
 	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
-	InitBall(m_ball, m_iWidth - 50, m_iHeight - 48, talk, 1, RED, UPPER_LEFT);
+	InitBall(&m_ball[0], m_iWidth - 50, m_iHeight - 48, talk, 1, RED, UPPER_LEFT);
 	m_Status = STATUS_SLEEP;
 }
 

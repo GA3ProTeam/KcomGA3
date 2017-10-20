@@ -585,7 +585,7 @@ void CObjGimmickManager::Action() {
 		//テレビ音取得
 		if (m_gimmick_television->m_ball[0].OnPush) {
 
-
+			
 
 
 		}
@@ -598,18 +598,17 @@ void CObjGimmickManager::Action() {
 		}
 
 		//レンジ音使用でステージクリア
-		if (Input()->m_x > m_gimmick_doctorroomdoor->m_iXpos&& 
-			Input()->m_x < (m_gimmick_doctorroomdoor->m_iXpos + m_gimmick_doctorroomdoor->m_iWidth)&& 
-			Input()->m_y > m_gimmick_doctorroomdoor->m_iYpos && 
-			Input()->m_y < (m_gimmick_doctorroomdoor->m_iYpos + m_gimmick_doctorroomdoor->m_iHeight)) {
-			//マウスドラッグ中にマウスボタンが離された
-			//if (!Input()->GetMouButtonL() && tab->GetHaveSound()) {
-
-			//SavedataManeger()->CurrentData->m_bMelueruClearflg[0] = true;
+		if (m_gimmick_doctorroomdoor->m_ball[0].m_soundnum == 1)
+		{
 
 
-			//}
+
+
 		}
+
+
+
+
 	}
 	case 21:
 		break;

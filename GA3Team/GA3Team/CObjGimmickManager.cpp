@@ -403,6 +403,14 @@ void CObjGimmickManager::Action() {
 		//-----------------------------------------------------------------------------------------------
 
 	};
+
+	//イベント番号(コウネステージ5)
+	enum KOUNE5_NUMBER {
+		KOUNE5_TALK_START,						//ステージ開始時会話
+		KOUNE5_TALK_START_END,					//ステージ開始時会話_終了
+		//
+	};
+
 	//イベント番号(メルエルステージ1)
 	enum MERUERU1_NUMBER {
 		MERUERU1_WELCOM_TALK,					//開始会話

@@ -333,7 +333,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 
 		//Š÷
 		m_obj_desk = new CObjDesk();
-		Obj()->InsertObj(m_obj_desk, OBJ_DESK, 5, this->m_pScene, HIT_BOX_OFF);
+		//Obj()->InsertObj(m_obj_desk, OBJ_DESK, 5, this->m_pScene, HIT_BOX_OFF);
 		m_obj_desk->Init(286, 310, 242, 145);
 		break;
 	//--------------------------------------------------------

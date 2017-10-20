@@ -30,7 +30,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 	*/
 	SavedataManeger()->Setcurrentdata();
 
-	m_Stage_ID = 40;
+	m_Stage_ID = 30;
 
 	switch (m_Stage_ID) {
 
@@ -108,18 +108,18 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 
 		break;
 	case 13:
-		////シオンステージ4　設定
-		//m_gimmick_mysteryman = new GimmickMysteryman();
-		//Obj()->InsertObj(m_gimmick_mysteryman, GIMMICK_MYSTERYMAN, 1, this->m_pScene, HIT_BOX_OFF);
-		//m_gimmick_mysteryman->Init(300, 100, 60, 80, 1);
+		//シオンステージ4　設定
+		m_gimmick_mysteryman = new GimmickMysteryman();
+		Obj()->InsertObj(m_gimmick_mysteryman, GIMMICK_MYSTERYMAN, 1, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_mysteryman->Init(600, 200, 150, 250, 1);
 
-		//m_gimmick_bike = new GimmickBike();
-		//Obj()->InsertObj(m_gimmick_bike, GIMMICK_BIKE, 1, this->m_pScene, HIT_BOX_OFF);
-		//m_gimmick_bike->Init(500, 250, 200, 300, 1);
+		m_gimmick_bike = new GimmickBike();
+		Obj()->InsertObj(m_gimmick_bike, GIMMICK_BIKE, 1, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_bike->Init(50, 300, 250, 150, 1);
 
-		//m_gimmick_door_Sion4 = new GimmickDoor();
-		//Obj()->InsertObj(m_gimmick_door_Sion4, GIMMICK_SHELF, 1, this->m_pScene, HIT_BOX_OFF);
-		//m_gimmick_door_Sion4->Init(500, 250, 200, 300, 1);
+		m_gimmick_door_Sion4 = new GimmickDoor();
+		Obj()->InsertObj(m_gimmick_door_Sion4, GIMMICK_SHELF, 1, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_door_Sion4->Init(350, 150, 200, 300, 1);
 
 
 
@@ -193,20 +193,20 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 
 		m_gimmick_dog = new GimmickDog();
 		Obj()->InsertObj(m_gimmick_dog,GIMMICK_DOG , 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_dog->Init(500, 300, 140, 100, 1);
-		
-		m_gimmick_manhole_cover = new GimmickManholeCover();
-		Obj()->InsertObj(m_gimmick_manhole_cover, GIMMICK_MANHOLECOVER, 2, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_manhole_cover->Init(100, 400, 120, 40, 2);
-		
-		m_gimmick_manhole_hole = new GimmickManholeHole();
-		Obj()->InsertObj(m_gimmick_manhole_hole, GIMMICK_MANHOLEHOLE, 3, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_manhole_hole->Init(100, 400, 120, 40, 3);
+		m_gimmick_dog->Init(520, 320, 120, 100, 1);
 
 		m_gimmick_oldman = new GimmickOldman();
 		Obj()->InsertObj(m_gimmick_oldman, GIMMICK_OLDMAN, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_oldman->Init(100, 100, 150, 300, 1);
+		m_gimmick_oldman->Init(100, 100, 150, 300, 3);
 		
+		m_gimmick_manhole_hole = new GimmickManholeHole();
+		Obj()->InsertObj(m_gimmick_manhole_hole, GIMMICK_MANHOLEHOLE, 3, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_manhole_hole->Init(100, 400, 220, 80, 2);
+				
+		m_gimmick_manhole_cover = new GimmickManholeCover();
+		Obj()->InsertObj(m_gimmick_manhole_cover, GIMMICK_MANHOLECOVER, 2, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_manhole_cover->Init(100, 400, 220, 80, 1);
+
 
 		break;
 	case 31:
@@ -785,6 +785,21 @@ void CObjGimmickManager::Draw() {
 	case 12:
 		break;
 	case 13:
+
+		//切り取り座標
+		m_dst.top = 0;
+		m_dst.bottom = m_dst.top + 1024;
+		m_dst.left = 0;
+		m_dst.right = m_dst.left + 1024;
+
+		//転送先座標
+		m_src.top = 0;
+		m_src.bottom = m_src.top + 600;
+		m_src.left = -400 + User()->mscroll_x;
+		m_src.right = m_src.left + 1200;
+
+		//背景描画
+		Image()->DrawEx(25, &m_src, &m_dst, col, 0.0f);
 		break;
 	case 14:
 		break;

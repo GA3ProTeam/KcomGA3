@@ -1209,16 +1209,19 @@ void GimmickMysteryman::Draw() {
 	this->gimmicDraw(1);
 	//-------------------------ギミック(本体)を描画-------------------------------
 	float col[4] = { 1.0,1.0,1.0,1.0 };
-	//切り取り先座標
-	m_dst.top = 0; m_dst.left = 0;
-	m_dst.bottom = 380; m_dst.right = 200;
 
+	//切り取り先座標
+	m_dst.top = 0;					m_dst.left = 0;
+	m_dst.bottom = m_dst.top + 64;	m_dst.right = m_dst.left + 64;
+	
 	//転送先座標
 	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
 	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
 	//描画
-	Image()->DrawEx(9, &m_src, &m_dst, col, 0.0f);
+	Image()->DrawEx(58, &m_src, &m_dst, col, 0.0f);
 
+	//ギミック名前描画
+	Font()->StrDraw("なぞなぞさん", m_iXpos, m_iYpos, 20, col);
 
 }		//ドロー
 
@@ -1241,14 +1244,18 @@ this->gimmicDraw(1);
 	//-------------------------ギミック(本体)を描画-------------------------------
 	float col[4] = { 1.0,1.0,1.0,1.0 };
 	//切り取り先座標
-	m_dst.top = 0; m_dst.left = 0;
-	m_dst.bottom = 200; m_dst.right = 200;
+	m_dst.top = 64;					m_dst.left = 0;
+	m_dst.bottom = m_dst.top + 64;	m_dst.right = m_dst.left + 64;
 
 	//転送先座標
-	m_src.top = m_iYpos; m_src.left = 200;//m_iXpos + User()->mscroll_x;
+	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
 	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
 	//描画
-	Image()->DrawEx(9, &m_src, &m_dst, col, 0.0f);
+	Image()->DrawEx(58, &m_src, &m_dst, col, 0.0f);
+
+	//ギミック名前描画
+	Font()->StrDraw("バイク", m_iXpos, m_iYpos, 20, col);
+
 }		//ドロー
 
 
@@ -1268,15 +1275,17 @@ void GimmickDoor::Draw() {
 	//-------------------------ギミック(本体)を描画-------------------------------
 	float col[4] = { 1.0,1.0,1.0,1.0 };
 	//切り取り先座標
-	m_dst.top = 0; m_dst.left = 0;
-	m_dst.bottom = 200; m_dst.right = 200;
+	m_dst.top = 128;				m_dst.left = 0;
+	m_dst.bottom = m_dst.top + 64;	m_dst.right = m_dst.left + 64;
 
 	//転送先座標
 	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
 	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
 	//描画
-	Image()->DrawEx(9, &m_src, &m_dst, col, 0.0f);
+	Image()->DrawEx(58, &m_src, &m_dst, col, 0.0f);
 
+	//ギミック名前描画
+	Font()->StrDraw("ドア", m_iXpos, m_iYpos, 20, col);
 
 }		//ドロー
 //		//ステージ4↑
@@ -1331,7 +1340,7 @@ void GimmickDog::Draw()
 	float col[4] = { 1.0,1.0,1.0,1.0 };
 	//切り取り先座標
 	m_dst.top = 0; m_dst.left = 0;
-	m_dst.bottom = 185; m_dst.right = 440;
+	m_dst.bottom = 200; m_dst.right = 200;
 
 	//転送先座標
 	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
@@ -1369,7 +1378,7 @@ void GimmickManholeCover::Draw()
 	float col[4] = { 1.0,1.0,1.0,1.0 };
 	//切り取り先座標
 	m_dst.top = 0; m_dst.left = 0;
-	m_dst.bottom = 185; m_dst.right = 440;
+	m_dst.bottom = 300; m_dst.right = 600;
 
 	//転送先座標
 	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
@@ -1404,7 +1413,7 @@ void GimmickManholeHole::Draw()
 	float col[4] = { 1.0,1.0,1.0,1.0 };
 	//切り取り先座標
 	m_dst.top = 0; m_dst.left = 0;
-	m_dst.bottom = 200; m_dst.right = 200;
+	m_dst.bottom = 300; m_dst.right = 600;
 
 	//転送先座標
 	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;

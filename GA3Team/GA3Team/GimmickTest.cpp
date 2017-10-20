@@ -347,29 +347,20 @@ void Gimmickearphone::Action()
 void Gimmickearphone::Draw()
 {
 	float col[4] = { 1.0,1.0,1.0,1.0 };
-	//ギミック本体描画-----------------------------------------------------------
 	//切り取り先座標
 	m_dst.top = 0;
-	m_dst.bottom = 200;
-	m_dst.left = 0;
+	m_dst.bottom = 370;
+	m_dst.left = 40;
 	m_dst.right = 200;
 
 	//転送先座標
 	m_src.top = m_iYpos;
 	m_src.bottom = m_src.top + m_iHeight;
-	m_src.left = m_iXpos;
+	m_src.left = m_iXpos + User()->mscroll_x;
 	m_src.right = m_src.left + m_iWidth;
 
 	//描画
-	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
-	//---------------------------------------------------------------------------
-
-	//レコーダーを取得した後から吹き出し出現
-	//if (SavedataManeger()->CurrentData->m_btutoriaruflg[0]) {
-	//吹き出し描画＆動作---------------------------------------------------------
-	this->gimmicDraw(1);
-	//---------------------------------------------------------------------------
-	//}
+	Image()->DrawEx(30, &m_src, &m_dst, col, 0.0f); //描画値変更
 }
 
 
@@ -406,29 +397,20 @@ void Gimmickkoune::Action()
 void Gimmickkoune::Draw()
 {
 	float col[4] = { 1.0,1.0,1.0,1.0 };
-	//ギミック本体描画-----------------------------------------------------------
 	//切り取り先座標
 	m_dst.top = 0;
-	m_dst.bottom = 1024;
+	m_dst.bottom = 380;
 	m_dst.left = 0;
-	m_dst.right = 1024;
+	m_dst.right = 190;
 
 	//転送先座標
 	m_src.top = m_iYpos;
 	m_src.bottom = m_src.top + m_iHeight;
-	m_src.left = m_iXpos;
+	m_src.left = m_iXpos + User()->mscroll_x;
 	m_src.right = m_src.left + m_iWidth;
 
 	//描画
-	Image()->Draw(8, &m_src, &m_dst, col, 0.0f);
-	//---------------------------------------------------------------------------
-
-	//レコーダーを取得した後から吹き出し出現
-	//if (SavedataManeger()->CurrentData->m_btutoriaruflg[0]) {
-	//吹き出し描画＆動作---------------------------------------------------------
-	this->gimmicDraw(1);
-	//---------------------------------------------------------------------------
-	//}
+	Image()->DrawEx(17, &m_src, &m_dst, col, 0.0f); //描画値変更
 }
 //猫
 void Gimmickcat::Init(int xpos, int ypos, int widht, int height, int balloonnum)
@@ -453,29 +435,20 @@ void Gimmickcat::Action()
 void Gimmickcat::Draw()
 {
 	float col[4] = { 1.0,1.0,1.0,1.0 };
-	//ギミック本体描画-----------------------------------------------------------
 	//切り取り先座標
-	m_dst.top = 0;
-	m_dst.bottom = 200;
-	m_dst.left = 0;
-	m_dst.right = 200;
+	m_dst.top = 610;
+	m_dst.bottom = 750;
+	m_dst.left = 30;
+	m_dst.right = 190;
 
 	//転送先座標
 	m_src.top = m_iYpos;
 	m_src.bottom = m_src.top + m_iHeight;
-	m_src.left = m_iXpos;
+	m_src.left = m_iXpos + User()->mscroll_x;
 	m_src.right = m_src.left + m_iWidth;
 
 	//描画
-	Image()->Draw(2, &m_src, &m_dst, col, 0.0f);
-	//---------------------------------------------------------------------------
-
-	//レコーダーを取得した後から吹き出し出現
-	//if (SavedataManeger()->CurrentData->m_btutoriaruflg[0]) {
-	//吹き出し描画＆動作---------------------------------------------------------
-	this->gimmicDraw(1);
-	//---------------------------------------------------------------------------
-	//}
+	Image()->DrawEx(16, &m_src, &m_dst, col, 0.0f); //描画値変更
 }
 
 //自転車
@@ -501,29 +474,20 @@ void Gimmickbicycle::Action()
 void Gimmickbicycle::Draw()
 {
 	float col[4] = { 1.0,1.0,1.0,1.0 };
-	//ギミック本体描画-----------------------------------------------------------
 	//切り取り先座標
 	m_dst.top = 0;
-	m_dst.bottom = 380;
-	m_dst.left = 0;
-	m_dst.right = 200;
+	m_dst.bottom = 230;
+	m_dst.left = 200;
+	m_dst.right = 570;
 
 	//転送先座標
 	m_src.top = m_iYpos;
 	m_src.bottom = m_src.top + m_iHeight;
-	m_src.left = m_iXpos;
+	m_src.left = m_iXpos + User()->mscroll_x;
 	m_src.right = m_src.left + m_iWidth;
 
 	//描画
-	Image()->Draw(5, &m_src, &m_dst, col, 0.0f);
-	//---------------------------------------------------------------------------
-
-	//レコーダーを取得した後から吹き出し出現
-	//if (SavedataManeger()->CurrentData->m_btutoriaruflg[0]) {
-	//吹き出し描画＆動作---------------------------------------------------------
-	this->gimmicDraw(2);
-	//---------------------------------------------------------------------------
-	//}
+	Image()->DrawEx(30, &m_src, &m_dst, col, 0.0f); //描画値変更
 }
 
 //消防車
@@ -549,29 +513,49 @@ void Gimmickfiretruck::Action()
 void Gimmickfiretruck::Draw()
 {
 	float col[4] = { 1.0,1.0,1.0,1.0 };
-	//ギミック本体描画-----------------------------------------------------------
+
 	//切り取り先座標
 	m_dst.top = 0;
-	m_dst.bottom = 200;
-	m_dst.left = 0;
-	m_dst.right = 200;
+	m_dst.bottom = 110;
+	m_dst.left = 575;
+	m_dst.right = 690;
 
 	//転送先座標
 	m_src.top = m_iYpos;
 	m_src.bottom = m_src.top + m_iHeight;
-	m_src.left = m_iXpos;
+	m_src.left = m_iXpos + User()->mscroll_x;
 	m_src.right = m_src.left + m_iWidth;
-
+	
 	//描画
-	Image()->Draw(5, &m_src, &m_dst, col, 0.0f);
-	//---------------------------------------------------------------------------
+	Image()->DrawEx(30, &m_src, &m_dst, col, 0.0f); //描画値変更
 
-	//レコーダーを取得した後から吹き出し出現
-	//if (SavedataManeger()->CurrentData->m_btutoriaruflg[0]) {
-	//吹き出し描画＆動作---------------------------------------------------------
-	this->gimmicDraw(2);
-	//---------------------------------------------------------------------------
-	//}
+												   //吹き出し描画＆動作-------
+	this->gimmicDraw(1);
+	//-------------------------
+	//float col[4] = { 1.0,1.0,1.0,1.0 };
+	////ギミック本体描画-----------------------------------------------------------
+	////切り取り先座標
+	//m_dst.top = 0;
+	//m_dst.bottom = 200;
+	//m_dst.left = 0;
+	//m_dst.right = 200;
+
+	////転送先座標
+	//m_src.top = m_iYpos;
+	//m_src.bottom = m_src.top + m_iHeight;
+	//m_src.left = m_iXpos;
+	//m_src.right = m_src.left + m_iWidth;
+
+	////描画
+	//Image()->Draw(5, &m_src, &m_dst, col, 0.0f);
+	////---------------------------------------------------------------------------
+
+	////レコーダーを取得した後から吹き出し出現
+	////if (SavedataManeger()->CurrentData->m_btutoriaruflg[0]) {
+	////吹き出し描画＆動作---------------------------------------------------------
+	//this->gimmicDraw(2);
+	////---------------------------------------------------------------------------
+	////}
 }
 //ステージ2↑
 

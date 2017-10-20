@@ -244,6 +244,20 @@ extern CTextManager* g_TextManager;
 extern COverlay* g_Overlay;
 extern CSavedataManeger* g_SavedataManeger;
 
+//std::vectorを初期化（空にする）
+//引数：
+//vec = 初期化するstd::vector
+template<class T>
+void VectorClear(vector<T>* vec) {
+	//clear()関数を使用してもメモリ領域は破棄されないため、
+	//代わりにswap関数を使用します。
+	//スタック領域（vector<T*>()）とデータを交換することで、
+	//この関数を出た後に破棄するようにしています。
+	//vecには、新しい空のデータ（vector<T>()）と入れ替わるため、
+	//初期の状態が入ることになります。
+	vector<T>().swap(*vec);
+}
+
 //エンジンヘッダー
 #include "Library\\DirectXDevice.h"
 #include "Library\\DrawTexture.h"
@@ -337,6 +351,7 @@ class CUserData
 		//----ユーザーが持つデータ-------
 		//int mSeveData;   //サンプルセーブデータ
 		int mscroll_x;	   //画面スクロール値
+		int mscroll_speed; //画面スクロールスピード
 		int m_iNext_Scene; //次のシーン
 		
 		bool m_bsionability;

@@ -4,7 +4,7 @@
 //引数：
 //scroll_max   = 画面右スクロール上限
 //scroll_speed = スクロール速度
-void ButtonRScrollScreen::Init(int scroll_max, int scroll_speed) {
+void ButtonRScrollScreen::Init(int scroll_max/*, int scroll_speed*/) {
 	//各変数初期化
 
 	m_Button_x = WINDOW_SIZE_W - 64;
@@ -15,8 +15,9 @@ void ButtonRScrollScreen::Init(int scroll_max, int scroll_speed) {
 	m_iWidth = 64;   //ボタンの幅
 	m_iHeight = 64;  //ボタンの高さ
 
-	m_iScrollSpeed = scroll_speed;	//スクロール速度
+	User()->mscroll_speed = scroll_max / 10;	//スクロールスピード
 	m_iScrollMax = -scroll_max;		//画面右スクロール上限
+	m_iScrollflg = false;		//スクロールフラグ
 }
 
 //デストラクタ
@@ -27,10 +28,19 @@ void ButtonRScrollScreen::Destructor() {
 
 //アクション
 void ButtonRScrollScreen::Action() {
+	
+	if (Push() || Input()->GetVKey(VK_RIGHT)) {
+		//スクロール有効
+		m_iScrollflg = true;
+		m_iScrollSpeed = User()->mscroll_speed;
+	}
 
-	if (Push()) {
-		//画面を右へスクロール（オブジェクトを左へ進める）
+	if (m_iScrollflg) {
+
 		User()->mscroll_x -= m_iScrollSpeed;
+
+		m_iScrollSpeed = m_iScrollSpeed*0.92;
+
 	}
 
 	//最小値を下回らないようにする
@@ -39,7 +49,7 @@ void ButtonRScrollScreen::Action() {
 	if (User()->mscroll_x < m_iScrollMax) {
 
 		User()->mscroll_x = m_iScrollMax;
-
+		m_iScrollflg = false;	//スクロール無効
 	}
 
 	//デバッグ用
@@ -72,7 +82,7 @@ void ButtonRScrollScreen::Draw() {
 //スクロールステータス設定
 //scroll_max   = 画面右スクロール上限
 //scroll_speed = スクロール速度
-void ButtonRScrollScreen::SetScroll(int scroll_max, int scroll_speed) {
+void ButtonRScrollScreen::SetScroll(int scroll_max/*, int scroll_speed*/) {
 	m_iScrollMax = -scroll_max;		//画面右スクロール上限
-	m_iScrollSpeed = scroll_speed;	//スクロール速度
+	//m_iScrollSpeed = scroll_speed;	//スクロール速度
 }

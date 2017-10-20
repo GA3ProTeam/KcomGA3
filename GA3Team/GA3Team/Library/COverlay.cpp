@@ -31,9 +31,9 @@ void COverlay::InitLoad()
 	//image->LoadImageEx("バイク.png", 9, TEX_SIZE_512);
 	//image->LoadImageEx("シオン4ドア.png", 9, TEX_SIZE_512);
 	//メルエル1-----------------------------------
-	image->LoadImageEx("カツオc.png", 11, TEX_SIZE_512);
+	image->LoadImageEx("カツオc.png", EX_MERUERU_KATSUO, TEX_SIZE_512);
 	image->LoadImageEx("ドアc.png", 12, TEX_SIZE_512);
-	image->LoadImageEx("棚.png", 13, TEX_SIZE_512);
+	image->LoadImageEx("机.png", 13, TEX_SIZE_512);
 	image->LoadImageEx("電子レンジ.png", 14, TEX_SIZE_512);
 	image->LoadImageEx("博士c.png", 15, TEX_SIZE_512);
 	//動物------------------------------------------
@@ -52,6 +52,10 @@ void COverlay::InitLoad()
 	image->LoadImageEx("シオンステージ-1.png", 24, TEX_SIZE_1024);
 	image->LoadImageEx("コウネステージ-1.png", 25, TEX_SIZE_1024);
 	image->LoadImageEx("研究所背景.png", 26, TEX_SIZE_1024);
+
+	//チュートリアルステージ------------------------
+	image->LoadImageEx("StageTutorial.png", EX_STAGE_TUTORIAL, TEX_SIZE_1024);
+	//----------------------------------------------
 
 	//透過・暗転初期化
 	m_fDefColor[0] = 1.0f;
@@ -254,14 +258,24 @@ void COverlay::Draw()
 			switch (m_iDrawingStage)
 			{
 			case STAGE_TYPE::TUTORIAL: {
+				//全行描画中
 				if (m_iChar_Line < textmgr->m_Tutorial_Text[m_iDrawingStageID].size()) {
+					//選択肢があるか確認
+					if (textmgr->m_Tutorial_Text[m_iDrawingStageID][m_iChar_Line].find("選択肢{") != -1) {
+						//選択肢生成
+
+					}
+
+					//その行の文字描画中
 					if (m_iChar_Pos < textmgr->m_Tutorial_Text[m_iDrawingStageID][m_iChar_Line].length()) {
+						//マウスクリックすると１行一括表示
 						if (input->GetMouButtonLOnce()) {
 							m_strTemp[m_iChar_Line].clear();
 							m_strTemp[m_iChar_Line] += textmgr->m_Tutorial_Text[m_iDrawingStageID][m_iChar_Line];
 							m_iChar_Pos = textmgr->m_Tutorial_Text[m_iDrawingStageID][m_iChar_Line].length() + 1;
 						}
 						else {
+							//待ち時間カウント後、１文字描画
 							if (m_iDelay > m_iTextSpeed) {
 								unsigned char lead = textmgr->m_Tutorial_Text[m_iDrawingStageID][m_iChar_Line][m_iChar_Pos];
 								if (lead < 128) {
@@ -284,6 +298,7 @@ void COverlay::Draw()
 							}
 						}
 					}
+					//
 					else {
 						if (input->GetMouButtonLOnce()) {
 							m_iChar_Pos = 0;
@@ -306,6 +321,7 @@ void COverlay::Draw()
 						}
 					}
 				}
+				//全行描画終了
 				else {
 					if (input->GetMouButtonL()) {
 						FadeOut();
@@ -332,6 +348,7 @@ void COverlay::Draw()
 				sprintf_s(linec, "%d", m_iChar_Line);
 				if (textmgr->isCtrlLine(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line) && !m_bCharaChangeFlg) {
 					string tmpsearch;
+					//名前と表情がある場合、前の文字列を全削除
 					char *namet = textmgr->GetCharaName(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line);
 					char *expt = textmgr->GetCharaExp(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line);
 					m_strTemp.clear();

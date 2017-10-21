@@ -58,6 +58,25 @@ CTextManager::CTextManager()
 	filePath_koune.push_back("Text\\koune1\\koune1_ozi_flag3_yes.bin");
 	filePath_koune.push_back("Text\\koune1\\koune1_ozi_clear.bin");
 
+	//Stage2
+	filePath_koune.push_back("Text\\koune2\\koune2_start.bin");
+	filePath_koune.push_back("Text\\koune2\\koune2_sion_flag1_No_flag2_No.bin");
+	filePath_koune.push_back("Text\\koune2\\koune2_sion_flag1_Yes_flag2_No.bin");
+	filePath_koune.push_back("Text\\koune2\\koune2_sion_flag2_Yes.bin");
+	filePath_koune.push_back("Text\\koune2\\koune2_sion_flag3_yes.bin");
+	filePath_koune.push_back("Text\\koune2\\koune2_onnna.bin");
+	filePath_koune.push_back("Text\\koune2\\koune2_onnna_flag3_yes.bin");
+	filePath_koune.push_back("Text\\koune2\\koune2_BoyB.bin");
+	filePath_koune.push_back("Text\\koune2\\koune2_BoyB_flag3_yes.bin");
+	filePath_koune.push_back("Text\\koune2\\koune2_BoyA_flag1_no.bin");
+	filePath_koune.push_back("Text\\koune2\\koune2_BoyA_flag1_yes.bin");
+	filePath_koune.push_back("Text\\koune2\\koune2_BoyA_flag2_yes.bin");
+	filePath_koune.push_back("Text\\koune2\\koune2_BoyA_flag3_yes.bin");
+	filePath_koune.push_back("Text\\koune2\\koune2_BoyA_NoCreature_flag3_No.bin");
+	filePath_koune.push_back("Text\\koune2\\koune2_BoyA_Creature_flag3_No.bin");
+	filePath_koune.push_back("Text\\koune2\\koune2_BoyA_flag3_ouen_small.bin");
+	filePath_koune.push_back("Text\\koune2\\koune2_BoyA_flag3_ouen_Big.bin");
+
 	//ÉÅÉãÉGÉã
 	//Stage1
 	filePath_merueru.push_back("Text\\merueru1\\merueru_start.bin");

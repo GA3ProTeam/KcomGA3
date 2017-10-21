@@ -207,23 +207,42 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 		Obj()->InsertObj(m_gimmick_manhole_cover, GIMMICK_MANHOLECOVER, 2, this->m_pScene, HIT_BOX_OFF);
 		m_gimmick_manhole_cover->Init(100, 400, 220, 80, 1);*/
 
+		break;
 
-	//	//少年B
-	//	m_gimmick_boy_b = new GimmickBoyB();
-	//	Obj()->InsertObj(m_gimmick_boy_b, GIMMICK_BOY_B, 5, this->m_pScene, HIT_BOX_OFF);
-	//	m_gimmick_boy_b->Init(240, 270, 130, 195, 1);
+	case 31:
+		//コウネステージ２　ギミック生成
+		//女の子
+		m_gimmick_girl_koune2 = new GimmickGirl_Koune2();
+		Obj()->InsertObj(m_gimmick_girl_koune2, GIMMICK_GIRL_KOUNE2, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_girl_koune2->Init(595, 275, 130, 195, 1);
+		//非表示＆動作不可に
+		m_gimmick_girl_koune2->m_bActionFlg = false;
 
-	//	//窓
-	//	m_gimmick_window_koune2 = new GimmickWindow_Koune2();
-	//	Obj()->InsertOb7j(m_gimmick_window_koune2, GIMMICK_WINDOW_KOUNE2, 5, this->m_pScene, HIT_BOX_OFF);
-	//	m_gimmick_window_koune2->Init(930, 150, 250, 200, 1);
+		//シオン
+		m_gimmick_sion = new GimmickSion();
+		Obj()->InsertObj(m_gimmick_sion, GIMMICK_SION, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_sion->Init(925, 275, 130, 195, 1);
+
+		//少年A
+		m_gimmick_boy_a = new GimmickBoyA();
+		Obj()->InsertObj(m_gimmick_boy_a, GIMMICK_BOY_A, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_boy_a->Init(50, 270, 130, 195, 1);
+
+		//少年B
+		m_gimmick_boy_b = new GimmickBoyB();
+		Obj()->InsertObj(m_gimmick_boy_b, GIMMICK_BOY_B, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_boy_b->Init(240, 270, 130, 195, 1);
+
+		//窓
+		m_gimmick_window_koune2 = new GimmickWindow_Koune2();
+		Obj()->InsertObj(m_gimmick_window_koune2, GIMMICK_WINDOW_KOUNE2, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_window_koune2->Init(930, 150, 250, 200, 1);
 
 		//スクロールステータス設定
-	//	m_pLScroll->SetScroll(0, 10);
-	//	m_pRScroll->SetScroll(400, 10);
-
-
+		m_pLScroll->SetScroll(0);
+		m_pRScroll->SetScroll(400);
 		break;
+
 	case 32:
 		//User()->mscroll_x = 400;
 
@@ -456,6 +475,9 @@ void CObjGimmickManager::Action() {
 
 	//コウネステージ1
 	static int m_Koune1_flg = 0;
+
+	//コウネステージ2
+	static int m_Koune2_flg = 0;
 
 	//コウネ3ステージ
 	static int m_Koune3_flg = KOUNE3_TALK_START;
@@ -760,8 +782,46 @@ void CObjGimmickManager::Action() {
 		//	}
 		//}
 		break;
-	case 31:
+
+	case 31://コウネステージ2
+		//初回会話
+		if (m_Koune2_flg == 0) {
+			Overlay()->talkDraw(KOUNE, KOUNE2_START);
+
+			//会話終了
+			if (Overlay()->NextWait()) {
+				m_Koune2_flg = 1;
+			}
+		}
+		else if (m_Koune2_flg == 1) {
+
+		}
+		else if (m_Koune2_flg == 2) {
+
+		}
+		else if (m_Koune2_flg == 3) {
+
+		}
+		else if (m_Koune2_flg == 4) {
+
+		}
+		else if (m_Koune2_flg == 5) {
+
+		}
+		else if (m_Koune2_flg == 6) {
+
+		}
+		else if (m_Koune2_flg == 7) {
+
+		}
+		else if (m_Koune2_flg == 8) {
+
+		}
+		else if (m_Koune2_flg == 9) {
+
+		}
 		break;
+
 	case 32:
 	{
 

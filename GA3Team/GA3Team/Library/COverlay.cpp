@@ -109,7 +109,7 @@ void COverlay::InitLoad()
 	//失敗音
 	audio->LoadAudio(31, "Sound\\決定音\\キャンセル音\\Cancel.wav");
 	//サウンド読み込み↑---------------------------------------------------------------------------
-	
+
 	//透過・暗転初期化
 	m_fDefColor[0] = 1.0f;
 	m_fDefColor[1] = 1.0f;
@@ -324,308 +324,157 @@ void COverlay::Draw()
 				break;
 			}
 
-			switch (m_iDrawingStage)
-			{
-			case STAGE_TYPE::TUTORIAL: {
-				//全行描画中
-				if (m_iChar_Line < (*m_Chara_Text)[m_iDrawingStageID].size()) {
+			//全行描画中
+			if (m_iChar_Line < (*m_Chara_Text)[m_iDrawingStageID].size()) {
 
-					//文字挿入判定処理
-					if (!m_in_str) {
-						//この行に文字挿入部分があるか確認
-						m_in_str = textmgr->isInStr(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line);
-						if (m_in_str) {
-							//次ループでこのif判定に入らないように、次の行へ進める
-							m_iChar_Line++;
-
-							//挿入テキストを指定している場合
-							if (m_piShowTextID) {
-								int roop_id;
-								//そのアドレスが
-								//表示指定アドレスの中（m_piShowTextID）にあるか調べる
-								for (roop_id = 0; roop_id < m_iIDSize; roop_id++) {
-									if (m_in_str->id == m_piShowTextID[roop_id]) {
-										break;
-									}
-								}
-
-								//↑のループで最後まで調べた結果、
-								//表示指定アドレスの中になかった
-								if (roop_id == m_iIDSize) {
-									//挿入文字を表示しないので、終了行まで飛ばします。
-									m_iChar_Line = m_in_str->end_line;
-								}
-
-							}
-							//挿入テキストを指定していない場合
-							else {
-								//挿入文字を表示しないので、終了行まで飛ばします。
-								m_iChar_Line = m_in_str->end_line;
-							}
-						}
-					}
-
-					//この行に選択肢がある場合、選択肢を生成
-					SelectInfo* select = textmgr->isSelect(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line);
-					if (select) {
+				//文字挿入判定処理
+				if (!m_in_str) {
+					//この行に文字挿入部分があるか確認
+					m_in_str = textmgr->isInStr(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line);
+					if (m_in_str) {
 						//次ループでこのif判定に入らないように、次の行へ進める
 						m_iChar_Line++;
 
-						//前回の選択肢が生成されている場合、削除
-						SAFE_DELETE(m_select);
+						//挿入テキストを指定している場合
+						if (m_piShowTextID) {
+							int roop_id;
+							//そのアドレスが
+							//表示指定アドレスの中（m_piShowTextID）にあるか調べる
+							for (roop_id = 0; roop_id < m_iIDSize; roop_id++) {
+								if (m_in_str->id == m_piShowTextID[roop_id]) {
+									break;
+								}
+							}
 
-						//選択肢生成
-						m_select = new CSelect(select);
+							//↑のループで最後まで調べた結果、
+							//表示指定アドレスの中になかった
+							if (roop_id == m_iIDSize) {
+								//挿入文字を表示しないので、終了行まで飛ばします。
+								m_iChar_Line = m_in_str->end_line;
+							}
+
+						}
+						//挿入テキストを指定していない場合
+						else {
+							//挿入文字を表示しないので、終了行まで飛ばします。
+							m_iChar_Line = m_in_str->end_line;
+						}
 					}
+				}
 
-					//選択肢動作(選択していないとき)
-					if (m_select && m_select->GetSelectNum() == -1) {
-						//選択したか確認
-						if (m_select->Select()) {
+				//この行に選択肢がある場合、選択肢を生成
+				SelectInfo* select = textmgr->isSelect(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line);
+				if (select) {
+					//次ループでこのif判定に入らないように、次の行へ進める
+					m_iChar_Line++;
 
-							//選択した項目番号をメンバに保存
-							int sel_num = m_select->GetSelectNum();
-							char sel_num_str[3];
-							sprintf_s(sel_num_str, "%d-", sel_num + 1);
-							m_SelectNum += sel_num_str;
+					//前回の選択肢が生成されている場合、削除
+					SAFE_DELETE(m_select);
 
-							//選択した場所へ飛ぶ
-							m_iChar_Line = m_select->GetInfo()->menu[m_select->GetSelectNum()].child_text_line;
+					//選択肢生成
+					m_select = new CSelect(select);
+				}
+
+				//選択肢動作(選択していないとき)
+				if (m_select && m_select->GetSelectNum() == -1) {
+					//選択したか確認
+					if (m_select->Select()) {
+
+						//選択した項目番号をメンバに保存
+						int sel_num = m_select->GetSelectNum();
+						char sel_num_str[3];
+						sprintf_s(sel_num_str, "%d-", sel_num + 1);
+						m_SelectNum += sel_num_str;
+
+						//選択した場所へ飛ぶ
+						m_iChar_Line = m_select->GetInfo()->menu[m_select->GetSelectNum()].child_text_line;
+
+						//次のテキストをセットする命令発信
+						NextTextSet();
+					}
+				}
+				//テキスト描画中
+				else {
+					//文字挿入部分を発見後
+					if (m_in_str) {
+						//挿入文字の終了行に到達
+						if (m_in_str->end_line == m_iChar_Line) {
+							//文字挿入データへの参照を切る
+							m_in_str = NULL;
 
 							//次のテキストをセットする命令発信
 							NextTextSet();
 						}
 					}
-					//テキスト描画中
-					else {
-						//文字挿入部分を発見後
-						if (m_in_str) {
-							//挿入文字の終了行に到達
-							if (m_in_str->end_line == m_iChar_Line) {
-								//文字挿入データへの参照を切る
-								m_in_str = NULL;
 
-								//次のテキストをセットする命令発信
-								NextTextSet();
-							}
-						}
+					//選択肢を選択した後に入ります
+					if (m_select) {
+						//その選択した項目の終了行なら
+						if (m_select->GetEndLine() == m_iChar_Line) {
+							//選択肢オブジェクト破棄
+							SAFE_DELETE(m_select);
 
-						//選択肢を選択した後に入ります
-						if (m_select) {
-							//その選択した項目の終了行なら
-							if (m_select->GetEndLine() == m_iChar_Line) {
-								//選択肢オブジェクト破棄
-								SAFE_DELETE(m_select);
+							//会話終了
+							DrawTextEnd();
 
-								//会話終了
-								DrawTextEnd();
-
-								//Draw関数終了
-								return;
-							}
-						}
-
-						//待ち時間カウント後、１文字描画
-						m_iDelay++;
-
-						//その行の文字描画中
-						if (m_iChar_Pos < (*m_Chara_Text)[m_iDrawingStageID][m_iChar_Line].length()) {
-							//マウスクリックすると１行一括表示
-							if (input->GetMouButtonLOnce()) {
-								m_strTemp[m_iChar_Line].clear();
-								m_strTemp[m_iChar_Line] += (*m_Chara_Text)[m_iDrawingStageID][m_iChar_Line];
-								m_iChar_Pos = (*m_Chara_Text)[m_iDrawingStageID][m_iChar_Line].length() + 1;
-							}
-							else {
-								if (m_iDelay > m_iTextSpeed) {
-									unsigned char lead = (*m_Chara_Text)[m_iDrawingStageID][m_iChar_Line][m_iChar_Pos];
-									if (lead < 128) {
-										m_iChar_Size = 1;
-									}
-									else if (lead < 224) {
-										m_iChar_Size = 2;
-									}
-									else if (lead < 240) {
-										m_iChar_Size = 3;
-									}
-									else {
-										m_iChar_Size = 4;
-									}
-
-									sprintf_s(c, "%s", (*m_Chara_Text)[m_iDrawingStageID][m_iChar_Line].substr(m_iChar_Pos, m_iChar_Size).c_str());
-									m_strTemp[m_iChar_Line] += c;
-
-									m_iChar_Pos += m_iChar_Size;
-								}
-							}
-						}
-						//一行描画終了
-						else {
-							if (input->GetMouButtonLOnce()) {
-								//次のテキストをセットする命令発信
-								NextTextSet();
-							}
-							else {
-								if (m_iDelay > m_iTextSpeed) {
-									if (!m_bNextWaiting) {
-										m_fWaitAlpha = 1.0f;
-										m_bNextWaiting = true;
-									}
-									else {
-										m_fWaitAlpha = 0.0f;
-										m_bNextWaiting = false;
-									}
-								}
-							}
-						}
-					}
-				}
-				//全テキスト描画終了
-				else {
-					if (input->GetMouButtonL()) {
-						//会話終了
-						DrawTextEnd();
-
-						//このswitch文を脱退
-						return;
-					}
-					else {
-						if (m_iDelay > m_iTextSpeed) {
-							if (!m_bNextWaiting) {
-								m_fWaitAlpha = 1.0f;
-								m_bNextWaiting = true;
-							}
-							else {
-								m_fWaitAlpha = 0.0f;
-								m_bNextWaiting = false;
-							}
-						}
-					}
-				}
-
-				if (m_iDelay > m_iTextSpeed)
-					m_iDelay = 0;
-
-				char linec[32];
-				sprintf_s(linec, "%d", m_iChar_Line);
-				if (textmgr->isCtrlLine(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line) && !m_bCharaChangeFlg) {
-					string tmpsearch;
-					//名前と表情がある場合、文字描画をリセット
-					char *namet = textmgr->GetCharaName(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line);
-					char *expt = textmgr->GetCharaExp(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line);
-					m_strTemp.clear();
-					m_strTemp.resize((*m_Chara_Text)[m_iDrawingStageID].size());
-					m_strTempName.clear();
-					m_strTempName += namet;
-					m_bCharaChangeFlg = true;
-					m_iCurrentLine = m_iChar_Line;
-
-					tmpsearch += expt;
-
-					if (!strlen(m_cLeftCharaName)) {
-						strcpy_s(m_cLeftCharaName, namet);
-						m_fLeftColor[0] = 1.0f;
-						m_fLeftColor[1] = 1.0f;
-						m_fLeftColor[2] = 1.0f;
-						m_fRightColor[0] = 0.5f;
-						m_fRightColor[1] = 0.5f;
-						m_fRightColor[2] = 0.5f;
-
-						if (tmpsearch.find("内心") != -1) {
-							m_iCurrentBalloon = TALKBALLOON_CLOUD_LEFT;
-						}
-						else {
-							m_iCurrentBalloon = TALKBALLOON_NORMAL_LEFT;
-						}
-					}
-					else if (!strlen(m_cRightCharaName) && strcmp(m_cLeftCharaName, namet)) {
-						strcpy_s(m_cRightCharaName, namet);
-						m_fLeftColor[0] = 0.5f;
-						m_fLeftColor[1] = 0.5f;
-						m_fLeftColor[2] = 0.5f;
-						m_fRightColor[0] = 1.0f;
-						m_fRightColor[1] = 1.0f;
-						m_fRightColor[2] = 1.0f;
-						if (tmpsearch.find("内心") != -1) {
-							m_iCurrentBalloon = TALKBALLOON_CLOUD_RIGHT;
-						}
-						else {
-							m_iCurrentBalloon = TALKBALLOON_NORMAL_RIGHT;
+							//Draw関数終了
+							return;
 						}
 					}
 
-					if (!strcmp(m_cLeftCharaName, namet) && strcmp(m_cRightCharaName, namet)) {
-						m_fLeftColor[0] = 1.0f;
-						m_fLeftColor[1] = 1.0f;
-						m_fLeftColor[2] = 1.0f;
-						m_fRightColor[0] = 0.5f;
-						m_fRightColor[1] = 0.5f;
-						m_fRightColor[2] = 0.5f;
-						if (tmpsearch.find("内心") != -1) {
-							m_iCurrentBalloon = TALKBALLOON_CLOUD_LEFT;
-						}
-						else {
-							m_iCurrentBalloon = TALKBALLOON_NORMAL_LEFT;
-						}
-					}
-					else if (strcmp(m_cLeftCharaName, namet) && !strcmp(m_cRightCharaName, namet)) {
-						m_fLeftColor[0] = 0.5f;
-						m_fLeftColor[1] = 0.5f;
-						m_fLeftColor[2] = 0.5f;
-						m_fRightColor[0] = 1.0f;
-						m_fRightColor[1] = 1.0f;
-						m_fRightColor[2] = 1.0f;
-						if (tmpsearch.find("内心") != -1) {
-							m_iCurrentBalloon = TALKBALLOON_CLOUD_RIGHT;
-						}
-						else {
-							m_iCurrentBalloon = TALKBALLOON_NORMAL_RIGHT;
-						}
-					}
+					//待ち時間カウント後、１文字描画
+					m_iDelay++;
 
-					delete namet;
-					delete expt;
-				}
-				break;
-			}
-			case STAGE_TYPE::SION: {
-				if (m_iChar_Line < textmgr->m_Sion_Text[m_iDrawingStageID].size()) {
-					if (m_iChar_Pos < textmgr->m_Sion_Text[m_iDrawingStageID][m_iChar_Line].length()) {
+					//その行の文字描画中
+					if (m_iChar_Pos < (*m_Chara_Text)[m_iDrawingStageID][m_iChar_Line].length()) {
+						//マウスクリックすると１行一括表示
 						if (input->GetMouButtonLOnce()) {
 							m_strTemp[m_iChar_Line].clear();
-							m_strTemp[m_iChar_Line] += textmgr->m_Sion_Text[m_iDrawingStageID][m_iChar_Line];
-							m_iChar_Pos = textmgr->m_Sion_Text[m_iDrawingStageID][m_iChar_Line].length() + 1;
+							m_strTemp[m_iChar_Line] += (*m_Chara_Text)[m_iDrawingStageID][m_iChar_Line];
+							m_iChar_Pos = (*m_Chara_Text)[m_iDrawingStageID][m_iChar_Line].length() + 1;
 						}
 						else {
 							if (m_iDelay > m_iTextSpeed) {
-								unsigned char lead = textmgr->m_Sion_Text[m_iDrawingStageID][m_iChar_Line][m_iChar_Pos];
+								//何バイトの文字か確認
+								/*unsigned char lead = (*m_Chara_Text)[m_iDrawingStageID][m_iChar_Line][m_iChar_Pos];
 								if (lead < 128) {
-									m_iChar_Size = 1;
+								m_iChar_Size = 1;
 								}
 								else if (lead < 224) {
-									m_iChar_Size = 2;
+								m_iChar_Size = 2;
 								}
 								else if (lead < 240) {
-									m_iChar_Size = 3;
+								m_iChar_Size = 3;
 								}
 								else {
-									m_iChar_Size = 4;
+								m_iChar_Size = 4;
+								}*/
+
+								//【応急処置】
+								//１文字取得
+								char lead = (*m_Chara_Text)[m_iDrawingStageID][m_iChar_Line][m_iChar_Pos];
+
+								//先行バイトなら
+								if (IsDBCSLeadByte(lead)) {
+									m_iChar_Size = 2;//2バイト文字
+								}
+								//先行バイトでなければ
+								else {
+									m_iChar_Size = 1;//1バイト文字
 								}
 
-								sprintf_s(c, "%s", textmgr->m_Sion_Text[m_iDrawingStageID][m_iChar_Line].substr(m_iChar_Pos, m_iChar_Size).c_str());
+								sprintf_s(c, "%s", (*m_Chara_Text)[m_iDrawingStageID][m_iChar_Line].substr(m_iChar_Pos, m_iChar_Size).c_str());
 								m_strTemp[m_iChar_Line] += c;
 
 								m_iChar_Pos += m_iChar_Size;
 							}
 						}
 					}
+					//一行描画終了
 					else {
 						if (input->GetMouButtonLOnce()) {
-							m_iChar_Pos = 0;
-							m_iChar_Line++;
-							m_fWaitAlpha = 0.0f;
-							m_bNextWaiting = false;
-							m_bCharaChangeFlg = false;
+							//次のテキストをセットする命令発信
+							NextTextSet();
 						}
 						else {
 							if (m_iDelay > m_iTextSpeed) {
@@ -641,422 +490,847 @@ void COverlay::Draw()
 						}
 					}
 				}
-				else {
-					if (input->GetMouButtonL()) {
-						FadeOut();
-						StopDraw();
-					}
-					else {
-						if (m_iDelay > m_iTextSpeed) {
-							if (!m_bNextWaiting) {
-								m_fWaitAlpha = 1.0f;
-								m_bNextWaiting = true;
-							}
-							else {
-								m_fWaitAlpha = 0.0f;
-								m_bNextWaiting = false;
-							}
-						}
-					}
-				}
-
-				if (m_iDelay > m_iTextSpeed)
-					m_iDelay = 0;
-
-				char linec[32];
-				sprintf_s(linec, "%d", m_iChar_Line);
-				if (textmgr->isCtrlLine(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line) && !m_bCharaChangeFlg) {
-					string tmpsearch;
-					char *namet = textmgr->GetCharaName(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line);
-					char *expt = textmgr->GetCharaExp(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line);
-					m_strTemp.clear();
-					m_strTemp.resize(textmgr->m_Sion_Text[m_iDrawingStageID].size());
-					m_strTempName.clear();
-					m_strTempName += namet;
-					m_bCharaChangeFlg = true;
-					m_iCurrentLine = m_iChar_Line;
-
-					tmpsearch += expt;
-
-					if (!strlen(m_cLeftCharaName)) {
-						strcpy_s(m_cLeftCharaName, namet);
-						m_fLeftColor[0] = 1.0f;
-						m_fLeftColor[1] = 1.0f;
-						m_fLeftColor[2] = 1.0f;
-						m_fRightColor[0] = 0.5f;
-						m_fRightColor[1] = 0.5f;
-						m_fRightColor[2] = 0.5f;
-
-						if (tmpsearch.find("内心") != -1) {
-							m_iCurrentBalloon = TALKBALLOON_CLOUD_LEFT;
-						}
-						else {
-							m_iCurrentBalloon = TALKBALLOON_NORMAL_LEFT;
-						}
-					}
-					else if (!strlen(m_cRightCharaName) && strcmp(m_cLeftCharaName, namet)) {
-						strcpy_s(m_cRightCharaName, namet);
-						m_fLeftColor[0] = 0.5f;
-						m_fLeftColor[1] = 0.5f;
-						m_fLeftColor[2] = 0.5f;
-						m_fRightColor[0] = 1.0f;
-						m_fRightColor[1] = 1.0f;
-						m_fRightColor[2] = 1.0f;
-						if (tmpsearch.find("内心") != -1) {
-							m_iCurrentBalloon = TALKBALLOON_CLOUD_RIGHT;
-						}
-						else {
-							m_iCurrentBalloon = TALKBALLOON_NORMAL_RIGHT;
-						}
-					}
-
-					if (!strcmp(m_cLeftCharaName, namet) && strcmp(m_cRightCharaName, namet)) {
-						m_fLeftColor[0] = 1.0f;
-						m_fLeftColor[1] = 1.0f;
-						m_fLeftColor[2] = 1.0f;
-						m_fRightColor[0] = 0.5f;
-						m_fRightColor[1] = 0.5f;
-						m_fRightColor[2] = 0.5f;
-						if (tmpsearch.find("内心") != -1) {
-							m_iCurrentBalloon = TALKBALLOON_CLOUD_LEFT;
-						}
-						else {
-							m_iCurrentBalloon = TALKBALLOON_NORMAL_LEFT;
-						}
-					}
-					else if (strcmp(m_cLeftCharaName, namet) && !strcmp(m_cRightCharaName, namet)) {
-						m_fLeftColor[0] = 0.5f;
-						m_fLeftColor[1] = 0.5f;
-						m_fLeftColor[2] = 0.5f;
-						m_fRightColor[0] = 1.0f;
-						m_fRightColor[1] = 1.0f;
-						m_fRightColor[2] = 1.0f;
-						if (tmpsearch.find("内心") != -1) {
-							m_iCurrentBalloon = TALKBALLOON_CLOUD_RIGHT;
-						}
-						else {
-							m_iCurrentBalloon = TALKBALLOON_NORMAL_RIGHT;
-						}
-					}
-
-					delete namet;
-					delete expt;
-				}
-				break;
 			}
-			case STAGE_TYPE::KOUNE: {
-				if (m_iChar_Line < textmgr->m_Koune_Text[m_iDrawingStageID].size()) {
-					if (m_iChar_Pos < textmgr->m_Koune_Text[m_iDrawingStageID][m_iChar_Line].length()) {
-						if (input->GetMouButtonLOnce()) {
-							m_strTemp[m_iChar_Line].clear();
-							m_strTemp[m_iChar_Line] += textmgr->m_Koune_Text[m_iDrawingStageID][m_iChar_Line];
-							m_iChar_Pos = textmgr->m_Koune_Text[m_iDrawingStageID][m_iChar_Line].length() + 1;
+			//全テキスト描画終了
+			else {
+				if (input->GetMouButtonL()) {
+					//会話終了
+					DrawTextEnd();
+
+					//このswitch文を脱退
+					return;
+				}
+				else {
+					if (m_iDelay > m_iTextSpeed) {
+						if (!m_bNextWaiting) {
+							m_fWaitAlpha = 1.0f;
+							m_bNextWaiting = true;
 						}
 						else {
-							if (m_iDelay > m_iTextSpeed) {
-								unsigned char lead = textmgr->m_Koune_Text[m_iDrawingStageID][m_iChar_Line][m_iChar_Pos];
-								if (lead < 128) {
-									m_iChar_Size = 1;
-								}
-								else if (lead < 224) {
-									m_iChar_Size = 2;
-								}
-								else if (lead < 240) {
-									m_iChar_Size = 3;
-								}
-								else {
-									m_iChar_Size = 4;
-								}
-
-								sprintf_s(c, "%s", textmgr->m_Koune_Text[m_iDrawingStageID][m_iChar_Line].substr(m_iChar_Pos, m_iChar_Size).c_str());
-								m_strTemp[m_iChar_Line] += c;
-
-								m_iChar_Pos += m_iChar_Size;
-							}
-						}
-					}
-					else {
-						if (input->GetMouButtonLOnce()) {
-							m_iChar_Pos = 0;
-							m_iChar_Line++;
 							m_fWaitAlpha = 0.0f;
 							m_bNextWaiting = false;
-							m_bCharaChangeFlg = false;
-						}
-						else {
-							if (m_iDelay > m_iTextSpeed) {
-								if (!m_bNextWaiting) {
-									m_fWaitAlpha = 1.0f;
-									m_bNextWaiting = true;
-								}
-								else {
-									m_fWaitAlpha = 0.0f;
-									m_bNextWaiting = false;
-								}
-							}
 						}
 					}
 				}
-				else {
-					if (input->GetMouButtonL()) {
-						FadeOut();
-						StopDraw();
+			}
+
+			if (m_iDelay > m_iTextSpeed)
+				m_iDelay = 0;
+
+			char linec[32];
+			sprintf_s(linec, "%d", m_iChar_Line);
+			if (textmgr->isCtrlLine(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line) && !m_bCharaChangeFlg) {
+				string tmpsearch;
+				//名前と表情がある場合、文字描画をリセット
+				char *namet = textmgr->GetCharaName(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line);
+				char *expt = textmgr->GetCharaExp(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line);
+				m_strTemp.clear();
+				m_strTemp.resize((*m_Chara_Text)[m_iDrawingStageID].size());
+				m_strTempName.clear();
+				m_strTempName += namet;
+				m_bCharaChangeFlg = true;
+				m_iCurrentLine = m_iChar_Line;
+
+				tmpsearch += expt;
+
+				if (!strlen(m_cLeftCharaName)) {
+					strcpy_s(m_cLeftCharaName, namet);
+					m_fLeftColor[0] = 1.0f;
+					m_fLeftColor[1] = 1.0f;
+					m_fLeftColor[2] = 1.0f;
+					m_fRightColor[0] = 0.5f;
+					m_fRightColor[1] = 0.5f;
+					m_fRightColor[2] = 0.5f;
+
+					if (tmpsearch.find("内心") != -1) {
+						m_iCurrentBalloon = TALKBALLOON_CLOUD_LEFT;
 					}
 					else {
-						if (m_iDelay > m_iTextSpeed) {
-							if (!m_bNextWaiting) {
-								m_fWaitAlpha = 1.0f;
-								m_bNextWaiting = true;
-							}
-							else {
-								m_fWaitAlpha = 0.0f;
-								m_bNextWaiting = false;
-							}
-						}
+						m_iCurrentBalloon = TALKBALLOON_NORMAL_LEFT;
 					}
 				}
-
-				if (m_iDelay > m_iTextSpeed)
-					m_iDelay = 0;
-
-				char linec[32];
-				sprintf_s(linec, "%d", m_iChar_Line);
-				if (textmgr->isCtrlLine(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line) && !m_bCharaChangeFlg) {
-					string tmpsearch;
-					char *namet = textmgr->GetCharaName(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line);
-					char *expt = textmgr->GetCharaExp(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line);
-					m_strTemp.clear();
-					m_strTemp.resize(textmgr->m_Koune_Text[m_iDrawingStageID].size());
-					m_strTempName.clear();
-					m_strTempName += namet;
-					m_bCharaChangeFlg = true;
-					m_iCurrentLine = m_iChar_Line;
-
-					tmpsearch += expt;
-
-					if (!strlen(m_cLeftCharaName)) {
-						strcpy_s(m_cLeftCharaName, namet);
-						m_fLeftColor[0] = 1.0f;
-						m_fLeftColor[1] = 1.0f;
-						m_fLeftColor[2] = 1.0f;
-						m_fRightColor[0] = 0.5f;
-						m_fRightColor[1] = 0.5f;
-						m_fRightColor[2] = 0.5f;
-
-						if (tmpsearch.find("内心") != -1) {
-							m_iCurrentBalloon = TALKBALLOON_CLOUD_LEFT;
-						}
-						else {
-							m_iCurrentBalloon = TALKBALLOON_NORMAL_LEFT;
-						}
-					}
-					else if (!strlen(m_cRightCharaName) && strcmp(m_cLeftCharaName, namet)) {
-						strcpy_s(m_cRightCharaName, namet);
-						m_fLeftColor[0] = 0.5f;
-						m_fLeftColor[1] = 0.5f;
-						m_fLeftColor[2] = 0.5f;
-						m_fRightColor[0] = 1.0f;
-						m_fRightColor[1] = 1.0f;
-						m_fRightColor[2] = 1.0f;
-						if (tmpsearch.find("内心") != -1) {
-							m_iCurrentBalloon = TALKBALLOON_CLOUD_RIGHT;
-						}
-						else {
-							m_iCurrentBalloon = TALKBALLOON_NORMAL_RIGHT;
-						}
-					}
-
-					if (!strcmp(m_cLeftCharaName, namet) && strcmp(m_cRightCharaName, namet)) {
-						m_fLeftColor[0] = 1.0f;
-						m_fLeftColor[1] = 1.0f;
-						m_fLeftColor[2] = 1.0f;
-						m_fRightColor[0] = 0.5f;
-						m_fRightColor[1] = 0.5f;
-						m_fRightColor[2] = 0.5f;
-						if (tmpsearch.find("内心") != -1) {
-							m_iCurrentBalloon = TALKBALLOON_CLOUD_LEFT;
-						}
-						else {
-							m_iCurrentBalloon = TALKBALLOON_NORMAL_LEFT;
-						}
-					}
-					else if (strcmp(m_cLeftCharaName, namet) && !strcmp(m_cRightCharaName, namet)) {
-						m_fLeftColor[0] = 0.5f;
-						m_fLeftColor[1] = 0.5f;
-						m_fLeftColor[2] = 0.5f;
-						m_fRightColor[0] = 1.0f;
-						m_fRightColor[1] = 1.0f;
-						m_fRightColor[2] = 1.0f;
-						if (tmpsearch.find("内心") != -1) {
-							m_iCurrentBalloon = TALKBALLOON_CLOUD_RIGHT;
-						}
-						else {
-							m_iCurrentBalloon = TALKBALLOON_NORMAL_RIGHT;
-						}
-					}
-
-					delete namet;
-					delete expt;
-				}
-				break;
-			}
-			case STAGE_TYPE::MERUERU: {
-				if (m_iChar_Line < textmgr->m_Merueru_Text[m_iDrawingStageID].size()) {
-					if (m_iChar_Pos < textmgr->m_Merueru_Text[m_iDrawingStageID][m_iChar_Line].length()) {
-						if (input->GetMouButtonLOnce()) {
-							m_strTemp[m_iChar_Line].clear();
-							m_strTemp[m_iChar_Line] += textmgr->m_Merueru_Text[m_iDrawingStageID][m_iChar_Line];
-							m_iChar_Pos = textmgr->m_Merueru_Text[m_iDrawingStageID][m_iChar_Line].length() + 1;
-						}
-						else {
-							if (m_iDelay > m_iTextSpeed) {
-								unsigned char lead = textmgr->m_Merueru_Text[m_iDrawingStageID][m_iChar_Line][m_iChar_Pos];
-								if (lead < 128) {
-									m_iChar_Size = 1;
-								}
-								else if (lead < 224) {
-									m_iChar_Size = 2;
-								}
-								else if (lead < 240) {
-									m_iChar_Size = 3;
-								}
-								else {
-									m_iChar_Size = 4;
-								}
-
-								sprintf_s(c, "%s", textmgr->m_Merueru_Text[m_iDrawingStageID][m_iChar_Line].substr(m_iChar_Pos, m_iChar_Size).c_str());
-								m_strTemp[m_iChar_Line] += c;
-
-								m_iChar_Pos += m_iChar_Size;
-							}
-						}
+				else if (!strlen(m_cRightCharaName) && strcmp(m_cLeftCharaName, namet)) {
+					strcpy_s(m_cRightCharaName, namet);
+					m_fLeftColor[0] = 0.5f;
+					m_fLeftColor[1] = 0.5f;
+					m_fLeftColor[2] = 0.5f;
+					m_fRightColor[0] = 1.0f;
+					m_fRightColor[1] = 1.0f;
+					m_fRightColor[2] = 1.0f;
+					if (tmpsearch.find("内心") != -1) {
+						m_iCurrentBalloon = TALKBALLOON_CLOUD_RIGHT;
 					}
 					else {
-						if (input->GetMouButtonLOnce()) {
-							m_iChar_Pos = 0;
-							m_iChar_Line++;
-							m_fWaitAlpha = 0.0f;
-							m_bNextWaiting = false;
-							m_bCharaChangeFlg = false;
-						}
-						else {
-							if (m_iDelay > m_iTextSpeed) {
-								if (!m_bNextWaiting) {
-									m_fWaitAlpha = 1.0f;
-									m_bNextWaiting = true;
-								}
-								else {
-									m_fWaitAlpha = 0.0f;
-									m_bNextWaiting = false;
-								}
-							}
-						}
+						m_iCurrentBalloon = TALKBALLOON_NORMAL_RIGHT;
 					}
 				}
-				else {
-					if (input->GetMouButtonL()) {
-						FadeOut();
-						StopDraw();
+
+				if (!strcmp(m_cLeftCharaName, namet) && strcmp(m_cRightCharaName, namet)) {
+					m_fLeftColor[0] = 1.0f;
+					m_fLeftColor[1] = 1.0f;
+					m_fLeftColor[2] = 1.0f;
+					m_fRightColor[0] = 0.5f;
+					m_fRightColor[1] = 0.5f;
+					m_fRightColor[2] = 0.5f;
+					if (tmpsearch.find("内心") != -1) {
+						m_iCurrentBalloon = TALKBALLOON_CLOUD_LEFT;
 					}
 					else {
-						if (m_iDelay > m_iTextSpeed) {
-							if (!m_bNextWaiting) {
-								m_fWaitAlpha = 1.0f;
-								m_bNextWaiting = true;
-							}
-							else {
-								m_fWaitAlpha = 0.0f;
-								m_bNextWaiting = false;
-							}
-						}
+						m_iCurrentBalloon = TALKBALLOON_NORMAL_LEFT;
+					}
+				}
+				else if (strcmp(m_cLeftCharaName, namet) && !strcmp(m_cRightCharaName, namet)) {
+					m_fLeftColor[0] = 0.5f;
+					m_fLeftColor[1] = 0.5f;
+					m_fLeftColor[2] = 0.5f;
+					m_fRightColor[0] = 1.0f;
+					m_fRightColor[1] = 1.0f;
+					m_fRightColor[2] = 1.0f;
+					if (tmpsearch.find("内心") != -1) {
+						m_iCurrentBalloon = TALKBALLOON_CLOUD_RIGHT;
+					}
+					else {
+						m_iCurrentBalloon = TALKBALLOON_NORMAL_RIGHT;
 					}
 				}
 
-				if (m_iDelay > m_iTextSpeed)
-					m_iDelay = 0;
-
-				char linec[32];
-				sprintf_s(linec, "%d", m_iChar_Line);
-				if (textmgr->isCtrlLine(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line) && !m_bCharaChangeFlg) {
-					string tmpsearch;
-					char *namet = textmgr->GetCharaName(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line);
-					char *expt = textmgr->GetCharaExp(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line);
-					m_strTemp.clear();
-					m_strTemp.resize(textmgr->m_Merueru_Text[m_iDrawingStageID].size());
-					m_strTempName.clear();
-					m_strTempName += namet;
-					m_bCharaChangeFlg = true;
-					m_iCurrentLine = m_iChar_Line;
-
-					tmpsearch += expt;
-
-					if (!strlen(m_cLeftCharaName)) {
-						strcpy_s(m_cLeftCharaName, namet);
-						m_fLeftColor[0] = 1.0f;
-						m_fLeftColor[1] = 1.0f;
-						m_fLeftColor[2] = 1.0f;
-						m_fRightColor[0] = 0.5f;
-						m_fRightColor[1] = 0.5f;
-						m_fRightColor[2] = 0.5f;
-
-						if (tmpsearch.find("内心") != -1) {
-							m_iCurrentBalloon = TALKBALLOON_CLOUD_LEFT;
-						}
-						else {
-							m_iCurrentBalloon = TALKBALLOON_NORMAL_LEFT;
-						}
-					}
-					else if (!strlen(m_cRightCharaName) && strcmp(m_cLeftCharaName, namet)) {
-						strcpy_s(m_cRightCharaName, namet);
-						m_fLeftColor[0] = 0.5f;
-						m_fLeftColor[1] = 0.5f;
-						m_fLeftColor[2] = 0.5f;
-						m_fRightColor[0] = 1.0f;
-						m_fRightColor[1] = 1.0f;
-						m_fRightColor[2] = 1.0f;
-						if (tmpsearch.find("内心") != -1) {
-							m_iCurrentBalloon = TALKBALLOON_CLOUD_RIGHT;
-						}
-						else {
-							m_iCurrentBalloon = TALKBALLOON_NORMAL_RIGHT;
-						}
-					}
-
-					if (!strcmp(m_cLeftCharaName, namet) && strcmp(m_cRightCharaName, namet)) {
-						m_fLeftColor[0] = 1.0f;
-						m_fLeftColor[1] = 1.0f;
-						m_fLeftColor[2] = 1.0f;
-						m_fRightColor[0] = 0.5f;
-						m_fRightColor[1] = 0.5f;
-						m_fRightColor[2] = 0.5f;
-						if (tmpsearch.find("内心") != -1) {
-							m_iCurrentBalloon = TALKBALLOON_CLOUD_LEFT;
-						}
-						else {
-							m_iCurrentBalloon = TALKBALLOON_NORMAL_LEFT;
-						}
-					}
-					else if (strcmp(m_cLeftCharaName, namet) && !strcmp(m_cRightCharaName, namet)) {
-						m_fLeftColor[0] = 0.5f;
-						m_fLeftColor[1] = 0.5f;
-						m_fLeftColor[2] = 0.5f;
-						m_fRightColor[0] = 1.0f;
-						m_fRightColor[1] = 1.0f;
-						m_fRightColor[2] = 1.0f;
-						if (tmpsearch.find("内心") != -1) {
-							m_iCurrentBalloon = TALKBALLOON_CLOUD_RIGHT;
-						}
-						else {
-							m_iCurrentBalloon = TALKBALLOON_NORMAL_RIGHT;
-						}
-					}
-
-					delete namet;
-					delete expt;
-				}
-				break;
+				delete namet;
+				delete expt;
 			}
-			}
+
+			//switch (m_iDrawingStage)
+			//{
+			//case STAGE_TYPE::TUTORIAL: {
+			//	//全行描画中
+			//	if (m_iChar_Line < (*m_Chara_Text)[m_iDrawingStageID].size()) {
+
+			//		//文字挿入判定処理
+			//		if (!m_in_str) {
+			//			//この行に文字挿入部分があるか確認
+			//			m_in_str = textmgr->isInStr(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line);
+			//			if (m_in_str) {
+			//				//次ループでこのif判定に入らないように、次の行へ進める
+			//				m_iChar_Line++;
+
+			//				//挿入テキストを指定している場合
+			//				if (m_piShowTextID) {
+			//					int roop_id;
+			//					//そのアドレスが
+			//					//表示指定アドレスの中（m_piShowTextID）にあるか調べる
+			//					for (roop_id = 0; roop_id < m_iIDSize; roop_id++) {
+			//						if (m_in_str->id == m_piShowTextID[roop_id]) {
+			//							break;
+			//						}
+			//					}
+
+			//					//↑のループで最後まで調べた結果、
+			//					//表示指定アドレスの中になかった
+			//					if (roop_id == m_iIDSize) {
+			//						//挿入文字を表示しないので、終了行まで飛ばします。
+			//						m_iChar_Line = m_in_str->end_line;
+			//					}
+
+			//				}
+			//				//挿入テキストを指定していない場合
+			//				else {
+			//					//挿入文字を表示しないので、終了行まで飛ばします。
+			//					m_iChar_Line = m_in_str->end_line;
+			//				}
+			//			}
+			//		}
+
+			//		//この行に選択肢がある場合、選択肢を生成
+			//		SelectInfo* select = textmgr->isSelect(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line);
+			//		if (select) {
+			//			//次ループでこのif判定に入らないように、次の行へ進める
+			//			m_iChar_Line++;
+
+			//			//前回の選択肢が生成されている場合、削除
+			//			SAFE_DELETE(m_select);
+
+			//			//選択肢生成
+			//			m_select = new CSelect(select);
+			//		}
+
+			//		//選択肢動作(選択していないとき)
+			//		if (m_select && m_select->GetSelectNum() == -1) {
+			//			//選択したか確認
+			//			if (m_select->Select()) {
+
+			//				//選択した項目番号をメンバに保存
+			//				int sel_num = m_select->GetSelectNum();
+			//				char sel_num_str[3];
+			//				sprintf_s(sel_num_str, "%d-", sel_num + 1);
+			//				m_SelectNum += sel_num_str;
+
+			//				//選択した場所へ飛ぶ
+			//				m_iChar_Line = m_select->GetInfo()->menu[m_select->GetSelectNum()].child_text_line;
+
+			//				//次のテキストをセットする命令発信
+			//				NextTextSet();
+			//			}
+			//		}
+			//		//テキスト描画中
+			//		else {
+			//			//文字挿入部分を発見後
+			//			if (m_in_str) {
+			//				//挿入文字の終了行に到達
+			//				if (m_in_str->end_line == m_iChar_Line) {
+			//					//文字挿入データへの参照を切る
+			//					m_in_str = NULL;
+
+			//					//次のテキストをセットする命令発信
+			//					NextTextSet();
+			//				}
+			//			}
+
+			//			//選択肢を選択した後に入ります
+			//			if (m_select) {
+			//				//その選択した項目の終了行なら
+			//				if (m_select->GetEndLine() == m_iChar_Line) {
+			//					//選択肢オブジェクト破棄
+			//					SAFE_DELETE(m_select);
+
+			//					//会話終了
+			//					DrawTextEnd();
+
+			//					//Draw関数終了
+			//					return;
+			//				}
+			//			}
+
+			//			//待ち時間カウント後、１文字描画
+			//			m_iDelay++;
+
+			//			//その行の文字描画中
+			//			if (m_iChar_Pos < (*m_Chara_Text)[m_iDrawingStageID][m_iChar_Line].length()) {
+			//				//マウスクリックすると１行一括表示
+			//				if (input->GetMouButtonLOnce()) {
+			//					m_strTemp[m_iChar_Line].clear();
+			//					m_strTemp[m_iChar_Line] += (*m_Chara_Text)[m_iDrawingStageID][m_iChar_Line];
+			//					m_iChar_Pos = (*m_Chara_Text)[m_iDrawingStageID][m_iChar_Line].length() + 1;
+			//				}
+			//				else {
+			//					if (m_iDelay > m_iTextSpeed) {
+			//						unsigned char lead = (*m_Chara_Text)[m_iDrawingStageID][m_iChar_Line][m_iChar_Pos];
+			//						if (lead < 128) {
+			//							m_iChar_Size = 1;
+			//						}
+			//						else if (lead < 224) {
+			//							m_iChar_Size = 2;
+			//						}
+			//						else if (lead < 240) {
+			//							m_iChar_Size = 3;
+			//						}
+			//						else {
+			//							m_iChar_Size = 4;
+			//						}
+
+			//						sprintf_s(c, "%s", (*m_Chara_Text)[m_iDrawingStageID][m_iChar_Line].substr(m_iChar_Pos, m_iChar_Size).c_str());
+			//						m_strTemp[m_iChar_Line] += c;
+
+			//						m_iChar_Pos += m_iChar_Size;
+			//					}
+			//				}
+			//			}
+			//			//一行描画終了
+			//			else {
+			//				if (input->GetMouButtonLOnce()) {
+			//					//次のテキストをセットする命令発信
+			//					NextTextSet();
+			//				}
+			//				else {
+			//					if (m_iDelay > m_iTextSpeed) {
+			//						if (!m_bNextWaiting) {
+			//							m_fWaitAlpha = 1.0f;
+			//							m_bNextWaiting = true;
+			//						}
+			//						else {
+			//							m_fWaitAlpha = 0.0f;
+			//							m_bNextWaiting = false;
+			//						}
+			//					}
+			//				}
+			//			}
+			//		}
+			//	}
+			//	//全テキスト描画終了
+			//	else {
+			//		if (input->GetMouButtonL()) {
+			//			//会話終了
+			//			DrawTextEnd();
+
+			//			//このswitch文を脱退
+			//			return;
+			//		}
+			//		else {
+			//			if (m_iDelay > m_iTextSpeed) {
+			//				if (!m_bNextWaiting) {
+			//					m_fWaitAlpha = 1.0f;
+			//					m_bNextWaiting = true;
+			//				}
+			//				else {
+			//					m_fWaitAlpha = 0.0f;
+			//					m_bNextWaiting = false;
+			//				}
+			//			}
+			//		}
+			//	}
+
+			//	if (m_iDelay > m_iTextSpeed)
+			//		m_iDelay = 0;
+
+			//	char linec[32];
+			//	sprintf_s(linec, "%d", m_iChar_Line);
+			//	if (textmgr->isCtrlLine(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line) && !m_bCharaChangeFlg) {
+			//		string tmpsearch;
+			//		//名前と表情がある場合、文字描画をリセット
+			//		char *namet = textmgr->GetCharaName(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line);
+			//		char *expt = textmgr->GetCharaExp(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line);
+			//		m_strTemp.clear();
+			//		m_strTemp.resize((*m_Chara_Text)[m_iDrawingStageID].size());
+			//		m_strTempName.clear();
+			//		m_strTempName += namet;
+			//		m_bCharaChangeFlg = true;
+			//		m_iCurrentLine = m_iChar_Line;
+
+			//		tmpsearch += expt;
+
+			//		if (!strlen(m_cLeftCharaName)) {
+			//			strcpy_s(m_cLeftCharaName, namet);
+			//			m_fLeftColor[0] = 1.0f;
+			//			m_fLeftColor[1] = 1.0f;
+			//			m_fLeftColor[2] = 1.0f;
+			//			m_fRightColor[0] = 0.5f;
+			//			m_fRightColor[1] = 0.5f;
+			//			m_fRightColor[2] = 0.5f;
+
+			//			if (tmpsearch.find("内心") != -1) {
+			//				m_iCurrentBalloon = TALKBALLOON_CLOUD_LEFT;
+			//			}
+			//			else {
+			//				m_iCurrentBalloon = TALKBALLOON_NORMAL_LEFT;
+			//			}
+			//		}
+			//		else if (!strlen(m_cRightCharaName) && strcmp(m_cLeftCharaName, namet)) {
+			//			strcpy_s(m_cRightCharaName, namet);
+			//			m_fLeftColor[0] = 0.5f;
+			//			m_fLeftColor[1] = 0.5f;
+			//			m_fLeftColor[2] = 0.5f;
+			//			m_fRightColor[0] = 1.0f;
+			//			m_fRightColor[1] = 1.0f;
+			//			m_fRightColor[2] = 1.0f;
+			//			if (tmpsearch.find("内心") != -1) {
+			//				m_iCurrentBalloon = TALKBALLOON_CLOUD_RIGHT;
+			//			}
+			//			else {
+			//				m_iCurrentBalloon = TALKBALLOON_NORMAL_RIGHT;
+			//			}
+			//		}
+
+			//		if (!strcmp(m_cLeftCharaName, namet) && strcmp(m_cRightCharaName, namet)) {
+			//			m_fLeftColor[0] = 1.0f;
+			//			m_fLeftColor[1] = 1.0f;
+			//			m_fLeftColor[2] = 1.0f;
+			//			m_fRightColor[0] = 0.5f;
+			//			m_fRightColor[1] = 0.5f;
+			//			m_fRightColor[2] = 0.5f;
+			//			if (tmpsearch.find("内心") != -1) {
+			//				m_iCurrentBalloon = TALKBALLOON_CLOUD_LEFT;
+			//			}
+			//			else {
+			//				m_iCurrentBalloon = TALKBALLOON_NORMAL_LEFT;
+			//			}
+			//		}
+			//		else if (strcmp(m_cLeftCharaName, namet) && !strcmp(m_cRightCharaName, namet)) {
+			//			m_fLeftColor[0] = 0.5f;
+			//			m_fLeftColor[1] = 0.5f;
+			//			m_fLeftColor[2] = 0.5f;
+			//			m_fRightColor[0] = 1.0f;
+			//			m_fRightColor[1] = 1.0f;
+			//			m_fRightColor[2] = 1.0f;
+			//			if (tmpsearch.find("内心") != -1) {
+			//				m_iCurrentBalloon = TALKBALLOON_CLOUD_RIGHT;
+			//			}
+			//			else {
+			//				m_iCurrentBalloon = TALKBALLOON_NORMAL_RIGHT;
+			//			}
+			//		}
+
+			//		delete namet;
+			//		delete expt;
+			//	}
+			//	break;
+			//}
+			//case STAGE_TYPE::SION: {
+			//	if (m_iChar_Line < textmgr->m_Sion_Text[m_iDrawingStageID].size()) {
+			//		if (m_iChar_Pos < textmgr->m_Sion_Text[m_iDrawingStageID][m_iChar_Line].length()) {
+			//			if (input->GetMouButtonLOnce()) {
+			//				m_strTemp[m_iChar_Line].clear();
+			//				m_strTemp[m_iChar_Line] += textmgr->m_Sion_Text[m_iDrawingStageID][m_iChar_Line];
+			//				m_iChar_Pos = textmgr->m_Sion_Text[m_iDrawingStageID][m_iChar_Line].length() + 1;
+			//			}
+			//			else {
+			//				if (m_iDelay > m_iTextSpeed) {
+			//					unsigned char lead = textmgr->m_Sion_Text[m_iDrawingStageID][m_iChar_Line][m_iChar_Pos];
+			//					if (lead < 128) {
+			//						m_iChar_Size = 1;
+			//					}
+			//					else if (lead < 224) {
+			//						m_iChar_Size = 2;
+			//					}
+			//					else if (lead < 240) {
+			//						m_iChar_Size = 3;
+			//					}
+			//					else {
+			//						m_iChar_Size = 4;
+			//					}
+
+			//					sprintf_s(c, "%s", textmgr->m_Sion_Text[m_iDrawingStageID][m_iChar_Line].substr(m_iChar_Pos, m_iChar_Size).c_str());
+			//					m_strTemp[m_iChar_Line] += c;
+
+			//					m_iChar_Pos += m_iChar_Size;
+			//				}
+			//			}
+			//		}
+			//		else {
+			//			if (input->GetMouButtonLOnce()) {
+			//				m_iChar_Pos = 0;
+			//				m_iChar_Line++;
+			//				m_fWaitAlpha = 0.0f;
+			//				m_bNextWaiting = false;
+			//				m_bCharaChangeFlg = false;
+			//			}
+			//			else {
+			//				if (m_iDelay > m_iTextSpeed) {
+			//					if (!m_bNextWaiting) {
+			//						m_fWaitAlpha = 1.0f;
+			//						m_bNextWaiting = true;
+			//					}
+			//					else {
+			//						m_fWaitAlpha = 0.0f;
+			//						m_bNextWaiting = false;
+			//					}
+			//				}
+			//			}
+			//		}
+			//	}
+			//	else {
+			//		if (input->GetMouButtonL()) {
+			//			FadeOut();
+			//			StopDraw();
+			//		}
+			//		else {
+			//			if (m_iDelay > m_iTextSpeed) {
+			//				if (!m_bNextWaiting) {
+			//					m_fWaitAlpha = 1.0f;
+			//					m_bNextWaiting = true;
+			//				}
+			//				else {
+			//					m_fWaitAlpha = 0.0f;
+			//					m_bNextWaiting = false;
+			//				}
+			//			}
+			//		}
+			//	}
+
+			//	if (m_iDelay > m_iTextSpeed)
+			//		m_iDelay = 0;
+
+			//	char linec[32];
+			//	sprintf_s(linec, "%d", m_iChar_Line);
+			//	if (textmgr->isCtrlLine(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line) && !m_bCharaChangeFlg) {
+			//		string tmpsearch;
+			//		char *namet = textmgr->GetCharaName(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line);
+			//		char *expt = textmgr->GetCharaExp(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line);
+			//		m_strTemp.clear();
+			//		m_strTemp.resize(textmgr->m_Sion_Text[m_iDrawingStageID].size());
+			//		m_strTempName.clear();
+			//		m_strTempName += namet;
+			//		m_bCharaChangeFlg = true;
+			//		m_iCurrentLine = m_iChar_Line;
+
+			//		tmpsearch += expt;
+
+			//		if (!strlen(m_cLeftCharaName)) {
+			//			strcpy_s(m_cLeftCharaName, namet);
+			//			m_fLeftColor[0] = 1.0f;
+			//			m_fLeftColor[1] = 1.0f;
+			//			m_fLeftColor[2] = 1.0f;
+			//			m_fRightColor[0] = 0.5f;
+			//			m_fRightColor[1] = 0.5f;
+			//			m_fRightColor[2] = 0.5f;
+
+			//			if (tmpsearch.find("内心") != -1) {
+			//				m_iCurrentBalloon = TALKBALLOON_CLOUD_LEFT;
+			//			}
+			//			else {
+			//				m_iCurrentBalloon = TALKBALLOON_NORMAL_LEFT;
+			//			}
+			//		}
+			//		else if (!strlen(m_cRightCharaName) && strcmp(m_cLeftCharaName, namet)) {
+			//			strcpy_s(m_cRightCharaName, namet);
+			//			m_fLeftColor[0] = 0.5f;
+			//			m_fLeftColor[1] = 0.5f;
+			//			m_fLeftColor[2] = 0.5f;
+			//			m_fRightColor[0] = 1.0f;
+			//			m_fRightColor[1] = 1.0f;
+			//			m_fRightColor[2] = 1.0f;
+			//			if (tmpsearch.find("内心") != -1) {
+			//				m_iCurrentBalloon = TALKBALLOON_CLOUD_RIGHT;
+			//			}
+			//			else {
+			//				m_iCurrentBalloon = TALKBALLOON_NORMAL_RIGHT;
+			//			}
+			//		}
+
+			//		if (!strcmp(m_cLeftCharaName, namet) && strcmp(m_cRightCharaName, namet)) {
+			//			m_fLeftColor[0] = 1.0f;
+			//			m_fLeftColor[1] = 1.0f;
+			//			m_fLeftColor[2] = 1.0f;
+			//			m_fRightColor[0] = 0.5f;
+			//			m_fRightColor[1] = 0.5f;
+			//			m_fRightColor[2] = 0.5f;
+			//			if (tmpsearch.find("内心") != -1) {
+			//				m_iCurrentBalloon = TALKBALLOON_CLOUD_LEFT;
+			//			}
+			//			else {
+			//				m_iCurrentBalloon = TALKBALLOON_NORMAL_LEFT;
+			//			}
+			//		}
+			//		else if (strcmp(m_cLeftCharaName, namet) && !strcmp(m_cRightCharaName, namet)) {
+			//			m_fLeftColor[0] = 0.5f;
+			//			m_fLeftColor[1] = 0.5f;
+			//			m_fLeftColor[2] = 0.5f;
+			//			m_fRightColor[0] = 1.0f;
+			//			m_fRightColor[1] = 1.0f;
+			//			m_fRightColor[2] = 1.0f;
+			//			if (tmpsearch.find("内心") != -1) {
+			//				m_iCurrentBalloon = TALKBALLOON_CLOUD_RIGHT;
+			//			}
+			//			else {
+			//				m_iCurrentBalloon = TALKBALLOON_NORMAL_RIGHT;
+			//			}
+			//		}
+
+			//		delete namet;
+			//		delete expt;
+			//	}
+			//	break;
+			//}
+			//case STAGE_TYPE::KOUNE: {
+			//	if (m_iChar_Line < textmgr->m_Koune_Text[m_iDrawingStageID].size()) {
+			//		if (m_iChar_Pos < textmgr->m_Koune_Text[m_iDrawingStageID][m_iChar_Line].length()) {
+			//			if (input->GetMouButtonLOnce()) {
+			//				m_strTemp[m_iChar_Line].clear();
+			//				m_strTemp[m_iChar_Line] += textmgr->m_Koune_Text[m_iDrawingStageID][m_iChar_Line];
+			//				m_iChar_Pos = textmgr->m_Koune_Text[m_iDrawingStageID][m_iChar_Line].length() + 1;
+			//			}
+			//			else {
+			//				if (m_iDelay > m_iTextSpeed) {
+			//					unsigned char lead = textmgr->m_Koune_Text[m_iDrawingStageID][m_iChar_Line][m_iChar_Pos];
+			//					if (lead < 128) {
+			//						m_iChar_Size = 1;
+			//					}
+			//					else if (lead < 224) {
+			//						m_iChar_Size = 2;
+			//					}
+			//					else if (lead < 240) {
+			//						m_iChar_Size = 3;
+			//					}
+			//					else {
+			//						m_iChar_Size = 4;
+			//					}
+
+			//					sprintf_s(c, "%s", textmgr->m_Koune_Text[m_iDrawingStageID][m_iChar_Line].substr(m_iChar_Pos, m_iChar_Size).c_str());
+			//					m_strTemp[m_iChar_Line] += c;
+
+			//					m_iChar_Pos += m_iChar_Size;
+			//				}
+			//			}
+			//		}
+			//		else {
+			//			if (input->GetMouButtonLOnce()) {
+			//				m_iChar_Pos = 0;
+			//				m_iChar_Line++;
+			//				m_fWaitAlpha = 0.0f;
+			//				m_bNextWaiting = false;
+			//				m_bCharaChangeFlg = false;
+			//			}
+			//			else {
+			//				if (m_iDelay > m_iTextSpeed) {
+			//					if (!m_bNextWaiting) {
+			//						m_fWaitAlpha = 1.0f;
+			//						m_bNextWaiting = true;
+			//					}
+			//					else {
+			//						m_fWaitAlpha = 0.0f;
+			//						m_bNextWaiting = false;
+			//					}
+			//				}
+			//			}
+			//		}
+			//	}
+			//	else {
+			//		if (input->GetMouButtonL()) {
+			//			FadeOut();
+			//			StopDraw();
+			//		}
+			//		else {
+			//			if (m_iDelay > m_iTextSpeed) {
+			//				if (!m_bNextWaiting) {
+			//					m_fWaitAlpha = 1.0f;
+			//					m_bNextWaiting = true;
+			//				}
+			//				else {
+			//					m_fWaitAlpha = 0.0f;
+			//					m_bNextWaiting = false;
+			//				}
+			//			}
+			//		}
+			//	}
+
+			//	if (m_iDelay > m_iTextSpeed)
+			//		m_iDelay = 0;
+
+			//	char linec[32];
+			//	sprintf_s(linec, "%d", m_iChar_Line);
+			//	if (textmgr->isCtrlLine(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line) && !m_bCharaChangeFlg) {
+			//		string tmpsearch;
+			//		char *namet = textmgr->GetCharaName(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line);
+			//		char *expt = textmgr->GetCharaExp(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line);
+			//		m_strTemp.clear();
+			//		m_strTemp.resize(textmgr->m_Koune_Text[m_iDrawingStageID].size());
+			//		m_strTempName.clear();
+			//		m_strTempName += namet;
+			//		m_bCharaChangeFlg = true;
+			//		m_iCurrentLine = m_iChar_Line;
+
+			//		tmpsearch += expt;
+
+			//		if (!strlen(m_cLeftCharaName)) {
+			//			strcpy_s(m_cLeftCharaName, namet);
+			//			m_fLeftColor[0] = 1.0f;
+			//			m_fLeftColor[1] = 1.0f;
+			//			m_fLeftColor[2] = 1.0f;
+			//			m_fRightColor[0] = 0.5f;
+			//			m_fRightColor[1] = 0.5f;
+			//			m_fRightColor[2] = 0.5f;
+
+			//			if (tmpsearch.find("内心") != -1) {
+			//				m_iCurrentBalloon = TALKBALLOON_CLOUD_LEFT;
+			//			}
+			//			else {
+			//				m_iCurrentBalloon = TALKBALLOON_NORMAL_LEFT;
+			//			}
+			//		}
+			//		else if (!strlen(m_cRightCharaName) && strcmp(m_cLeftCharaName, namet)) {
+			//			strcpy_s(m_cRightCharaName, namet);
+			//			m_fLeftColor[0] = 0.5f;
+			//			m_fLeftColor[1] = 0.5f;
+			//			m_fLeftColor[2] = 0.5f;
+			//			m_fRightColor[0] = 1.0f;
+			//			m_fRightColor[1] = 1.0f;
+			//			m_fRightColor[2] = 1.0f;
+			//			if (tmpsearch.find("内心") != -1) {
+			//				m_iCurrentBalloon = TALKBALLOON_CLOUD_RIGHT;
+			//			}
+			//			else {
+			//				m_iCurrentBalloon = TALKBALLOON_NORMAL_RIGHT;
+			//			}
+			//		}
+
+			//		if (!strcmp(m_cLeftCharaName, namet) && strcmp(m_cRightCharaName, namet)) {
+			//			m_fLeftColor[0] = 1.0f;
+			//			m_fLeftColor[1] = 1.0f;
+			//			m_fLeftColor[2] = 1.0f;
+			//			m_fRightColor[0] = 0.5f;
+			//			m_fRightColor[1] = 0.5f;
+			//			m_fRightColor[2] = 0.5f;
+			//			if (tmpsearch.find("内心") != -1) {
+			//				m_iCurrentBalloon = TALKBALLOON_CLOUD_LEFT;
+			//			}
+			//			else {
+			//				m_iCurrentBalloon = TALKBALLOON_NORMAL_LEFT;
+			//			}
+			//		}
+			//		else if (strcmp(m_cLeftCharaName, namet) && !strcmp(m_cRightCharaName, namet)) {
+			//			m_fLeftColor[0] = 0.5f;
+			//			m_fLeftColor[1] = 0.5f;
+			//			m_fLeftColor[2] = 0.5f;
+			//			m_fRightColor[0] = 1.0f;
+			//			m_fRightColor[1] = 1.0f;
+			//			m_fRightColor[2] = 1.0f;
+			//			if (tmpsearch.find("内心") != -1) {
+			//				m_iCurrentBalloon = TALKBALLOON_CLOUD_RIGHT;
+			//			}
+			//			else {
+			//				m_iCurrentBalloon = TALKBALLOON_NORMAL_RIGHT;
+			//			}
+			//		}
+
+			//		delete namet;
+			//		delete expt;
+			//	}
+			//	break;
+			//}
+			//case STAGE_TYPE::MERUERU: {
+			//	if (m_iChar_Line < textmgr->m_Merueru_Text[m_iDrawingStageID].size()) {
+			//		if (m_iChar_Pos < textmgr->m_Merueru_Text[m_iDrawingStageID][m_iChar_Line].length()) {
+			//			if (input->GetMouButtonLOnce()) {
+			//				m_strTemp[m_iChar_Line].clear();
+			//				m_strTemp[m_iChar_Line] += textmgr->m_Merueru_Text[m_iDrawingStageID][m_iChar_Line];
+			//				m_iChar_Pos = textmgr->m_Merueru_Text[m_iDrawingStageID][m_iChar_Line].length() + 1;
+			//			}
+			//			else {
+			//				if (m_iDelay > m_iTextSpeed) {
+			//					unsigned char lead = textmgr->m_Merueru_Text[m_iDrawingStageID][m_iChar_Line][m_iChar_Pos];
+			//					if (lead < 128) {
+			//						m_iChar_Size = 1;
+			//					}
+			//					else if (lead < 224) {
+			//						m_iChar_Size = 2;
+			//					}
+			//					else if (lead < 240) {
+			//						m_iChar_Size = 3;
+			//					}
+			//					else {
+			//						m_iChar_Size = 4;
+			//					}
+
+			//					sprintf_s(c, "%s", textmgr->m_Merueru_Text[m_iDrawingStageID][m_iChar_Line].substr(m_iChar_Pos, m_iChar_Size).c_str());
+			//					m_strTemp[m_iChar_Line] += c;
+
+			//					m_iChar_Pos += m_iChar_Size;
+			//				}
+			//			}
+			//		}
+			//		else {
+			//			if (input->GetMouButtonLOnce()) {
+			//				m_iChar_Pos = 0;
+			//				m_iChar_Line++;
+			//				m_fWaitAlpha = 0.0f;
+			//				m_bNextWaiting = false;
+			//				m_bCharaChangeFlg = false;
+			//			}
+			//			else {
+			//				if (m_iDelay > m_iTextSpeed) {
+			//					if (!m_bNextWaiting) {
+			//						m_fWaitAlpha = 1.0f;
+			//						m_bNextWaiting = true;
+			//					}
+			//					else {
+			//						m_fWaitAlpha = 0.0f;
+			//						m_bNextWaiting = false;
+			//					}
+			//				}
+			//			}
+			//		}
+			//	}
+			//	else {
+			//		if (input->GetMouButtonL()) {
+			//			FadeOut();
+			//			StopDraw();
+			//		}
+			//		else {
+			//			if (m_iDelay > m_iTextSpeed) {
+			//				if (!m_bNextWaiting) {
+			//					m_fWaitAlpha = 1.0f;
+			//					m_bNextWaiting = true;
+			//				}
+			//				else {
+			//					m_fWaitAlpha = 0.0f;
+			//					m_bNextWaiting = false;
+			//				}
+			//			}
+			//		}
+			//	}
+
+			//	if (m_iDelay > m_iTextSpeed)
+			//		m_iDelay = 0;
+
+			//	char linec[32];
+			//	sprintf_s(linec, "%d", m_iChar_Line);
+			//	if (textmgr->isCtrlLine(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line) && !m_bCharaChangeFlg) {
+			//		string tmpsearch;
+			//		char *namet = textmgr->GetCharaName(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line);
+			//		char *expt = textmgr->GetCharaExp(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line);
+			//		m_strTemp.clear();
+			//		m_strTemp.resize(textmgr->m_Merueru_Text[m_iDrawingStageID].size());
+			//		m_strTempName.clear();
+			//		m_strTempName += namet;
+			//		m_bCharaChangeFlg = true;
+			//		m_iCurrentLine = m_iChar_Line;
+
+			//		tmpsearch += expt;
+
+			//		if (!strlen(m_cLeftCharaName)) {
+			//			strcpy_s(m_cLeftCharaName, namet);
+			//			m_fLeftColor[0] = 1.0f;
+			//			m_fLeftColor[1] = 1.0f;
+			//			m_fLeftColor[2] = 1.0f;
+			//			m_fRightColor[0] = 0.5f;
+			//			m_fRightColor[1] = 0.5f;
+			//			m_fRightColor[2] = 0.5f;
+
+			//			if (tmpsearch.find("内心") != -1) {
+			//				m_iCurrentBalloon = TALKBALLOON_CLOUD_LEFT;
+			//			}
+			//			else {
+			//				m_iCurrentBalloon = TALKBALLOON_NORMAL_LEFT;
+			//			}
+			//		}
+			//		else if (!strlen(m_cRightCharaName) && strcmp(m_cLeftCharaName, namet)) {
+			//			strcpy_s(m_cRightCharaName, namet);
+			//			m_fLeftColor[0] = 0.5f;
+			//			m_fLeftColor[1] = 0.5f;
+			//			m_fLeftColor[2] = 0.5f;
+			//			m_fRightColor[0] = 1.0f;
+			//			m_fRightColor[1] = 1.0f;
+			//			m_fRightColor[2] = 1.0f;
+			//			if (tmpsearch.find("内心") != -1) {
+			//				m_iCurrentBalloon = TALKBALLOON_CLOUD_RIGHT;
+			//			}
+			//			else {
+			//				m_iCurrentBalloon = TALKBALLOON_NORMAL_RIGHT;
+			//			}
+			//		}
+
+			//		if (!strcmp(m_cLeftCharaName, namet) && strcmp(m_cRightCharaName, namet)) {
+			//			m_fLeftColor[0] = 1.0f;
+			//			m_fLeftColor[1] = 1.0f;
+			//			m_fLeftColor[2] = 1.0f;
+			//			m_fRightColor[0] = 0.5f;
+			//			m_fRightColor[1] = 0.5f;
+			//			m_fRightColor[2] = 0.5f;
+			//			if (tmpsearch.find("内心") != -1) {
+			//				m_iCurrentBalloon = TALKBALLOON_CLOUD_LEFT;
+			//			}
+			//			else {
+			//				m_iCurrentBalloon = TALKBALLOON_NORMAL_LEFT;
+			//			}
+			//		}
+			//		else if (strcmp(m_cLeftCharaName, namet) && !strcmp(m_cRightCharaName, namet)) {
+			//			m_fLeftColor[0] = 0.5f;
+			//			m_fLeftColor[1] = 0.5f;
+			//			m_fLeftColor[2] = 0.5f;
+			//			m_fRightColor[0] = 1.0f;
+			//			m_fRightColor[1] = 1.0f;
+			//			m_fRightColor[2] = 1.0f;
+			//			if (tmpsearch.find("内心") != -1) {
+			//				m_iCurrentBalloon = TALKBALLOON_CLOUD_RIGHT;
+			//			}
+			//			else {
+			//				m_iCurrentBalloon = TALKBALLOON_NORMAL_RIGHT;
+			//			}
+			//		}
+
+			//		delete namet;
+			//		delete expt;
+			//	}
+			//	break;
+			//}
+			//}
 
 			sprintf_s(tmpname, "%s", m_strTempName.c_str());
 			float col[4] = { 0.0f,0.0f,0.0f,m_fAlpha };

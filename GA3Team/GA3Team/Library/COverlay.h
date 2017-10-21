@@ -75,18 +75,22 @@ enum koune
 
 	//ステージ2
 	KOUNE2_START,
-	KOUNE2_SION_FLAG3_YES,
-	KOUNE2_SION_FLAG3_4_YES,
-	KOUNE2_SION_FLAG3_4_NO,
-	KOUNE2_SION_FLAG2_YES,
-	KOUNE2_SION_FLAG2_RED,
-	KOUNE2_SION_FLAG2_GREEN,
-	KOUNE2_SION_FLAG2_BLUE,
+	KOUNE2_SION_DLAG1_NO_FLAG2_NO,
 	KOUNE2_SION_FLAG1_YES_FLAG2_NO,
-	KOUNE2_ONNNA_FLAG3_YES,
-	KOUNE2_ONNNA_FLAG3_1_2,
-	KOUNE2_ONNNA_FLAG3_1_1,
+	KOUNE2_SION_FLAG2_YES,
+	KOUNE2_SION_FLAG3_YES,
 	KOUNE2_ONNNA,
+	KOUNE2_ONNNA_FLAG3_YES,
+	KOUNE2_BOYB,
+	KOUNE2_BOYB_FLAG3_YES,
+	KOUNE2_BOYA_FLAG1_NO,
+	KOUNE2_BOYA_FLAG1_YES,
+	KOUNE2_BOYA_FLAG2_YES,
+	KOUNE2_BOYA_FLAG3_YES,
+	KOUNE2_BOYA_NOCREATURE_FLAG3_NO,
+	KOUNE2_BOYA_CREATURE_FLAG3_NO,
+	KOUNE2_BOYA_FLAG3_OUEN_SMALL,
+	KOUNE2_BOYA_FLAG3_OUEN_BIG,
 };
 enum merueru
 {
@@ -100,7 +104,7 @@ enum merueru
 	MERUERU_KATUO_3,
 };
 
-enum DrawExID{
+enum DrawExID {
 	EX_NULL = 0,
 	EX_KOUNE_OJICHAN,
 	EX_KOUNE_MANHOLE,
@@ -156,7 +160,7 @@ enum TalkBalloon_Type
 };
 
 //---------------------------
-class COverlay{
+class COverlay {
 private:
 	//CObj配下と同じようにアクセスできるように
 	CDrawTexture *image;
@@ -167,7 +171,7 @@ private:
 	CAudio *audio;
 
 	//描画用
-	float m_fAlpha,m_fWaitAlpha;
+	float m_fAlpha, m_fWaitAlpha;
 	float m_fDefColor[4], m_fBackColor[4], m_fWaitColor[4], m_fBallonColor[4];
 	float m_fLeftColor[4], m_fRightColor[4];
 	int m_iLeftCharaImageID, m_iRightCharaImageID;
@@ -199,8 +203,8 @@ private:
 	//選択肢系------------------------------------------------------
 	CSelect* m_select;//選択肢オブジェクトへの参照
 
-	//選択した項目番号（文字列格納）
-	//格納例：1番目の項目を選んでから2番目の項目を選んだ→"1-2-"
+					  //選択した項目番号（文字列格納）
+					  //格納例：1番目の項目を選んでから2番目の項目を選んだ→"1-2-"
 	string m_SelectNum;
 	//--------------------------------------------------------------
 
@@ -209,9 +213,9 @@ private:
 
 	int* m_piShowTextID;//表示するテキストを指定するアクセス番号配列
 	int m_iIDSize;		//↑の要素数
-	//--------------------------------------------------------------
+						//--------------------------------------------------------------
 
-	//次のテキストをセットする命令発信
+						//次のテキストをセットする命令発信
 	void NextTextSet();
 
 	//会話終了処理
@@ -286,7 +290,7 @@ public:
 	void SetTextSpeed(int set) { m_iTextSpeed = set; }
 
 	//----------------状態取得----------------
-	
+
 	//オーバーレイが描画されているか
 	bool isDraw() { return m_bDrawing; }
 

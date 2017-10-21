@@ -118,6 +118,7 @@ enum OBJ_NAME
 	OBJ_BUTTON_PLAYER,
 	OBJ_BUTTON_STAGE,
 	OBJ_BUTTON_DATASELECT,
+	OBJ_BUTTON_SELECT,
 	OBJ_STAGE_TAB,
 	OBJ_SAVEDATA,
 	BUTTON_LSCROLL_SCREEN,
@@ -206,6 +207,10 @@ enum OBJ_NAME
 
 #define STAGE_MAX 6
 
+//配列の要素数を調べる
+//引数：
+//ary_name=サイズを調べたい配列
+#define SIZE(ary_name) sizeof(ary_name) / sizeof(ary_name[0])
 
 //一つのギミックがもてる吹き出しの最大数
 #define BALLOON_MAX_NUM 5
@@ -278,6 +283,8 @@ void VectorClear(vector<T>* vec) {
 #include "Library\SoundManeger.h"
 #include "Library\TextManager.h"
 #include "Library\CSavedateManeger.h"
+#include "Library\ButtonSelect.h"
+#include "Library\CSelect.h"
 #include "Library\COverlay.h"
 
 inline RECT InitRect(LONG left, LONG top, LONG right, LONG bottom)

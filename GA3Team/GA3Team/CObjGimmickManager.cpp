@@ -59,26 +59,26 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 		
 		break;
 	case 11:
-		//シオンのステージ2のギミック生成
-		m_gimmick_earphone = new Gimmickearphone();
-		Obj()->InsertObj(m_gimmick_earphone, GIMMICK_EARPHONE, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_earphone->Init(650, 120, 200, 400, 1);
-		//コウネ生成
-		m_gimmick_koune = new Gimmickkoune();
-		Obj()->InsertObj(m_gimmick_koune, GIMMICK_KOUNE, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_koune->Init(-250, 150, 200, 400, 1);
-		//猫生成
-		m_gimmick_cat = new Gimmickcat();
-		Obj()->InsertObj(m_gimmick_cat, GIMMICK_CAT, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_cat->Init(550, 120, 100, 100, 1);
-		//自転車生成
-		m_gimmick_bicycle = new Gimmickbicycle();
-		Obj()->InsertObj(m_gimmick_bicycle, GIMMICK_BICYCLE, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_bicycle->Init(100, 300, 400, 250, 1);
-		//消防車
-		m_gimmick_firetruck = new Gimmickfiretruck();
-		Obj()->InsertObj(m_gimmick_firetruck, GIMMICK_FIRETRUCK, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_firetruck->Init(-430, -120, 400, 450, 1);
+		////シオンのステージ2のギミック生成
+		//m_gimmick_earphone = new Gimmickearphone();
+		//Obj()->InsertObj(m_gimmick_earphone, GIMMICK_EARPHONE, 5, this->m_pScene, HIT_BOX_OFF);
+		//m_gimmick_earphone->Init(650, 120, 200, 400, 1);
+		////コウネ生成
+		//m_gimmick_koune = new Gimmickkoune();
+		//Obj()->InsertObj(m_gimmick_koune, GIMMICK_KOUNE, 5, this->m_pScene, HIT_BOX_OFF);
+		//m_gimmick_koune->Init(-250, 150, 200, 400, 1);
+		////猫生成
+		//m_gimmick_cat = new Gimmickcat();
+		//Obj()->InsertObj(m_gimmick_cat, GIMMICK_CAT, 5, this->m_pScene, HIT_BOX_OFF);
+		//m_gimmick_cat->Init(550, 120, 100, 100, 1);
+		////自転車生成
+		//m_gimmick_bicycle = new Gimmickbicycle();
+		//Obj()->InsertObj(m_gimmick_bicycle, GIMMICK_BICYCLE, 5, this->m_pScene, HIT_BOX_OFF);
+		//m_gimmick_bicycle->Init(100, 300, 400, 250, 1);
+		////消防車
+		//m_gimmick_firetruck = new Gimmickfiretruck();
+		//Obj()->InsertObj(m_gimmick_firetruck, GIMMICK_FIRETRUCK, 5, this->m_pScene, HIT_BOX_OFF);
+		//m_gimmick_firetruck->Init(-430, -120, 400, 450, 1);
 		break;
 
 	case 12:
@@ -312,12 +312,12 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 
 		//机
 		m_obj_desk = new CObjDesk();
-		//Obj()->InsertObj(m_obj_desk, OBJ_DESK, 5, this->m_pScene, HIT_BOX_OFF);
+		Obj()->InsertObj(m_obj_desk, OBJ_DESK, 5, this->m_pScene, HIT_BOX_OFF);
 		m_obj_desk->Init(286, 310, 242, 145);
 		break;
 	//--------------------------------------------------------
 
-	case 41:
+	case 41://テスト用ステージ
 		
 		break;
 
@@ -899,14 +899,22 @@ void CObjGimmickManager::Action() {
 		}
 		break;
 	}
-	case 41:
+	case 41://テスト用ステージ
 	{
-		//博士「ようこそ！ここは・・・」
-		Overlay()->talkDraw(TUTORIAL, HAKASE_1);
+		static int test_num;
+		if (test_num == 0) {
+			int show_id[] = { 0,1 };
+			Overlay()->talkDraw(TUTORIAL, SELECT_TEST, show_id, SIZE(show_id));
 
-		//会話終了
-		if (Overlay()->NextWait()) {
-			m_itutorialflg = TUTORIAL_WELCOM_TALK_END;
+			//会話終了
+			if (Overlay()->NextWait()) {
+				if (Overlay()->Selected("1-1")) {
+					test_num = 1;
+				}
+			}
+		}
+		else if (test_num == 1) {
+
 		}
 		break;
 	}

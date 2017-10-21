@@ -38,7 +38,7 @@ enum sion
 	SION2_FLAG_NO,
 	SION2_FLAG_YES,
 	SION2_CLEAR,
-	
+
 	//ステージ3
 	SION3_START,
 	SION3_OBATYAN,
@@ -49,16 +49,16 @@ enum sion
 	SION3_FLAG_YES_CHILD2,
 	SION3_FLAG_NO_CHILD3,
 	SION3_FLAG_YES_CHILD3,
-	
+
 	//ステージ4
-	SION4_START,	
+	SION4_START,
 	SION4_NAZONAZO_FLAG1_NO,
 	SION4_NAZONAZO_FLAG1_YES,
 	SION4_NAZONAZO_FLAG2_NO,
 	SION4_NAZONAZO_BICYCLE,
 	SION4_NAZONAZO_FIRETRUCK,
 	SION4_NAZONAZO_BAT,
-	
+
 };
 enum koune
 {
@@ -72,7 +72,7 @@ enum koune
 	KOUNE1_OZI_FLAG3_NO_FLAG1_YES,
 	KOUNE1_OZI_FLAG3_YES,
 	KOUNE1_OZI_CLEAR,
-	
+
 	//ステージ2
 	KOUNE2_START,
 	KOUNE2_SION_FLAG3_YES,
@@ -196,32 +196,63 @@ private:
 	int m_iFadeFlg;
 	int m_iDrawingCT;
 
+	//選択肢系------------------------------------------------------
+	CSelect* m_select;//選択肢オブジェクトへの参照
+
+	//選択した項目番号（文字列格納）
+	//格納例：1番目の項目を選んでから2番目の項目を選んだ→"1-2-"
+	string m_SelectNum;
+	//--------------------------------------------------------------
+
+	//文字挿入系----------------------------------------------------
+	InStr* m_in_str;  //文字挿入行データへの参照
+
+	int* m_piShowTextID;//表示するテキストを指定するアクセス番号配列
+	int m_iIDSize;		//↑の要素数
+	//--------------------------------------------------------------
+
+	//次のテキストをセットする命令発信
+	void NextTextSet();
+
+	//会話終了処理
+	void DrawTextEnd() {
+		FadeOut();
+		StopDraw();
+	}
+
 public:
 	//
-	COverlay(CDrawTexture *i, CDrawFont *f, CWinInputs *w, CSoundManeger *s, CTextManager *t,CAudio *a)
+	COverlay(CDrawTexture *i, CDrawFont *f, CWinInputs *w, CSoundManeger *s, CTextManager *t, CAudio *a)
 		: image(i), font(f), input(w), soundmgr(s), textmgr(t), audio(a),
 		m_bDrawing(false),
 		m_bNextFlg(true),
 		m_bNextWaiting(false),
 		m_bCharaChangeFlg(false),
 		m_iDrawingStage(-1),
-		m_iDrawingStageID(-1), 
-		m_iDrawFlg(-1), 
-		m_iFadeFlg(0), 
+		m_iDrawingStageID(-1),
+		m_iDrawFlg(-1),
+		m_iFadeFlg(0),
 		m_iDrawingCT(0),
-		m_iChar_Size(0), 
+		m_iChar_Size(0),
 		m_iChar_Pos(0),
-		m_iChar_Line(0), 
+		m_iChar_Line(0),
 		m_iTextSpeed(7),
-		m_iDelay(0), 
+		m_iDelay(0),
 		m_iCurrentLine(0),
 		m_iCurrentBalloon(0),
 		m_iLeftCharaImageID(0),
 		m_iRightCharaImageID(0),
 		m_fAlpha(0.0f),
-		m_fWaitAlpha(0.0f)
+		m_fWaitAlpha(0.0f),
+		m_select(NULL),
+		m_in_str(NULL),
+		m_piShowTextID(NULL)
 	{}
-	
+
+	~COverlay() {
+		SAFE_DELETE_ARRAY(m_piShowTextID);
+	}
+
 	//----------------動作系----------------
 
 	//最初のロード
@@ -234,7 +265,7 @@ public:
 	//トークの描画有効
 	//stage = enum[STAGE_TYPE]
 	//stageID = enum[tutorial,koune,sion,merueru]
-	void talkDraw(int stage,int stageID);
+	void talkDraw(int stage, int stageID, int* piShowTextID = NULL, int size = 0);
 
 	//次のメッセージを描画するまでスタンバイ
 	bool NextWait();
@@ -255,9 +286,12 @@ public:
 	void SetTextSpeed(int set) { m_iTextSpeed = set; }
 
 	//----------------状態取得----------------
-
+	
 	//オーバーレイが描画されているか
 	bool isDraw() { return m_bDrawing; }
+
+	//特定の選択肢を選択したか確認
+	bool Selected(const char* select);
 };
 
 #endif // !__CTALKOVERLAY_H__

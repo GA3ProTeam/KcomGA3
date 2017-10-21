@@ -105,11 +105,12 @@ void COverlay::InitLoad()
 	//会話音
 	audio->LoadAudio(29, "Sound\\会話音\\select01.wav");
 	//決定音
-	audio->LoadAudio(30, "Sound\\決定音\\button5.wav"); 
+	audio->LoadAudio(30, "Sound\\決定音\\button5.wav");
 	//失敗音
 	audio->LoadAudio(31, "Sound\\決定音\\キャンセル音\\Cancel.wav");
 	//サウンド読み込み↑---------------------------------------------------------------------------
-
+	
+	//透過・暗転初期化
 	m_fDefColor[0] = 1.0f;
 	m_fDefColor[1] = 1.0f;
 	m_fDefColor[2] = 1.0f;
@@ -234,24 +235,24 @@ void COverlay::Draw()
 	/*
 	//test overlay
 	if (m_iDrawFlg == 0) {
-		RECT src, dst;
+	RECT src, dst;
 
-		//カラー情報
-		float col[4] = { 1.0f,1.0f,1.0f,m_fAlpha };
+	//カラー情報
+	float col[4] = { 1.0f,1.0f,1.0f,m_fAlpha };
 
-		//切り取り座標
-		dst.top = 0;
-		dst.left = 0;
-		dst.bottom = dst.top + 512;
-		dst.right = dst.left + 512;
+	//切り取り座標
+	dst.top = 0;
+	dst.left = 0;
+	dst.bottom = dst.top + 512;
+	dst.right = dst.left + 512;
 
-		//転送先座標
-		src.top = m_y;
-		src.left = m_x;
-		src.bottom = src.top + 600;
-		src.right = src.left + 800;
+	//転送先座標
+	src.top = m_y;
+	src.left = m_x;
+	src.bottom = src.top + 600;
+	src.right = src.left + 800;
 
-		image->DrawEx(0, &src, &dst, col, 0.0f);
+	image->DrawEx(0, &src, &dst, col, 0.0f);
 	}
 	*/
 
@@ -261,23 +262,23 @@ void COverlay::Draw()
 		char tmp[128];
 		char tmpname[64] = { 0 };
 
-		//-------------------背景------------------------
-		RECT backsrc, backdst;
-		m_fBackColor[3] = m_fAlpha;
-		//切り取り座標
-		backdst.top = 0;
-		backdst.left = 0;
-		backdst.bottom = backdst.top + 512;
-		backdst.right = backdst.left + 512;
+		////-------------------背景------------------------
+		//RECT backsrc, backdst;
+		//m_fBackColor[3] = m_fAlpha;
+		////切り取り座標
+		//backdst.top = 0;
+		//backdst.left = 0;
+		//backdst.bottom = backdst.top + 512;
+		//backdst.right = backdst.left + 512;
 
-		//転送先座標
-		backsrc.top = 0;
-		backsrc.left = 0;
-		backsrc.bottom = backsrc.top + 600;
-		backsrc.right = backsrc.left + 800;
+		////転送先座標
+		//backsrc.top = 0;
+		//backsrc.left = 0;
+		//backsrc.bottom = backsrc.top + 600;
+		//backsrc.right = backsrc.left + 800;
 
-		image->DrawEx(61, &backsrc, &backdst, m_fBackColor, 0.0f);
-		//-------------------背景終------------------------
+		//image->DrawEx(61, &backsrc, &backdst, m_fBackColor, 0.0f);
+		////-------------------背景終------------------------
 
 		//-------------------吹き出し-----------------------
 		m_fBallonColor[3] = m_fAlpha;
@@ -305,79 +306,188 @@ void COverlay::Draw()
 		//------------------------テキスト処理開始---------------------------
 		if (m_fAlpha == 1.0f) {
 
-			m_iDelay++;
+			//各キャラクターのテキストデータを一つのポインターで統括
+			vector<vector<string>>* m_Chara_Text;
+			switch (m_iDrawingStage)
+			{
+			case STAGE_TYPE::TUTORIAL:
+				m_Chara_Text = &textmgr->m_Tutorial_Text;
+				break;
+			case STAGE_TYPE::SION:
+				m_Chara_Text = &textmgr->m_Sion_Text;
+				break;
+			case STAGE_TYPE::KOUNE:
+				m_Chara_Text = &textmgr->m_Koune_Text;
+				break;
+			case STAGE_TYPE::MERUERU:
+				m_Chara_Text = &textmgr->m_Merueru_Text;
+				break;
+			}
 
 			switch (m_iDrawingStage)
 			{
 			case STAGE_TYPE::TUTORIAL: {
 				//全行描画中
-				if (m_iChar_Line < textmgr->m_Tutorial_Text[m_iDrawingStageID].size()) {
-					//選択肢があるか確認
-					if (textmgr->m_Tutorial_Text[m_iDrawingStageID][m_iChar_Line].find("選択肢{") != -1) {
-						//選択肢生成
+				if (m_iChar_Line < (*m_Chara_Text)[m_iDrawingStageID].size()) {
 
-					}
+					//文字挿入判定処理
+					if (!m_in_str) {
+						//この行に文字挿入部分があるか確認
+						m_in_str = textmgr->isInStr(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line);
+						if (m_in_str) {
+							//次ループでこのif判定に入らないように、次の行へ進める
+							m_iChar_Line++;
 
-					//その行の文字描画中
-					if (m_iChar_Pos < textmgr->m_Tutorial_Text[m_iDrawingStageID][m_iChar_Line].length()) {
-						//マウスクリックすると１行一括表示
-						if (input->GetMouButtonLOnce()) {
-							m_strTemp[m_iChar_Line].clear();
-							m_strTemp[m_iChar_Line] += textmgr->m_Tutorial_Text[m_iDrawingStageID][m_iChar_Line];
-							m_iChar_Pos = textmgr->m_Tutorial_Text[m_iDrawingStageID][m_iChar_Line].length() + 1;
-						}
-						else {
-							//待ち時間カウント後、１文字描画
-							if (m_iDelay > m_iTextSpeed) {
-								unsigned char lead = textmgr->m_Tutorial_Text[m_iDrawingStageID][m_iChar_Line][m_iChar_Pos];
-								if (lead < 128) {
-									m_iChar_Size = 1;
-								}
-								else if (lead < 224) {
-									m_iChar_Size = 2;
-								}
-								else if (lead < 240) {
-									m_iChar_Size = 3;
-								}
-								else {
-									m_iChar_Size = 4;
+							//挿入テキストを指定している場合
+							if (m_piShowTextID) {
+								int roop_id;
+								//そのアドレスが
+								//表示指定アドレスの中（m_piShowTextID）にあるか調べる
+								for (roop_id = 0; roop_id < m_iIDSize; roop_id++) {
+									if (m_in_str->id == m_piShowTextID[roop_id]) {
+										break;
+									}
 								}
 
-								sprintf_s(c, "%s", textmgr->m_Tutorial_Text[m_iDrawingStageID][m_iChar_Line].substr(m_iChar_Pos, m_iChar_Size).c_str());
-								m_strTemp[m_iChar_Line] += c;
+								//↑のループで最後まで調べた結果、
+								//表示指定アドレスの中になかった
+								if (roop_id == m_iIDSize) {
+									//挿入文字を表示しないので、終了行まで飛ばします。
+									m_iChar_Line = m_in_str->end_line;
+								}
 
-								m_iChar_Pos += m_iChar_Size;
+							}
+							//挿入テキストを指定していない場合
+							else {
+								//挿入文字を表示しないので、終了行まで飛ばします。
+								m_iChar_Line = m_in_str->end_line;
 							}
 						}
 					}
-					//
-					else {
-						if (input->GetMouButtonLOnce()) {
-							m_iChar_Pos = 0;
-							m_iChar_Line++;
-							m_fWaitAlpha = 0.0f;
-							m_bNextWaiting = false;
-							m_bCharaChangeFlg = false;
+
+					//この行に選択肢がある場合、選択肢を生成
+					SelectInfo* select = textmgr->isSelect(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line);
+					if (select) {
+						//次ループでこのif判定に入らないように、次の行へ進める
+						m_iChar_Line++;
+
+						//前回の選択肢が生成されている場合、削除
+						SAFE_DELETE(m_select);
+
+						//選択肢生成
+						m_select = new CSelect(select);
+					}
+
+					//選択肢動作(選択していないとき)
+					if (m_select && m_select->GetSelectNum() == -1) {
+						//選択したか確認
+						if (m_select->Select()) {
+
+							//選択した項目番号をメンバに保存
+							int sel_num = m_select->GetSelectNum();
+							char sel_num_str[3];
+							sprintf_s(sel_num_str, "%d-", sel_num + 1);
+							m_SelectNum += sel_num_str;
+
+							//選択した場所へ飛ぶ
+							m_iChar_Line = m_select->GetInfo()->menu[m_select->GetSelectNum()].child_text_line;
+
+							//次のテキストをセットする命令発信
+							NextTextSet();
 						}
-						else {
-							if (m_iDelay > m_iTextSpeed) {
-								if (!m_bNextWaiting) {
-									m_fWaitAlpha = 1.0f;
-									m_bNextWaiting = true;
+					}
+					//テキスト描画中
+					else {
+						//文字挿入部分を発見後
+						if (m_in_str) {
+							//挿入文字の終了行に到達
+							if (m_in_str->end_line == m_iChar_Line) {
+								//文字挿入データへの参照を切る
+								m_in_str = NULL;
+
+								//次のテキストをセットする命令発信
+								NextTextSet();
+							}
+						}
+
+						//選択肢を選択した後に入ります
+						if (m_select) {
+							//その選択した項目の終了行なら
+							if (m_select->GetEndLine() == m_iChar_Line) {
+								//選択肢オブジェクト破棄
+								SAFE_DELETE(m_select);
+
+								//会話終了
+								DrawTextEnd();
+
+								//Draw関数終了
+								return;
+							}
+						}
+
+						//待ち時間カウント後、１文字描画
+						m_iDelay++;
+
+						//その行の文字描画中
+						if (m_iChar_Pos < (*m_Chara_Text)[m_iDrawingStageID][m_iChar_Line].length()) {
+							//マウスクリックすると１行一括表示
+							if (input->GetMouButtonLOnce()) {
+								m_strTemp[m_iChar_Line].clear();
+								m_strTemp[m_iChar_Line] += (*m_Chara_Text)[m_iDrawingStageID][m_iChar_Line];
+								m_iChar_Pos = (*m_Chara_Text)[m_iDrawingStageID][m_iChar_Line].length() + 1;
+							}
+							else {
+								if (m_iDelay > m_iTextSpeed) {
+									unsigned char lead = (*m_Chara_Text)[m_iDrawingStageID][m_iChar_Line][m_iChar_Pos];
+									if (lead < 128) {
+										m_iChar_Size = 1;
+									}
+									else if (lead < 224) {
+										m_iChar_Size = 2;
+									}
+									else if (lead < 240) {
+										m_iChar_Size = 3;
+									}
+									else {
+										m_iChar_Size = 4;
+									}
+
+									sprintf_s(c, "%s", (*m_Chara_Text)[m_iDrawingStageID][m_iChar_Line].substr(m_iChar_Pos, m_iChar_Size).c_str());
+									m_strTemp[m_iChar_Line] += c;
+
+									m_iChar_Pos += m_iChar_Size;
 								}
-								else {
-									m_fWaitAlpha = 0.0f;
-									m_bNextWaiting = false;
+							}
+						}
+						//一行描画終了
+						else {
+							if (input->GetMouButtonLOnce()) {
+								//次のテキストをセットする命令発信
+								NextTextSet();
+							}
+							else {
+								if (m_iDelay > m_iTextSpeed) {
+									if (!m_bNextWaiting) {
+										m_fWaitAlpha = 1.0f;
+										m_bNextWaiting = true;
+									}
+									else {
+										m_fWaitAlpha = 0.0f;
+										m_bNextWaiting = false;
+									}
 								}
 							}
 						}
 					}
 				}
-				//全行描画終了
+				//全テキスト描画終了
 				else {
 					if (input->GetMouButtonL()) {
-						FadeOut();
-						StopDraw();
+						//会話終了
+						DrawTextEnd();
+
+						//このswitch文を脱退
+						return;
 					}
 					else {
 						if (m_iDelay > m_iTextSpeed) {
@@ -400,11 +510,11 @@ void COverlay::Draw()
 				sprintf_s(linec, "%d", m_iChar_Line);
 				if (textmgr->isCtrlLine(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line) && !m_bCharaChangeFlg) {
 					string tmpsearch;
-					//名前と表情がある場合、前の文字列を全削除
+					//名前と表情がある場合、文字描画をリセット
 					char *namet = textmgr->GetCharaName(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line);
 					char *expt = textmgr->GetCharaExp(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line);
 					m_strTemp.clear();
-					m_strTemp.resize(textmgr->m_Tutorial_Text[m_iDrawingStageID].size());
+					m_strTemp.resize((*m_Chara_Text)[m_iDrawingStageID].size());
 					m_strTempName.clear();
 					m_strTempName += namet;
 					m_bCharaChangeFlg = true;
@@ -1020,15 +1130,41 @@ void COverlay::Draw()
 	}
 }
 
-void COverlay::talkDraw(int stage, int stageID)
+//トークの描画有効
+//引数：
+//stage		  =キャラクター（COverlay.hの enum STAGE_TYPEの中から指定）
+//stageID	  =メッセージ番号（COverlay.hの enum tutorial , enum koune , enum sion , enum merueruの中から選択）
+//piShowTextID=挿入文字の中から表示するものを指定するアドレス
+//size		  =↑のデータ個数（main.hのマクロ関数「SIZE()」を使用してください。）
+void COverlay::talkDraw(int stage, int stageID, int* piShowTextID, int size)
 {
 	/*if (m_iDrawingCT > 0) {
-		m_iDrawingCT--;
-		return;
+	m_iDrawingCT--;
+	return;
 	}*/
 
 	//スタンバイするまで次のメッセージを描画しない
 	if (!m_bNextFlg) return;
+
+	//表示テキスト指定アドレスをセット----------------
+	//（各メッセージ呼び出し時、初回のみ）
+	if (!m_piShowTextID) {
+		if (piShowTextID && size > 0) {
+			//メモリ生成
+			m_piShowTextID = new int[size];
+
+			//保存
+			for (int id = 0; id < size; id++) {
+				m_piShowTextID[id] = piShowTextID[id];
+			}
+			//サイズを保存
+			m_iIDSize = size;
+		}
+		else {
+			m_piShowTextID = NULL;
+		}
+	}
+	//------------------------------------------------
 
 	if (m_iDrawingStage == stage && m_iDrawingStageID == stageID && m_fAlpha != 0.0f)
 		return;
@@ -1067,6 +1203,10 @@ bool COverlay::NextWait() {
 	if (!m_bDrawing) {
 		//次のメッセージに移行するフラグを立てる
 		m_bNextFlg = true;
+
+		//表示テキスト指定アドレスを破棄
+		SAFE_DELETE_ARRAY(m_piShowTextID);
+
 		return true;
 	}
 	return false;
@@ -1108,4 +1248,25 @@ void COverlay::FadeIn()
 void COverlay::FadeOut()
 {
 	m_iFadeFlg = 2;
+}
+
+//次のテキストをセットする命令発信
+void COverlay::NextTextSet() {
+	m_iChar_Pos = 0;
+	m_iChar_Line++;
+	m_fWaitAlpha = 0.0f;
+	m_bNextWaiting = false;
+	m_bCharaChangeFlg = false;
+}
+
+//特定の選択項目を選択したか確認
+//引数：
+//select=調べる選択項目（例：1番目の項目を選んでから2番目の項目を選んだ→"1-2"）
+//戻り値：
+//引数指定した選択項目が選ばれていたらtrue、選ばれていなかったらfalseを返す
+bool COverlay::Selected(const char* select) {
+	if (m_SelectNum.find(select) != -1) {
+		return true;
+	}
+	return false;
 }

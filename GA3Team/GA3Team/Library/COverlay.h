@@ -22,6 +22,7 @@ enum tutorial
 	HAKASE_FLAG_2_YES_3_NO,
 	HAKASE_CLEAR
 };
+
 enum sion
 {
 	//シオン
@@ -78,6 +79,9 @@ enum koune
 	KOUNE2_SION_DLAG1_NO_FLAG2_NO,
 	KOUNE2_SION_FLAG1_YES_FLAG2_NO,
 	KOUNE2_SION_FLAG2_YES,
+	KOUNE2_SION_FLAG2_BLUE,
+	KOUNE2_SION_FLAG2_GREEN,
+	KOUNE2_SION_FLAG2_RED,
 	KOUNE2_SION_FLAG3_YES,
 	KOUNE2_ONNNA,
 	KOUNE2_ONNNA_FLAG3_YES,
@@ -89,6 +93,10 @@ enum koune
 	KOUNE2_BOYA_FLAG3_YES,
 	KOUNE2_BOYA_NOCREATURE_FLAG3_NO,
 	KOUNE2_BOYA_CREATURE_FLAG3_NO,
+	KOUNE2_BOYA_FLAG3_BLUE,
+	KOUNE2_BOYA_FLAG3_GREEN,
+	KOUNE2_BOYA_FLAG3_RED,
+	KOUNE2_BOYA_FLAG3_ALL_COLOR,
 	KOUNE2_BOYA_FLAG3_OUEN_SMALL,
 	KOUNE2_BOYA_FLAG3_OUEN_BIG,
 };
@@ -196,6 +204,12 @@ private:
 	bool m_bCharaChangeFlg;
 	int m_iDrawingStage;
 	int m_iDrawingStageID;
+
+	//描画メッセージ番号取得用
+	//（m_iDrawingStageIDと違う所は、次のメッセージを描画するまで
+	//　-1が入りません。）
+	int m_iDrawingStageIDGet;
+
 	int m_iDrawFlg;
 	int m_iFadeFlg;
 	int m_iDrawingCT;
@@ -234,6 +248,7 @@ public:
 		m_bCharaChangeFlg(false),
 		m_iDrawingStage(-1),
 		m_iDrawingStageID(-1),
+		m_iDrawingStageIDGet(-1),
 		m_iDrawFlg(-1),
 		m_iFadeFlg(0),
 		m_iDrawingCT(0),
@@ -296,6 +311,9 @@ public:
 
 	//特定の選択肢を選択したか確認
 	bool Selected(const char* select);
+
+	//現在描画中のメッセージ番号を取得
+	int NowTalk() { return m_iDrawingStageIDGet; }
 };
 
 #endif // !__CTALKOVERLAY_H__

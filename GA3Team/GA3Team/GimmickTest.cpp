@@ -1922,7 +1922,7 @@ void GimmickMusician::Action() {
 			m_isoundhave = false;
 
 			for (int i = 0; i < 3; i++) {
-				if (SoundManager()->GetSound(i)) {
+				if (SoundManager()->GetSound(i).sound_num) {
 					m_isoundhave = true;
 				}
 			}

@@ -14,6 +14,7 @@ enum STAGE_TYPE {
 enum tutorial
 {
 	//チュートリアル
+	CHARA_SHIFT_TEST,
 	SELECT_TEST,
 	HAKASE_1,
 	HAKASE_FLAG_1_1,
@@ -99,6 +100,7 @@ enum koune
 	KOUNE2_BOYA_FLAG3_ALL_COLOR,
 	KOUNE2_BOYA_FLAG3_OUEN_SMALL,
 	KOUNE2_BOYA_FLAG3_OUEN_BIG,
+	KOUNE2_BOYA_FLAG3_OUEN_BIG_AFTER,
 };
 enum merueru
 {
@@ -160,12 +162,12 @@ enum DrawExID {
 //吹き出しタイプ
 enum TalkBalloon_Type
 {
-	TALKBALLOON_NORMAL_LEFT = 0,
-	TALKBALLOON_NORMAL_RIGHT,
-	TALKBALLOON_CLOUD_LEFT,
-	TALKBALLOON_CLOUD_RIGHT,
+	TALKBALLOON_NORMAL = 0,
+	TALKBALLOON_CLOUD,
 	TALKBALLOON_SQUARE
 };
+
+//吹き出しの方向は、TextManager.hのTALK_CHARA_DIRを使用します。
 
 //---------------------------
 class COverlay {
@@ -186,6 +188,8 @@ private:
 	int m_iCurrentBalloon;
 	char m_cLeftCharaName[64], m_cRightCharaName[64];
 	RECT m_RBalloon_src[5], m_RBalloon_dst[5];
+	RECT m_dst;
+	RECT m_src;
 
 	//文字表示用
 	unsigned int m_iChar_Size;
@@ -193,6 +197,7 @@ private:
 	unsigned int m_iChar_Line;
 	vector<string> m_strTemp;
 	string m_strTempName;
+	string m_tmpsearch;
 	int m_iDelay;
 	int m_iTextSpeed;
 	int m_iCurrentLine;
@@ -210,6 +215,9 @@ private:
 	//　-1が入りません。）
 	int m_iDrawingStageIDGet;
 
+	int m_iBeforeDrawDir;	//前回話していたキャラクターの方向
+	int m_iNowDrawDir;		//現在話しているキャラクターの方向
+
 	int m_iDrawFlg;
 	int m_iFadeFlg;
 	int m_iDrawingCT;
@@ -225,18 +233,29 @@ private:
 	//文字挿入系----------------------------------------------------
 	InStr* m_in_str;  //文字挿入行データへの参照
 
-	int* m_piShowTextID;//表示するテキストを指定するアクセス番号配列
-	int m_iIDSize;		//↑の要素数
-						//--------------------------------------------------------------
+	int* m_piShowTextID; //表示するテキストを指定するアクセス番号配列
+	int m_iIDSize;		 //↑の要素数
 
-						//次のテキストをセットする命令発信
+	int* m_piShowCharaID;//表示するキャラクターを指定するアクセス番号配列
+	int m_iCharaIDSize;	 //↑の要素数
+						 //--------------------------------------------------------------
+
+						 //キャラクター描画系--------------------------------------------
+						 //描画中の表情保存用
+	string m_talk_expression_list[TALK_CHARA_DIR_MAX][TALK_CHARA_ONE_DIR_MAX];
+	//--------------------------------------------------------------
+
+	//次のテキストをセットする命令発信
 	void NextTextSet();
 
 	//会話終了処理
 	void DrawTextEnd() {
 		FadeOut();
-		StopDraw();
+		//StopDraw();
 	}
+
+	//キャラクター描画
+	void DrawCharacter(const char* name, const char* expression, int dir, int dir_count, float col[4]);
 
 public:
 	//
@@ -265,11 +284,15 @@ public:
 		m_fWaitAlpha(0.0f),
 		m_select(NULL),
 		m_in_str(NULL),
-		m_piShowTextID(NULL)
+		m_piShowTextID(NULL),
+		m_piShowCharaID(NULL),
+		m_iBeforeDrawDir(-1),
+		m_iNowDrawDir(-1)
 	{}
 
 	~COverlay() {
 		SAFE_DELETE_ARRAY(m_piShowTextID);
+		SAFE_DELETE_ARRAY(m_piShowCharaID);
 	}
 
 	//----------------動作系----------------
@@ -284,7 +307,7 @@ public:
 	//トークの描画有効
 	//stage = enum[STAGE_TYPE]
 	//stageID = enum[tutorial,koune,sion,merueru]
-	void talkDraw(int stage, int stageID, int* piShowTextID = NULL, int size = 0);
+	void talkDraw(int stage, int stageID, int* piShowTextID = NULL, int size = 0, int* piShowCharaID = NULL, int show_chara_id_size = 0);
 
 	//次のメッセージを描画するまでスタンバイ
 	bool NextWait();

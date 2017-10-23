@@ -48,7 +48,7 @@ void COverlay::InitLoad()
 	image->LoadImageEx("メルエル.png", 21, TEX_SIZE_512);
 	//吹き出し系統-----------------------------------
 	image->LoadImageEx("アイコン.png", 22, TEX_SIZE_1024);
-	image->LoadImageEx("会話吹き出し.png", EX_OTHER_BALLOON, TEX_SIZE_1024);
+	image->LoadImageEx("会話吹き出しまとめ.png", EX_OTHER_BALLOON, TEX_SIZE_1024);
 	//ステージ
 	image->LoadImageEx("シオンステージ-1.png", 24, TEX_SIZE_1024);
 	image->LoadImageEx("コウネステージ-1.png", 25, TEX_SIZE_1024);
@@ -141,57 +141,57 @@ void COverlay::InitLoad()
 	m_fBallonColor[2] = 1.0f;
 	m_fBallonColor[3] = m_fAlpha;
 
-	//吹き出しsrc設定(切り取り）
-	m_RBalloon_src[TALKBALLOON_NORMAL_LEFT].top = 200;
-	m_RBalloon_src[TALKBALLOON_NORMAL_LEFT].left = 0;
-	m_RBalloon_src[TALKBALLOON_NORMAL_LEFT].bottom = 400;
-	m_RBalloon_src[TALKBALLOON_NORMAL_LEFT].right = 600;
+	////吹き出しsrc設定(切り取り）
+	//m_RBalloon_src[TALKBALLOON_NORMAL_LEFT].top = 200;
+	//m_RBalloon_src[TALKBALLOON_NORMAL_LEFT].left = 0;
+	//m_RBalloon_src[TALKBALLOON_NORMAL_LEFT].bottom = 400;
+	//m_RBalloon_src[TALKBALLOON_NORMAL_LEFT].right = 600;
 
-	m_RBalloon_src[TALKBALLOON_NORMAL_RIGHT].top = 0;
-	m_RBalloon_src[TALKBALLOON_NORMAL_RIGHT].left = 0;
-	m_RBalloon_src[TALKBALLOON_NORMAL_RIGHT].bottom = 200;
-	m_RBalloon_src[TALKBALLOON_NORMAL_RIGHT].right = 600;
+	//m_RBalloon_src[TALKBALLOON_NORMAL_RIGHT].top = 0;
+	//m_RBalloon_src[TALKBALLOON_NORMAL_RIGHT].left = 0;
+	//m_RBalloon_src[TALKBALLOON_NORMAL_RIGHT].bottom = 200;
+	//m_RBalloon_src[TALKBALLOON_NORMAL_RIGHT].right = 600;
 
-	m_RBalloon_src[TALKBALLOON_CLOUD_LEFT].top = 400;
-	m_RBalloon_src[TALKBALLOON_CLOUD_LEFT].left = 0;
-	m_RBalloon_src[TALKBALLOON_CLOUD_LEFT].bottom = 600;
-	m_RBalloon_src[TALKBALLOON_CLOUD_LEFT].right = 600;
+	//m_RBalloon_src[TALKBALLOON_CLOUD_LEFT].top = 400;
+	//m_RBalloon_src[TALKBALLOON_CLOUD_LEFT].left = 0;
+	//m_RBalloon_src[TALKBALLOON_CLOUD_LEFT].bottom = 600;
+	//m_RBalloon_src[TALKBALLOON_CLOUD_LEFT].right = 600;
 
-	m_RBalloon_src[TALKBALLOON_CLOUD_RIGHT].top = 600;
-	m_RBalloon_src[TALKBALLOON_CLOUD_RIGHT].left = 0;
-	m_RBalloon_src[TALKBALLOON_CLOUD_RIGHT].bottom = 800;
-	m_RBalloon_src[TALKBALLOON_CLOUD_RIGHT].right = 600;
+	//m_RBalloon_src[TALKBALLOON_CLOUD_RIGHT].top = 600;
+	//m_RBalloon_src[TALKBALLOON_CLOUD_RIGHT].left = 0;
+	//m_RBalloon_src[TALKBALLOON_CLOUD_RIGHT].bottom = 800;
+	//m_RBalloon_src[TALKBALLOON_CLOUD_RIGHT].right = 600;
 
-	m_RBalloon_src[TALKBALLOON_SQUARE].top = 800;
-	m_RBalloon_src[TALKBALLOON_SQUARE].left = 0;
-	m_RBalloon_src[TALKBALLOON_SQUARE].bottom = 1000;
-	m_RBalloon_src[TALKBALLOON_SQUARE].right = 600;
+	//m_RBalloon_src[TALKBALLOON_SQUARE].top = 800;
+	//m_RBalloon_src[TALKBALLOON_SQUARE].left = 0;
+	//m_RBalloon_src[TALKBALLOON_SQUARE].bottom = 1000;
+	//m_RBalloon_src[TALKBALLOON_SQUARE].right = 600;
 
-	//吹き出しdst設定(貼り付け)
-	m_RBalloon_dst[TALKBALLOON_NORMAL_LEFT].top = WINDOW_SIZE_H - 200;
-	m_RBalloon_dst[TALKBALLOON_NORMAL_LEFT].left = 100;
-	m_RBalloon_dst[TALKBALLOON_NORMAL_LEFT].bottom = m_RBalloon_dst[TALKBALLOON_NORMAL_LEFT].top + 200;
-	m_RBalloon_dst[TALKBALLOON_NORMAL_LEFT].right = m_RBalloon_dst[TALKBALLOON_NORMAL_LEFT].left + 600;
+	////吹き出しdst設定(貼り付け)
+	//m_RBalloon_dst[TALKBALLOON_NORMAL_LEFT].top = WINDOW_SIZE_H - 200;
+	//m_RBalloon_dst[TALKBALLOON_NORMAL_LEFT].left = 100;
+	//m_RBalloon_dst[TALKBALLOON_NORMAL_LEFT].bottom = m_RBalloon_dst[TALKBALLOON_NORMAL_LEFT].top + 200;
+	//m_RBalloon_dst[TALKBALLOON_NORMAL_LEFT].right = m_RBalloon_dst[TALKBALLOON_NORMAL_LEFT].left + 600;
 
-	m_RBalloon_dst[TALKBALLOON_NORMAL_RIGHT].top = WINDOW_SIZE_H - 210;
-	m_RBalloon_dst[TALKBALLOON_NORMAL_RIGHT].left = 125;
-	m_RBalloon_dst[TALKBALLOON_NORMAL_RIGHT].bottom = m_RBalloon_dst[TALKBALLOON_NORMAL_RIGHT].top + 200;
-	m_RBalloon_dst[TALKBALLOON_NORMAL_RIGHT].right = m_RBalloon_dst[TALKBALLOON_NORMAL_RIGHT].left + 600;
+	//m_RBalloon_dst[TALKBALLOON_NORMAL_RIGHT].top = WINDOW_SIZE_H - 210;
+	//m_RBalloon_dst[TALKBALLOON_NORMAL_RIGHT].left = 125;
+	//m_RBalloon_dst[TALKBALLOON_NORMAL_RIGHT].bottom = m_RBalloon_dst[TALKBALLOON_NORMAL_RIGHT].top + 200;
+	//m_RBalloon_dst[TALKBALLOON_NORMAL_RIGHT].right = m_RBalloon_dst[TALKBALLOON_NORMAL_RIGHT].left + 600;
 
-	m_RBalloon_dst[TALKBALLOON_CLOUD_LEFT].top = WINDOW_SIZE_H - 225;
-	m_RBalloon_dst[TALKBALLOON_CLOUD_LEFT].left = 125;
-	m_RBalloon_dst[TALKBALLOON_CLOUD_LEFT].bottom = m_RBalloon_dst[TALKBALLOON_CLOUD_LEFT].top + 200;
-	m_RBalloon_dst[TALKBALLOON_CLOUD_LEFT].right = m_RBalloon_dst[TALKBALLOON_CLOUD_LEFT].left + 600;
+	//m_RBalloon_dst[TALKBALLOON_CLOUD_LEFT].top = WINDOW_SIZE_H - 225;
+	//m_RBalloon_dst[TALKBALLOON_CLOUD_LEFT].left = 125;
+	//m_RBalloon_dst[TALKBALLOON_CLOUD_LEFT].bottom = m_RBalloon_dst[TALKBALLOON_CLOUD_LEFT].top + 200;
+	//m_RBalloon_dst[TALKBALLOON_CLOUD_LEFT].right = m_RBalloon_dst[TALKBALLOON_CLOUD_LEFT].left + 600;
 
-	m_RBalloon_dst[TALKBALLOON_CLOUD_RIGHT].top = WINDOW_SIZE_H - 225;
-	m_RBalloon_dst[TALKBALLOON_CLOUD_RIGHT].left = 125;
-	m_RBalloon_dst[TALKBALLOON_CLOUD_RIGHT].bottom = m_RBalloon_dst[TALKBALLOON_CLOUD_RIGHT].top + 200;
-	m_RBalloon_dst[TALKBALLOON_CLOUD_RIGHT].right = m_RBalloon_dst[TALKBALLOON_CLOUD_RIGHT].left + 600;
+	//m_RBalloon_dst[TALKBALLOON_CLOUD_RIGHT].top = WINDOW_SIZE_H - 225;
+	//m_RBalloon_dst[TALKBALLOON_CLOUD_RIGHT].left = 125;
+	//m_RBalloon_dst[TALKBALLOON_CLOUD_RIGHT].bottom = m_RBalloon_dst[TALKBALLOON_CLOUD_RIGHT].top + 200;
+	//m_RBalloon_dst[TALKBALLOON_CLOUD_RIGHT].right = m_RBalloon_dst[TALKBALLOON_CLOUD_RIGHT].left + 600;
 
-	m_RBalloon_dst[TALKBALLOON_SQUARE].top = 800;
-	m_RBalloon_dst[TALKBALLOON_SQUARE].left = 0;
-	m_RBalloon_dst[TALKBALLOON_SQUARE].bottom = 1000;
-	m_RBalloon_dst[TALKBALLOON_SQUARE].right = 600;
+	//m_RBalloon_dst[TALKBALLOON_SQUARE].top = 800;
+	//m_RBalloon_dst[TALKBALLOON_SQUARE].left = 0;
+	//m_RBalloon_dst[TALKBALLOON_SQUARE].bottom = 1000;
+	//m_RBalloon_dst[TALKBALLOON_SQUARE].right = 600;
 
 	//暗転判断用char初期化
 	memset(m_cLeftCharaName, '\0', sizeof(char) * 64);
@@ -221,6 +221,7 @@ void COverlay::Action()
 		}
 
 		if (m_fAlpha < 0.0f) {
+			StopDraw();
 			m_iFadeFlg = 0;
 			m_iDrawFlg = 0;
 			m_bDrawing = false;
@@ -253,7 +254,7 @@ void COverlay::Action()
 		char linec[32];
 		sprintf_s(linec, "%d", m_iChar_Line);
 		if (textmgr->isCtrlLine(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line) && !m_bCharaChangeFlg) {
-			string tmpsearch;
+			//string tmpsearch;
 			//名前と表情がある場合、文字描画をリセット
 			char *namet = textmgr->GetCharaName(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line);
 			char *expt = textmgr->GetCharaExp(m_iDrawingStage, m_iDrawingStageID, m_iChar_Line);
@@ -264,68 +265,75 @@ void COverlay::Action()
 			m_bCharaChangeFlg = true;
 			m_iCurrentLine = m_iChar_Line;
 
-			tmpsearch += expt;
+			m_tmpsearch = expt;
 
+			if (m_tmpsearch.find("内心") != -1) {
+				m_iCurrentBalloon = TALKBALLOON_CLOUD;
+			}
+			else {
+				m_iCurrentBalloon = TALKBALLOON_NORMAL;
+			}
+			/*
 			if (!strlen(m_cLeftCharaName)) {
-				strcpy_s(m_cLeftCharaName, namet);
-				m_fLeftColor[0] = 1.0f;
-				m_fLeftColor[1] = 1.0f;
-				m_fLeftColor[2] = 1.0f;
-				m_fRightColor[0] = 0.5f;
-				m_fRightColor[1] = 0.5f;
-				m_fRightColor[2] = 0.5f;
+			strcpy_s(m_cLeftCharaName, namet);
+			m_fLeftColor[0] = 1.0f;
+			m_fLeftColor[1] = 1.0f;
+			m_fLeftColor[2] = 1.0f;
+			m_fRightColor[0] = 0.5f;
+			m_fRightColor[1] = 0.5f;
+			m_fRightColor[2] = 0.5f;
 
-				if (tmpsearch.find("内心") != -1) {
-					m_iCurrentBalloon = TALKBALLOON_CLOUD_LEFT;
-				}
-				else {
-					m_iCurrentBalloon = TALKBALLOON_NORMAL_LEFT;
-				}
+			if (m_tmpsearch.find("内心") != -1) {
+			m_iCurrentBalloon = TALKBALLOON_CLOUD;
+			}
+			else {
+			m_iCurrentBalloon = TALKBALLOON_NORMAL;
+			}
 			}
 			else if (!strlen(m_cRightCharaName) && strcmp(m_cLeftCharaName, namet)) {
-				strcpy_s(m_cRightCharaName, namet);
-				m_fLeftColor[0] = 0.5f;
-				m_fLeftColor[1] = 0.5f;
-				m_fLeftColor[2] = 0.5f;
-				m_fRightColor[0] = 1.0f;
-				m_fRightColor[1] = 1.0f;
-				m_fRightColor[2] = 1.0f;
-				if (tmpsearch.find("内心") != -1) {
-					m_iCurrentBalloon = TALKBALLOON_CLOUD_RIGHT;
-				}
-				else {
-					m_iCurrentBalloon = TALKBALLOON_NORMAL_RIGHT;
-				}
+			strcpy_s(m_cRightCharaName, namet);
+			m_fLeftColor[0] = 0.5f;
+			m_fLeftColor[1] = 0.5f;
+			m_fLeftColor[2] = 0.5f;
+			m_fRightColor[0] = 1.0f;
+			m_fRightColor[1] = 1.0f;
+			m_fRightColor[2] = 1.0f;
+			if (m_tmpsearch.find("内心") != -1) {
+			m_iCurrentBalloon = TALKBALLOON_CLOUD_RIGHT;
+			}
+			else {
+			m_iCurrentBalloon = TALKBALLOON_NORMAL_RIGHT;
+			}
 			}
 
 			if (!strcmp(m_cLeftCharaName, namet) && strcmp(m_cRightCharaName, namet)) {
-				m_fLeftColor[0] = 1.0f;
-				m_fLeftColor[1] = 1.0f;
-				m_fLeftColor[2] = 1.0f;
-				m_fRightColor[0] = 0.5f;
-				m_fRightColor[1] = 0.5f;
-				m_fRightColor[2] = 0.5f;
-				if (tmpsearch.find("内心") != -1) {
-					m_iCurrentBalloon = TALKBALLOON_CLOUD_LEFT;
-				}
-				else {
-					m_iCurrentBalloon = TALKBALLOON_NORMAL_LEFT;
-				}
+			m_fLeftColor[0] = 1.0f;
+			m_fLeftColor[1] = 1.0f;
+			m_fLeftColor[2] = 1.0f;
+			m_fRightColor[0] = 0.5f;
+			m_fRightColor[1] = 0.5f;
+			m_fRightColor[2] = 0.5f;
+			if (m_tmpsearch.find("内心") != -1) {
+			m_iCurrentBalloon = TALKBALLOON_CLOUD_LEFT;
+			}
+			else {
+			m_iCurrentBalloon = TALKBALLOON_NORMAL_LEFT;
+			}
 			}
 			else if (strcmp(m_cLeftCharaName, namet) && !strcmp(m_cRightCharaName, namet)) {
-				m_fLeftColor[0] = 0.5f;
-				m_fLeftColor[1] = 0.5f;
-				m_fLeftColor[2] = 0.5f;
-				m_fRightColor[0] = 1.0f;
-				m_fRightColor[1] = 1.0f;
-				m_fRightColor[2] = 1.0f;
-				if (tmpsearch.find("内心") != -1) {
-					m_iCurrentBalloon = TALKBALLOON_CLOUD_RIGHT;
-				}
-				else {
-					m_iCurrentBalloon = TALKBALLOON_NORMAL_RIGHT;
-				}
+			m_fLeftColor[0] = 0.5f;
+			m_fLeftColor[1] = 0.5f;
+			m_fLeftColor[2] = 0.5f;
+			m_fRightColor[0] = 1.0f;
+			m_fRightColor[1] = 1.0f;
+			m_fRightColor[2] = 1.0f;
+			if (m_tmpsearch.find("内心") != -1) {
+			m_iCurrentBalloon = TALKBALLOON_CLOUD_RIGHT;
 			}
+			else {
+			m_iCurrentBalloon = TALKBALLOON_NORMAL_RIGHT;
+			}
+			}*/
 
 			delete namet;
 			delete expt;
@@ -582,10 +590,203 @@ void COverlay::Draw()
 		//image->DrawEx(61, &backsrc, &backdst, m_fBackColor, 0.0f);
 		////-------------------背景終------------------------
 
-		//-------------------吹き出し-----------------------
-		m_fBallonColor[3] = m_fAlpha;
 
-		image->DrawEx(EX_OTHER_BALLOON, &m_RBalloon_dst[m_iCurrentBalloon], &m_RBalloon_src[m_iCurrentBalloon], m_fBallonColor, 0.0f);
+
+		////------------------------キャラビジュアル表示処理---------------------------
+		//int talk_chara = 0;	  //現在発言中のキャラ
+		//					  //int talk_chara_dir=0; //現在発言中の方向
+
+		//float col[4] = { 1.0f,1.0f ,1.0f ,m_fAlpha };
+		//TalkCharaData* talk_data;
+
+		//for (int dir = 0; dir < TALK_CHARA_DIR_MAX; dir++) {
+		//	//末尾からループ
+		//	for (int chara = TALK_CHARA_ONE_DIR_MAX - 1; chara >= 0; chara--) {
+
+		//		talk_data = &textmgr->m_talk_chara_list[dir][chara];
+
+		//		//キャラクターが格納されていないならスキップ
+		//		if (talk_data->name.size() == 0) {
+		//			continue;
+		//		}
+
+		//		//初回の表情代入
+		//		if (m_talk_expression_list[dir][chara].size() == 0) {
+		//			m_talk_expression_list[dir][chara] = talk_data->expression;
+		//		}
+
+		//		//挿入処理
+		//		if (talk_data->in_shift_id != -1) {
+		//			//挿入キャラを指定している場合
+		//			if (m_piShowCharaID) {
+		//				int roop_id;
+		//				//そのアドレスが
+		//				//表示指定アドレスの中（m_piShowCharaID）にあるか調べる
+		//				for (roop_id = 0; roop_id < m_iCharaIDSize; roop_id++) {
+		//					if (talk_data->in_shift_id == m_piShowCharaID[roop_id]) {
+		//						break;
+		//					}
+		//				}
+
+		//				//↑のループで最後まで調べた結果、
+		//				//表示指定アドレスの中になかった
+		//				if (roop_id == m_iIDSize) {
+		//					//このキャラは表示しない
+		//					continue;
+		//				}
+
+		//			}
+		//			else {
+		//				//このキャラは表示しない
+		//				continue;
+		//			}
+		//		}
+
+		//		//現在発言中のキャラなら、スキップ
+		//		if (talk_data->name.find(m_strTempName.c_str()) != -1) {
+		//			//キャラ番号と方向を保存
+		//			talk_chara = chara;
+		//			m_iNowDrawDir = dir;
+
+		//			//初回の方向を登録
+		//			if (m_iBeforeDrawDir == -1) {
+		//				m_iBeforeDrawDir = dir;
+		//			}
+		//			//表情更新
+		//			m_talk_expression_list[dir][chara] = m_tmpsearch;
+		//			continue;
+		//		}
+		//		//現在発言中のキャラでなければ、暗くする
+		//		else {
+		//			col[0] = 0.5f;
+		//			col[1] = 0.5f;
+		//			col[2] = 0.5f;
+		//		}
+
+		//		//キャラクター描画
+		//		DrawCharacter(talk_data->name.c_str(), m_talk_expression_list[dir][chara].c_str(), dir, chara, col);
+		//	}
+		//}
+
+		////現在発言中のキャラ描画-----------------------------
+		//col[0] = 1.0f;
+		//col[1] = 1.0f;
+		//col[2] = 1.0f;
+		//talk_data = &textmgr->m_talk_chara_list[m_iNowDrawDir][talk_chara];
+		//DrawCharacter(talk_data->name.c_str(), m_talk_expression_list[m_iNowDrawDir][talk_chara].c_str(), m_iNowDrawDir, talk_chara, col);
+		////---------------------------------------------------
+
+		//////-------------------左キャラ----------------------
+		////RECT leftsrc, leftdst;
+		////m_fLeftColor[3] = m_fAlpha;
+		//////切り取り座標
+		////leftdst.top = 0;
+		////leftdst.left = 0;
+		////leftdst.bottom = leftdst.top + 350;
+		////leftdst.right = leftdst.left + 200;
+
+		//////転送先座標
+		////leftsrc.top = TALK_CHARA_LEFT_MARGIN_Y;
+		////leftsrc.left = 0;
+		////leftsrc.bottom = leftsrc.top + 300;
+		////leftsrc.right = leftsrc.left + 250;
+
+		////image->DrawEx(m_iLeftCharaImageID, &leftsrc, &leftdst, m_fLeftColor, 0.0f);
+		//////-------------------左キャラ終---------------------
+
+		//////-------------------右キャラ----------------------
+		////RECT rightsrc, rightdst;
+		////m_fRightColor[3] = m_fAlpha;
+		//////切り取り座標
+		////rightdst.top = 70;
+		////rightdst.left = 380;
+		////rightdst.bottom = rightdst.top + 235;
+		////rightdst.right = rightdst.left + 274;
+
+		//////転送先座標
+		////rightsrc.top = TALK_CHARA_RIGHT_MARGIN_Y;
+		////rightsrc.left = WINDOW_SIZE_W - TALK_CHARA_RIGHT_MARGIN_X;
+		////rightsrc.bottom = rightsrc.top + 300;
+		////rightsrc.right = rightsrc.left + 300;
+
+		////image->DrawEx(m_iRightCharaImageID, &rightsrc, &rightdst, m_fRightColor, 0.0f);
+		//////-------------------右キャラ終---------------------
+
+		////-------------------中キャラ----------------------
+		///*
+		//RECT centersrc, centerdst;
+		//m_fCenterColor[3] = m_fAlpha;
+		////切り取り座標
+		//centerdst.top = 0;
+		//centerdst.left = 0;
+		//centerdst.bottom = centerdst.top + 350;
+		//centerdst.right = centerdst.left + 200;
+
+		////転送先座標
+		//centersrc.top = TALK_CHARA_LEFT_MARGIN_Y;
+		//centersrc.left = WINDOW_SIZE_W/2-100;
+		//centersrc.bottom = centersrc.top + 300;
+		//centersrc.right = centersrc.left + 250;
+
+		//image->DrawEx(62, &centersrc, &centerdst, col, 0.0f);
+		//*/
+		////-------------------中キャラ終---------------------
+		////------------------------キャラビジュアル表示処理終了---------------------------
+
+
+		//-------------------吹き出し-----------------------
+		for (int frame = 0; frame < 2; frame++) {
+
+
+			m_fBallonColor[3] = m_fAlpha;
+
+			//切り取り座標
+			m_dst.top = m_iCurrentBalloon * 165;
+			m_dst.left = 0;
+			m_dst.right = m_dst.left + 310;
+			m_dst.bottom = m_dst.top + 165;
+
+			//転送先座標左上
+			m_src.top = WINDOW_SIZE_H - 250;
+			m_src.left = 100;
+
+			int dir;//前回の吹き出しと今回の吹き出し分岐用
+
+					//前回の吹き出し
+			if (frame == 0) {
+				dir = m_iBeforeDrawDir;
+
+				//暗い
+				m_fBallonColor[0] = 0.5f;
+				m_fBallonColor[1] = 0.5f;
+				m_fBallonColor[2] = 0.5f;
+			}
+			//今回の吹き出し
+			else {
+				dir = m_iNowDrawDir;
+				//明るい
+				m_fBallonColor[0] = 1.0f;
+				m_fBallonColor[1] = 1.0f;
+				m_fBallonColor[2] = 1.0f;
+			}
+
+			//右なら左右反転
+			if (dir == CHARA_RIGHT) {
+				int left = m_dst.left;
+				m_dst.left = m_dst.right;
+				m_dst.right = left;
+
+				//表示位置を少しずらす
+				m_src.left += 10.0f;
+				m_src.top -= 10.0f;
+			}
+
+			//転送先座標右下
+			m_src.right = m_src.left + 600;
+			m_src.bottom = m_src.top + 280;
+
+			image->DrawEx(EX_OTHER_BALLOON, &m_src, &m_dst, m_fBallonColor, 0.0f);
+		}
 		//-------------------吹き出し終--------------------
 
 		//-------------------待機インジケータ---------------
@@ -605,89 +806,73 @@ void COverlay::Draw()
 		image->DrawEx(63, &waitsrc, &waitdst, m_fWaitColor, 0.0f);
 		//-------------------待機インジケータ終-------------
 
-		//------------------------キャラビジュアル表示処理---------------------------
-		//-------------------左キャラ----------------------
-		RECT leftsrc, leftdst;
-		m_fLeftColor[3] = m_fAlpha;
-		//切り取り座標
-		leftdst.top = 0;
-		leftdst.left = 0;
-		leftdst.bottom = leftdst.top + 350;
-		leftdst.right = leftdst.left + 200;
-
-		//転送先座標
-		leftsrc.top = TALK_CHARA_LEFT_MARGIN_Y;
-		leftsrc.left = 0;
-		leftsrc.bottom = leftsrc.top + 300;
-		leftsrc.right = leftsrc.left + 250;
-
-		image->DrawEx(m_iLeftCharaImageID, &leftsrc, &leftdst, m_fLeftColor, 0.0f);
-		//-------------------左キャラ終---------------------
-
-		//-------------------右キャラ----------------------
-		RECT rightsrc, rightdst;
-		m_fRightColor[3] = m_fAlpha;
-		//切り取り座標
-		rightdst.top = 70;
-		rightdst.left = 380;
-		rightdst.bottom = rightdst.top + 235;
-		rightdst.right = rightdst.left + 274;
-
-		//転送先座標
-		rightsrc.top = TALK_CHARA_RIGHT_MARGIN_Y;
-		rightsrc.left = WINDOW_SIZE_W - TALK_CHARA_RIGHT_MARGIN_X;
-		rightsrc.bottom = rightsrc.top + 300;
-		rightsrc.right = rightsrc.left + 300;
-
-		image->DrawEx(m_iRightCharaImageID, &rightsrc, &rightdst, m_fRightColor, 0.0f);
-		//-------------------右キャラ終---------------------
-
-		//-------------------中キャラ----------------------
-		/*
-		RECT centersrc, centerdst;
-		m_fCenterColor[3] = m_fAlpha;
-		//切り取り座標
-		centerdst.top = 0;
-		centerdst.left = 0;
-		centerdst.bottom = centerdst.top + 350;
-		centerdst.right = centerdst.left + 200;
-
-		//転送先座標
-		centersrc.top = TALK_CHARA_LEFT_MARGIN_Y;
-		centersrc.left = WINDOW_SIZE_W/2-100;
-		centersrc.bottom = centersrc.top + 300;
-		centersrc.right = centersrc.left + 250;
-
-		image->DrawEx(62, &centersrc, &centerdst, col, 0.0f);
-		*/
-		//-------------------中キャラ終---------------------
-		//------------------------キャラビジュアル表示処理終了---------------------------
-
-
 		//-------------------------------テキスト表示処理------------------------------------
 		//テキスト描画開始しているか確認
 		if (m_fAlpha == 1.0f) {
 			sprintf_s(tmpname, "%s", m_strTempName.c_str());
 			float col[4] = { 0.0f,0.0f,0.0f,m_fAlpha };
-			font->StrDraw(tmpname, WINDOW_SIZE_W / 2 - 225, WINDOW_SIZE_H / 2 + 150, 16, col);
+			font->StrDraw(tmpname, m_src.left + 50, m_src.top + 50, 20, col);
 
 			for (unsigned int i = 0; i < m_strTemp.size(); ++i) {
 				sprintf_s(tmp, "%s", m_strTemp[i].c_str());
 				float col[4] = { 0.0f,0.0f,0.0f,m_fAlpha };
-				font->StrDraw(tmp, WINDOW_SIZE_W / 2 - 225, (WINDOW_SIZE_H / 2 + 200) + ((i - m_iCurrentLine) * 16), 16, col);
+				font->StrDraw(tmp, m_src.left + 50, (m_src.top + 80) + ((i - m_iCurrentLine) * 20), 20, col);
 			}
 		}
 		//-------------------------------テキスト表示処理終了--------------------------------
 	}
 }
 
+//キャラクター描画
+//引数：
+//name			=キャラクター名
+//expression	=表情
+//dir			=位置（左か右）
+//dir_count		=dirの方向の位置番号
+//col			=描画する色RGBA
+void COverlay::DrawCharacter(const char* name, const char* expression, int dir, int dir_count, float col[4]) {
+	RECT leftsrc, leftdst;
+
+	int image_id = 58;
+
+	//切り取り座標
+	leftdst.top = 192;
+	leftdst.left = 0;
+	leftdst.bottom = leftdst.top + 64;
+	leftdst.right = leftdst.left + 64;
+
+	//表示X座標決定
+	if (dir == CHARA_LEFT) {
+		leftsrc.left = 200 - dir_count * 100;
+	}
+	else {
+		leftsrc.left = 500 + dir_count * 100;
+	}
+
+	//転送先座標
+	leftsrc.top = 100;
+	//leftは↑で決定しています。
+	leftsrc.bottom = leftsrc.top + 380;
+	leftsrc.right = leftsrc.left + 200;
+
+	image->DrawEx(image_id, &leftsrc, &leftdst, col, 0.0f);
+
+	//キャラクター名表示
+	g_DrawFont->StrDraw((char*)name, leftsrc.left, leftsrc.top, 32, col);
+
+	//表情表示
+	g_DrawFont->StrDraw((char*)expression, leftsrc.left, leftsrc.top + 32, 32, col);
+}
+
 //トークの描画有効
 //引数：
-//stage		  =キャラクター（COverlay.hの enum STAGE_TYPEの中から指定）
-//stageID	  =メッセージ番号（COverlay.hの enum tutorial , enum koune , enum sion , enum merueruの中から選択）
-//piShowTextID=挿入文字の中から表示するものを指定するアドレス
-//size		  =↑のデータ個数（main.hのマクロ関数「SIZE()」を使用してください。）
-void COverlay::talkDraw(int stage, int stageID, int* piShowTextID, int size)
+//stage				=キャラクター（COverlay.hの enum STAGE_TYPEの中から指定）
+//stageID			=メッセージ番号（COverlay.hの enum tutorial , enum koune , enum sion , enum merueruの中から選択）
+//piShowTextID		=挿入文字の中から表示するものを指定するアドレス
+//size				=↑のデータ個数（main.hのマクロ関数「SIZE()」を使用してください。）
+//piShowCharaID		=挿入キャラクターの中から表示するものを指定するアドレス
+//show_chara_id_size=↑のデータ個数（main.hのマクロ関数「SIZE()」を使用してください。）
+void COverlay::talkDraw(int stage, int stageID, int* piShowTextID, int size, int* piShowCharaID, int show_chara_id_size)
 {
 	/*if (m_iDrawingCT > 0) {
 	m_iDrawingCT--;
@@ -713,6 +898,26 @@ void COverlay::talkDraw(int stage, int stageID, int* piShowTextID, int size)
 		}
 		else {
 			m_piShowTextID = NULL;
+		}
+	}
+	//------------------------------------------------
+
+	//表示キャラクター指定アドレスをセット------------
+	//（各メッセージ呼び出し時、初回のみ）
+	if (!m_piShowCharaID) {
+		if (piShowCharaID && show_chara_id_size > 0) {
+			//メモリ生成
+			m_piShowCharaID = new int[show_chara_id_size];
+
+			//保存
+			for (int id = 0; id < show_chara_id_size; id++) {
+				m_piShowCharaID[id] = piShowCharaID[id];
+			}
+			//サイズを保存
+			m_iIDSize = show_chara_id_size;
+		}
+		else {
+			m_piShowCharaID = NULL;
 		}
 	}
 	//------------------------------------------------
@@ -759,6 +964,9 @@ bool COverlay::NextWait() {
 		//表示テキスト指定アドレスを破棄
 		SAFE_DELETE_ARRAY(m_piShowTextID);
 
+		//表示キャラ指定アドレスを破棄
+		SAFE_DELETE_ARRAY(m_piShowCharaID);
+
 		return true;
 	}
 	return false;
@@ -775,10 +983,10 @@ void COverlay::StopDraw() {
 		m_bCharaChangeFlg = false;
 		m_strTemp.clear();
 		m_strTempName.clear();
-		memset(m_cLeftCharaName, '\0', sizeof(m_cLeftCharaName));
-		memset(m_cRightCharaName, '\0', sizeof(m_cRightCharaName));
 		m_iDrawingStage = -1;
 		m_iDrawingStageID = -1;
+		memset(m_cLeftCharaName, '\0', sizeof(m_cLeftCharaName));
+		memset(m_cRightCharaName, '\0', sizeof(m_cRightCharaName));
 
 		m_fLeftColor[0] = 0.5f;
 		m_fLeftColor[1] = 0.5f;
@@ -789,6 +997,18 @@ void COverlay::StopDraw() {
 		m_fRightColor[1] = 0.5f;
 		m_fRightColor[2] = 0.5f;
 		m_fRightColor[3] = m_fAlpha;
+
+		//表情バッファクリア
+		for (int dir = 0; dir < TALK_CHARA_DIR_MAX; dir++) {
+			//末尾からループ
+			for (int chara = 0; chara < TALK_CHARA_ONE_DIR_MAX; chara++) {
+				m_talk_expression_list[dir][chara].clear();
+			}
+		}
+
+		//キャラクター方向初期化
+		m_iBeforeDrawDir = -1;
+		m_iNowDrawDir = -1;
 	}
 }
 
@@ -809,6 +1029,9 @@ void COverlay::NextTextSet() {
 	m_fWaitAlpha = 0.0f;
 	m_bNextWaiting = false;
 	m_bCharaChangeFlg = false;
+
+	//今回のキャラクター表示方向を保存
+	m_iBeforeDrawDir = m_iNowDrawDir;
 }
 
 //特定の選択項目を選択したか確認

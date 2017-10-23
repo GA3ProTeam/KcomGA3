@@ -3,12 +3,23 @@
 #ifndef __TEXTMANAGER_H__
 #define __TEXTMANAGER_H__
 
+//出現キャラクターデータ
+struct TalkCharaData {
+	TalkCharaData() {
+		in_shift_id = -1;
+	}
+
+	string name;		//名前
+	string expression;	//表情
+	int in_shift_id;	//挿入切り替え用アドレス（挿入切り替えが不可な場合は-1が入ります。）
+};
+
 //選択項目一つのデータ
 struct SelectData
 {
 	SelectData() : str(NULL) {}
 	~SelectData() {
-		SAFE_DELETE_ARRAY(str); 
+		SAFE_DELETE_ARRAY(str);
 	}
 
 	char* str;			//項目名
@@ -18,7 +29,7 @@ struct SelectData
 
 //選択肢情報
 struct SelectInfo {
-	SelectInfo():menu_num(0),line(0),menu(NULL){}
+	SelectInfo() :menu_num(0), line(0), menu(NULL) {}
 	~SelectInfo() {
 		int a = 0;
 		SAFE_DELETE_ARRAY(menu);
@@ -34,6 +45,18 @@ struct InStr {
 	int line;		 //存在する行数
 	int end_line;	 //終了する行数
 	int id;			 //アクセス番号
+};
+
+//会話シーンでキャラクターが出現する方向の最大数（左と右の二つ）
+#define TALK_CHARA_DIR_MAX 2
+
+//会話シーンで一つの方向に出現するキャラクターの最大数
+#define TALK_CHARA_ONE_DIR_MAX 3
+
+//会話シーン左右
+enum TALK_CHARA_DIR {
+	CHARA_LEFT,
+	CHARA_RIGHT,
 };
 
 class CTextManager {
@@ -90,6 +113,9 @@ public:
 	vector<vector<SelectInfo*>> m_Merueru_SelectData;
 	vector<vector<InStr*>> m_Merueru_InStr;
 
+	//会話シーン左右出現キャラ情報
+	TalkCharaData m_talk_chara_list[TALK_CHARA_DIR_MAX][TALK_CHARA_ONE_DIR_MAX];
+
 	CTextManager();
 	~CTextManager() {
 		DeleteControlData(&m_Tutorial_SelectData);
@@ -97,7 +123,7 @@ public:
 	}
 
 	void LoadText();
-	bool isCtrlLine(int stage, int stageID,int linecount);
+	bool isCtrlLine(int stage, int stageID, int linecount);
 	char *GetCharaName(int stage, int stageID, int linecount);
 	char *GetCharaExp(int stage, int stageID, int linecount);
 

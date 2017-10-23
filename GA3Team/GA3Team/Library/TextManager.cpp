@@ -3,6 +3,7 @@
 CTextManager::CTextManager()
 {
 	//チュートリアル
+	filePath_tutorial.push_back("Text\\CharaShiftTest.bin");
 	filePath_tutorial.push_back("Text\\SelectTest.bin");
 	filePath_tutorial.push_back("Text\\tyu-toriaru\\hakase_1.bin");
 	filePath_tutorial.push_back("Text\\tyu-toriaru\\hakase_flag_1_1.bin");
@@ -63,6 +64,9 @@ CTextManager::CTextManager()
 	filePath_koune.push_back("Text\\koune2\\koune2_sion_flag1_No_flag2_No.bin");
 	filePath_koune.push_back("Text\\koune2\\koune2_sion_flag1_Yes_flag2_No.bin");
 	filePath_koune.push_back("Text\\koune2\\koune2_sion_flag2_Yes.bin");
+	filePath_koune.push_back("Text\\koune2\\koune2_sion_flag2_blue.bin");
+	filePath_koune.push_back("Text\\koune2\\koune2_sion_flag2_green.bin");
+	filePath_koune.push_back("Text\\koune2\\koune2_sion_flag2_red.bin");
 	filePath_koune.push_back("Text\\koune2\\koune2_sion_flag3_yes.bin");
 	filePath_koune.push_back("Text\\koune2\\koune2_onnna.bin");
 	filePath_koune.push_back("Text\\koune2\\koune2_onnna_flag3_yes.bin");
@@ -74,6 +78,10 @@ CTextManager::CTextManager()
 	filePath_koune.push_back("Text\\koune2\\koune2_BoyA_flag3_yes.bin");
 	filePath_koune.push_back("Text\\koune2\\koune2_BoyA_NoCreature_flag3_No.bin");
 	filePath_koune.push_back("Text\\koune2\\koune2_BoyA_Creature_flag3_No.bin");
+	filePath_koune.push_back("Text\\koune2\\koune2_BoyA_flag3_blue.bin");
+	filePath_koune.push_back("Text\\koune2\\koune2_BoyA_flag3_green.bin");
+	filePath_koune.push_back("Text\\koune2\\koune2_BoyA_flag3_red.bin");
+	filePath_koune.push_back("Text\\koune2\\koune2_BoyA_flag3_all_color.bin");
 	filePath_koune.push_back("Text\\koune2\\koune2_BoyA_flag3_ouen_small.bin");
 	filePath_koune.push_back("Text\\koune2\\koune2_BoyA_flag3_ouen_Big.bin");
 
@@ -194,13 +202,91 @@ void CTextManager::LoadText()
 
 			//名前、表情部分を読み込み、表示テキストから削除---------------------------
 			std::vector<std::string>::iterator itr = tmpData.begin();
+
+			//文字挿入用変数-----------------------------
 			//文字挿入タグのポインター保存用
 			InStr* in;
 
 			//文字挿入タグの閉じ括弧削除フラグ
 			bool end_line_flg = false;
+			//-------------------------------------------
+
+			//キャラクター位置格納用変数-----------------
+			//左右格納数カウント
+			int dir_count[TALK_CHARA_DIR_MAX] = { 0 };
+			//-------------------------------------------
 
 			while (itr != tmpData.end()) {
+
+				//キャラクターの位置読み込み
+				if ((*itr).find("キャラクターセッティング{") != -1) {
+					//位置タグを削除
+					itr = tmpData.erase(itr);
+
+					char* chara_dir[TALK_CHARA_DIR_MAX] = { "左.","右." };
+
+					for (int dir = 0; dir < TALK_CHARA_DIR_MAX; dir++) {
+						if ((*itr).find(chara_dir[dir]) != -1) {
+							//左右タグを排除
+							(*itr).erase((*itr).begin(), (*itr).begin() + 3);
+
+							//名前開始位置
+							int name_start = 0;
+							bool roop_end_flg = false;
+							while (true) {
+								//区切り点の位置
+								int end = (*itr).find("、", name_start);
+
+								//区切り点がなければ、次で最後のキャラクターだと判断
+								if (end == -1) {
+									end = (*itr).size();
+									roop_end_flg = true;
+								}
+
+								int name_end = (*itr).find("：", name_start);
+								string name = (*itr).substr(name_start, name_end - name_start);
+
+								int in = name.find("[挿入");
+								//挿入タグ発見
+								if (in != -1) {
+									m_talk_chara_list[dir][dir_count[dir]].in_shift_id = atoi(&name[in + 5]);
+									//挿入タグ部分削除
+									name.erase(in, name_end - in);
+								}
+								//挿入タグなし
+								else {
+									//挿入切り替えしないキャラクターは、-1を入れておく
+									m_talk_chara_list[dir][dir_count[dir]].in_shift_id = -1;
+								}
+
+								//キャラクター名をこの方向にセット
+								m_talk_chara_list[dir][dir_count[dir]].name = name;
+
+								//表情読み込み
+								name_start = name_end + 2;
+								string expression = (*itr).substr(name_start, end - name_start);
+
+								//表情をこの方向にセット
+								m_talk_chara_list[dir][dir_count[dir]].expression = expression;
+
+								//この方向に格納した数をカウント
+								dir_count[dir]++;
+
+								name_start = end + 2;
+
+								//左キャラクター読み込み完了
+								if (roop_end_flg) {
+									break;
+								}
+							}
+							//左右タグ部分を削除
+							itr = tmpData.erase(itr);
+						}
+					}
+					//閉じ括弧を削除
+					itr = tmpData.erase(itr);
+				}
+
 				//名前部分抽出
 				if ((*itr).find("[1_") != -1) {
 					(*itr).pop_back();

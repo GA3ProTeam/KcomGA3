@@ -236,7 +236,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 		//窓
 		m_gimmick_window_koune2 = new GimmickWindow_Koune2();
 		Obj()->InsertObj(m_gimmick_window_koune2, GIMMICK_WINDOW_KOUNE2, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_window_koune2->Init(930, 150, 250, 200, 1);
+		m_gimmick_window_koune2->Init(930, 150, 250, 200);
 
 		//スクロールステータス設定
 		m_pLScroll->SetScroll(0);
@@ -366,6 +366,16 @@ void CObjGimmickManager::Action() {
 		TUTORIAL_SOUND_REC_TALK_PLAY,		//音を録音した後、会話してから再生した
 	};
 
+	//イベント番号（コウネ2ステージ）
+	enum KOUNE2_NUMBER {
+		KOUNE2_EVENT_TALK_START,			//初回会話
+		KOUNE2_EVENT_TALK_START_END,		//初回会話終了後
+		KOUNE2_EVENT_SION_TALK_END,			//シオンと会話後
+		KOUNE2_EVENT_BOYA_TALK_END,			//少年Aと会話後
+		KOUNE2_EVENT_BOYA_QUIZ_COMPLETE,	//少年Aのクイズに正解後
+		KOUNE2_EVENT_GIRL_SOUNDBIG_TO_BOYA,	//少年Aに女の子の応援音（大）を聞かせた
+	};
+	
 	//イベント番号(コウネ3ステージ)
 	enum KOUNE3_NUMBER
 	{
@@ -482,6 +492,7 @@ void CObjGimmickManager::Action() {
 
 	//boolフラグリスト
 	enum KOUNE2_BOOL_FLG_LIST {
+		KOUNE2_BOOL_GIRL_ACTION,//女の子動作開始
 		KOUNE2_BOOL_GIRL_TALK,	//女の子と話しかけたかどうか
 		KOUNE2_BOOL_SION_TALK,	//シオンに話しかけたかどうか
 	};
@@ -791,29 +802,46 @@ void CObjGimmickManager::Action() {
 		break;
 	case 31://コウネステージ2
 
-			//初回会話
-		if (m_iKoune2_flg == 0) {
+			//女の子に話しかけることができるタイミング
+		if (KOUNE2_EVENT_SION_TALK_END <= m_iKoune2_flg && m_iKoune2_flg < KOUNE2_EVENT_BOYA_QUIZ_COMPLETE) {
+			//女の子に話しかける
+			if (m_gimmick_girl_koune2->m_ball[0].OnPush) {
+				//女の子「だから！迷子じゃないわ！」
+				Overlay()->talkDraw(KOUNE, KOUNE2_ONNNA);
+
+				//女の子と話しかけたフラグを立てる
+				m_bKoune2_flg_list[KOUNE2_BOOL_GIRL_TALK] = true;
+			}
+		}
+
+		//少年Bに話しかけることができるタイミング
+		if (KOUNE2_EVENT_TALK_START < m_iKoune2_flg && m_iKoune2_flg < KOUNE2_EVENT_BOYA_QUIZ_COMPLETE) {
+			//少年Bに話しかける
+			if (m_gimmick_boy_b->m_ball[0].OnPush) {
+				//少年B「・・・どうも」
+				Overlay()->talkDraw(KOUNE, KOUNE2_BOYB);
+			}
+		}
+
+		//初回会話
+		if (m_iKoune2_flg == KOUNE2_EVENT_TALK_START) {
 			//女の子「あなたは・・・コウネくん！？」
 			Overlay()->talkDraw(KOUNE, KOUNE2_START);
 
 			//会話終了
 			if (Overlay()->NextWait()) {
-				m_iKoune2_flg = 1;//次の制御へ移行
+				m_iKoune2_flg = KOUNE2_EVENT_TALK_START_END;//次の制御へ移行
 			}
 		}
 		//初回会話終了後
-		else if (m_iKoune2_flg == 1) {
+		else if (m_iKoune2_flg == KOUNE2_EVENT_TALK_START_END) {
 			//少年Aに話しかける
 			if (m_gimmick_boy_a->m_ball[0].OnPush) {
 				//少年A「なあ、この辺りでボール見なかった？」
 				Overlay()->talkDraw(KOUNE, KOUNE2_BOYA_FLAG1_NO);
 			}
 
-			//少年Bに話しかける
-			if (m_gimmick_boy_b->m_ball[0].OnPush) {
-				//少年B「・・・どうも」
-				Overlay()->talkDraw(KOUNE, KOUNE2_BOYB);
-			}
+			//少年Bとの会話は、このswitch caseの上部に書いています。
 
 			//シオンに話しかける
 			if (m_gimmick_sion->m_ball[0].OnPush) {
@@ -823,28 +851,24 @@ void CObjGimmickManager::Action() {
 
 			//会話終了後
 			if (Overlay()->NextWait()) {
+				//終了した会話がシオンとの会話か確認
 				if (Overlay()->NowTalk() == KOUNE2_SION_DLAG1_NO_FLAG2_NO) {
 					m_gimmick_girl_koune2->m_bActionFlg = true;//女の子を描画＆動作させる
-					m_iKoune2_flg = 2;//次の制御へ移行
+					m_bKoune2_flg_list[KOUNE2_BOOL_GIRL_ACTION] = true;//女の子動作開始フラグを立てる
+					m_iKoune2_flg = KOUNE2_EVENT_SION_TALK_END;//次の制御へ移行
 				}
 			}
 		}
 		//シオンと会話後
-		else if (m_iKoune2_flg == 2) {
-			//女の子に話しかける
-			if (m_gimmick_girl_koune2->m_ball[0].OnPush) {
-				//女の子「だから！迷子じゃないわ！」
-				Overlay()->talkDraw(KOUNE, KOUNE2_ONNNA);
-
-				//女の子と話しかけたフラグを立てる
-				m_bKoune2_flg_list[KOUNE2_BOOL_GIRL_TALK] = true;
-			}
+		else if (m_iKoune2_flg == KOUNE2_EVENT_SION_TALK_END) {
 
 			//シオンに話しかける
 			if (m_gimmick_sion->m_ball[0].OnPush) {
 				//シオン「ファンだって～。」
 				Overlay()->talkDraw(KOUNE, KOUNE2_SION_FLAG1_YES_FLAG2_NO);
 			}
+
+			//女の子との会話は、このswitch caseの上部に書いています。
 
 			//少年Ａに話しかける
 			if (m_gimmick_boy_a->m_ball[0].OnPush) {
@@ -855,12 +879,13 @@ void CObjGimmickManager::Action() {
 			//会話終了後
 			if (Overlay()->NextWait()) {
 				if (Overlay()->NowTalk() == KOUNE2_BOYA_FLAG1_YES) {
-					m_iKoune2_flg = 3;//次の制御へ移行
+					m_iKoune2_flg = KOUNE2_EVENT_BOYA_TALK_END;//次の制御へ移行
 				}
 			}
 		}
 		//少年Ａと会話後
-		else if (m_iKoune2_flg == 3) {
+		else if (m_iKoune2_flg == KOUNE2_EVENT_BOYA_TALK_END) {
+			//デバッグ用　音データを強制入手
 			/*SoundData a1 = { 0,RED,BALL_ELM_NO_ANIMAL,BALL_VOL_SMALL};
 			SoundData a2 = { 1,BLUE,BALL_ELM_ANIMAL,BALL_VOL_MIDDLE };
 			SoundData a3 = { 2,GREEN,BALL_ELM_ANIMAL,BALL_VOL_BIG };
@@ -943,13 +968,13 @@ void CObjGimmickManager::Action() {
 				if (Overlay()->NowTalk() == KOUNE2_BOYA_FLAG2_YES) {
 					//正解の選択肢｛飛んでる鳥｝を選んだか確認
 					if (Overlay()->Selected("2-3")) {
-						m_iKoune2_flg = 4;//次の制御へ移行
+						m_iKoune2_flg = KOUNE2_EVENT_BOYA_QUIZ_COMPLETE;//次の制御へ移行
 					}
 				}
 			}
 		}
 		//少年Ａのクイズに正解後
-		else if (m_iKoune2_flg == 4) {
+		else if (m_iKoune2_flg == KOUNE2_EVENT_BOYA_QUIZ_COMPLETE) {
 			//シオンに話しかける
 			if (m_gimmick_sion->m_ball[0].OnPush) {
 				//フラグ4「女の子に話しかける」を達成している場合
@@ -1020,11 +1045,25 @@ void CObjGimmickManager::Action() {
 				}
 
 				if (Overlay()->NowTalk() == KOUNE2_BOYA_FLAG3_OUEN_BIG) {
-					//コウネステージ2クリア
-					SavedataManeger()->CurrentData->m_btutorial = true;
-					//ステージセレクト画面に移行
-					Manager()->Pop(new CSceneStageSelect);
+					//窓が割れる
+					m_gimmick_window_koune2->m_break_flg = true;
+
+					m_iKoune2_flg = KOUNE2_EVENT_GIRL_SOUNDBIG_TO_BOYA;//次の制御へ移行
 				}
+			}
+		}
+		//少年Aに女の子の応援（大）を聞かせた後
+		else if (m_iKoune2_flg == KOUNE2_EVENT_GIRL_SOUNDBIG_TO_BOYA) {
+
+			//窓「ガッシャーン」
+			Overlay()->talkDraw(KOUNE, KOUNE2_BOYA_FLAG3_OUEN_BIG_AFTER);
+
+			//会話終了後
+			if (Overlay()->NextWait()) {
+				//コウネステージ2クリア
+				SavedataManeger()->CurrentData->m_bKouneClearflg[1] = true;
+				//ステージセレクト画面に移行
+				Manager()->Pop(new CSceneStageSelect);
 			}
 		}
 		break;
@@ -1170,14 +1209,13 @@ void CObjGimmickManager::Action() {
 	{
 		static int test_num;
 		if (test_num == 0) {
-			int show_id[] = { 0,1 };
-			Overlay()->talkDraw(TUTORIAL, SELECT_TEST, show_id, SIZE(show_id));
+			int show_id = 0;
+
+			Overlay()->talkDraw(TUTORIAL, CHARA_SHIFT_TEST, &show_id, 1, &show_id, 1);
 
 			//会話終了
 			if (Overlay()->NextWait()) {
-				if (Overlay()->Selected("1-1")) {
-					test_num = 1;
-				}
+
 			}
 		}
 		else if (test_num == 1) {

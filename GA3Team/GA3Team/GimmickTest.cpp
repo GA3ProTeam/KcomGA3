@@ -1441,12 +1441,17 @@ void GimmickBoyB::Draw() {
 
 //窓
 //イニシャライズ
-void GimmickWindow_Koune2::Init(int xpos, int ypos, int widht, int height, int balloonnum) {
-	//親クラスのInit関数を呼ぶ
-	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
+void GimmickWindow_Koune2::Init(int x, int y, int w, int h) {
+	//座標初期化
+	m_iXpos = x;
+	m_iYpos = y;
 
-	//吹き出しの初期化
-	InitBall(&m_ball[0], m_iWidth - 50, -48, talk, 1, RED, LOWER_LEFT);
+	//幅・高さ初期化
+	m_iWidth = w;
+	m_iHeight = h;
+
+	//初めは割れていない
+	m_break_flg = false;
 }
 
 //デストラクタ
@@ -1481,10 +1486,12 @@ void GimmickWindow_Koune2::Draw() {
 	//---------------------------------------------------------------------------
 
 	//ギミック名前描画
-	Font()->StrDraw("窓", m_src.left, m_src.top, 20, col);
-
-	//ギミックの動作＆吹き出しの動作・描画
-	this->gimmicDraw(1);
+	if (!m_break_flg) {
+		Font()->StrDraw("窓", m_src.left, m_src.top, 20, col);
+	}
+	else {
+		Font()->StrDraw("窓割れた", m_src.left, m_src.top, 20, col);
+	}
 }
 ////ステージ2↑
 //

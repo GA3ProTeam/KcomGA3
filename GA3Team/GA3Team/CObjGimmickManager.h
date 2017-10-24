@@ -15,6 +15,8 @@ public:
 	void Destructor();	//デストラクタ
 	void Action();		//アクション
 	void Draw();		//ドロー
+	
+	
 private:
 
 	int m_Stage_ID;//ステージの番号

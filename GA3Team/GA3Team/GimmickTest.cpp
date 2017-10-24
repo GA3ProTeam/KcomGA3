@@ -242,170 +242,170 @@ void CObjDesk::Draw() {
 }
 //-----------チュートリアル（博士）ステージ↑-------------------------
 
-////-----------シオンステージ↓-----------------------------------------
-////ステージ1↓
-//
-////おばちゃん
-////イニシャライズ
-//void GimmickAunt::Init(int xpos, int ypos, int widht, int height, int balloonnum) {
-//
-//	//親クラスのInit関数を呼ぶ
-//	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
-//
-//	//吹き出しの初期化
-//	InitBall(&m_ball[0], 48, -48, talk, EXCEPTION, CNONE, LOWER_RIGHT);
-//
-//}
-////デストラクタ
-//void GimmickAunt::Destructor() {
-//
-//}
-////アクション
-//void GimmickAunt::Action() {
-//
-//}
-////描画
-//void GimmickAunt::Draw() {
-//
-//	//-------------------------ギミック(本体)を描画-------------------------------
-//	float col[4] = { 1.0,1.0,1.0,1.0 };
-//	//切り取り先座標
-//	m_dst.top = 192; m_dst.left = 64;
-//	m_dst.bottom = m_dst.top + 64; m_dst.right = m_dst.left + 64;
-//
-//	//転送先座標
-//	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
-//	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
-//	//描画
-//	Image()->DrawEx(58, &m_src, &m_dst, col, 0.0f);
-//	//--------------------------------------------------------------------------
-//	//ギミック名前描画
-//	Font()->StrDraw("おばちゃん", m_iXpos, m_iYpos, 20, col);
-//	//--------------------------------------------------------------------------
-//	//吹き出しの描画＆動作
-//	this->gimmicDraw(1);
-//
-//	////【会話終了時】
-//	//SavedataManeger()->CurrentData->m_bSionflg[0] = true;
-//
-//}
-//
-////すずめ
-//void GimmickBird::Init(int xpos, int ypos, int widht, int height, int balloonnum)//イニシャライズ
-//{
-//	//親クラスのInit関数を呼ぶ
-//	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
-//
-//	//吹き出しの初期化
-//	InitBall(&m_ball[0], 48, -48, sound, 1, BLUE, LOWER_RIGHT);
-//}
-//void GimmickBird::Destructor()	//デストラクタ
-//{
-//	delete[] m_ball;
-//}
-//void GimmickBird::Action()		//アクション
-//{
-//
-//}
-//void GimmickBird::Draw()		//ドロー
-//{
-//	//-------------------------ギミック(本体)を描画-------------------------------
-//	float col[4] = { 1.0,1.0,1.0,1.0 };
-//	//切り取り先座標
-//	m_dst.top = 192; m_dst.left = 64;
-//	m_dst.bottom = m_dst.top + 64; m_dst.right = m_dst.left + 64;
-//
-//	//転送先座標
-//	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
-//	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
-//	//描画
-//	Image()->DrawEx(58, &m_src, &m_dst, col, 0.0f);
-//
-//	//ギミック名前描画
-//	Font()->StrDraw("すずめ", m_iXpos, m_iYpos, 20, col);
-//
-//	//吹き出しの描画＆動作
-//	this->gimmicDraw(1);
-//
-//}
-//
-////犬A
-//void Gimmickwatchdog::Init(int xpos, int ypos, int widht, int height, int balloonnum)//イニシャライズ
-//{
-//	//親クラスのInit関数を呼ぶ
-//	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
-//
-//	//吹き出しの初期化
-//	InitBall(&m_ball[0], 48, -48, sound, 1, RED, LOWER_RIGHT);
-//}
-//void Gimmickwatchdog::Destructor()	//デストラクタ
-//{
-//	delete[] m_ball;
-//}
-//void Gimmickwatchdog::Action()		//アクション
-//{
-//
-//}
-//void Gimmickwatchdog::Draw()		//ドロー
-//{
-//	//-------------------------ギミック(本体)を描画-------------------------------
-//	float col[4] = { 1.0,1.0,1.0,1.0 };
-//	//切り取り先座標
-//	m_dst.top = 192; m_dst.left = 64;
-//	m_dst.bottom = m_dst.top + 64; m_dst.right = m_dst.left + 64;
-//
-//	//転送先座標
-//	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
-//	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
-//	//描画
-//	Image()->DrawEx(58, &m_src, &m_dst, col, 0.0f);
-//
-//	//ギミック名前描画
-//	Font()->StrDraw("犬A", m_iXpos, m_iYpos, 20, col);
-//
-//	//吹き出しの描画＆動作
-//	this->gimmicDraw(1);
-//
-//}
-//
-////インターホン
-//void GimmickInterphone::Init(int xpos, int ypos, int widht, int height, int balloonnum)//イニシャライズ
-//{
-//	//親クラスのInit関数を呼ぶ
-//	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
-//
-//	//吹き出しの初期化
-//	InitBall(&m_ball[0], 48, -48, sound, 1, YELLOW, LOWER_RIGHT);
-//}
-//void GimmickInterphone::Destructor()	//デストラクタ
-//{
-//	delete[] m_ball;
-//}
-//void GimmickInterphone::Action()		//アクション
-//{
-//
-//}
-//void GimmickInterphone::Draw()		//ドロー
-//{
-//	//-------------------------ギミック(本体)を描画-------------------------------
-//	float col[4] = { 1.0,1.0,1.0,1.0 };
-//	//切り取り先座標
-//	m_dst.top = 192; m_dst.left = 64;
-//	m_dst.bottom = m_dst.top + 64; m_dst.right = m_dst.left + 64;
-//
-//	//転送先座標
-//	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
-//	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
-//	//描画
-//	Image()->DrawEx(58, &m_src, &m_dst, col, 0.0f);
-//
-//	//ギミック名前描画
-//	Font()->StrDraw("インターホン", m_iXpos, m_iYpos, 20, col);
-//
-//	//吹き出しの描画＆動作
-//	this->gimmicDraw(1);
-//
-//}
+//-----------シオンステージ↓-----------------------------------------
+//ステージ1↓
+
+//おばちゃん
+//イニシャライズ
+void GimmickAunt::Init(int xpos, int ypos, int widht, int height, int balloonnum) {
+
+	//親クラスのInit関数を呼ぶ
+	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
+
+	//吹き出しの初期化
+	InitBall(&m_ball[0], 48, -48, talk, EXCEPTION, CNONE, LOWER_RIGHT);
+
+}
+//デストラクタ
+void GimmickAunt::Destructor() {
+
+}
+//アクション
+void GimmickAunt::Action() {
+
+}
+//描画
+void GimmickAunt::Draw() {
+
+	//-------------------------ギミック(本体)を描画-------------------------------
+	float col[4] = { 1.0,1.0,1.0,1.0 };
+	//切り取り先座標
+	m_dst.top = 128; m_dst.left = 0;
+	m_dst.bottom = m_dst.top + 64; m_dst.right = m_dst.left + 64;
+
+	//転送先座標
+	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
+	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
+	//描画
+	Image()->DrawEx(58, &m_src, &m_dst, col, 0.0f);
+	//--------------------------------------------------------------------------
+	//ギミック名前描画
+	Font()->StrDraw("おばちゃん", m_iXpos, m_iYpos, 20, col);
+	//--------------------------------------------------------------------------
+	//吹き出しの描画＆動作
+	this->gimmicDraw(1);
+
+	////【会話終了時】
+	//SavedataManeger()->CurrentData->m_bSionflg[0] = true;
+
+}
+
+//すずめ
+void GimmickBird::Init(int xpos, int ypos, int widht, int height, int balloonnum)//イニシャライズ
+{
+	//親クラスのInit関数を呼ぶ
+	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
+
+	//吹き出しの初期化
+	InitBall(&m_ball[0], 48, -48, sound, 1, BLUE, LOWER_RIGHT);
+}
+void GimmickBird::Destructor()	//デストラクタ
+{
+	delete[] m_ball;
+}
+void GimmickBird::Action()		//アクション
+{
+
+}
+void GimmickBird::Draw()		//ドロー
+{
+	//-------------------------ギミック(本体)を描画-------------------------------
+	float col[4] = { 1.0,1.0,1.0,1.0 };
+	//切り取り先座標
+	m_dst.top = 64; m_dst.left = 64;
+	m_dst.bottom = m_dst.top + 64; m_dst.right = m_dst.left + 64;
+
+	//転送先座標
+	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
+	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
+	//描画
+	Image()->DrawEx(58, &m_src, &m_dst, col, 0.0f);
+
+	//ギミック名前描画
+	Font()->StrDraw("すずめ", m_iXpos, m_iYpos, 20, col);
+
+	//吹き出しの描画＆動作
+	this->gimmicDraw(1);
+
+}
+
+//犬A
+void Gimmickwatchdog::Init(int xpos, int ypos, int widht, int height, int balloonnum)//イニシャライズ
+{
+	//親クラスのInit関数を呼ぶ
+	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
+
+	//吹き出しの初期化
+	InitBall(&m_ball[0], 48, -48, sound, 1, RED, LOWER_RIGHT);
+}
+void Gimmickwatchdog::Destructor()	//デストラクタ
+{
+	delete[] m_ball;
+}
+void Gimmickwatchdog::Action()		//アクション
+{
+
+}
+void Gimmickwatchdog::Draw()		//ドロー
+{
+	//-------------------------ギミック(本体)を描画-------------------------------
+	float col[4] = { 1.0,1.0,1.0,1.0 };
+	//切り取り先座標
+	m_dst.top = 128; m_dst.left = 0;
+	m_dst.bottom = m_dst.top + 64; m_dst.right = m_dst.left + 64;
+
+	//転送先座標
+	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
+	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
+	//描画
+	Image()->DrawEx(58, &m_src, &m_dst, col, 0.0f);
+
+	//ギミック名前描画
+	Font()->StrDraw("犬A", m_iXpos, m_iYpos, 20, col);
+
+	//吹き出しの描画＆動作
+	this->gimmicDraw(1);
+
+}
+
+//インターホン
+void GimmickInterphone::Init(int xpos, int ypos, int widht, int height, int balloonnum)//イニシャライズ
+{
+	//親クラスのInit関数を呼ぶ
+	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
+
+	//吹き出しの初期化
+	InitBall(&m_ball[0], 48, -48, sound, 1, YELLOW, LOWER_RIGHT);
+}
+void GimmickInterphone::Destructor()	//デストラクタ
+{
+	delete[] m_ball;
+}
+void GimmickInterphone::Action()		//アクション
+{
+
+}
+void GimmickInterphone::Draw()		//ドロー
+{
+	//-------------------------ギミック(本体)を描画-------------------------------
+	float col[4] = { 1.0,1.0,1.0,1.0 };
+	//切り取り先座標
+	m_dst.top = 64; m_dst.left = 0;
+	m_dst.bottom = m_dst.top + 64; m_dst.right = m_dst.left + 64;
+
+	//転送先座標
+	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
+	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
+	//描画
+	Image()->DrawEx(58, &m_src, &m_dst, col, 0.0f);
+
+	//ギミック名前描画
+	Font()->StrDraw("インターホン", m_iXpos, m_iYpos, 20, col);
+
+	//吹き出しの描画＆動作
+	this->gimmicDraw(1);
+
+}
 
 //ステージ1↑
 
@@ -1778,7 +1778,7 @@ void GimmickMechanic::Init(int xpos, int ypos, int widht, int height, int balloo
 	//親クラスのInit関数を呼ぶ
 	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
 	//吹き出しの初期化
-	InitBall(&m_ball[0],48, -48, sound, 1, RED, LOWER_LEFT);
+	InitBall(&m_ball[0], m_iWidth - 50, -48, talk, 1, RED, LOWER_LEFT);
 
 }
 //②メカニックのデストラクタ

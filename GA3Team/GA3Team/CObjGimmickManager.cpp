@@ -40,23 +40,23 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 		////おばちゃん生成
 		//m_gimmick_aunt = new GimmickAunt();
 		//Obj()->InsertObj(m_gimmick_aunt, GIMMICK_AUNT, 1, this->m_pScene, HIT_BOX_OFF);
-		//m_gimmick_aunt->Init(-110, 220, 70, 100, 1);
+		//m_gimmick_aunt->Init(110, 300, 100, 170, 1);
 
 		////すずめ生成
 		//m_gimmick_bird = new GimmickBird();
 		//Obj()->InsertObj(m_gimmick_bird, GIMMICK_BIRD, 5, this->m_pScene, HIT_BOX_OFF);
-		//m_gimmick_bird->Init(550, 120, 70, 100, 1);
+		//m_gimmick_bird->Init(270, 100, 70, 90, 1);
 		//
 		////犬A(番犬)生成
 		//m_gimmick_watchdog = new Gimmickwatchdog();
-		//Obj()->InsertObj(m_gimmick_bird, GIMMICK_WATCHDOG, 5, this->m_pScene, HIT_BOX_OFF);
-		//m_gimmick_bird->Init(100, 300, 300, 300, 1);
+		//Obj()->InsertObj(m_gimmick_watchdog, GIMMICK_WATCHDOG, 5, this->m_pScene, HIT_BOX_OFF);
+		//m_gimmick_watchdog->Init(600, 400, 100, 70, 1);
 		//
 		////インターホン生成
 		//m_gimmick_interphone = new GimmickInterphone();
 		//Obj()->InsertObj(m_gimmick_interphone, GIMMICK_INTERPHONE, 5, this->m_pScene, HIT_BOX_OFF);
-		//m_gimmick_interphone->Init(-400, 220, 70, 100, 1);
-
+		//m_gimmick_interphone->Init(670, 260, 70, 100, 1);
+		
 		break;
 	case 11:
 		////シオンのステージ2のギミック生成
@@ -511,15 +511,49 @@ void CObjGimmickManager::Action() {
 	switch (m_Stage_ID) {
 		//-シオンステージ-----------------------------------------
 	case 10:
+		/*Overlay()->talkDraw(SION, SION1_START);
+		Overlay()->NextWait();
 
+		if (m_gimmick_aunt->m_ball[0].OnPush) {
+			Overlay()->talkDraw(SION, SION1_BBA);
+			
+			if (Overlay()->NextWait()) {
+				m_Sion1_flg = 1;
+			}
+		}*/
+
+		//能力使用時に、フラグ2が立つ
+		/*if (シオンの能力ボタンを押した) {
+			m_Sion1_flg = 2;
+		}*/
+
+		/*if (m_Sion1_flg == 0) {
+			Overlay()->talkDraw(SION, SION1_FLAG1_NO);
+
+			Overlay()->NextWait();
+		}
+		else if (m_Sion1_flg == 1) {
+			Overlay()->talkDraw(SION, SION1_FLAG1_YES_FLAG2_NO_CLEAR);
+
+			Overlay()->NextWait();
+		}
+
+
+		if (m_Sion1_flg == 2) {
+			Overlay()->talkDraw(SION, SION1_FLAG1_YES_FLAG2_YES_CLEAR);
+
+			Overlay()->NextWait();
+		}*/
 
 		break;
 	case 11:
 		break;
 	case 12:
-		if (m_gimmick_granny->m_ball[0].OnPush) {
-			Overlay()->talkDraw(SION, SION3_OBATYAN);
-		}
+		if(m_gimmick_granny->m_ball[0].OnPush) {
+				Overlay()->talkDraw(SION, SION3_OBATYAN);
+
+				Overlay()->NextWait();
+			}
 
 		switch (m_gimmick_children->GetChild_ID()) {
 		case 1://強気な男の子
@@ -529,9 +563,13 @@ void CObjGimmickManager::Action() {
 
 			if (SavedataManeger()->CurrentData->m_bSionflg[3] == true && m_gimmick_children->m_ball[0].OnPush) {
 				Overlay()->talkDraw(SION, SION3_FLAG_YES_CHILD1);
+
+				Overlay()->NextWait();
 			}
 			else if (m_gimmick_children->m_ball[0].OnPush) {
 				Overlay()->talkDraw(SION, SION3_FLAG_NO_CHILD1);
+
+				Overlay()->NextWait();
 			}
 			break;
 
@@ -542,9 +580,13 @@ void CObjGimmickManager::Action() {
 
 			if (SavedataManeger()->CurrentData->m_bSionflg[4] == true && m_gimmick_children->m_ball[0].OnPush) {
 				Overlay()->talkDraw(SION, SION3_FLAG_YES_CHILD2);
+
+				Overlay()->NextWait();
 			}
 			else if (m_gimmick_children->m_ball[0].OnPush) {
 				Overlay()->talkDraw(SION, SION3_FLAG_NO_CHILD2);
+
+				Overlay()->NextWait();
 			}
 
 			break;
@@ -556,9 +598,13 @@ void CObjGimmickManager::Action() {
 
 			if (SavedataManeger()->CurrentData->m_bSionflg[5] == true && m_gimmick_children->m_ball[0].OnPush) {
 				Overlay()->talkDraw(SION, SION3_FLAG_YES_CHILD3);
+
+				Overlay()->NextWait();
 			}
 			else if (m_gimmick_children->m_ball[0].OnPush) {
 				Overlay()->talkDraw(SION, SION3_FLAG_NO_CHILD3);
+
+				Overlay()->NextWait();
 			}
 
 			break;
@@ -570,6 +616,8 @@ void CObjGimmickManager::Action() {
 			SavedataManeger()->CurrentData->m_bSionflg[5] == true) {
 
 			Overlay()->talkDraw(SION, SION3_CLEAR);
+
+			Overlay()->NextWait();
 
 			SavedataManeger()->CurrentData->m_bSionClearflg[2] = true;
 		}
@@ -1357,6 +1405,4 @@ void CObjGimmickManager::Draw() {
 	case 35:
 		break;
 	}
-
-
 }

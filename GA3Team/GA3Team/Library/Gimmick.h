@@ -34,7 +34,7 @@ enum BallonElement {
 //‚«o‚µi‰¹j‚Ì‰¹—Ê
 enum BallonVolume {
 	BALL_VOL_SMALL,	//¬
-	BALL_VOL_MIDDLE,//’†
+	BALL_VOL_MIDDLE ,//’†
 	BALL_VOL_BIG,	//‘å
 };
 

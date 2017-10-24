@@ -22,7 +22,7 @@ void CObjMenuTab::Init(int openclosey)
 
 	m_iability_x = 416;//能力ボタンのX
 	m_iability_y = m_openclose_y;//能力ボタンのY
-	m_bability = false;//能力を使用しない
+	abiltyOverray = false;//能力を使用しない
 
 	//ボタンの位置X
 	m_iXpos = m_openclose_x;
@@ -33,6 +33,7 @@ void CObjMenuTab::Init(int openclosey)
 	//ボタンの高さ
 	m_iHeight = 64;
 
+	User()->m_iCurrentChara = 3;
 }
 
 //-----------------------------------------------------------------
@@ -118,12 +119,14 @@ void CObjMenuTab::Action()
 		}
 		//--------------------------------------------------------------------------
 		//能力ボタン動作
-		if (SelectPush(m_iability_x, m_iability_y, 64, 64) && !m_bability && m_iabicnt == 0) {
-			m_bability = true;
+		if (SelectPush(m_iability_x, m_iability_y, 64, 64) && !abiltyOverray && m_iabicnt == 0) {
+			//abiltyOverray = true;
+			Onability();
 			m_iabicnt++;
 		}
-		else if (SelectPush(m_iability_x, m_iability_y, 64, 64) && m_bability  && m_iabicnt == 0) {
-			m_bability = false;
+		else if (SelectPush(m_iability_x, m_iability_y, 64, 64) && abiltyOverray  && m_iabicnt == 0) {
+			//abiltyOverray = false;
+			Offability();
 			m_iabicnt++;
 		}
 		else if (SelectPush(m_iability_x, m_iability_y, 64, 64)) {
@@ -153,6 +156,45 @@ void CObjMenuTab::Action()
 	}
 	else {
 		m_icnt = 0;
+	}
+
+	if (User()->m_bkouneability)
+	{
+		static bool flg = false;
+		static int slnum=-1;
+		static int newslnum = -1;
+		static vol vol = SOUND_NON;//(SOUND_PLUS,SOUND_MINUS)
+		//どのスロットを調整するか。
+		if (!flg)
+		{
+			int slnum = GetGiveSound();//スロットの番号
+			if (slnum >= 0){
+				flg = true;
+				newslnum = slnum;
+			}
+		}
+		else {
+			//音量を変える
+			//上げるか下げるかの選択
+			//上げるボタンを押す
+			if (SelectPush(250, 50, 300, 140)) {
+				vol = SOUND_PLUS;
+			}
+			//下げるボタンを押す
+			if (SelectPush(250, 200, 300, 140)) {
+				vol = SOUND_MINUS;
+			}
+
+			//bool aaa = g_SoundManeger->soundvol(newslnum, vol);
+			if (g_SoundManeger->soundvol(newslnum, vol))
+			{
+				vol = SOUND_NON;
+				flg = false;
+				newslnum = -1;
+				User()->m_bkouneability = false;
+				abiltyOverray = false;
+			}
+		}
 	}
 	//--------------------------------------------------------------------------
 }
@@ -245,7 +287,7 @@ void CObjMenuTab::Draw()
 		Image()->Draw(1, &m_rSrc, &m_rDst, m_fCol, 0.0f);
 
 		//能力ボタン
-		if (m_bability) {
+		if (abiltyOverray) {
 			m_fCol[3] = 0.5f;
 		}
 		else {
@@ -288,26 +330,28 @@ void CObjMenuTab::Draw()
 	}
 
 	//コウネの能力発動時(上げる、下げる)のボタンを描画
-	if (User()->m_bkouneability == true)
+	if (User()->m_bkouneability && abiltyOverray==true)
 	{
+		float m_fCol1[4] = { 1.0f,1.0f,1.0f,1.0f };
 		//ボタンの描画
 		//プラスボタン
 		m_rDst.top = 0; m_rDst.left = 0;
 		m_rDst.bottom = m_rDst.top + 140; m_rDst.right = m_rDst.left + 300;
 
-		m_rSrc.top =  150; m_rSrc.left = 250;
+		m_rSrc.top =  50; m_rSrc.left = 250;
 		m_rSrc.bottom = m_rSrc.top + 140; m_rSrc.right = m_rSrc.left + 300;
 
-		Image()->DrawEx(EX_VOLBOTTON, &m_rDst, &m_rSrc, m_fCol, 0.0f);
+		Image()->DrawEx(EX_VOLBOTTON, &m_rSrc, &m_rDst, m_fCol1, 0.0f);
 
 		//マイナスボタン
 		m_rDst.top = 141; m_rDst.left = 0;
 		m_rDst.bottom = m_rDst.top + 140; m_rDst.right = m_rDst.left + 300;
 
-		m_rSrc.top = 310; m_rSrc.left = 250;
+		m_rSrc.top = 200; m_rSrc.left = 250;
 		m_rSrc.bottom = m_rSrc.top + 140; m_rSrc.right = m_rSrc.left + 300;
-
-		Image()->DrawEx(EX_VOLBOTTON, &m_rDst, &m_rSrc, m_fCol, 0.0f);
+		
+		Image()->DrawEx(EX_VOLBOTTON, &m_rSrc, &m_rDst, m_fCol1, 0.0f);
+	
 	}
 
 }
@@ -351,28 +395,14 @@ bool CObjMenuTab::SelectPush(int btx, int bty, int btwid, int bthei)
 
 void CObjMenuTab::Onability()
 {
-	abiltyOverray = true;
+	if (!abiltyOverray)
+	{
+		abiltyOverray = true;
+	}
 	//コウネの能力が発動したら音量を変える
 	if (User()->m_iCurrentChara == 3)
 	{
-		
 		User()->m_bkouneability = true;
-		//どのスロットを調整するか。
-		int slnum = GetGiveSound();//スロットの番号
-		//音量を変える
-		//上げるか下げるかの選択
-		vol vol;//(SOUND_PLUS,SOUND_MINUS)
-		//上げるボタンを押す
-		if (SelectPush(250, 150, 300, 140)){
-			vol = SOUND_PLUS;
-		}
-		//下げるボタンを押す
-		if (SelectPush(250, 310, 300, 140)) {
-			vol = SOUND_MINUS;
-		}	
-		g_SoundManeger->soundvol(slnum, vol);
-		User()->m_bkouneability = false;
-
 	}
 	//メルエルが能力が発動したら
 	if (User()->m_iCurrentChara == 2)
@@ -388,7 +418,14 @@ void CObjMenuTab::Onability()
 
 void CObjMenuTab::Offability()
 {
-	abiltyOverray = false;
+	if (abiltyOverray)
+	{
+		abiltyOverray = false;
+	}
+	if (User()->m_iCurrentChara == 3)
+	{
+		User()->m_bkouneability = false;
+	}
 	//メルエル能力解除
 	if (User()->m_iCurrentChara == 2)
 	{

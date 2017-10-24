@@ -78,27 +78,35 @@ bool CSoundManeger::HaveSound(int soundNum/*調べる音番号*/)
 	return false;
 }
 
-void CSoundManeger::soundvol(int slotNum, vol vol/*SOUND_PLUS or SOUND_MINUS*/)
+bool CSoundManeger::soundvol(int slotNum, vol vol/*SOUND_PLUS or SOUND_MINUS or SOUND_NON*/)
 {
+	//プラスボタンを押されたら＋中音量
+	if (vol == SOUND_PLUS && SoundSlot[slotNum].sound_volume == BALL_VOL_MIDDLE)
+	{
+		SoundSlot[slotNum].sound_volume = BALL_VOL_BIG;
+		return true;
+	}
 	//プラスボタンを押されたら＋小音量
 	if (vol == SOUND_PLUS && SoundSlot[slotNum].sound_volume == BALL_VOL_SMALL)
 	{
-		SoundSlot[slotNum].sound_volume = BALL_VOL_MIDDLE;	
-	}
-	//プラスボタンを押されたら＋中音量
-	if (SoundSlot[slotNum].sound_volume == BALL_VOL_MIDDLE)
-	{
-		SoundSlot[slotNum].sound_volume = BALL_VOL_BIG;
-	}
-
-	//マイナスボタンを押されたら＋大音量
-	if (vol == SOUND_MINUS && SoundSlot[slotNum].sound_volume  == BALL_VOL_BIG)
-	{
 		SoundSlot[slotNum].sound_volume = BALL_VOL_MIDDLE;
+		return true;
 	}
+	
+
 	//マイナスボタンを押されたら＋中音量
 	if (vol == SOUND_MINUS && SoundSlot[slotNum].sound_volume == BALL_VOL_MIDDLE)
 	{
 		SoundSlot[slotNum].sound_volume = BALL_VOL_SMALL;
+		return true;
 	}
+	//マイナスボタンを押されたら＋大音量
+	if (vol == SOUND_MINUS && SoundSlot[slotNum].sound_volume  == BALL_VOL_BIG)
+	{
+		SoundSlot[slotNum].sound_volume = BALL_VOL_MIDDLE;
+		return true;
+	}
+	
+
+	return false;
 }

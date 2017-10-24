@@ -487,6 +487,12 @@ void CObjGimmickManager::Action() {
 	//コウネステージ1
 	static int m_Koune1_flg = 0;
 
+	//boolフラグリスト
+	enum KOUNE1_BOOL_FLG_LIST {
+		 KOUNE1_BOOL_OLDMAN_TALK,//おじいさんと会話した
+	};
+	static bool m_bKoune1_flg_list[5] = { false };
+
 	//コウネステージ2
 	static int m_iKoune2_flg = 0;
 
@@ -686,119 +692,82 @@ void CObjGimmickManager::Action() {
 		//-コウネステージ-----------------------------------------
 	case 30://ステージ1
 
-			////初回会話
-			//if (m_Koune1_flg == 0) {
-			//	Overlay()->talkDraw(KOUNE, KOUNE1_START);
+		//おじいさんとはいつでも会話可能
+		if (m_Koune1_flg > 0) {
+			if (m_gimmick_oldman->m_ball[0].OnPush) {
+				Overlay()->talkDraw(KOUNE, KOUNE1_OZI);
+				m_bKoune1_flg_list[KOUNE1_BOOL_OLDMAN_TALK] = true;
+			}
+		}
 
-			//	//会話終了
-			//	if (Overlay()->NextWait()) {
-			//		m_Koune1_flg = 1;
-			//	}
-			//}
-			//else if (m_Koune1_flg == 1) {
-			//	if (m_gimmick_oldman->m_ball[0].OnPush) {
-			//		Overlay()->talkDraw(KOUNE, KOUNE1_OZI);
-			//	}
+		//初回会話
+		if (m_Koune1_flg == 0) {
+			Overlay()->talkDraw(KOUNE, KOUNE1_START);
 
-			//	//会話終了
-			//	if (Overlay()->NextWait()) {
-			//		m_Koune1_flg = 2;
-			//	}
-			//}
-			//else if (m_Koune1_flg == 2) {
-			//	if (m_gimmick_oldman->m_ball[0].OnPush) {
-			//		if (/*犬を見なかった*/) {
-			//			Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG2_NO);
-			//		}
-			//		else if (/*犬を見た*/) {
-			//			Overlay()->talkDraw(KOUNE1_OZI_FLAG2_YES);
-			//		}
-			//	}
-			//	if (m_gimmick_dog->m_ball[0].OnPush) {
-			//		
-			//		m_Koune1_flg = 3;
-			//	}
-			//}
-			//else if (m_Koune1_flg == 3) {
-			//	if (m_gimmick_oldman->m_ball[0].OnPush) {
-			//		if (/*犬の音を大音量で聞かせた*/) {
-			//			Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG3_YES);
-			//			if (Overlay()->NextWait()) {
-			//				m_gimmick_oldman->m_Status = STATUS_DELETE;
-			//				m_Koune1_flg = 4;
-			//			}
-			//			
-			//		}
-			//		else if (/*犬の音を少音量で聞かせた+おじいさんに話しかける前に*/) {
-			//			Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG3_NO_FLAG1_YES);
-			//		}
-			//		else if (/*犬の音を少音量で聞かせた*/) {
-			//			Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG3_NO);
-			//		}
-			//	}
-			//	
-			//}
-			//else if (m_Koune1_flg == 4) {
-			//	if (m_gimmick_manhole_cover->m_ball[0].OnPush) {
-			//		m_gimmick_manhole_cover->m_iXpos -= 100;
-			//		m_Koune1_flg = 5;
-			//	}
-			//}
+			//会話終了
+			if (Overlay()->NextWait()) {
+				m_Koune1_flg = 1;
+			}
+		}
+		else if (m_Koune1_flg == 1) {
+			if (m_gimmick_oldman->m_ball[0].OnPush) {
+				if (SoundManager()->HaveSound(0)==false) {
+					Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG2_NO);
+				}
+				else if (SoundManager()->HaveSound(0)==true) {
+					Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG2_YES);
+				}
+			}
 
-			//else if (m_Koune1_flg == 5) {
-			//	if (m_gimmick_manhole_hole->m_ball[0].OnPush) {
-			//		Overlay()->talkDraw(KOUNE, KOUNE1_OZI_CLEAR);
-			//	}
-			//}
+			//会話終了
+			if (Overlay()->NextWait()) {
+				m_Koune1_flg = 2;
+			}
+		}
+		else if (m_Koune1_flg == 2) {
+			/*犬の音を大音量で聞かせた*/
+			if (m_gimmick_oldman->m_getsound.sound_num==0&&
+				m_gimmick_oldman->m_getsound.sound_volume == BALL_VOL_BIG) {
+				Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG3_YES);
+				if (Overlay()->NextWait()) {
+					m_gimmick_oldman->m_Status = STATUS_DELETE;
+					m_Koune1_flg = 4;
+				}
+				
+			}/*犬の音を少音量で聞かせた+おじいさんに話しかける前に*/
+			else if (m_gimmick_oldman->m_getsound.sound_num == 0 &&
+				m_gimmick_oldman->m_getsound.sound_volume != BALL_VOL_BIG&&
+				m_bKoune1_flg_list[KOUNE1_BOOL_OLDMAN_TALK] == false) {
 
-			//if (m_gimmick_manhole_hole->m_ball[0].OnPush) {
+				Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG3_NO_FLAG1_YES);
+			}
+			/*犬の音を少～中音量で聞かせた*/
+			else if (m_gimmick_oldman->m_getsound.sound_num == 0 &&
+				m_gimmick_oldman->m_getsound.sound_volume != BALL_VOL_BIG &&
+				m_bKoune1_flg_list[KOUNE1_BOOL_OLDMAN_TALK] == true) {
+				Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG3_NO);
+			}
 
-			//	SavedataManeger()->CurrentData->m_bKouneClearflg[0] = true;
-			//	Overlay()->talkDraw(KOUNE, KOUNE1_OZI_CLEAR);
-			//	
-			//}
-			//if (m_gimmick_manhole_cover->m_ball[0].OnPush) {
-			//	if (SavedataManeger()->CurrentData->m_bKouneflg[3] == true) {
-			//		m_Status = STATUS_DELETE;
-			//	}
-			//}
-			//if (m_gimmick_dog->m_ball[0].OnPush) {
+		}
+		else if (m_Koune1_flg == 4) {
+			//マンホールを左にずらす
+			if (m_gimmick_manhole_cover->m_ball[0].OnPush) {
+				m_gimmick_manhole_cover->m_iXpos -= 100;
+				m_Koune1_flg = 5;
+			}
+		}
+		else if (m_Koune1_flg == 5) {
+			//マンホールの穴から出る音を録音するとクリア
+			if (m_gimmick_manhole_hole->m_ball[0].OnPush) {
+				Overlay()->talkDraw(KOUNE, KOUNE1_OZI_CLEAR);
+			}
 
-
-
-
-
-
-			//}
-			//if (m_gimmick_oldman->m_ball[0].OnPush){
-			//	if (SavedataManeger()->CurrentData->m_bKouneflg[0] == false) {
-			//		SavedataManeger()->CurrentData->m_bKouneflg[0] = true;
-			//		Overlay()->talkDraw(KOUNE, KOUNE1_OZI);
-			//	}
-
-			//	else if (SavedataManeger()->CurrentData->m_bKouneflg[2] == true) {
-			//		SavedataManeger()->CurrentData->m_bKouneflg[3] = true;
-			//		Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG3_YES);
-			//		m_Status = STATUS_DELETE;
-			//	}
-			//	else if (SavedataManeger()->CurrentData->m_bKouneflg[1] == true) {
-			//		Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG2_YES);
-
-			//	}
-			//	else if (SavedataManeger()->CurrentData->m_bKouneflg[2] == false && SavedataManeger()->CurrentData->m_bKouneflg[1] == true) {
-			//		Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG3_NO_FLAG1_YES);
-
-			//	}
-
-			//	else if (SavedataManeger()->CurrentData->m_bKouneflg[1] == false) {
-			//		Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG2_NO);
-
-			//	}
-
-			//	else {
-
-			//	}
-			//}
+			if (Overlay()->NextWait()) {
+				//コウネステージ1クリア
+				SavedataManeger()->CurrentData->m_bKouneClearflg[0] = true;
+				Manager()->Pop(new CSceneStageSelect());
+			}
+		}
 		break;
 	case 31://コウネステージ2
 

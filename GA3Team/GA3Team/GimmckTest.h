@@ -140,72 +140,72 @@ public:
 //ステージ1↑
 
 //ステージ2↓
-//イヤホン男
-class Gimmickearphone : public Gimmick
-{
-public:
-	Gimmickearphone() {};
-	~Gimmickearphone() {};
-	void Init(int xpos, int ypos, int widht, int height, int balloonnum);
-	void Destructor();//デストラクタ
-	void Action();//アクション
-	void Draw();//描画
-	
-	
-};
-
-//コウネ
-class Gimmickkoune : public Gimmick
-{
-public:
-	Gimmickkoune() {};
-	~Gimmickkoune() {};
-	void Init(int xpos, int ypos, int widht, int height, int balloonnum);
-	void Destructor();//デストラクタ
-	void Action();//アクション
-	void Draw();//描画
-
-	
-};
-
-//猫
-class Gimmickcat : public Gimmick
-{
-public:
-	Gimmickcat() {};
-	~Gimmickcat() {};
-	void Init(int xpos, int ypos, int widht, int height, int balloonnum);
-	void Destructor();	//デストラクタ
-	void Action();		//アクション
-	void Draw();		//ドロー
-private:
-};
-
-//自転車
-class Gimmickbicycle : public Gimmick
-{
-public:
-	Gimmickbicycle() {};
-	~Gimmickbicycle() {};
-	void Init(int xpos, int ypos, int widht, int height, int balloonnum);
-	void Destructor();	//デストラクタ
-	void Action();		//アクション
-	void Draw();		//ドロー
-private:
-};
-
-//消防車
-class Gimmickfiretruck : public Gimmick
-{
-public:
-	Gimmickfiretruck() {};
-	~Gimmickfiretruck() {};
-	void Init(int xpos, int ypos, int widht, int height, int balloonnum);
-	void Destructor();	//デストラクタ
-	void Action();		//アクション
-	void Draw();		//ドロー
-private:
-};
+////イヤホン男
+//class Gimmickearphone : public Gimmick
+//{
+//public:
+//	Gimmickearphone() {};
+//	~Gimmickearphone() {};
+//	void Init(int xpos, int ypos, int widht, int height, int balloonnum);
+//	void Destructor();//デストラクタ
+//	void Action();//アクション
+//	void Draw();//描画
+//	
+//	
+//};
+//
+////コウネ
+//class Gimmickkoune : public Gimmick
+//{
+//public:
+//	Gimmickkoune() {};
+//	~Gimmickkoune() {};
+//	void Init(int xpos, int ypos, int widht, int height, int balloonnum);
+//	void Destructor();//デストラクタ
+//	void Action();//アクション
+//	void Draw();//描画
+//
+//	
+//};
+//
+////猫
+//class Gimmickcat : public Gimmick
+//{
+//public:
+//	Gimmickcat() {};
+//	~Gimmickcat() {};
+//	void Init(int xpos, int ypos, int widht, int height, int balloonnum);
+//	void Destructor();	//デストラクタ
+//	void Action();		//アクション
+//	void Draw();		//ドロー
+//private:
+//};
+//
+////自転車
+//class Gimmickbicycle : public Gimmick
+//{
+//public:
+//	Gimmickbicycle() {};
+//	~Gimmickbicycle() {};
+//	void Init(int xpos, int ypos, int widht, int height, int balloonnum);
+//	void Destructor();	//デストラクタ
+//	void Action();		//アクション
+//	void Draw();		//ドロー
+//private:
+//};
+//
+////消防車
+//class Gimmickfiretruck : public Gimmick
+//{
+//public:
+//	Gimmickfiretruck() {};
+//	~Gimmickfiretruck() {};
+//	void Init(int xpos, int ypos, int widht, int height, int balloonnum);
+//	void Destructor();	//デストラクタ
+//	void Action();		//アクション
+//	void Draw();		//ドロー
+//private:
+//};
 //ステージ2↑
 
 //ステージ3↓
@@ -488,20 +488,28 @@ public:
 
 };
 
-//窓
-class GimmickWindow_Koune2 : public Gimmick
-{
-private:
-
+//窓(特にギミック動作処理等がないので、CObjクラスを継承しています。)
+class GimmickWindow_Koune2 : public CObj {
 public:
-	GimmickWindow_Koune2() {};
-	~GimmickWindow_Koune2() {};
+	GimmickWindow_Koune2() {}
+	~GimmickWindow_Koune2() {}
 
-	void Init(int xpos, int ypos, int widht, int height, int balloonnum);//イニシャライズ
-	void Destructor();	//デストラクタ
-	void Action();		//アクション
-	void Draw();		//ドロー
+	void Init(int x, int y, int w, int h);//イニシャライズ
+	void Destructor();			//デストラクタ
+	void Action();				//アクション
+	void Draw();				//ドロー
 
+	//割れたかどうか
+	bool m_break_flg;
+
+private:
+	int m_iXpos;	//位置(X)
+	int m_iYpos;	//位置(Y)
+	int m_iWidth;	//幅
+	int m_iHeight;	//高さ
+
+	RECT m_src;//転送先座標
+	RECT m_dst;//切り取り座標
 };
 //ステージ2↑
 

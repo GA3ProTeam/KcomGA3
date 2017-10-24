@@ -207,7 +207,7 @@ void CObjMenuTab::Draw()
 
 		//音を格納する部分の描画
 		for (int i = 0; i < 3; i++) {
-			if (SoundManager()->GetSound(i) != -1) {
+			if (SoundManager()->GetSound(i).sound_num != -1) {
 				//切り取り先座標
 				m_rDst.top = 64; m_rDst.left = 128;
 				m_rDst.bottom = m_rDst.top + 64; m_rDst.right = m_rDst.left + 64;
@@ -267,7 +267,7 @@ void CObjMenuTab::Draw()
 	//音をドラック＆ドロップ
 	if (m_bhavesound && Input()->GetMouButtonL()) {
 		for (int i = 0; i < 3; i++) {
-			if (SoundManager()->GetSound(i) != 0) {
+			if (SoundManager()->GetSound(i).sound_num != 0) {
 				//切り取り先座標
 				m_rDst.top = 64; m_rDst.left = 128;
 				m_rDst.bottom = m_rDst.top + 64; m_rDst.right = m_rDst.left + 64;
@@ -285,6 +285,29 @@ void CObjMenuTab::Draw()
 
 		//描画
 		Image()->Draw(1, &m_rSrc, &m_rDst, m_fCol, 0.0f);
+	}
+
+	//コウネの能力発動時(上げる、下げる)のボタンを描画
+	if (User()->m_bkouneability == true)
+	{
+		//ボタンの描画
+		//プラスボタン
+		m_rDst.top = 0; m_rDst.left = 0;
+		m_rDst.bottom = m_rDst.top + 140; m_rDst.right = m_rDst.left + 300;
+
+		m_rSrc.top =  150; m_rSrc.left = 250;
+		m_rSrc.bottom = m_rSrc.top + 140; m_rSrc.right = m_rSrc.left + 300;
+
+		Image()->DrawEx(EX_VOLBOTTON, &m_rDst, &m_rSrc, m_fCol, 0.0f);
+
+		//マイナスボタン
+		m_rDst.top = 141; m_rDst.left = 0;
+		m_rDst.bottom = m_rDst.top + 140; m_rDst.right = m_rDst.left + 300;
+
+		m_rSrc.top = 310; m_rSrc.left = 250;
+		m_rSrc.bottom = m_rSrc.top + 140; m_rSrc.right = m_rSrc.left + 300;
+
+		Image()->DrawEx(EX_VOLBOTTON, &m_rDst, &m_rSrc, m_fCol, 0.0f);
 	}
 
 }
@@ -324,4 +347,56 @@ bool CObjMenuTab::SelectPush(int btx, int bty, int btwid, int bthei)
 
 	return false;
 
+}
+
+void CObjMenuTab::Onability()
+{
+	abiltyOverray = true;
+	//コウネの能力が発動したら音量を変える
+	if (User()->m_iCurrentChara == 3)
+	{
+		
+		User()->m_bkouneability = true;
+		//どのスロットを調整するか。
+		int slnum = GetGiveSound();//スロットの番号
+		//音量を変える
+		//上げるか下げるかの選択
+		vol vol;//(SOUND_PLUS,SOUND_MINUS)
+		//上げるボタンを押す
+		if (SelectPush(250, 150, 300, 140)){
+			vol = SOUND_PLUS;
+		}
+		//下げるボタンを押す
+		if (SelectPush(250, 310, 300, 140)) {
+			vol = SOUND_MINUS;
+		}	
+		g_SoundManeger->soundvol(slnum, vol);
+		User()->m_bkouneability = false;
+
+	}
+	//メルエルが能力が発動したら
+	if (User()->m_iCurrentChara == 2)
+	{
+		User()->m_bmerueruability = true;
+	}
+	//シオン能力が発動したら
+	if (User()->m_iCurrentChara == 1)
+	{
+		User()->m_bsionability = true;
+	}
+}
+
+void CObjMenuTab::Offability()
+{
+	abiltyOverray = false;
+	//メルエル能力解除
+	if (User()->m_iCurrentChara == 2)
+	{
+		User()->m_bmerueruability = false;
+	}
+	//シオン能力解除
+	if (User()->m_iCurrentChara == 1)
+	{
+		User()->m_bsionability = false;
+	}
 }

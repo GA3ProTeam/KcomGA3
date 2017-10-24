@@ -10,7 +10,7 @@ enum BalloonType {
 	talk,//会話
 	sound,//音を調べる
 };
-//吹き出しの色(シオンの能力発動時)
+//吹き出し（音）の色(シオンの能力発動時)
 enum BalloonColor {
 	CNONE = -1, //色無し
 	NORMAL = 0,  //通常
@@ -24,6 +24,20 @@ enum BalloonColor {
 	ASH = 512,//茶
 	PINK = 576,//ピンク
 };
+
+//吹き出し（音）の属性
+enum BallonElement {
+	BALL_ELM_ANIMAL,
+	BALL_ELM_NO_ANIMAL,
+};
+
+//吹き出し（音）の音量
+enum BallonVolume {
+	BALL_VOL_SMALL,	//小
+	BALL_VOL_MIDDLE ,//中
+	BALL_VOL_BIG,	//大
+};
+
 //吹き出しの形(吹き出しのチョンの部分の方向)
 enum Balloondir {
 	LOWER_LEFT = 0,   //左下
@@ -36,24 +50,32 @@ enum Balloondir {
 	RIGHT = 448, //真右
 };
 
+//音一つのデータ
+struct SoundData {
+	int sound_num;				//音の番号(初期値は-1です。)
+	int sound_color;			//音の色
+	BallonElement sound_elm;	//音の属性
+	BallonVolume sound_volume;	//音の音量
+};
+
 //吹き出し構造体
 typedef struct
 {
-	int m_iGimXpos;     //吹き出しの表示位置(X)
-	int m_iGimYpos;     //吹き出しの表示位置(Y)
-	int m_iballoontype; //吹き出しの種類
-	int m_iballoonDir;  //吹き出しの形
-	int m_iballooncolor;//吹き出しの色情報(シオンの能力発動時)
-	RECT m_gimdst;		//切り取り座標
-	RECT m_gimsrc;		//転送先座標
-	int m_soundnum;     //ギミックが持っている音情報					 
-	bool OnPush;        //押されたかどうかを判断する
-	bool m_bOnceFlg;	//クリックした際一度だけ反応するためのフラグ
+	int m_iGimXpos;			//吹き出しの表示位置(X)
+	int m_iGimYpos;			//吹き出しの表示位置(Y)
+	int m_iballoontype;		//吹き出しの種類
+	int m_iballoonDir;		//吹き出しの形
+	SoundData m_sound_data;	//持っている音データ
+	//int m_soundnum;		//ギミックが持っている音の番号
+	//int m_iballooncolor;	//吹き出しの色情報(シオンの能力発動時)
+	//BallonElement m_element;//吹き出しの属性
+	bool OnPush;			//押されたかどうかを判断する
+	bool m_bOnceFlg;		//クリックした際一度だけ反応するためのフラグ
 }Balloon;
 
 //プロトタイプ宣言
 //吹き出し構造体(Balloon)の初期化関数
-void InitBall(Balloon* balloon, int gimX, int gimY, int balltype, int soundnum, int color, int Dir);
+void InitBall(Balloon* balloon, int gimX, int gimY, int balltype, int soundnum, int color, int Dir, BallonElement element = BALL_ELM_NO_ANIMAL, BallonVolume volume = BALL_VOL_SMALL);
 
 //ギミッククラス(基底)
 class Gimmick : public CObj {
@@ -72,11 +94,12 @@ protected:
 	int m_iWidth;	//ギミック幅
 	int m_iHeight;	//ギミック高さ
 					//----------------表示位置----------
-	RECT m_src;			//転送先座標
-	RECT m_dst;			//切り取り座標
-	int m_getsound;		//ギミックに音をドラッグ＆ドロップされたかどうか
-	bool m_bActionFlg;	//ギミック動作フラグ
+	RECT m_src;				//転送先座標
+	RECT m_dst;				//切り取り座標
+	SoundData m_getsound;	//ドラッグされた音情報
 
+	bool m_bActionFlg;	//ギミック動作フラグ
+	int m_ball_draw_num;//吹き出し描画数
 public:
 	//デストラクタ
 	virtual ~Gimmick() {
@@ -93,11 +116,11 @@ public:
 	//吹き出しの種類をセットする
 	void setballoontype(int balloontype, int num) { m_ball[num].m_iballoontype = balloontype; }
 	//吹き出し(音情報)をセットする
-	void setBalloonSound(int soundnum, int num) { m_ball[num].m_soundnum = soundnum; }
-	//吹き出しの色を変える(シオン能力発動時)
-	void changeBalloonColor(int num);
-	//吹き出し(会話)の形を変える
-	void changetalkDir(int num);
+	void setBalloonSound(int soundnum, int num) { m_ball[num].m_sound_data.sound_num = soundnum; }
+	////吹き出しの色を変える(シオン能力発動時)
+	//void changeBalloonColor(int num);
+	////吹き出し(会話)の形を変える
+	//void changetalkDir(int num);
 	//描画
 	void gimmicDraw(int num);
 };

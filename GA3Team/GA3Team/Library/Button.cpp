@@ -49,7 +49,7 @@ bool Button::Push()
 	}
 
 	//¶ƒNƒŠƒbƒN‚³‚ê‚½‚ç
-	if (Input()->GetMouButtonL()) 
+	if (Input()->GetMouButtonLOnce()) 
 	{
 		m_bOnceFlg = true;
 	}

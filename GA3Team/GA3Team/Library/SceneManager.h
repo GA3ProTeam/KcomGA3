@@ -67,6 +67,9 @@ class CSceneManager
 		void GameLoop();	//登録してるシーンを実行する
 		void Init();		//初期化
 
+		//現在のシーンを取得
+		CScene* GetNowScene() { return m_Scene; }
+
 	private:
 		CScene* m_PopScene; //ポップ予定のシーン情報
 		CScene*	m_Scene;	//実行シーン(スタック予定)

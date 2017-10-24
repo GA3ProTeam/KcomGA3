@@ -1,10 +1,5 @@
 #ifndef __SOUNDMANEGER_H__
 #define __SOUNDMANEGER_H__
-enum volState {
-	SOUND_MIN = -1,
-	SOUND_NORMAL = 0,
-	SOUND_MAX = 1,
-};
 enum vol {
 	SOUND_PLUS = 1,
 	SOUND_MINUS = -1,
@@ -22,7 +17,7 @@ public:
 	SoundData GetSound(int slotNum/*引き出すスロットの番号*/);//音を取得する
 	bool HaveSound(int soundNum);//特定の音を持っているか調べる
 	void soundvol(int slotNum/*調べる音番号*/, vol vol);//コウネの能力発動時音の音量を変える
-	int getvol(int slotnum) { return Soundvol[slotnum]; };
+	int getvol(int slotnum) { return SoundSlot[slotnum].sound_volume; };
 	
 };
 

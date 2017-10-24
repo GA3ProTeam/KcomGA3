@@ -30,7 +30,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 	*/
 	SavedataManeger()->Setcurrentdata();
 
-	m_Stage_ID = 31;
+	m_Stage_ID = 30;
 
 	switch (m_Stage_ID) {
 
@@ -189,25 +189,25 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 
 
 		////-コウネステージ-----------------------------------------
-		//case 30:
+		case 30:
 
-		/*m_gimmick_dog = new GimmickDog();
+		m_gimmick_dog = new GimmickDog();
 		Obj()->InsertObj(m_gimmick_dog,GIMMICK_DOG , 5, this->m_pScene, HIT_BOX_OFF);
 		m_gimmick_dog->Init(520, 320, 120, 100, 1);
 
 		m_gimmick_oldman = new GimmickOldman();
 		Obj()->InsertObj(m_gimmick_oldman, GIMMICK_OLDMAN, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_oldman->Init(100, 100, 150, 300, 3);
+		m_gimmick_oldman->Init(100, 150, 150, 300, 1);
 
 		m_gimmick_manhole_hole = new GimmickManholeHole();
-		Obj()->InsertObj(m_gimmick_manhole_hole, GIMMICK_MANHOLEHOLE, 3, this->m_pScene, HIT_BOX_OFF);
+		Obj()->InsertObj(m_gimmick_manhole_hole, GIMMICK_MANHOLEHOLE, 2, this->m_pScene, HIT_BOX_OFF);
 		m_gimmick_manhole_hole->Init(100, 400, 220, 80, 2);
 
 		m_gimmick_manhole_cover = new GimmickManholeCover();
-		Obj()->InsertObj(m_gimmick_manhole_cover, GIMMICK_MANHOLECOVER, 2, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_manhole_cover->Init(100, 400, 220, 80, 1);*/
+		Obj()->InsertObj(m_gimmick_manhole_cover, GIMMICK_MANHOLECOVER,3, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_manhole_cover->Init(100, 400, 220, 80, 1);
 
-		//break;
+		break;
 
 	case 31:
 		//コウネステージ２　ギミック生成
@@ -713,6 +713,7 @@ void CObjGimmickManager::Action() {
 			if (m_gimmick_oldman->m_ball[0].OnPush) {
 				if (SoundManager()->HaveSound(0)==false) {
 					Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG2_NO);
+					
 				}
 				else if (SoundManager()->HaveSound(0)==true) {
 					Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG2_YES);
@@ -721,7 +722,9 @@ void CObjGimmickManager::Action() {
 
 			//会話終了
 			if (Overlay()->NextWait()) {
-				m_Koune1_flg = 2;
+				if(Overlay()->NowTalk()== KOUNE1_OZI_FLAG2_NO ||
+					Overlay()->NowTalk() == KOUNE1_OZI_FLAG2_YES)
+					m_Koune1_flg = 2;
 			}
 		}
 		else if (m_Koune1_flg == 2) {
@@ -729,10 +732,7 @@ void CObjGimmickManager::Action() {
 			if (m_gimmick_oldman->m_getsound.sound_num==0&&
 				m_gimmick_oldman->m_getsound.sound_volume == BALL_VOL_BIG) {
 				Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG3_YES);
-				if (Overlay()->NextWait()) {
-					m_gimmick_oldman->m_Status = STATUS_DELETE;
-					m_Koune1_flg = 4;
-				}
+
 				
 			}/*犬の音を少音量で聞かせた+おじいさんに話しかける前に*/
 			else if (m_gimmick_oldman->m_getsound.sound_num == 0 &&
@@ -747,7 +747,15 @@ void CObjGimmickManager::Action() {
 				m_bKoune1_flg_list[KOUNE1_BOOL_OLDMAN_TALK] == true) {
 				Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG3_NO);
 			}
+			else {
+				int a = 0;
+			}
+				if (Overlay()->NextWait()) {
+					if (Overlay()->NowTalk() == KOUNE1_OZI_FLAG3_YES)
 
+					m_gimmick_oldman->m_Status = STATUS_DELETE;
+					m_Koune1_flg = 4;
+				}
 		}
 		else if (m_Koune1_flg == 4) {
 			//マンホールを左にずらす

@@ -121,9 +121,9 @@ class Gimmickwatchdog : public Gimmick
 private:
 public:
 	void Init(int xpos, int ypos, int widht, int height, int balloonnum);//イニシャライズ
-void Destructor();//デストラクタ
-void Action();//アクション
-void Draw();//描画
+	void Destructor();//デストラクタ
+	void Action();//アクション
+	void Draw();//描画
 };
 //インターホン
 class GimmickInterphone : public Gimmick
@@ -131,9 +131,9 @@ class GimmickInterphone : public Gimmick
 private:
 public:
 	void Init(int xpos, int ypos, int widht, int height, int balloonnum);//イニシャライズ
-void Destructor();//デストラクタ
-void Action();//アクション
-void Draw();//描画
+	void Destructor();//デストラクタ
+	void Action();//アクション
+	void Draw();//描画
 };
 
 

@@ -1,16 +1,19 @@
 #include "../main.h"
+
 void CSoundManeger::Init()
 {
 	for (int i = 0; i < 3; i++) {
 		SoundSlot[i] = -1;
+		Soundvol[i] = SOUND_NORMAL;
 	}
+
 
 }
 
 void CSoundManeger::SoundDelete(int slotNum/*削除する音スロットの番号*/)//音を消去する
 {
 	SoundSlot[slotNum] = -1;
-
+	Soundvol[slotNum] = SOUND_NORMAL;
 }
 void CSoundManeger::SoundSave(int soundNum/*音の番号*/) //音をセーブする
 {
@@ -27,6 +30,7 @@ void CSoundManeger::SoundSave(int soundNum/*音の番号*/) //音をセーブする
 	{
 		if (SoundSlot[i] == -1 && !flg) {
 			SoundSlot[i] = soundNum;
+			Soundvol[i] = SOUND_NORMAL;
 			break;
 		}
 	}
@@ -35,13 +39,22 @@ void CSoundManeger::SoundSave(int soundNum/*音の番号*/) //音をセーブする
 //音を再生する
 void CSoundManeger::StartSound(int slotNum/*再生する音のスロット番号*/)
 {
-	g_Audio->Start(SoundSlot[slotNum]);
+	//各スロットでの音ボリューム情報に応じて音量帰る。
+	if (Soundvol[slotNum] == SOUND_NORMAL){
+		g_Audio->Volume(10, SoundSlot[slotNum]);
+		g_Audio->Start(SoundSlot[slotNum]);
+	}
+	else if (Soundvol[slotNum] == SOUND_MAX) {
+		g_Audio->Start(SoundSlot[slotNum]);
+		g_Audio->Volume(15, SoundSlot[slotNum]);
+	}
+	else if (Soundvol[slotNum] == SOUND_MIN) {
+		g_Audio->Start(SoundSlot[slotNum]);
+		g_Audio->Volume(5, SoundSlot[slotNum]);
+	}
+	
 }
 
-int  CSoundManeger::GetSound(int slotNum/*引き出すスロットの番号*/)
-{
-	return SoundSlot[slotNum];
-}
 
 //特定の音を持っているか調べる
 //戻り値：
@@ -57,4 +70,18 @@ bool CSoundManeger::HaveSound(int soundNum/*調べる音番号*/)
 		}
 	}
 	return false;
+}
+
+void CSoundManeger::soundvol(int slotNum, vol vol)
+{
+	//プラスボタンを押されたら＋最大音量じゃなかったら
+	if (vol == SOUND_PLUS && Soundvol[slotNum] != SOUND_MAX)
+	{
+		Soundvol[slotNum] += 1;
+	}
+	//マイナスボタンを押されたら＋最小音量じゃなかったら
+	if (vol == SOUND_PLUS && Soundvol[slotNum] != SOUND_MIN)
+	{
+		Soundvol[slotNum] -= 1;
+	}
 }

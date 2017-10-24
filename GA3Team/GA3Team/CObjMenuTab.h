@@ -29,6 +29,8 @@ private:
 	RECT m_rSrc;//転送先座標
 	RECT m_rDst;//切り取り座標
 
+	bool abiltyOverray;//能力発動フラグ
+
 public:
 	void Init(int openclosey);//イニシャライズInit(タブのY軸の指定)
 	void Destructor();//デストラクタ
@@ -48,6 +50,11 @@ public:
 
 	//ゴミ箱動作フラグ切り替え
 	void SetGarbageActionFlg(bool flg) { m_bGarbageActionFlg = flg; }
+
+	//能力ON、OFF関数
+	void Onability();
+	void Offability();
+	bool isabilty() { return abiltyOverray;}
 };
 
 #endif

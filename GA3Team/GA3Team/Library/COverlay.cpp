@@ -56,6 +56,8 @@ void COverlay::InitLoad()
 	//チュートリアルステージ------------------------
 	image->LoadImageEx("StageTutorial.png", EX_STAGE_TUTORIAL, TEX_SIZE_1024);
 	//----------------------------------------------
+	image->LoadImageEx("音量ボタン.png", EX_VOLBOTTON, TEX_SIZE_512);
+
 
 	//透過・暗転初期化
 	m_fDefColor[0] = 1.0f;

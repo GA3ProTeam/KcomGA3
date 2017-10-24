@@ -105,6 +105,7 @@ void CTextManager::LoadText()
 	vector<vector<string>>* m_Chara_Control;
 	vector<vector<SelectInfo*>>* m_Chara_SelectData;
 	vector<vector<InStr*>>* m_Chara_InStr;
+	vector<TalkCharaList>* m_Chara_talk_chara_list;
 
 	//各キャラのファイルパスループ
 	for (int chara_num = 0; chara_num < MAX_CHARA; chara_num++) {
@@ -117,6 +118,7 @@ void CTextManager::LoadText()
 			m_Chara_Control = &m_Tutorial_Control;
 			m_Chara_SelectData = &m_Tutorial_SelectData;
 			m_Chara_InStr = &m_Tutorial_InStr;
+			m_Chara_talk_chara_list = &m_Tutorial_talk_chara_list;
 			break;
 
 		case STAGE_TYPE::SION:
@@ -125,6 +127,7 @@ void CTextManager::LoadText()
 			m_Chara_Control = &m_Sion_Control;
 			m_Chara_SelectData = &m_Sion_SelectData;
 			m_Chara_InStr = &m_Sion_InStr;
+			m_Chara_talk_chara_list = &m_Sion_talk_chara_list;
 			break;
 
 		case STAGE_TYPE::KOUNE:
@@ -133,6 +136,7 @@ void CTextManager::LoadText()
 			m_Chara_Control = &m_Koune_Control;
 			m_Chara_SelectData = &m_Koune_SelectData;
 			m_Chara_InStr = &m_Koune_InStr;
+			m_Chara_talk_chara_list = &m_Koune_talk_chara_list;
 			break;
 
 		case STAGE_TYPE::MERUERU:
@@ -141,10 +145,16 @@ void CTextManager::LoadText()
 			m_Chara_Control = &m_Merueru_Control;
 			m_Chara_SelectData = &m_Merueru_SelectData;
 			m_Chara_InStr = &m_Merueru_InStr;
+			m_Chara_talk_chara_list = &m_Merueru_talk_chara_list;
 			break;
 		}
 
 		for (auto fileitr = filePath_chara->begin(); fileitr != filePath_chara->end(); ++fileitr) {
+
+			//デバッグ用
+			if ((*fileitr).find("Text\\tyu-toriaru\\hakase_clear.bin") != -1) {
+				int a = 0;
+			}
 
 			//文字データ読み込み
 			ifstream ifw((*fileitr).c_str(), std::ios::in | std::ios::binary);
@@ -216,6 +226,8 @@ void CTextManager::LoadText()
 			int dir_count[TALK_CHARA_DIR_MAX] = { 0 };
 			//-------------------------------------------
 
+			TalkCharaList tmp_chara_list;//会話キャラクターリスト保持
+
 			while (itr != tmpData.end()) {
 
 				//キャラクターの位置読み込み
@@ -249,25 +261,25 @@ void CTextManager::LoadText()
 								int in = name.find("[挿入");
 								//挿入タグ発見
 								if (in != -1) {
-									m_talk_chara_list[dir][dir_count[dir]].in_shift_id = atoi(&name[in + 5]);
+									tmp_chara_list.data[dir][dir_count[dir]].in_shift_id = atoi(&name[in + 5]);
 									//挿入タグ部分削除
 									name.erase(in, name_end - in);
 								}
 								//挿入タグなし
 								else {
 									//挿入切り替えしないキャラクターは、-1を入れておく
-									m_talk_chara_list[dir][dir_count[dir]].in_shift_id = -1;
+									tmp_chara_list.data[dir][dir_count[dir]].in_shift_id = -1;
 								}
 
 								//キャラクター名をこの方向にセット
-								m_talk_chara_list[dir][dir_count[dir]].name = name;
+								tmp_chara_list.data[dir][dir_count[dir]].name = name;
 
 								//表情読み込み
 								name_start = name_end + 2;
 								string expression = (*itr).substr(name_start, end - name_start);
 
 								//表情をこの方向にセット
-								m_talk_chara_list[dir][dir_count[dir]].expression = expression;
+								tmp_chara_list.data[dir][dir_count[dir]].expression = expression;
 
 								//この方向に格納した数をカウント
 								dir_count[dir]++;
@@ -282,6 +294,10 @@ void CTextManager::LoadText()
 							//左右タグ部分を削除
 							itr = tmpData.erase(itr);
 						}
+						////キャラクターがいない
+						//else {
+						//	tmp_chara_list.data[dir][dir_count[dir]].name = "";
+						//}
 					}
 					//閉じ括弧を削除
 					itr = tmpData.erase(itr);
@@ -471,15 +487,15 @@ void CTextManager::LoadText()
 			m_Chara_Control->push_back(tmpControl);
 			m_Chara_SelectData->push_back(tmpSelectData);
 			m_Chara_InStr->push_back(tmpInStr);
+			m_Chara_talk_chara_list->push_back(tmp_chara_list);
 
-			//保持リストを開放
+			//保持メモリを開放
 			tmpData.clear();
 			tmpControl.clear();
 			tmpSelectData.clear();
 			tmpInStr.clear();
 		}
 	}
-
 	//for (auto fileitr = filePath_sion.begin(); fileitr != filePath_sion.end(); ++fileitr) {
 
 	//	//文字データ読み込み

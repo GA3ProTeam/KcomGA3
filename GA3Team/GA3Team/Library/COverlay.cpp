@@ -60,8 +60,6 @@ void COverlay::InitLoad()
 	image->LoadImageEx("StageTutorial.png", EX_STAGE_TUTORIAL, TEX_SIZE_1024);
 	//----------------------------------------------
 	image->LoadImageEx("音量ボタン.png", EX_VOLBOTTON, TEX_SIZE_512);
-
-
 	//サウンド読み込み↓---------------------------------------------------------------------------
 	//チュートリアルステージ
 	audio->LoadAudio(0, "Sound\\チュートリアル\\fanfare3.wav");
@@ -594,146 +592,166 @@ void COverlay::Draw()
 
 
 
-		////------------------------キャラビジュアル表示処理---------------------------
-		//int talk_chara = 0;	  //現在発言中のキャラ
-		//					  //int talk_chara_dir=0; //現在発言中の方向
+		//------------------------キャラビジュアル表示処理---------------------------
+		//配置キャラクター情報を一つのポインターで統括
+		TalkCharaList* m_Chara_talk_chara_list;
+		switch (m_iDrawingStage)
+		{
+		case STAGE_TYPE::TUTORIAL:
+			m_Chara_talk_chara_list = &textmgr->m_Tutorial_talk_chara_list[m_iDrawingStageID];
+			break;
+		case STAGE_TYPE::SION:
+			m_Chara_talk_chara_list = &textmgr->m_Sion_talk_chara_list[m_iDrawingStageID];
+			break;
+		case STAGE_TYPE::KOUNE:
+			m_Chara_talk_chara_list = &textmgr->m_Koune_talk_chara_list[m_iDrawingStageID];
+			break;
+		case STAGE_TYPE::MERUERU:
+			m_Chara_talk_chara_list = &textmgr->m_Merueru_talk_chara_list[m_iDrawingStageID];
+			break;
+		}
 
-		//float col[4] = { 1.0f,1.0f ,1.0f ,m_fAlpha };
-		//TalkCharaData* talk_data;
+		int talk_chara = -1;	//現在発言中のキャラ
+								//int talk_chara_dir=0; //現在発言中の方向
 
-		//for (int dir = 0; dir < TALK_CHARA_DIR_MAX; dir++) {
-		//	//末尾からループ
-		//	for (int chara = TALK_CHARA_ONE_DIR_MAX - 1; chara >= 0; chara--) {
+		float col[4] = { 1.0f,1.0f ,1.0f ,m_fAlpha };
+		TalkCharaData* talk_data;
 
-		//		talk_data = &textmgr->m_talk_chara_list[dir][chara];
+		for (int dir = 0; dir < TALK_CHARA_DIR_MAX; dir++) {
+			//末尾からループ
+			for (int chara = TALK_CHARA_ONE_DIR_MAX - 1; chara >= 0; chara--) {
 
-		//		//キャラクターが格納されていないならスキップ
-		//		if (talk_data->name.size() == 0) {
-		//			continue;
-		//		}
+				talk_data = &m_Chara_talk_chara_list->data[dir][chara];
 
-		//		//初回の表情代入
-		//		if (m_talk_expression_list[dir][chara].size() == 0) {
-		//			m_talk_expression_list[dir][chara] = talk_data->expression;
-		//		}
+				//キャラクターが格納されていないならスキップ
+				if (talk_data->name.size() == 0) {
+					continue;
+				}
 
-		//		//挿入処理
-		//		if (talk_data->in_shift_id != -1) {
-		//			//挿入キャラを指定している場合
-		//			if (m_piShowCharaID) {
-		//				int roop_id;
-		//				//そのアドレスが
-		//				//表示指定アドレスの中（m_piShowCharaID）にあるか調べる
-		//				for (roop_id = 0; roop_id < m_iCharaIDSize; roop_id++) {
-		//					if (talk_data->in_shift_id == m_piShowCharaID[roop_id]) {
-		//						break;
-		//					}
-		//				}
+				//初回の表情代入
+				if (m_talk_expression_list[dir][chara].size() == 0) {
+					m_talk_expression_list[dir][chara] = talk_data->expression;
+				}
 
-		//				//↑のループで最後まで調べた結果、
-		//				//表示指定アドレスの中になかった
-		//				if (roop_id == m_iIDSize) {
-		//					//このキャラは表示しない
-		//					continue;
-		//				}
+				//挿入処理
+				if (talk_data->in_shift_id != -1) {
+					//挿入キャラを指定している場合
+					if (m_piShowCharaID) {
+						int roop_id;
+						//そのアドレスが
+						//表示指定アドレスの中（m_piShowCharaID）にあるか調べる
+						for (roop_id = 0; roop_id < m_iCharaIDSize; roop_id++) {
+							if (talk_data->in_shift_id == m_piShowCharaID[roop_id]) {
+								break;
+							}
+						}
 
-		//			}
-		//			else {
-		//				//このキャラは表示しない
-		//				continue;
-		//			}
-		//		}
+						//↑のループで最後まで調べた結果、
+						//表示指定アドレスの中になかった
+						if (roop_id == m_iIDSize) {
+							//このキャラは表示しない
+							continue;
+						}
 
-		//		//現在発言中のキャラなら、スキップ
-		//		if (talk_data->name.find(m_strTempName.c_str()) != -1) {
-		//			//キャラ番号と方向を保存
-		//			talk_chara = chara;
-		//			m_iNowDrawDir = dir;
+					}
+					else {
+						//このキャラは表示しない
+						continue;
+					}
+				}
 
-		//			//初回の方向を登録
-		//			if (m_iBeforeDrawDir == -1) {
-		//				m_iBeforeDrawDir = dir;
-		//			}
-		//			//表情更新
-		//			m_talk_expression_list[dir][chara] = m_tmpsearch;
-		//			continue;
-		//		}
-		//		//現在発言中のキャラでなければ、暗くする
-		//		else {
-		//			col[0] = 0.5f;
-		//			col[1] = 0.5f;
-		//			col[2] = 0.5f;
-		//		}
+				//現在発言中のキャラなら、スキップ
+				if (talk_data->name.find(m_strTempName.c_str()) != -1) {
+					//キャラ番号と方向を保存
+					talk_chara = chara;
+					m_iNowDrawDir = dir;
 
-		//		//キャラクター描画
-		//		DrawCharacter(talk_data->name.c_str(), m_talk_expression_list[dir][chara].c_str(), dir, chara, col);
-		//	}
-		//}
+					//初回の方向を登録
+					if (m_iBeforeDrawDir == -1) {
+						m_iBeforeDrawDir = dir;
+					}
+					//表情更新
+					m_talk_expression_list[dir][chara] = m_tmpsearch;
+					continue;
+				}
+				//現在発言中のキャラでなければ、暗くする
+				else {
+					col[0] = 0.5f;
+					col[1] = 0.5f;
+					col[2] = 0.5f;
+				}
 
-		////現在発言中のキャラ描画-----------------------------
-		//col[0] = 1.0f;
-		//col[1] = 1.0f;
-		//col[2] = 1.0f;
-		//talk_data = &textmgr->m_talk_chara_list[m_iNowDrawDir][talk_chara];
-		//DrawCharacter(talk_data->name.c_str(), m_talk_expression_list[m_iNowDrawDir][talk_chara].c_str(), m_iNowDrawDir, talk_chara, col);
-		////---------------------------------------------------
+				//キャラクター描画
+				DrawCharacter(talk_data->name.c_str(), m_talk_expression_list[dir][chara].c_str(), dir, chara, col);
+			}
+		}
 
-		//////-------------------左キャラ----------------------
-		////RECT leftsrc, leftdst;
-		////m_fLeftColor[3] = m_fAlpha;
-		//////切り取り座標
-		////leftdst.top = 0;
-		////leftdst.left = 0;
-		////leftdst.bottom = leftdst.top + 350;
-		////leftdst.right = leftdst.left + 200;
+		//現在発言中のキャラ描画-----------------------------
+		if (talk_chara != -1) {
+			col[0] = 1.0f;
+			col[1] = 1.0f;
+			col[2] = 1.0f;
+			talk_data = &m_Chara_talk_chara_list->data[m_iNowDrawDir][talk_chara];
+			DrawCharacter(talk_data->name.c_str(), m_talk_expression_list[m_iNowDrawDir][talk_chara].c_str(), m_iNowDrawDir, talk_chara, col);
+		}
+		//---------------------------------------------------
 
-		//////転送先座標
-		////leftsrc.top = TALK_CHARA_LEFT_MARGIN_Y;
-		////leftsrc.left = 0;
-		////leftsrc.bottom = leftsrc.top + 300;
-		////leftsrc.right = leftsrc.left + 250;
-
-		////image->DrawEx(m_iLeftCharaImageID, &leftsrc, &leftdst, m_fLeftColor, 0.0f);
-		//////-------------------左キャラ終---------------------
-
-		//////-------------------右キャラ----------------------
-		////RECT rightsrc, rightdst;
-		////m_fRightColor[3] = m_fAlpha;
-		//////切り取り座標
-		////rightdst.top = 70;
-		////rightdst.left = 380;
-		////rightdst.bottom = rightdst.top + 235;
-		////rightdst.right = rightdst.left + 274;
-
-		//////転送先座標
-		////rightsrc.top = TALK_CHARA_RIGHT_MARGIN_Y;
-		////rightsrc.left = WINDOW_SIZE_W - TALK_CHARA_RIGHT_MARGIN_X;
-		////rightsrc.bottom = rightsrc.top + 300;
-		////rightsrc.right = rightsrc.left + 300;
-
-		////image->DrawEx(m_iRightCharaImageID, &rightsrc, &rightdst, m_fRightColor, 0.0f);
-		//////-------------------右キャラ終---------------------
-
-		////-------------------中キャラ----------------------
-		///*
-		//RECT centersrc, centerdst;
-		//m_fCenterColor[3] = m_fAlpha;
+		////-------------------左キャラ----------------------
+		//RECT leftsrc, leftdst;
+		//m_fLeftColor[3] = m_fAlpha;
 		////切り取り座標
-		//centerdst.top = 0;
-		//centerdst.left = 0;
-		//centerdst.bottom = centerdst.top + 350;
-		//centerdst.right = centerdst.left + 200;
+		//leftdst.top = 0;
+		//leftdst.left = 0;
+		//leftdst.bottom = leftdst.top + 350;
+		//leftdst.right = leftdst.left + 200;
 
 		////転送先座標
-		//centersrc.top = TALK_CHARA_LEFT_MARGIN_Y;
-		//centersrc.left = WINDOW_SIZE_W/2-100;
-		//centersrc.bottom = centersrc.top + 300;
-		//centersrc.right = centersrc.left + 250;
+		//leftsrc.top = TALK_CHARA_LEFT_MARGIN_Y;
+		//leftsrc.left = 0;
+		//leftsrc.bottom = leftsrc.top + 300;
+		//leftsrc.right = leftsrc.left + 250;
 
-		//image->DrawEx(62, &centersrc, &centerdst, col, 0.0f);
-		//*/
-		////-------------------中キャラ終---------------------
-		////------------------------キャラビジュアル表示処理終了---------------------------
+		//image->DrawEx(m_iLeftCharaImageID, &leftsrc, &leftdst, m_fLeftColor, 0.0f);
+		////-------------------左キャラ終---------------------
+
+		////-------------------右キャラ----------------------
+		//RECT rightsrc, rightdst;
+		//m_fRightColor[3] = m_fAlpha;
+		////切り取り座標
+		//rightdst.top = 70;
+		//rightdst.left = 380;
+		//rightdst.bottom = rightdst.top + 235;
+		//rightdst.right = rightdst.left + 274;
+
+		////転送先座標
+		//rightsrc.top = TALK_CHARA_RIGHT_MARGIN_Y;
+		//rightsrc.left = WINDOW_SIZE_W - TALK_CHARA_RIGHT_MARGIN_X;
+		//rightsrc.bottom = rightsrc.top + 300;
+		//rightsrc.right = rightsrc.left + 300;
+
+		//image->DrawEx(m_iRightCharaImageID, &rightsrc, &rightdst, m_fRightColor, 0.0f);
+		////-------------------右キャラ終---------------------
+
+		//-------------------中キャラ----------------------
+		/*
+		RECT centersrc, centerdst;
+		m_fCenterColor[3] = m_fAlpha;
+		//切り取り座標
+		centerdst.top = 0;
+		centerdst.left = 0;
+		centerdst.bottom = centerdst.top + 350;
+		centerdst.right = centerdst.left + 200;
+
+		//転送先座標
+		centersrc.top = TALK_CHARA_LEFT_MARGIN_Y;
+		centersrc.left = WINDOW_SIZE_W/2-100;
+		centersrc.bottom = centersrc.top + 300;
+		centersrc.right = centersrc.left + 250;
+
+		image->DrawEx(62, &centersrc, &centerdst, col, 0.0f);
+		*/
+		//-------------------中キャラ終---------------------
+		//------------------------キャラビジュアル表示処理終了---------------------------
 
 
 		//-------------------吹き出し-----------------------
@@ -813,12 +831,12 @@ void COverlay::Draw()
 		if (m_fAlpha == 1.0f) {
 			sprintf_s(tmpname, "%s", m_strTempName.c_str());
 			float col[4] = { 0.0f,0.0f,0.0f,m_fAlpha };
-			font->StrDraw(tmpname, m_src.left + 50, m_src.top + 50, 20, col);
+			font->StrDraw(tmpname, m_src.left + 80, m_src.top + 80, 20, col);
 
 			for (unsigned int i = 0; i < m_strTemp.size(); ++i) {
 				sprintf_s(tmp, "%s", m_strTemp[i].c_str());
 				float col[4] = { 0.0f,0.0f,0.0f,m_fAlpha };
-				font->StrDraw(tmp, m_src.left + 50, (m_src.top + 80) + ((i - m_iCurrentLine) * 20), 20, col);
+				font->StrDraw(tmp, m_src.left + 80, (m_src.top + 120) + ((i - m_iCurrentLine) * 20), 20, col);
 			}
 		}
 		//-------------------------------テキスト表示処理終了--------------------------------
@@ -837,6 +855,10 @@ void COverlay::DrawCharacter(const char* name, const char* expression, int dir, 
 
 	int image_id = 58;
 
+	//ギミックの幅・高さ
+	int width = 200;
+	int height = 380;
+
 	//切り取り座標
 	leftdst.top = 192;
 	leftdst.left = 0;
@@ -845,10 +867,10 @@ void COverlay::DrawCharacter(const char* name, const char* expression, int dir, 
 
 	//表示X座標決定
 	if (dir == CHARA_LEFT) {
-		leftsrc.left = 200 - dir_count * 100;
+		leftsrc.left = (WINDOW_SIZE_W / 2 - width - 50) - dir_count * 100;
 	}
 	else {
-		leftsrc.left = 500 + dir_count * 100;
+		leftsrc.left = (WINDOW_SIZE_W / 2 + 50) + dir_count * 100;
 	}
 
 	//転送先座標
@@ -960,6 +982,8 @@ void COverlay::talkDraw(int stage, int stageID, int* piShowTextID, int size, int
 bool COverlay::NextWait() {
 	//描画終了時
 	if (!m_bDrawing) {
+		m_bDrawing = true;
+
 		//次のメッセージに移行するフラグを立てる
 		m_bNextFlg = true;
 
@@ -1002,7 +1026,6 @@ void COverlay::StopDraw() {
 
 		//表情バッファクリア
 		for (int dir = 0; dir < TALK_CHARA_DIR_MAX; dir++) {
-			//末尾からループ
 			for (int chara = 0; chara < TALK_CHARA_ONE_DIR_MAX; chara++) {
 				m_talk_expression_list[dir][chara].clear();
 			}

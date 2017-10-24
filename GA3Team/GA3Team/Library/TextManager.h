@@ -3,17 +3,6 @@
 #ifndef __TEXTMANAGER_H__
 #define __TEXTMANAGER_H__
 
-//出現キャラクターデータ
-struct TalkCharaData {
-	TalkCharaData() {
-		in_shift_id = -1;
-	}
-
-	string name;		//名前
-	string expression;	//表情
-	int in_shift_id;	//挿入切り替え用アドレス（挿入切り替えが不可な場合は-1が入ります。）
-};
-
 //選択項目一つのデータ
 struct SelectData
 {
@@ -52,6 +41,22 @@ struct InStr {
 
 //会話シーンで一つの方向に出現するキャラクターの最大数
 #define TALK_CHARA_ONE_DIR_MAX 3
+
+//出現キャラクターデータ
+struct TalkCharaData {
+	TalkCharaData() {
+		in_shift_id = -1;
+	}
+
+	string name;		//名前
+	string expression;	//表情
+	int in_shift_id;	//挿入切り替え用アドレス（挿入切り替えが不可な場合は-1が入ります。）
+};
+
+//出現キャラクターリスト
+struct TalkCharaList {
+	TalkCharaData data[TALK_CHARA_DIR_MAX][TALK_CHARA_ONE_DIR_MAX];
+};
 
 //会話シーン左右
 enum TALK_CHARA_DIR {
@@ -97,24 +102,28 @@ public:
 	vector<vector<string>> m_Tutorial_Control;
 	vector<vector<SelectInfo*>> m_Tutorial_SelectData;
 	vector<vector<InStr*>> m_Tutorial_InStr;
+	vector<TalkCharaList> m_Tutorial_talk_chara_list;
 
 	vector<vector<string>> m_Sion_Text;
 	vector<vector<string>> m_Sion_Control;
 	vector<vector<SelectInfo*>> m_Sion_SelectData;
 	vector<vector<InStr*>> m_Sion_InStr;
+	vector<TalkCharaList> m_Sion_talk_chara_list;
 
 	vector<vector<string>> m_Koune_Text;
 	vector<vector<string>> m_Koune_Control;
 	vector<vector<SelectInfo*>> m_Koune_SelectData;
 	vector<vector<InStr*>> m_Koune_InStr;
+	vector<TalkCharaList> m_Koune_talk_chara_list;
 
 	vector<vector<string>> m_Merueru_Text;
 	vector<vector<string>> m_Merueru_Control;
 	vector<vector<SelectInfo*>> m_Merueru_SelectData;
 	vector<vector<InStr*>> m_Merueru_InStr;
+	vector<TalkCharaList> m_Merueru_talk_chara_list;
 
 	//会話シーン左右出現キャラ情報
-	TalkCharaData m_talk_chara_list[TALK_CHARA_DIR_MAX][TALK_CHARA_ONE_DIR_MAX];
+	//TalkCharaData m_talk_chara_list[TALK_CHARA_DIR_MAX][TALK_CHARA_ONE_DIR_MAX];
 
 	CTextManager();
 	~CTextManager() {

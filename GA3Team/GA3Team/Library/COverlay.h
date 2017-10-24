@@ -14,6 +14,7 @@ enum STAGE_TYPE {
 enum tutorial
 {
 	//チュートリアル
+	CHARA_SHIFT_TEST,
 	SELECT_TEST,
 	HAKASE_1,
 	HAKASE_FLAG_1_1,
@@ -22,6 +23,7 @@ enum tutorial
 	HAKASE_FLAG_2_YES_3_NO,
 	HAKASE_CLEAR
 };
+
 enum sion
 {
 	//シオン
@@ -38,7 +40,7 @@ enum sion
 	SION2_FLAG_NO,
 	SION2_FLAG_YES,
 	SION2_CLEAR,
-	
+
 	//ステージ3
 	SION3_START,
 	SION3_OBATYAN,
@@ -49,16 +51,16 @@ enum sion
 	SION3_FLAG_YES_CHILD2,
 	SION3_FLAG_NO_CHILD3,
 	SION3_FLAG_YES_CHILD3,
-	
+
 	//ステージ4
-	SION4_START,	
+	SION4_START,
 	SION4_NAZONAZO_FLAG1_NO,
 	SION4_NAZONAZO_FLAG1_YES,
 	SION4_NAZONAZO_FLAG2_NO,
 	SION4_NAZONAZO_BICYCLE,
 	SION4_NAZONAZO_FIRETRUCK,
 	SION4_NAZONAZO_BAT,
-	
+
 };
 enum koune
 {
@@ -72,21 +74,33 @@ enum koune
 	KOUNE1_OZI_FLAG3_NO_FLAG1_YES,
 	KOUNE1_OZI_FLAG3_YES,
 	KOUNE1_OZI_CLEAR,
-	
+
 	//ステージ2
 	KOUNE2_START,
-	KOUNE2_SION_FLAG3_YES,
-	KOUNE2_SION_FLAG3_4_YES,
-	KOUNE2_SION_FLAG3_4_NO,
-	KOUNE2_SION_FLAG2_YES,
-	KOUNE2_SION_FLAG2_RED,
-	KOUNE2_SION_FLAG2_GREEN,
-	KOUNE2_SION_FLAG2_BLUE,
+	KOUNE2_SION_DLAG1_NO_FLAG2_NO,
 	KOUNE2_SION_FLAG1_YES_FLAG2_NO,
-	KOUNE2_ONNNA_FLAG3_YES,
-	KOUNE2_ONNNA_FLAG3_1_2,
-	KOUNE2_ONNNA_FLAG3_1_1,
+	KOUNE2_SION_FLAG2_YES,
+	KOUNE2_SION_FLAG2_BLUE,
+	KOUNE2_SION_FLAG2_GREEN,
+	KOUNE2_SION_FLAG2_RED,
+	KOUNE2_SION_FLAG3_YES,
 	KOUNE2_ONNNA,
+	KOUNE2_ONNNA_FLAG3_YES,
+	KOUNE2_BOYB,
+	KOUNE2_BOYB_FLAG3_YES,
+	KOUNE2_BOYA_FLAG1_NO,
+	KOUNE2_BOYA_FLAG1_YES,
+	KOUNE2_BOYA_FLAG2_YES,
+	KOUNE2_BOYA_FLAG3_YES,
+	KOUNE2_BOYA_NOCREATURE_FLAG3_NO,
+	KOUNE2_BOYA_CREATURE_FLAG3_NO,
+	KOUNE2_BOYA_FLAG3_BLUE,
+	KOUNE2_BOYA_FLAG3_GREEN,
+	KOUNE2_BOYA_FLAG3_RED,
+	KOUNE2_BOYA_FLAG3_ALL_COLOR,
+	KOUNE2_BOYA_FLAG3_OUEN_SMALL,
+	KOUNE2_BOYA_FLAG3_OUEN_BIG,
+	KOUNE2_BOYA_FLAG3_OUEN_BIG_AFTER,
 };
 enum merueru
 {
@@ -100,7 +114,7 @@ enum merueru
 	MERUERU_KATUO_3,
 };
 
-enum DrawExID{
+enum DrawExID {
 	EX_NULL = 0,
 	EX_KOUNE_OJICHAN,
 	EX_KOUNE_MANHOLE,
@@ -149,15 +163,15 @@ enum DrawExID{
 //吹き出しタイプ
 enum TalkBalloon_Type
 {
-	TALKBALLOON_NORMAL_LEFT = 0,
-	TALKBALLOON_NORMAL_RIGHT,
-	TALKBALLOON_CLOUD_LEFT,
-	TALKBALLOON_CLOUD_RIGHT,
+	TALKBALLOON_NORMAL = 0,
+	TALKBALLOON_CLOUD,
 	TALKBALLOON_SQUARE
 };
 
+//吹き出しの方向は、TextManager.hのTALK_CHARA_DIRを使用します。
+
 //---------------------------
-class COverlay{
+class COverlay {
 private:
 	//CObj配下と同じようにアクセスできるように
 	CDrawTexture *image;
@@ -165,15 +179,18 @@ private:
 	CWinInputs *input;
 	CSoundManeger *soundmgr;
 	CTextManager *textmgr;
+	CAudio *audio;
 
 	//描画用
-	float m_fAlpha,m_fWaitAlpha;
+	float m_fAlpha, m_fWaitAlpha;
 	float m_fDefColor[4], m_fBackColor[4], m_fWaitColor[4], m_fBallonColor[4];
 	float m_fLeftColor[4], m_fRightColor[4];
 	int m_iLeftCharaImageID, m_iRightCharaImageID;
 	int m_iCurrentBalloon;
 	char m_cLeftCharaName[64], m_cRightCharaName[64];
 	RECT m_RBalloon_src[5], m_RBalloon_dst[5];
+	RECT m_dst;
+	RECT m_src;
 
 	//文字表示用
 	unsigned int m_iChar_Size;
@@ -181,6 +198,7 @@ private:
 	unsigned int m_iChar_Line;
 	vector<string> m_strTemp;
 	string m_strTempName;
+	string m_tmpsearch;
 	int m_iDelay;
 	int m_iTextSpeed;
 	int m_iCurrentLine;
@@ -192,36 +210,92 @@ private:
 	bool m_bCharaChangeFlg;
 	int m_iDrawingStage;
 	int m_iDrawingStageID;
+
+	//描画メッセージ番号取得用
+	//（m_iDrawingStageIDと違う所は、次のメッセージを描画するまで
+	//　-1が入りません。）
+	int m_iDrawingStageIDGet;
+
+	int m_iBeforeDrawDir;	//前回話していたキャラクターの方向
+	int m_iNowDrawDir;		//現在話しているキャラクターの方向
+
 	int m_iDrawFlg;
 	int m_iFadeFlg;
 	int m_iDrawingCT;
 
+	//選択肢系------------------------------------------------------
+	CSelect* m_select;//選択肢オブジェクトへの参照
+
+					  //選択した項目番号（文字列格納）
+					  //格納例：1番目の項目を選んでから2番目の項目を選んだ→"1-2-"
+	string m_SelectNum;
+	//--------------------------------------------------------------
+
+	//文字挿入系----------------------------------------------------
+	InStr* m_in_str;  //文字挿入行データへの参照
+
+	int* m_piShowTextID; //表示するテキストを指定するアクセス番号配列
+	int m_iIDSize;		 //↑の要素数
+
+	int* m_piShowCharaID;//表示するキャラクターを指定するアクセス番号配列
+	int m_iCharaIDSize;	 //↑の要素数
+						 //--------------------------------------------------------------
+
+						 //キャラクター描画系--------------------------------------------
+						 //描画中の表情保存用
+	string m_talk_expression_list[TALK_CHARA_DIR_MAX][TALK_CHARA_ONE_DIR_MAX];
+	//--------------------------------------------------------------
+
+	//次のテキストをセットする命令発信
+	void NextTextSet();
+
+	//会話終了処理
+	void DrawTextEnd() {
+		FadeOut();
+		//StopDraw();
+	}
+
+	//キャラクター描画
+	void DrawCharacter(const char* name, const char* expression, int dir, int dir_count, float col[4]);
+
 public:
 	//
-	COverlay(CDrawTexture *i, CDrawFont *f, CWinInputs *w, CSoundManeger *s, CTextManager *t)
-		: image(i), font(f), input(w), soundmgr(s), textmgr(t),
+	COverlay(CDrawTexture *i, CDrawFont *f, CWinInputs *w, CSoundManeger *s, CTextManager *t, CAudio *a)
+		: image(i), font(f), input(w), soundmgr(s), textmgr(t), audio(a),
 		m_bDrawing(false),
 		m_bNextFlg(true),
 		m_bNextWaiting(false),
 		m_bCharaChangeFlg(false),
 		m_iDrawingStage(-1),
-		m_iDrawingStageID(-1), 
-		m_iDrawFlg(-1), 
-		m_iFadeFlg(0), 
+		m_iDrawingStageID(-1),
+		m_iDrawingStageIDGet(-1),
+		m_iDrawFlg(-1),
+		m_iFadeFlg(0),
 		m_iDrawingCT(0),
-		m_iChar_Size(0), 
+		m_iChar_Size(0),
 		m_iChar_Pos(0),
-		m_iChar_Line(0), 
+		m_iChar_Line(0),
 		m_iTextSpeed(7),
-		m_iDelay(0), 
+		m_iDelay(0),
 		m_iCurrentLine(0),
 		m_iCurrentBalloon(0),
 		m_iLeftCharaImageID(0),
 		m_iRightCharaImageID(0),
 		m_fAlpha(0.0f),
-		m_fWaitAlpha(0.0f)
+		m_fWaitAlpha(0.0f),
+		m_select(NULL),
+		m_in_str(NULL),
+		m_piShowTextID(NULL),
+		m_piShowCharaID(NULL),
+		m_iBeforeDrawDir(-1),
+		m_iNowDrawDir(-1)
 	{}
-	
+
+	~COverlay() {
+		SAFE_DELETE_ARRAY(m_piShowTextID);
+		SAFE_DELETE_ARRAY(m_piShowCharaID);
+	}
+
 	//----------------動作系----------------
 
 	//最初のロード
@@ -234,7 +308,7 @@ public:
 	//トークの描画有効
 	//stage = enum[STAGE_TYPE]
 	//stageID = enum[tutorial,koune,sion,merueru]
-	void talkDraw(int stage,int stageID);
+	void talkDraw(int stage, int stageID, int* piShowTextID = NULL, int size = 0, int* piShowCharaID = NULL, int show_chara_id_size = 0);
 
 	//次のメッセージを描画するまでスタンバイ
 	bool NextWait();
@@ -258,6 +332,12 @@ public:
 
 	//オーバーレイが描画されているか
 	bool isDraw() { return m_bDrawing; }
+
+	//特定の選択肢を選択したか確認
+	bool Selected(const char* select);
+
+	//現在描画中のメッセージ番号を取得
+	int NowTalk() { return m_iDrawingStageIDGet; }
 };
 
 #endif // !__CTALKOVERLAY_H__

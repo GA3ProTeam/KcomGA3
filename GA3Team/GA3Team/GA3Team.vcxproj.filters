@@ -147,6 +147,12 @@
     <ClCompile Include="GimmickTest.cpp">
       <Filter>テスト ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="Library\CSelect.cpp">
+      <Filter>ライブラリ ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\ButtonSelect.cpp">
+      <Filter>ライブラリ ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Library\Audio.h">
@@ -258,6 +264,12 @@
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="Library\TextManager.h">
+      <Filter>ライブラリ ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\CSelect.h">
+      <Filter>ライブラリ ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\ButtonSelect.h">
       <Filter>ライブラリ ファイル</Filter>
     </ClInclude>
   </ItemGroup>

@@ -3,6 +3,7 @@
 CTextManager::CTextManager()
 {
 	//チュートリアル
+	filePath_tutorial.push_back("Text\\CharaShiftTest.bin");
 	filePath_tutorial.push_back("Text\\SelectTest.bin");
 	filePath_tutorial.push_back("Text\\tyu-toriaru\\hakase_1.bin");
 	filePath_tutorial.push_back("Text\\tyu-toriaru\\hakase_flag_1_1.bin");
@@ -58,6 +59,32 @@ CTextManager::CTextManager()
 	filePath_koune.push_back("Text\\koune1\\koune1_ozi_flag3_yes.bin");
 	filePath_koune.push_back("Text\\koune1\\koune1_ozi_clear.bin");
 
+	//Stage2
+	filePath_koune.push_back("Text\\koune2\\koune2_start.bin");
+	filePath_koune.push_back("Text\\koune2\\koune2_sion_flag1_No_flag2_No.bin");
+	filePath_koune.push_back("Text\\koune2\\koune2_sion_flag1_Yes_flag2_No.bin");
+	filePath_koune.push_back("Text\\koune2\\koune2_sion_flag2_Yes.bin");
+	filePath_koune.push_back("Text\\koune2\\koune2_sion_flag2_blue.bin");
+	filePath_koune.push_back("Text\\koune2\\koune2_sion_flag2_green.bin");
+	filePath_koune.push_back("Text\\koune2\\koune2_sion_flag2_red.bin");
+	filePath_koune.push_back("Text\\koune2\\koune2_sion_flag3_yes.bin");
+	filePath_koune.push_back("Text\\koune2\\koune2_onnna.bin");
+	filePath_koune.push_back("Text\\koune2\\koune2_onnna_flag3_yes.bin");
+	filePath_koune.push_back("Text\\koune2\\koune2_BoyB.bin");
+	filePath_koune.push_back("Text\\koune2\\koune2_BoyB_flag3_yes.bin");
+	filePath_koune.push_back("Text\\koune2\\koune2_BoyA_flag1_no.bin");
+	filePath_koune.push_back("Text\\koune2\\koune2_BoyA_flag1_yes.bin");
+	filePath_koune.push_back("Text\\koune2\\koune2_BoyA_flag2_yes.bin");
+	filePath_koune.push_back("Text\\koune2\\koune2_BoyA_flag3_yes.bin");
+	filePath_koune.push_back("Text\\koune2\\koune2_BoyA_NoCreature_flag3_No.bin");
+	filePath_koune.push_back("Text\\koune2\\koune2_BoyA_Creature_flag3_No.bin");
+	filePath_koune.push_back("Text\\koune2\\koune2_BoyA_flag3_blue.bin");
+	filePath_koune.push_back("Text\\koune2\\koune2_BoyA_flag3_green.bin");
+	filePath_koune.push_back("Text\\koune2\\koune2_BoyA_flag3_red.bin");
+	filePath_koune.push_back("Text\\koune2\\koune2_BoyA_flag3_all_color.bin");
+	filePath_koune.push_back("Text\\koune2\\koune2_BoyA_flag3_ouen_small.bin");
+	filePath_koune.push_back("Text\\koune2\\koune2_BoyA_flag3_ouen_Big.bin");
+
 	//メルエル
 	//Stage1
 	filePath_merueru.push_back("Text\\merueru1\\merueru_start.bin");
@@ -72,433 +99,626 @@ void CTextManager::LoadText()
 {
 	//vector<string> exeption;
 
-	for (auto fileitr = filePath_tutorial.begin(); fileitr != filePath_tutorial.end(); ++fileitr) {
+	//各キャラのファイルパス統括用
+	vector<string>* filePath_chara;
+	vector<vector<string>>* m_Chara_Text;
+	vector<vector<string>>* m_Chara_Control;
+	vector<vector<SelectInfo*>>* m_Chara_SelectData;
+	vector<vector<InStr*>>* m_Chara_InStr;
 
-		//文字データ読み込み
-		ifstream ifw((*fileitr).c_str(), std::ios::in | std::ios::binary);
+	//各キャラのファイルパスループ
+	for (int chara_num = 0; chara_num < MAX_CHARA; chara_num++) {
 
-		ifw.read(reinterpret_cast<char*>(&textlen), sizeof(textlen));
-		ifw.read(reinterpret_cast<char*>(&linecount), sizeof(linecount));
-		ifw.read(reinterpret_cast<char*>(&arrsize), sizeof(arrsize));
-		ifw.read(reinterpret_cast<char*>(&dummy), sizeof(dummy));
+		//各キャラのファイルパスを一つのポインタに統括
+		switch (chara_num) {
+		case STAGE_TYPE::TUTORIAL:
+			filePath_chara = &filePath_tutorial;
+			m_Chara_Text = &m_Tutorial_Text;
+			m_Chara_Control = &m_Tutorial_Control;
+			m_Chara_SelectData = &m_Tutorial_SelectData;
+			m_Chara_InStr = &m_Tutorial_InStr;
+			break;
 
-		ifw.read(reinterpret_cast<char*>(&tmpstr), textlen * sizeof(char) + 1);
+		case STAGE_TYPE::SION:
+			filePath_chara = &filePath_sion;
+			m_Chara_Text = &m_Sion_Text;
+			m_Chara_Control = &m_Sion_Control;
+			m_Chara_SelectData = &m_Sion_SelectData;
+			m_Chara_InStr = &m_Sion_InStr;
+			break;
 
-		ifw.close();
+		case STAGE_TYPE::KOUNE:
+			filePath_chara = &filePath_koune;
+			m_Chara_Text = &m_Koune_Text;
+			m_Chara_Control = &m_Koune_Control;
+			m_Chara_SelectData = &m_Koune_SelectData;
+			m_Chara_InStr = &m_Koune_InStr;
+			break;
 
-		//最後の空白行を削除
-		if (tmpstr[textlen - 2] == '\r') {
-			tmpstr[textlen - 2] = '\0';
-			linecount--;
+		case STAGE_TYPE::MERUERU:
+			filePath_chara = &filePath_merueru;
+			m_Chara_Text = &m_Merueru_Text;
+			m_Chara_Control = &m_Merueru_Control;
+			m_Chara_SelectData = &m_Merueru_SelectData;
+			m_Chara_InStr = &m_Merueru_InStr;
+			break;
 		}
 
-		//改行文字で切断
-		char* token;
-		int t = 0;
-		token = strtok(tmpstr, "\n");
-		while (token != NULL) {
-			strcpy(strsave[t], token);
-			token = strtok(NULL, "\n");
-			t++;
-		}
+		for (auto fileitr = filePath_chara->begin(); fileitr != filePath_chara->end(); ++fileitr) {
 
-		for (int j = 0; j < t; j++) {
-			//改行文字を排除
-			if (strsave[j][strlen(strsave[j]) - 1] == '\r')
-				strsave[j][strlen(strsave[j]) - 1] = '\0';
+			//文字データ読み込み
+			ifstream ifw((*fileitr).c_str(), std::ios::in | std::ios::binary);
 
-		}
+			ifw.read(reinterpret_cast<char*>(&textlen), sizeof(textlen));
+			ifw.read(reinterpret_cast<char*>(&linecount), sizeof(linecount));
+			ifw.read(reinterpret_cast<char*>(&arrsize), sizeof(arrsize));
+			ifw.read(reinterpret_cast<char*>(&dummy), sizeof(dummy));
 
-		//vector形にまとめる
-		for (int w = 0; w < t; w++) {
-			tmpData.push_back(strsave[w]);
+			ifw.read(reinterpret_cast<char*>(&tmpstr), textlen * sizeof(char) + 1);
 
-			//タブ・空白文字を排除--------------------------------------------------
-			int char_num;
-			for (char_num = 0; char_num < tmpData[w].length(); char_num++) {
-				//タブと空白以外の文字の位置を探す
-				if (tmpData[w][char_num] != '\t' && tmpData[w][char_num] != ' ') {
-					break;
-				}
+			ifw.close();
+
+			//最後の空白行を削除
+			if (tmpstr[textlen - 2] == '\r') {
+				tmpstr[textlen - 2] = '\0';
+				linecount--;
 			}
-			//先頭からタブと空白がない場所まで排除
-			if (char_num > 0) {
-				tmpData[w].erase(tmpData[w].begin(), tmpData[w].begin() + char_num);
+
+			//改行文字で切断
+			char* token;
+			int t = 0;
+			token = strtok(tmpstr, "\n");
+			while (token != NULL) {
+				strcpy(strsave[t], token);
+				token = strtok(NULL, "\n");
+				t++;
 			}
-			//----------------------------------------------------------------------
-		}
 
-		//制御文字セット
-		std::vector<std::string>::iterator itr = tmpData.begin();
-		while (itr != tmpData.end()) {
-			//名前部分抽出
-			if ((*itr).find("[1_") != -1) {
-				(*itr).pop_back();
-				(*itr).erase((*itr).begin(), (*itr).begin() + 3);
+			for (int j = 0; j < t; j++) {
+				//改行文字を排除
+				if (strsave[j][strlen(strsave[j]) - 1] == '\r')
+					strsave[j][strlen(strsave[j]) - 1] = '\0';
 
-				int index = distance(tmpData.begin(), itr);
-				char emotemp[64];
-				char nametemp[64];
-				sprintf_s(nametemp, "%02d%s@", index, (*itr).c_str());
-				itr = tmpData.erase(itr);
-
-				//表情部分抽出
-				if ((*itr).find("[2_") != -1) {
-					(*itr).pop_back();
-					(*itr).erase((*itr).begin(), (*itr).begin() + 3);
-					sprintf_s(emotemp, "%s", (*itr).c_str());
-
-					//名前と表情を連結
-					strcat(nametemp, emotemp);
-					tmpControl.push_back(nametemp);
-					itr = tmpData.erase(itr);
-				}
 			}
-			else if ((*itr).find("選択肢{") != -1) {
-				//選択肢生成
-				select_data.push_back(new SelectInfo());
-				//追加した選択肢への参照を取得
-				SelectInfo* select_info = *(select_data.end() - 1);
 
+			//vector形にまとめる
+			for (int w = 0; w < t; w++) {
+				tmpData.push_back(strsave[w]);
 
-				//存在する行数保存
-				select_info->line = distance(tmpData.begin(), itr);
-
-				char* sel_name[5];	//各選択項目名　一時保存用
-									//（選択項目の数が最後までループしないと分からないので、
-									//　保存しておきます。）
-				//NULLで初期化
-				memset(sel_name,NULL,sizeof(sel_name));
-
-				char sel[3];	   //項目番号を文字に変換したもの　例：「1.」「2.」
-
-				int stack = 0;				 //対応する括弧調査用カウント
-				bool text_delete_flg = false;//表示テキストから除外するかどうか(選択肢タグを最初に削除するので、trueから開始)
-
-											//項目番号が見つかるまでループ
-				while (true) {
-					//項目番号を検索
-					sprintf_s(sel, "%d.", select_info->menu_num + 1);
-					if ((*itr).find(sel) != -1 && stack == 1) {//１層目の括弧の中のみ読み込む
-						//項目名取得
-						std::string name = (*itr);
-						//開始括弧を消す
-						if((*itr).find('{') != -1) name.pop_back();
-						//項目数を消す
-						name.erase(name.begin(), name.begin() + 2);
-
-						//項目名を一時メモリに保存
-						int str_len = name.length() + 1;
-						sel_name[select_info->menu_num] = new char[str_len];
-						strcpy_s(sel_name[select_info->menu_num], str_len, name.c_str());
-
-						select_info->menu_num++;//選択項目数をカウント
-						text_delete_flg = true;//この文字列はテキストから除外
-					}
-
-					//開始括弧が見つかったら、stackをカウント
-					if ((*itr).find("{") != -1) {
-						stack++;
-
-						//1層目の括弧内部のみ
-						if (stack <= 1) {
-							text_delete_flg = true;//テキストから除外
-						}
-					}
-
-					//閉じ括弧が見つかったら、stackをマイナス
-					if ((*itr).find('}') != -1) {
-						stack--;
-						//1層目の括弧内部のみ
-						if (stack <= 1) {
-							text_delete_flg = true;//この文字はテキストから除外
-						}
-					}
-
-					//文字列をテキストから除外
-					if (text_delete_flg) {
-						text_delete_flg = false;
-
-						//除外すると文字列が詰まるので、行を進めません。
-						itr = tmpData.erase(itr);
-					}
-					//除外しない
-					else {
-						//行を進める
-						itr++;
-					}
-
-					//対応する括弧を発見後、終了
-					if (stack == 0) {
+				//タブ・空白文字を排除--------------------------------------------------
+				int char_num;
+				for (char_num = 0; char_num < tmpData[w].length(); char_num++) {
+					//タブと空白以外の文字の位置を探す
+					if (tmpData[w][char_num] != '\t' && tmpData[w][char_num] != ' ') {
 						break;
 					}
 				}
-
-				//選択項目を生成
-				select_info->menu = new SelectData[select_info->menu_num];
-
-				//一時保存メモリに格納していた項目名を代入
-				for (int num = 0; num < select_info->menu_num; num++) {
-					int str_len = strlen(sel_name[num]) + 1;
-					select_info->menu[num].str = new char[str_len];
-					strcpy_s(select_info->menu[num].str, str_len, sel_name[num]);
-					//メモリ解放
-					SAFE_DELETE_ARRAY(sel_name[num]);
+				//先頭からタブと空白がない場所まで排除
+				if (char_num > 0) {
+					tmpData[w].erase(tmpData[w].begin(), tmpData[w].begin() + char_num);
 				}
-
-				//ファイル操作を最初に戻す
-				itr = tmpData.begin();
+				//----------------------------------------------------------------------
 			}
-			else {
-				itr++;
-			}
-		}
 
-		m_Tutorial_Text.push_back(tmpData);
-		m_Tutorial_Control.push_back(tmpControl);
-		tmpData.clear();
-		tmpControl.clear();
-	}
+			//名前、表情部分を読み込み、表示テキストから削除---------------------------
+			std::vector<std::string>::iterator itr = tmpData.begin();
 
-	for (auto fileitr = filePath_sion.begin(); fileitr != filePath_sion.end(); ++fileitr) {
+			//文字挿入用変数-----------------------------
+			//文字挿入タグのポインター保存用
+			InStr* in;
 
-		//文字データ読み込み
-		ifstream ifw((*fileitr).c_str(), std::ios::in | std::ios::binary);
+			//文字挿入タグの閉じ括弧削除フラグ
+			bool end_line_flg = false;
+			//-------------------------------------------
 
-		ifw.read(reinterpret_cast<char*>(&textlen), sizeof(textlen));
-		ifw.read(reinterpret_cast<char*>(&linecount), sizeof(linecount));
-		ifw.read(reinterpret_cast<char*>(&arrsize), sizeof(arrsize));
-		ifw.read(reinterpret_cast<char*>(&dummy), sizeof(dummy));
+			//キャラクター位置格納用変数-----------------
+			//左右格納数カウント
+			int dir_count[TALK_CHARA_DIR_MAX] = { 0 };
+			//-------------------------------------------
 
-		ifw.read(reinterpret_cast<char*>(&tmpstr), textlen * sizeof(char) + 1);
+			while (itr != tmpData.end()) {
 
-		ifw.close();
+				//キャラクターの位置読み込み
+				if ((*itr).find("キャラクターセッティング{") != -1) {
+					//位置タグを削除
+					itr = tmpData.erase(itr);
 
-		//最後の空白行を削除
-		if (tmpstr[textlen - 2] == '\r') {
-			tmpstr[textlen - 2] = '\0';
-			linecount--;
-		}
+					char* chara_dir[TALK_CHARA_DIR_MAX] = { "左.","右." };
 
-		//改行文字で切断
-		char* token;
-		int t = 0;
-		token = strtok(tmpstr, "\n");
-		while (token != NULL) {
-			strcpy(strsave[t], token);
-			token = strtok(NULL, "\n");
-			t++;
-		}
+					for (int dir = 0; dir < TALK_CHARA_DIR_MAX; dir++) {
+						if ((*itr).find(chara_dir[dir]) != -1) {
+							//左右タグを排除
+							(*itr).erase((*itr).begin(), (*itr).begin() + 3);
 
-		//改行文字を排除
-		for (int j = 0; j < t; j++) {
-			if (strsave[j][strlen(strsave[j]) - 1] == '\r')
-				strsave[j][strlen(strsave[j]) - 1] = '\0';
-		}
+							//名前開始位置
+							int name_start = 0;
+							bool roop_end_flg = false;
+							while (true) {
+								//区切り点の位置
+								int end = (*itr).find("、", name_start);
 
-		//vector形にまとめる
-		for (int w = 0; w < t; w++) {
-			tmpData.push_back(strsave[w]);
-		}
+								//区切り点がなければ、次で最後のキャラクターだと判断
+								if (end == -1) {
+									end = (*itr).size();
+									roop_end_flg = true;
+								}
 
-		//制御文字セット
-		std::vector<std::string>::iterator itr = tmpData.begin();
-		while (itr != tmpData.end()) {
-			//if ((*itr).find("{フォン") != -1) {
-			//	char t[64];
-			//	sprintf(t, "(%s)[%d]%s", (*fileitr).c_str() , distance(tmpData.begin(), itr),(*itr).c_str());
-			//	exeption.push_back(t);
-			//}
+								int name_end = (*itr).find("：", name_start);
+								string name = (*itr).substr(name_start, name_end - name_start);
 
-			if ((*itr).find("[1_") != -1) {
-				(*itr).pop_back();
-				(*itr).erase((*itr).begin(), (*itr).begin() + 3);
-				int index = distance(tmpData.begin(), itr);
-				char emotemp[64];
-				char nametemp[64];
-				sprintf_s(nametemp, "%02d%s@", index, (*itr).c_str());
-				itr = tmpData.erase(itr);
-				if ((*itr).find("[2_") != -1) {
-					(*itr).pop_back();
-					(*itr).erase((*itr).begin(), (*itr).begin() + 3);
-					sprintf_s(emotemp, "%s", (*itr).c_str());
-					strcat(nametemp, emotemp);
-					tmpControl.push_back(nametemp);
+								int in = name.find("[挿入");
+								//挿入タグ発見
+								if (in != -1) {
+									m_talk_chara_list[dir][dir_count[dir]].in_shift_id = atoi(&name[in + 5]);
+									//挿入タグ部分削除
+									name.erase(in, name_end - in);
+								}
+								//挿入タグなし
+								else {
+									//挿入切り替えしないキャラクターは、-1を入れておく
+									m_talk_chara_list[dir][dir_count[dir]].in_shift_id = -1;
+								}
+
+								//キャラクター名をこの方向にセット
+								m_talk_chara_list[dir][dir_count[dir]].name = name;
+
+								//表情読み込み
+								name_start = name_end + 2;
+								string expression = (*itr).substr(name_start, end - name_start);
+
+								//表情をこの方向にセット
+								m_talk_chara_list[dir][dir_count[dir]].expression = expression;
+
+								//この方向に格納した数をカウント
+								dir_count[dir]++;
+
+								name_start = end + 2;
+
+								//左キャラクター読み込み完了
+								if (roop_end_flg) {
+									break;
+								}
+							}
+							//左右タグ部分を削除
+							itr = tmpData.erase(itr);
+						}
+					}
+					//閉じ括弧を削除
 					itr = tmpData.erase(itr);
 				}
-			}
-			else {
-				itr++;
-			}
-		}
 
-		m_Sion_Text.push_back(tmpData);
-		m_Sion_Control.push_back(tmpControl);
-		tmpData.clear();
-		tmpControl.clear();
-	}
-
-	for (auto fileitr = filePath_koune.begin(); fileitr != filePath_koune.end(); ++fileitr) {
-
-		//文字データ読み込み
-		ifstream ifw((*fileitr).c_str(), std::ios::in | std::ios::binary);
-
-		ifw.read(reinterpret_cast<char*>(&textlen), sizeof(textlen));
-		ifw.read(reinterpret_cast<char*>(&linecount), sizeof(linecount));
-		ifw.read(reinterpret_cast<char*>(&arrsize), sizeof(arrsize));
-		ifw.read(reinterpret_cast<char*>(&dummy), sizeof(dummy));
-
-		ifw.read(reinterpret_cast<char*>(&tmpstr), textlen * sizeof(char) + 1);
-
-		ifw.close();
-
-		//最後の空白行を削除
-		if (tmpstr[textlen - 2] == '\r') {
-			tmpstr[textlen - 2] = '\0';
-			linecount--;
-		}
-
-		//改行文字で切断
-		char* token;
-		int t = 0;
-		token = strtok(tmpstr, "\n");
-		while (token != NULL) {
-			strcpy(strsave[t], token);
-			token = strtok(NULL, "\n");
-			t++;
-		}
-
-		//改行文字を排除
-		for (int j = 0; j < t; j++) {
-			if (strsave[j][strlen(strsave[j]) - 1] == '\r')
-				strsave[j][strlen(strsave[j]) - 1] = '\0';
-		}
-
-		//vector形にまとめる
-		for (int w = 0; w < t; w++) {
-			tmpData.push_back(strsave[w]);
-		}
-
-		//制御文字セット
-		std::vector<std::string>::iterator itr = tmpData.begin();
-		while (itr != tmpData.end()) {
-			//if ((*itr).find("{フォン") != -1) {
-			//	char t[64];
-			//	sprintf(t, "(%s)[%d]%s", (*fileitr).c_str(), distance(tmpData.begin(), itr), (*itr).c_str());
-			//	exeption.push_back(t);
-			//}
-
-			if ((*itr).find("[1_") != -1) {
-				(*itr).pop_back();
-				(*itr).erase((*itr).begin(), (*itr).begin() + 3);
-				int index = distance(tmpData.begin(), itr);
-				char emotemp[64];
-				char nametemp[64];
-				sprintf_s(nametemp, "%02d%s@", index, (*itr).c_str());
-				itr = tmpData.erase(itr);
-				if ((*itr).find("[2_") != -1) {
+				//名前部分抽出
+				if ((*itr).find("[1_") != -1) {
 					(*itr).pop_back();
 					(*itr).erase((*itr).begin(), (*itr).begin() + 3);
-					sprintf_s(emotemp, "%s", (*itr).c_str());
-					strcat(nametemp, emotemp);
-					tmpControl.push_back(nametemp);
+
+					int index = distance(tmpData.begin(), itr);
+					char emotemp[64];
+					char nametemp[64];
+					sprintf_s(nametemp, "%02d%s@", index, (*itr).c_str());
 					itr = tmpData.erase(itr);
+
+					//表情部分抽出
+					if ((*itr).find("[2_") != -1) {
+						(*itr).pop_back();
+						(*itr).erase((*itr).begin(), (*itr).begin() + 3);
+						sprintf_s(emotemp, "%s", (*itr).c_str());
+
+						//名前と表情を連結
+						strcat(nametemp, emotemp);
+						tmpControl.push_back(nametemp);
+						itr = tmpData.erase(itr);
+					}
+				}
+				//文字挿入タグを読み込み、表示テキストから削除
+				else if ((*itr).find("挿入[") != -1) {
+					std::vector<std::string>::iterator itr_save = itr;
+
+					in = new InStr();
+					tmpInStr.push_back(in);
+
+					in->line = distance(tmpData.begin(), itr);
+					int num_pos = (*itr).find("[") + 1;
+					if (num_pos > 0) in->id = atoi(&(*itr)[num_pos]);
+
+					end_line_flg = true;
+
+					itr++;
+				}
+				//文字挿入タグの開始括弧に対応する閉じ括弧発見
+				else if ((*itr).find("}") == 0 && end_line_flg == true) {
+					//終了行として保存
+					in->end_line = distance(tmpData.begin(), itr);
+					//tmpData.erase(itr);//閉じ括弧削除
+					end_line_flg = false;//削除し終えたので、フラグを元に戻しておく
+					itr++;
+				}
+				else {
+					itr++;
 				}
 			}
-			else {
-				itr++;
-			}
-		}
+			//------------------------------------------------------------------------
 
-		m_Koune_Text.push_back(tmpData);
-		m_Koune_Control.push_back(tmpControl);
-		tmpData.clear();
-		tmpControl.clear();
-	}
+			itr = tmpData.begin();
 
-	for (auto fileitr = filePath_merueru.begin(); fileitr != filePath_merueru.end(); ++fileitr) {
+			//選択肢部分を読み込み----------------------------------------------------
+			//選択肢一層を読み込み
+			while (itr != tmpData.end()) {
+				if ((*itr).find("選択肢{") != -1) {
+					//選択肢生成
+					tmpSelectData.push_back(new SelectInfo());
+					//追加した選択肢への参照を取得
+					SelectInfo* select_info = *(tmpSelectData.end() - 1);
 
-		//文字データ読み込み
-		ifstream ifw((*fileitr).c_str(), std::ios::in | std::ios::binary);
+					//存在する行数保存
+					select_info->line = distance(tmpData.begin(), itr);
 
-		ifw.read(reinterpret_cast<char*>(&textlen), sizeof(textlen));
-		ifw.read(reinterpret_cast<char*>(&linecount), sizeof(linecount));
-		ifw.read(reinterpret_cast<char*>(&arrsize), sizeof(arrsize));
-		ifw.read(reinterpret_cast<char*>(&dummy), sizeof(dummy));
+					//各選択項目データ　一時保存用
+					//（「選択肢を初期化するために必要な選択項目」の数が
+					//　最後までループしないと分からないので、
+					//　保存しておきます。）
+					SelectData sel_data_memory[5];
 
-		ifw.read(reinterpret_cast<char*>(&tmpstr), textlen * sizeof(char) + 1);
+					char sel[3];	   //項目番号を文字に変換したもの　例：「1.」「2.」
 
-		ifw.close();
+					int stack = 0;	   //対応する括弧調査用カウント
+									   //bool text_delete_flg = false;//表示テキストから除外するかどうか(選択肢タグを最初に削除するので、trueから開始)
 
-		//最後の空白行を削除
-		if (tmpstr[textlen - 2] == '\r') {
-			tmpstr[textlen - 2] = '\0';
-			linecount--;
-		}
+					bool next_itr_flg;//イテレータを進めるかどうかのフラグ
 
-		//改行文字で切断
-		char* token;
-		int t = 0;
-		token = strtok(tmpstr, "\n");
-		while (token != NULL) {
-			strcpy(strsave[t], token);
-			token = strtok(NULL, "\n");
-			t++;
-		}
+									  //項目番号が見つかるまでループ
+					while (true) {
+						next_itr_flg = true;
 
-		//改行文字を排除
-		for (int j = 0; j < t; j++) {
-			if (strsave[j][strlen(strsave[j]) - 1] == '\r')
-				strsave[j][strlen(strsave[j]) - 1] = '\0';
-		}
+						//【項目番号を検索】
+						sprintf_s(sel, "%d.", select_info->menu_num + 1);
+						if ((*itr).find(sel) != -1 && stack <= 2) {//１層目の括弧の中のみ読み込む
+																   //項目名取得
+							std::string name = (*itr);
+							//開始括弧を消す
+							if ((*itr).find('{') != -1) name.pop_back();
 
-		//vector形にまとめる
-		for (int w = 0; w < t; w++) {
-			tmpData.push_back(strsave[w]);
-		}
+							//項目数を消す
+							name.erase(name.begin(), name.begin() + 2);
 
-		//制御文字セット
-		std::vector<std::string>::iterator itr = tmpData.begin();
-		while (itr != tmpData.end()) {
-			//if ((*itr).find("{フォン") != -1) {
-			//	char t[64];
-			//	sprintf(t, "(%s)[%d]%s", (*fileitr).c_str(), distance(tmpData.begin(), itr), (*itr).c_str());
-			//	exeption.push_back(t);
-			//}
+							//この選択肢を選んだ後に飛ぶ行を設定-----------------------
+							//開始括弧がある場合
+							if ((*itr).find('{') != -1) {
+								//行を、この選択肢を選択したときに飛ぶ行とする
+								sel_data_memory[select_info->menu_num].child_text_line = distance(tmpData.begin(), itr);
+							}
+							//開始括弧がない場合
+							else {
+								//この選択肢はここで終了と判断
+								sel_data_memory[select_info->menu_num].child_text_line = -1;
+							}
+							//---------------------------------------------------------
 
-			if ((*itr).find("[1_") != -1) {
-				(*itr).pop_back();
-				(*itr).erase((*itr).begin(), (*itr).begin() + 3);
-				int index = distance(tmpData.begin(), itr);
-				char emotemp[64];
-				char nametemp[64];
-				sprintf_s(nametemp, "%02d%s@", index, (*itr).c_str());
-				itr = tmpData.erase(itr);
-				if ((*itr).find("[2_") != -1) {
-					(*itr).pop_back();
-					(*itr).erase((*itr).begin(), (*itr).begin() + 3);
-					sprintf_s(emotemp, "%s", (*itr).c_str());
-					strcat(nametemp, emotemp);
-					tmpControl.push_back(nametemp);
-					itr = tmpData.erase(itr);
+							//項目名を一時メモリに保存
+							int str_len = name.length() + 1;
+							sel_data_memory[select_info->menu_num].str = new char[str_len];
+							strcpy_s(sel_data_memory[select_info->menu_num].str, str_len, name.c_str());
+						}
+
+						//【開始括弧が見つかったら、stackをカウント】
+						int start_line = (*itr).find("{");
+						if (start_line != -1) {
+							stack++;
+							//2層目以下の開始括弧のみ
+							if (stack <= 2) {
+								//括弧を入れ替え
+								(*itr)[start_line] = '[';
+								//(*itr).pop_back();//削除
+
+								//text_delete_flg = true;//テキストから除外
+							}
+
+						}
+
+						//【閉じ括弧が見つかったら、stackをマイナス】
+						int end_line = (*itr).find('}');
+						if (end_line == 0) {
+							stack--;
+							//2層目以下の終了括弧のみ
+							if (stack <= 1) {
+								//括弧を入れ替え
+								(*itr)[end_line] = ']';
+
+								//各選択肢の閉じ括弧発見
+								if (stack == 1) {
+									//その行を終了行とする
+									sel_data_memory[select_info->menu_num].end_line = distance(tmpData.begin(), itr);
+									select_info->menu_num++;//読み込み対象を次の行に移行
+								}
+							}
+						}
+
+						if (next_itr_flg) {
+							//行を進める
+							itr++;
+						}
+
+						//対応する括弧を発見後、終了
+						if (stack == 0) {
+							break;
+						}
+					}
+
+					//選択項目を生成
+					select_info->menu = new SelectData[select_info->menu_num];
+
+					//一時保存メモリに格納していた各選択肢データを代入
+					for (int num = 0; num < select_info->menu_num; num++) {
+						int str_len = strlen(sel_data_memory[num].str) + 1;
+						select_info->menu[num].str = new char[str_len];
+						strcpy_s(select_info->menu[num].str, str_len, sel_data_memory[num].str);
+						select_info->menu[num].child_text_line = sel_data_memory[num].child_text_line;
+						select_info->menu[num].end_line = sel_data_memory[num].end_line;
+					}
+
+					//ファイル操作を最初に戻す
+					itr = tmpData.begin();
+				}
+				else {
+					//行を進める
+					itr++;
 				}
 			}
-			else {
-				itr++;
-			}
-		}
+			//------------------------------------------------------------------------
 
-		m_Merueru_Text.push_back(tmpData);
-		m_Merueru_Control.push_back(tmpControl);
-		tmpData.clear();
-		tmpControl.clear();
+			//保持メモリからメンバへ移動
+			m_Chara_Text->push_back(tmpData);
+			m_Chara_Control->push_back(tmpControl);
+			m_Chara_SelectData->push_back(tmpSelectData);
+			m_Chara_InStr->push_back(tmpInStr);
+
+			//保持リストを開放
+			tmpData.clear();
+			tmpControl.clear();
+			tmpSelectData.clear();
+			tmpInStr.clear();
+		}
 	}
+
+	//for (auto fileitr = filePath_sion.begin(); fileitr != filePath_sion.end(); ++fileitr) {
+
+	//	//文字データ読み込み
+	//	ifstream ifw((*fileitr).c_str(), std::ios::in | std::ios::binary);
+
+	//	ifw.read(reinterpret_cast<char*>(&textlen), sizeof(textlen));
+	//	ifw.read(reinterpret_cast<char*>(&linecount), sizeof(linecount));
+	//	ifw.read(reinterpret_cast<char*>(&arrsize), sizeof(arrsize));
+	//	ifw.read(reinterpret_cast<char*>(&dummy), sizeof(dummy));
+
+	//	ifw.read(reinterpret_cast<char*>(&tmpstr), textlen * sizeof(char) + 1);
+
+	//	ifw.close();
+
+	//	//最後の空白行を削除
+	//	if (tmpstr[textlen - 2] == '\r') {
+	//		tmpstr[textlen - 2] = '\0';
+	//		linecount--;
+	//	}
+
+	//	//改行文字で切断
+	//	char* token;
+	//	int t = 0;
+	//	token = strtok(tmpstr, "\n");
+	//	while (token != NULL) {
+	//		strcpy(strsave[t], token);
+	//		token = strtok(NULL, "\n");
+	//		t++;
+	//	}
+
+	//	//改行文字を排除
+	//	for (int j = 0; j < t; j++) {
+	//		if (strsave[j][strlen(strsave[j]) - 1] == '\r')
+	//			strsave[j][strlen(strsave[j]) - 1] = '\0';
+	//	}
+
+	//	//vector形にまとめる
+	//	for (int w = 0; w < t; w++) {
+	//		tmpData.push_back(strsave[w]);
+	//	}
+
+	//	//制御文字セット
+	//	std::vector<std::string>::iterator itr = tmpData.begin();
+	//	while (itr != tmpData.end()) {
+	//		//if ((*itr).find("{フォン") != -1) {
+	//		//	char t[64];
+	//		//	sprintf(t, "(%s)[%d]%s", (*fileitr).c_str() , distance(tmpData.begin(), itr),(*itr).c_str());
+	//		//	exeption.push_back(t);
+	//		//}
+
+	//		if ((*itr).find("[1_") != -1) {
+	//			(*itr).pop_back();
+	//			(*itr).erase((*itr).begin(), (*itr).begin() + 3);
+	//			int index = distance(tmpData.begin(), itr);
+	//			char emotemp[64];
+	//			char nametemp[64];
+	//			sprintf_s(nametemp, "%02d%s@", index, (*itr).c_str());
+	//			itr = tmpData.erase(itr);
+	//			if ((*itr).find("[2_") != -1) {
+	//				(*itr).pop_back();
+	//				(*itr).erase((*itr).begin(), (*itr).begin() + 3);
+	//				sprintf_s(emotemp, "%s", (*itr).c_str());
+	//				strcat(nametemp, emotemp);
+	//				tmpControl.push_back(nametemp);
+	//				itr = tmpData.erase(itr);
+	//			}
+	//		}
+	//		else {
+	//			itr++;
+	//		}
+	//	}
+
+	//	m_Sion_Text.push_back(tmpData);
+	//	m_Sion_Control.push_back(tmpControl);
+	//	tmpData.clear();
+	//	tmpControl.clear();
+	//}
+
+	//for (auto fileitr = filePath_koune.begin(); fileitr != filePath_koune.end(); ++fileitr) {
+
+	//	//文字データ読み込み
+	//	ifstream ifw((*fileitr).c_str(), std::ios::in | std::ios::binary);
+
+	//	ifw.read(reinterpret_cast<char*>(&textlen), sizeof(textlen));
+	//	ifw.read(reinterpret_cast<char*>(&linecount), sizeof(linecount));
+	//	ifw.read(reinterpret_cast<char*>(&arrsize), sizeof(arrsize));
+	//	ifw.read(reinterpret_cast<char*>(&dummy), sizeof(dummy));
+
+	//	ifw.read(reinterpret_cast<char*>(&tmpstr), textlen * sizeof(char) + 1);
+
+	//	ifw.close();
+
+	//	//最後の空白行を削除
+	//	if (tmpstr[textlen - 2] == '\r') {
+	//		tmpstr[textlen - 2] = '\0';
+	//		linecount--;
+	//	}
+
+	//	//改行文字で切断
+	//	char* token;
+	//	int t = 0;
+	//	token = strtok(tmpstr, "\n");
+	//	while (token != NULL) {
+	//		strcpy(strsave[t], token);
+	//		token = strtok(NULL, "\n");
+	//		t++;
+	//	}
+
+	//	//改行文字を排除
+	//	for (int j = 0; j < t; j++) {
+	//		if (strsave[j][strlen(strsave[j]) - 1] == '\r')
+	//			strsave[j][strlen(strsave[j]) - 1] = '\0';
+	//	}
+
+	//	//vector形にまとめる
+	//	for (int w = 0; w < t; w++) {
+	//		tmpData.push_back(strsave[w]);
+	//	}
+
+	//	//制御文字セット
+	//	std::vector<std::string>::iterator itr = tmpData.begin();
+	//	while (itr != tmpData.end()) {
+	//		//if ((*itr).find("{フォン") != -1) {
+	//		//	char t[64];
+	//		//	sprintf(t, "(%s)[%d]%s", (*fileitr).c_str(), distance(tmpData.begin(), itr), (*itr).c_str());
+	//		//	exeption.push_back(t);
+	//		//}
+
+	//		if ((*itr).find("[1_") != -1) {
+	//			(*itr).pop_back();
+	//			(*itr).erase((*itr).begin(), (*itr).begin() + 3);
+	//			int index = distance(tmpData.begin(), itr);
+	//			char emotemp[64];
+	//			char nametemp[64];
+	//			sprintf_s(nametemp, "%02d%s@", index, (*itr).c_str());
+	//			itr = tmpData.erase(itr);
+	//			if ((*itr).find("[2_") != -1) {
+	//				(*itr).pop_back();
+	//				(*itr).erase((*itr).begin(), (*itr).begin() + 3);
+	//				sprintf_s(emotemp, "%s", (*itr).c_str());
+	//				strcat(nametemp, emotemp);
+	//				tmpControl.push_back(nametemp);
+	//				itr = tmpData.erase(itr);
+	//			}
+	//		}
+	//		else {
+	//			itr++;
+	//		}
+	//	}
+
+	//	m_Koune_Text.push_back(tmpData);
+	//	m_Koune_Control.push_back(tmpControl);
+	//	tmpData.clear();
+	//	tmpControl.clear();
+	//}
+
+	//for (auto fileitr = filePath_merueru.begin(); fileitr != filePath_merueru.end(); ++fileitr) {
+
+	//	//文字データ読み込み
+	//	ifstream ifw((*fileitr).c_str(), std::ios::in | std::ios::binary);
+
+	//	ifw.read(reinterpret_cast<char*>(&textlen), sizeof(textlen));
+	//	ifw.read(reinterpret_cast<char*>(&linecount), sizeof(linecount));
+	//	ifw.read(reinterpret_cast<char*>(&arrsize), sizeof(arrsize));
+	//	ifw.read(reinterpret_cast<char*>(&dummy), sizeof(dummy));
+
+	//	ifw.read(reinterpret_cast<char*>(&tmpstr), textlen * sizeof(char) + 1);
+
+	//	ifw.close();
+
+	//	//最後の空白行を削除
+	//	if (tmpstr[textlen - 2] == '\r') {
+	//		tmpstr[textlen - 2] = '\0';
+	//		linecount--;
+	//	}
+
+	//	//改行文字で切断
+	//	char* token;
+	//	int t = 0;
+	//	token = strtok(tmpstr, "\n");
+	//	while (token != NULL) {
+	//		strcpy(strsave[t], token);
+	//		token = strtok(NULL, "\n");
+	//		t++;
+	//	}
+
+	//	//改行文字を排除
+	//	for (int j = 0; j < t; j++) {
+	//		if (strsave[j][strlen(strsave[j]) - 1] == '\r')
+	//			strsave[j][strlen(strsave[j]) - 1] = '\0';
+	//	}
+
+	//	//vector形にまとめる
+	//	for (int w = 0; w < t; w++) {
+	//		tmpData.push_back(strsave[w]);
+	//	}
+
+	//	//制御文字セット
+	//	std::vector<std::string>::iterator itr = tmpData.begin();
+	//	while (itr != tmpData.end()) {
+	//		//if ((*itr).find("{フォン") != -1) {
+	//		//	char t[64];
+	//		//	sprintf(t, "(%s)[%d]%s", (*fileitr).c_str(), distance(tmpData.begin(), itr), (*itr).c_str());
+	//		//	exeption.push_back(t);
+	//		//}
+
+	//		if ((*itr).find("[1_") != -1) {
+	//			(*itr).pop_back();
+	//			(*itr).erase((*itr).begin(), (*itr).begin() + 3);
+	//			int index = distance(tmpData.begin(), itr);
+	//			char emotemp[64];
+	//			char nametemp[64];
+	//			sprintf_s(nametemp, "%02d%s@", index, (*itr).c_str());
+	//			itr = tmpData.erase(itr);
+	//			if ((*itr).find("[2_") != -1) {
+	//				(*itr).pop_back();
+	//				(*itr).erase((*itr).begin(), (*itr).begin() + 3);
+	//				sprintf_s(emotemp, "%s", (*itr).c_str());
+	//				strcat(nametemp, emotemp);
+	//				tmpControl.push_back(nametemp);
+	//				itr = tmpData.erase(itr);
+	//			}
+	//		}
+	//		else {
+	//			itr++;
+	//		}
+	//	}
+
+	//	m_Merueru_Text.push_back(tmpData);
+	//	m_Merueru_Control.push_back(tmpControl);
+	//	tmpData.clear();
+	//	tmpControl.clear();
+	//}
 }
 
 bool CTextManager::isCtrlLine(int stage, int stageID, int linecount)
 {
 	char linec[64];
-	sprintf_s(linec, "%d", linecount);
+	sprintf_s(linec, "%02d", linecount);
 
 	switch (stage)
 	{
@@ -659,4 +879,84 @@ char *CTextManager::GetCharaExp(int stage, int stageID, int linecount)
 		break;
 	}
 	return str;
+}
+
+//選択肢が存在するか確認
+//引数：
+//stage    =探すステージ(現状チュートリアルのみ)
+//stageID  =探すメッセージ番号(現状チュートリアルのみ)
+//linecount=探す行
+//戻り値：
+//選択肢がある場合は選択肢への参照を返す
+//選択肢がない場合はNULLを返す
+SelectInfo* CTextManager::isSelect(int stage, int stageID, int linecount) {
+	//各キャラの選択肢データを一つのポインターに統括
+	vector<vector<SelectInfo*>>* chara_select_data;
+	switch (stage)
+	{
+	case STAGE_TYPE::TUTORIAL:
+		chara_select_data = &m_Tutorial_SelectData;
+		break;
+	case STAGE_TYPE::SION:
+		chara_select_data = &m_Sion_SelectData;
+		break;
+	case STAGE_TYPE::KOUNE:
+		chara_select_data = &m_Koune_SelectData;
+		break;
+	case STAGE_TYPE::MERUERU:
+		chara_select_data = &m_Sion_SelectData;
+		break;
+	}
+
+	////データが存在しない場合はスキップ
+	//if (chara_select_data->size() <= 0) return NULL;
+
+	for (int sel = 0; sel < (*chara_select_data)[stageID].size(); sel++) {
+		//この行(linecount)に存在する選択肢を探す
+		if ((*chara_select_data)[stageID][sel]->line == linecount) {
+			return (*chara_select_data)[stageID][sel];
+		}
+	}
+
+	return NULL;
+}
+
+//文字挿入部分が存在するか確認
+//引数：
+//stage    =探すステージ(現状チュートリアルのみ)
+//stageID  =探すメッセージ番号(現状チュートリアルのみ)
+//linecount=探す行
+//戻り値：
+//文字挿入部分がある場合は、その参照を、
+//ない場合はNULLを返す
+InStr* CTextManager::isInStr(int stage, int stageID, int linecount) {
+	//各キャラの文字挿入部分データを一つのポインターに統括
+	vector<vector<InStr*>>* chara_in_str;
+	switch (stage)
+	{
+	case STAGE_TYPE::TUTORIAL:
+		chara_in_str = &m_Tutorial_InStr;
+		break;
+	case STAGE_TYPE::SION:
+		chara_in_str = &m_Sion_InStr;
+		break;
+	case STAGE_TYPE::KOUNE:
+		chara_in_str = &m_Koune_InStr;
+		break;
+	case STAGE_TYPE::MERUERU:
+		chara_in_str = &m_Sion_InStr;
+		break;
+	}
+
+	////データが存在しない場合はスキップ
+	//if ((*chara_in_str).size() <= 0) return NULL;
+
+	for (int in = 0; in < (*chara_in_str)[stageID].size(); in++) {
+		//この行(linecount)に存在するものを探す
+		if ((*chara_in_str)[stageID][in]->line == linecount) {
+			return (*chara_in_str)[stageID][in];
+		}
+	}
+
+	return NULL;
 }

@@ -28,14 +28,17 @@ private:
 	//シオンステージ↓
 	//ステージ1↓
 	GimmickAunt* m_gimmick_aunt;
+	GimmickBird* m_gimmick_bird;
+	Gimmickwatchdog* m_gimmick_watchdog;
+	GimmickInterphone* m_gimmick_interphone;
 
 	//ステージ1↑
 	//ステージ2↓
-	Gimmickearphone* m_gimmick_earphone;
+	/*Gimmickearphone* m_gimmick_earphone;
 	Gimmickkoune* m_gimmick_koune;
 	Gimmickcat* m_gimmick_cat;
 	Gimmickbicycle* m_gimmick_bicycle;
-	Gimmickfiretruck* m_gimmick_firetruck;
+	Gimmickfiretruck* m_gimmick_firetruck;*/
 	//ステージ2↑
 	//ステージ3↓
 	GimmickChildren* m_gimmick_children;
@@ -50,7 +53,6 @@ private:
 	GimmickDoor* m_gimmick_door_Sion4;
 
 	//ステージ4↑
-	//シオンステージ1↑
 	//シオンステージ↑
 
 

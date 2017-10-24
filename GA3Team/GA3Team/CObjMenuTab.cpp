@@ -7,6 +7,7 @@ void CObjMenuTab::Init(int openclosey)
 	m_bhavesound = false;//持っていない
 	m_igivesound = -1;//音なし
 	m_icnt = 0;
+	m_iabicnt = 0;
 
 	m_bGarbageActionFlg = true;//ゴミ箱動作
 
@@ -19,7 +20,11 @@ void CObjMenuTab::Init(int openclosey)
 	m_iBackTitlex = m_openclose_x;//タイトルの戻るボタンのX
 	m_iBackTitley = m_openclose_y;//タイトルの戻るボタンのY
 
-								  //ボタンの位置X
+	m_iability_x = 416;//能力ボタンのX
+	m_iability_y = m_openclose_y;//能力ボタンのY
+	m_bability = false;//能力を使用しない
+
+	//ボタンの位置X
 	m_iXpos = m_openclose_x;
 	//ボタンの位置Y
 	m_iYpos = m_openclose_y;
@@ -112,6 +117,22 @@ void CObjMenuTab::Action()
 
 		}
 		//--------------------------------------------------------------------------
+		//能力ボタン動作
+		if (SelectPush(m_iability_x, m_iability_y, 64, 64) && !m_bability && m_iabicnt == 0) {
+			m_bability = true;
+			m_iabicnt++;
+		}
+		else if (SelectPush(m_iability_x, m_iability_y, 64, 64) && m_bability  && m_iabicnt == 0) {
+			m_bability = false;
+			m_iabicnt++;
+		}
+		else if (SelectPush(m_iability_x, m_iability_y, 64, 64)) {
+			m_iabicnt++;
+		}
+		else {
+			m_iabicnt = 0;
+		}
+
 
 	}
 
@@ -186,7 +207,7 @@ void CObjMenuTab::Draw()
 
 		//音を格納する部分の描画
 		for (int i = 0; i < 3; i++) {
-			if (SoundManager()->GetSound(i) != -1) {
+			if (SoundManager()->GetSound(i).sound_num != -1) {
 				//切り取り先座標
 				m_rDst.top = 64; m_rDst.left = 128;
 				m_rDst.bottom = m_rDst.top + 64; m_rDst.right = m_rDst.left + 64;
@@ -223,12 +244,30 @@ void CObjMenuTab::Draw()
 		//描画
 		Image()->Draw(1, &m_rSrc, &m_rDst, m_fCol, 0.0f);
 
+		//能力ボタン
+		if (m_bability) {
+			m_fCol[3] = 0.5f;
+		}
+		else {
+			m_fCol[3] = 1.0f;
+		}
+		//切り取り先座標
+		m_rDst.top = 128; m_rDst.left = 192;
+		m_rDst.bottom = m_rDst.top + 64; m_rDst.right = m_rDst.left + 64;
+
+		//転送先座標
+		m_rSrc.top = m_iability_y; m_rSrc.left = m_iability_x ;
+		m_rSrc.bottom = m_rSrc.top + 64; m_rSrc.right = m_rSrc.left + 64;
+
+		//描画
+		Image()->Draw(1, &m_rSrc, &m_rDst, m_fCol, 0.0f);
+
 	}
 
 	//音をドラック＆ドロップ
 	if (m_bhavesound && Input()->GetMouButtonL()) {
 		for (int i = 0; i < 3; i++) {
-			if (SoundManager()->GetSound(i) != 0) {
+			if (SoundManager()->GetSound(i).sound_num != 0) {
 				//切り取り先座標
 				m_rDst.top = 64; m_rDst.left = 128;
 				m_rDst.bottom = m_rDst.top + 64; m_rDst.right = m_rDst.left + 64;

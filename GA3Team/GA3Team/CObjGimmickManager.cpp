@@ -375,61 +375,61 @@ void CObjGimmickManager::Action() {
 		KOUNE2_EVENT_BOYA_QUIZ_COMPLETE,	//少年Aのクイズに正解後
 		KOUNE2_EVENT_GIRL_SOUNDBIG_TO_BOYA,	//少年Aに女の子の応援音（大）を聞かせた
 	};
-	
+
 	//イベント番号(コウネ3ステージ)
 	enum KOUNE3_NUMBER
 	{
 		//会話シーン-------------------------------------------------------------------------------------
 		KOUNE3_TALK_START,						//ステージ開始時トーク
 		KOUNE3_TALK_START_END,					//ステージ開始時トーク終了
-		//おばあちゃん
-		KOUNE3_TALK_GRANNY_FLG0,				//おばあちゃんとの会話0(フラグ0)
-		KOUNE3_TALK_GRANNY_FLG0_END,			//おばあちゃんとの会話0(フラグ0)終了
-		KOUNE3_TALK_GRANNY_FLG1,				//おばあちゃんとの会話1(フラグ1)
-		KOUNE3_TALK_GRANNY_FLG1_END,			//おばあちゃんとの会話1(フラグ1)終了
-		KOUNE3_TALK_GRANNY_KITTEN,				//おばあちゃんに子猫の鳴き声を聞かせる
-		KOUNE3_TALK_GRANNY_KITTEN_END,			//おばあちゃんに子猫の鳴き声を聞かせる終了
-		KOUNE3_TALK_GRANNY_FLG2,				//おばあちゃんとの会話2(フラグ2)
-		KOUNE3_TALK_GRANNY_FLG2_END,			//おばあちゃんとの会話2(フラグ2)終了
-		KOUNE3_TALK_GRANNY_FLG3,				//おばあちゃんとの会話3(フラグ3)
-		KOUNE3_TALK_GRANNY_FLG3_END,			//おばあちゃんとの会話3(フラグ3)終了
-		//子猫
-		KOUNE3_TALK_KITTEN_CHECK,				//子猫を調べたときの会話
-		KOUNE3_TALK_KITTEN_CHECKEND,			//子猫を調べたときの会話終了
-		KOUNE3_TALK_KITTEN_OTHER_SOUND,			//子猫に指定外の音を聞かせる
-		KOUNE3_TALK_KITTEN_OTHER_SOUND_END,		//子猫に指定外の音を聞かせる
-		KOUNE3_TALK_KITTEN_DOG,					//子猫に犬の鳴き声を聞かせる
-		KOUNE3_TALK_KITTEN_DOG_END,				//子猫に犬の鳴き声を聞かせる
-		//九官鳥
-		KOUNE3_TALK_MYNAH_CHECK,				//九官鳥を調べたときの会話
-		KOUNE3_TALK_MYNAH_CHECK_END,			//九官鳥を調べたときの会話終了
-		KOUNE3_TALK_MYNAH_SONG_NOTCLAER,		//九官鳥に歌を聞かせる(クリア条件未達成)
-		KOUNE3_TALK_MYNAH_SONG_NOTCLAER_END,	//九官鳥に歌を聞かせる(クリア条件未達成)終了
-		KOUNE3_TALK_MYNAH_FLG3_NORMAL,			//九官鳥を調べたときの会話(フラグ3)
-		KOUNE3_TALK_MYNAH_FLG3_NORMAL_END,		//九官鳥を調べたときの会話(フラグ3)終了
-		KOUNE3_TALK_MYNAH_FLG3_SMALL,			//九官鳥に小さくした音を聞かせる
-		KOUNE3_TALK_MYNAH_FLG3_SMALL_END,		//九官鳥に小さくした音を聞かせる終了
-		//少女
-		KOUNE3_TALK_LITTLEGIRL_FLG0,			//少女との会話(フラグ0)
-		KOUNE3_TALK_LITTLEGIRL_FLG0_END,		//少女との会話(フラグ0)終了
-		KOUNE3_TALK_LITTLEGIRL_KITTEN,			//少女に子猫の鳴き声を聞かせる
-		KOUNE3_TALK_LITTLEGIRL_KITTEN_END,		//少女に子猫の鳴き声を聞かせる終了
-		KOUNE3_TALK_LITTLEGIRL_FLG2,			//少女との会話(フラグ2)
-		KOUNE3_TALK_LITTLEGIRL_FLG2_END,		//少女との会話(フラグ2)終了
-		KOUNE3_TALK_LITTLEGIRL_FLG3,			//少女との会話(フラグ3)
-		KOUNE3_TALK_LITTLEGIRL_FLG3_END,		//少女との会話(フラグ3)終了
-		//クリア
-		KOUNE3_TALK_CLAER,						//クリア条件達成での会話
-		KOUNE3_TALK_CLAER_END,					//クリア条件達成での会話終了
+												//おばあちゃん
+												KOUNE3_TALK_GRANNY_FLG0,				//おばあちゃんとの会話0(フラグ0)
+												KOUNE3_TALK_GRANNY_FLG0_END,			//おばあちゃんとの会話0(フラグ0)終了
+												KOUNE3_TALK_GRANNY_FLG1,				//おばあちゃんとの会話1(フラグ1)
+												KOUNE3_TALK_GRANNY_FLG1_END,			//おばあちゃんとの会話1(フラグ1)終了
+												KOUNE3_TALK_GRANNY_KITTEN,				//おばあちゃんに子猫の鳴き声を聞かせる
+												KOUNE3_TALK_GRANNY_KITTEN_END,			//おばあちゃんに子猫の鳴き声を聞かせる終了
+												KOUNE3_TALK_GRANNY_FLG2,				//おばあちゃんとの会話2(フラグ2)
+												KOUNE3_TALK_GRANNY_FLG2_END,			//おばあちゃんとの会話2(フラグ2)終了
+												KOUNE3_TALK_GRANNY_FLG3,				//おばあちゃんとの会話3(フラグ3)
+												KOUNE3_TALK_GRANNY_FLG3_END,			//おばあちゃんとの会話3(フラグ3)終了
+																						//子猫
+																						KOUNE3_TALK_KITTEN_CHECK,				//子猫を調べたときの会話
+																						KOUNE3_TALK_KITTEN_CHECKEND,			//子猫を調べたときの会話終了
+																						KOUNE3_TALK_KITTEN_OTHER_SOUND,			//子猫に指定外の音を聞かせる
+																						KOUNE3_TALK_KITTEN_OTHER_SOUND_END,		//子猫に指定外の音を聞かせる
+																						KOUNE3_TALK_KITTEN_DOG,					//子猫に犬の鳴き声を聞かせる
+																						KOUNE3_TALK_KITTEN_DOG_END,				//子猫に犬の鳴き声を聞かせる
+																																//九官鳥
+																																KOUNE3_TALK_MYNAH_CHECK,				//九官鳥を調べたときの会話
+																																KOUNE3_TALK_MYNAH_CHECK_END,			//九官鳥を調べたときの会話終了
+																																KOUNE3_TALK_MYNAH_SONG_NOTCLAER,		//九官鳥に歌を聞かせる(クリア条件未達成)
+																																KOUNE3_TALK_MYNAH_SONG_NOTCLAER_END,	//九官鳥に歌を聞かせる(クリア条件未達成)終了
+																																KOUNE3_TALK_MYNAH_FLG3_NORMAL,			//九官鳥を調べたときの会話(フラグ3)
+																																KOUNE3_TALK_MYNAH_FLG3_NORMAL_END,		//九官鳥を調べたときの会話(フラグ3)終了
+																																KOUNE3_TALK_MYNAH_FLG3_SMALL,			//九官鳥に小さくした音を聞かせる
+																																KOUNE3_TALK_MYNAH_FLG3_SMALL_END,		//九官鳥に小さくした音を聞かせる終了
+																																										//少女
+																																										KOUNE3_TALK_LITTLEGIRL_FLG0,			//少女との会話(フラグ0)
+																																										KOUNE3_TALK_LITTLEGIRL_FLG0_END,		//少女との会話(フラグ0)終了
+																																										KOUNE3_TALK_LITTLEGIRL_KITTEN,			//少女に子猫の鳴き声を聞かせる
+																																										KOUNE3_TALK_LITTLEGIRL_KITTEN_END,		//少女に子猫の鳴き声を聞かせる終了
+																																										KOUNE3_TALK_LITTLEGIRL_FLG2,			//少女との会話(フラグ2)
+																																										KOUNE3_TALK_LITTLEGIRL_FLG2_END,		//少女との会話(フラグ2)終了
+																																										KOUNE3_TALK_LITTLEGIRL_FLG3,			//少女との会話(フラグ3)
+																																										KOUNE3_TALK_LITTLEGIRL_FLG3_END,		//少女との会話(フラグ3)終了
+																																																				//クリア
+																																																				KOUNE3_TALK_CLAER,						//クリア条件達成での会話
+																																																				KOUNE3_TALK_CLAER_END,					//クリア条件達成での会話終了
 
-		//-----------------------------------------------------------------------------------------------
+																																																														//-----------------------------------------------------------------------------------------------
 
-		//録音-------------------------------------------------------------------------------------------
-		KOUNE3_SOUND_REC_KITTEN,				//子猫の鳴き声を録音
-		KOUNE3_SOUND_REC_CICADA,				//蝉の音を録音
-		KOUNE3_SOUND_REC_WINDCHIME,				//風鈴の音を録音
+																																																														//録音-------------------------------------------------------------------------------------------
+																																																														KOUNE3_SOUND_REC_KITTEN,				//子猫の鳴き声を録音
+																																																														KOUNE3_SOUND_REC_CICADA,				//蝉の音を録音
+																																																														KOUNE3_SOUND_REC_WINDCHIME,				//風鈴の音を録音
 
-		//-----------------------------------------------------------------------------------------------
+																																																																								//-----------------------------------------------------------------------------------------------
 
 	};
 
@@ -437,35 +437,35 @@ void CObjGimmickManager::Action() {
 	enum KOUNE5_NUMBER {
 		KOUNE5_TALK_START,						//ステージ開始時会話
 		KOUNE5_TALK_START_END,					//ステージ開始時会話_終了
-		//メカニック
-		KOUNE5_TALK_MECHANIC,					//メカニック会話0
-		KOUNE5_TALK_MECHANIC_END,				//メカニック会話0_終了
-		KOUNE5_TALK_MECHANIC1_ABILITY,			//メカニック会話1_能力発動時
-		KOUNE5_TALK_MECHANIC1_ABILITY_END,		//メカニック会話1_能力発動時_終了
-		KOUNE5_TALK_MECHANIC2_MUSIC_OK,			//メカニック会話2_指定の音を聞かせる
-		KOUNE5_TALK_MECHANIC2_MUSIC_OK_END,		//メカニック会話2_指定の音を聞かせる_終了
-		KOUNE5_TALK_MECHANIC3_MUSIC_MIS,		//メカニック会話3_指定の音以外を聞かせる
-		KOUNE5_TALK_MECHANIC3_MUSIC_MIS_END,	//メカニック会話3_指定の音以外を聞かせる_終了
-		KOUNE5_TALK_MECHANIC3_RESET,			//メカニック会話4_ランプリセット
-		KOUNE5_TALK_MECHANIC3_RESET_END,		//メカニック会話4_ランプリセット_終了
-		KOUNE5_TALK_MECHANIC5_RESET_YES,		//メカニック会話5_リセットする
-		KOUNE5_TALK_MECHANIC5_RESET_YES_END,	//メカニック会話5_リセットする_終了
-		KOUNE5_TALK_MECHANIC6_RESET_NO,			//メカニック会話6_リセットしない
-		KOUNE5_TALK_MECHANIC6_RESET_NO_END,		//メカニック会話6_リセットしない_終了
-		KOUNE5_TALK_MECHANIC7_CLEAR,			//メカニック会話7_クリア条件達成
-		KOUNE5_TALK_MECHANIC7_CLEAR_END,		//メカニック会話7_クリア条件達成_終了
-		//演奏家
-		KOUNE5_TALK_MUSICIAN1_FLG3_FALSE_NO,	//演奏家会話1_フラグ3×_条件を満たしていない
-		KOUNE5_TALK_MUSICIAN1_FLG3_FALSE_NO_END,//演奏家会話1_フラグ3×_条件を満たしていない_終了
-		KOUNE5_TALK_MUSICIAN2_FLG3_FALSE_YES,	//演奏家会話2_フラグ3×_条件を満たしている
-		KOUNE5_TALK_MUSICIAN2_FLG3_FALSE_YES_END,//演奏家会話2_フラグ3×_条件を満たしている_終了
-		KOUNE5_TALK_MUSICIAN3_FLG3_TRUE,		//演奏家会話3_フラグ3○
-		KOUNE5_TALK_MUSICIAN3_FLG3_TRUE_END,	//演奏家会話3_フラグ3○_終了
-		//録音---------
-		KOUNE5_SOUND_REC_A,						//機械音A_録音
-		KOUNE5_SOUND_REC_B,						//機械音B_録音
-		KOUNE5_SOUND_REC_Ad,					//機械音A'_録音
-		KOUNE5_SOUND_REC_Bd,					//機械音B'_録音
+												//メカニック
+												KOUNE5_TALK_MECHANIC,					//メカニック会話0
+												KOUNE5_TALK_MECHANIC_END,				//メカニック会話0_終了
+												KOUNE5_TALK_MECHANIC1_ABILITY,			//メカニック会話1_能力発動時
+												KOUNE5_TALK_MECHANIC1_ABILITY_END,		//メカニック会話1_能力発動時_終了
+												KOUNE5_TALK_MECHANIC2_MUSIC_OK,			//メカニック会話2_指定の音を聞かせる
+												KOUNE5_TALK_MECHANIC2_MUSIC_OK_END,		//メカニック会話2_指定の音を聞かせる_終了
+												KOUNE5_TALK_MECHANIC3_MUSIC_MIS,		//メカニック会話3_指定の音以外を聞かせる
+												KOUNE5_TALK_MECHANIC3_MUSIC_MIS_END,	//メカニック会話3_指定の音以外を聞かせる_終了
+												KOUNE5_TALK_MECHANIC3_RESET,			//メカニック会話4_ランプリセット
+												KOUNE5_TALK_MECHANIC3_RESET_END,		//メカニック会話4_ランプリセット_終了
+												KOUNE5_TALK_MECHANIC5_RESET_YES,		//メカニック会話5_リセットする
+												KOUNE5_TALK_MECHANIC5_RESET_YES_END,	//メカニック会話5_リセットする_終了
+												KOUNE5_TALK_MECHANIC6_RESET_NO,			//メカニック会話6_リセットしない
+												KOUNE5_TALK_MECHANIC6_RESET_NO_END,		//メカニック会話6_リセットしない_終了
+												KOUNE5_TALK_MECHANIC7_CLEAR,			//メカニック会話7_クリア条件達成
+												KOUNE5_TALK_MECHANIC7_CLEAR_END,		//メカニック会話7_クリア条件達成_終了
+																						//演奏家
+																						KOUNE5_TALK_MUSICIAN1_FLG3_FALSE_NO,	//演奏家会話1_フラグ3×_条件を満たしていない
+																						KOUNE5_TALK_MUSICIAN1_FLG3_FALSE_NO_END,//演奏家会話1_フラグ3×_条件を満たしていない_終了
+																						KOUNE5_TALK_MUSICIAN2_FLG3_FALSE_YES,	//演奏家会話2_フラグ3×_条件を満たしている
+																						KOUNE5_TALK_MUSICIAN2_FLG3_FALSE_YES_END,//演奏家会話2_フラグ3×_条件を満たしている_終了
+																						KOUNE5_TALK_MUSICIAN3_FLG3_TRUE,		//演奏家会話3_フラグ3○
+																						KOUNE5_TALK_MUSICIAN3_FLG3_TRUE_END,	//演奏家会話3_フラグ3○_終了
+																																//録音---------
+																																KOUNE5_SOUND_REC_A,						//機械音A_録音
+																																KOUNE5_SOUND_REC_B,						//機械音B_録音
+																																KOUNE5_SOUND_REC_Ad,					//機械音A'_録音
+																																KOUNE5_SOUND_REC_Bd,					//機械音B'_録音
 	};
 
 	//イベント番号(メルエルステージ1)
@@ -489,9 +489,10 @@ void CObjGimmickManager::Action() {
 
 	//boolフラグリスト
 	enum KOUNE1_BOOL_FLG_LIST {
-		 KOUNE1_BOOL_OLDMAN_TALK,//おじいさんと会話した
+		KOUNE1_BOOL_OLDMAN_TALK,//おじいさんと会話した
 	};
 	static bool m_bKoune1_flg_list[5] = { false };
+
 
 	//コウネステージ2
 	static int m_iKoune2_flg = 0;
@@ -692,7 +693,7 @@ void CObjGimmickManager::Action() {
 		//-コウネステージ-----------------------------------------
 	case 30://ステージ1
 
-		//おじいさんとはいつでも会話可能
+			//おじいさんとはいつでも会話可能
 		if (m_Koune1_flg > 0) {
 			if (m_gimmick_oldman->m_ball[0].OnPush) {
 				Overlay()->talkDraw(KOUNE, KOUNE1_OZI);
@@ -711,10 +712,10 @@ void CObjGimmickManager::Action() {
 		}
 		else if (m_Koune1_flg == 1) {
 			if (m_gimmick_oldman->m_ball[0].OnPush) {
-				if (SoundManager()->HaveSound(0)==false) {
+				if (SoundManager()->HaveSound(0) == false) {
 					Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG2_NO);
 				}
-				else if (SoundManager()->HaveSound(0)==true) {
+				else if (SoundManager()->HaveSound(0) == true) {
 					Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG2_YES);
 				}
 			}
@@ -726,14 +727,14 @@ void CObjGimmickManager::Action() {
 		}
 		else if (m_Koune1_flg == 2) {
 			/*犬の音を大音量で聞かせた*/
-			if (m_gimmick_oldman->m_getsound.sound_num==0&&
+			if (m_gimmick_oldman->m_getsound.sound_num == 0 &&
 				m_gimmick_oldman->m_getsound.sound_volume == BALL_VOL_BIG) {
 				Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG3_YES);
 				if (Overlay()->NextWait()) {
 					m_gimmick_oldman->m_Status = STATUS_DELETE;
 					m_Koune1_flg = 4;
 				}
-				
+
 			}/*犬の音を少音量で聞かせた+おじいさんに話しかける前に*/
 			else if (m_gimmick_oldman->m_getsound.sound_num == 0 &&
 				m_gimmick_oldman->m_getsound.sound_volume != BALL_VOL_BIG&&

@@ -758,7 +758,7 @@ void GimmickGranny::Init(int xpos, int  ypos, int  widht, int  height, int  ball
 	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
 
 	//吹き出しの初期化
-	InitBall(&m_ball[0], 48, -48, talk, EXCEPTION, CNONE, LOWER_RIGHT);
+	InitBall(&m_ball[0], 48, -48, talk, EXCEPTION, CNONE, LOWER_LEFT);
 }
 void GimmickGranny::Destructor()//デストラクタ
 {
@@ -766,10 +766,10 @@ void GimmickGranny::Destructor()//デストラクタ
 }
 void GimmickGranny::Action()//アクション
 {
-	if (m_ball[0].OnPush) {
-		Overlay()->talkDraw(SION, SION3_OBATYAN);
-	}
-
+//	if (m_ball[0].OnPush) {
+//		Overlay()->talkDraw(SION, SION3_OBATYAN);
+//	}
+//
 }
 void GimmickGranny::Draw()//描画
 {
@@ -786,7 +786,7 @@ void GimmickGranny::Draw()//描画
 	Image()->DrawEx(58, &m_src, &m_dst, col, 0.0f);
 
 	//ギミック名前描画
-	Font()->StrDraw("おばあちゃん", m_iXpos, m_iYpos, 20, col);
+	Font()->StrDraw("おばあちゃん", m_iXpos + User()->mscroll_x, m_iYpos, 20, col);
 
 	//吹き出しの描画＆動作
 	this->gimmicDraw(1);
@@ -799,7 +799,7 @@ void GimmickMynah::Init(int xpos, int ypos, int widht, int height, int balloonnu
 	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
 
 	//吹き出しの初期化
-	InitBall(&m_ball[0], 48, -48, sound, 1, PINK, LOWER_RIGHT);
+	InitBall(&m_ball[0], 48, -48, sound, 1, NORMAL, LOWER_LEFT);
 }
 void GimmickMynah::Destructor()	//デストラクタ
 {
@@ -824,7 +824,7 @@ void GimmickMynah::Draw()		//ドロー
 	Image()->DrawEx(58, &m_src, &m_dst, col, 0.0f);
 
 	//ギミック名前描画
-	Font()->StrDraw("九官鳥", m_iXpos, m_iYpos, 20, col);
+	Font()->StrDraw("九官鳥", m_iXpos + User()->mscroll_x, m_iYpos, 20, col);
 
 	//吹き出しの描画＆動作
 	this->gimmicDraw(1);
@@ -878,7 +878,7 @@ void GimmickWindchime::Init(int xpos, int ypos, int widht, int height, int ballo
 	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
 
 	//吹き出しの初期化
-	InitBall(&m_ball[0], 48, -48, sound, 1, PURPLE, LOWER_RIGHT);
+	InitBall(&m_ball[0], 48, -48, sound, 1, NORMAL, LOWER_LEFT);
 }
 void GimmickWindchime::Destructor()	//デストラクタ
 {
@@ -902,7 +902,7 @@ void GimmickWindchime::Draw()		//ドロー
 	Image()->DrawEx(58, &m_src, &m_dst, col, 0.0f);
 
 	//ギミック名前描画
-	Font()->StrDraw("風鈴", m_iXpos, m_iYpos, 20, col);
+	Font()->StrDraw("風鈴", m_iXpos + User()->mscroll_x, m_iYpos, 20, col);
 
 	//吹き出しの描画＆動作
 	this->gimmicDraw(1);
@@ -1505,7 +1505,7 @@ void GimmickKitten::Init(int xpos, int ypos, int widht, int height, int balloonn
 	//親クラスのInit関数を呼ぶ
 	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
 	//吹き出しの初期化
-	InitBall(&m_ball[0],48, -48, sound, 1, RED, LOWER_LEFT);
+	InitBall(&m_ball[0],48, -48, sound, 1, NORMAL, LOWER_LEFT);
 }
 //デストラクタ
 void GimmickKitten::Destructor()
@@ -1531,6 +1531,9 @@ void GimmickKitten::Draw()
 
 	//描画
 	Image()->Draw(17, &m_src, &m_dst, col, 0.0f);
+
+	//ギミック名前描画
+	Font()->StrDraw("子猫", m_iXpos + User()->mscroll_x, m_iYpos, 20, col);
 	//吹き出し描画
 	this->gimmicDraw(1);
 
@@ -1544,7 +1547,7 @@ void GimmickCicada::Init(int xpos, int ypos, int widht, int height, int balloonn
 	//親クラスのInit関数を呼ぶ
 	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
 	//吹き出しの初期化
-	InitBall(&m_ball[0],48, -48, sound, 1, RED, LOWER_LEFT);
+	InitBall(&m_ball[0],48, -48, sound, 1, NORMAL, LOWER_LEFT);
 }
 //デストラクタ
 void GimmickCicada::Destructor()
@@ -1570,6 +1573,10 @@ void GimmickCicada::Draw()
 
 	//描画
 	Image()->Draw(18, &m_src, &m_dst, col, 0.0f);
+
+	//ギミック名前描画
+	Font()->StrDraw("蝉", m_iXpos + User()->mscroll_x, m_iYpos, 20, col);
+
 	//吹き出し描画
 	this->gimmicDraw(1);
 }
@@ -1609,6 +1616,9 @@ void GimmickLittleGirl::Draw()
 
 	//描画
 	Image()->Draw(15, &m_src, &m_dst, col, 0.0f);
+
+	//ギミック名前描画
+	Font()->StrDraw("少女", m_iXpos + User()->mscroll_x, m_iYpos, 20, col);
 
 	//Image()->DrawEx(5, &m_src, &m_dst, col, 0.0f);
 

@@ -1075,6 +1075,28 @@ void CObjGimmickManager::Action() {
 	}
 	case 32:
 	{
+		//【初回動作】
+		if (m_Koune3_flg == KOUNE3_TALK_START) {
+			//女の子「駄菓子屋さんだわ！！...」
+			//Overlay()->talkDraw(KOUNE, KOUNE3_START);
+
+			//会話終了
+			if (Overlay()->NextWait()) {
+				m_Koune3_flg = KOUNE3_TALK_START_END;
+			}
+		}
+
+		//if (m_gimmick_granny->m_ball[0].OnPush)
+		//{
+		//	if (///)
+		//	{
+		//		m_Koune3_flg = KOUNE3_TALK_GRANNY_FLG0;
+		//	}
+		//	
+		//
+		//}
+		
+
 
 		break;
 	}
@@ -1363,7 +1385,6 @@ void CObjGimmickManager::Draw() {
 		break;
 		//-コウネステージ-----------------------------------------
 	case 30:
-
 
 		//切り取り座標
 		m_dst.top = 0;

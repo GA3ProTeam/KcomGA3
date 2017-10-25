@@ -1771,7 +1771,7 @@ void GimmickMechanic::Action() {
 
 	 //メニュータブ取得
 	 CObjMenuTab* tab = (CObjMenuTab*)Obj()->GetObj(OBJ_MENUTAB);
-
+/*
 	 //駅に向かうための扉の前でメカニックに話しかけられる
 	 // └システムの動作を見たいから扉を開けてみてほしい
 	 //    └""フラグ1回収""
@@ -1810,6 +1810,7 @@ void GimmickMechanic::Action() {
 		 //Overlay()->talkDraw(KOUNE, ); //「なんだか違う」
 
 	}
+	*/
 
 }
 //②メカニックの描画

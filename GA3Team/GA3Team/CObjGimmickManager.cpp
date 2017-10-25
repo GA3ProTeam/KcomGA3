@@ -1250,6 +1250,16 @@ void CObjGimmickManager::Action() {
 	case 34://コウネステージ5
 
 		//【初回動作】
+		/*if (m_Koune5_flg == KOUNE5_TALK_START) {
+			//コウネ「電車の時間~」
+			//Overlay()->talkDraw(KOUNE, KOUNE5_START);
+
+			//会話終了
+			if (Overlay()->NextWait()) {
+				m_Koune5_flg = KOUNE5_TALK_START_END;
+			}
+		}
+		*/
 
 		//駅に向かうための扉の前でメカニックに話しかけられる
 		// └システムの動作を見たいから扉を開けてみてほしい
@@ -1600,7 +1610,23 @@ void CObjGimmickManager::Draw() {
 		break;
 	case 33:
 		break;
-	case 34:
+	case 34://コウネ5
+		/*
+		//切り取り座標
+		m_dst.top = 0;
+		m_dst.bottom = m_dst.top + 1024;
+		m_dst.left = 0;
+		m_dst.right = m_dst.left + 1024;
+
+		//転送先座標
+		m_src.top = 0;
+		m_src.bottom = m_src.top + 600;
+		m_src.left = -400 + User()->mscroll_x;
+		m_src.right = m_src.left + 1200;
+
+		//背景描画
+		Image()->DrawEx(0, &m_src, &m_dst, col, 0.0f); //仮
+		*/
 		break;
 	case 35:
 		break;

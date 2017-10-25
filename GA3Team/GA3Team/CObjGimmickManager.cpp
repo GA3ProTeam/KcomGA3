@@ -1249,6 +1249,48 @@ void CObjGimmickManager::Action() {
 	case 33:
 		break;
 	case 34://コウネステージ5
+
+		//【初回動作】
+
+		//駅に向かうための扉の前でメカニックに話しかけられる
+		// └システムの動作を見たいから扉を開けてみてほしい
+		//    └""フラグ1回収""
+		/*if (Input()->GetMouButtonL()) {
+			//マウスがギミック範囲内か確認
+			if (Input()->m_x > m_iXpos&& Input()->m_x < (m_iXpos + m_iWidth)
+				&& Input()->m_y > m_iYpos && Input()->m_y < (m_iYpos + m_iHeight)) {
+				//Overlay()->talkDraw(KOUNE, ); //「駅に行きたいのかな？」
+				SavedataManeger()->CurrentData->m_bKouneflg[17] = true;
+			}
+		}
+
+
+		//能力を使う
+		//マスクが壊れていて使用できない⇒メカニックとの会話
+		//　└メカニック...作業用に何か曲を持ってきてほしい
+		// 　　└""フラグ2回収""
+		if (Input()->GetMouButtonL()) { //能力使用(仮) 一度のみ
+			if (SavedataManeger()->CurrentData->m_bKouneflg[17] == true && SavedataManeger()->CurrentData->m_bKouneflg[18] == false) {
+				//Overlay()->talkDraw(KOUNE, ); //「マスクが壊れたのかい？」
+				SavedataManeger()->CurrentData->m_bKouneflg[18] = true;
+			}
+		}
+
+		//メカニックに曲を渡す
+		//フラグ3回収済み
+		if (SavedataManeger()->CurrentData->m_bKouneflg[19]) {
+			//メカニック...修理したマスクを渡す
+			//　　　　　　　└音量の変更ができるようになる
+			//Overlay()->talkDraw(KOUNE, ); //「これなら作業が捗る！」
+			//能力を使用できるようにする
+
+		}//フラグ3未回収
+		else {
+			//メカニック...曲が好みではない
+			//Overlay()->talkDraw(KOUNE, ); //「なんだか違う」
+
+		}
+		*/
 		break;
 	case 35:
 		break;

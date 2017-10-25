@@ -771,74 +771,73 @@ void CObjGimmickManager::Action() {
 		break;
 		//-コウネステージ-----------------------------------------
 	case 30://ステージ1
-
-			//おじいさんとはいつでも会話可能
-		if (m_Koune1_flg > 0) {
-			if (m_gimmick_oldman->m_ball[0].OnPush) {
-				Overlay()->talkDraw(KOUNE, KOUNE1_OZI);
-				m_bKoune1_flg_list[KOUNE1_BOOL_OLDMAN_TALK] = true;
-			}
-		}
-
-		//初回会話
-		if (m_Koune1_flg == 0) {
-			Overlay()->talkDraw(KOUNE, KOUNE1_START);
-
-			//会話終了
-			if (Overlay()->NextWait()) {
-				m_Koune1_flg = 1;
-			}
-		}
-		else if (m_Koune1_flg == 1) {
-			if (m_gimmick_oldman->m_ball[0].OnPush) {
-				if (SoundManager()->HaveSound(0) == false) {
-					Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG2_NO);
-					
-				}
-				else if (SoundManager()->HaveSound(0) == true) {
-					Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG2_YES);
+		if (m_gimmick_oldman != NULL) {
+			//おじいさんと会話可能なタイミング
+			if (m_Koune1_flg > 0) {
+				if (m_gimmick_oldman->m_ball[0].OnPush) {
+					//初めて会話したとき
+					if (m_bKoune1_flg_list[KOUNE1_BOOL_OLDMAN_TALK] == false) {
+						//おじいさん「そこのあなた。」
+						Overlay()->talkDraw(KOUNE, KOUNE1_OZI);
+						//一度でも会話したらフラグを立てる
+						m_bKoune1_flg_list[KOUNE1_BOOL_OLDMAN_TALK] = true;
+					}
+					//2回目以降に会話したとき
+					else {
+						//犬から音を録音していない
+						if (SoundManager()->HaveSound(0) == false) {
+							//コウネ「知りません。」
+							Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG2_NO);
+						}
+						//犬から音を録音している
+						else if (SoundManager()->HaveSound(0) == true) {
+							//コウネ「直接鳴き声を聞かせたほうが早いな・・・」
+							Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG2_YES);
+						}
+					}
 				}
 			}
 
-			//会話終了
-			if (Overlay()->NextWait()) {
-				if(Overlay()->NowTalk()== KOUNE1_OZI_FLAG2_NO ||
-					Overlay()->NowTalk() == KOUNE1_OZI_FLAG2_YES)
-					m_Koune1_flg = 2;
-			}
-		}
-		else if (m_Koune1_flg == 2) {
-			/*犬の音を大音量で聞かせた*/
-			if (m_gimmick_oldman->m_getsound.sound_num == 0 &&
-				m_gimmick_oldman->m_getsound.sound_volume == BALL_VOL_BIG) {
-				Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG3_YES);
+			//初回会話
+			if (m_Koune1_flg == 0) {
+				Overlay()->talkDraw(KOUNE, KOUNE1_START);
+
+				//会話終了
 				if (Overlay()->NextWait()) {
-					m_gimmick_oldman->m_Status = STATUS_DELETE;
-					m_Koune1_flg = 4;
+					m_Koune1_flg = 1;
+				}
+			}
+			else if (m_Koune1_flg == 1) {
+				/*犬の音を大音量で聞かせた*/
+				if (m_gimmick_oldman->m_getsound.sound_num == 0 &&
+					m_gimmick_oldman->m_getsound.sound_volume == BALL_VOL_BIG) {
+					//おじいさん「この声ははなこ！！」
+					Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG3_YES);
+
+				}/*犬の音を少音量で聞かせた+おじいさんに話しかける前に*/
+				else if (m_gimmick_oldman->m_getsound.sound_num == 0 &&
+					m_gimmick_oldman->m_getsound.sound_volume != BALL_VOL_BIG&&
+					m_bKoune1_flg_list[KOUNE1_BOOL_OLDMAN_TALK] == false) {
+					//おじいさん「何か小さな音がしたような気がしたが・・・」
+					Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG3_NO_FLAG1_YES);
+				}
+				/*犬の音を少～中音量で聞かせた*/
+				else if (m_gimmick_oldman->m_getsound.sound_num == 0 &&
+					m_gimmick_oldman->m_getsound.sound_volume != BALL_VOL_BIG &&
+					m_bKoune1_flg_list[KOUNE1_BOOL_OLDMAN_TALK] == true) {
+
+					Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG3_NO);
 				}
 
-			}/*犬の音を少音量で聞かせた+おじいさんに話しかける前に*/
-			else if (m_gimmick_oldman->m_getsound.sound_num == 0 &&
-				m_gimmick_oldman->m_getsound.sound_volume != BALL_VOL_BIG&&
-				m_bKoune1_flg_list[KOUNE1_BOOL_OLDMAN_TALK] == false) {
-
-				Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG3_NO_FLAG1_YES);
-			}
-			/*犬の音を少～中音量で聞かせた*/
-			else if (m_gimmick_oldman->m_getsound.sound_num == 0 &&
-				m_gimmick_oldman->m_getsound.sound_volume != BALL_VOL_BIG &&
-				m_bKoune1_flg_list[KOUNE1_BOOL_OLDMAN_TALK] == true) {
-				Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG3_NO);
-			}
-			else {
-				int a = 0;
-			}
+				//会話終了
 				if (Overlay()->NextWait()) {
-					if (Overlay()->NowTalk() == KOUNE1_OZI_FLAG3_YES)
-
-					m_gimmick_oldman->m_Status = STATUS_DELETE;
-					m_Koune1_flg = 4;
+					if (Overlay()->NowTalk() == KOUNE1_OZI_FLAG3_YES) {
+						m_gimmick_oldman->m_Status = STATUS_DELETE;
+						m_gimmick_oldman = NULL;
+						m_Koune1_flg = 4;
+					}
 				}
+			}
 		}
 		else if (m_Koune1_flg == 4) {
 			//マンホールを左にずらす
@@ -1128,31 +1127,93 @@ void CObjGimmickManager::Action() {
 			}
 		}
 
+
+		//おばあちゃん
+		if (m_gimmick_granny->m_ball[0].OnPush)
+		{
+			//フラグ3が立っている
+			if (SavedataManeger()->CurrentData->m_bKouneflg[9] == 1)
+			{
+				m_Koune3_flg = KOUNE3_TALK_GRANNY_FLG3;
+			}
+			//フラグ2が立っている
+			else if (SavedataManeger()->CurrentData->m_bKouneflg[8] == 1)
+			{
+				m_Koune3_flg = KOUNE3_TALK_GRANNY_FLG2;
+			}
+			//子猫の音を録音している
+			//else if(//おばあちゃんに子猫の鳴き声を聞かせる)
+			//{
+			//	m_Koune3_flg = KOUNE3_TALK_GRANNY_KITTEN;
+			//}
+			//フラグ1が立っている
+			else if (SavedataManeger()->CurrentData->m_bKouneflg[7] == 1)
+			{
+				m_Koune3_flg = KOUNE3_TALK_GRANNY_FLG1;
+			}
+			//フラグが立っていない
+			else if (SavedataManeger()->CurrentData->m_bKouneflg[7] == 0)
+			{
+				m_Koune3_flg = KOUNE3_TALK_GRANNY_FLG0;
+			}
+
+		}
+
 		//おばあちゃんとの会話
-		//if (m_gimmick_granny->m_ball[0].OnPush)
-		//{
-		//	if (///)
-		//	{
-		//		m_Koune3_flg = KOUNE3_TALK_GRANNY_FLG0;
-		//	{
-		//	else if(///)
-		//	{
-		//		m_Koune3_flg = KOUNE3_TALK_GRANNY_FLG1;
-		//	}
-		//	else if(///)
-		//	{
-		//		m_Koune3_flg = KOUNE3_TALK_GRANNY_KITTEN;
-		//	}
-		//	else if(///)
-		//	{
-		//		m_Koune3_flg = KOUNE3_TALK_GRANNY_FLG2;
-		//	}
-		//	else if(///)
-		//	{
-		//		m_Koune3_flg = KOUNE3_TALK_GRANNY_FLG3;
-		//	}
-		//
-		//}
+		if (m_Koune3_flg == KOUNE3_TALK_GRANNY_FLG0)
+		{
+			//おばあちゃん「あらあら、...」
+			//Overlay()->talkDraw(KOUNE, KOUNE2_START);
+
+			//会話終了
+			if (Overlay()->NextWait()) {
+				SavedataManeger()->CurrentData->m_bKouneflg[7] = 1;
+				SavedataManeger()->Writesavedata();
+				m_Koune3_flg = KOUNE3_TALK_GRANNY_FLG0_END;
+			}
+		}
+		else if(m_Koune3_flg == KOUNE3_TALK_GRANNY_FLG1)
+		{
+			//おばあちゃん「九ちゃんは自分からは...」
+			//Overlay()->talkDraw(KOUNE, KOUNE3_START);
+
+			//会話終了
+			if (Overlay()->NextWait()) {
+				m_Koune3_flg = KOUNE3_TALK_GRANNY_FLG1_END;
+			}
+		}
+		else if (m_Koune3_flg == KOUNE3_TALK_GRANNY_KITTEN)
+		{
+			//おばあちゃん「あら、その鳴き声は...」
+			//Overlay()->talkDraw(KOUNE, KOUNE3_START);
+
+			//会話終了
+			if (Overlay()->NextWait()) {
+				m_Koune3_flg = KOUNE3_TALK_GRANNY_KITTEN_END;
+			}
+		}
+		else if (m_Koune3_flg == KOUNE3_TALK_GRANNY_FLG2)
+		{
+			//おばあちゃん「困ったわ...」
+			//Overlay()->talkDraw(KOUNE, KOUNE3_START);
+
+			//会話終了
+			if (Overlay()->NextWait()) {
+				SavedataManeger()->CurrentData->m_bKouneflg[9] = 1;
+				SavedataManeger()->Writesavedata();
+				m_Koune3_flg = KOUNE3_TALK_GRANNY_FLG2_END;
+			}
+		}
+		else if (m_Koune3_flg == KOUNE3_TALK_GRANNY_FLG3)
+		{
+			//おばあちゃん「九ちゃんはとても賢いから...」
+			//Overlay()->talkDraw(KOUNE, KOUNE3_START);
+
+			//会話終了
+			if (Overlay()->NextWait()) {
+				m_Koune3_flg = KOUNE3_TALK_GRANNY_FLG3_END;
+			}
+		}
 
 		//女の子との会話
 		//if (m_gimmick_little_girl->m_ball[0].OnPush)

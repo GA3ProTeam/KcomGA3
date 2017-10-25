@@ -30,7 +30,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 	*/
 	SavedataManeger()->Setcurrentdata();
 
-	m_Stage_ID = 40;
+	m_Stage_ID = 30;
 
 	switch (m_Stage_ID) {
 
@@ -59,27 +59,27 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 		
 		break;
 	case 11:
-		////シオンのステージ2のギミック生成
-		//m_gimmick_earphone = new Gimmickearphone();
-		//Obj()->InsertObj(m_gimmick_earphone, GIMMICK_EARPHONE, 5, this->m_pScene, HIT_BOX_OFF);
-		//m_gimmick_earphone->Init(650, 120, 200, 400, 1);
-		////コウネ生成
-		//m_gimmick_koune = new Gimmickkoune();
-		//Obj()->InsertObj(m_gimmick_koune, GIMMICK_KOUNE, 5, this->m_pScene, HIT_BOX_OFF);
-		//m_gimmick_koune->Init(-250, 150, 200, 400, 1);
-		////猫生成
-		//m_gimmick_cat = new Gimmickcat();
-		//Obj()->InsertObj(m_gimmick_cat, GIMMICK_CAT, 5, this->m_pScene, HIT_BOX_OFF);
-		//m_gimmick_cat->Init(550, 120, 100, 100, 1);
-		////自転車生成
-		//m_gimmick_bicycle = new Gimmickbicycle();
-		//Obj()->InsertObj(m_gimmick_bicycle, GIMMICK_BICYCLE, 5, this->m_pScene, HIT_BOX_OFF);
-		//m_gimmick_bicycle->Init(100, 300, 400, 250, 1);
-		////消防車
-		//m_gimmick_firetruck = new Gimmickfiretruck();
-		//Obj()->InsertObj(m_gimmick_firetruck, GIMMICK_FIRETRUCK, 5, this->m_pScene, HIT_BOX_OFF);
-		//m_gimmick_firetruck->Init(-430, -120, 400, 450, 1);
-		break;
+		//シオンのステージ2のギミック生成
+		//イヤホン男生成
+		m_gimmick_earphone = new Gimmickearphone();
+		Obj()->InsertObj(m_gimmick_earphone, GIMMICK_EARPHONE, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_earphone->Init(650, 120, 200, 400, 1);
+		//コウネ生成
+		m_gimmick_koune = new Gimmickkoune();
+		Obj()->InsertObj(m_gimmick_koune, GIMMICK_KOUNE, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_koune->Init(-250, 150, 200, 400, 1);
+		//猫生成
+		m_gimmick_cat = new Gimmickcat();
+		Obj()->InsertObj(m_gimmick_cat, GIMMICK_CAT, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_cat->Init(550, 120, 100, 100, 1);
+		//自転車生成
+		m_gimmick_bicycle = new Gimmickbicycle();
+		Obj()->InsertObj(m_gimmick_bicycle, GIMMICK_BICYCLE, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_bicycle->Init(100, 300, 400, 250, 1);
+		//消防車
+		m_gimmick_firetruck = new Gimmickfiretruck();
+		Obj()->InsertObj(m_gimmick_firetruck, GIMMICK_FIRETRUCK, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_firetruck->Init(-430, -120, 400, 450, 1);
 
 	case 12:
 		////シオンのステージ3のギミック生成
@@ -189,25 +189,25 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 
 
 		////-コウネステージ-----------------------------------------
-		//case 30:
+		case 30:
 
-		/*m_gimmick_dog = new GimmickDog();
+		m_gimmick_dog = new GimmickDog();
 		Obj()->InsertObj(m_gimmick_dog,GIMMICK_DOG , 5, this->m_pScene, HIT_BOX_OFF);
 		m_gimmick_dog->Init(520, 320, 120, 100, 1);
 
 		m_gimmick_oldman = new GimmickOldman();
 		Obj()->InsertObj(m_gimmick_oldman, GIMMICK_OLDMAN, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_oldman->Init(100, 100, 150, 300, 3);
+		m_gimmick_oldman->Init(100, 150, 150, 300, 1);
 
 		m_gimmick_manhole_hole = new GimmickManholeHole();
-		Obj()->InsertObj(m_gimmick_manhole_hole, GIMMICK_MANHOLEHOLE, 3, this->m_pScene, HIT_BOX_OFF);
+		Obj()->InsertObj(m_gimmick_manhole_hole, GIMMICK_MANHOLEHOLE, 2, this->m_pScene, HIT_BOX_OFF);
 		m_gimmick_manhole_hole->Init(100, 400, 220, 80, 2);
 
 		m_gimmick_manhole_cover = new GimmickManholeCover();
-		Obj()->InsertObj(m_gimmick_manhole_cover, GIMMICK_MANHOLECOVER, 2, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_manhole_cover->Init(100, 400, 220, 80, 1);*/
+		Obj()->InsertObj(m_gimmick_manhole_cover, GIMMICK_MANHOLECOVER,3, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_manhole_cover->Init(100, 400, 220, 80, 1);
 
-		//break;
+		break;
 
 	case 31:
 		////コウネステージ２　ギミック生成
@@ -793,6 +793,7 @@ void CObjGimmickManager::Action() {
 			if (m_gimmick_oldman->m_ball[0].OnPush) {
 				if (SoundManager()->HaveSound(0) == false) {
 					Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG2_NO);
+					
 				}
 				else if (SoundManager()->HaveSound(0) == true) {
 					Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG2_YES);
@@ -801,7 +802,9 @@ void CObjGimmickManager::Action() {
 
 			//会話終了
 			if (Overlay()->NextWait()) {
-				m_Koune1_flg = 2;
+				if(Overlay()->NowTalk()== KOUNE1_OZI_FLAG2_NO ||
+					Overlay()->NowTalk() == KOUNE1_OZI_FLAG2_YES)
+					m_Koune1_flg = 2;
 			}
 		}
 		else if (m_Koune1_flg == 2) {
@@ -827,7 +830,15 @@ void CObjGimmickManager::Action() {
 				m_bKoune1_flg_list[KOUNE1_BOOL_OLDMAN_TALK] == true) {
 				Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG3_NO);
 			}
+			else {
+				int a = 0;
+			}
+				if (Overlay()->NextWait()) {
+					if (Overlay()->NowTalk() == KOUNE1_OZI_FLAG3_YES)
 
+					m_gimmick_oldman->m_Status = STATUS_DELETE;
+					m_Koune1_flg = 4;
+				}
 		}
 		else if (m_Koune1_flg == 4) {
 			//マンホールを左にずらす
@@ -1106,6 +1117,28 @@ void CObjGimmickManager::Action() {
 	}
 	case 32:
 	{
+		//【初回動作】
+		if (m_Koune3_flg == KOUNE3_TALK_START) {
+			//女の子「駄菓子屋さんだわ！！...」
+			//Overlay()->talkDraw(KOUNE, KOUNE3_START);
+
+			//会話終了
+			if (Overlay()->NextWait()) {
+				m_Koune3_flg = KOUNE3_TALK_START_END;
+			}
+		}
+
+		//if (m_gimmick_granny->m_ball[0].OnPush)
+		//{
+		//	if (///)
+		//	{
+		//		m_Koune3_flg = KOUNE3_TALK_GRANNY_FLG0;
+		//	}
+		//	
+		//
+		//}
+		
+
 
 		break;
 	}
@@ -1305,7 +1338,7 @@ void CObjGimmickManager::Draw() {
 		m_src.right = m_src.left + 800;
 
 		//背景描画
-		Image()->DrawEx(28, &m_src, &m_dst, col, 0.0f);
+		Image()->DrawEx(EX_STAGE_SION_STAGE2_right, &m_src, &m_dst, col, 0.0f);
 
 		//左
 		//切り取り座標
@@ -1321,16 +1354,7 @@ void CObjGimmickManager::Draw() {
 		m_src.right = m_src.left + 400;
 
 		//背景描画
-		Image()->DrawEx(29, &m_src, &m_dst, col, 0.0f);
-
-
-
-
-
-
-
-
-
+		Image()->DrawEx(EX_STAGE_SION_STAGE2_left, &m_src, &m_dst, col, 0.0f);
 
 		break;
 	case 12:
@@ -1408,7 +1432,6 @@ void CObjGimmickManager::Draw() {
 		break;
 		//-コウネステージ-----------------------------------------
 	case 30:
-
 
 		//切り取り座標
 		m_dst.top = 0;

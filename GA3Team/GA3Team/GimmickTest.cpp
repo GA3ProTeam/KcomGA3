@@ -767,9 +767,9 @@ void GimmickGranny::Destructor()//デストラクタ
 }
 void GimmickGranny::Action()//アクション
 {
-	if (m_ball[0].OnPush) {
-		Overlay()->talkDraw(SION, SION3_OBATYAN);
-	}
+//	if (m_ball[0].OnPush) {
+//		Overlay()->talkDraw(SION, SION3_OBATYAN);
+//	}
 
 }
 void GimmickGranny::Draw()//描画

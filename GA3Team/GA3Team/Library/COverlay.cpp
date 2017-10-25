@@ -22,9 +22,9 @@ void COverlay::InitLoad()
 	//コウネ3----------------------------------------
 	image->LoadImageEx("優しい少女.png", 6, TEX_SIZE_512);
 	//シオン2--------------------------------------
-	image->LoadImageEx("イヤホン男.png", 7, TEX_SIZE_512);
-	image->LoadImageEx("自転車.png", 8, TEX_SIZE_512);
-	image->LoadImageEx("イヤホン男自転車消防車.png", 30, TEX_SIZE_1024);
+	/*image->LoadImageEx("イヤホン男.png", 7, TEX_SIZE_512);
+	image->LoadImageEx("自転車.png", 8, TEX_SIZE_512);*/
+	image->LoadImageEx("イヤホン男自転車消防車.png", EX_SION_BYCYCLE, TEX_SIZE_1024);
 	//シオン3--------------------------------------
 	image->LoadImageEx("おばあちゃんc.png", 9, TEX_SIZE_512);
 	//シオン4--------------------------------------
@@ -53,8 +53,8 @@ void COverlay::InitLoad()
 	image->LoadImageEx("シオンステージ-1.png", 24, TEX_SIZE_1024);
 	image->LoadImageEx("コウネステージ-1.png", 25, TEX_SIZE_1024);
 	image->LoadImageEx("研究所背景.png", 26, TEX_SIZE_1024);
-	image->LoadImageEx("T字路右側.png", 28, TEX_SIZE_1024);
-	image->LoadImageEx("T字路左側.png", 29, TEX_SIZE_1024);
+	image->LoadImageEx("T字路右側.png", EX_STAGE_SION_STAGE2_right, TEX_SIZE_1024);
+	image->LoadImageEx("T字路左側.png", EX_STAGE_SION_STAGE2_left, TEX_SIZE_1024);
 
 	//チュートリアルステージ------------------------
 	image->LoadImageEx("StageTutorial.png", EX_STAGE_TUTORIAL, TEX_SIZE_1024);

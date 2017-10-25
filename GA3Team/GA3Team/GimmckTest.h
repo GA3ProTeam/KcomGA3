@@ -140,72 +140,72 @@ public:
 //ステージ1↑
 
 //ステージ2↓
-////イヤホン男
-//class Gimmickearphone : public Gimmick
-//{
-//public:
-//	Gimmickearphone() {};
-//	~Gimmickearphone() {};
-//	void Init(int xpos, int ypos, int widht, int height, int balloonnum);
-//	void Destructor();//デストラクタ
-//	void Action();//アクション
-//	void Draw();//描画
-//	
-//	
-//};
-//
-////コウネ
-//class Gimmickkoune : public Gimmick
-//{
-//public:
-//	Gimmickkoune() {};
-//	~Gimmickkoune() {};
-//	void Init(int xpos, int ypos, int widht, int height, int balloonnum);
-//	void Destructor();//デストラクタ
-//	void Action();//アクション
-//	void Draw();//描画
-//
-//	
-//};
-//
-////猫
-//class Gimmickcat : public Gimmick
-//{
-//public:
-//	Gimmickcat() {};
-//	~Gimmickcat() {};
-//	void Init(int xpos, int ypos, int widht, int height, int balloonnum);
-//	void Destructor();	//デストラクタ
-//	void Action();		//アクション
-//	void Draw();		//ドロー
-//private:
-//};
-//
-////自転車
-//class Gimmickbicycle : public Gimmick
-//{
-//public:
-//	Gimmickbicycle() {};
-//	~Gimmickbicycle() {};
-//	void Init(int xpos, int ypos, int widht, int height, int balloonnum);
-//	void Destructor();	//デストラクタ
-//	void Action();		//アクション
-//	void Draw();		//ドロー
-//private:
-//};
-//
-////消防車
-//class Gimmickfiretruck : public Gimmick
-//{
-//public:
-//	Gimmickfiretruck() {};
-//	~Gimmickfiretruck() {};
-//	void Init(int xpos, int ypos, int widht, int height, int balloonnum);
-//	void Destructor();	//デストラクタ
-//	void Action();		//アクション
-//	void Draw();		//ドロー
-//private:
-//};
+//イヤホン男
+class Gimmickearphone : public Gimmick
+{
+public:
+	Gimmickearphone() {};
+	~Gimmickearphone() {};
+	void Init(int xpos, int ypos, int widht, int height, int balloonnum);
+	void Destructor();//デストラクタ
+	void Action();//アクション
+	void Draw();//描画
+	
+	
+};
+
+//コウネ
+class Gimmickkoune : public Gimmick
+{
+public:
+	Gimmickkoune() {};
+	~Gimmickkoune() {};
+	void Init(int xpos, int ypos, int widht, int height, int balloonnum);
+	void Destructor();//デストラクタ
+	void Action();//アクション
+	void Draw();//描画
+
+	
+};
+
+//猫
+class Gimmickcat : public Gimmick
+{
+public:
+	Gimmickcat() {};
+	~Gimmickcat() {};
+	void Init(int xpos, int ypos, int widht, int height, int balloonnum);
+	void Destructor();	//デストラクタ
+	void Action();		//アクション
+	void Draw();		//ドロー
+private:
+};
+
+//自転車
+class Gimmickbicycle : public Gimmick
+{
+public:
+	Gimmickbicycle() {};
+	~Gimmickbicycle() {};
+	void Init(int xpos, int ypos, int widht, int height, int balloonnum);
+	void Destructor();	//デストラクタ
+	void Action();		//アクション
+	void Draw();		//ドロー
+private:
+};
+
+//消防車
+class Gimmickfiretruck : public Gimmick
+{
+public:
+	Gimmickfiretruck() {};
+	~Gimmickfiretruck() {};
+	void Init(int xpos, int ypos, int widht, int height, int balloonnum);
+	void Destructor();	//デストラクタ
+	void Action();		//アクション
+	void Draw();		//ドロー
+private:
+};
 //ステージ2↑
 
 //ステージ3↓

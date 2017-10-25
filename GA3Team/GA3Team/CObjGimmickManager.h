@@ -34,11 +34,11 @@ private:
 
 	//ステージ1↑
 	//ステージ2↓
-	Gimmickearphone* m_gimmick_earphone;
-	Gimmickkoune* m_gimmick_koune;
-	Gimmickcat* m_gimmick_cat;
-	Gimmickbicycle* m_gimmick_bicycle;
-	Gimmickfiretruck* m_gimmick_firetruck;
+	//Gimmickearphone* m_gimmick_earphone;
+	//Gimmickkoune* m_gimmick_koune;
+	//Gimmickcat* m_gimmick_cat;
+	//Gimmickbicycle* m_gimmick_bicycle;
+	//Gimmickfiretruck* m_gimmick_firetruck;
 	//ステージ2↑
 	//ステージ3↓
 	GimmickChildren* m_gimmick_children;

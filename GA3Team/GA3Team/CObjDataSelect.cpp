@@ -46,16 +46,16 @@ void CObjDataSelect::Action()
 	if (iLoad_flg == 0)
 	{
 		SavedataManeger()->Loadsavedata();
-		SavedataManeger()->Writesavedata();
+		//SavedataManeger()->Writesavedata();
 
 		//is“x“Ç‚İ
 		for (int saveNum = 0; saveNum < 3; saveNum++)
 		{
 			for (int flgNum = 0; flgNum < 10; flgNum++)
 			{
-				m_Load_KouneClearflg[saveNum][flgNum]   = SavedataManeger()->Savedata[saveNum].m_bKouneClearflg[flgNum];
-				m_Load_SionClearflg[saveNum][flgNum]    = SavedataManeger()->Savedata[saveNum].m_bSionClearflg[flgNum];
-				m_Load_MelueruClearflg[saveNum][flgNum] = SavedataManeger()->Savedata[saveNum].m_bMelueruClearflg[flgNum];
+				m_Load_KouneClearflg[saveNum][flgNum]   = SavedataManeger()->GetClearflg(saveNum, KOUNE, flgNum);
+				m_Load_SionClearflg[saveNum][flgNum]    = SavedataManeger()->GetClearflg(saveNum, SION, flgNum);
+				m_Load_MelueruClearflg[saveNum][flgNum] = SavedataManeger()->GetClearflg(saveNum,MERUERU, flgNum);
 			}
 		}
 		iLoad_flg = 1;

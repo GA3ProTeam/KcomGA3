@@ -77,10 +77,11 @@ void COverlay::InitLoad()
 	audio->LoadAudio(KOUNE4_SUNSET_CHIME, "Sound\\コウネステージ\\ステージ4\\sunset chime.wav");
 	//コウネステージ5
 	audio->LoadAudio(KOUNE5_MECHANICAL_SOUND_A, "Sound\\コウネステージ\\ステージ5\\Mechanical sound A.wav");
-	audio->LoadAudio(KOUNE5_SAX, "Sound\\コウネステージ\\ステージ5\\Mechanical sound B.wav");
-	audio->LoadAudio(KOUNE5_SAX_1, "Sound\\コウネステージ\\ステージ5\\Sax.wav");
-	audio->LoadAudio(KOUNE5_SAX_2, "Sound\\コウネステージ\\ステージ5\\Sax_1.wav");
-	audio->LoadAudio(KOUNE5_SAX_3, "Sound\\コウネステージ\\ステージ5\\Sax_2.wav");
+	audio->LoadAudio(KOUNE5_MECHANICAL_SOUND_B, "Sound\\コウネステージ\\ステージ5\\Mechanical sound B.wav");
+	audio->LoadAudio(KOUNE5_SAX, "Sound\\コウネステージ\\ステージ5\\Sax.wav");
+	audio->LoadAudio(KOUNE5_SAX_1, "Sound\\コウネステージ\\ステージ5\\Sax_1.wav");
+	audio->LoadAudio(KOUNE5_SAX_2, "Sound\\コウネステージ\\ステージ5\\Sax_2.wav");
+	audio->LoadAudio(KOUNE5_SAX_3, "Sound\\コウネステージ\\ステージ5\\Sax_3.wav");
 	//シオンステージ1
 	audio->LoadAudio(SION1_DOOR_CHIME, "Sound\\シオンステージ\\ステージ1\\インターホン\\door_chime.wav");
 	audio->LoadAudio(SION1_DOG, "Sound\\シオンステージ\\ステージ1\\犬\\dog.wav");

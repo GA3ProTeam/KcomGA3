@@ -24,7 +24,7 @@ void CObjTitle::Action()
 	//セーブデータ
 	if (iLoad_flg == 0) {
 		SavedataManeger()->Loadsavedata();
-		SavedataManeger()->Writesavedata();
+		//SavedataManeger()->Writesavedata();
 		
 		iLoad_flg = 1;
 	}

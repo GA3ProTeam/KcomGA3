@@ -245,38 +245,38 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 		break;
 
 	case 32:
-		//User()->mscroll_x = 400;
+		User()->mscroll_x = 400;
 
-		////コウネステージ３ ギミック生成
-		////おばあちゃん
-		//m_gimmick_granny = new GimmickGranny();
-		//Obj()->InsertObj(m_gimmick_granny, GIMMICK_GRANNY, 5, this->m_pScene, HIT_BOX_OFF);
-		//m_gimmick_granny->Init(-50, 150, 150, 300, 1);
+		//コウネステージ３ ギミック生成
+		//おばあちゃん
+		m_gimmick_granny = new GimmickGranny();
+		Obj()->InsertObj(m_gimmick_granny, GIMMICK_GRANNY, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_granny->Init(-50, 150, 150, 300, 1);
 
-		////九官鳥
-		//m_gimmick_mynah = new GimmickMynah();
-		//Obj()->InsertObj(m_gimmick_mynah, GIMMICK_MYNAH, 5, this->m_pScene, HIT_BOX_OFF);
-		//m_gimmick_mynah->Init(200, 100, 100, 100, 1);
+		//九官鳥
+		m_gimmick_mynah = new GimmickMynah();
+		Obj()->InsertObj(m_gimmick_mynah, GIMMICK_MYNAH, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_mynah->Init(200, 100, 100, 100, 1);
 
-		////風鈴
-		//m_gimmick_windchime = new GimmickWindchime();
-		//Obj()->InsertObj(m_gimmick_windchime, GIMMICK_WINDCHIME, 5, this->m_pScene, HIT_BOX_OFF);
-		//m_gimmick_windchime->Init(-230, 25, 70, 110, 1);
+		//風鈴
+		m_gimmick_windchime = new GimmickWindchime();
+		Obj()->InsertObj(m_gimmick_windchime, GIMMICK_WINDCHIME, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_windchime->Init(-230, 25, 70, 110, 1);
 
-		////子猫
-		//m_gimmick_kitten = new GimmickKitten();
-		//Obj()->InsertObj(m_gimmick_kitten, GIMMICK_KITTEN, 5, this->m_pScene, HIT_BOX_OFF);
-		//m_gimmick_kitten->Init(500, 450, 100, 100, 1);
+		//子猫
+		m_gimmick_kitten = new GimmickKitten();
+		Obj()->InsertObj(m_gimmick_kitten, GIMMICK_KITTEN, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_kitten->Init(500, 450, 100, 100, 1);
 
-		////蝉
-		//m_gimmick_cicada = new GimmickCicada();
-		//Obj()->InsertObj(m_gimmick_cicada, GIMMICK_CICADA, 5, this->m_pScene, HIT_BOX_OFF);
-		//m_gimmick_cicada->Init(650, 250, 50, 80, 1);
+		//蝉
+		m_gimmick_cicada = new GimmickCicada();
+		Obj()->InsertObj(m_gimmick_cicada, GIMMICK_CICADA, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_cicada->Init(650, 250, 50, 80, 1);
 
-		////少女
-		//m_gimmick_little_girl = new GimmickLittleGirl();
-		//Obj()->InsertObj(m_gimmick_little_girl, GIMMICK_LITTLEGIRL, 5, this->m_pScene, HIT_BOX_OFF);
-		//m_gimmick_little_girl->Init(-330, 300, 150, 230, 1);
+		//少女
+		m_gimmick_little_girl = new GimmickLittleGirl();
+		Obj()->InsertObj(m_gimmick_little_girl, GIMMICK_LITTLEGIRL, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_little_girl->Init(-330, 300, 150, 230, 1);
 
 
 		break;
@@ -382,54 +382,54 @@ void CObjGimmickManager::Action() {
 		//会話シーン-------------------------------------------------------------------------------------
 		KOUNE3_TALK_START,						//ステージ開始時トーク
 		KOUNE3_TALK_START_END,					//ステージ開始時トーク終了
-												//おばあちゃん
-												KOUNE3_TALK_GRANNY_FLG0,				//おばあちゃんとの会話0(フラグ0)
-												KOUNE3_TALK_GRANNY_FLG0_END,			//おばあちゃんとの会話0(フラグ0)終了
-												KOUNE3_TALK_GRANNY_FLG1,				//おばあちゃんとの会話1(フラグ1)
-												KOUNE3_TALK_GRANNY_FLG1_END,			//おばあちゃんとの会話1(フラグ1)終了
-												KOUNE3_TALK_GRANNY_KITTEN,				//おばあちゃんに子猫の鳴き声を聞かせる
-												KOUNE3_TALK_GRANNY_KITTEN_END,			//おばあちゃんに子猫の鳴き声を聞かせる終了
-												KOUNE3_TALK_GRANNY_FLG2,				//おばあちゃんとの会話2(フラグ2)
-												KOUNE3_TALK_GRANNY_FLG2_END,			//おばあちゃんとの会話2(フラグ2)終了
-												KOUNE3_TALK_GRANNY_FLG3,				//おばあちゃんとの会話3(フラグ3)
-												KOUNE3_TALK_GRANNY_FLG3_END,			//おばあちゃんとの会話3(フラグ3)終了
-																						//子猫
-																						KOUNE3_TALK_KITTEN_CHECK,				//子猫を調べたときの会話
-																						KOUNE3_TALK_KITTEN_CHECKEND,			//子猫を調べたときの会話終了
-																						KOUNE3_TALK_KITTEN_OTHER_SOUND,			//子猫に指定外の音を聞かせる
-																						KOUNE3_TALK_KITTEN_OTHER_SOUND_END,		//子猫に指定外の音を聞かせる
-																						KOUNE3_TALK_KITTEN_DOG,					//子猫に犬の鳴き声を聞かせる
-																						KOUNE3_TALK_KITTEN_DOG_END,				//子猫に犬の鳴き声を聞かせる
-																																//九官鳥
-																																KOUNE3_TALK_MYNAH_CHECK,				//九官鳥を調べたときの会話
-																																KOUNE3_TALK_MYNAH_CHECK_END,			//九官鳥を調べたときの会話終了
-																																KOUNE3_TALK_MYNAH_SONG_NOTCLAER,		//九官鳥に歌を聞かせる(クリア条件未達成)
-																																KOUNE3_TALK_MYNAH_SONG_NOTCLAER_END,	//九官鳥に歌を聞かせる(クリア条件未達成)終了
-																																KOUNE3_TALK_MYNAH_FLG3_NORMAL,			//九官鳥を調べたときの会話(フラグ3)
-																																KOUNE3_TALK_MYNAH_FLG3_NORMAL_END,		//九官鳥を調べたときの会話(フラグ3)終了
-																																KOUNE3_TALK_MYNAH_FLG3_SMALL,			//九官鳥に小さくした音を聞かせる
-																																KOUNE3_TALK_MYNAH_FLG3_SMALL_END,		//九官鳥に小さくした音を聞かせる終了
-																																										//少女
-																																										KOUNE3_TALK_LITTLEGIRL_FLG0,			//少女との会話(フラグ0)
-																																										KOUNE3_TALK_LITTLEGIRL_FLG0_END,		//少女との会話(フラグ0)終了
-																																										KOUNE3_TALK_LITTLEGIRL_KITTEN,			//少女に子猫の鳴き声を聞かせる
-																																										KOUNE3_TALK_LITTLEGIRL_KITTEN_END,		//少女に子猫の鳴き声を聞かせる終了
-																																										KOUNE3_TALK_LITTLEGIRL_FLG2,			//少女との会話(フラグ2)
-																																										KOUNE3_TALK_LITTLEGIRL_FLG2_END,		//少女との会話(フラグ2)終了
-																																										KOUNE3_TALK_LITTLEGIRL_FLG3,			//少女との会話(フラグ3)
-																																										KOUNE3_TALK_LITTLEGIRL_FLG3_END,		//少女との会話(フラグ3)終了
-																																																				//クリア
-																																																				KOUNE3_TALK_CLAER,						//クリア条件達成での会話
-																																																				KOUNE3_TALK_CLAER_END,					//クリア条件達成での会話終了
+		//おばあちゃん
+		KOUNE3_TALK_GRANNY_FLG0,				//おばあちゃんとの会話0(フラグ0)
+		KOUNE3_TALK_GRANNY_FLG0_END,			//おばあちゃんとの会話0(フラグ0)終了
+		KOUNE3_TALK_GRANNY_FLG1,				//おばあちゃんとの会話1(フラグ1)
+		KOUNE3_TALK_GRANNY_FLG1_END,			//おばあちゃんとの会話1(フラグ1)終了
+		KOUNE3_TALK_GRANNY_KITTEN,				//おばあちゃんに子猫の鳴き声を聞かせる
+		KOUNE3_TALK_GRANNY_KITTEN_END,			//おばあちゃんに子猫の鳴き声を聞かせる終了
+		KOUNE3_TALK_GRANNY_FLG2,				//おばあちゃんとの会話2(フラグ2)
+		KOUNE3_TALK_GRANNY_FLG2_END,			//おばあちゃんとの会話2(フラグ2)終了
+		KOUNE3_TALK_GRANNY_FLG3,				//おばあちゃんとの会話3(フラグ3)
+		KOUNE3_TALK_GRANNY_FLG3_END,			//おばあちゃんとの会話3(フラグ3)終了
+		//子猫
+		KOUNE3_TALK_KITTEN_CHECK,				//子猫を調べたときの会話
+		KOUNE3_TALK_KITTEN_CHECKEND,			//子猫を調べたときの会話終了
+		KOUNE3_TALK_KITTEN_OTHER_SOUND,			//子猫に指定外の音を聞かせる
+		KOUNE3_TALK_KITTEN_OTHER_SOUND_END,		//子猫に指定外の音を聞かせる
+		KOUNE3_TALK_KITTEN_DOG,					//子猫に犬の鳴き声を聞かせる
+		KOUNE3_TALK_KITTEN_DOG_END,				//子猫に犬の鳴き声を聞かせる
+		//九官鳥
+		KOUNE3_TALK_MYNAH_CHECK,				//九官鳥を調べたときの会話
+		KOUNE3_TALK_MYNAH_CHECK_END,			//九官鳥を調べたときの会話終了
+		KOUNE3_TALK_MYNAH_SONG_NOTCLAER,		//九官鳥に歌を聞かせる(クリア条件未達成)
+		KOUNE3_TALK_MYNAH_SONG_NOTCLAER_END,	//九官鳥に歌を聞かせる(クリア条件未達成)終了
+		KOUNE3_TALK_MYNAH_FLG3_NORMAL,			//九官鳥を調べたときの会話(フラグ3)
+		KOUNE3_TALK_MYNAH_FLG3_NORMAL_END,		//九官鳥を調べたときの会話(フラグ3)終了
+		KOUNE3_TALK_MYNAH_FLG3_SMALL,			//九官鳥に小さくした音を聞かせる
+		KOUNE3_TALK_MYNAH_FLG3_SMALL_END,		//九官鳥に小さくした音を聞かせる終了
+		//少女
+		KOUNE3_TALK_LITTLEGIRL_FLG0,			//少女との会話(フラグ0)
+		KOUNE3_TALK_LITTLEGIRL_FLG0_END,		//少女との会話(フラグ0)終了
+		KOUNE3_TALK_LITTLEGIRL_KITTEN,			//少女に子猫の鳴き声を聞かせる
+		KOUNE3_TALK_LITTLEGIRL_KITTEN_END,		//少女に子猫の鳴き声を聞かせる終了
+		KOUNE3_TALK_LITTLEGIRL_FLG2,			//少女との会話(フラグ2)
+		KOUNE3_TALK_LITTLEGIRL_FLG2_END,		//少女との会話(フラグ2)終了
+		KOUNE3_TALK_LITTLEGIRL_FLG3,			//少女との会話(フラグ3)
+		KOUNE3_TALK_LITTLEGIRL_FLG3_END,		//少女との会話(フラグ3)終了
+		//クリア
+		KOUNE3_TALK_CLAER,						//クリア条件達成での会話
+		KOUNE3_TALK_CLAER_END,					//クリア条件達成での会話終了
 
-																																																														//-----------------------------------------------------------------------------------------------
+		//-----------------------------------------------------------------------------------------------
 
-																																																														//録音-------------------------------------------------------------------------------------------
-																																																														KOUNE3_SOUND_REC_KITTEN,				//子猫の鳴き声を録音
-																																																														KOUNE3_SOUND_REC_CICADA,				//蝉の音を録音
-																																																														KOUNE3_SOUND_REC_WINDCHIME,				//風鈴の音を録音
-
-																																																																								//-----------------------------------------------------------------------------------------------
+		//録音-------------------------------------------------------------------------------------------
+		KOUNE3_SOUND_REC_KITTEN,				//子猫の鳴き声を録音
+		KOUNE3_SOUND_REC_CICADA,				//蝉の音を録音
+		KOUNE3_SOUND_REC_WINDCHIME,				//風鈴の音を録音
+		
+		//-----------------------------------------------------------------------------------------------
 
 	};
 
@@ -827,8 +827,8 @@ void CObjGimmickManager::Action() {
 		}
 		break;
 	case 31://コウネステージ2
-
-			//女の子に話しかけることができるタイミング
+	{
+		//女の子に話しかけることができるタイミング
 		if (KOUNE2_EVENT_SION_TALK_END <= m_iKoune2_flg && m_iKoune2_flg < KOUNE2_EVENT_BOYA_QUIZ_COMPLETE) {
 			//女の子に話しかける
 			if (m_gimmick_girl_koune2->m_ball[0].OnPush) {
@@ -838,6 +838,14 @@ void CObjGimmickManager::Action() {
 				//女の子と話しかけたフラグを立てる
 				m_bKoune2_flg_list[KOUNE2_BOOL_GIRL_TALK] = true;
 			}
+		}
+
+		//女の子と話しかけた後は、女の子の会話を挿入
+		int* pShowID = NULL;
+		int show_id = 0;
+		int show_id_size = 1;
+		if (m_bKoune2_flg_list[KOUNE2_BOOL_GIRL_TALK]) {
+			pShowID = &show_id;
 		}
 
 		//少年Bに話しかけることができるタイミング
@@ -899,7 +907,7 @@ void CObjGimmickManager::Action() {
 			//少年Ａに話しかける
 			if (m_gimmick_boy_a->m_ball[0].OnPush) {
 				//少年Ａ「なあなあ、すごいもん見せてやるよ！」
-				Overlay()->talkDraw(KOUNE, KOUNE2_BOYA_FLAG1_YES);
+				Overlay()->talkDraw(KOUNE, KOUNE2_BOYA_FLAG1_YES, NULL, 0, pShowID, show_id_size);
 			}
 
 			//会話終了後
@@ -912,19 +920,19 @@ void CObjGimmickManager::Action() {
 		//少年Ａと会話後
 		else if (m_iKoune2_flg == KOUNE2_EVENT_BOYA_TALK_END) {
 			//デバッグ用　音データを強制入手
-			/*SoundData a1 = { 0,RED,BALL_ELM_NO_ANIMAL,BALL_VOL_SMALL};
+			SoundData a1 = { 0,RED,BALL_ELM_NO_ANIMAL,BALL_VOL_SMALL };
 			SoundData a2 = { 1,BLUE,BALL_ELM_ANIMAL,BALL_VOL_MIDDLE };
 			SoundData a3 = { 2,GREEN,BALL_ELM_ANIMAL,BALL_VOL_BIG };
 			SoundManager()->SoundSave(a1);
 			SoundManager()->SoundSave(a2);
-			SoundManager()->SoundSave(a3);*/
+			SoundManager()->SoundSave(a3);
 
 			//少年Ａに音をドラッグ
 			if (m_gimmick_boy_a->m_getsound.sound_num != -1) {
 				//生き物の音ではない場合
 				if (m_gimmick_boy_a->m_getsound.sound_elm != BALL_ELM_ANIMAL) {
 					//少年Ａ「これは生き物の音じゃないな・・・」
-					Overlay()->talkDraw(KOUNE, KOUNE2_BOYA_NOCREATURE_FLAG3_NO);
+					Overlay()->talkDraw(KOUNE, KOUNE2_BOYA_NOCREATURE_FLAG3_NO, NULL, 0, pShowID, show_id_size);
 				}
 				//生き物の音の場合
 				else {
@@ -948,14 +956,14 @@ void CObjGimmickManager::Action() {
 					}
 
 					//少年Ａ「よーし、この音だな」
-					Overlay()->talkDraw(KOUNE, KOUNE2_BOYA_CREATURE_FLAG3_NO, &show_id, 1);
+					Overlay()->talkDraw(KOUNE, KOUNE2_BOYA_CREATURE_FLAG3_NO, &show_id, 1, pShowID, show_id_size);
 				}
 			}
 
 			//シオンに話しかける
 			if (m_gimmick_sion->m_ball[0].OnPush) {
 				//シオン「あの子のすごさ、わかった？」
-				Overlay()->talkDraw(KOUNE, KOUNE2_SION_FLAG2_YES);
+				Overlay()->talkDraw(KOUNE, KOUNE2_SION_FLAG2_YES, pShowID, show_id_size, pShowID, show_id_size);
 				//シオンと会話したフラグを立てる
 				m_bKoune2_flg_list[KOUNE2_BOOL_SION_TALK] = true;
 			}
@@ -967,17 +975,17 @@ void CObjGimmickManager::Action() {
 					//青色の音の場合
 					if (m_gimmick_sion->m_getsound.sound_color == BLUE) {
 						//シオン「この音は青色だね！」
-						Overlay()->talkDraw(KOUNE, KOUNE2_SION_FLAG2_BLUE);
+						Overlay()->talkDraw(KOUNE, KOUNE2_SION_FLAG2_BLUE, NULL, 0, pShowID, show_id_size);
 					}
 					//緑色の音の場合
 					else if (m_gimmick_sion->m_getsound.sound_color == GREEN) {
 						//シオン「この音は緑色だね！」
-						Overlay()->talkDraw(KOUNE, KOUNE2_SION_FLAG2_GREEN);
+						Overlay()->talkDraw(KOUNE, KOUNE2_SION_FLAG2_GREEN, NULL, 0, pShowID, show_id_size);
 					}
 					//赤色の音の場合
 					else if (m_gimmick_sion->m_getsound.sound_color == RED) {
 						//シオン「この音は赤色だね！」
-						Overlay()->talkDraw(KOUNE, KOUNE2_SION_FLAG2_RED);
+						Overlay()->talkDraw(KOUNE, KOUNE2_SION_FLAG2_RED, NULL, 0, pShowID, show_id_size);
 					}
 				}
 			}
@@ -985,7 +993,7 @@ void CObjGimmickManager::Action() {
 			//少年Ａに話しかける
 			if (m_gimmick_boy_a->m_ball[0].OnPush) {
 				//少年Ａ「俺のすごさ、わかったのか？」 クイズ開始
-				Overlay()->talkDraw(KOUNE, KOUNE2_BOYA_FLAG2_YES);
+				Overlay()->talkDraw(KOUNE, KOUNE2_BOYA_FLAG2_YES, pShowID, show_id_size, pShowID, show_id_size);
 			}
 
 			//会話終了後
@@ -1003,38 +1011,18 @@ void CObjGimmickManager::Action() {
 		else if (m_iKoune2_flg == KOUNE2_EVENT_BOYA_QUIZ_COMPLETE) {
 			//シオンに話しかける
 			if (m_gimmick_sion->m_ball[0].OnPush) {
-				//フラグ4「女の子に話しかける」を達成している場合
-				if (m_bKoune2_flg_list[KOUNE2_BOOL_GIRL_TALK]) {
-					//シオン「今度はホームランが見たいんだって？」
-					int show_id = 0;//女の子の会話挿入
-					Overlay()->talkDraw(KOUNE, KOUNE2_SION_FLAG3_YES, &show_id, 1);
-				}
-				//フラグ4「女の子に話しかける」を達成していない場合
-				else {
-					//シオン「今度はホームランが見たいんだって？」
-					Overlay()->talkDraw(KOUNE, KOUNE2_SION_FLAG3_YES);
-				}
+				Overlay()->talkDraw(KOUNE, KOUNE2_SION_FLAG3_YES, pShowID, show_id_size, pShowID, show_id_size);
 			}
 
 			//少年Ａに話しかける
 			if (m_gimmick_boy_a->m_ball[0].OnPush) {
 				//少年Ａ「俺のバッティングが見たければ、・・・」
-				Overlay()->talkDraw(KOUNE, KOUNE2_BOYA_FLAG2_YES);
+				Overlay()->talkDraw(KOUNE, KOUNE2_BOYA_FLAG3_YES, NULL, 0, pShowID, show_id_size);
 			}
 
 			//少年Ｂに話しかける
 			if (m_gimmick_boy_b->m_ball[0].OnPush) {
-				//フラグ4「女の子に話しかける」を達成している場合
-				if (m_bKoune2_flg_list[KOUNE2_BOOL_GIRL_TALK]) {
-					//少年Ｂ「ホームラン見たいですか？」
-					int show_id = 0;//女の子の会話挿入
-					Overlay()->talkDraw(KOUNE, KOUNE2_BOYB_FLAG3_YES, &show_id, 1);
-				}
-				//フラグ4「女の子に話しかける」を達成していない場合
-				else {
-					//少年Ｂ「ホームラン見たいですか？」
-					Overlay()->talkDraw(KOUNE, KOUNE2_BOYB_FLAG3_YES);
-				}
+				Overlay()->talkDraw(KOUNE, KOUNE2_BOYB_FLAG3_YES, pShowID, show_id_size, pShowID, show_id_size);
 			}
 
 			//女の子に話しかける
@@ -1047,8 +1035,7 @@ void CObjGimmickManager::Action() {
 			if (m_gimmick_boy_a->m_getsound.sound_num != /*女の子の応援音*/-1) {
 
 				//音量小＆中
-				if (m_gimmick_boy_a->m_getsound.sound_volume == BALL_VOL_SMALL ||
-					m_gimmick_boy_a->m_getsound.sound_volume == BALL_VOL_MIDDLE) {
+				if (m_gimmick_boy_a->m_getsound.sound_volume != BALL_VOL_BIG) {
 					//少年Ｂ「な・・・ナイスフラーイ！」
 					Overlay()->talkDraw(KOUNE, KOUNE2_BOYA_FLAG3_OUEN_SMALL);
 				}
@@ -1093,7 +1080,7 @@ void CObjGimmickManager::Action() {
 			}
 		}
 		break;
-
+	}
 	case 32:
 	{
 

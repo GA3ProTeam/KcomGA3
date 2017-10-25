@@ -43,7 +43,8 @@ void Gimmick::gimmicDraw(int num)
 
 	//-----------------------当たり判定----------------------------------
 	//OverRayが起動してたらあたり判定をなくす
-	if (!Overlay()->isDraw())
+	bool aaa = (User()->m_bkouneability);
+	if ((!Overlay()->isDraw()) || (User()->m_bkouneability))
 	{
 		//ドラッグされた音番号を元に戻す（初期化）
 		m_getsound.sound_num = -1;
@@ -76,7 +77,7 @@ void Gimmick::gimmicDraw(int num)
 				//音の吹き出しの場合
 				else if (m_ball[i].m_iballoontype == sound) {
 					//シオンの能力発動時に吹き出しの色を変える
-					if (User()->m_iCurrentChara && m_menu_tab->m_bability) {
+					if (User()->m_iCurrentChara) {
 						//切り取り先座標のＸオフセット位置を各色に変更
 						m_dst.left = m_ball[i].m_sound_data.sound_color;
 					}

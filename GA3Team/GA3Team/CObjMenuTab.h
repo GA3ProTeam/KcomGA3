@@ -8,7 +8,10 @@ private:
 	//開閉フラグ
 	bool m_bOpenClose;
 	//連打回避のためのカウント
-	int m_icnt, m_iabicnt;
+	int m_icnt;
+
+	//引数ありのPushに使うフラグ
+	bool OnceFlg,m_Storageflg;
 
 	//ゴミ箱動作フラグ
 	bool m_bGarbageActionFlg;
@@ -32,8 +35,10 @@ private:
 	RECT m_rSrc;//転送先座標
 	RECT m_rDst;//切り取り座標
 
+	bool abiltyOverray;//能力発動フラグ
+
 public:
-	bool m_bability;//能力発動フラグ
+	//bool m_bability;//能力発動フラグ
 
 
 	void Init(int openclosey);//イニシャライズInit(タブのY軸の指定)
@@ -54,6 +59,17 @@ public:
 
 	//ゴミ箱動作フラグ切り替え
 	void SetGarbageActionFlg(bool flg) { m_bGarbageActionFlg = flg; }
+
+	//引数ありのPush
+	bool ArgumentPush(int x,int y, int w,int h);
+	//引数ありのRangedetection
+	bool ArgumentRangedetection(int x, int y, int w, int h);
+
+
+	//能力ON、OFF関数
+	void Onability();
+	void Offability();
+	bool isabilty() { return abiltyOverray;}
 };
 
 #endif

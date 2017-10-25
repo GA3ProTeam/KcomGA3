@@ -101,6 +101,8 @@ enum koune
 	KOUNE2_BOYA_FLAG3_OUEN_SMALL,
 	KOUNE2_BOYA_FLAG3_OUEN_BIG,
 	KOUNE2_BOYA_FLAG3_OUEN_BIG_AFTER,
+
+
 };
 enum merueru
 {
@@ -140,9 +142,48 @@ enum DrawExID {
 	EX_OTHER_ICON,
 	EX_OTHER_BALLOON,
 	EX_STAGE_SION_STAGE1,
+	EX_STAGE_SION_STAGE2_right,
+	EX_STAGE_SION_STAGE2_left,
 	EX_STAGE_KOUNE_STAGE1,
 	EX_STAGE_LAB,
 	EX_STAGE_TUTORIAL,
+	EX_VOLBOTTON,
+};
+
+//効果音アドレス
+enum SoundID {
+	TUTORIAL_BGM,				//ファンファーレ
+	KOUNE1_DOG,					//犬B
+	KOUNE1_CONSTRUCTION,		//工事音
+	KOUNE2_GLASS_BREAK,			//窓ガラスが割れる音
+	KOUNE2_HOMERUN,				//ホームラン
+	KOUNE3_CICADA,				//蝉の鳴き声
+	KOUNE3_KITTY,				//子猫A
+	KOUNE4_KICK_THE_CAN,		//空き缶を蹴ったときの音
+	KOUNE4_SUNSET_CHIME,		//夕焼け小焼け
+	KOUNE5_MECHANICAL_SOUND_A,	//機械音A
+	KOUNE5_MECHANICAL_SOUND_B,	//機械音B
+	KOUNE5_SAX,					//演奏家の音
+	KOUNE5_SAX_1,				//演奏家の音
+	KOUNE5_SAX_2,				//演奏家の音
+	KOUNE5_SAX_3,				//演奏家の音
+	SION1_DOOR_CHIME,			//インターホン
+	SION1_DOG,					//犬A（番犬）
+	SION1_BARD,					//鳥
+	SION2_BICYCLE_BELL,			//自転車のベル
+	SION2_FIRE_ENGINE,			//消防車のサイレン
+	SION2_CAT1,					//猫A
+	SION3_CHANT2,				//九官鳥の聖歌
+	SION3_BAG,					//袋の音
+	SION3_WIND_CHIMES,			//風鈴
+	SION4_BIKE,					//バイク
+	MERUEMU1_RELEASE,			//ドアの解除音
+	MERUEMU1_GUN,				//銃声
+	MERUEMU1_MICROWAVE,			//電子レンジ
+	START_START4,				//スタート音（はじめからのボタン）
+	TALK_SELECT01,				//会話音
+	DECISION_BUTTON5,			//決定音
+	ERROR_CANCEL,				//キャンセル音
 };
 
 //---------------------------
@@ -330,7 +371,11 @@ public:
 	//----------------状態取得----------------
 
 	//オーバーレイが描画されているか
-	bool isDraw() { return m_bDrawing; }
+	bool isDraw() {
+		//return m_bDrawing; 
+		if (m_fAlpha == 0.0f) return false;
+		return true;
+	}
 
 	//特定の選択肢を選択したか確認
 	bool Selected(const char* select);

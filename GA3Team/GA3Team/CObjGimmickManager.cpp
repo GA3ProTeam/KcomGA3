@@ -802,7 +802,7 @@ void CObjGimmickManager::Action() {
 		break;
 	case 31://コウネステージ2
 
-			//女の子に話しかけることができるタイミング
+		//女の子に話しかけることができるタイミング
 		if (KOUNE2_EVENT_SION_TALK_END <= m_iKoune2_flg && m_iKoune2_flg < KOUNE2_EVENT_BOYA_QUIZ_COMPLETE) {
 			//女の子に話しかける
 			if (m_gimmick_girl_koune2->m_ball[0].OnPush) {

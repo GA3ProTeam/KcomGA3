@@ -12,6 +12,7 @@ public:
 	void Setcurrentdata();//ポインターセット
 	void InitSaveData(int savedate_srot);
 	int SelectedData;
+	int GetClearflg(int savedatenum,int type, int num);
 
 	CSavedata *CurrentData;
 

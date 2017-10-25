@@ -602,6 +602,7 @@ void Gimmickbicycle::Draw()
 	float col[4] = { 1.0,1.0,1.0,1.0 };
 	//ギミック本体描画-----------------------------------------------------------
 	//切り取り先座標
+	m_dst.top = 0;
 	m_dst.bottom = 230;
 	m_dst.left = 200;
 	m_dst.right = 570;

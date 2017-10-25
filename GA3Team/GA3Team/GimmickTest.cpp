@@ -1244,9 +1244,9 @@ void GimmickGirl_Koune2::Draw() {
 	if (this->m_bActionFlg) {
 		//Ø‚èŽæ‚èæÀ•W
 		m_dst.top = 0;
-		m_dst.bottom = m_dst.top + 64;
+		m_dst.bottom = m_dst.top + 512;
 		m_dst.left = 0;
-		m_dst.right = m_dst.left + 64;
+		m_dst.right = m_dst.left + 512;
 
 		//“]‘—æÀ•W
 		m_src.top = m_iYpos;
@@ -1255,7 +1255,7 @@ void GimmickGirl_Koune2::Draw() {
 		m_src.right = m_src.left + m_iWidth;
 
 		//•`‰æ
-		Image()->DrawEx(58, &m_src, &m_dst, col, 0.0f);
+		Image()->DrawEx(4, &m_src, &m_dst, col, 0.0f);
 	}
 	//---------------------------------------------------------------------------
 
@@ -1292,10 +1292,10 @@ void GimmickSion::Draw() {
 
 	//ƒMƒ~ƒbƒN–{‘Ì•`‰æ-----------------------------------------------------------
 	//Ø‚èŽæ‚èæÀ•W
-	m_dst.top = 64;
-	m_dst.bottom = m_dst.top + 64;
+	m_dst.top = 0;
+	m_dst.bottom = m_dst.top + 380;
 	m_dst.left = 0;
-	m_dst.right = m_dst.left + 64;
+	m_dst.right = m_dst.left + 190;
 
 	//“]‘—æÀ•W
 	m_src.top = m_iYpos;
@@ -1304,7 +1304,7 @@ void GimmickSion::Draw() {
 	m_src.right = m_src.left + m_iWidth;
 
 	//•`‰æ
-	Image()->DrawEx(58, &m_src, &m_dst, col, 0.0f);
+	Image()->DrawEx(18, &m_src, &m_dst, col, 0.0f);
 	//---------------------------------------------------------------------------
 
 	//ƒMƒ~ƒbƒN–¼‘O•`‰æ
@@ -1340,10 +1340,10 @@ void GimmickBoyA::Draw() {
 
 	//ƒMƒ~ƒbƒN–{‘Ì•`‰æ-----------------------------------------------------------
 	//Ø‚èŽæ‚èæÀ•W
-	m_dst.top = 128;
-	m_dst.bottom = m_dst.top + 64;
+	m_dst.top = 0;
+	m_dst.bottom = m_dst.top + 512;
 	m_dst.left = 0;
-	m_dst.right = m_dst.left + 64;
+	m_dst.right = m_dst.left + 512;
 
 	//“]‘—æÀ•W
 	m_src.top = m_iYpos;
@@ -1352,7 +1352,7 @@ void GimmickBoyA::Draw() {
 	m_src.right = m_src.left + m_iWidth;
 
 	//•`‰æ
-	Image()->DrawEx(58, &m_src, &m_dst, col, 0.0f);
+	Image()->DrawEx(4, &m_src, &m_dst, col, 0.0f);
 	//---------------------------------------------------------------------------
 
 	//ƒMƒ~ƒbƒN–¼‘O•`‰æ
@@ -1453,7 +1453,7 @@ void GimmickWindow_Koune2::Draw() {
 	m_src.right = m_src.left + m_iWidth;
 
 	//•`‰æ
-	Image()->DrawEx(58, &m_src, &m_dst, col, 0.0f);
+	Image()->DrawEx(4, &m_src, &m_dst, col, 0.0f);
 	//---------------------------------------------------------------------------
 
 	//ƒMƒ~ƒbƒN–¼‘O•`‰æ

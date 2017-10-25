@@ -143,6 +143,7 @@ enum DrawExID {
 	EX_STAGE_KOUNE_STAGE1,
 	EX_STAGE_LAB,
 	EX_STAGE_TUTORIAL,
+	EX_VOLBOTTON,
 };
 
 //効果音アドレス
@@ -366,7 +367,11 @@ public:
 	//----------------状態取得----------------
 
 	//オーバーレイが描画されているか
-	bool isDraw() { return m_bDrawing; }
+	bool isDraw() {
+		//return m_bDrawing; 
+		if (m_fAlpha == 0.0f) return false;
+		return true;
+	}
 
 	//特定の選択肢を選択したか確認
 	bool Selected(const char* select);

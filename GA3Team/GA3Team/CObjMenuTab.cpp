@@ -304,6 +304,7 @@ void CObjMenuTab::Draw()
 		//描画
 		Image()->Draw(1, &m_rSrc, &m_rDst, m_fCol, 0.0f);
 
+		m_fCol[3] = 1.0f;//元に戻す
 	}
 
 	//音をドラック＆ドロップ

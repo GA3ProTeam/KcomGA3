@@ -196,7 +196,7 @@ void CTextManager::LoadText()
 				tmpData.push_back(strsave[w]);
 
 				//タブ・空白文字を排除--------------------------------------------------
-				int char_num;
+				unsigned int char_num;
 				for (char_num = 0; char_num < tmpData[w].length(); char_num++) {
 					//タブと空白以外の文字の位置を探す
 					if (tmpData[w][char_num] != '\t' && tmpData[w][char_num] != ' ') {
@@ -927,7 +927,7 @@ SelectInfo* CTextManager::isSelect(int stage, int stageID, int linecount) {
 	////データが存在しない場合はスキップ
 	//if (chara_select_data->size() <= 0) return NULL;
 
-	for (int sel = 0; sel < (*chara_select_data)[stageID].size(); sel++) {
+	for (unsigned int sel = 0; sel < (*chara_select_data)[stageID].size(); sel++) {
 		//この行(linecount)に存在する選択肢を探す
 		if ((*chara_select_data)[stageID][sel]->line == linecount) {
 			return (*chara_select_data)[stageID][sel];
@@ -967,7 +967,7 @@ InStr* CTextManager::isInStr(int stage, int stageID, int linecount) {
 	////データが存在しない場合はスキップ
 	//if ((*chara_in_str).size() <= 0) return NULL;
 
-	for (int in = 0; in < (*chara_in_str)[stageID].size(); in++) {
+	for (unsigned int in = 0; in < (*chara_in_str)[stageID].size(); in++) {
 		//この行(linecount)に存在するものを探す
 		if ((*chara_in_str)[stageID][in]->line == linecount) {
 			return (*chara_in_str)[stageID][in];

@@ -32,14 +32,14 @@ void ButtonRScrollScreen::Action() {
 	if (Push() || Input()->GetVKey(VK_RIGHT)) {
 		//スクロール有効
 		m_iScrollflg = true;
-		m_iScrollSpeed = User()->mscroll_speed;
+		m_iScrollSpeed = (float)User()->mscroll_speed;
 	}
 
 	if (m_iScrollflg) {
 
-		User()->mscroll_x -= m_iScrollSpeed;
+		User()->mscroll_x -= (int)m_iScrollSpeed;
 
-		m_iScrollSpeed = m_iScrollSpeed*0.92;
+		m_iScrollSpeed = m_iScrollSpeed*0.92f;
 
 	}
 

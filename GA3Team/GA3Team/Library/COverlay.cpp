@@ -62,52 +62,51 @@ void COverlay::InitLoad()
 	image->LoadImageEx("音量ボタン.png", EX_VOLBOTTON, TEX_SIZE_512);
 	//サウンド読み込み↓---------------------------------------------------------------------------
 	//チュートリアルステージ
-	audio->LoadAudio(0, "Sound\\チュートリアル\\fanfare3.wav");
+	audio->LoadAudio(TUTORIAL_BGM, "Sound\\チュートリアル\\fanfare3.wav");
 	//コウネステージ1
-	audio->LoadAudio(1, "Sound\\コウネステージ\\ステージ1\\犬\\Tinydog.wav");
-	audio->LoadAudio(2, "Sound\\コウネステージ\\ステージ1\\工事音\\Construction.wav");
+	audio->LoadAudio(KOUNE1_DOG, "Sound\\コウネステージ\\ステージ1\\犬\\Tinydog.wav");
+	audio->LoadAudio(KOUNE1_CONSTRUCTION, "Sound\\コウネステージ\\ステージ1\\工事音\\Construction.wav");
 	//コウネステージ2
-	audio->LoadAudio(3, "Sound\\コウネステージ\\ステージ2\\窓ガラスが割れる音\\glass-break.wav");
-	audio->LoadAudio(4, "Sound\\コウネステージ\\ステージ2\\Homerun.wav");
+	audio->LoadAudio(KOUNE2_GLASS_BREAK, "Sound\\コウネステージ\\ステージ2\\窓ガラスが割れる音\\glass-break.wav");
+	audio->LoadAudio(KOUNE2_HOMERUN, "Sound\\コウネステージ\\ステージ2\\Homerun.wav");
 	//コウネステージ3
-	audio->LoadAudio(5, "Sound\\コウネステージ\\ステージ3\\cicada.wav");
-	audio->LoadAudio(6, "Sound\\コウネステージ\\ステージ3\\kitty.wav");
+	audio->LoadAudio(KOUNE3_CICADA, "Sound\\コウネステージ\\ステージ3\\cicada.wav");
+	audio->LoadAudio(KOUNE3_KITTY, "Sound\\コウネステージ\\ステージ3\\kitty.wav");
 	//コウネステージ4
-	audio->LoadAudio(7, "Sound\\コウネステージ\\ステージ4\\Kick the can.wav");
-	audio->LoadAudio(8, "Sound\\コウネステージ\\ステージ4\\sunset chime.mp3");
+	audio->LoadAudio(KOUNE4_KICK_THE_CAN, "Sound\\コウネステージ\\ステージ4\\Kick the can.wav");
+	audio->LoadAudio(KOUNE4_SUNSET_CHIME, "Sound\\コウネステージ\\ステージ4\\sunset chime.wav");
 	//コウネステージ5
-	audio->LoadAudio(9, "Sound\\コウネステージ\\ステージ5\\Mechanical sound A.wav");
-	audio->LoadAudio(10, "Sound\\コウネステージ\\ステージ5\\Mechanical sound B.wav");
-	audio->LoadAudio(11, "Sound\\コウネステージ\\ステージ5\\Sax.wav");
-	audio->LoadAudio(12, "Sound\\コウネステージ\\ステージ5\\Sax_1.wav");
-	audio->LoadAudio(13, "Sound\\コウネステージ\\ステージ5\\Sax_2.wav");
-	audio->LoadAudio(14, "Sound\\コウネステージ\\ステージ5\\Sax_3.wav");
+	audio->LoadAudio(KOUNE5_MECHANICAL_SOUND_A, "Sound\\コウネステージ\\ステージ5\\Mechanical sound A.wav");
+	audio->LoadAudio(KOUNE5_SAX, "Sound\\コウネステージ\\ステージ5\\Mechanical sound B.wav");
+	audio->LoadAudio(KOUNE5_SAX_1, "Sound\\コウネステージ\\ステージ5\\Sax.wav");
+	audio->LoadAudio(KOUNE5_SAX_2, "Sound\\コウネステージ\\ステージ5\\Sax_1.wav");
+	audio->LoadAudio(KOUNE5_SAX_3, "Sound\\コウネステージ\\ステージ5\\Sax_2.wav");
 	//シオンステージ1
-	audio->LoadAudio(15, "Sound\\シオンステージ\\ステージ1\\インターホン\\door_chime.wav");
-	audio->LoadAudio(16, "Sound\\シオンステージ\\ステージ1\\犬\\dog.wav");
-	audio->LoadAudio(17, "Sound\\シオンステージ\\ステージ1\\鳥\\bard.wav");
+	audio->LoadAudio(SION1_DOOR_CHIME, "Sound\\シオンステージ\\ステージ1\\インターホン\\door_chime.wav");
+	audio->LoadAudio(SION1_DOG, "Sound\\シオンステージ\\ステージ1\\犬\\dog.wav");
+	audio->LoadAudio(SION1_BARD, "Sound\\シオンステージ\\ステージ1\\鳥\\bard.wav");
 	//シオンステージ2
-	audio->LoadAudio(18, "Sound\\シオンステージ\\ステージ2\\自転車（ベル）\\Bicycle bell.wav");
-	audio->LoadAudio(19, "Sound\\シオンステージ\\ステージ2\\消防車（サイレン）\\Fire engine.wav");
-	audio->LoadAudio(20, "Sound\\シオンステージ\\ステージ2\\猫\\cat1.wav");
+	audio->LoadAudio(SION2_BICYCLE_BELL, "Sound\\シオンステージ\\ステージ2\\自転車（ベル）\\Bicycle bell.wav");
+	audio->LoadAudio(SION2_FIRE_ENGINE, "Sound\\シオンステージ\\ステージ2\\消防車（サイレン）\\Fire engine.wav");
+	audio->LoadAudio(SION2_CAT1, "Sound\\シオンステージ\\ステージ2\\猫\\cat1.wav");
 	//シオンステージ3
-	audio->LoadAudio(21, "Sound\\シオンステージ\\ステージ3\\九官鳥\\聖歌２.wav");
-	audio->LoadAudio(22, "Sound\\シオンステージ\\ステージ3\\袋\\bag.wav");
-	audio->LoadAudio(23, "Sound\\シオンステージ\\ステージ3\\風鈴\\Wind chimes.wav");
+	audio->LoadAudio(SION3_CHANT2, "Sound\\シオンステージ\\ステージ3\\九官鳥\\聖歌２.wav");
+	audio->LoadAudio(SION3_BAG, "Sound\\シオンステージ\\ステージ3\\袋\\bag.wav");
+	audio->LoadAudio(SION3_WIND_CHIMES, "Sound\\シオンステージ\\ステージ3\\風鈴\\Wind chimes.wav");
 	//シオンステージ4
-	audio->LoadAudio(24, "Sound\\シオンステージ\\ステージ3\\bike.wav");
+	audio->LoadAudio(SION4_BIKE, "Sound\\シオンステージ\\ステージ3\\bike.wav");
 	//メルエムステージ1
-	audio->LoadAudio(25, "Sound\\メルエムステージ\\ステージ3\\解除音(ドア)\\Release.wav");
-	audio->LoadAudio(26, "Sound\\メルエムステージ\\ステージ3\\銃声\\gun.wav");
-	audio->LoadAudio(27, "Sound\\メルエムステージ\\ステージ3\\電磁レンジ(ピー)\\microwave.wav");
+	audio->LoadAudio(MERUEMU1_RELEASE, "Sound\\メルエムステージ\\ステージ3\\解除音(ドア)\\Release.wav");
+	audio->LoadAudio(MERUEMU1_GUN, "Sound\\メルエムステージ\\ステージ3\\銃声\\gun.wav");
+	audio->LoadAudio(MERUEMU1_MICROWAVE, "Sound\\メルエムステージ\\ステージ3\\電磁レンジ(ピー)\\microwave.wav");
 	//スタート音
-	audio->LoadAudio(28, "Sound\\スタート音（はじめからのボタン）\\start4.wav");
+	audio->LoadAudio(START_START4, "Sound\\スタート音（はじめからのボタン）\\start4.wav");
 	//会話音
-	audio->LoadAudio(29, "Sound\\会話音\\select01.wav");
+	audio->LoadAudio(TALK_SELECT01, "Sound\\会話音\\select01.wav");
 	//決定音
-	audio->LoadAudio(30, "Sound\\決定音\\button5.wav");
+	audio->LoadAudio(DECISION_BUTTON5, "Sound\\決定音\\button5.wav");
 	//失敗音
-	audio->LoadAudio(31, "Sound\\決定音\\キャンセル音\\Cancel.wav");
+	audio->LoadAudio(ERROR_CANCEL, "Sound\\決定音\\キャンセル音\\Cancel.wav");
 	//サウンド読み込み↑---------------------------------------------------------------------------
 
 	//透過・暗転初期化
@@ -797,8 +796,8 @@ void COverlay::Draw()
 				m_dst.right = left;
 
 				//表示位置を少しずらす
-				m_src.left += 10.0f;
-				m_src.top -= 10.0f;
+				m_src.left += (LONG)10.0;
+				m_src.top -= (LONG)10.0;
 			}
 
 			//転送先座標右下

@@ -88,7 +88,7 @@ private:
 	//選択肢、文字挿入部分データを全破棄する
 	template <class T>
 	void DeleteControlData(vector<vector<T*>>* m_Chara_Data) {
-		for (int del = 0; del < m_Chara_Data->size(); del++) {
+		for (unsigned int del = 0; del < m_Chara_Data->size(); del++) {
 			//２次元目のvector自身とその内部開放
 			VectorClear(&(*m_Chara_Data)[del]);
 

@@ -205,7 +205,7 @@ void CSavedataManeger::Loadsavedata()
 				}
 				break;
 			}
-			case11: {//m_bMelueruClearflg
+			case 11: {//m_bMelueruClearflg
 				if ((*itr)[i] == '0') {
 				 Savedata[saveflg].m_stage[KOUNE].stage5clear = false;
 				}

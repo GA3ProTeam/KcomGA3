@@ -797,8 +797,8 @@ void COverlay::Draw()
 				m_dst.right = left;
 
 				//表示位置を少しずらす
-				m_src.left += 10.0f;
-				m_src.top -= 10.0f;
+				m_src.left += (LONG)10.0;
+				m_src.top -= (LONG)10.0;
 			}
 
 			//転送先座標右下

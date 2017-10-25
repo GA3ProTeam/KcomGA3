@@ -1105,13 +1105,55 @@ void CObjGimmickManager::Action() {
 			}
 		}
 
+		//‚¨‚Î‚ ‚¿‚á‚ñ‚Æ‚Ì‰ï˜b
 		//if (m_gimmick_granny->m_ball[0].OnPush)
 		//{
 		//	if (///)
 		//	{
 		//		m_Koune3_flg = KOUNE3_TALK_GRANNY_FLG0;
+		//	{
+		//	else if(///)
+		//	{
+		//		m_Koune3_flg = KOUNE3_TALK_GRANNY_FLG1;
 		//	}
-		//	
+		//	else if(///)
+		//	{
+		//		m_Koune3_flg = KOUNE3_TALK_GRANNY_KITTEN;
+		//	}
+		//	else if(///)
+		//	{
+		//		m_Koune3_flg = KOUNE3_TALK_GRANNY_FLG2;
+		//	}
+		//	else if(///)
+		//	{
+		//		m_Koune3_flg = KOUNE3_TALK_GRANNY_FLG3;
+		//	}
+		//
+		//}
+
+		//—‚ÌŽq‚Æ‚Ì‰ï˜b
+		//if (m_gimmick_little_girl->m_ball[0].OnPush)
+		//{
+		//	if (///)
+		//	{
+		//		m_Koune3_flg = KOUNE3_TALK_GRANNY_FLG0;
+		//	{
+		//	else if(///)
+		//	{
+		//		m_Koune3_flg = KOUNE3_TALK_GRANNY_FLG1;
+		//	}
+		//	else if(///)
+		//	{
+		//		m_Koune3_flg = KOUNE3_TALK_GRANNY_KITTEN;
+		//	}
+		//	else if(///)
+		//	{
+		//		m_Koune3_flg = KOUNE3_TALK_GRANNY_FLG2;
+		//	}
+		//	else if(///)
+		//	{
+		//		m_Koune3_flg = KOUNE3_TALK_GRANNY_FLG3;
+		//	}
 		//
 		//}
 		

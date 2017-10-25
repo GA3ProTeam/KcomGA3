@@ -435,7 +435,7 @@ void Gimmickearphone::Action()
 		//マウスドラッグ中にマウスボタンが離された
 		//if (!Input()->GetMouButtonL() && tab->GetHaveSound()) {
 
-		SavedataManeger()->CurrentData->m_bSionClearflg[0] = true;
+		SavedataManeger()->CurrentData->m_stage[SION].stage1clear = true;
 
 
 		}

@@ -7,7 +7,8 @@ void CObjMenuTab::Init(int openclosey)
 	m_bhavesound = false;//持っていない
 	m_igivesound = -1;//音なし
 	m_icnt = 0;
-	m_iabicnt = 0;
+	OnceFlg = false;//引数がほしいPushの一回クリックフラグ
+	m_Storageflg = false;//反応なし
 
 	m_bGarbageActionFlg = true;//ゴミ箱動作
 
@@ -116,26 +117,20 @@ void CObjMenuTab::Action()
 				drag_drop_end_count = 1;//カウントを元に戻しておく
 			}
 
+
 		}
+		m_Storageflg = ArgumentPush(m_iability_x, m_iability_y, 64, 64);
 		//--------------------------------------------------------------------------
 		//能力ボタン動作
-		if (SelectPush(m_iability_x, m_iability_y, 64, 64) && !abiltyOverray && m_iabicnt == 0) {
+		if (m_Storageflg && !abiltyOverray) {
 			//abiltyOverray = true;
 			Onability();
-			m_iabicnt++;
 		}
-		else if (SelectPush(m_iability_x, m_iability_y, 64, 64) && abiltyOverray  && m_iabicnt == 0) {
+		else if (m_Storageflg && abiltyOverray) {
 			//abiltyOverray = false;
 			Offability();
-			m_iabicnt++;
 		}
-		else if (SelectPush(m_iability_x, m_iability_y, 64, 64)) {
-			m_iabicnt++;
-		}
-		else {
-			m_iabicnt = 0;
-		}
-
+		
 
 	}
 
@@ -354,7 +349,6 @@ void CObjMenuTab::Draw()
 		Image()->DrawEx(EX_VOLBOTTON, &m_rSrc, &m_rDst, m_fCol1, 0.0f);
 	
 	}
-
 }
 
 bool CObjMenuTab::SelectPush(int btx, int bty, int btwid, int bthei)
@@ -436,5 +430,46 @@ void CObjMenuTab::Offability()
 	if (User()->m_iCurrentChara == 1)
 	{
 		User()->m_bsionability = false;
+	}
+}
+
+//引数ありのPush
+bool CObjMenuTab::ArgumentPush(int x, int y, int w, int h)
+{
+	//マウスがボタンの範囲外なら、処理しない
+	if (!ArgumentRangedetection(x,y,w,h)) {
+		OnceFlg = false;//マウス位置がボタンの範囲外なら、一回クリックフラグを解除
+		return false;
+	}
+
+	//左クリックされたら
+	if (Input()->GetMouButtonLOnce())
+	{
+		OnceFlg = true;
+	}
+	else if (!Input()->GetMouButtonL() && OnceFlg) {
+		OnceFlg = false;
+		return true;
+	}
+
+	return false;
+
+
+}
+
+//引数ありのRangedetection
+bool CObjMenuTab::ArgumentRangedetection(int x, int y, int w, int h)
+{
+	int mousex = Input()->m_x;
+	int mousey = Input()->m_y;
+
+	if ((mousex > x && mousex < (x + w))
+		&& (mousey > y && mousey < (y + h)))
+	{
+		return true;
+	}
+	else
+	{
+		return false;
 	}
 }

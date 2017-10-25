@@ -1074,7 +1074,7 @@ void GimmickWindchime::Draw()		//ÉhÉçÅ[
 void GimmickDog::Init(int xpos, int ypos, int widht, int height, int balloonnum)
 {
 	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
-	InitBall(m_ball, m_iWidth - 50, m_iHeight - 48, sound, 1, RED, UPPER_LEFT);
+	InitBall(m_ball, m_iWidth - 50, m_iHeight - 48, sound, 0, RED, UPPER_LEFT);
 }
 
 

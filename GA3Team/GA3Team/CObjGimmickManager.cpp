@@ -37,25 +37,25 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 		//-シオンステージ-----------------------------------------
 	case 10:
 		//シオンのステージ1のギミック生成
-		//おばちゃん生成
-		m_gimmick_aunt = new GimmickAunt();
-		Obj()->InsertObj(m_gimmick_aunt, GIMMICK_AUNT, 1, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_aunt->Init(110, 430, 100, 170, 1);
+		////おばちゃん生成
+		//m_gimmick_aunt = new GimmickAunt();
+		//Obj()->InsertObj(m_gimmick_aunt, GIMMICK_AUNT, 1, this->m_pScene, HIT_BOX_OFF);
+		//m_gimmick_aunt->Init(110, 430, 100, 170, 1);
 
-		//すずめ生成
-		m_gimmick_bird = new GimmickBird();
-		Obj()->InsertObj(m_gimmick_bird, GIMMICK_BIRD, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_bird->Init(270, 100, 70, 90, 1);
-		
-		//犬A(番犬)生成
-		m_gimmick_watchdog = new Gimmickwatchdog();
-		Obj()->InsertObj(m_gimmick_watchdog, GIMMICK_WATCHDOG, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_watchdog->Init(600, 530, 100, 70, 1);
-		
-		//インターホン生成
-		m_gimmick_interphone = new GimmickInterphone();
-		Obj()->InsertObj(m_gimmick_interphone, GIMMICK_INTERPHONE, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_interphone->Init(730, 300, 70, 100, 1);
+		////すずめ生成
+		//m_gimmick_bird = new GimmickBird();
+		//Obj()->InsertObj(m_gimmick_bird, GIMMICK_BIRD, 5, this->m_pScene, HIT_BOX_OFF);
+		//m_gimmick_bird->Init(270, 100, 70, 90, 1);
+		//
+		////犬A(番犬)生成
+		//m_gimmick_watchdog = new Gimmickwatchdog();
+		//Obj()->InsertObj(m_gimmick_watchdog, GIMMICK_WATCHDOG, 5, this->m_pScene, HIT_BOX_OFF);
+		//m_gimmick_watchdog->Init(600, 530, 100, 70, 1);
+		//
+		////インターホン生成
+		//m_gimmick_interphone = new GimmickInterphone();
+		//Obj()->InsertObj(m_gimmick_interphone, GIMMICK_INTERPHONE, 5, this->m_pScene, HIT_BOX_OFF);
+		//m_gimmick_interphone->Init(730, 300, 70, 100, 1);
 		
 		break;
 	case 11:

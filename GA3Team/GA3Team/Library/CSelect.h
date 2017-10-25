@@ -16,6 +16,9 @@ public:
 	//選択状態を取得
 	bool Select();
 
+	//全選択肢ボタンを描画
+	void DrawAllButtonSelect();
+
 	//選択肢情報を取得
 	const SelectInfo* GetInfo() { return m_info; }
 

@@ -30,7 +30,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 	*/
 	SavedataManeger()->Setcurrentdata();
 
-	m_Stage_ID = 32;
+	m_Stage_ID = 11;
 
 	switch (m_Stage_ID) {
 
@@ -59,27 +59,27 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 		
 		break;
 	case 11:
-		////シオンのステージ2のギミック生成
-		//m_gimmick_earphone = new Gimmickearphone();
-		//Obj()->InsertObj(m_gimmick_earphone, GIMMICK_EARPHONE, 5, this->m_pScene, HIT_BOX_OFF);
-		//m_gimmick_earphone->Init(650, 120, 200, 400, 1);
-		////コウネ生成
-		//m_gimmick_koune = new Gimmickkoune();
-		//Obj()->InsertObj(m_gimmick_koune, GIMMICK_KOUNE, 5, this->m_pScene, HIT_BOX_OFF);
-		//m_gimmick_koune->Init(-250, 150, 200, 400, 1);
-		////猫生成
-		//m_gimmick_cat = new Gimmickcat();
-		//Obj()->InsertObj(m_gimmick_cat, GIMMICK_CAT, 5, this->m_pScene, HIT_BOX_OFF);
-		//m_gimmick_cat->Init(550, 120, 100, 100, 1);
-		////自転車生成
-		//m_gimmick_bicycle = new Gimmickbicycle();
-		//Obj()->InsertObj(m_gimmick_bicycle, GIMMICK_BICYCLE, 5, this->m_pScene, HIT_BOX_OFF);
-		//m_gimmick_bicycle->Init(100, 300, 400, 250, 1);
-		////消防車
-		//m_gimmick_firetruck = new Gimmickfiretruck();
-		//Obj()->InsertObj(m_gimmick_firetruck, GIMMICK_FIRETRUCK, 5, this->m_pScene, HIT_BOX_OFF);
-		//m_gimmick_firetruck->Init(-430, -120, 400, 450, 1);
-		break;
+		//シオンのステージ2のギミック生成
+		//イヤホン男生成
+		m_gimmick_earphone = new Gimmickearphone();
+		Obj()->InsertObj(m_gimmick_earphone, GIMMICK_EARPHONE, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_earphone->Init(650, 120, 200, 400, 1);
+		//コウネ生成
+		m_gimmick_koune = new Gimmickkoune();
+		Obj()->InsertObj(m_gimmick_koune, GIMMICK_KOUNE, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_koune->Init(-250, 150, 200, 400, 1);
+		//猫生成
+		m_gimmick_cat = new Gimmickcat();
+		Obj()->InsertObj(m_gimmick_cat, GIMMICK_CAT, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_cat->Init(550, 120, 100, 100, 1);
+		//自転車生成
+		m_gimmick_bicycle = new Gimmickbicycle();
+		Obj()->InsertObj(m_gimmick_bicycle, GIMMICK_BICYCLE, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_bicycle->Init(100, 300, 400, 250, 1);
+		//消防車
+		m_gimmick_firetruck = new Gimmickfiretruck();
+		Obj()->InsertObj(m_gimmick_firetruck, GIMMICK_FIRETRUCK, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_firetruck->Init(-430, -120, 400, 450, 1);
 
 	case 12:
 		////シオンのステージ3のギミック生成
@@ -1260,7 +1260,7 @@ void CObjGimmickManager::Draw() {
 		m_src.right = m_src.left + 800;
 
 		//背景描画
-		Image()->DrawEx(28, &m_src, &m_dst, col, 0.0f);
+		Image()->DrawEx(EX_STAGE_SION_STAGE2_right, &m_src, &m_dst, col, 0.0f);
 
 		//左
 		//切り取り座標
@@ -1276,16 +1276,7 @@ void CObjGimmickManager::Draw() {
 		m_src.right = m_src.left + 400;
 
 		//背景描画
-		Image()->DrawEx(29, &m_src, &m_dst, col, 0.0f);
-
-
-
-
-
-
-
-
-
+		Image()->DrawEx(EX_STAGE_SION_STAGE2_left, &m_src, &m_dst, col, 0.0f);
 
 		break;
 	case 12:

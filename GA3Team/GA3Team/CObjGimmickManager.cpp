@@ -30,7 +30,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 	*/
 	SavedataManeger()->Setcurrentdata();
 
-	m_Stage_ID = 30;
+	m_Stage_ID = 11;
 
 	switch (m_Stage_ID) {
 
@@ -59,27 +59,27 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 		
 		break;
 	case 11:
-		////シオンのステージ2のギミック生成
-		//m_gimmick_earphone = new Gimmickearphone();
-		//Obj()->InsertObj(m_gimmick_earphone, GIMMICK_EARPHONE, 5, this->m_pScene, HIT_BOX_OFF);
-		//m_gimmick_earphone->Init(650, 120, 200, 400, 1);
-		////コウネ生成
-		//m_gimmick_koune = new Gimmickkoune();
-		//Obj()->InsertObj(m_gimmick_koune, GIMMICK_KOUNE, 5, this->m_pScene, HIT_BOX_OFF);
-		//m_gimmick_koune->Init(-250, 150, 200, 400, 1);
-		////猫生成
-		//m_gimmick_cat = new Gimmickcat();
-		//Obj()->InsertObj(m_gimmick_cat, GIMMICK_CAT, 5, this->m_pScene, HIT_BOX_OFF);
-		//m_gimmick_cat->Init(550, 120, 100, 100, 1);
-		////自転車生成
-		//m_gimmick_bicycle = new Gimmickbicycle();
-		//Obj()->InsertObj(m_gimmick_bicycle, GIMMICK_BICYCLE, 5, this->m_pScene, HIT_BOX_OFF);
-		//m_gimmick_bicycle->Init(100, 300, 400, 250, 1);
-		////消防車
-		//m_gimmick_firetruck = new Gimmickfiretruck();
-		//Obj()->InsertObj(m_gimmick_firetruck, GIMMICK_FIRETRUCK, 5, this->m_pScene, HIT_BOX_OFF);
-		//m_gimmick_firetruck->Init(-430, -120, 400, 450, 1);
-		break;
+		//シオンのステージ2のギミック生成
+		//イヤホン男生成
+		m_gimmick_earphone = new Gimmickearphone();
+		Obj()->InsertObj(m_gimmick_earphone, GIMMICK_EARPHONE, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_earphone->Init(650, 120, 200, 400, 1);
+		//コウネ生成
+		m_gimmick_koune = new Gimmickkoune();
+		Obj()->InsertObj(m_gimmick_koune, GIMMICK_KOUNE, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_koune->Init(-250, 150, 200, 400, 1);
+		//猫生成
+		m_gimmick_cat = new Gimmickcat();
+		Obj()->InsertObj(m_gimmick_cat, GIMMICK_CAT, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_cat->Init(550, 120, 100, 100, 1);
+		//自転車生成
+		m_gimmick_bicycle = new Gimmickbicycle();
+		Obj()->InsertObj(m_gimmick_bicycle, GIMMICK_BICYCLE, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_bicycle->Init(100, 300, 400, 250, 1);
+		//消防車
+		m_gimmick_firetruck = new Gimmickfiretruck();
+		Obj()->InsertObj(m_gimmick_firetruck, GIMMICK_FIRETRUCK, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_firetruck->Init(-430, -120, 400, 450, 1);
 
 	case 12:
 		////シオンのステージ3のギミック生成
@@ -479,8 +479,15 @@ void CObjGimmickManager::Action() {
 
 	//イベント番号(シオンステージ1)
 	enum SION1_NUMBER {
-
-
+		SION1_TOLK_START,
+		SION1_TOLK_END,
+		SION1_TOLK_AUNT,
+		SION1_ABILITY,
+	};
+	//イベント番号(シオンステージ3)
+	enum SION3_NUMBER {
+		SION3_TOLK_START,
+		SION3_TOLK_END,
 	};
 
 	//イベント進行度
@@ -488,7 +495,9 @@ void CObjGimmickManager::Action() {
 	static int m_itutorialflg = TUTORIAL_WELCOM_TALK;
 
 	//シオンステージ1
-	static int m_Sion1_flg = -1;
+	static int m_Sion1_flg = SION1_TOLK_START;
+	//シオンステージ3
+	static int m_Sion3_flg = SION3_TOLK_START;
 
 	//コウネステージ1
 	static int m_Koune1_flg = 0;
@@ -517,24 +526,24 @@ void CObjGimmickManager::Action() {
 	switch (m_Stage_ID) {
 		//-シオンステージ-----------------------------------------
 	case 10:
-		//if (m_Sion1_flg == -1) {
+		//if (m_Sion1_flg == SION1_TOLK_START) {
 		//	Overlay()->talkDraw(SION, SION1_START);
 		//	Overlay()->NextWait();
 
-		//	m_Sion1_flg = 0;
+		//	m_Sion1_flg = SION1_TOLK_END;
 		//}
 
 		//if (m_gimmick_aunt->m_ball[0].OnPush) {
 		//	Overlay()->talkDraw(SION, SION1_BBA);
 		//	
 		//	if (Overlay()->NextWait()) {
-		//		m_Sion1_flg = 1;
+		//		m_Sion1_flg = SION1_TOLK_AUNT;
 		//	}
 		//}
 
 		////能力使用時に、フラグ2が立つ
 		///*if (シオンの能力ボタンを押した) {
-		//	m_Sion1_flg = 2;
+		//	m_Sion1_flg = SION1_ABILITY;
 		//}*/
 		//if (m_gimmick_watchdog->m_getsound.sound_num != -1) {
 		//	if (m_gimmick_watchdog->m_getsound.sound_color == BLUE) {
@@ -542,11 +551,11 @@ void CObjGimmickManager::Action() {
 		//			Overlay()->talkDraw(SION, SION1_FLAG1_NO);
 		//			Overlay()->NextWait();
 		//		}
-		//		else if (m_Sion1_flg == 1) {
-		//			Overlay()->talkDraw(SION, SION1_FLAG1_YES_FLAG2_NO_CLEAR);
+		//		else if (m_Sion1_flg == SION1_TOLK_AUNT) {
+		//			Overlay()->talkDraw(SION, SION1_FLAG1_YES_FLAG2__NO_CLEAR);
 		//			Overlay()->NextWait();
 		//		}
-		//		if (m_Sion1_flg == 2) {	
+		//		if (m_Sion1_flg == SION1_ABILITY) {	
 		//			Overlay()->talkDraw(SION, SION1_FLAG1_YES_FLAG2_YES_CLEAR);
 		//			Overlay()->NextWait();
 		//		}
@@ -557,6 +566,14 @@ void CObjGimmickManager::Action() {
 	case 11:
 		break;
 	case 12:
+		//if (m_Sion3_flg == SION3_TOLK_START) {
+		//	Overlay()->talkDraw(SION, SION3_START);
+
+		//	Overlay()->NextWait();
+
+		//	m_Sion3_flg = SION3_TOLK_END;
+		//}
+
 		//if(m_gimmick_granny->m_ball[0].OnPush) {
 		//		Overlay()->talkDraw(SION, SION3_OBATYAN);
 
@@ -565,9 +582,11 @@ void CObjGimmickManager::Action() {
 
 		//switch (m_gimmick_children->GetChild_ID()) {
 		//case 1://強気な男の子
-		//	   //if (m_getsound == /*ほしい音*/) {
-		//	   //	SavedataManeger()->CurrentData->m_bSionflg[3] = true;
-		//	   //}
+		//	/*if (m_gimmick_children->m_getsound.sound_num != -1) {
+		//		if (m_gimmick_children->m_getsound.sound_num == 正解の音) {
+		//			SavedataManeger()->CurrentData->m_bSionflg[3] = true;
+		//		}
+		//	}*/
 
 		//	if (SavedataManeger()->CurrentData->m_bSionflg[3] == true && m_gimmick_children->m_ball[0].OnPush) {
 		//		Overlay()->talkDraw(SION, SION3_FLAG_YES_CHILD1);
@@ -582,9 +601,11 @@ void CObjGimmickManager::Action() {
 		//	break;
 
 		//case 2://優しい女の子
-		//	   //if (m_getsound == /*ほしい音*/) {
-		//	   //	SavedataManeger()->CurrentData->m_bSionflg[4] = true;
-		//	   //}
+		//	/*if (m_gimmick_children->m_getsound.sound_num != -1) {
+		//		if (m_gimmick_children->m_getsound.sound_num == 正解の音) {
+		//			SavedataManeger()->CurrentData->m_bSionflg[4] = true;
+		//		}
+		//	}*/
 
 		//	if (SavedataManeger()->CurrentData->m_bSionflg[4] == true && m_gimmick_children->m_ball[0].OnPush) {
 		//		Overlay()->talkDraw(SION, SION3_FLAG_YES_CHILD2);
@@ -600,9 +621,11 @@ void CObjGimmickManager::Action() {
 		//	break;
 
 		//case 3://弱気な男の子
-		//	   //if (m_getsound == /*ほしい音*/) {
-		//	   //	SavedataManeger()->CurrentData->m_bSionflg[5] = true;
-		//	   //}
+		//	/*if (m_gimmick_children->m_getsound.sound_num != -1) {
+		//		if (m_gimmick_children->m_getsound.sound_num == 正解の音) {
+		//			SavedataManeger()->CurrentData->m_bSionflg[5] = true;
+		//		}
+		//	}*/
 
 		//	if (SavedataManeger()->CurrentData->m_bSionflg[5] == true && m_gimmick_children->m_ball[0].OnPush) {
 		//		Overlay()->talkDraw(SION, SION3_FLAG_YES_CHILD3);
@@ -1357,7 +1380,7 @@ void CObjGimmickManager::Draw() {
 		m_src.right = m_src.left + 800;
 
 		//背景描画
-		Image()->DrawEx(28, &m_src, &m_dst, col, 0.0f);
+		Image()->DrawEx(EX_STAGE_SION_STAGE2_right, &m_src, &m_dst, col, 0.0f);
 
 		//左
 		//切り取り座標
@@ -1373,16 +1396,7 @@ void CObjGimmickManager::Draw() {
 		m_src.right = m_src.left + 400;
 
 		//背景描画
-		Image()->DrawEx(29, &m_src, &m_dst, col, 0.0f);
-
-
-
-
-
-
-
-
-
+		Image()->DrawEx(EX_STAGE_SION_STAGE2_left, &m_src, &m_dst, col, 0.0f);
 
 		break;
 	case 12:

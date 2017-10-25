@@ -35,7 +35,7 @@ private:
 	bool abiltyOverray;//能力発動フラグ
 
 public:
-	bool m_bability;//能力発動フラグ
+	//bool m_bability;//能力発動フラグ
 
 
 	void Init(int openclosey);//イニシャライズInit(タブのY軸の指定)

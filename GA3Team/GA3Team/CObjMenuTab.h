@@ -8,7 +8,10 @@ private:
 	//開閉フラグ
 	bool m_bOpenClose;
 	//連打回避のためのカウント
-	int m_icnt, m_iabicnt;
+	int m_icnt;
+
+	//引数ありのPushに使うフラグ
+	bool OnceFlg,m_Storageflg;
 
 	//ゴミ箱動作フラグ
 	bool m_bGarbageActionFlg;
@@ -56,6 +59,12 @@ public:
 
 	//ゴミ箱動作フラグ切り替え
 	void SetGarbageActionFlg(bool flg) { m_bGarbageActionFlg = flg; }
+
+	//引数ありのPush
+	bool ArgumentPush(int x,int y, int w,int h);
+	//引数ありのRangedetection
+	bool ArgumentRangedetection(int x, int y, int w, int h);
+
 
 	//能力ON、OFF関数
 	void Onability();

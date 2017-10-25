@@ -37,25 +37,25 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 		//-シオンステージ-----------------------------------------
 	case 10:
 		//シオンのステージ1のギミック生成
-		////おばちゃん生成
-		//m_gimmick_aunt = new GimmickAunt();
-		//Obj()->InsertObj(m_gimmick_aunt, GIMMICK_AUNT, 1, this->m_pScene, HIT_BOX_OFF);
-		//m_gimmick_aunt->Init(110, 430, 100, 170, 1);
+		//おばちゃん生成
+		m_gimmick_aunt = new GimmickAunt();
+		Obj()->InsertObj(m_gimmick_aunt, GIMMICK_AUNT, 1, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_aunt->Init(110, 430, 100, 170, 1);
 
-		////すずめ生成
-		//m_gimmick_bird = new GimmickBird();
-		//Obj()->InsertObj(m_gimmick_bird, GIMMICK_BIRD, 5, this->m_pScene, HIT_BOX_OFF);
-		//m_gimmick_bird->Init(270, 100, 70, 90, 1);
-		//
-		////犬A(番犬)生成
-		//m_gimmick_watchdog = new Gimmickwatchdog();
-		//Obj()->InsertObj(m_gimmick_watchdog, GIMMICK_WATCHDOG, 5, this->m_pScene, HIT_BOX_OFF);
-		//m_gimmick_watchdog->Init(600, 530, 100, 70, 1);
-		//
-		////インターホン生成
-		//m_gimmick_interphone = new GimmickInterphone();
-		//Obj()->InsertObj(m_gimmick_interphone, GIMMICK_INTERPHONE, 5, this->m_pScene, HIT_BOX_OFF);
-		//m_gimmick_interphone->Init(730, 300, 70, 100, 1);
+		//すずめ生成
+		m_gimmick_bird = new GimmickBird();
+		Obj()->InsertObj(m_gimmick_bird, GIMMICK_BIRD, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_bird->Init(270, 100, 70, 90, 1);
+		
+		//犬A(番犬)生成
+		m_gimmick_watchdog = new Gimmickwatchdog();
+		Obj()->InsertObj(m_gimmick_watchdog, GIMMICK_WATCHDOG, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_watchdog->Init(600, 530, 100, 70, 1);
+		
+		//インターホン生成
+		m_gimmick_interphone = new GimmickInterphone();
+		Obj()->InsertObj(m_gimmick_interphone, GIMMICK_INTERPHONE, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_interphone->Init(730, 300, 70, 100, 1);
 		
 		break;
 	case 11:
@@ -82,28 +82,28 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 		//m_gimmick_firetruck->Init(-430, -120, 400, 450, 1);
 
 	case 12:
-		////シオンのステージ3のギミック生成
-		//m_gimmick_granny = new GimmickGranny();
-		//Obj()->InsertObj(m_gimmick_granny, GIMMICK_GRANNY, 5, this->m_pScene, HIT_BOX_OFF);
-		//m_gimmick_granny->Init(350, 220, 70, 100, 1);
+		//シオンのステージ3のギミック生成
+		m_gimmick_granny = new GimmickGranny();
+		Obj()->InsertObj(m_gimmick_granny, GIMMICK_GRANNY, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_granny->Init(350, 220, 70, 100, 1);
 
-		//for (int i = 0; i < 3; i++) {
-		//	m_gimmick_children = new GimmickChildren(); 
-		//	Obj()->InsertObj(m_gimmick_children, GIMMICK_CHILDREN, 5, this->m_pScene, HIT_BOX_OFF);
-		//	m_gimmick_children->Init(100+(80*i), 350, 70, 100, 1,i+1);
-		//}
-		//
-		//m_gimmick_mynah = new GimmickMynah();
-		//Obj()->InsertObj(m_gimmick_mynah, GIMMICK_MYNAH, 5, this->m_pScene, HIT_BOX_OFF);
-		//m_gimmick_mynah->Init(500, 200, 50, 70, 1);
-		//
-		//m_gimmick_shelf = new GimmickShelf();
-		//Obj()->InsertObj(m_gimmick_shelf, GIMMICK_SHELF, 5, this->m_pScene, HIT_BOX_OFF);
-		//m_gimmick_shelf->Init(600, 280, 100, 170, 3);
-		//
-		//m_gimmick_windchime = new GimmickWindchime();
-		//Obj()->InsertObj(m_gimmick_windchime, GIMMICK_WINDCHIME, 5, this->m_pScene, HIT_BOX_OFF);
-		//m_gimmick_windchime->Init(230, 100, 60, 80, 1);
+		for (int i = 0; i < 3; i++) {
+			m_gimmick_children = new GimmickChildren(); 
+			Obj()->InsertObj(m_gimmick_children, GIMMICK_CHILDREN, 5, this->m_pScene, HIT_BOX_OFF);
+			m_gimmick_children->Init(100+(80*i), 350, 70, 100, 1,i+1);
+		}
+		
+		m_gimmick_mynah = new GimmickMynah();
+		Obj()->InsertObj(m_gimmick_mynah, GIMMICK_MYNAH, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_mynah->Init(500, 200, 50, 70, 1);
+		
+		m_gimmick_shelf = new GimmickShelf();
+		Obj()->InsertObj(m_gimmick_shelf, GIMMICK_SHELF, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_shelf->Init(600, 280, 100, 170, 3);
+		
+		m_gimmick_windchime = new GimmickWindchime();
+		Obj()->InsertObj(m_gimmick_windchime, GIMMICK_WINDCHIME, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_windchime->Init(230, 100, 60, 80, 1);
 
 
 		break;
@@ -527,132 +527,132 @@ void CObjGimmickManager::Action() {
 	switch (m_Stage_ID) {
 		//-シオンステージ-----------------------------------------
 	case 10:
-		//if (m_Sion1_flg == SION1_TOLK_START) {
-		//	Overlay()->talkDraw(SION, SION1_START);
-		//	Overlay()->NextWait();
+		if (m_Sion1_flg == SION1_TOLK_START) {
+			Overlay()->talkDraw(SION, SION1_START);
+			Overlay()->NextWait();
 
-		//	m_Sion1_flg = SION1_TOLK_END;
-		//}
+			m_Sion1_flg = SION1_TOLK_END;
+		}
 
-		//if (m_gimmick_aunt->m_ball[0].OnPush) {
-		//	Overlay()->talkDraw(SION, SION1_BBA);
-		//	
-		//	if (Overlay()->NextWait()) {
-		//		m_Sion1_flg = SION1_TOLK_AUNT;
-		//	}
-		//}
+		if (m_gimmick_aunt->m_ball[0].OnPush) {
+			Overlay()->talkDraw(SION, SION1_BBA);
+			
+			if (Overlay()->NextWait()) {
+				m_Sion1_flg = SION1_TOLK_AUNT;
+			}
+		}
 
-		////能力使用時に、フラグ2が立つ
-		///*if (シオンの能力ボタンを押した) {
-		//	m_Sion1_flg = SION1_ABILITY;
-		//}*/
-		//if (m_gimmick_watchdog->m_getsound.sound_num != -1) {
-		//	if (m_gimmick_watchdog->m_getsound.sound_color == BLUE) {
-		//		if (m_Sion1_flg == 0) {
-		//			Overlay()->talkDraw(SION, SION1_FLAG1_NO);
-		//			Overlay()->NextWait();
-		//		}
-		//		else if (m_Sion1_flg == SION1_TOLK_AUNT) {
-		//			Overlay()->talkDraw(SION, SION1_FLAG1_YES_FLAG2__NO_CLEAR);
-		//			Overlay()->NextWait();
-		//		}
-		//		if (m_Sion1_flg == SION1_ABILITY) {	
-		//			Overlay()->talkDraw(SION, SION1_FLAG1_YES_FLAG2_YES_CLEAR);
-		//			Overlay()->NextWait();
-		//		}
-		//	}
-		//}
+		//能力使用時に、フラグ2が立つ
+		/*if (シオンの能力ボタンを押した) {
+			m_Sion1_flg = SION1_ABILITY;
+		}*/
+		if (m_gimmick_watchdog->m_getsound.sound_num != -1) {
+			if (m_gimmick_watchdog->m_getsound.sound_color == BLUE) {
+				if (m_Sion1_flg == 0) {
+					Overlay()->talkDraw(SION, SION1_FLAG1_NO);
+					Overlay()->NextWait();
+				}
+				else if (m_Sion1_flg == SION1_TOLK_AUNT) {
+					Overlay()->talkDraw(SION, SION1_FLAG1_YES_FLAG2_NO_CLEAR);
+					Overlay()->NextWait();
+				}
+				if (m_Sion1_flg == SION1_ABILITY) {	
+					Overlay()->talkDraw(SION, SION1_FLAG1_YES_FLAG2_YES_CLEAR);
+					Overlay()->NextWait();
+				}
+			}
+		}
 
 		break;
 	case 11:
 		break;
 	case 12:
-		//if (m_Sion3_flg == SION3_TOLK_START) {
-		//	Overlay()->talkDraw(SION, SION3_START);
+		if (m_Sion3_flg == SION3_TOLK_START) {
+			Overlay()->talkDraw(SION, SION3_START);
 
-		//	Overlay()->NextWait();
+			Overlay()->NextWait();
 
-		//	m_Sion3_flg = SION3_TOLK_END;
-		//}
+			m_Sion3_flg = SION3_TOLK_END;
+		}
 
-		//if(m_gimmick_granny->m_ball[0].OnPush) {
-		//		Overlay()->talkDraw(SION, SION3_OBATYAN);
+		if(m_gimmick_granny->m_ball[0].OnPush) {
+				Overlay()->talkDraw(SION, SION3_OBATYAN);
 
-		//		Overlay()->NextWait();
-		//	}
+				Overlay()->NextWait();
+			}
 
-		//switch (m_gimmick_children->GetChild_ID()) {
-		//case 1://強気な男の子
-		//	/*if (m_gimmick_children->m_getsound.sound_num != -1) {
-		//		if (m_gimmick_children->m_getsound.sound_num == 正解の音) {
-		//			SavedataManeger()->CurrentData->m_bSionflg[3] = true;
-		//		}
-		//	}*/
+		switch (m_gimmick_children->GetChild_ID()) {
+		case 1://強気な男の子
+			/*if (m_gimmick_children->m_getsound.sound_num != -1) {
+				if (m_gimmick_children->m_getsound.sound_num == 正解の音) {
+					SavedataManeger()->CurrentData->m_bSionflg[3] = true;
+				}
+			}*/
 
-		//	if (SavedataManeger()->CurrentData->m_bSionflg[3] == true && m_gimmick_children->m_ball[0].OnPush) {
-		//		Overlay()->talkDraw(SION, SION3_FLAG_YES_CHILD1);
+			if (SavedataManeger()->CurrentData->m_bSionflg[3] == true && m_gimmick_children->m_ball[0].OnPush) {
+				Overlay()->talkDraw(SION, SION3_FLAG_YES_CHILD1);
 
-		//		Overlay()->NextWait();
-		//	}
-		//	else if (m_gimmick_children->m_ball[0].OnPush) {
-		//		Overlay()->talkDraw(SION, SION3_FLAG_NO_CHILD1);
+				Overlay()->NextWait();
+			}
+			else if (m_gimmick_children->m_ball[0].OnPush) {
+				Overlay()->talkDraw(SION, SION3_FLAG_NO_CHILD1);
 
-		//		Overlay()->NextWait();
-		//	}
-		//	break;
+				Overlay()->NextWait();
+			}
+			break;
 
-		//case 2://優しい女の子
-		//	/*if (m_gimmick_children->m_getsound.sound_num != -1) {
-		//		if (m_gimmick_children->m_getsound.sound_num == 正解の音) {
-		//			SavedataManeger()->CurrentData->m_bSionflg[4] = true;
-		//		}
-		//	}*/
+		case 2://優しい女の子
+			/*if (m_gimmick_children->m_getsound.sound_num != -1) {
+				if (m_gimmick_children->m_getsound.sound_num == 正解の音) {
+					SavedataManeger()->CurrentData->m_bSionflg[4] = true;
+				}
+			}*/
 
-		//	if (SavedataManeger()->CurrentData->m_bSionflg[4] == true && m_gimmick_children->m_ball[0].OnPush) {
-		//		Overlay()->talkDraw(SION, SION3_FLAG_YES_CHILD2);
+			if (SavedataManeger()->CurrentData->m_bSionflg[4] == true && m_gimmick_children->m_ball[0].OnPush) {
+				Overlay()->talkDraw(SION, SION3_FLAG_YES_CHILD2);
 
-		//		Overlay()->NextWait();
-		//	}
-		//	else if (m_gimmick_children->m_ball[0].OnPush) {
-		//		Overlay()->talkDraw(SION, SION3_FLAG_NO_CHILD2);
+				Overlay()->NextWait();
+			}
+			else if (m_gimmick_children->m_ball[0].OnPush) {
+				Overlay()->talkDraw(SION, SION3_FLAG_NO_CHILD2);
 
-		//		Overlay()->NextWait();
-		//	}
+				Overlay()->NextWait();
+			}
 
-		//	break;
+			break;
 
-		//case 3://弱気な男の子
-		//	/*if (m_gimmick_children->m_getsound.sound_num != -1) {
-		//		if (m_gimmick_children->m_getsound.sound_num == 正解の音) {
-		//			SavedataManeger()->CurrentData->m_bSionflg[5] = true;
-		//		}
-		//	}*/
+		case 3://弱気な男の子
+			/*if (m_gimmick_children->m_getsound.sound_num != -1) {
+				if (m_gimmick_children->m_getsound.sound_num == 正解の音) {
+					SavedataManeger()->CurrentData->m_bSionflg[5] = true;
+				}
+			}*/
 
-		//	if (SavedataManeger()->CurrentData->m_bSionflg[5] == true && m_gimmick_children->m_ball[0].OnPush) {
-		//		Overlay()->talkDraw(SION, SION3_FLAG_YES_CHILD3);
+			if (SavedataManeger()->CurrentData->m_bSionflg[5] == true && m_gimmick_children->m_ball[0].OnPush) {
+				Overlay()->talkDraw(SION, SION3_FLAG_YES_CHILD3);
 
-		//		Overlay()->NextWait();
-		//	}
-		//	else if (m_gimmick_children->m_ball[0].OnPush) {
-		//		Overlay()->talkDraw(SION, SION3_FLAG_NO_CHILD3);
+				Overlay()->NextWait();
+			}
+			else if (m_gimmick_children->m_ball[0].OnPush) {
+				Overlay()->talkDraw(SION, SION3_FLAG_NO_CHILD3);
 
-		//		Overlay()->NextWait();
-		//	}
+				Overlay()->NextWait();
+			}
 
-		//	break;
+			break;
 
-		//}
+		}
 
-		//if (SavedataManeger()->CurrentData->m_bSionflg[3] == true &&
-		//	SavedataManeger()->CurrentData->m_bSionflg[4] == true &&
-		//	SavedataManeger()->CurrentData->m_bSionflg[5] == true) {
+		if (SavedataManeger()->CurrentData->m_bSionflg[3] == true &&
+			SavedataManeger()->CurrentData->m_bSionflg[4] == true &&
+			SavedataManeger()->CurrentData->m_bSionflg[5] == true) {
 
-		//	Overlay()->talkDraw(SION, SION3_CLEAR);
+			Overlay()->talkDraw(SION, SION3_CLEAR);
 
-		//	Overlay()->NextWait();
+			Overlay()->NextWait();
 
-		//	SavedataManeger()->CurrentData->m_bSionClearflg[2] = true;
-		//}
+			SavedataManeger()->CurrentData->m_bSionClearflg[2] = true;
+		}
 
 		break;
 	case 13:
@@ -772,74 +772,73 @@ void CObjGimmickManager::Action() {
 		break;
 		//-コウネステージ-----------------------------------------
 	case 30://ステージ1
-
-			//おじいさんとはいつでも会話可能
-		if (m_Koune1_flg > 0) {
-			if (m_gimmick_oldman->m_ball[0].OnPush) {
-				Overlay()->talkDraw(KOUNE, KOUNE1_OZI);
-				m_bKoune1_flg_list[KOUNE1_BOOL_OLDMAN_TALK] = true;
-			}
-		}
-
-		//初回会話
-		if (m_Koune1_flg == 0) {
-			Overlay()->talkDraw(KOUNE, KOUNE1_START);
-
-			//会話終了
-			if (Overlay()->NextWait()) {
-				m_Koune1_flg = 1;
-			}
-		}
-		else if (m_Koune1_flg == 1) {
-			if (m_gimmick_oldman->m_ball[0].OnPush) {
-				if (SoundManager()->HaveSound(0) == false) {
-					Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG2_NO);
-					
-				}
-				else if (SoundManager()->HaveSound(0) == true) {
-					Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG2_YES);
+		if (m_gimmick_oldman != NULL) {
+			//おじいさんと会話可能なタイミング
+			if (m_Koune1_flg > 0) {
+				if (m_gimmick_oldman->m_ball[0].OnPush) {
+					//初めて会話したとき
+					if (m_bKoune1_flg_list[KOUNE1_BOOL_OLDMAN_TALK] == false) {
+						//おじいさん「そこのあなた。」
+						Overlay()->talkDraw(KOUNE, KOUNE1_OZI);
+						//一度でも会話したらフラグを立てる
+						m_bKoune1_flg_list[KOUNE1_BOOL_OLDMAN_TALK] = true;
+					}
+					//2回目以降に会話したとき
+					else {
+						//犬から音を録音していない
+						if (SoundManager()->HaveSound(0) == false) {
+							//コウネ「知りません。」
+							Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG2_NO);
+						}
+						//犬から音を録音している
+						else if (SoundManager()->HaveSound(0) == true) {
+							//コウネ「直接鳴き声を聞かせたほうが早いな・・・」
+							Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG2_YES);
+						}
+					}
 				}
 			}
 
-			//会話終了
-			if (Overlay()->NextWait()) {
-				if(Overlay()->NowTalk()== KOUNE1_OZI_FLAG2_NO ||
-					Overlay()->NowTalk() == KOUNE1_OZI_FLAG2_YES)
-					m_Koune1_flg = 2;
-			}
-		}
-		else if (m_Koune1_flg == 2) {
-			/*犬の音を大音量で聞かせた*/
-			if (m_gimmick_oldman->m_getsound.sound_num == 0 &&
-				m_gimmick_oldman->m_getsound.sound_volume == BALL_VOL_BIG) {
-				Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG3_YES);
+			//初回会話
+			if (m_Koune1_flg == 0) {
+				Overlay()->talkDraw(KOUNE, KOUNE1_START);
+
+				//会話終了
 				if (Overlay()->NextWait()) {
-					m_gimmick_oldman->m_Status = STATUS_DELETE;
-					m_Koune1_flg = 4;
+					m_Koune1_flg = 1;
+				}
+			}
+			else if (m_Koune1_flg == 1) {
+				/*犬の音を大音量で聞かせた*/
+				if (m_gimmick_oldman->m_getsound.sound_num == 0 &&
+					m_gimmick_oldman->m_getsound.sound_volume == BALL_VOL_BIG) {
+					//おじいさん「この声ははなこ！！」
+					Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG3_YES);
+
+				}/*犬の音を少音量で聞かせた+おじいさんに話しかける前に*/
+				else if (m_gimmick_oldman->m_getsound.sound_num == 0 &&
+					m_gimmick_oldman->m_getsound.sound_volume != BALL_VOL_BIG&&
+					m_bKoune1_flg_list[KOUNE1_BOOL_OLDMAN_TALK] == false) {
+					//おじいさん「何か小さな音がしたような気がしたが・・・」
+					Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG3_NO_FLAG1_YES);
+				}
+				/*犬の音を少～中音量で聞かせた*/
+				else if (m_gimmick_oldman->m_getsound.sound_num == 0 &&
+					m_gimmick_oldman->m_getsound.sound_volume != BALL_VOL_BIG &&
+					m_bKoune1_flg_list[KOUNE1_BOOL_OLDMAN_TALK] == true) {
+
+					Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG3_NO);
 				}
 
-			}/*犬の音を少音量で聞かせた+おじいさんに話しかける前に*/
-			else if (m_gimmick_oldman->m_getsound.sound_num == 0 &&
-				m_gimmick_oldman->m_getsound.sound_volume != BALL_VOL_BIG&&
-				m_bKoune1_flg_list[KOUNE1_BOOL_OLDMAN_TALK] == false) {
-
-				Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG3_NO_FLAG1_YES);
-			}
-			/*犬の音を少～中音量で聞かせた*/
-			else if (m_gimmick_oldman->m_getsound.sound_num == 0 &&
-				m_gimmick_oldman->m_getsound.sound_volume != BALL_VOL_BIG &&
-				m_bKoune1_flg_list[KOUNE1_BOOL_OLDMAN_TALK] == true) {
-				Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG3_NO);
-			}
-			else {
-				int a = 0;
-			}
+				//会話終了
 				if (Overlay()->NextWait()) {
-					if (Overlay()->NowTalk() == KOUNE1_OZI_FLAG3_YES)
-
-					m_gimmick_oldman->m_Status = STATUS_DELETE;
-					m_Koune1_flg = 4;
+					if (Overlay()->NowTalk() == KOUNE1_OZI_FLAG3_YES) {
+						m_gimmick_oldman->m_Status = STATUS_DELETE;
+						m_gimmick_oldman = NULL;
+						m_Koune1_flg = 4;
+					}
 				}
+			}
 		}
 		else if (m_Koune1_flg == 4) {
 			//マンホールを左にずらす
@@ -854,12 +853,12 @@ void CObjGimmickManager::Action() {
 				Overlay()->talkDraw(KOUNE, KOUNE1_OZI_CLEAR);
 			}
 
-			if (Overlay()->NextWait()) {
-				//コウネステージ1クリア
-				SavedataManeger()->CurrentData->m_bKouneClearflg[0] = true;
-				Manager()->Pop(new CSceneStageSelect());
-			}
-		}
+		//	if (Overlay()->NextWait()) {
+		//		//コウネステージ1クリア
+		//		SavedataManeger()->CurrentData->m_bKouneClearflg[0] = true;
+		//		Manager()->Pop(new CSceneStageSelect());
+		//	}
+		//}
 		break;
 	case 31://コウネステージ2
 	{
@@ -870,10 +869,10 @@ void CObjGimmickManager::Action() {
 				//女の子「だから！迷子じゃないわ！」
 				Overlay()->talkDraw(KOUNE, KOUNE2_ONNNA);
 
-				//女の子と話しかけたフラグを立てる
-				m_bKoune2_flg_list[KOUNE2_BOOL_GIRL_TALK] = true;
-			}
-		}
+		//		//女の子と話しかけたフラグを立てる
+		//		m_bKoune2_flg_list[KOUNE2_BOOL_GIRL_TALK] = true;
+		//	}
+		//}
 
 		//女の子と話しかけた後は、女の子の会話を挿入
 		int* pShowID = NULL;
@@ -892,52 +891,52 @@ void CObjGimmickManager::Action() {
 			}
 		}
 
-		//初回会話
-		if (m_iKoune2_flg == KOUNE2_EVENT_TALK_START) {
-			//女の子「あなたは・・・コウネくん！？」
-			Overlay()->talkDraw(KOUNE, KOUNE2_START);
+		////初回会話
+		//if (m_iKoune2_flg == KOUNE2_EVENT_TALK_START) {
+		//	//女の子「あなたは・・・コウネくん！？」
+		//	Overlay()->talkDraw(KOUNE, KOUNE2_START);
 
-			//会話終了
-			if (Overlay()->NextWait()) {
-				m_iKoune2_flg = KOUNE2_EVENT_TALK_START_END;//次の制御へ移行
-			}
-		}
-		//初回会話終了後
-		else if (m_iKoune2_flg == KOUNE2_EVENT_TALK_START_END) {
-			//少年Aに話しかける
-			if (m_gimmick_boy_a->m_ball[0].OnPush) {
-				//少年A「なあ、この辺りでボール見なかった？」
-				Overlay()->talkDraw(KOUNE, KOUNE2_BOYA_FLAG1_NO);
-			}
+		//	//会話終了
+		//	if (Overlay()->NextWait()) {
+		//		m_iKoune2_flg = KOUNE2_EVENT_TALK_START_END;//次の制御へ移行
+		//	}
+		//}
+		////初回会話終了後
+		//else if (m_iKoune2_flg == KOUNE2_EVENT_TALK_START_END) {
+		//	//少年Aに話しかける
+		//	if (m_gimmick_boy_a->m_ball[0].OnPush) {
+		//		//少年A「なあ、この辺りでボール見なかった？」
+		//		Overlay()->talkDraw(KOUNE, KOUNE2_BOYA_FLAG1_NO);
+		//	}
 
-			//少年Bとの会話は、このswitch caseの上部に書いています。
+		//	//少年Bとの会話は、このswitch caseの上部に書いています。
 
-			//シオンに話しかける
-			if (m_gimmick_sion->m_ball[0].OnPush) {
-				//シオン「やっほー！コウネくん」
-				Overlay()->talkDraw(KOUNE, KOUNE2_SION_DLAG1_NO_FLAG2_NO);
-			}
+		//	//シオンに話しかける
+		//	if (m_gimmick_sion->m_ball[0].OnPush) {
+		//		//シオン「やっほー！コウネくん」
+		//		Overlay()->talkDraw(KOUNE, KOUNE2_SION_DLAG1_NO_FLAG2_NO);
+		//	}
 
-			//会話終了後
-			if (Overlay()->NextWait()) {
-				//終了した会話がシオンとの会話か確認
-				if (Overlay()->NowTalk() == KOUNE2_SION_DLAG1_NO_FLAG2_NO) {
-					m_gimmick_girl_koune2->m_bActionFlg = true;//女の子を描画＆動作させる
-					m_bKoune2_flg_list[KOUNE2_BOOL_GIRL_ACTION] = true;//女の子動作開始フラグを立てる
-					m_iKoune2_flg = KOUNE2_EVENT_SION_TALK_END;//次の制御へ移行
-				}
-			}
-		}
-		//シオンと会話後
-		else if (m_iKoune2_flg == KOUNE2_EVENT_SION_TALK_END) {
+		//	//会話終了後
+		//	if (Overlay()->NextWait()) {
+		//		//終了した会話がシオンとの会話か確認
+		//		if (Overlay()->NowTalk() == KOUNE2_SION_DLAG1_NO_FLAG2_NO) {
+		//			m_gimmick_girl_koune2->m_bActionFlg = true;//女の子を描画＆動作させる
+		//			m_bKoune2_flg_list[KOUNE2_BOOL_GIRL_ACTION] = true;//女の子動作開始フラグを立てる
+		//			m_iKoune2_flg = KOUNE2_EVENT_SION_TALK_END;//次の制御へ移行
+		//		}
+		//	}
+		//}
+		////シオンと会話後
+		//else if (m_iKoune2_flg == KOUNE2_EVENT_SION_TALK_END) {
 
-			//シオンに話しかける
-			if (m_gimmick_sion->m_ball[0].OnPush) {
-				//シオン「ファンだって～。」
-				Overlay()->talkDraw(KOUNE, KOUNE2_SION_FLAG1_YES_FLAG2_NO);
-			}
+		//	//シオンに話しかける
+		//	if (m_gimmick_sion->m_ball[0].OnPush) {
+		//		//シオン「ファンだって～。」
+		//		Overlay()->talkDraw(KOUNE, KOUNE2_SION_FLAG1_YES_FLAG2_NO);
+		//	}
 
-			//女の子との会話は、このswitch caseの上部に書いています。
+		//	//女の子との会話は、このswitch caseの上部に書いています。
 
 			//少年Ａに話しかける
 			if (m_gimmick_boy_a->m_ball[0].OnPush) {
@@ -974,21 +973,21 @@ void CObjGimmickManager::Action() {
 					//表示するテキスト指定
 					int show_id = 0;
 
-					//青色の音の場合
-					if (m_gimmick_boy_a->m_getsound.sound_color == BLUE) {
-						//少年Ｂ「ナイスフライ！」
-						show_id = 0;
-					}
-					//緑色の音の場合
-					else if (m_gimmick_boy_a->m_getsound.sound_color == GREEN) {
-						//少年Ｂ「ナイスバッティング！」
-						show_id = 1;
-					}
-					//赤色の音の場合
-					else if (m_gimmick_boy_a->m_getsound.sound_color == RED) {
-						//少年Ｂ「ナイスゴロ！」
-						show_id = 2;
-					}
+		//			//青色の音の場合
+		//			if (m_gimmick_boy_a->m_getsound.sound_color == BLUE) {
+		//				//少年Ｂ「ナイスフライ！」
+		//				show_id = 0;
+		//			}
+		//			//緑色の音の場合
+		//			else if (m_gimmick_boy_a->m_getsound.sound_color == GREEN) {
+		//				//少年Ｂ「ナイスバッティング！」
+		//				show_id = 1;
+		//			}
+		//			//赤色の音の場合
+		//			else if (m_gimmick_boy_a->m_getsound.sound_color == RED) {
+		//				//少年Ｂ「ナイスゴロ！」
+		//				show_id = 2;
+		//			}
 
 					//少年Ａ「よーし、この音だな」
 					Overlay()->talkDraw(KOUNE, KOUNE2_BOYA_CREATURE_FLAG3_NO, &show_id, 1, pShowID, show_id_size);
@@ -1031,8 +1030,8 @@ void CObjGimmickManager::Action() {
 				Overlay()->talkDraw(KOUNE, KOUNE2_BOYA_FLAG2_YES, pShowID, show_id_size, pShowID, show_id_size);
 			}
 
-			//会話終了後
-			if (Overlay()->NextWait()) {
+		//	//会話終了後
+		//	if (Overlay()->NextWait()) {
 
 				if (Overlay()->NowTalk() == KOUNE2_BOYA_FLAG2_YES) {
 					//正解の選択肢｛飛んでる鳥｝を選んだか確認
@@ -1060,14 +1059,14 @@ void CObjGimmickManager::Action() {
 				Overlay()->talkDraw(KOUNE, KOUNE2_BOYB_FLAG3_YES, pShowID, show_id_size, pShowID, show_id_size);
 			}
 
-			//女の子に話しかける
-			if (m_gimmick_girl_koune2->m_ball[0].OnPush) {
-				//女の子「ホームラン見てみたいわ」
-				Overlay()->talkDraw(KOUNE, KOUNE2_ONNNA_FLAG3_YES);
-			}
+		//	//女の子に話しかける
+		//	if (m_gimmick_girl_koune2->m_ball[0].OnPush) {
+		//		//女の子「ホームラン見てみたいわ」
+		//		Overlay()->talkDraw(KOUNE, KOUNE2_ONNNA_FLAG3_YES);
+		//	}
 
-			//少年Ａに女の子の応援音を聞かせる
-			if (m_gimmick_boy_a->m_getsound.sound_num != /*女の子の応援音*/-1) {
+		//	//少年Ａに女の子の応援音を聞かせる
+		//	if (m_gimmick_boy_a->m_getsound.sound_num != /*女の子の応援音*/-1) {
 
 				//音量小＆中
 				if (m_gimmick_boy_a->m_getsound.sound_volume != BALL_VOL_BIG) {
@@ -1081,39 +1080,39 @@ void CObjGimmickManager::Action() {
 				}
 			}
 
-			//会話終了後
-			if (Overlay()->NextWait()) {
+		//	//会話終了後
+		//	if (Overlay()->NextWait()) {
 
-				if (Overlay()->NowTalk() == KOUNE2_ONNNA_FLAG3_YES) {
-					//正解の選択肢｛お前が応援すればいいんじゃないか？｝を選んだか確認
-					if (Overlay()->Selected("2")) {
-						//女の子の応援音　録音吹き出し出現
-						m_gimmick_girl_koune2->m_ball_draw_num = 2;
-					}
-				}
+		//		if (Overlay()->NowTalk() == KOUNE2_ONNNA_FLAG3_YES) {
+		//			//正解の選択肢｛お前が応援すればいいんじゃないか？｝を選んだか確認
+		//			if (Overlay()->Selected("2")) {
+		//				//女の子の応援音　録音吹き出し出現
+		//				m_gimmick_girl_koune2->m_ball_draw_num = 2;
+		//			}
+		//		}
 
-				if (Overlay()->NowTalk() == KOUNE2_BOYA_FLAG3_OUEN_BIG) {
-					//窓が割れる
-					m_gimmick_window_koune2->m_break_flg = true;
+		//		if (Overlay()->NowTalk() == KOUNE2_BOYA_FLAG3_OUEN_BIG) {
+		//			//窓が割れる
+		//			m_gimmick_window_koune2->m_break_flg = true;
 
-					m_iKoune2_flg = KOUNE2_EVENT_GIRL_SOUNDBIG_TO_BOYA;//次の制御へ移行
-				}
-			}
-		}
-		//少年Aに女の子の応援（大）を聞かせた後
-		else if (m_iKoune2_flg == KOUNE2_EVENT_GIRL_SOUNDBIG_TO_BOYA) {
+		//			m_iKoune2_flg = KOUNE2_EVENT_GIRL_SOUNDBIG_TO_BOYA;//次の制御へ移行
+		//		}
+		//	}
+		//}
+		////少年Aに女の子の応援（大）を聞かせた後
+		//else if (m_iKoune2_flg == KOUNE2_EVENT_GIRL_SOUNDBIG_TO_BOYA) {
 
-			//窓「ガッシャーン」
-			Overlay()->talkDraw(KOUNE, KOUNE2_BOYA_FLAG3_OUEN_BIG_AFTER);
+		//	//窓「ガッシャーン」
+		//	Overlay()->talkDraw(KOUNE, KOUNE2_BOYA_FLAG3_OUEN_BIG_AFTER);
 
-			//会話終了後
-			if (Overlay()->NextWait()) {
-				//コウネステージ2クリア
-				SavedataManeger()->CurrentData->m_bKouneClearflg[1] = true;
-				//ステージセレクト画面に移行
-				Manager()->Pop(new CSceneStageSelect);
-			}
-		}
+		//	//会話終了後
+		//	if (Overlay()->NextWait()) {
+		//		//コウネステージ2クリア
+		//		SavedataManeger()->CurrentData->m_bKouneClearflg[1] = true;
+		//		//ステージセレクト画面に移行
+		//		Manager()->Pop(new CSceneStageSelect);
+		//	}
+		//}
 		break;
 	}
 	case 32:
@@ -1300,6 +1299,16 @@ void CObjGimmickManager::Action() {
 	case 34://コウネステージ5
 
 		//【初回動作】
+		/*if (m_Koune5_flg == KOUNE5_TALK_START) {
+			//コウネ「電車の時間~」
+			//Overlay()->talkDraw(KOUNE, KOUNE5_START);
+
+			//会話終了
+			if (Overlay()->NextWait()) {
+				m_Koune5_flg = KOUNE5_TALK_START_END;
+			}
+		}
+		*/
 
 		//駅に向かうための扉の前でメカニックに話しかけられる
 		// └システムの動作を見たいから扉を開けてみてほしい
@@ -1650,7 +1659,23 @@ void CObjGimmickManager::Draw() {
 		break;
 	case 33:
 		break;
-	case 34:
+	case 34://コウネ5
+		/*
+		//切り取り座標
+		m_dst.top = 0;
+		m_dst.bottom = m_dst.top + 1024;
+		m_dst.left = 0;
+		m_dst.right = m_dst.left + 1024;
+
+		//転送先座標
+		m_src.top = 0;
+		m_src.bottom = m_src.top + 600;
+		m_src.left = -400 + User()->mscroll_x;
+		m_src.right = m_src.left + 1200;
+
+		//背景描画
+		Image()->DrawEx(0, &m_src, &m_dst, col, 0.0f); //仮
+		*/
 		break;
 	case 35:
 		break;

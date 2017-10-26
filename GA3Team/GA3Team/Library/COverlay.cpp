@@ -43,10 +43,11 @@ void COverlay::InitLoad()
 	//image->LoadImageEx("シオン4ドア.png", 9, TEX_SIZE_512);
 	//メルエル1-----------------------------------
 	image->LoadImageEx("カツオc.png", EX_MERUERU_KATSUO, TEX_SIZE_512);
-	image->LoadImageEx("ドアc.png", 12, TEX_SIZE_512);
-	image->LoadImageEx("机.png", 13, TEX_SIZE_512);
-	image->LoadImageEx("電子レンジ.png", 14, TEX_SIZE_512);
-	image->LoadImageEx("博士c.png", 15, TEX_SIZE_512);
+	image->LoadImageEx("ドアc.png", EX_MERUERU_DOOR, TEX_SIZE_512);
+	image->LoadImageEx("机.png", EX_MERUERU_TANA, TEX_SIZE_512);
+	image->LoadImageEx("電子レンジ.png", EX_MERUERU_MICROWAVE, TEX_SIZE_512);
+	image->LoadImageEx("博士c.png", EX_MERUERU_HAKASE, TEX_SIZE_512);
+	image->LoadImageEx("壁掛けテレビ.png", 42, TEX_SIZE_512);
 	//動物------------------------------------------
 	image->LoadImageEx("動物まとめ.png", EX_ANIMALALL, TEX_SIZE_1024);
 	//メインキャラクター----------------------------
@@ -62,7 +63,7 @@ void COverlay::InitLoad()
 	//ステージ
 	image->LoadImageEx("シオンステージ-1.png", 24, TEX_SIZE_1024);
 	image->LoadImageEx("コウネステージ-1.png", 25, TEX_SIZE_1024);
-	image->LoadImageEx("研究所背景.png", EX_LABO, TEX_SIZE_1024);
+	image->LoadImageEx("研究所背景.png", EX_STAGE_LAB, TEX_SIZE_1024);
 	image->LoadImageEx("T字路右側.png", EX_STAGE_SION_STAGE2_right, TEX_SIZE_1024);
 	image->LoadImageEx("T字路左側.png", EX_STAGE_SION_STAGE2_left, TEX_SIZE_1024);
 

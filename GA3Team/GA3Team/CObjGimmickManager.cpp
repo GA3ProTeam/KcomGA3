@@ -1146,12 +1146,36 @@ void CObjGimmickManager::Action() {
 				//おばあちゃん「九ちゃんはとても賢いから...」
 //				Overlay()->talkDraw(KOUNE, ///);
 			}
+		}
+
+		//少女
+		if (m_gimmick_little_girl->m_ball[0].OnPush)
+		{
+			//子猫の鳴き声を聞かせる
+//			else if (m_Koune3_flg == KOUNE3_FLG3)
+//			{
+//				//少女「かわいい声ね！」
+//				//Overlay()->talkDraw(KOUNE, ///);
+//			}
+			//フラグ立っていない||フラグ1が立っている
+			if (m_Koune3_flg == KOUNE3_TALK_START_END || m_Koune3_flg == KOUNE3_FLG1)
+			{
+				//少女「お兄ちゃん...」
+				//Overlay()->talkDraw(KOUNE, ///);
+			}
+			
+			//フラグ2が立っている
+			else if (m_Koune3_flg == KOUNE3_FLG2)
+			{
+				//少女「その子がさっき言っていた...」
+				//Overlay()->talkDraw(KOUNE, ///);
+			}
 			//フラグ3が立っている
 			else if (m_Koune3_flg == KOUNE3_FLG3)
 			{
 				//少女「九ちゃんは内緒話すると...」
 				//Overlay()->talkDraw(KOUNE, ///);
-			}	
+			}
 		}
 
 		//九官鳥
@@ -1208,7 +1232,6 @@ void CObjGimmickManager::Action() {
 //					m_gimmick_mynah->m_Status = STATUS_DELETE;//子猫削除
 					m_Koune3_flg = KOUNE3_FLG2;
 //				}
-//				
 //			}
 			//犬の鳴き声以外の音を聞かせる
 //			else if (/*!子猫に犬の鳴き声を聞かせる*/)

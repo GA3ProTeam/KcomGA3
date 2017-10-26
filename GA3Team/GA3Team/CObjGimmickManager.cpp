@@ -290,9 +290,9 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 
 	case 40:
 
-		/*m_gimmick_television = new GimmickTelevision();
+		m_gimmick_television = new GimmickTelevision();
 		Obj()->InsertObj(m_gimmick_television, GIMMICK_TELEVISION, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_television->Init(50, 200, 250, 125, 1);
+		m_gimmick_television->Init(50, 200, 255, 155, 1);
 
 		m_gimmick_oven = new GimmickOven();
 		Obj()->InsertObj(m_gimmick_oven, GIMMICK_OVEN, 5, this->m_pScene, HIT_BOX_OFF);
@@ -304,7 +304,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 
 		m_gimmick_doctorroomdoor = new GimmickDoctorroomDoor();
 		Obj()->InsertObj(m_gimmick_doctorroomdoor, GIMMICK_DOOR, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_doctorroomdoor->Init(280, 90, 400, 400, 1);*/
+		m_gimmick_doctorroomdoor->Init(280, 90, 400, 400, 1);
 
 		break;
 	case 41:
@@ -1679,6 +1679,41 @@ void CObjGimmickManager::Draw() {
 			*/
 		break;
 	case 35:
+		break;
+		//-ƒƒ‹ƒGƒ‹ƒXƒe[ƒW---------------------------------------
+	case 40:
+		//”wŒi
+		//Ø‚èŽæ‚èÀ•W
+		m_dst.top = 340;
+		m_dst.bottom = m_dst.top + 680;
+		m_dst.left = 0;
+		m_dst.right = m_dst.left + 1024;
+
+		//“]‘—æÀ•W
+		m_src.top = 0;
+		m_src.bottom = m_src.top + 600;
+		m_src.left = -400 + User()->mscroll_x;
+		m_src.right = m_src.left + 1200;
+
+		//”wŒi•`‰æ
+		Image()->DrawEx(EX_STAGE_LAB, &m_src, &m_dst, col, 0.0f);
+
+		//Š÷
+		//Ø‚èŽæ‚èÀ•W
+		m_dst.top = 380;
+		m_dst.bottom = m_dst.top + 512;
+		m_dst.left = 0;
+		m_dst.right = m_dst.left + 512;
+
+		//“]‘—æÀ•W
+		m_src.top = 335;
+		m_src.bottom = m_src.top + 256;
+		m_src.left = -360 + User()->mscroll_x;
+		m_src.right = m_src.left + 256;
+
+		//”wŒi•`‰æ
+		//Image()->DrawEx(EX_MERUERU_TANA, &m_src, &m_dst, col, 0.0f);
+		Image()->DrawEx(EX_STAGE_TUTORIAL, &m_src, &m_dst, col, 0.0f);
 		break;
 	}
 }

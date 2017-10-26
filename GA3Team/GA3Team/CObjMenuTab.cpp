@@ -118,10 +118,12 @@ void CObjMenuTab::Action()
 		if (m_Storageflg && !abiltyOverray) {
 			//abiltyOverray = true;
 			Onability();
+			//User()->m_bmerueruability = true;
 		}
 		else if (m_Storageflg && abiltyOverray) {
 			//abiltyOverray = false;
 			Offability();
+			//User()->m_bmerueruability = false;
 		}
 		
 

@@ -10,14 +10,17 @@ public:
 	~ButtonSelect() {}
 
 	//‰Šú‰»
-	void Init(int x, int y, int w, int h, bool overlap_flg,char* str,int size);
+	void Init(int x, int y, int w, int h, bool overlap_flg, char* str, int size);
 
 	//•`‰æ
-	void Draw();
+	void Draw() {}
+
+	//•`‰æ
+	void DrawButtonSelect();
 
 private:
 	char* m_pStr;			//•`‰æ‚·‚é•¶š
-	int m_iStrX,m_iStrY;	//•¶š‚ÌˆÊ’u
+	int m_iStrX, m_iStrY;	//•¶š‚ÌˆÊ’u
 	int m_iSize;			//•¶š‚Ì‘å‚«‚³
 
 	RECT m_rSrc; //“]‘—æÀ•W

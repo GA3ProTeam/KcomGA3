@@ -9,7 +9,7 @@ CSelect::CSelect(const SelectInfo* select) {
 	//ボタンの初期化
 	int button_width = 500;
 	int button_height = 100;
-	int str_size = 25;
+	int str_size = 20;
 
 	//文字列を保存する一時メモリを確保
 	char** select_menu = new char*[select->menu_num];
@@ -62,4 +62,14 @@ bool CSelect::Select() {
 		}
 	}
 	return false;
+}
+
+//全選択肢ボタンを描画
+void CSelect::DrawAllButtonSelect() {
+	if (m_button_select == NULL) return;
+
+	for (int num = 0; num < (m_info->menu_num); num++) {
+		//選択肢ボタン生成
+		m_button_select[num]->DrawButtonSelect();
+	}
 }

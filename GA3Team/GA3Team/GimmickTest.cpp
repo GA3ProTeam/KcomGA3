@@ -435,7 +435,7 @@ void Gimmickearphone::Action()
 		//マウスドラッグ中にマウスボタンが離された
 		//if (!Input()->GetMouButtonL() && tab->GetHaveSound()) {
 
-		SavedataManeger()->CurrentData->m_bSionClearflg[0] = true;
+		SavedataManeger()->CurrentData->m_stage[SION].stage1clear = true;
 
 
 		}
@@ -1275,9 +1275,9 @@ void GimmickGirl_Koune2::Draw() {
 	if (this->m_bActionFlg) {
 		//切り取り先座標
 		m_dst.top = 0;
-		m_dst.bottom = m_dst.top + 64;
+		m_dst.bottom = m_dst.top + 512;
 		m_dst.left = 0;
-		m_dst.right = m_dst.left + 64;
+		m_dst.right = m_dst.left + 512;
 
 		//転送先座標
 		m_src.top = m_iYpos;
@@ -1286,7 +1286,7 @@ void GimmickGirl_Koune2::Draw() {
 		m_src.right = m_src.left + m_iWidth;
 
 		//描画
-		Image()->DrawEx(58, &m_src, &m_dst, col, 0.0f);
+		Image()->DrawEx(4, &m_src, &m_dst, col, 0.0f);
 	}
 	//---------------------------------------------------------------------------
 
@@ -1323,10 +1323,10 @@ void GimmickSion::Draw() {
 
 	//ギミック本体描画-----------------------------------------------------------
 	//切り取り先座標
-	m_dst.top = 64;
-	m_dst.bottom = m_dst.top + 64;
+	m_dst.top = 0;
+	m_dst.bottom = m_dst.top + 380;
 	m_dst.left = 0;
-	m_dst.right = m_dst.left + 64;
+	m_dst.right = m_dst.left + 190;
 
 	//転送先座標
 	m_src.top = m_iYpos;
@@ -1335,7 +1335,7 @@ void GimmickSion::Draw() {
 	m_src.right = m_src.left + m_iWidth;
 
 	//描画
-	Image()->DrawEx(58, &m_src, &m_dst, col, 0.0f);
+	Image()->DrawEx(18, &m_src, &m_dst, col, 0.0f);
 	//---------------------------------------------------------------------------
 
 	//ギミック名前描画
@@ -1371,10 +1371,10 @@ void GimmickBoyA::Draw() {
 
 	//ギミック本体描画-----------------------------------------------------------
 	//切り取り先座標
-	m_dst.top = 128;
-	m_dst.bottom = m_dst.top + 64;
+	m_dst.top = 0;
+	m_dst.bottom = m_dst.top + 512;
 	m_dst.left = 0;
-	m_dst.right = m_dst.left + 64;
+	m_dst.right = m_dst.left + 512;
 
 	//転送先座標
 	m_src.top = m_iYpos;
@@ -1383,7 +1383,7 @@ void GimmickBoyA::Draw() {
 	m_src.right = m_src.left + m_iWidth;
 
 	//描画
-	Image()->DrawEx(58, &m_src, &m_dst, col, 0.0f);
+	Image()->DrawEx(4, &m_src, &m_dst, col, 0.0f);
 	//---------------------------------------------------------------------------
 
 	//ギミック名前描画
@@ -1484,7 +1484,7 @@ void GimmickWindow_Koune2::Draw() {
 	m_src.right = m_src.left + m_iWidth;
 
 	//描画
-	Image()->DrawEx(58, &m_src, &m_dst, col, 0.0f);
+	Image()->DrawEx(4, &m_src, &m_dst, col, 0.0f);
 	//---------------------------------------------------------------------------
 
 	//ギミック名前描画

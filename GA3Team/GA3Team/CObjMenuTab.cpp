@@ -238,18 +238,19 @@ void CObjMenuTab::Draw()
 		//‰¹‚ğŠi”[‚·‚é•”•ª‚Ì•`‰æ
 		for (int i = 0; i < 3; i++) {
 			if (SoundManager()->GetSound(i).sound_num != -1) {
-				//Ø‚èæ‚èæÀ•W
-				m_rDst.top = 0; m_rDst.left = 32*4;
+				//Ø‚èæ‚èÀ•W
+				m_rDst.top = 0; m_rDst.left = 32 * 4;
 				m_rDst.bottom = m_rDst.top + 32; m_rDst.right = m_rDst.left + 32;
 
 				//“]‘—æÀ•W
-				m_rSrc.top = m_iability_y; m_rSrc.left = m_iability_x + 64 * i;
+				m_rSrc.top = m_isoundy-3; m_rSrc.left = m_isoundx + 64 * i;
 				m_rSrc.bottom = m_rSrc.top + 64; m_rSrc.right = m_rSrc.left + 64;
 
 				//•`‰æ
 				Image()->DrawEx(EX_ICON, &m_rSrc, &m_rDst, m_fCol, 0.0f);
 			}
 			else {
+				//Ø‚èæ‚èÀ•W
 				m_rDst.top = 0; m_rDst.left = 32 * 5;
 				m_rDst.bottom = m_rDst.top + 32; m_rDst.right = m_rDst.left + 32;
 

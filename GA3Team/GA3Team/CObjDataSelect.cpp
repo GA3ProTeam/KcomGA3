@@ -120,8 +120,8 @@ void CObjDataSelect::Draw()
 	float coltext[4] = { 1.0f,1.0f,1.0f,1.0f };
 	float coldraw[4] = { 1.0f,1.0f,1.0f,1.0f };
 
-	Font()->StrDraw(x, 0, 16, 16, coltext);
-	Font()->StrDraw(y, 0, 32, 16, coltext);
+	//Font()->StrDraw(x, 0, 16, 16, coltext);
+	//Font()->StrDraw(y, 0, 32, 16, coltext);
 
 	//-------------------------------------------
 

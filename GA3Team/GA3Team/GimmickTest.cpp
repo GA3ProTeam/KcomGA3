@@ -787,7 +787,7 @@ void GimmickGranny::Draw()//•`‰æ
 	Image()->DrawEx(58, &m_src, &m_dst, col, 0.0f);
 
 	//ƒMƒ~ƒbƒN–¼‘O•`‰æ
-	Font()->StrDraw("‚¨‚Î‚ ‚¿‚á‚ñ", m_iXpos, m_iYpos, 20, col);
+	Font()->StrDraw("‚¨‚Î‚ ‚¿‚á‚ñ", m_iXpos + User()->mscroll_x, m_iYpos, 20, col);
 
 	//‚«o‚µ‚Ì•`‰æ•“®ì
 	this->gimmicDraw(1);
@@ -825,7 +825,7 @@ void GimmickMynah::Draw()		//ƒhƒ[
 	Image()->DrawEx(58, &m_src, &m_dst, col, 0.0f);
 
 	//ƒMƒ~ƒbƒN–¼‘O•`‰æ
-	Font()->StrDraw("‹ãŠ¯’¹", m_iXpos, m_iYpos, 20, col);
+	Font()->StrDraw("‹ãŠ¯’¹", m_iXpos + User()->mscroll_x, m_iYpos, 20, col);
 
 	//‚«o‚µ‚Ì•`‰æ•“®ì
 	this->gimmicDraw(1);
@@ -903,7 +903,7 @@ void GimmickWindchime::Draw()		//ƒhƒ[
 	Image()->DrawEx(58, &m_src, &m_dst, col, 0.0f);
 
 	//ƒMƒ~ƒbƒN–¼‘O•`‰æ
-	Font()->StrDraw("•——é", m_iXpos, m_iYpos, 20, col);
+	Font()->StrDraw("•——é", m_iXpos + User()->mscroll_x, m_iYpos, 20, col);
 
 	//‚«o‚µ‚Ì•`‰æ•“®ì
 	this->gimmicDraw(1);

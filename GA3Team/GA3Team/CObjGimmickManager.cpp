@@ -30,7 +30,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 	*/
 	SavedataManeger()->Setcurrentdata();
 
-	m_Stage_ID = 22;
+	m_Stage_ID = 20;
 
 	switch (m_Stage_ID) {
 	//チュートリアル（博士）ステージ--------------------------
@@ -1068,7 +1068,7 @@ void CObjGimmickManager::Action() {
 			if (m_Koune3_flg != KOUNE3_FLG3)
 			{
 				//女の子「こんにちは。」九ちゃん「コンニチハ」
-				Overlay()->talkDraw(KOUNE, KOUNE2_ONNNA);
+				Overlay()->talkDraw(KOUNE, KOUNE2_BOYB);
 			}
 			//フラグ3が立っているのみ
 			else if (m_Koune3_flg == KOUNE3_FLG3)
@@ -1082,12 +1082,11 @@ void CObjGimmickManager::Action() {
 		{
 			//普通に調べる
 			//女の子「かわいい！」
-			Overlay()->talkDraw(KOUNE, KOUNE2_BOYB);
+			Overlay()->talkDraw(KOUNE, KOUNE2_ONNNA);
 		}
 
 
 		//----音を聞かせる--------------------------------------------------------------------------------
-
 
 		//子猫の音を録音している
 		if(m_gimmick_granny->m_getsound.sound_num == KOUNE3_KITTY)

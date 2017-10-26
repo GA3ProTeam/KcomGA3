@@ -1648,7 +1648,7 @@ void GimmickMysteryDoor::Init(int xpos, int ypos, int widht, int height, int bal
 	//親クラスのInit関数を呼ぶ
 	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
 	//吹き出しの初期化
-	InitBall(&m_ball[0], -50, -50, talk, 1, RED, LOWER_LEFT);
+	InitBall(&m_ball[0], m_iWidth - 50, -48, talk, 1, RED, LOWER_LEFT);
 }
 //①ドアのデストラクタ
 void GimmickMysteryDoor::Destructor(){
@@ -1884,7 +1884,8 @@ void GimmickSoundComputer::Init(int xpos, int ypos, int widht, int height, int b
 	//親クラスのInit関数を呼ぶ
 	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
 	//吹き出しの初期化
-	InitBall(&m_ball[0],48, -48, sound, 1, RED, LOWER_LEFT);
+	InitBall(&m_ball[0],48, -48, sound, 1, BLUE, LOWER_LEFT);  //A
+	//InitBall(&m_ball[1], 70, -48, sound, 1, RED, LOWER_LEFT); //B
 }
 //③パソコンのデストラクタ
 void GimmickSoundComputer::Destructor() {
@@ -1925,7 +1926,7 @@ void GimmickSoundComputer::Draw() {
 
 
 	//吹き出し描画＆動作-------
-	this->gimmicDraw(1);
+	this->gimmicDraw(2);
 	//-------------------------
 
 }
@@ -1935,7 +1936,7 @@ void GimmickMusician::Init(int xpos, int ypos, int widht, int height, int balloo
 	//親クラスのInit関数を呼ぶ
 	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
 	//吹き出しの初期化
-	InitBall(&m_ball[0],48, -48, sound, 1, RED, LOWER_LEFT);
+	InitBall(&m_ball[0], m_iWidth - 50, -48, talk, 1, RED, LOWER_LEFT);
 }
 //④演奏家のデストラクタ
 void GimmickMusician::Destructor() {

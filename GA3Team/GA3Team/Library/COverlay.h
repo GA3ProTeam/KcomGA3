@@ -155,6 +155,8 @@ enum DrawExID {
 	EX_KOUNE2_WINDOW_BREAK,
 	EX_SION_GOGGLES_YES,
 	EX_SION_GOGGLES_NO,
+	EX_ICON,
+
 };
 
 //Œø‰Ê‰¹ƒAƒhƒŒƒX

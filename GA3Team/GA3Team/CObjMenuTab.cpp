@@ -160,11 +160,15 @@ void CObjMenuTab::Action()
 			//音量を変える
 			//上げるか下げるかの選択
 			//上げるボタンを押す
-			if (SelectPush(250, 50, 300, 140)) {
+			////転送先座標
+			//m_rSrc.top = m_iability_y; m_rSrc.left = m_iability_x;
+			//m_rSrc.bottom = m_rSrc.top + 64; m_rSrc.right = m_rSrc.left + 64;
+
+			if (SelectPush(m_iability_x, m_iability_y, 64, 32)) {
 				vol = SOUND_PLUS;
 			}
 			//下げるボタンを押す
-			if (SelectPush(250, 200, 300, 140)) {
+			if (SelectPush(m_iability_x, m_iability_y+32, 64, 32)) {
 				vol = SOUND_MINUS;
 			}
 			//能力で音量を調整したら
@@ -184,123 +188,147 @@ void CObjMenuTab::Action()
 //-----------------------------------------------------------------
 void CObjMenuTab::Draw()
 {
-	//ボタン部分
+	//メニュータブの矢印部分-------------------------------------
 
 	//カラー情報
 	float m_fCol[4] = { 1.0f,1.0f,1.0f,1.0f };
 
 	//切り取り先座標
-	m_rDst.top = 0; m_rDst.left = 0;
-	m_rDst.bottom = 64; m_rDst.right = 64;
+	m_rDst.top = 0; m_rDst.left = 32*8;
+	m_rDst.bottom = m_rDst.top+32; m_rDst.right = m_rDst.left+32;
 
 	//転送先座標
 	m_rSrc.top = m_openclose_y; m_rSrc.left = m_openclose_x;
 	m_rSrc.bottom = m_rSrc.top + 64; m_rSrc.right = m_rSrc.left + 64;
 
 	//描画
-	Image()->Draw(1, &m_rSrc, &m_rDst, m_fCol, 0.0f);
+	Image()->DrawEx(EX_ICON, &m_rSrc, &m_rDst, m_fCol, 0.0f);
+	//------------------------------------------------------------
 
 	//タブを開いていたら描画する
 	if (m_bOpenClose) {
-		//機能部分を表示する場所の描画
+		//機能部分(帯の部分)を表示する場所の描画---------------------
 
 		//切り取り先座標
-		m_rDst.top = 0; m_rDst.left = 64;
-		m_rDst.bottom = 64; m_rDst.right = 256;
+		m_rDst.top = 0; m_rDst.left = 32*9;
+		m_rDst.bottom = m_rDst.top+32; m_rDst.right = m_rDst.left+96;
 
 		//転送先座標
 		m_rSrc.top = m_openclose_y; m_rSrc.left = m_openclose_x + 64;
-		m_rSrc.bottom = m_rSrc.top + 64; m_rSrc.right = 800;
+		m_rSrc.bottom =  m_rSrc.top + 64; m_rSrc.right =  810;
 
 		//描画
-		Image()->Draw(1, &m_rSrc, &m_rDst, m_fCol, 0.0f);
+		Image()->DrawEx(EX_ICON, &m_rSrc, &m_rDst, m_fCol, 0.0f);
 
-
-		//タイトルに戻るボタン
+		//-------------------------------------------------------------
+		//タイトルに戻るボタン--------------------------------------------
 
 		//切り取り先座標
-		m_rDst.top = 64; m_rDst.left = 0;
-		m_rDst.bottom = m_rDst.top + 64; m_rDst.right = m_rDst.left + 64;
+		m_rDst.top = 0; m_rDst.left = 32*3;
+		m_rDst.bottom = m_rDst.top + 32; m_rDst.right = m_rDst.left + 32;
 
 		//転送先座標
 		m_rSrc.top = m_iBackTitley; m_rSrc.left = m_iBackTitlex;
-		m_rSrc.bottom = m_rSrc.top + 64; m_rSrc.right = m_rSrc.left + 64;
+		m_rSrc.bottom = m_rSrc.top + 64; m_rSrc.right = m_rSrc.left + 62;
 
 		//描画
-		Image()->Draw(1, &m_rSrc, &m_rDst, m_fCol, 0.0f);
+		Image()->DrawEx(EX_ICON, &m_rSrc, &m_rDst, m_fCol, 0.0f);
 
+		//------------------------------------------------------------------
 		//音を格納する部分の描画
 		for (int i = 0; i < 3; i++) {
 			if (SoundManager()->GetSound(i).sound_num != -1) {
-				//切り取り先座標
-				m_rDst.top = 64; m_rDst.left = 128;
-				m_rDst.bottom = m_rDst.top + 64; m_rDst.right = m_rDst.left + 64;
+				//切り取り座標
+				m_rDst.top = 0; m_rDst.left = 32 * 4;
+				m_rDst.bottom = m_rDst.top + 32; m_rDst.right = m_rDst.left + 32;
 
 				//転送先座標
-				m_rSrc.top = m_isoundy; m_rSrc.left = m_isoundx + 64 * i;
+				m_rSrc.top = m_isoundy-3; m_rSrc.left = m_isoundx + 64 * i;
 				m_rSrc.bottom = m_rSrc.top + 64; m_rSrc.right = m_rSrc.left + 64;
 
 				//描画
-				Image()->Draw(1, &m_rSrc, &m_rDst, m_fCol, 0.0f);
+				Image()->DrawEx(EX_ICON, &m_rSrc, &m_rDst, m_fCol, 0.0f);
 			}
 			else {
-				//切り取り先座標
-				m_rDst.top = 64; m_rDst.left = 64;
-				m_rDst.bottom = m_rDst.top + 64; m_rDst.right = m_rDst.left + 64;
+				//切り取り座標
+				m_rDst.top = 0; m_rDst.left = 32 * 5;
+				m_rDst.bottom = m_rDst.top + 32; m_rDst.right = m_rDst.left + 32;
 
 				//転送先座標
-				m_rSrc.top = m_isoundy; m_rSrc.left = m_isoundx + 64 * i;
+				m_rSrc.top = m_isoundy-3; m_rSrc.left = m_isoundx + 64 * i;
 				m_rSrc.bottom = m_rSrc.top + 64; m_rSrc.right = m_rSrc.left + 64;
 
 				//描画
-				Image()->Draw(1, &m_rSrc, &m_rDst, m_fCol, 0.0f);
+				Image()->DrawEx(EX_ICON, &m_rSrc, &m_rDst, m_fCol, 0.0f);
 			}
 		}
 		//音を消すボタン
 		//切り取り先座標
-		m_rDst.top = 64; m_rDst.left = 192;
-		m_rDst.bottom = m_rDst.top + 64; m_rDst.right = m_rDst.left + 64;
+		m_rDst.top = 0; m_rDst.left = 32*2;
+		m_rDst.bottom = m_rDst.top + 32; m_rDst.right = m_rDst.left + 32;
 
 		//転送先座標
 		m_rSrc.top = m_isoundy; m_rSrc.left = m_isoundx + 192;
 		m_rSrc.bottom = m_rSrc.top + 64; m_rSrc.right = m_rSrc.left + 64;
 
 		//描画
-		Image()->Draw(1, &m_rSrc, &m_rDst, m_fCol, 0.0f);
+		Image()->DrawEx(EX_ICON, &m_rSrc, &m_rDst, m_fCol, 0.0f);
 
-		//能力ボタン
-		if (abiltyOverray) {
-			m_fCol[3] = 0.5f;
+		//能力ボタン-------------------------------------------------------------
+		if (!User()->m_bkouneability)
+		{
+			if (abiltyOverray) {
+				m_fCol[3] = 0.5f;
+			}
+			else {
+				m_fCol[3] = 1.0f;
+			}
+			//切り取り先座標
+			m_rDst.top = 0; m_rDst.left = 32 * 7;
+			m_rDst.bottom = m_rDst.top + 32; m_rDst.right = m_rDst.left + 32;
+
+			//転送先座標
+			m_rSrc.top = m_iability_y; m_rSrc.left = m_iability_x;
+			m_rSrc.bottom = m_rSrc.top + 64; m_rSrc.right = m_rSrc.left + 64;
+
+			//描画
+			Image()->DrawEx(EX_ICON, &m_rSrc, &m_rDst, m_fCol, 0.0f);
+
+			m_fCol[3] = 1.0f;//元に戻す
 		}
-		else {
-			m_fCol[3] = 1.0f;
+		
+		//----------------------------------------------------------------------
+
+		//コウネの能力発動時(上げる、下げる)のボタンを描画
+		if (User()->m_bkouneability && abiltyOverray == true)
+		{
+			//ボタンの描画
+			float m_fCol1[4] = { 1.0f,1.0f,1.0f,1.0f };
+
+			//音量調整ボタン
+			m_rDst.top = 0; m_rDst.left = 32 * 12;
+			m_rDst.bottom = m_rDst.top + 32; m_rDst.right = m_rDst.left + 32;
+
+			//転送先座標
+			m_rSrc.top = m_iability_y; m_rSrc.left = m_iability_x;
+			m_rSrc.bottom = m_rSrc.top + 64; m_rSrc.right = m_rSrc.left + 64;
+
+			Image()->DrawEx(EX_ICON, &m_rSrc, &m_rDst, m_fCol1, 0.0f);
 		}
-		//切り取り先座標
-		m_rDst.top = 128; m_rDst.left = 192;
-		m_rDst.bottom = m_rDst.top + 64; m_rDst.right = m_rDst.left + 64;
-
-		//転送先座標
-		m_rSrc.top = m_iability_y; m_rSrc.left = m_iability_x ;
-		m_rSrc.bottom = m_rSrc.top + 64; m_rSrc.right = m_rSrc.left + 64;
-
-		//描画
-		Image()->Draw(1, &m_rSrc, &m_rDst, m_fCol, 0.0f);
-
-		m_fCol[3] = 1.0f;//元に戻す
 	}
 
 	//音をドラック＆ドロップ
 	if (m_bhavesound && Input()->GetMouButtonL()) {
 		for (int i = 0; i < 3; i++) {
-			if (SoundManager()->GetSound(i).sound_num != 0) {
+			if (SoundManager()->GetSound(i).sound_num != -1) {
 				//切り取り先座標
-				m_rDst.top = 64; m_rDst.left = 128;
-				m_rDst.bottom = m_rDst.top + 64; m_rDst.right = m_rDst.left + 64;
+				m_rDst.top = 0; m_rDst.left = 32*4;
+				m_rDst.bottom = m_rDst.top + 32; m_rDst.right = m_rDst.left + 32;
 			}
 			else {
 				//切り取り先座標
-				m_rDst.top = 64; m_rDst.left = 64;
-				m_rDst.bottom = m_rDst.top + 64; m_rDst.right = m_rDst.left + 64;
+				m_rDst.top = 0; m_rDst.left = 32*5;
+				m_rDst.bottom = m_rDst.top + 32; m_rDst.right = m_rDst.left + 32;
 			}
 		}
 
@@ -309,34 +337,10 @@ void CObjMenuTab::Draw()
 		m_rSrc.bottom = m_rSrc.top + 64; m_rSrc.right = m_rSrc.left + 64;
 
 		//描画
-		Image()->Draw(1, &m_rSrc, &m_rDst, m_fCol, 0.0f);
+		Image()->DrawEx(EX_ICON, &m_rSrc, &m_rDst, m_fCol, 0.0f);
 	}
 
-	//コウネの能力発動時(上げる、下げる)のボタンを描画
-	if (User()->m_bkouneability && abiltyOverray==true)
-	{
-		//ボタンの描画
-		float m_fCol1[4] = { 1.0f,1.0f,1.0f,1.0f };
-		
-		//プラスボタン
-		m_rDst.top = 0; m_rDst.left = 0;
-		m_rDst.bottom = m_rDst.top + 140; m_rDst.right = m_rDst.left + 300;
-
-		m_rSrc.top =  50; m_rSrc.left = 250;
-		m_rSrc.bottom = m_rSrc.top + 140; m_rSrc.right = m_rSrc.left + 300;
-
-		Image()->DrawEx(EX_VOLBOTTON, &m_rSrc, &m_rDst, m_fCol1, 0.0f);
-
-		//マイナスボタン
-		m_rDst.top = 141; m_rDst.left = 0;
-		m_rDst.bottom = m_rDst.top + 140; m_rDst.right = m_rDst.left + 300;
-
-		m_rSrc.top = 200; m_rSrc.left = 250;
-		m_rSrc.bottom = m_rSrc.top + 140; m_rSrc.right = m_rSrc.left + 300;
-		
-		Image()->DrawEx(EX_VOLBOTTON, &m_rSrc, &m_rDst, m_fCol1, 0.0f);
 	
-	}
 }
 
 bool CObjMenuTab::SelectPush(int btx, int bty, int btwid, int bthei)

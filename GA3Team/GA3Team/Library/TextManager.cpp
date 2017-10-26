@@ -56,9 +56,10 @@ CTextManager::CTextManager()
 	filePath_koune.push_back("Text\\koune1\\koune1_ozi_flag2_yes.bin");
 	filePath_koune.push_back("Text\\koune1\\koune1_ozi_flag3_no.bin");
 	filePath_koune.push_back("Text\\koune1\\koune1_ozi_clear.bin");
+	filePath_koune.push_back("Text\\koune1\\koune1_ozi_flag3_yes.bin");
+	filePath_koune.push_back("Text\\koune1\\koune1_ozi_flag3_flag1_yes.bin");
 	//filePath_koune.push_back("Text\\koune1\\koune1_ozi_flag3_no_flag1_yes.bin");
-	//filePath_koune.push_back("Text\\koune1\\koune1_ozi_flag3_yes.bin");
-
+	
 
 	//Stage2
 	filePath_koune.push_back("Text\\koune2\\koune2_start.bin");
@@ -85,7 +86,27 @@ CTextManager::CTextManager()
 	filePath_koune.push_back("Text\\koune2\\koune2_BoyA_flag3_all_color.bin");
 	filePath_koune.push_back("Text\\koune2\\koune2_BoyA_flag3_ouen_small.bin");
 	filePath_koune.push_back("Text\\koune2\\koune2_BoyA_flag3_ouen_Big.bin");
+	//filePath_koune.push_back("Text\\koune2\\koune2_BoyA_flag3_ouen_BigAfter.bin");
 
+	//Stage3
+	filePath_koune.push_back("Text\\koune3\\koune3_start.bin");
+	filePath_koune.push_back("Text\\koune3\\koune3_oba.bin");
+	filePath_koune.push_back("Text\\koune3\\koune3_oba_flag1_yes.bin");
+	filePath_koune.push_back("Text\\koune3\\koune3_oba_flag2_yes_flag3_no.bin");
+	filePath_koune.push_back("Text\\koune3\\koune3_oba_flag3_yes.bin");
+	filePath_koune.push_back("Text\\koune3\\koune3_oba_cat_listen.bin");
+	filePath_koune.push_back("Text\\koune3\\koune3_girlA_flag1_no.bin");
+	filePath_koune.push_back("Text\\koune3\\koune3_girlA_flag2_yes.bin");
+	filePath_koune.push_back("Text\\koune3\\koune3_girlA_flag3_yes.bin");
+	filePath_koune.push_back("Text\\koune3\\koune3_girlA_cat_listen.bin");
+	filePath_koune.push_back("Text\\koune3\\koune3_Mynah.bin");
+	filePath_koune.push_back("Text\\koune3\\koune3_Mynah_flag3_yes.bin");
+	filePath_koune.push_back("Text\\koune3\\koune3_Mynah_koune_sound_listen.bin");
+	filePath_koune.push_back("Text\\koune3\\koune3_Mynah_sound_small_flag3_yes.bin");
+	filePath_koune.push_back("Text\\koune3\\koune3_cat.bin");
+	filePath_koune.push_back("Text\\koune3\\koune3_cat_ability_dog_sound_listen.bin");
+	filePath_koune.push_back("Text\\koune3\\koune3_cat_exception_sound_listen.bin");
+	filePath_koune.push_back("Text\\koune3\\koune3_clear.bin");
 	//ÉÅÉãÉGÉã
 	//Stage1
 	filePath_merueru.push_back("Text\\merueru1\\merueru_start.bin");

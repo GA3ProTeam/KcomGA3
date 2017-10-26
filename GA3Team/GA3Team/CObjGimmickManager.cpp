@@ -495,7 +495,7 @@ void CObjGimmickManager::Action() {
 
 		//シオンステージ3
 		m_Sion3_flg = SION3_TOLK_START;
-		
+	
 
 			
 
@@ -514,6 +514,8 @@ void CObjGimmickManager::Action() {
 		//コウネステージ3
 		m_Koune3_flg = KOUNE3_TALK_START;
 		m_Koune3_tolkingflg = 0;
+
+		//m_Koune3_flg = KOUNE3_FLG2;
 		
 	}
 	//↑【セーブデータの初期化（デバッグ用）】------------------------------------------
@@ -968,7 +970,7 @@ void CObjGimmickManager::Action() {
 			if (Overlay()->NextWait()) {
 
 				//窓「ガッシャーン」
-				Overlay()->talkDraw(KOUNE, KOUNE2_BOYA_FLAG3_OUEN_BIG_AFTER);
+				//Overlay()->talkDraw(KOUNE, KOUNE2_BOYA_FLAG3_OUEN_BIG_AFTER);
 
 				//	//会話終了後
 				//	if (Overlay()->NextWait()) {
@@ -989,10 +991,12 @@ void CObjGimmickManager::Action() {
 
 	case 22://コウネステージ３
 	{
+		
+
 		//【初回動作】
 		if (m_Koune3_flg == KOUNE3_TALK_START) {
 			//女の子「駄菓子屋さんだわ！！...」
-			Overlay()->talkDraw(KOUNE, KOUNE1_START);
+			Overlay()->talkDraw(KOUNE, KOUNE3_START);
 
 			//会話終了
 			if (Overlay()->NextWait()) {
@@ -1000,43 +1004,46 @@ void CObjGimmickManager::Action() {
 			}
 		}
 
+		
+
 		//----音を聞かせる--------------------------------------------------------------------------------
 
 		//子猫の音を録音している
-		if (m_gimmick_granny->m_getsound.sound_num == KOUNE3_KITTY)
-		{
+		if (m_gimmick_granny->m_getsound.sound_num != -1) {
+
+			KOUNE3_KITTY; //子猫の鳴き声
 			//おばあちゃん「あら、その鳴き声は...」
-			Overlay()->talkDraw(KOUNE, KOUNE2_BOYA_FLAG1_YES);
+			Overlay()->talkDraw(KOUNE, KOUNE3_OBA_CAT_LISTEN);
 		}
+
 		
 		//少女
 		//子猫の鳴き声を聞かせる
 		if (m_gimmick_little_girl->m_getsound.sound_num == KOUNE3_KITTY)
 		{
 			//少女「かわいい声ね！」
-			Overlay()->talkDraw(KOUNE, KOUNE2_BOYA_FLAG2_YES);
+			Overlay()->talkDraw(KOUNE, KOUNE3_GIRLA_CAT_LISTEN);
 		}
 		//九官鳥
 		//イントロを聞かせる(クリア条件達成)
 		else if (m_gimmick_mynah->m_getsound.sound_num == SION3_CHANT2 && m_Koune3_flg == KOUNE3_FLG5)
 		{
 			//ステージクリア
-			Overlay()->talkDraw(KOUNE, KOUNE2_BOYA_FLAG3_YES);
-			if (Overlay()->NextWait()) {
-				//クリアフラグを立てる			
-			}
+			Overlay()->talkDraw(KOUNE, KOUNE3_CLEAR);
+			m_Koune3_tolkingflg = 5;
+
 		}
 		//イントロを聞かせる(クリア条件未達成)
 		else if (m_gimmick_mynah->m_getsound.sound_num == SION3_CHANT2 && m_Koune3_flg != KOUNE3_FLG5)
 		{
 			//九ちゃん「...。」
-			Overlay()->talkDraw(KOUNE, KOUNE2_BOYA_NOCREATURE_FLAG3_NO);
+			Overlay()->talkDraw(KOUNE, KOUNE3_MYNAH_KOUNE_SOUND_LISTEN);
 		}
 		//フラグ3が立っている＆小さい音を聞かせる
 		else if (m_Koune3_flg == KOUNE3_FLG3 && m_gimmick_mynah->m_getsound.sound_volume == 1)
 		{
 			//九ちゃん「ミギ！ニバンメ！！...」
-			Overlay()->talkDraw(KOUNE, KOUNE2_BOYA_CREATURE_FLAG3_NO);
+			Overlay()->talkDraw(KOUNE, KOUNE3_MYNAH_SOUND_SMALL_FLAG3_YES);
 			//フラグ4
 			m_Koune3_tolkingflg = 4;		
 		}
@@ -1045,7 +1052,7 @@ void CObjGimmickManager::Action() {
 		else if (m_gimmick_kitten->m_getsound.sound_num == KOUNE1_DOG && m_gimmick_mynah->m_getsound.sound_volume == 10)
 		{
 			//子猫「にゃーーーん」
-			Overlay()->talkDraw(KOUNE, KOUNE2_BOYB_FLAG3_YES);
+			Overlay()->talkDraw(KOUNE, KOUNE3_CAT_ABILITY_DOG_SOUND_LISTEN);
 
 			//フラグ2
 			m_Koune3_tolkingflg = 2;
@@ -1055,7 +1062,7 @@ void CObjGimmickManager::Action() {
 		else if (!m_gimmick_kitten->m_getsound.sound_num == KOUNE1_DOG)
 		{
 			//子猫「にゃーー」
-			Overlay()->talkDraw(KOUNE, KOUNE2_BOYA_FLAG1_NO);
+			Overlay()->talkDraw(KOUNE, KOUNE3_CAT_EXCEPTION_SOUND_LISTEN);
 		}
 
 		//---フキダシにクリック---------------------------------------------------------------------------
@@ -1066,7 +1073,7 @@ void CObjGimmickManager::Action() {
 			if (m_Koune3_flg == KOUNE3_TALK_START_END)
 			{
 				//おばあちゃん「あらあら、...」
-				Overlay()->talkDraw(KOUNE, KOUNE1_OZI);
+				Overlay()->talkDraw(KOUNE, KOUNE3_OBA);
 
 				//フラグ1
 				m_Koune3_tolkingflg = 1;
@@ -1075,14 +1082,14 @@ void CObjGimmickManager::Action() {
 			else if (m_Koune3_flg == KOUNE3_FLG1)
 			{
 				//おばあちゃん「九ちゃんは自分からは...」
-				Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG2_NO);
+				Overlay()->talkDraw(KOUNE, KOUNE3_OBA_FLAG1_YES);
 
 			}
 			//フラグ2が立っている
 			else if (m_Koune3_flg == KOUNE3_FLG2)
 			{
 				//おばあちゃん「困ったわ...」
-				Overlay()->talkDraw(KOUNE, KOUNE2_SION_FLAG2_BLUE);
+				Overlay()->talkDraw(KOUNE, KOUNE3_OBA_FLAG2_YES_FLAG3_NO);
 				
 				//フラグ3
 				m_Koune3_tolkingflg = 3;	
@@ -1091,7 +1098,7 @@ void CObjGimmickManager::Action() {
 			else if (m_Koune3_flg == KOUNE3_FLG3)
 			{
 				//おばあちゃん「九ちゃんはとても賢いから...」
-				Overlay()->talkDraw(KOUNE, KOUNE2_SION_FLAG2_GREEN);
+				Overlay()->talkDraw(KOUNE, KOUNE3_OBA_FLAG3_YES);
 			}
 		}
 
@@ -1102,20 +1109,20 @@ void CObjGimmickManager::Action() {
 			if (m_Koune3_flg == KOUNE3_TALK_START_END || m_Koune3_flg == KOUNE3_FLG1)
 			{
 				//少女「お兄ちゃん...」
-				Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG2_YES);
+				Overlay()->talkDraw(KOUNE, KOUNE3_GIRLA_FLAG1_NO);
 			}
 
 			//フラグ2が立っている
 			else if (m_Koune3_flg == KOUNE3_FLG2)
 			{
 				//少女「その子がさっき言っていた...」
-				Overlay()->talkDraw(KOUNE, KOUNE2_SION_FLAG2_RED);
+				Overlay()->talkDraw(KOUNE, KOUNE3_GIRLA_FLAG2_YES);
 			}
 			//フラグ3が立っている
 			else if (m_Koune3_flg == KOUNE3_FLG3)
 			{
 				//少女「九ちゃんは内緒話すると...」
-				Overlay()->talkDraw(KOUNE, KOUNE2_SION_FLAG3_YES);
+				Overlay()->talkDraw(KOUNE, KOUNE3_GIRLA_FLAG3_YES);
 			}
 		}
 
@@ -1126,13 +1133,13 @@ void CObjGimmickManager::Action() {
 			if (m_Koune3_flg != KOUNE3_FLG3)
 			{
 				//女の子「こんにちは。」九ちゃん「コンニチハ」
-				Overlay()->talkDraw(KOUNE, KOUNE2_BOYB);
+				Overlay()->talkDraw(KOUNE, KOUNE3_MYNAH);
 			}
 			//フラグ3が立っているのみ
 			else if (m_Koune3_flg == KOUNE3_FLG3)
 			{
 				//九ちゃん「インカン！！...」
-				Overlay()->talkDraw(KOUNE, KOUNE2_ONNNA_FLAG3_YES);
+				Overlay()->talkDraw(KOUNE, KOUNE3_MYNAH_FLAG3_YES);
 			}
 		}
 		//子猫
@@ -1140,11 +1147,11 @@ void CObjGimmickManager::Action() {
 		{
 			//普通に調べる
 			//女の子「かわいい！」
-			Overlay()->talkDraw(KOUNE, KOUNE2_ONNNA);
+			Overlay()->talkDraw(KOUNE, KOUNE3_CAT);
 		}
 
-
 		
+
 		//---フラグ管理----------------------------------------------------
 		if (m_Koune3_tolkingflg == 1 && Overlay()->NextWait())			   
 		{																   
@@ -1162,7 +1169,15 @@ void CObjGimmickManager::Action() {
 		else if (m_Koune3_tolkingflg == 4 && Overlay()->NextWait())		   
 		{																   
 			m_Koune3_flg = KOUNE3_FLG4;									   
-		}																   
+		}			
+		else if (m_Koune3_tolkingflg == 5 && Overlay()->NextWait())
+		{
+			//クリア
+			SavedataManeger()->CurrentData->m_stage[KOUNE].stage3clear = true;
+			SavedataManeger()->Writesavedata();
+			//ステージセレクト画面に移行
+			Manager()->Pop(new CSceneStageSelect);
+		}
 		else															   
 		{																   
 			Overlay()->NextWait();										   

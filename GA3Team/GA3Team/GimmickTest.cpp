@@ -1231,9 +1231,9 @@ void GimmickGirl_Koune2::Draw() {
 	if (this->m_bActionFlg) {
 		//切り取り先座標
 		m_dst.top = 0;
-		m_dst.bottom = m_dst.top + 512;
+		m_dst.bottom = m_dst.top + 300;
 		m_dst.left = 0;
-		m_dst.right = m_dst.left + 512;
+		m_dst.right = m_dst.left + 170;
 
 		//転送先座標
 		m_src.top = m_iYpos;
@@ -1242,12 +1242,12 @@ void GimmickGirl_Koune2::Draw() {
 		m_src.right = m_src.left + m_iWidth;
 
 		//描画
-		Image()->DrawEx(4, &m_src, &m_dst, col, 0.0f);
+		Image()->DrawEx(EX_KOUNE_GIRL_ALL, &m_src, &m_dst, col, 0.0f);
 	}
 	//---------------------------------------------------------------------------
 
 	//ギミック名前描画
-	Font()->StrDraw("女の子", m_src.left, m_src.top, 20, col);
+	//Font()->StrDraw("女の子", m_src.left, m_src.top, 20, col);
 
 	//ギミックの動作＆吹き出しの動作・描画
 	this->gimmicDraw(m_sound_flg);
@@ -1282,7 +1282,7 @@ void GimmickSion::Draw() {
 	m_dst.top = 0;
 	m_dst.bottom = m_dst.top + 380;
 	m_dst.left = 0;
-	m_dst.right = m_dst.left + 190;
+	m_dst.right = m_dst.left + 180;
 
 	//転送先座標
 	m_src.top = m_iYpos;
@@ -1291,11 +1291,11 @@ void GimmickSion::Draw() {
 	m_src.right = m_src.left + m_iWidth;
 
 	//描画
-	Image()->DrawEx(18, &m_src, &m_dst, col, 0.0f);
+	Image()->DrawEx(EX_SION_GOGGLES_NO, &m_src, &m_dst, col, 0.0f);
 	//---------------------------------------------------------------------------
 
 	//ギミック名前描画
-	Font()->StrDraw("シオン", m_src.left, m_src.top, 20, col);
+	//Font()->StrDraw("シオン", m_src.left, m_src.top, 20, col);
 
 	//ギミックの動作＆吹き出しの動作・描画
 	this->gimmicDraw(1);
@@ -1327,10 +1327,10 @@ void GimmickBoyA::Draw() {
 
 	//ギミック本体描画-----------------------------------------------------------
 	//切り取り先座標
-	m_dst.top = 0;
-	m_dst.bottom = m_dst.top + 512;
+	m_dst.top = 300;
+	m_dst.bottom = m_dst.top + 300;
 	m_dst.left = 0;
-	m_dst.right = m_dst.left + 512;
+	m_dst.right = m_dst.left + 160;
 
 	//転送先座標
 	m_src.top = m_iYpos;
@@ -1339,7 +1339,7 @@ void GimmickBoyA::Draw() {
 	m_src.right = m_src.left + m_iWidth;
 
 	//描画
-	Image()->DrawEx(4, &m_src, &m_dst, col, 0.0f);
+	Image()->DrawEx(EX_BOY, &m_src, &m_dst, col, 0.0f);
 	//---------------------------------------------------------------------------
 
 	//ギミック名前描画
@@ -1375,10 +1375,10 @@ void GimmickBoyB::Draw() {
 
 	//ギミック本体描画-----------------------------------------------------------
 	//切り取り先座標
-	m_dst.top = 192;
-	m_dst.bottom = m_dst.top + 64;
+	m_dst.top = 0;
+	m_dst.bottom = m_dst.top + 300;
 	m_dst.left = 0;
-	m_dst.right = m_dst.left + 64;
+	m_dst.right = m_dst.left + 100;
 
 	//転送先座標
 	m_src.top = m_iYpos;
@@ -1387,7 +1387,7 @@ void GimmickBoyB::Draw() {
 	m_src.right = m_src.left + m_iWidth;
 
 	//描画
-	Image()->DrawEx(58, &m_src, &m_dst, col, 0.0f);
+	Image()->DrawEx(EX_BOY, &m_src, &m_dst, col, 0.0f);
 	//---------------------------------------------------------------------------
 
 	//ギミック名前描画
@@ -1427,11 +1427,22 @@ void GimmickWindow_Koune2::Draw() {
 	float col[4] = { 1.0f,1.0f,1.0f,1.0f };
 
 	//ギミック本体描画-----------------------------------------------------------
+	int image_id = 0;
+
+	//割れていない
+	if (!m_break_flg) {
+		image_id = EX_KOUNE2_WINDOW_NO_BREAK;
+	}
+	//割れている
+	else {
+		image_id = EX_KOUNE2_WINDOW_BREAK;
+	}
+
 	//切り取り先座標
-	m_dst.top = 256;
-	m_dst.bottom = m_dst.top + 64;
+	m_dst.top = 0;
+	m_dst.bottom = m_dst.top + 1024;
 	m_dst.left = 0;
-	m_dst.right = m_dst.left + 64;
+	m_dst.right = m_dst.left + 1024;
 
 	//転送先座標
 	m_src.top = m_iYpos;
@@ -1440,16 +1451,16 @@ void GimmickWindow_Koune2::Draw() {
 	m_src.right = m_src.left + m_iWidth;
 
 	//描画
-	Image()->DrawEx(4, &m_src, &m_dst, col, 0.0f);
+	Image()->DrawEx(image_id, &m_src, &m_dst, col, 0.0f);
 	//---------------------------------------------------------------------------
 
-	//ギミック名前描画
-	if (!m_break_flg) {
-		Font()->StrDraw("窓", m_src.left, m_src.top, 20, col);
-	}
-	else {
-		Font()->StrDraw("窓割れた", m_src.left, m_src.top, 20, col);
-	}
+	////ギミック名前描画
+	//if (!m_break_flg) {
+	//	Font()->StrDraw("窓", m_src.left, m_src.top, 20, col);
+	//}
+	//else {
+	//	Font()->StrDraw("窓割れた", m_src.left, m_src.top, 20, col);
+	//}
 }
 ////ステージ2↑
 //

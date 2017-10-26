@@ -18,6 +18,7 @@ void COverlay::InitLoad()
 	image->LoadImageEx("マンホールの穴.png",		EX_KOUNE_MANHOLE_HOLE, TEX_SIZE_1024);
 	//コウネ2-----------------------------------
 	image->LoadImageEx("強気少年.png",				EX_KOUNE_STRONG_BOY, TEX_SIZE_512);
+	image->LoadImageEx("少年.png",					EX_BOY, TEX_SIZE_1024);
 	image->LoadImageEx("女の子c.png",				EX_KOUNE_GIRL, TEX_SIZE_512);
 	image->LoadImageEx("コウネマスク表情.png",		EX_KOUNE_MASK_YES, TEX_SIZE_1024);
 	image->LoadImageEx("コウネマスク(無)表情.png",	EX_KOUNE_MASK_NO, TEX_SIZE_1024);
@@ -26,6 +27,8 @@ void COverlay::InitLoad()
 	image->LoadImageEx("少女.png",					EX_KOUNE_GIRL_ALL, TEX_SIZE_1024);
 	image->LoadImageEx("シオンゴーグル表情.png",	EX_SION_GOGGLES_YES, TEX_SIZE_1024);
 	image->LoadImageEx("シオン表情.png",			EX_SION_GOGGLES_NO, TEX_SIZE_1024);
+	image->LoadImageEx("公園ステージ左側.png",		EX_PARK_LEFT, TEX_SIZE_1024);
+	image->LoadImageEx("公園ステージ右側.png",		EX_PARK_RIGHT, TEX_SIZE_1024);
 	//コウネ3----------------------------------------
 	image->LoadImageEx("優しい少女.png",			EX_KOUNE_FRIENDLY_GIRL, TEX_SIZE_512);
 	//シオン１
@@ -75,6 +78,13 @@ void COverlay::InitLoad()
 	//----------------------------------------------
 	image->LoadImageEx("音量ボタン.png",			EX_VOLBOTTON, TEX_SIZE_512);
 	image->LoadImageEx("アイコン透過.png",			EX_ICON, TEX_SIZE_512);
+
+	//ステージセレクト画面--------------------------
+	image->LoadImageEx("コウネ(プレート).png", EX_BUTTON_PLAYER_KOUNE, TEX_SIZE_128);
+	image->LoadImageEx("シオン(プレート).png", EX_BUTTON_PLAYER_SION, TEX_SIZE_128);
+	image->LoadImageEx("メルエル(プレート).png", EX_BUTTON_PLAYER_MERUERU, TEX_SIZE_128);
+	image->LoadImageEx("枠.png", EX_STAGE_TAB_FRAME, TEX_SIZE_1024);
+	//----------------------------------------------
 
 	//サウンド読み込み↓---------------------------------------------------------------------------
 	//チュートリアルステージ

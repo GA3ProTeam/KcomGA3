@@ -30,7 +30,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 	*/
 	SavedataManeger()->Setcurrentdata();
 
-	m_Stage_ID = 10;
+	m_Stage_ID = 40;
 
 	switch (m_Stage_ID) {
 	//チュートリアル（博士）ステージ--------------------------
@@ -291,9 +291,9 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 
 	case 40:
 
-		/*m_gimmick_television = new GimmickTelevision();
+		m_gimmick_television = new GimmickTelevision();
 		Obj()->InsertObj(m_gimmick_television, GIMMICK_TELEVISION, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_television->Init(50, 200, 250, 125, 1);
+		m_gimmick_television->Init(50, 200, 255, 155, 1);
 
 		m_gimmick_oven = new GimmickOven();
 		Obj()->InsertObj(m_gimmick_oven, GIMMICK_OVEN, 5, this->m_pScene, HIT_BOX_OFF);
@@ -305,7 +305,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 
 		m_gimmick_doctorroomdoor = new GimmickDoctorroomDoor();
 		Obj()->InsertObj(m_gimmick_doctorroomdoor, GIMMICK_DOOR, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_doctorroomdoor->Init(280, 90, 400, 400, 1);*/
+		m_gimmick_doctorroomdoor->Init(280, 90, 400, 400, 1);
 
 		break;
 	case 41:
@@ -1781,7 +1781,7 @@ void CObjGimmickManager::Draw() {
 		m_src.right = m_src.left + 1200;
 
 		//背景描画
-		Image()->DrawEx(26, &m_src, &m_dst, col, 0.0f);
+		Image()->DrawEx(EX_STAGE_LAB, &m_src, &m_dst, col, 0.0f);
 
 		//机
 		//切り取り座標

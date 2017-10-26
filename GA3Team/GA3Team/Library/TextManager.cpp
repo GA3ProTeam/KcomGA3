@@ -55,9 +55,10 @@ CTextManager::CTextManager()
 	filePath_koune.push_back("Text\\koune1\\koune1_ozi_flag2_no.bin");
 	filePath_koune.push_back("Text\\koune1\\koune1_ozi_flag2_yes.bin");
 	filePath_koune.push_back("Text\\koune1\\koune1_ozi_flag3_no.bin");
-	filePath_koune.push_back("Text\\koune1\\koune1_ozi_flag3_no_flag1_yes.bin");
-	filePath_koune.push_back("Text\\koune1\\koune1_ozi_flag3_yes.bin");
 	filePath_koune.push_back("Text\\koune1\\koune1_ozi_clear.bin");
+	//filePath_koune.push_back("Text\\koune1\\koune1_ozi_flag3_no_flag1_yes.bin");
+	//filePath_koune.push_back("Text\\koune1\\koune1_ozi_flag3_yes.bin");
+
 
 	//Stage2
 	filePath_koune.push_back("Text\\koune2\\koune2_start.bin");

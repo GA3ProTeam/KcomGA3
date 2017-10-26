@@ -4,7 +4,7 @@
 //引数：
 //str  =描画文字
 //size =文字の大きさ
-void ButtonSelect::Init(int x, int y, int w, int h, bool overlap_flg, char* str,int size) {
+void ButtonSelect::Init(int x, int y, int w, int h, bool overlap_flg, char* str, int size) {
 	//親クラスを初期化
 	Button::Init(x, y, w, h, overlap_flg);
 
@@ -15,16 +15,19 @@ void ButtonSelect::Init(int x, int y, int w, int h, bool overlap_flg, char* str,
 	//各メンバ初期化
 	m_pStr = str;
 
-	//文字の位置をボタンの中心に設定
-	m_iStrX = (x+w/2) - (str_width/2);
-	m_iStrY = (y+h/2) - (str_height/2);
+	////文字の位置をボタンの中心に設定
+	//m_iStrX = (x+w/2) - (str_width/2);
+	//m_iStrY = (y+h/2) - (str_height/2);
+
+	m_iStrX = x + 20;
+	m_iStrY = (y + h / 2) - (str_height / 2);
 
 	m_iSize = size;
 }
 
 //描画
-void ButtonSelect::Draw() {
-	float col[4] = {1.0f,1.0f,1.0f,1.0f};
+void ButtonSelect::DrawButtonSelect() {
+	float col[4] = { 1.0f,1.0f,1.0f,1.0f };
 
 	//ボタン本体描画----------------------------------
 	//切り取り座標
@@ -43,6 +46,6 @@ void ButtonSelect::Draw() {
 	//------------------------------------------------
 
 	//文字描画----------------------------------------
-	Font()->StrDraw(m_pStr, m_iStrX, m_iStrY, m_iSize,col);
+	Font()->StrDraw(m_pStr, m_iStrX, m_iStrY, m_iSize, col);
 	//------------------------------------------------
 }

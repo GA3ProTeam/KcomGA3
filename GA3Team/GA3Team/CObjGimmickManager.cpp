@@ -30,7 +30,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 	*/
 	SavedataManeger()->Setcurrentdata();
 
-	m_Stage_ID = 20;
+	m_Stage_ID = 10;
 
 	switch (m_Stage_ID) {
 	//チュートリアル（博士）ステージ--------------------------
@@ -496,9 +496,6 @@ void CObjGimmickManager::Action() {
 		//シオンステージ3
 		m_Sion3_flg = SION3_TOLK_START;
 		
-
-			
-
 		//コウネステージ1
 		m_Koune1_flg = 0;
 		for (int i = 0; i < m_bKoune1_flg_list.size(); i++) {

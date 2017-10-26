@@ -28,6 +28,8 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 	30~35=シオン
 	40~45=メルエル
 	*/
+
+	//選んだデータをセット
 	SavedataManeger()->Setcurrentdata();
 
 	m_Stage_ID = 31;
@@ -975,9 +977,10 @@ void CObjGimmickManager::Action() {
 				//		Manager()->Pop(new CSceneStageSelect);
 				//	}
 				//}
-
-				break;
 			}
+		}
+		break;
+	}
 	case 22://コウネステージ３
 	{
 		//【初回動作】
@@ -1073,7 +1076,7 @@ void CObjGimmickManager::Action() {
 			//				//ステージクリア
 			//				Overlay()->talkDraw(KOUNE, ///);
 			//				if (Overlay()->NextWait()) {
-			SavedataManeger()->CurrentData->m_bKoune3_flg_list.clear = 1;
+			//SavedataManeger()->CurrentData->m_bKoune3_flg_list.clear = 1;
 			//				}
 			//			}
 			//イントロを聞かせる(クリア条件未達成)

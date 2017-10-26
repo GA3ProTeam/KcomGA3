@@ -383,89 +383,69 @@ void CObjGimmickManager::Action() {
 		KOUNE3_TALK_START,						//ステージ開始時トーク
 		KOUNE3_TALK_START_END,					//ステージ開始時トーク終了
 												//おばあちゃん
-												KOUNE3_TALK_GRANNY_FLG0,				//おばあちゃんとの会話0(フラグ0)
-												KOUNE3_TALK_GRANNY_FLG0_END,			//おばあちゃんとの会話0(フラグ0)終了
-												KOUNE3_TALK_GRANNY_FLG1,				//おばあちゃんとの会話1(フラグ1)
-												KOUNE3_TALK_GRANNY_FLG1_END,			//おばあちゃんとの会話1(フラグ1)終了
-												KOUNE3_TALK_GRANNY_KITTEN,				//おばあちゃんに子猫の鳴き声を聞かせる
-												KOUNE3_TALK_GRANNY_KITTEN_END,			//おばあちゃんに子猫の鳴き声を聞かせる終了
-												KOUNE3_TALK_GRANNY_FLG2,				//おばあちゃんとの会話2(フラグ2)
-												KOUNE3_TALK_GRANNY_FLG2_END,			//おばあちゃんとの会話2(フラグ2)終了
-												KOUNE3_TALK_GRANNY_FLG3,				//おばあちゃんとの会話3(フラグ3)
-												KOUNE3_TALK_GRANNY_FLG3_END,			//おばあちゃんとの会話3(フラグ3)終了
-																						//子猫
-																						KOUNE3_TALK_KITTEN_CHECK,				//子猫を調べたときの会話
-																						KOUNE3_TALK_KITTEN_CHECKEND,			//子猫を調べたときの会話終了
-																						KOUNE3_TALK_KITTEN_OTHER_SOUND,			//子猫に指定外の音を聞かせる
-																						KOUNE3_TALK_KITTEN_OTHER_SOUND_END,		//子猫に指定外の音を聞かせる
-																						KOUNE3_TALK_KITTEN_DOG,					//子猫に犬の鳴き声を聞かせる
-																						KOUNE3_TALK_KITTEN_DOG_END,				//子猫に犬の鳴き声を聞かせる
-																																//九官鳥
-																																KOUNE3_TALK_MYNAH_CHECK,				//九官鳥を調べたときの会話
-																																KOUNE3_TALK_MYNAH_CHECK_END,			//九官鳥を調べたときの会話終了
-																																KOUNE3_TALK_MYNAH_SONG_NOTCLAER,		//九官鳥に歌を聞かせる(クリア条件未達成)
-																																KOUNE3_TALK_MYNAH_SONG_NOTCLAER_END,	//九官鳥に歌を聞かせる(クリア条件未達成)終了
-																																KOUNE3_TALK_MYNAH_FLG3_NORMAL,			//九官鳥を調べたときの会話(フラグ3)
-																																KOUNE3_TALK_MYNAH_FLG3_NORMAL_END,		//九官鳥を調べたときの会話(フラグ3)終了
-																																KOUNE3_TALK_MYNAH_FLG3_SMALL,			//九官鳥に小さくした音を聞かせる
-																																KOUNE3_TALK_MYNAH_FLG3_SMALL_END,		//九官鳥に小さくした音を聞かせる終了
-																																										//少女
-																																										KOUNE3_TALK_LITTLEGIRL_FLG0,			//少女との会話(フラグ0)
-																																										KOUNE3_TALK_LITTLEGIRL_FLG0_END,		//少女との会話(フラグ0)終了
-																																										KOUNE3_TALK_LITTLEGIRL_KITTEN,			//少女に子猫の鳴き声を聞かせる
-																																										KOUNE3_TALK_LITTLEGIRL_KITTEN_END,		//少女に子猫の鳴き声を聞かせる終了
-																																										KOUNE3_TALK_LITTLEGIRL_FLG2,			//少女との会話(フラグ2)
-																																										KOUNE3_TALK_LITTLEGIRL_FLG2_END,		//少女との会話(フラグ2)終了
-																																										KOUNE3_TALK_LITTLEGIRL_FLG3,			//少女との会話(フラグ3)
-																																										KOUNE3_TALK_LITTLEGIRL_FLG3_END,		//少女との会話(フラグ3)終了
-																																																				//クリア
-																																																				KOUNE3_TALK_CLAER,						//クリア条件達成での会話
-																																																				KOUNE3_TALK_CLAER_END,					//クリア条件達成での会話終了
-
-																																																														//-----------------------------------------------------------------------------------------------
-
-																																																														//録音-------------------------------------------------------------------------------------------
-																																																														KOUNE3_SOUND_REC_KITTEN,				//子猫の鳴き声を録音
-																																																														KOUNE3_SOUND_REC_CICADA,				//蝉の音を録音
-																																																														KOUNE3_SOUND_REC_WINDCHIME,				//風鈴の音を録音
-
-																																																																								//-----------------------------------------------------------------------------------------------
+		KOUNE3_TALK_GRANNY_FLG0,				//おばあちゃんとの会話0(フラグ0)
+		KOUNE3_TALK_GRANNY_FLG0_END,			//おばあちゃんとの会話0(フラグ0)終了
+		KOUNE3_TALK_GRANNY_FLG1,				//おばあちゃんとの会話1(フラグ1)
+		KOUNE3_TALK_GRANNY_FLG1_END,			//おばあちゃんとの会話1(フラグ1)終了
+		KOUNE3_TALK_GRANNY_KITTEN,				//おばあちゃんに子猫の鳴き声を聞かせる
+		KOUNE3_TALK_GRANNY_KITTEN_END,			//おばあちゃんに子猫の鳴き声を聞かせる終了
+		KOUNE3_TALK_GRANNY_FLG2,				//おばあちゃんとの会話2(フラグ2)
+		KOUNE3_TALK_GRANNY_FLG2_END,			//おばあちゃんとの会話2(フラグ2)終了
+		KOUNE3_TALK_GRANNY_FLG3,				//おばあちゃんとの会話3(フラグ3)
+		KOUNE3_TALK_GRANNY_FLG3_END,			//おばあちゃんとの会話3(フラグ3)終了
+		//子猫
+		KOUNE3_TALK_KITTEN_CHECK,				//子猫を調べたときの会話
+		KOUNE3_TALK_KITTEN_CHECKEND,			//子猫を調べたときの会話終了
+		KOUNE3_TALK_KITTEN_OTHER_SOUND,			//子猫に指定外の音を聞かせる
+		KOUNE3_TALK_KITTEN_OTHER_SOUND_END,		//子猫に指定外の音を聞かせる
+		KOUNE3_TALK_KITTEN_DOG,					//子猫に犬の鳴き声を聞かせる
+		KOUNE3_TALK_KITTEN_DOG_END,				//子猫に犬の鳴き声を聞かせる
+		//九官鳥
+		KOUNE3_TALK_MYNAH_CHECK,				//九官鳥を調べたときの会話
+		KOUNE3_TALK_MYNAH_CHECK_END,			//九官鳥を調べたときの会話終了
+		KOUNE3_TALK_MYNAH_SONG_NOTCLAER,		//九官鳥に歌を聞かせる(クリア条件未達成)
+		KOUNE3_TALK_MYNAH_SONG_NOTCLAER_END,	//九官鳥に歌を聞かせる(クリア条件未達成)終了
+		KOUNE3_TALK_MYNAH_FLG3_NORMAL,			//九官鳥を調べたときの会話(フラグ3)
+		KOUNE3_TALK_MYNAH_FLG3_NORMAL_END,		//九官鳥を調べたときの会話(フラグ3)終了
+		KOUNE3_TALK_MYNAH_FLG3_SMALL,			//九官鳥に小さくした音を聞かせる
+		KOUNE3_TALK_MYNAH_FLG3_SMALL_END,		//九官鳥に小さくした音を聞かせる終了
+								//少女
 
 	};
 
 	//イベント番号(コウネステージ5)
 	enum KOUNE5_NUMBER {
 		KOUNE5_TALK_START,						//ステージ開始時会話
-		KOUNE5_TALK_START_END,					//ステージ開始時会話_終了
-												//メカニック
-												KOUNE5_TALK_MECHANIC,					//メカニック会話0
-												KOUNE5_TALK_MECHANIC_END,				//メカニック会話0_終了
-												KOUNE5_TALK_MECHANIC1_ABILITY,			//メカニック会話1_能力発動時
-												KOUNE5_TALK_MECHANIC1_ABILITY_END,		//メカニック会話1_能力発動時_終了
-												KOUNE5_TALK_MECHANIC2_MUSIC_OK,			//メカニック会話2_指定の音を聞かせる
-												KOUNE5_TALK_MECHANIC2_MUSIC_OK_END,		//メカニック会話2_指定の音を聞かせる_終了
-												KOUNE5_TALK_MECHANIC3_MUSIC_MIS,		//メカニック会話3_指定の音以外を聞かせる
-												KOUNE5_TALK_MECHANIC3_MUSIC_MIS_END,	//メカニック会話3_指定の音以外を聞かせる_終了
-												KOUNE5_TALK_MECHANIC3_RESET,			//メカニック会話4_ランプリセット
-												KOUNE5_TALK_MECHANIC3_RESET_END,		//メカニック会話4_ランプリセット_終了
-												KOUNE5_TALK_MECHANIC5_RESET_YES,		//メカニック会話5_リセットする
-												KOUNE5_TALK_MECHANIC5_RESET_YES_END,	//メカニック会話5_リセットする_終了
-												KOUNE5_TALK_MECHANIC6_RESET_NO,			//メカニック会話6_リセットしない
-												KOUNE5_TALK_MECHANIC6_RESET_NO_END,		//メカニック会話6_リセットしない_終了
-												KOUNE5_TALK_MECHANIC7_CLEAR,			//メカニック会話7_クリア条件達成
-												KOUNE5_TALK_MECHANIC7_CLEAR_END,		//メカニック会話7_クリア条件達成_終了
-																						//演奏家
-																						KOUNE5_TALK_MUSICIAN1_FLG3_FALSE_NO,	//演奏家会話1_フラグ3×_条件を満たしていない
-																						KOUNE5_TALK_MUSICIAN1_FLG3_FALSE_NO_END,//演奏家会話1_フラグ3×_条件を満たしていない_終了
-																						KOUNE5_TALK_MUSICIAN2_FLG3_FALSE_YES,	//演奏家会話2_フラグ3×_条件を満たしている
-																						KOUNE5_TALK_MUSICIAN2_FLG3_FALSE_YES_END,//演奏家会話2_フラグ3×_条件を満たしている_終了
-																						KOUNE5_TALK_MUSICIAN3_FLG3_TRUE,		//演奏家会話3_フラグ3○
-																						KOUNE5_TALK_MUSICIAN3_FLG3_TRUE_END,	//演奏家会話3_フラグ3○_終了
-																																//録音---------
-																																KOUNE5_SOUND_REC_A,						//機械音A_録音
-																																KOUNE5_SOUND_REC_B,						//機械音B_録音
-																																KOUNE5_SOUND_REC_Ad,					//機械音A'_録音
-																																KOUNE5_SOUND_REC_Bd,					//機械音B'_録音
+		KOUNE5_TALK_START_END,//ステージ開始時会話_終了
+		//メカニック
+		KOUNE5_TALK_MECHANIC,					//メカニック会話0
+		KOUNE5_TALK_MECHANIC_END,				//メカニック会話0_終了
+		KOUNE5_TALK_MECHANIC1_ABILITY,			//メカニック会話1_能力発動時
+		KOUNE5_TALK_MECHANIC1_ABILITY_END,		//メカニック会話1_能力発動時_終了
+		KOUNE5_TALK_MECHANIC2_MUSIC_OK,			//メカニック会話2_指定の音を聞かせる
+		KOUNE5_TALK_MECHANIC2_MUSIC_OK_END,		//メカニック会話2_指定の音を聞かせる_終了
+		KOUNE5_TALK_MECHANIC3_MUSIC_MIS,		//メカニック会話3_指定の音以外を聞かせる
+		KOUNE5_TALK_MECHANIC3_MUSIC_MIS_END,	//メカニック会話3_指定の音以外を聞かせる_終了
+		KOUNE5_TALK_MECHANIC3_RESET,			//メカニック会話4_ランプリセット
+		KOUNE5_TALK_MECHANIC3_RESET_END,		//メカニック会話4_ランプリセット_終了
+		KOUNE5_TALK_MECHANIC5_RESET_YES,		//メカニック会話5_リセットする
+		KOUNE5_TALK_MECHANIC5_RESET_YES_END,	//メカニック会話5_リセットする_終了
+		KOUNE5_TALK_MECHANIC6_RESET_NO,			//メカニック会話6_リセットしない
+		KOUNE5_TALK_MECHANIC6_RESET_NO_END,		//メカニック会話6_リセットしない_終了
+		KOUNE5_TALK_MECHANIC7_CLEAR,			//メカニック会話7_クリア条件達成
+		KOUNE5_TALK_MECHANIC7_CLEAR_END,		//メカニック会話7_クリア条件達成_終了
+		//演奏家
+		KOUNE5_TALK_MUSICIAN1_FLG3_FALSE_NO,	//演奏家会話1_フラグ3×_条件を満たしていない
+		KOUNE5_TALK_MUSICIAN1_FLG3_FALSE_NO_END,//演奏家会話1_フラグ3×_条件を満たしていない_終了
+		KOUNE5_TALK_MUSICIAN2_FLG3_FALSE_YES,	//演奏家会話2_フラグ3×_条件を満たしている
+		KOUNE5_TALK_MUSICIAN2_FLG3_FALSE_YES_END,//演奏家会話2_フラグ3×_条件を満たしている_終了
+		KOUNE5_TALK_MUSICIAN3_FLG3_TRUE,		//演奏家会話3_フラグ3○
+		KOUNE5_TALK_MUSICIAN3_FLG3_TRUE_END,	//演奏家会話3_フラグ3○_終了
+		//録音---------
+		KOUNE5_SOUND_REC_A,						//機械音A_録音
+		KOUNE5_SOUND_REC_B,						//機械音B_録音
+		KOUNE5_SOUND_REC_Ad,					//機械音A'_録音
+		KOUNE5_SOUND_REC_Bd,					//機械音B'_録音
 	};
 
 	//イベント番号(メルエルステージ1)
@@ -663,103 +643,92 @@ void CObjGimmickManager::Action() {
 		break;
 		//メルエル1
 	case 20:
-	{
-		//static int m_iMerueru1 = MERUERU1_WELCOM_TALK;
-		static int m_iMerueru1 = MERUERU1_KATSUO_TALK1;
-		m_gimmick_oven->m_bActionFlg = false;
-		m_gimmick_oven->m_bActionFlg = false;
-		//m_iMerueru1 = MERUERU1_KATSUO_TALK1;
-
-
-		//初回会話
-		if (m_iMerueru1 == MERUERU1_WELCOM_TALK) {
-
-			Overlay()->talkDraw(MERUERU, MERUERU_START);
-
-			//会話終了
-			if (Overlay()->NextWait()) {
-				m_iMerueru1 = MERUERU1_KATSUO_TALK1;
-			}
-		}
-
-		//カツオ会話
-		if (m_gimmick_katsuo->m_ball[0].OnPush) {
-
-			//会話1能力なし
-			if (m_iMerueru1 == MERUERU1_KATSUO_TALK1 &&
-				!User()->m_bmerueruability) {
-				Overlay()->talkDraw(MERUERU, MERUERU_KATUO_1_OFF);
-				//会話終了
-				Overlay()->NextWait();
-			}
-			//会話1能力あり
-			else if (m_iMerueru1 == MERUERU1_KATSUO_TALK1 &&
-				User()->m_bmerueruability) {
-				Overlay()->talkDraw(MERUERU, MERUERU_KATUO_1_ON);
-				//会話終了
-				if (Overlay()->NextWait()) {
-					m_iMerueru1 = MERUERU1_KATSUO_TALK2;
-				}
-			}
-
-			//会話2
-			if (m_iMerueru1 == MERUERU1_KATSUO_TALK2) {
-				Overlay()->talkDraw(MERUERU, MERUERU_KATUO_2);
-				//会話終了
-				if (Overlay()->NextWait()) {
-					m_iMerueru1 = MERUERU1_KATSUO_TALK3;
-				}
-			}
-
-			//会話3
-			if (m_iMerueru1 == MERUERU1_KATSUO_TALK3) {
-				Overlay()->talkDraw(MERUERU, MERUERU_KATUO_3);
-				//会話終了
-				if (Overlay()->NextWait()) {
-					m_iMerueru1 = MERUERU1_KATSUO_TALK_END;
-
-					m_gimmick_oven->m_bActionFlg = true;
-					m_gimmick_oven->m_bActionFlg = true;
-
-				}
-			}
-
-			//口笛音取得
-			if (m_iMerueru1 == MERUERU1_KATSUO_TALK_END) {
-
-
-
-			}
-		}
-
-		//テレビ音取得
-		if (m_gimmick_television->m_ball[0].OnPush) {
-
-
-
-
-		}
-		//レンジ音取得
-		if (m_gimmick_oven->m_ball[0].OnPush) {
-
-
-
-
-		}
-
-		//レンジ音使用でステージクリア
-		if (m_gimmick_doctorroomdoor->m_ball[0].m_sound_data.sound_num == 1)
 		{
+			//static int m_iMerueru1 = MERUERU1_WELCOM_TALK;
+			static int m_iMerueru1 = MERUERU1_KATSUO_TALK1;
+			m_gimmick_oven->m_bActionFlg = false;
+			m_gimmick_oven->m_bActionFlg = false;
+			//m_iMerueru1 = MERUERU1_KATSUO_TALK1;
+
+
+			//初回会話
+			if (m_iMerueru1 == MERUERU1_WELCOM_TALK) {
+
+				Overlay()->talkDraw(MERUERU, MERUERU_START);
+
+				//会話終了
+				if (Overlay()->NextWait()) {
+					m_iMerueru1 = MERUERU1_KATSUO_TALK1;
+				}
+			}
+
+			//カツオ会話
+			if (m_gimmick_katsuo->m_ball[0].OnPush) {
+
+				//会話1能力なし
+				if (m_iMerueru1 == MERUERU1_KATSUO_TALK1 &&
+					!User()->m_bmerueruability) {
+					Overlay()->talkDraw(MERUERU, MERUERU_KATUO_1_OFF);
+					//会話終了
+					Overlay()->NextWait();
+				}
+				//会話1能力あり
+				else if (m_iMerueru1 == MERUERU1_KATSUO_TALK1 &&
+					User()->m_bmerueruability) {
+					Overlay()->talkDraw(MERUERU, MERUERU_KATUO_1_ON);
+					//会話終了
+					if (Overlay()->NextWait()) {
+						m_iMerueru1 = MERUERU1_KATSUO_TALK2;
+					}
+				}
+
+				//会話2
+				if (m_iMerueru1 == MERUERU1_KATSUO_TALK2) {
+					Overlay()->talkDraw(MERUERU, MERUERU_KATUO_2);
+					//会話終了
+					if (Overlay()->NextWait()) {
+						m_iMerueru1 = MERUERU1_KATSUO_TALK3;
+					}
+				}
+
+				//会話3
+				if (m_iMerueru1 == MERUERU1_KATSUO_TALK3) {
+					Overlay()->talkDraw(MERUERU, MERUERU_KATUO_3);
+					//会話終了
+					if (Overlay()->NextWait()) {
+						m_iMerueru1 = MERUERU1_KATSUO_TALK_END;
+
+						m_gimmick_oven->m_bActionFlg = true;
+						m_gimmick_oven->m_bActionFlg = true;
+
+					}
+				}
+
+				//口笛音取得
+				if (m_iMerueru1 == MERUERU1_KATSUO_TALK_END) {
+
+
+
+				}
+			}
+
+			//テレビ音取得
+			if (m_gimmick_television->m_ball[0].OnPush) {
 
 
 
 
+			}
+			//レンジ音取得
+			if (m_gimmick_oven->m_ball[0].OnPush) {
+
+			}
+
+			//レンジ音使用でステージクリア
+			if (m_gimmick_doctorroomdoor->m_ball[0].m_sound_data.sound_num == 1){
+			}
 		}
-
-
-
-
-	}
+		break;
 	case 21:
 		break;
 	case 22:
@@ -1083,170 +1052,172 @@ void CObjGimmickManager::Action() {
 			//会話終了後
 			if (Overlay()->NextWait()) {
 
-		//	//会話終了後
-		//	if (Overlay()->NextWait()) {
-		//		//コウネステージ2クリア
-		//		SavedataManeger()->CurrentData->m_bKouneClearflg[1] = true;
-		//		//ステージセレクト画面に移行
-		//		Manager()->Pop(new CSceneStageSelect);
-		//	}
-		//}
-		break;
+				//	//会話終了後
+				//	if (Overlay()->NextWait()) {
+				//		//コウネステージ2クリア
+				//		SavedataManeger()->CurrentData->m_bKouneClearflg[1] = true;
+				//		//ステージセレクト画面に移行
+				//		Manager()->Pop(new CSceneStageSelect);
+				//	}
+			}
+			
+		}
 	}
+		break;
 	case 32:
-	{
-		//【初回動作】
-		if (m_Koune3_flg == KOUNE3_TALK_START) {
-			//女の子「駄菓子屋さんだわ！！...」
-//			Overlay()->talkDraw(KOUNE, KOUNE3_START);
-
-			//会話終了
-//			if (Overlay()->NextWait()) {
-			m_Koune3_flg = KOUNE3_TALK_START_END;
-//			}
-		}
-
-
-		//おばあちゃん
-		if (m_gimmick_granny->m_ball[0].OnPush)
-		{
-			//フラグが立っていない
-			if (m_Koune3_flg == KOUNE3_TALK_START_END)
-			{
-				//おばあちゃん「あらあら、...」
-//				Overlay()->talkDraw(KOUNE, ///);
-
-//				if (Overlay()->NextWait()) {
-					m_Koune3_flg = KOUNE3_FLG1;
-//				}
-				
-			}
-			//子猫の音を録音している
-			//else if(/*おばあちゃんに子猫の鳴き声を聞かせる*/)
-//			{
-//				//おばあちゃん「あら、その鳴き声は...」
-//				Overlay()->talkDraw(KOUNE, ///);
-//			}
-			//フラグ1が立っている
-			else if (m_Koune3_flg == KOUNE3_FLG1)
-			{
-				//おばあちゃん「九ちゃんは自分からは...」
-//				Overlay()->talkDraw(KOUNE, ///);
-
-			}
-			//フラグ2が立っている
-			else if (m_Koune3_flg == KOUNE3_FLG2)
-			{
-				//おばあちゃん「困ったわ...」
-//				Overlay()->talkDraw(KOUNE, ///);
-
-//				if (Overlay()->NextWait()) {
-					m_Koune3_flg = KOUNE3_FLG3;
-//				}
-				
-			}
-			//フラグ3が立っている
-			else if (m_Koune3_flg == KOUNE3_FLG3)
-			{
-				//おばあちゃん「九ちゃんはとても賢いから...」
-//				Overlay()->talkDraw(KOUNE, ///);
-			}
-
-			//窓「ガッシャーン」
-			Overlay()->talkDraw(KOUNE, KOUNE2_BOYA_FLAG3_OUEN_BIG_AFTER);
-
-			//会話終了後
-			if (Overlay()->NextWait()) {
-				//コウネステージ2クリア
-				SavedataManeger()->CurrentData->m_stage[KOUNE].stage2clear = true;
-				//ステージセレクト画面に移行
-				Manager()->Pop(new CSceneStageSelect);
-			}
-			//フラグ3が立っている
-			else if (m_Koune3_flg == KOUNE3_FLG3)
-			{
-				//少女「九ちゃんは内緒話すると...」
-				//Overlay()->talkDraw(KOUNE, ///);
-			}	
-		}
-
-		//九官鳥
-		if (m_gimmick_mynah->m_ball[0].OnPush)
-		{
-			//イントロを聞かせる(クリア条件達成)
-//			if (/*九官鳥にイントロを聞かせる && m_Koune3_flg == KOUNE3_FLG5)
-//			{
-//				//ステージクリア
-//				Overlay()->talkDraw(KOUNE, ///);
-//				if (Overlay()->NextWait()) {
-					SavedataManeger()->CurrentData->m_bKoune3_flg_list.clear = 1;
-//				}
-//			}
-			//イントロを聞かせる(クリア条件未達成)
-//			else if (/*九官鳥にイントロを聞かせる && m_Koune3_flg != KOUNE3_FLG5)
-//			{
-//				//九ちゃん「...。」
-//				Overlay()->talkDraw(KOUNE, ///);
-//			}
-			//フラグ3が立っていない
-			if (m_Koune3_flg != KOUNE3_FLG3)
-			{
-				//女の子「こんにちは。」九ちゃん「コンニチハ」
-//				Overlay()->talkDraw(KOUNE, ///);
-			}
-			//フラグ3が立っている＆小さい音を聞かせる
-			else if (m_Koune3_flg == KOUNE3_FLG3 /*&& 九官鳥に小さい音を聞かせる*/)
-			{
-				//九ちゃん「ミギ！ニバンメ！！...」
-//				Overlay()->talkDraw(KOUNE, ///);
-				
-//				if (Overlay()->NextWait()) {
-					m_Koune3_flg = KOUNE3_FLG4;
-//				}
-			}
-			//フラグ3が立っているのみ
-			else if (m_Koune3_flg == KOUNE3_FLG3)
-			{
-				//九ちゃん「インカン！！...」
-//				Overlay()->talkDraw(KOUNE, ///);
-			}
-		}
-		//子猫
-		if (m_gimmick_mynah->m_ball[0].OnPush)
-		{
-			//犬の鳴き声を聞かせる
-//			if (/*子猫に犬の鳴き声を聞かせる*/)
-//			{
-//				//子猫「にゃーーーん」
-//				Overlay()->talkDraw(KOUNE, ///);
-
-//				if (Overlay()->NextWait()) {
-//					m_gimmick_mynah->m_Status = STATUS_DELETE;//子猫削除
-					m_Koune3_flg = KOUNE3_FLG2;
-//				}
-//				
-//			}
-			//犬の鳴き声以外の音を聞かせる
-//			else if (/*!子猫に犬の鳴き声を聞かせる*/)
-//			{
-//				//子猫「にゃーー」
-//				Overlay()->talkDraw(KOUNE, ///);
-//			}
-			//普通に調べる
-//			else
-//			{
-				//女の子「かわいい！」
-//				Overlay()->talkDraw(KOUNE, ///);
-//			}
-		}
-
-
-		//---------------------------------------------------------------------------
-
-
-
+		//	{
+		//		//【初回動作】
+		//		if (m_Koune3_flg == KOUNE3_TALK_START) {
+		//			//女の子「駄菓子屋さんだわ！！...」
+		////			Overlay()->talkDraw(KOUNE, KOUNE3_START);
+		//
+		//			//会話終了
+		////			if (Overlay()->NextWait()) {
+		//			m_Koune3_flg = KOUNE3_TALK_START_END;
+		//			//			}
+		//		}
+		//
+		//
+		//		//おばあちゃん
+		//		if (m_gimmick_granny->m_ball[0].OnPush)
+		//		{
+		//			//フラグが立っていない
+		//			if (m_Koune3_flg == KOUNE3_TALK_START_END)
+		//			{
+		//				//おばあちゃん「あらあら、...」
+		////				Overlay()->talkDraw(KOUNE, ///);
+		//
+		////				if (Overlay()->NextWait()) {
+		//				m_Koune3_flg = KOUNE3_FLG1;
+		//				//				}
+		//
+		//			}
+		//			//子猫の音を録音している
+		//			//else if(/*おばあちゃんに子猫の鳴き声を聞かせる*/)
+		////			{
+		////				//おばあちゃん「あら、その鳴き声は...」
+		////				Overlay()->talkDraw(KOUNE, ///);
+		////			}
+		//			//フラグ1が立っている
+		//			else if (m_Koune3_flg == KOUNE3_FLG1)
+		//			{
+		//				//おばあちゃん「九ちゃんは自分からは...」
+		////				Overlay()->talkDraw(KOUNE, ///);
+		//
+		//			}
+		//			//フラグ2が立っている
+		//			else if (m_Koune3_flg == KOUNE3_FLG2)
+		//			{
+		//				//おばあちゃん「困ったわ...」
+		////				Overlay()->talkDraw(KOUNE, ///);
+		//
+		////				if (Overlay()->NextWait()) {
+		//				m_Koune3_flg = KOUNE3_FLG3;
+		//				//				}
+		//
+		//			}
+		//			//フラグ3が立っている
+		//			else if (m_Koune3_flg == KOUNE3_FLG3)
+		//			{
+		//				//おばあちゃん「九ちゃんはとても賢いから...」
+		////				Overlay()->talkDraw(KOUNE, ///);
+		//			}
+		//
+		//			//窓「ガッシャーン」
+		//			Overlay()->talkDraw(KOUNE, KOUNE2_BOYA_FLAG3_OUEN_BIG_AFTER);
+		//
+		//			//会話終了後
+		//			if (Overlay()->NextWait()) {
+		//				//コウネステージ2クリア
+		//				SavedataManeger()->CurrentData->m_stage[KOUNE].stage2clear = true;
+		//				//ステージセレクト画面に移行
+		//				Manager()->Pop(new CSceneStageSelect);
+		//			}
+		//			//フラグ3が立っている
+		//			else if (m_Koune3_flg == KOUNE3_FLG3)
+		//			{
+		//				//少女「九ちゃんは内緒話すると...」
+		//				//Overlay()->talkDraw(KOUNE, ///);
+		//			}
+		//		}
+		//
+		//		//九官鳥
+		//		if (m_gimmick_mynah->m_ball[0].OnPush)
+		//		{
+		//			//イントロを聞かせる(クリア条件達成)
+		////			if (/*九官鳥にイントロを聞かせる && m_Koune3_flg == KOUNE3_FLG5)
+		////			{
+		////				//ステージクリア
+		////				Overlay()->talkDraw(KOUNE, ///);
+		////				if (Overlay()->NextWait()) {
+		//			SavedataManeger()->CurrentData->m_bKoune3_flg_list.clear = 1;
+		//			//				}
+		//			//			}
+		//						//イントロを聞かせる(クリア条件未達成)
+		//			//			else if (/*九官鳥にイントロを聞かせる && m_Koune3_flg != KOUNE3_FLG5)
+		//			//			{
+		//			//				//九ちゃん「...。」
+		//			//				Overlay()->talkDraw(KOUNE, ///);
+		//			//			}
+		//						//フラグ3が立っていない
+		//			if (m_Koune3_flg != KOUNE3_FLG3)
+		//			{
+		//				//女の子「こんにちは。」九ちゃん「コンニチハ」
+		////				Overlay()->talkDraw(KOUNE, ///);
+		//			}
+		//			//フラグ3が立っている＆小さい音を聞かせる
+		//			else if (m_Koune3_flg == KOUNE3_FLG3 /*&& 九官鳥に小さい音を聞かせる*/)
+		//			{
+		//				//九ちゃん「ミギ！ニバンメ！！...」
+		////				Overlay()->talkDraw(KOUNE, ///);
+		//
+		////				if (Overlay()->NextWait()) {
+		//				m_Koune3_flg = KOUNE3_FLG4;
+		//				//				}
+		//			}
+		//			//フラグ3が立っているのみ
+		//			else if (m_Koune3_flg == KOUNE3_FLG3)
+		//			{
+		//				//九ちゃん「インカン！！...」
+		////				Overlay()->talkDraw(KOUNE, ///);
+		//			}
+		//		}
+		//		//子猫
+		//		if (m_gimmick_mynah->m_ball[0].OnPush)
+		//		{
+		//			//犬の鳴き声を聞かせる
+		////			if (/*子猫に犬の鳴き声を聞かせる*/)
+		////			{
+		////				//子猫「にゃーーーん」
+		////				Overlay()->talkDraw(KOUNE, ///);
+		//
+		////				if (Overlay()->NextWait()) {
+		////					m_gimmick_mynah->m_Status = STATUS_DELETE;//子猫削除
+		//			m_Koune3_flg = KOUNE3_FLG2;
+		//			//				}
+		//			//				
+		//			//			}
+		//						//犬の鳴き声以外の音を聞かせる
+		//			//			else if (/*!子猫に犬の鳴き声を聞かせる*/)
+		//			//			{
+		//			//				//子猫「にゃーー」
+		//			//				Overlay()->talkDraw(KOUNE, ///);
+		//			//			}
+		//						//普通に調べる
+		//			//			else
+		//			//			{
+		//							//女の子「かわいい！」
+		//			//				Overlay()->talkDraw(KOUNE, ///);
+		//			//			}
+		//		}
+		//
+		//
+		//		//---------------------------------------------------------------------------
+		//
+		//
+		//
 		break;
-	}
+		//	}
 	case 33:
 		break;
 	case 34://コウネステージ5
@@ -1308,150 +1279,149 @@ void CObjGimmickManager::Action() {
 
 		//チュートリアルステージ（博士）
 	case 40:
-	{
-		//ゴミ箱動作不可
-		m_pMenuTab->SetGarbageActionFlg(false);
+		{
+			//ゴミ箱動作不可
+			m_pMenuTab->SetGarbageActionFlg(false);
 
-		//【初回動作】
-		if (m_itutorialflg == TUTORIAL_WELCOM_TALK) {
-			//博士「ようこそ！ここは・・・」
-			Overlay()->talkDraw(TUTORIAL, HAKASE_1);
+			//【初回動作】
+			if (m_itutorialflg == TUTORIAL_WELCOM_TALK) {
+				//博士「ようこそ！ここは・・・」
+				Overlay()->talkDraw(TUTORIAL, HAKASE_1);
 
-			//会話終了
-			if (Overlay()->NextWait()) {
-				m_itutorialflg = TUTORIAL_WELCOM_TALK_END;
-			}
-		}
-		//【博士の開始メッセージ終了後】
-		else if (m_itutorialflg == TUTORIAL_WELCOM_TALK_END) {
-
-			//博士、コンピューター　動作停止
-			m_gimmick_doctor->m_bActionFlg = false;
-			m_gimmick_computer->m_bActionFlg = false;
-
-			//レコーダー入手
-			if (m_gimmick_recorder->m_ball[0].OnPush) {
-				m_itutorialflg = TUTORIAL_RECORDER_GET_TALK;
-				m_gimmick_recorder->m_Status = STATUS_DELETE;//レコーダー削除
-
-															 //博士、コンピューター　動作再開
-				m_gimmick_doctor->m_bActionFlg = true;
-				m_gimmick_computer->m_bActionFlg = true;
-			}
-
-		}
-		//【レコーダー入手後会話】
-		else if (m_itutorialflg == TUTORIAL_RECORDER_GET_TALK) {
-			//博士「それはこの研究所が開発したレコーダー・・・」
-			Overlay()->talkDraw(TUTORIAL, HAKASE_FLAG_1_1);
-
-			//会話終了
-			if (Overlay()->NextWait()) {
-				m_itutorialflg = TUTORIAL_RECORDER_GET_TALK_END;
-			}
-		}
-		//【レコーダー入手後会話終了（フラグ1達成後）】
-		else if (m_itutorialflg == TUTORIAL_RECORDER_GET_TALK_END) {
-
-			//博士と会話した-----------------------------------------
-			if (m_gimmick_doctor->m_ball[0].OnPush) {
-
-				//音を録音している場合（フラグ2達成済み）
-				if (SoundManager()->HaveSound(1)) {
-					m_itutorialflg = TUTORIAL_SOUND_REC_AFTER_TALK;
-				}
-				//音を録音していない（フラグ2未達成）場合
-				else {
-					//博士「話を聞いていなかったのかね？・・・」
-					Overlay()->talkDraw(TUTORIAL, HAKASE_FLAG_2_1_NO);
+				//会話終了
+				if (Overlay()->NextWait()) {
+					m_itutorialflg = TUTORIAL_WELCOM_TALK_END;
 				}
 			}
-			//再度博士の会話をスタンバイ
-			Overlay()->NextWait();
-			//-------------------------------------------------------
+			//【博士の開始メッセージ終了後】
+			else if (m_itutorialflg == TUTORIAL_WELCOM_TALK_END) {
 
-			//博士と会話していない状態で、再生も行う-----------------
-			//音ボタンドラッグ
-			if (m_gimmick_doctor->m_getsound.sound_num != -1) {
-				m_itutorialflg = TUTORIAL_SOUND_REC_AND_PLAY;
+				//博士、コンピューター　動作停止
+				m_gimmick_doctor->m_bActionFlg = false;
+				m_gimmick_computer->m_bActionFlg = false;
+
+				//レコーダー入手
+				if (m_gimmick_recorder->m_ball[0].OnPush) {
+					m_itutorialflg = TUTORIAL_RECORDER_GET_TALK;
+					m_gimmick_recorder->m_Status = STATUS_DELETE;//レコーダー削除
+
+																 //博士、コンピューター　動作再開
+					m_gimmick_doctor->m_bActionFlg = true;
+					m_gimmick_computer->m_bActionFlg = true;
+				}
+
 			}
-			//-------------------------------------------------------
+			//【レコーダー入手後会話】
+			else if (m_itutorialflg == TUTORIAL_RECORDER_GET_TALK) {
+				//博士「それはこの研究所が開発したレコーダー・・・」
+				Overlay()->talkDraw(TUTORIAL, HAKASE_FLAG_1_1);
 
-		}
-		//【録音後、博士と会話した場合】
-		else if (m_itutorialflg == TUTORIAL_SOUND_REC_AFTER_TALK) {
-
-			//会話「うむ、言われたことはできるようなのだな・・・」
-			Overlay()->talkDraw(TUTORIAL, HAKASE_FLAG_2_1_YES);
-
-			//会話終了
-			if (Overlay()->NextWait()) {
-				m_itutorialflg = TUTORIAL_SOUND_REC_AFTER_TALK_END;
+				//会話終了
+				if (Overlay()->NextWait()) {
+					m_itutorialflg = TUTORIAL_RECORDER_GET_TALK_END;
+				}
 			}
-		}
-		//【録音後、博士との会話終了時】
-		else if (m_itutorialflg == TUTORIAL_SOUND_REC_AFTER_TALK_END) {
-			//コンピューター　動作停止
-			m_gimmick_computer->m_bActionFlg = false;
+			//【レコーダー入手後会話終了（フラグ1達成後）】
+			else if (m_itutorialflg == TUTORIAL_RECORDER_GET_TALK_END) {
 
+				//博士と会話した-----------------------------------------
+				if (m_gimmick_doctor->m_ball[0].OnPush) {
 
-			//音ボタンドラッグ
-			if (m_gimmick_doctor->m_getsound.sound_num != -1) {
-				m_itutorialflg = TUTORIAL_SOUND_REC_TALK_PLAY;
+					//音を録音している場合（フラグ2達成済み）
+					if (SoundManager()->HaveSound(1)) {
+						m_itutorialflg = TUTORIAL_SOUND_REC_AFTER_TALK;
+					}
+					//音を録音していない（フラグ2未達成）場合
+					else {
+						//博士「話を聞いていなかったのかね？・・・」
+						Overlay()->talkDraw(TUTORIAL, HAKASE_FLAG_2_1_NO);
+					}
+				}
+				//再度博士の会話をスタンバイ
+				Overlay()->NextWait();
+				//-------------------------------------------------------
+
+				//博士と会話していない状態で、再生も行う-----------------
+				//音ボタンドラッグ
+				if (m_gimmick_doctor->m_getsound.sound_num != -1) {
+					m_itutorialflg = TUTORIAL_SOUND_REC_AND_PLAY;
+				}
+				//-------------------------------------------------------
+
 			}
-		}
-		//【録音後、博士と会話した後、再生】
-		else if (m_itutorialflg == TUTORIAL_SOUND_REC_TALK_PLAY) {
+			//【録音後、博士と会話した場合】
+			else if (m_itutorialflg == TUTORIAL_SOUND_REC_AFTER_TALK) {
 
-			//会話「ふむふむ・・・。この音！・・・」
-			Overlay()->talkDraw(TUTORIAL, HAKASE_CLEAR);
+				//会話「うむ、言われたことはできるようなのだな・・・」
+				Overlay()->talkDraw(TUTORIAL, HAKASE_FLAG_2_1_YES);
 
-			//会話終了
-			if (Overlay()->NextWait()) {
-				//チュートリアルクリア
-				SavedataManeger()->CurrentData->m_btutorial = true;
-				//ステージセレクト画面に移行
-				Manager()->Pop(new CSceneStageSelect);
+				//会話終了
+				if (Overlay()->NextWait()) {
+					m_itutorialflg = TUTORIAL_SOUND_REC_AFTER_TALK_END;
+				}
 			}
+			//【録音後、博士との会話終了時】
+			else if (m_itutorialflg == TUTORIAL_SOUND_REC_AFTER_TALK_END) {
+				//コンピューター　動作停止
+				m_gimmick_computer->m_bActionFlg = false;
 
-		}
-		//【録音後、博士と会話せずに、再生（フラグ2○　フラグ3×）】
-		else if (m_itutorialflg == TUTORIAL_SOUND_REC_AND_PLAY) {
 
-			//会話「わしは録音をするようにいったはずなのだが・・・」
-			Overlay()->talkDraw(TUTORIAL, HAKASE_FLAG_2_YES_3_NO);
-
-			//会話終了
-			if (Overlay()->NextWait()) {
-				//チュートリアルクリア
-				SavedataManeger()->CurrentData->m_btutorial = true;
-				//ステージセレクト画面に移行
-				Manager()->Pop(new CSceneStageSelect);
+				//音ボタンドラッグ
+				if (m_gimmick_doctor->m_getsound.sound_num != -1) {
+					m_itutorialflg = TUTORIAL_SOUND_REC_TALK_PLAY;
+				}
 			}
-		}
+			//【録音後、博士と会話した後、再生】
+			else if (m_itutorialflg == TUTORIAL_SOUND_REC_TALK_PLAY) {
+
+				//会話「ふむふむ・・・。この音！・・・」
+				Overlay()->talkDraw(TUTORIAL, HAKASE_CLEAR);
+
+				//会話終了
+				if (Overlay()->NextWait()) {
+					//チュートリアルクリア
+					SavedataManeger()->CurrentData->m_btutorial = true;
+					//ステージセレクト画面に移行
+					Manager()->Pop(new CSceneStageSelect);
+				}
+
+			}
+			//【録音後、博士と会話せずに、再生（フラグ2○　フラグ3×）】
+			else if (m_itutorialflg == TUTORIAL_SOUND_REC_AND_PLAY) {
+
+				//会話「わしは録音をするようにいったはずなのだが・・・」
+				Overlay()->talkDraw(TUTORIAL, HAKASE_FLAG_2_YES_3_NO);
+
+				//会話終了
+				if (Overlay()->NextWait()) {
+					//チュートリアルクリア
+					SavedataManeger()->CurrentData->m_btutorial = true;
+					//ステージセレクト画面に移行
+					Manager()->Pop(new CSceneStageSelect);
+				}
+			}
 		break;
-	}
+		}
 	case 41://テスト用ステージ
-	{
-		static int test_num;
-		if (test_num == 0) {
-			int show_id = 0;
+	//{
+	//	static int test_num;
+	//	if (test_num == 0) {
+	//		int show_id = 0;
 
-			Overlay()->talkDraw(TUTORIAL, CHARA_SHIFT_TEST, &show_id, 1, &show_id, 1);
+	//		Overlay()->talkDraw(TUTORIAL, CHARA_SHIFT_TEST, &show_id, 1, &show_id, 1);
 
-			//会話終了
-			if (Overlay()->NextWait()) {
+	//		//会話終了
+	//		if (Overlay()->NextWait()) {
 
-			}
-		}
-		else if (test_num == 1) {
+	//		}
+	//	}
+	//	else if (test_num == 1) {
 
-		}
+	//	}
 		break;
+		//}
 	}
-
-	}
-
+	
 }
 
 //ドロー

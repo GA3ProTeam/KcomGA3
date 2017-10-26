@@ -1767,49 +1767,8 @@ void GimmickMechanic::Destructor() {
 }
 //②メカニックのアクション
 void GimmickMechanic::Action() {
-
 	 //メニュータブ取得
 	 CObjMenuTab* tab = (CObjMenuTab*)Obj()->GetObj(OBJ_MENUTAB);
-/*
-	 //駅に向かうための扉の前でメカニックに話しかけられる
-	 // └システムの動作を見たいから扉を開けてみてほしい
-	 //    └""フラグ1回収""
-	 if (Input()->GetMouButtonL()) {
-		 //マウスがギミック範囲内か確認
-		 if (Input()->m_x > m_iXpos&& Input()->m_x < (m_iXpos + m_iWidth)
-			 && Input()->m_y > m_iYpos && Input()->m_y < (m_iYpos + m_iHeight)) {
-			 //Overlay()->talkDraw(KOUNE, ); //「駅に行きたいのかな？」
-			 SavedataManeger()->CurrentData->m_bKouneflg[17] = true;
-		 }
-	 }
-
-
-	////能力を使う
-	////マスクが壊れていて使用できない⇒メカニックとの会話
-	////　└メカニック...作業用に何か曲を持ってきてほしい
-	//// 　　└""フラグ2回収""
-	//if(Input()->GetMouButtonL()){ //能力使用(仮) 一度のみ
-	//	if (SavedataManeger()->CurrentData->m_bKouneflg[17] == true && SavedataManeger()->CurrentData->m_bKouneflg[18] == false) {
-	//		//Overlay()->talkDraw(KOUNE, ); //「マスクが壊れたのかい？」
-	//		SavedataManeger()->CurrentData->m_bKouneflg[18] = true;
-	//	}
-	//}
-
-	////メカニックに曲を渡す
-	////フラグ3回収済み
-	//if (SavedataManeger()->CurrentData->m_bKouneflg[19]) {
-	//	 //メカニック...修理したマスクを渡す
-	//	 //　　　　　　　└音量の変更ができるようになる
-	//	 //Overlay()->talkDraw(KOUNE, ); //「これなら作業が捗る！」
-	//	 //能力を使用できるようにする
-
-	//}//フラグ3未回収
-	//else {
-	//	 //メカニック...曲が好みではない
-	//	 //Overlay()->talkDraw(KOUNE, ); //「なんだか違う」
-
-	}
-	*/
 
 }
 //②メカニックの描画
@@ -1848,7 +1807,7 @@ void GimmickSoundComputer::Init(int xpos, int ypos, int widht, int height, int b
 	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
 	//吹き出しの初期化
 	InitBall(&m_ball[0],48, -48, sound, 1, BLUE, LOWER_LEFT);  //A
-	//InitBall(&m_ball[1], 70, -48, sound, 1, RED, LOWER_LEFT); //B
+	//InitBall(&m_ball[1], 150, -48, sound, 1, RED, LOWER_LEFT); //B
 }
 //③パソコンのデストラクタ
 void GimmickSoundComputer::Destructor() {
@@ -1889,7 +1848,7 @@ void GimmickSoundComputer::Draw() {
 
 
 	//吹き出し描画＆動作-------
-	this->gimmicDraw(2);
+	this->gimmicDraw(1);
 	//-------------------------
 
 }

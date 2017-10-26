@@ -77,7 +77,7 @@ void Gimmick::gimmicDraw(int num)
 				//音の吹き出しの場合
 				else if (m_ball[i].m_iballoontype == sound) {
 					//シオンの能力発動時に吹き出しの色を変える
-					if (User()->m_iCurrentChara) {
+					if (User()->m_bsionability) {
 						//切り取り先座標のＸオフセット位置を各色に変更
 						m_dst.left = m_ball[i].m_sound_data.sound_color;
 					}

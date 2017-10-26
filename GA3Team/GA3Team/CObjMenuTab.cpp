@@ -25,7 +25,7 @@ void CObjMenuTab::Init(int openclosey)
 	m_iability_y = m_openclose_y;//能力ボタンのY
 	abiltyOverray = false;//能力を使用しない
 
-						  //ボタンの位置X
+	//ボタンの位置X
 	m_iXpos = m_openclose_x;
 	//ボタンの位置Y
 	m_iYpos = m_openclose_y;

@@ -1091,7 +1091,7 @@ void CObjGimmickManager::Action() {
 			//会話終了
 //			if (Overlay()->NextWait()) {
 			m_Koune3_flg = KOUNE3_TALK_START_END;
-			//			}
+//			}
 		}
 
 
@@ -1102,8 +1102,12 @@ void CObjGimmickManager::Action() {
 			if (m_Koune3_flg == KOUNE3_TALK_START_END)
 			{
 				//おばあちゃん「あらあら、...」
-				//Overlay()->talkDraw(KOUNE, ///);
-				m_Koune3_flg = KOUNE3_FLG1;
+//				Overlay()->talkDraw(KOUNE, ///);
+
+//				if (Overlay()->NextWait()) {
+					m_Koune3_flg = KOUNE3_FLG1;
+//				}
+				
 			}
 			//子猫の音を録音している
 			//else if(/*おばあちゃんに子猫の鳴き声を聞かせる*/)
@@ -1115,21 +1119,25 @@ void CObjGimmickManager::Action() {
 			else if (m_Koune3_flg == KOUNE3_FLG1)
 			{
 				//おばあちゃん「九ちゃんは自分からは...」
-				//Overlay()->talkDraw(KOUNE, ///);
+//				Overlay()->talkDraw(KOUNE, ///);
 
 			}
 			//フラグ2が立っている
 			else if (m_Koune3_flg == KOUNE3_FLG2)
 			{
 				//おばあちゃん「困ったわ...」
-				//Overlay()->talkDraw(KOUNE, ///);
-				m_Koune3_flg = KOUNE3_FLG3;
+//				Overlay()->talkDraw(KOUNE, ///);
+
+//				if (Overlay()->NextWait()) {
+					m_Koune3_flg = KOUNE3_FLG3;
+//				}
+				
 			}
 			//フラグ3が立っている
 			else if (m_Koune3_flg == KOUNE3_FLG3)
 			{
 				//おばあちゃん「九ちゃんはとても賢いから...」
-				//Overlay()->talkDraw(KOUNE, ///);
+//				Overlay()->talkDraw(KOUNE, ///);
 			}
 
 		}
@@ -1166,32 +1174,43 @@ void CObjGimmickManager::Action() {
 		//九官鳥
 		if (m_gimmick_mynah->m_ball[0].OnPush)
 		{
+			//イントロを聞かせる(クリア条件達成)
+//			if (/*九官鳥にイントロを聞かせる && m_Koune3_flg == KOUNE3_FLG5)
+//			{
+//				//ステージクリア
+//				Overlay()->talkDraw(KOUNE, ///);
+//				if (Overlay()->NextWait()) {
+					SavedataManeger()->CurrentData->m_bKoune3_flg_list.clear = 1;
+//				}
+//			}
 			//イントロを聞かせる(クリア条件未達成)
-//			if (/*九官鳥にイントロを聞かせる && クリア条件未達成*/)
+//			else if (/*九官鳥にイントロを聞かせる && m_Koune3_flg != KOUNE3_FLG5)
 //			{
 //				//九ちゃん「...。」
-//				//Overlay()->talkDraw(KOUNE, ///);
+//				Overlay()->talkDraw(KOUNE, ///);
 //			}
 			//フラグ3が立っていない
 			if (m_Koune3_flg != KOUNE3_FLG3)
 			{
 				//女の子「こんにちは。」九ちゃん「コンニチハ」
-				////Overlay()->talkDraw(KOUNE, ///);
+//				Overlay()->talkDraw(KOUNE, ///);
 			}
 			//フラグ3が立っている＆小さい音を聞かせる
 			else if (m_Koune3_flg == KOUNE3_FLG3 /*&& 九官鳥に小さい音を聞かせる*/)
 			{
 				//九ちゃん「ミギ！ニバンメ！！...」
-				////Overlay()->talkDraw(KOUNE, ///);
-				m_Koune3_flg = KOUNE3_FLG4;
+//				Overlay()->talkDraw(KOUNE, ///);
+				
+//				if (Overlay()->NextWait()) {
+					m_Koune3_flg = KOUNE3_FLG4;
+//				}
 			}
 			//フラグ3が立っているのみ
 			else if (m_Koune3_flg == KOUNE3_FLG3)
 			{
 				//九ちゃん「インカン！！...」
-				////Overlay()->talkDraw(KOUNE, ///);
+//				Overlay()->talkDraw(KOUNE, ///);
 			}
-
 		}
 		//子猫
 		if (m_gimmick_mynah->m_ball[0].OnPush)
@@ -1200,20 +1219,25 @@ void CObjGimmickManager::Action() {
 //			if (/*子猫に犬の鳴き声を聞かせる*/)
 //			{
 //				//子猫「にゃーーーん」
-//				//Overlay()->talkDraw(KOUNE, ///);
-//				m_Koune3_flg = KOUNE3_FLG2;
+//				Overlay()->talkDraw(KOUNE, ///);
+
+//				if (Overlay()->NextWait()) {
+//					m_gimmick_mynah->m_Status = STATUS_DELETE;//子猫削除
+					m_Koune3_flg = KOUNE3_FLG2;
+//				}
+//				
 //			}
 			//犬の鳴き声以外の音を聞かせる
 //			else if (/*!子猫に犬の鳴き声を聞かせる*/)
 //			{
 //				//子猫「にゃーー」
-//				//Overlay()->talkDraw(KOUNE, ///);
+//				Overlay()->talkDraw(KOUNE, ///);
 //			}
 			//普通に調べる
 //			else
 //			{
 				//女の子「かわいい！」
-				//Overlay()->talkDraw(KOUNE, ///);
+//				Overlay()->talkDraw(KOUNE, ///);
 //			}
 		}
 

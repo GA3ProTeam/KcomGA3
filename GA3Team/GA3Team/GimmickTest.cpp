@@ -801,6 +801,7 @@ void GimmickMynah::Init(int xpos, int ypos, int widht, int height, int balloonnu
 
 	//吹き出しの初期化
 	InitBall(&m_ball[0], 48, -48, sound, 1, PINK, LOWER_LEFT);
+	//InitBall(&m_ball[0], 48, -48, sound, 1, NORMAL, LOWER_LEFT);
 }
 void GimmickMynah::Destructor()	//デストラクタ
 {
@@ -880,6 +881,7 @@ void GimmickWindchime::Init(int xpos, int ypos, int widht, int height, int ballo
 
 	//吹き出しの初期化
 	InitBall(&m_ball[0], 48, -48, sound, 1, PURPLE, LOWER_LEFT);
+	//InitBall(&m_ball[0], 48, -48, sound, 1, NORMAL, LOWER_LEFT);
 }
 void GimmickWindchime::Destructor()	//デストラクタ
 {

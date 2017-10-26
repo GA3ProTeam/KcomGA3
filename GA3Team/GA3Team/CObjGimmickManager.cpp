@@ -1078,6 +1078,9 @@ void CObjGimmickManager::Action() {
 			//会話終了後
 			if (Overlay()->NextWait()) {
 
+			//窓「ガッシャーン」
+			Overlay()->talkDraw(KOUNE, KOUNE2_BOYA_FLAG3_OUEN_BIG_AFTER);
+
 		//	//会話終了後
 		//	if (Overlay()->NextWait()) {
 		//		//コウネステージ2クリア
@@ -1086,6 +1089,7 @@ void CObjGimmickManager::Action() {
 		//		Manager()->Pop(new CSceneStageSelect);
 		//	}
 		//}
+
 		break;
 	}
 	case 32://コウネステージ３
@@ -1101,7 +1105,6 @@ void CObjGimmickManager::Action() {
 //			}
 		}
 
-
 		//おばあちゃん
 		if (m_gimmick_granny->m_ball[0].OnPush)
 		{
@@ -1114,7 +1117,6 @@ void CObjGimmickManager::Action() {
 //				if (Overlay()->NextWait()) {
 					m_Koune3_flg = KOUNE3_FLG1;
 //				}
-				
 			}
 			//子猫の音を録音している
 			//else if(/*おばあちゃんに子猫の鳴き声を聞かせる*/)
@@ -1127,7 +1129,6 @@ void CObjGimmickManager::Action() {
 			{
 				//おばあちゃん「九ちゃんは自分からは...」
 //				Overlay()->talkDraw(KOUNE, ///);
-
 			}
 			//フラグ2が立っている
 			else if (m_Koune3_flg == KOUNE3_FLG2)
@@ -1137,25 +1138,13 @@ void CObjGimmickManager::Action() {
 
 //				if (Overlay()->NextWait()) {
 					m_Koune3_flg = KOUNE3_FLG3;
-//				}
-				
+//				}			
 			}
 			//フラグ3が立っている
 			else if (m_Koune3_flg == KOUNE3_FLG3)
 			{
 				//おばあちゃん「九ちゃんはとても賢いから...」
 //				Overlay()->talkDraw(KOUNE, ///);
-			}
-
-			//窓「ガッシャーン」
-			Overlay()->talkDraw(KOUNE, KOUNE2_BOYA_FLAG3_OUEN_BIG_AFTER);
-
-			//会話終了後
-			if (Overlay()->NextWait()) {
-				//コウネステージ2クリア
-				SavedataManeger()->CurrentData->m_stage[KOUNE].stage2clear = true;
-				//ステージセレクト画面に移行
-				Manager()->Pop(new CSceneStageSelect);
 			}
 			//フラグ3が立っている
 			else if (m_Koune3_flg == KOUNE3_FLG3)

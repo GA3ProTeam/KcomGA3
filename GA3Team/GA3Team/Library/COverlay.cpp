@@ -62,12 +62,15 @@ void COverlay::InitLoad()
 	//ステージ
 	image->LoadImageEx("シオンステージ-1.png", 24, TEX_SIZE_1024);
 	image->LoadImageEx("コウネステージ-1.png", 25, TEX_SIZE_1024);
-	image->LoadImageEx("研究所背景.png", 26, TEX_SIZE_1024);
+	image->LoadImageEx("研究所背景.png", EX_LABO, TEX_SIZE_1024);
 	image->LoadImageEx("T字路右側.png", EX_STAGE_SION_STAGE2_right, TEX_SIZE_1024);
 	image->LoadImageEx("T字路左側.png", EX_STAGE_SION_STAGE2_left, TEX_SIZE_1024);
 
 	//チュートリアルステージ------------------------
 	image->LoadImageEx("StageTutorial.png", EX_STAGE_TUTORIAL, TEX_SIZE_1024);
+	image->LoadImageEx("ヴォイスレコーダ.png", EX_VOICE_RECORDER, TEX_SIZE_512);
+	image->LoadImageEx("パソコン.png", EX_COMPUTER, TEX_SIZE_512);
+	image->LoadImageEx("机.png", EX_DESK, TEX_SIZE_1024);
 	//----------------------------------------------
 	image->LoadImageEx("音量ボタン.png", EX_VOLBOTTON, TEX_SIZE_512);
 	image->LoadImageEx("アイコン透過.png", EX_ICON, TEX_SIZE_512);

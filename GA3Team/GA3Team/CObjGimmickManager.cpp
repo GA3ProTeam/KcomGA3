@@ -38,22 +38,22 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 		//博士
 		m_gimmick_doctor = new GimmickDoctor();
 		Obj()->InsertObj(m_gimmick_doctor, GIMMICK_DOCTOR, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_doctor->Init(100, 200, 125, 245, 2);
+		m_gimmick_doctor->Init(50, 200, 200*0.8f, 380*0.8f, 2);
 
 		//レコーダー
 		m_gimmick_recorder = new GimmickRecorder();
 		Obj()->InsertObj(m_gimmick_recorder, GIMMICK_RECORDER, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_recorder->Init(368, 237, 80, 130, 1);
+		m_gimmick_recorder->Init(370, 200, 135*0.5f, 350*0.5f, 1);
 
 		//パソコン
 		m_gimmick_computer = new GimmickComputer();
 		Obj()->InsertObj(m_gimmick_computer, GIMMICK_COMPUTER, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_computer->Init(550, 250, 200, 200, 1);
+		m_gimmick_computer->Init(550, 300, 280*0.8f, 260*0.8f, 1);
 
 		//机
 		m_obj_desk = new CObjDesk();
 		Obj()->InsertObj(m_obj_desk, OBJ_DESK, 5, this->m_pScene, HIT_BOX_OFF);
-		m_obj_desk->Init(286, 310, 242, 145);
+		m_obj_desk->Init(266, 310, 560*0.5f, 440*0.5f);
 		break;
 		//--------------------------------------------------------
 
@@ -1601,9 +1601,25 @@ void CObjGimmickManager::Draw() {
 
 	//背景描画
 	switch (m_Stage_ID){
-		
+	//チュートリアルステージ----------------------------------------
 	case 10:
+		//背景
+		//切り取り座標
+		m_dst.top = 340;
+		m_dst.bottom = m_dst.top + 684;
+		m_dst.left = 0;
+		m_dst.right = m_dst.left + 1024;
+
+		//転送先座標
+		m_src.top = 0;
+		m_src.bottom = m_src.top + WINDOW_SIZE_H;
+		m_src.left = 0;
+		m_src.right = m_src.left + WINDOW_SIZE_W;
+
+		//背景描画
+		Image()->DrawEx(EX_LABO, &m_src, &m_dst, col, 0.0f);
 		break;
+	
 	case 11:
 		//右
 		//切り取り座標

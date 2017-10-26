@@ -1941,10 +1941,10 @@ void GimmickTelevision::Draw()
 
 	//ギミック本体描画-----------------------------------------------------------
 	//切り取り先座標
-	m_dst.top = 43;
-	m_dst.bottom = m_dst.top + 167;
-	m_dst.left = 20;
-	m_dst.right = m_dst.left + 245;
+	m_dst.top = 0;
+	m_dst.bottom = m_dst.top + 155;
+	m_dst.left = 0;
+	m_dst.right = m_dst.left + 255;
 
 	//転送先座標
 	m_src.top = m_iYpos;
@@ -1953,7 +1953,7 @@ void GimmickTelevision::Draw()
 	m_src.right = m_src.left + m_iWidth;
 
 	//描画
-	Image()->DrawEx(EX_MERUERU_MICROWAVE, &m_src, &m_dst, col, 0.0f);
+	Image()->DrawEx(42, &m_src, &m_dst, col, 0.0f);
 	//---------------------------------------------------------------------------
 
 	//吹き出し描画＆動作---------------------------------------------------------

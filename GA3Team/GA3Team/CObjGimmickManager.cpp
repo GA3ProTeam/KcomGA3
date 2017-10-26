@@ -390,9 +390,9 @@ void CObjGimmickManager::Action() {
 		KOUNE3_FLG5,
 
 		//録音-------------------------------------------------------------------------------------------
-		KOUNE3_SOUND_REC_KITTEN,				//子猫の鳴き声を録音
-		KOUNE3_SOUND_REC_CICADA,				//蝉の音を録音
-		KOUNE3_SOUND_REC_WINDCHIME,				//風鈴の音を録音
+		//KOUNE3_SOUND_REC_KITTEN,				//子猫の鳴き声を録音
+		//KOUNE3_SOUND_REC_CICADA,				//蝉の音を録音
+		//KOUNE3_SOUND_REC_WINDCHIME,			//風鈴の音を録音
 
 	};
 
@@ -400,35 +400,35 @@ void CObjGimmickManager::Action() {
 	enum KOUNE5_NUMBER {
 		KOUNE5_TALK_START,						//ステージ開始時会話
 		KOUNE5_TALK_START_END,					//ステージ開始時会話_終了
-												//メカニック
-												KOUNE5_TALK_MECHANIC,					//メカニック会話0
-												KOUNE5_TALK_MECHANIC_END,				//メカニック会話0_終了
-												KOUNE5_TALK_MECHANIC1_ABILITY,			//メカニック会話1_能力発動時
-												KOUNE5_TALK_MECHANIC1_ABILITY_END,		//メカニック会話1_能力発動時_終了
-												KOUNE5_TALK_MECHANIC2_MUSIC_OK,			//メカニック会話2_指定の音を聞かせる
-												KOUNE5_TALK_MECHANIC2_MUSIC_OK_END,		//メカニック会話2_指定の音を聞かせる_終了
-												KOUNE5_TALK_MECHANIC3_MUSIC_MIS,		//メカニック会話3_指定の音以外を聞かせる
-												KOUNE5_TALK_MECHANIC3_MUSIC_MIS_END,	//メカニック会話3_指定の音以外を聞かせる_終了
-												KOUNE5_TALK_MECHANIC3_RESET,			//メカニック会話4_ランプリセット
-												KOUNE5_TALK_MECHANIC3_RESET_END,		//メカニック会話4_ランプリセット_終了
-												KOUNE5_TALK_MECHANIC5_RESET_YES,		//メカニック会話5_リセットする
-												KOUNE5_TALK_MECHANIC5_RESET_YES_END,	//メカニック会話5_リセットする_終了
-												KOUNE5_TALK_MECHANIC6_RESET_NO,			//メカニック会話6_リセットしない
-												KOUNE5_TALK_MECHANIC6_RESET_NO_END,		//メカニック会話6_リセットしない_終了
-												KOUNE5_TALK_MECHANIC7_CLEAR,			//メカニック会話7_クリア条件達成
-												KOUNE5_TALK_MECHANIC7_CLEAR_END,		//メカニック会話7_クリア条件達成_終了
-																						//演奏家
-																						KOUNE5_TALK_MUSICIAN1_FLG3_FALSE_NO,	//演奏家会話1_フラグ3×_条件を満たしていない
-																						KOUNE5_TALK_MUSICIAN1_FLG3_FALSE_NO_END,//演奏家会話1_フラグ3×_条件を満たしていない_終了
-																						KOUNE5_TALK_MUSICIAN2_FLG3_FALSE_YES,	//演奏家会話2_フラグ3×_条件を満たしている
-																						KOUNE5_TALK_MUSICIAN2_FLG3_FALSE_YES_END,//演奏家会話2_フラグ3×_条件を満たしている_終了
-																						KOUNE5_TALK_MUSICIAN3_FLG3_TRUE,		//演奏家会話3_フラグ3○
-																						KOUNE5_TALK_MUSICIAN3_FLG3_TRUE_END,	//演奏家会話3_フラグ3○_終了
-																																//録音---------
-																																KOUNE5_SOUND_REC_A,						//機械音A_録音
-																																KOUNE5_SOUND_REC_B,						//機械音B_録音
-																																KOUNE5_SOUND_REC_Ad,					//機械音A'_録音
-																																KOUNE5_SOUND_REC_Bd,					//機械音B'_録音
+		//メカニック
+		KOUNE5_TALK_MECHANIC,					//メカニック会話0
+		KOUNE5_TALK_MECHANIC_END,				//メカニック会話0_終了
+		KOUNE5_TALK_MECHANIC1_ABILITY,			//メカニック会話1_能力発動時
+		KOUNE5_TALK_MECHANIC1_ABILITY_END,		//メカニック会話1_能力発動時_終了
+		KOUNE5_TALK_MECHANIC2_MUSIC_OK,			//メカニック会話2_指定の音を聞かせる
+		KOUNE5_TALK_MECHANIC2_MUSIC_OK_END,		//メカニック会話2_指定の音を聞かせる_終了
+		KOUNE5_TALK_MECHANIC3_MUSIC_MIS,		//メカニック会話3_指定の音以外を聞かせる
+		KOUNE5_TALK_MECHANIC3_MUSIC_MIS_END,	//メカニック会話3_指定の音以外を聞かせる_終了
+		KOUNE5_TALK_MECHANIC3_RESET,			//メカニック会話4_ランプリセット
+		KOUNE5_TALK_MECHANIC3_RESET_END,		//メカニック会話4_ランプリセット_終了
+		KOUNE5_TALK_MECHANIC5_RESET_YES,		//メカニック会話5_リセットする
+		KOUNE5_TALK_MECHANIC5_RESET_YES_END,	//メカニック会話5_リセットする_終了
+		KOUNE5_TALK_MECHANIC6_RESET_NO,			//メカニック会話6_リセットしない
+		KOUNE5_TALK_MECHANIC6_RESET_NO_END,		//メカニック会話6_リセットしない_終了
+		KOUNE5_TALK_MECHANIC7_CLEAR,			//メカニック会話7_クリア条件達成
+		KOUNE5_TALK_MECHANIC7_CLEAR_END,		//メカニック会話7_クリア条件達成_終了
+		//演奏家
+		KOUNE5_TALK_MUSICIAN1_FLG3_FALSE_NO,	//演奏家会話1_フラグ3×_条件を満たしていない
+		KOUNE5_TALK_MUSICIAN1_FLG3_FALSE_NO_END,//演奏家会話1_フラグ3×_条件を満たしていない_終了
+		KOUNE5_TALK_MUSICIAN2_FLG3_FALSE_YES,	//演奏家会話2_フラグ3×_条件を満たしている
+		KOUNE5_TALK_MUSICIAN2_FLG3_FALSE_YES_END,//演奏家会話2_フラグ3×_条件を満たしている_終了
+		KOUNE5_TALK_MUSICIAN3_FLG3_TRUE,		//演奏家会話3_フラグ3○
+		KOUNE5_TALK_MUSICIAN3_FLG3_TRUE_END,	//演奏家会話3_フラグ3○_終了
+		//録音---------
+		KOUNE5_SOUND_REC_A,						//機械音A_録音
+		KOUNE5_SOUND_REC_B,						//機械音B_録音
+		KOUNE5_SOUND_REC_Ad,					//機械音A'_録音
+		KOUNE5_SOUND_REC_Bd,					//機械音B'_録音
 	};
 
 	//イベント番号(メルエルステージ1)
@@ -491,7 +491,6 @@ void CObjGimmickManager::Action() {
 	static bool init_flg = false;
 	if (!init_flg) {
 		init_flg = true;
-
 
 		//イベント進行度初期化
 		//チュートリアルステージ
@@ -721,37 +720,22 @@ void CObjGimmickManager::Action() {
 			//口笛音取得
 			if (m_iMerueru1 == MERUERU1_KATSUO_TALK_END) {
 
-
-
 			}
 		}
 
 		//テレビ音取得
 		if (m_gimmick_television->m_ball[0].OnPush) {
 
-
-
-
 		}
 		//レンジ音取得
 		if (m_gimmick_oven->m_ball[0].OnPush) {
 
-
-
-
 		}
 
 		//レンジ音使用でステージクリア
-		if (m_gimmick_doctorroomdoor->m_ball[0].m_sound_data.sound_num == 1)
-		{
-
-
-
+		if (m_gimmick_doctorroomdoor->m_ball[0].m_sound_data.sound_num == 1){
 
 		}
-
-
-
 
 	}
 	case 21:
@@ -827,9 +811,9 @@ void CObjGimmickManager::Action() {
 				//会話終了
 				if (Overlay()->NextWait()) {
 					//if (Overlay()->NowTalk() == KOUNE1_OZI_FLAG3_YES) {
-						m_gimmick_oldman->m_Status = STATUS_DELETE;
-						m_gimmick_oldman = NULL;
-						m_Koune1_flg = 4;
+					m_gimmick_oldman->m_Status = STATUS_DELETE;
+					m_gimmick_oldman = NULL;
+					m_Koune1_flg = 4;
 					//}
 				}
 			}
@@ -1078,20 +1062,21 @@ void CObjGimmickManager::Action() {
 			//会話終了後
 			if (Overlay()->NextWait()) {
 
-			//窓「ガッシャーン」
-			Overlay()->talkDraw(KOUNE, KOUNE2_BOYA_FLAG3_OUEN_BIG_AFTER);
+				//窓「ガッシャーン」
+				Overlay()->talkDraw(KOUNE, KOUNE2_BOYA_FLAG3_OUEN_BIG_AFTER);
 
-		//	//会話終了後
-		//	if (Overlay()->NextWait()) {
-		//		//コウネステージ2クリア
-		//		SavedataManeger()->CurrentData->m_bKouneClearflg[1] = true;
-		//		//ステージセレクト画面に移行
-		//		Manager()->Pop(new CSceneStageSelect);
-		//	}
-		//}
+				//	//会話終了後
+				//	if (Overlay()->NextWait()) {
+				//		//コウネステージ2クリア
+				//		SavedataManeger()->CurrentData->m_bKouneClearflg[1] = true;
+				//		//ステージセレクト画面に移行
+				//		Manager()->Pop(new CSceneStageSelect);
+				//	}
+				//}
+			}
+		}
 
 		break;
-	}
 	case 32://コウネステージ３
 	{
 		//【初回動作】
@@ -1102,7 +1087,7 @@ void CObjGimmickManager::Action() {
 			//会話終了
 //			if (Overlay()->NextWait()) {
 			m_Koune3_flg = KOUNE3_TALK_START_END;
-//			}
+			//			}
 		}
 
 		//おばあちゃん
@@ -1115,8 +1100,8 @@ void CObjGimmickManager::Action() {
 //				Overlay()->talkDraw(KOUNE, ///);
 
 //				if (Overlay()->NextWait()) {
-					m_Koune3_flg = KOUNE3_FLG1;
-//				}
+				m_Koune3_flg = KOUNE3_FLG1;
+				//				}
 			}
 			//子猫の音を録音している
 			//else if(/*おばあちゃんに子猫の鳴き声を聞かせる*/)
@@ -1137,8 +1122,8 @@ void CObjGimmickManager::Action() {
 //				Overlay()->talkDraw(KOUNE, ///);
 
 //				if (Overlay()->NextWait()) {
-					m_Koune3_flg = KOUNE3_FLG3;
-//				}			
+				m_Koune3_flg = KOUNE3_FLG3;
+				//				}			
 			}
 			//フラグ3が立っている
 			else if (m_Koune3_flg == KOUNE3_FLG3)
@@ -1163,7 +1148,7 @@ void CObjGimmickManager::Action() {
 				//少女「お兄ちゃん...」
 				//Overlay()->talkDraw(KOUNE, ///);
 			}
-			
+
 			//フラグ2が立っている
 			else if (m_Koune3_flg == KOUNE3_FLG2)
 			{
@@ -1187,16 +1172,16 @@ void CObjGimmickManager::Action() {
 //				//ステージクリア
 //				Overlay()->talkDraw(KOUNE, ///);
 //				if (Overlay()->NextWait()) {
-					SavedataManeger()->CurrentData->m_bKoune3_flg_list.clear = 1;
-//				}
-//			}
-			//イントロを聞かせる(クリア条件未達成)
-//			else if (/*九官鳥にイントロを聞かせる && m_Koune3_flg != KOUNE3_FLG5)
-//			{
-//				//九ちゃん「...。」
-//				Overlay()->talkDraw(KOUNE, ///);
-//			}
-			//フラグ3が立っていない
+			SavedataManeger()->CurrentData->m_bKoune3_flg_list.clear = 1;
+			//				}
+			//			}
+						//イントロを聞かせる(クリア条件未達成)
+			//			else if (/*九官鳥にイントロを聞かせる && m_Koune3_flg != KOUNE3_FLG5)
+			//			{
+			//				//九ちゃん「...。」
+			//				Overlay()->talkDraw(KOUNE, ///);
+			//			}
+						//フラグ3が立っていない
 			if (m_Koune3_flg != KOUNE3_FLG3)
 			{
 				//女の子「こんにちは。」九ちゃん「コンニチハ」
@@ -1207,10 +1192,10 @@ void CObjGimmickManager::Action() {
 			{
 				//九ちゃん「ミギ！ニバンメ！！...」
 //				Overlay()->talkDraw(KOUNE, ///);
-				
+
 //				if (Overlay()->NextWait()) {
-					m_Koune3_flg = KOUNE3_FLG4;
-//				}
+				m_Koune3_flg = KOUNE3_FLG4;
+				//				}
 			}
 			//フラグ3が立っているのみ
 			else if (m_Koune3_flg == KOUNE3_FLG3)
@@ -1230,21 +1215,21 @@ void CObjGimmickManager::Action() {
 
 //				if (Overlay()->NextWait()) {
 //					m_gimmick_mynah->m_Status = STATUS_DELETE;//子猫削除
-					m_Koune3_flg = KOUNE3_FLG2;
-//				}
-//			}
-			//犬の鳴き声以外の音を聞かせる
-//			else if (/*!子猫に犬の鳴き声を聞かせる*/)
-//			{
-//				//子猫「にゃーー」
-//				Overlay()->talkDraw(KOUNE, ///);
-//			}
-			//普通に調べる
-//			else
-//			{
-				//女の子「かわいい！」
-//				Overlay()->talkDraw(KOUNE, ///);
-//			}
+			m_Koune3_flg = KOUNE3_FLG2;
+			//				}
+			//			}
+						//犬の鳴き声以外の音を聞かせる
+			//			else if (/*!子猫に犬の鳴き声を聞かせる*/)
+			//			{
+			//				//子猫「にゃーー」
+			//				Overlay()->talkDraw(KOUNE, ///);
+			//			}
+						//普通に調べる
+			//			else
+			//			{
+							//女の子「かわいい！」
+			//				Overlay()->talkDraw(KOUNE, ///);
+			//			}
 		}
 
 
@@ -1457,10 +1442,12 @@ void CObjGimmickManager::Action() {
 		break;
 	}
 
+
+		}
 	}
-
 }
-
+	
+	
 //ドロー
 void CObjGimmickManager::Draw() {
 	float col[4] = { 1.0f,1.0f,1.0f,1.0f };
@@ -1578,9 +1565,6 @@ void CObjGimmickManager::Draw() {
 		//背景描画
 		//Image()->DrawEx(EX_MERUERU_TANA, &m_src, &m_dst, col, 0.0f);
 		Image()->DrawEx(EX_STAGE_TUTORIAL, &m_src, &m_dst, col, 0.0f);
-
-
-
 
 		break;
 	case 21:

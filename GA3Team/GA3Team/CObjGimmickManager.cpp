@@ -497,8 +497,6 @@ void CObjGimmickManager::Action() {
 		m_Sion3_flg = SION3_TOLK_START;
 	
 
-			
-
 		//コウネステージ1
 		m_Koune1_flg = 0;
 		for (int i = 0; i < m_bKoune1_flg_list.size(); i++) {
@@ -1009,7 +1007,7 @@ void CObjGimmickManager::Action() {
 		//----音を聞かせる--------------------------------------------------------------------------------
 
 		//子猫の音を録音している
-		if (m_gimmick_granny->m_getsound.sound_num != -1) {
+		if (m_gimmick_granny->m_getsound.sound_num == KOUNE3_KITTY) {
 
 			KOUNE3_KITTY; //子猫の鳴き声
 			//おばあちゃん「あら、その鳴き声は...」
@@ -1059,7 +1057,7 @@ void CObjGimmickManager::Action() {
 
 		}
 		//犬の鳴き声以外の音を聞かせる
-		else if (!m_gimmick_kitten->m_getsound.sound_num == KOUNE1_DOG)
+		else if (m_gimmick_kitten->m_getsound.sound_num != -1)
 		{
 			//子猫「にゃーー」
 			Overlay()->talkDraw(KOUNE, KOUNE3_CAT_EXCEPTION_SOUND_LISTEN);

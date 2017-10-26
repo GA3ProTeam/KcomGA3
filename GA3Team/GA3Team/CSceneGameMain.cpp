@@ -43,7 +43,7 @@ void CSceneGameMain::InitScene()
 
 	m_obj_gimmickmanager = new CObjGimmickManager();
 	Obj()->InsertObj(m_obj_gimmickmanager, OBJ_GIMMICK_MANAGER, 0, this, HIT_BOX_OFF);
-	m_obj_gimmickmanager->Init(0,0,m_obj_Lscroll,m_obj_Rscroll,m_obj_menutab);
+	m_obj_gimmickmanager->Init(User()->m_iCurrentChara, User()->m_iCurrentStage,m_obj_Lscroll,m_obj_Rscroll,m_obj_menutab);
 
 	m_gimmick_test = new GimmickTest();
 	Obj()->InsertObj(m_gimmick_test, OBJ_GIMMICK_TEST, 5, this, HIT_BOX_OFF);

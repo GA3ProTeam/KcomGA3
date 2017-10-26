@@ -10,6 +10,22 @@
 void CObjGimmickManager::Init(int select_chara, int stage_id,
 	ButtonLScrollScreen* pLScroll, ButtonRScrollScreen* pRScroll, CObjMenuTab* pMenuTab) {
 
+	//セーブデータへの参照を取得---------------------------------------------------------
+	int& m_Sion1_flg = g_SavedataManeger->CurrentData->m_stage[SION].stage1;
+
+	int& m_Sion3_flg = g_SavedataManeger->CurrentData->m_stage[SION].stage3;
+
+	int& m_Koune1_flg = g_SavedataManeger->CurrentData->m_stage[KOUNE].stage1;
+
+	vector<bool>& m_bKoune1_flg_list = g_SavedataManeger->CurrentData->m_bKoune1_flg_list;
+
+	int& m_iKoune2_flg = g_SavedataManeger->CurrentData->m_stage[KOUNE].stage2;
+
+	vector<bool>& m_bKoune2_flg_list = g_SavedataManeger->CurrentData->m_bKoune2_flg_list;
+
+	int& m_iKoune3_flg = g_SavedataManeger->CurrentData->m_stage[KOUNE].stage3;
+	//-----------------------------------------------------------------------------------
+
 	//メニュータブへの参照セット
 	m_pMenuTab = pMenuTab;
 
@@ -30,7 +46,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 	*/
 	SavedataManeger()->Setcurrentdata();
 
-	//m_Stage_ID = 31;
+	//m_Stage_ID = 30;
 
 	switch (m_Stage_ID) {
 		//チュートリアル（博士）ステージ--------------------------
@@ -62,19 +78,27 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 
 		m_gimmick_dog = new GimmickDog();
 		Obj()->InsertObj(m_gimmick_dog, GIMMICK_DOG, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_dog->Init(520, 320, 120, 100, 1);
+		m_gimmick_dog->Init(520, 390, 100, 100, 1);
 
 		m_gimmick_oldman = new GimmickOldman();
 		Obj()->InsertObj(m_gimmick_oldman, GIMMICK_OLDMAN, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_oldman->Init(100, 150, 150, 300, 1);
+		m_gimmick_oldman->Init(100, 200, 150, 300, 1);
 
 		m_gimmick_manhole_hole = new GimmickManholeHole();
 		Obj()->InsertObj(m_gimmick_manhole_hole, GIMMICK_MANHOLEHOLE, 2, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_manhole_hole->Init(100, 400, 220, 80, 2);
+		m_gimmick_manhole_hole->Init(100, 450, 220, 80, 2);
+
+		//開くまで動作させない
+		if (!m_bKoune1_flg_list[KOUNE1_BOOL_MANHOLE_OPEN]) {
+			m_gimmick_manhole_hole->m_bActionFlg = false;
+		}
+		else {
+			m_gimmick_manhole_hole->m_bActionFlg = true;
+		}
 
 		m_gimmick_manhole_cover = new GimmickManholeCover();
 		Obj()->InsertObj(m_gimmick_manhole_cover, GIMMICK_MANHOLECOVER, 3, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_manhole_cover->Init(100, 400, 220, 80, 1);
+		m_gimmick_manhole_cover->Init(100, 450, 220, 80, 1);
 
 		break;
 
@@ -458,10 +482,7 @@ void CObjGimmickManager::Action() {
 	int& m_Sion3_flg = g_SavedataManeger->CurrentData->m_stage[SION].stage3;
 
 	int& m_Koune1_flg = g_SavedataManeger->CurrentData->m_stage[KOUNE].stage1;
-	//boolフラグリスト
-	enum KOUNE1_BOOL_FLG_LIST {
-		KOUNE1_BOOL_OLDMAN_TALK,//おじいさんと会話した
-	};
+
 	vector<bool>& m_bKoune1_flg_list = g_SavedataManeger->CurrentData->m_bKoune1_flg_list;
 
 	int& m_iKoune2_flg = g_SavedataManeger->CurrentData->m_stage[KOUNE].stage2;
@@ -691,14 +712,14 @@ void CObjGimmickManager::Action() {
 				if (m_gimmick_oldman->m_getsound.sound_num == 0 &&
 					m_gimmick_oldman->m_getsound.sound_volume == BALL_VOL_BIG) {
 					//おじいさん「この声ははなこ！！」
-					//Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG3_YES);
+					Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG3_YES);
 
 				}/*犬の音を少音量で聞かせた+おじいさんに話しかける前に*/
 				else if (m_gimmick_oldman->m_getsound.sound_num == 0 &&
 					m_gimmick_oldman->m_getsound.sound_volume != BALL_VOL_BIG&&
 					m_bKoune1_flg_list[KOUNE1_BOOL_OLDMAN_TALK] == false) {
 					//おじいさん「何か小さな音がしたような気がしたが・・・」
-					//Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG3_NO_FLAG1_YES);
+					Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG3_NO_FLAG1_YES);
 				}
 				/*犬の音を少～中音量で聞かせた*/
 				else if (m_gimmick_oldman->m_getsound.sound_num == 0 &&
@@ -710,11 +731,11 @@ void CObjGimmickManager::Action() {
 
 				//会話終了
 				if (Overlay()->NextWait()) {
-					//if (Overlay()->NowTalk() == KOUNE1_OZI_FLAG3_YES) {
-					m_gimmick_oldman->m_Status = STATUS_DELETE;
-					m_gimmick_oldman = NULL;
-					m_Koune1_flg = 4;
-					//}
+					if (Overlay()->NowTalk() == KOUNE1_OZI_FLAG3_YES) {
+						m_gimmick_oldman->m_Status = STATUS_DELETE;
+						m_gimmick_oldman = NULL;
+						m_Koune1_flg = 4;
+					}
 				}
 			}
 		}
@@ -722,6 +743,8 @@ void CObjGimmickManager::Action() {
 			//マンホールを左にずらす
 			if (m_gimmick_manhole_cover->m_ball[0].OnPush) {
 				m_gimmick_manhole_cover->m_iXpos -= 100;
+				m_gimmick_manhole_hole->m_bActionFlg = true;//動作フラグオン
+				m_bKoune1_flg_list[KOUNE1_BOOL_MANHOLE_OPEN] = true;
 				m_Koune1_flg = 5;
 			}
 		}
@@ -832,13 +855,13 @@ void CObjGimmickManager::Action() {
 		}
 		//少年Ａと会話後
 		else if (m_iKoune2_flg == KOUNE2_EVENT_BOYA_TALK_END) {
-			//デバッグ用　音データを強制入手
-			SoundData a1 = { 0,RED,BALL_ELM_NO_ANIMAL,BALL_VOL_SMALL };
-			SoundData a2 = { 1,BLUE,BALL_ELM_ANIMAL,BALL_VOL_MIDDLE };
-			SoundData a3 = { 2,GREEN,BALL_ELM_ANIMAL,BALL_VOL_BIG };
-			SoundManager()->SoundSave(a1);
-			SoundManager()->SoundSave(a2);
-			SoundManager()->SoundSave(a3);
+			////デバッグ用　音データを強制入手
+			//SoundData a1 = { 0,RED,BALL_ELM_NO_ANIMAL,BALL_VOL_SMALL };
+			//SoundData a2 = { 1,BLUE,BALL_ELM_ANIMAL,BALL_VOL_MIDDLE };
+			//SoundData a3 = { 2,GREEN,BALL_ELM_ANIMAL,BALL_VOL_BIG };
+			//SoundManager()->SoundSave(a1);
+			//SoundManager()->SoundSave(a2);
+			//SoundManager()->SoundSave(a3);
 
 			//少年Ａに音をドラッグ
 			if (m_gimmick_boy_a->m_getsound.sound_num != -1) {
@@ -1628,16 +1651,16 @@ void CObjGimmickManager::Draw() {
 	RECT m_src;		//転送先座標
 	RECT m_dst;		//切り取り座標
 
-	//背景描画
-	/*
-	m_Stage_ID
-	10   =チュートリアル（博士）
-	30~35=コウネ
-	20~25=シオン
-	40~45=メルエル
-	*/
+					//背景描画
+					/*
+					m_Stage_ID
+					10   =チュートリアル（博士）
+					30~35=コウネ
+					20~25=シオン
+					40~45=メルエル
+					*/
 
-	//ステージID修正後
+					//ステージID修正後
 	switch (m_Stage_ID) {
 		//チュートリアルステージ↓-----------------------------------------------
 	case 10:
@@ -1675,7 +1698,7 @@ void CObjGimmickManager::Draw() {
 		m_src.right = m_src.left + 1200;
 
 		//背景描画
-		Image()->DrawEx(25, &m_src, &m_dst, col, 0.0f);
+		Image()->DrawEx(EX_STAGE_KOUNE_STAGE1, &m_src, &m_dst, col, 0.0f);
 		break;
 
 	case 31://ステージ2
@@ -1693,7 +1716,7 @@ void CObjGimmickManager::Draw() {
 		m_src.right = m_src.left + 800;
 
 		//背景描画
-		//Image()->DrawEx(EX_PARK_LEFT, &m_src, &m_dst, col, 0.0f);
+		Image()->DrawEx(EX_PARK_LEFT, &m_src, &m_dst, col, 0.0f);
 
 		//右側
 		//切り取り座標
@@ -1709,7 +1732,7 @@ void CObjGimmickManager::Draw() {
 		m_src.right = m_src.left + 400;
 
 		//背景描画
-		//Image()->DrawEx(EX_PARK_RIGHT, &m_src, &m_dst, col, 0.0f);
+		Image()->DrawEx(EX_PARK_RIGHT, &m_src, &m_dst, col, 0.0f);
 		break;
 
 	case 32://ステージ3

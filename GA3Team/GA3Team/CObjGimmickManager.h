@@ -4,6 +4,12 @@
 
 //【クラス宣言は必要なくなりました。】
 
+//コウネステージ1　boolフラグリスト
+enum KOUNE1_BOOL_FLG_LIST {
+	KOUNE1_BOOL_OLDMAN_TALK,//おじいさんと会話した
+	KOUNE1_BOOL_MANHOLE_OPEN,//マンホールを開く
+};
+
 //boolフラグリスト
 enum KOUNE2_BOOL_FLG_LIST {
 	KOUNE2_BOOL_GIRL_ACTION,//女の子動作開始

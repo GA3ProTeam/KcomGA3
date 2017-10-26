@@ -1064,7 +1064,7 @@ void GimmickDog::Draw()
 	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
 	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
 	//描画
-	Image()->DrawEx(16, &m_src, &m_dst, col, 0.0f);
+	Image()->DrawEx(EX_ANIMALALL, &m_src, &m_dst, col, 0.0f);
 	this->gimmicDraw(1);
 }	
 //マンホールの蓋のデストラクタ
@@ -1105,7 +1105,7 @@ void GimmickManholeCover::Draw()
 void GimmickManholeHole::Init(int xpos, int ypos, int widht, int height, int balloonnum)
 {
 	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
-	InitBall(&m_ball[0], m_iWidth - 50, m_iHeight - 48, sound, 1, RED, UPPER_LEFT);
+	InitBall(&m_ball[0], m_iWidth - 50, m_iHeight - 48, sound, 1, GRAY, UPPER_LEFT);
 	m_Status = STATUS_SLEEP;
 
 }

@@ -435,7 +435,7 @@ void Gimmickearphone::Action()
 		//マウスドラッグ中にマウスボタンが離された
 		//if (!Input()->GetMouButtonL() && tab->GetHaveSound()) {
 
-		SavedataManeger()->CurrentData->m_bSionClearflg[0] = true;
+		//SavedataManeger()->CurrentData->m_bSionClearflg[0] = true;
 
 
 		}
@@ -488,17 +488,17 @@ void Gimmickkoune::Action()
 {
 	if (m_ball[1].OnPush)
 	{
-		if (SavedataManeger()->CurrentData->m_bSionflg[0] ==false)
-		{
-			//イヤホン男フラグなし会話
+		//if (SavedataManeger()->CurrentData->m_bSionflg[0] ==false)
+		//{
+		//	//イヤホン男フラグなし会話
 
-		}
+		//}
 
-		else if (SavedataManeger()->CurrentData->m_bSionflg[0] == true)
-		{
-			//イヤホン男フラグなし会話
+		//else if (SavedataManeger()->CurrentData->m_bSionflg[0] == true)
+		//{
+		//	//イヤホン男フラグなし会話
 
-		}
+		//}
 	}
 }
 

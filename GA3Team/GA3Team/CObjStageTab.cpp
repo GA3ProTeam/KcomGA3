@@ -115,10 +115,10 @@ void CObjStageTab::Draw() {
 	float m_fCol[4] = { 1.0f,1.0f,1.0f,1.0f };
 
 	//Ø‚èŽæ‚èæÀ•W
-	m_rDst.top = 896;
+	m_rDst.top = 0;
 	m_rDst.left = 0;
-	m_rDst.bottom = m_rDst.top+128;
-	m_rDst.right = 128;
+	m_rDst.bottom = m_rDst.top+1024;
+	m_rDst.right = m_rDst.left+1024;
 
 	//“]‘—æÀ•W
 	m_rSrc.top = 40; 
@@ -127,5 +127,5 @@ void CObjStageTab::Draw() {
 	m_rSrc.right = m_rSrc.left + 575;
 
 	//•`‰æ
-	Image()->Draw(0, &m_rSrc, &m_rDst, m_fCol, 0.0f);
+	Image()->DrawEx(EX_STAGE_TAB_FRAME, &m_rSrc, &m_rDst, m_fCol, 0.0f);
 }

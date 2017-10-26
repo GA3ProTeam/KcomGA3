@@ -195,15 +195,15 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 		//Obj()->InsertObj(m_gimmick_bird, GIMMICK_BIRD, 5, this->m_pScene, HIT_BOX_OFF);
 		//m_gimmick_bird->Init(270, 100, 70, 90, 1);
 
-		////Œ¢A(”ÔŒ¢)¶¬
-		//m_gimmick_watchdog = new Gimmickwatchdog();
-		//Obj()->InsertObj(m_gimmick_watchdog, GIMMICK_WATCHDOG, 5, this->m_pScene, HIT_BOX_OFF);
-		//m_gimmick_watchdog->Init(600, 530, 100, 70, 1);
+		//Œ¢A(”ÔŒ¢)¶¬
+		m_gimmick_watchdog = new Gimmickwatchdog();
+		Obj()->InsertObj(m_gimmick_watchdog, GIMMICK_WATCHDOG, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_watchdog->Init(600, 500, 100, 100, 1);
 
-		////ƒCƒ“ƒ^[ƒzƒ“¶¬
-		//m_gimmick_interphone = new GimmickInterphone();
-		//Obj()->InsertObj(m_gimmick_interphone, GIMMICK_INTERPHONE, 5, this->m_pScene, HIT_BOX_OFF);
-		//m_gimmick_interphone->Init(730, 300, 70, 100, 1);
+		//ƒCƒ“ƒ^[ƒzƒ“¶¬
+		m_gimmick_interphone = new GimmickInterphone();
+		Obj()->InsertObj(m_gimmick_interphone, GIMMICK_INTERPHONE, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_interphone->Init(745, 380, 65, 100, 1);
 
 		break;
 	case 31:
@@ -1601,22 +1601,8 @@ void CObjGimmickManager::Draw() {
 
 	//”wŒi•`‰æ
 	switch (m_Stage_ID){
-		//-ƒVƒIƒ“ƒXƒe[ƒW-----------------------------------------
+		
 	case 10:
-		//Ø‚èŽæ‚èÀ•W
-		m_dst.top = 0;
-		m_dst.bottom = m_dst.top + 1024;
-		m_dst.left = 0;
-		m_dst.right = m_dst.left + 1024;
-
-		//“]‘—æÀ•W
-		m_src.top = 0;
-		m_src.bottom = m_src.top + 600;
-		m_src.left = 0 + User()->mscroll_x;
-		m_src.right = m_src.left + 800;
-
-		//”wŒi•`‰æ
-		Image()->DrawEx(24, &m_src, &m_dst, col, 0.0f);
 		break;
 	case 11:
 		//‰E
@@ -1675,59 +1661,8 @@ void CObjGimmickManager::Draw() {
 		break;
 	case 15:
 		break;
-		//-ƒƒ‹ƒGƒ‹ƒXƒe[ƒW---------------------------------------
-	case 20:
-
-		//”wŒi
-		//Ø‚èŽæ‚èÀ•W
-		m_dst.top = 340;
-		m_dst.bottom = m_dst.top + 680;
-		m_dst.left = 0;
-		m_dst.right = m_dst.left + 1024;
-
-		//“]‘—æÀ•W
-		m_src.top = 0;
-		m_src.bottom = m_src.top + 600;
-		m_src.left = -400 + User()->mscroll_x;
-		m_src.right = m_src.left + 1200;
-
-		//”wŒi•`‰æ
-		Image()->DrawEx(26, &m_src, &m_dst, col, 0.0f);
-
-		//Š÷
-		//Ø‚èŽæ‚èÀ•W
-		m_dst.top = 380;
-		m_dst.bottom = m_dst.top + 512;
-		m_dst.left = 0;
-		m_dst.right = m_dst.left + 512;
-
-		//“]‘—æÀ•W
-		m_src.top = 335;
-		m_src.bottom = m_src.top + 256;
-		m_src.left = -360 + User()->mscroll_x;
-		m_src.right = m_src.left + 256;
-
-		//”wŒi•`‰æ
-		//Image()->DrawEx(EX_MERUERU_TANA, &m_src, &m_dst, col, 0.0f);
-		Image()->DrawEx(EX_STAGE_TUTORIAL, &m_src, &m_dst, col, 0.0f);
-
-
-
-
-		break;
-	case 21:
-		break;
-	case 22:
-		break;
-	case 23:
-		break;
-	case 24:
-		break;
-	case 25:
-		break;
 		//-ƒRƒEƒlƒXƒe[ƒW-----------------------------------------
-	case 30:
-
+	case 20:
 		//Ø‚èŽæ‚èÀ•W
 		m_dst.top = 0;
 		m_dst.bottom = m_dst.top + 1024;
@@ -1742,6 +1677,34 @@ void CObjGimmickManager::Draw() {
 
 		//”wŒi•`‰æ
 		Image()->DrawEx(25, &m_src, &m_dst, col, 0.0f);
+
+		break;
+	case 21:
+		break;
+	case 22:
+		break;
+	case 23:
+		break;
+	case 24:
+		break;
+	case 25:
+		break;
+		//-ƒVƒIƒ“ƒXƒe[ƒW-----------------------------------------
+	case 30://ƒVƒIƒ“ƒXƒe[ƒW1
+		//Ø‚èŽæ‚èÀ•W
+		m_dst.top = 0;
+		m_dst.bottom = m_dst.top + 1024;
+		m_dst.left = 0;
+		m_dst.right = m_dst.left + 1024;
+
+		//“]‘—æÀ•W
+		m_src.top = 0;
+		m_src.bottom = m_src.top + 600;
+		m_src.left = 0 + User()->mscroll_x;
+		m_src.right = m_src.left + 800;
+
+		//”wŒi•`‰æ
+		Image()->DrawEx(24, &m_src, &m_dst, col, 0.0f);
 		break;
 
 	case 31:
@@ -1801,6 +1764,41 @@ void CObjGimmickManager::Draw() {
 			*/
 		break;
 	case 35:
+		break;
+		//-ƒƒ‹ƒGƒ‹ƒXƒe[ƒW---------------------------------------
+	case 40:
+		//”wŒi
+		//Ø‚èŽæ‚èÀ•W
+		m_dst.top = 340;
+		m_dst.bottom = m_dst.top + 680;
+		m_dst.left = 0;
+		m_dst.right = m_dst.left + 1024;
+
+		//“]‘—æÀ•W
+		m_src.top = 0;
+		m_src.bottom = m_src.top + 600;
+		m_src.left = -400 + User()->mscroll_x;
+		m_src.right = m_src.left + 1200;
+
+		//”wŒi•`‰æ
+		Image()->DrawEx(26, &m_src, &m_dst, col, 0.0f);
+
+		//Š÷
+		//Ø‚èŽæ‚èÀ•W
+		m_dst.top = 380;
+		m_dst.bottom = m_dst.top + 512;
+		m_dst.left = 0;
+		m_dst.right = m_dst.left + 512;
+
+		//“]‘—æÀ•W
+		m_src.top = 335;
+		m_src.bottom = m_src.top + 256;
+		m_src.left = -360 + User()->mscroll_x;
+		m_src.right = m_src.left + 256;
+
+		//”wŒi•`‰æ
+		//Image()->DrawEx(EX_MERUERU_TANA, &m_src, &m_dst, col, 0.0f);
+		Image()->DrawEx(EX_STAGE_TUTORIAL, &m_src, &m_dst, col, 0.0f);
 		break;
 	}
 }

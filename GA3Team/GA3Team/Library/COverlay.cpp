@@ -28,6 +28,9 @@ void COverlay::InitLoad()
 	image->LoadImageEx("シオン表情.png", EX_SION_GOGGLES_NO, TEX_SIZE_1024);
 	//コウネ3----------------------------------------
 	image->LoadImageEx("優しい少女.png", 6, TEX_SIZE_512);
+	//シオン１
+	image->LoadImageEx("女性.png", EX_WOMANALL, TEX_SIZE_1024);
+	image->LoadImageEx("インターフォン.png", EX_INTERPHONE, TEX_SIZE_512);
 	//シオン2--------------------------------------
 	/*image->LoadImageEx("イヤホン男.png", 7, TEX_SIZE_512);
 	image->LoadImageEx("自転車.png", 8, TEX_SIZE_512);*/
@@ -45,7 +48,7 @@ void COverlay::InitLoad()
 	image->LoadImageEx("電子レンジ.png", 14, TEX_SIZE_512);
 	image->LoadImageEx("博士c.png", 15, TEX_SIZE_512);
 	//動物------------------------------------------
-	image->LoadImageEx("動物まとめ.png", 16, TEX_SIZE_1024);
+	image->LoadImageEx("動物まとめ.png", EX_ANIMALALL, TEX_SIZE_1024);
 	//メインキャラクター----------------------------
 	image->LoadImageEx("コウネ立ち.png", 17, TEX_SIZE_1024);
 	image->LoadImageEx("シオン立ち.png", 18, TEX_SIZE_1024);

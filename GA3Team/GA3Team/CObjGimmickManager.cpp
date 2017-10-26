@@ -30,7 +30,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 	*/
 	SavedataManeger()->Setcurrentdata();
 
-	m_Stage_ID = 20;
+	m_Stage_ID = 30;
 
 	switch (m_Stage_ID) {
 	//チュートリアル（博士）ステージ--------------------------
@@ -198,12 +198,12 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 		//犬A(番犬)生成
 		m_gimmick_watchdog = new Gimmickwatchdog();
 		Obj()->InsertObj(m_gimmick_watchdog, GIMMICK_WATCHDOG, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_watchdog->Init(600, 530, 100, 70, 1);
+		m_gimmick_watchdog->Init(600, 500, 100, 100, 1);
 
 		//インターホン生成
 		m_gimmick_interphone = new GimmickInterphone();
 		Obj()->InsertObj(m_gimmick_interphone, GIMMICK_INTERPHONE, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_interphone->Init(730, 300, 70, 100, 1);
+		m_gimmick_interphone->Init(745, 380, 65, 100, 1);
 
 		break;
 	case 31:
@@ -1498,22 +1498,8 @@ void CObjGimmickManager::Draw() {
 
 	//背景描画
 	switch (m_Stage_ID){
-		//-シオンステージ-----------------------------------------
+		
 	case 10:
-		//切り取り座標
-		m_dst.top = 0;
-		m_dst.bottom = m_dst.top + 1024;
-		m_dst.left = 0;
-		m_dst.right = m_dst.left + 1024;
-
-		//転送先座標
-		m_src.top = 0;
-		m_src.bottom = m_src.top + 600;
-		m_src.left = 0 + User()->mscroll_x;
-		m_src.right = m_src.left + 800;
-
-		//背景描画
-		Image()->DrawEx(24, &m_src, &m_dst, col, 0.0f);
 		break;
 	case 11:
 		//右
@@ -1572,9 +1558,80 @@ void CObjGimmickManager::Draw() {
 		break;
 	case 15:
 		break;
-		//-メルエルステージ---------------------------------------
+		//-コウネステージ-----------------------------------------
 	case 20:
+		//切り取り座標
+		m_dst.top = 0;
+		m_dst.bottom = m_dst.top + 1024;
+		m_dst.left = 0;
+		m_dst.right = m_dst.left + 1024;
 
+		//転送先座標
+		m_src.top = 0;
+		m_src.bottom = m_src.top + 600;
+		m_src.left = -400 + User()->mscroll_x;
+		m_src.right = m_src.left + 1200;
+
+		//背景描画
+		Image()->DrawEx(25, &m_src, &m_dst, col, 0.0f);
+
+		break;
+	case 21:
+		break;
+	case 22:
+		break;
+	case 23:
+		break;
+	case 24:
+		break;
+	case 25:
+		break;
+		//-シオンステージ-----------------------------------------
+	case 30://シオンステージ1
+		//切り取り座標
+		m_dst.top = 0;
+		m_dst.bottom = m_dst.top + 1024;
+		m_dst.left = 0;
+		m_dst.right = m_dst.left + 1024;
+
+		//転送先座標
+		m_src.top = 0;
+		m_src.bottom = m_src.top + 600;
+		m_src.left = 0 + User()->mscroll_x;
+		m_src.right = m_src.left + 800;
+
+		//背景描画
+		Image()->DrawEx(24, &m_src, &m_dst, col, 0.0f);
+		break;
+
+	case 31:
+		break;
+	case 32:
+		break;
+	case 33:
+		break;
+	case 34://コウネ5
+			/*
+			//切り取り座標
+			m_dst.top = 0;
+			m_dst.bottom = m_dst.top + 1024;
+			m_dst.left = 0;
+			m_dst.right = m_dst.left + 1024;
+
+			//転送先座標
+			m_src.top = 0;
+			m_src.bottom = m_src.top + 600;
+			m_src.left = -400 + User()->mscroll_x;
+			m_src.right = m_src.left + 1200;
+
+			//背景描画
+			Image()->DrawEx(0, &m_src, &m_dst, col, 0.0f); //仮
+			*/
+		break;
+	case 35:
+		break;
+		//-メルエルステージ---------------------------------------
+	case 40:
 		//背景
 		//切り取り座標
 		m_dst.top = 340;
@@ -1607,65 +1664,6 @@ void CObjGimmickManager::Draw() {
 		//背景描画
 		//Image()->DrawEx(EX_MERUERU_TANA, &m_src, &m_dst, col, 0.0f);
 		Image()->DrawEx(EX_STAGE_TUTORIAL, &m_src, &m_dst, col, 0.0f);
-
-
-
-
-		break;
-	case 21:
-		break;
-	case 22:
-		break;
-	case 23:
-		break;
-	case 24:
-		break;
-	case 25:
-		break;
-		//-コウネステージ-----------------------------------------
-	case 30:
-
-		//切り取り座標
-		m_dst.top = 0;
-		m_dst.bottom = m_dst.top + 1024;
-		m_dst.left = 0;
-		m_dst.right = m_dst.left + 1024;
-
-		//転送先座標
-		m_src.top = 0;
-		m_src.bottom = m_src.top + 600;
-		m_src.left = -400 + User()->mscroll_x;
-		m_src.right = m_src.left + 1200;
-
-		//背景描画
-		Image()->DrawEx(25, &m_src, &m_dst, col, 0.0f);
-		break;
-
-	case 31:
-		break;
-	case 32:
-		break;
-	case 33:
-		break;
-	case 34://コウネ5
-			/*
-			//切り取り座標
-			m_dst.top = 0;
-			m_dst.bottom = m_dst.top + 1024;
-			m_dst.left = 0;
-			m_dst.right = m_dst.left + 1024;
-
-			//転送先座標
-			m_src.top = 0;
-			m_src.bottom = m_src.top + 600;
-			m_src.left = -400 + User()->mscroll_x;
-			m_src.right = m_src.left + 1200;
-
-			//背景描画
-			Image()->DrawEx(0, &m_src, &m_dst, col, 0.0f); //仮
-			*/
-		break;
-	case 35:
 		break;
 	}
 }

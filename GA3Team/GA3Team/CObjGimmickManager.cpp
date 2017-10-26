@@ -1081,7 +1081,7 @@ void CObjGimmickManager::Action() {
 				//会話終了後
 				if (Overlay()->NextWait()) {
 					//コウネステージ2クリア
-					SavedataManeger()->CurrentData->m_bKouneClearflg[1] = true;
+					SavedataManeger()->CurrentData->m_stage[1].stage2 = true;
 					//ステージセレクト画面に移行
 					Manager()->Pop(new CSceneStageSelect);
 				}

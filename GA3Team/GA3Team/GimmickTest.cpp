@@ -750,7 +750,7 @@ void GimmickGranny::Draw()//描画
 	Image()->DrawEx(58, &m_src, &m_dst, col, 0.0f);
 
 	//ギミック名前描画
-	Font()->StrDraw("おばあちゃん", m_iXpos, m_iYpos, 20, col);
+	Font()->StrDraw("おばあちゃん", m_iXpos + User()->mscroll_x, m_iYpos, 20, col);
 
 	//吹き出しの描画＆動作
 	this->gimmicDraw(1);
@@ -764,6 +764,7 @@ void GimmickMynah::Init(int xpos, int ypos, int widht, int height, int balloonnu
 
 	//吹き出しの初期化
 	InitBall(&m_ball[0], 48, -48, sound, 1, PINK, LOWER_LEFT);
+	//InitBall(&m_ball[0], 48, -48, sound, 1, NORMAL, LOWER_LEFT);
 }
 void GimmickMynah::Destructor()	//デストラクタ
 {
@@ -788,7 +789,7 @@ void GimmickMynah::Draw()		//ドロー
 	Image()->DrawEx(58, &m_src, &m_dst, col, 0.0f);
 
 	//ギミック名前描画
-	Font()->StrDraw("九官鳥", m_iXpos, m_iYpos, 20, col);
+	Font()->StrDraw("九官鳥", m_iXpos + User()->mscroll_x, m_iYpos, 20, col);
 
 	//吹き出しの描画＆動作
 	this->gimmicDraw(1);
@@ -843,6 +844,7 @@ void GimmickWindchime::Init(int xpos, int ypos, int widht, int height, int ballo
 
 	//吹き出しの初期化
 	InitBall(&m_ball[0], 48, -48, sound, 1, PURPLE, LOWER_LEFT);
+	//InitBall(&m_ball[0], 48, -48, sound, 1, NORMAL, LOWER_LEFT);
 }
 void GimmickWindchime::Destructor()	//デストラクタ
 {
@@ -866,7 +868,7 @@ void GimmickWindchime::Draw()		//ドロー
 	Image()->DrawEx(58, &m_src, &m_dst, col, 0.0f);
 
 	//ギミック名前描画
-	Font()->StrDraw("風鈴", m_iXpos, m_iYpos, 20, col);
+	Font()->StrDraw("風鈴", m_iXpos + User()->mscroll_x, m_iYpos, 20, col);
 
 	//吹き出しの描画＆動作
 	this->gimmicDraw(1);
@@ -1609,7 +1611,7 @@ void GimmickMysteryDoor::Init(int xpos, int ypos, int widht, int height, int bal
 	//親クラスのInit関数を呼ぶ
 	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
 	//吹き出しの初期化
-	InitBall(&m_ball[0], -50, -50, talk, 1, RED, LOWER_LEFT);
+	InitBall(&m_ball[0], m_iWidth - 50, -48, talk, 1, RED, LOWER_LEFT);
 }
 //①ドアのデストラクタ
 void GimmickMysteryDoor::Destructor(){
@@ -1644,7 +1646,7 @@ void GimmickMysteryDoor::Action() {
 			//扉の謎解き...ランプの処理...音番号判定
 		   //機械音A
 			/*switch (Sound_num) {
-			   case 0:
+			   case KOUNE5_MECHANICAL_SOUND_A:
 				   m_idoorgimmick[0] += 1; //左端...明
 				   m_idoorgimmick[1] -= 1; //中央...暗
 
@@ -1658,7 +1660,7 @@ void GimmickMysteryDoor::Action() {
 				   break;
 
 		   //機械音B
-				case 2:
+				case KOUNE5_MECHANICAL_SOUND_B:
 					m_idoorgimmick[0] -= 1; //左端...暗
 					m_idoorgimmick[2] -= 1; //右端...暗
 
@@ -1734,13 +1736,16 @@ void GimmickMysteryDoor::Draw() {
 	m_dst.right = 512;
 
 	//転送先座標
-	m_src.top = 200;
-	m_src.bottom = m_src.top + 300;
-	m_src.left = 400;
-	m_src.right = m_src.left + 300;
+	m_src.top = m_iYpos;
+	m_src.bottom = m_src.top + m_iHeight;
+	m_src.left = m_iXpos + User()->mscroll_x;
+	m_src.right = m_src.left + m_iWidth;
 
 	//描画
 	Image()->DrawEx(12, &m_src, &m_dst, col, 0.0f); //描画値変更
+
+	//ギミック名前描画
+	Font()->StrDraw("ドア", m_iXpos, m_iYpos, 20, col);
 
 	//吹き出し描画＆動作-------
 	this->gimmicDraw(1);
@@ -1819,13 +1824,16 @@ void GimmickMechanic::Draw() {
 	m_dst.right = 200;
 
 	//転送先座標
-	m_src.top = 400;
-	m_src.bottom = m_src.top + 150;
-	m_src.left = 100;
-	m_src.right = m_src.left + 100;
+	m_src.top = m_iYpos;
+	m_src.bottom = m_src.top + m_iHeight;
+	m_src.left = m_iXpos + User()->mscroll_x;
+	m_src.right = m_src.left + m_iWidth;
 
 	//描画
 	Image()->DrawEx(1, &m_src, &m_dst, col, 0.0f); //描画値変更
+
+	//ギミック名前描画
+	Font()->StrDraw("メカニック", m_iXpos, m_iYpos, 20, col);
 
 	//吹き出し描画＆動作-------
 	this->gimmicDraw(1);
@@ -1839,7 +1847,8 @@ void GimmickSoundComputer::Init(int xpos, int ypos, int widht, int height, int b
 	//親クラスのInit関数を呼ぶ
 	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
 	//吹き出しの初期化
-	InitBall(&m_ball[0],48, -48, sound, 1, RED, LOWER_LEFT);
+	InitBall(&m_ball[0],48, -48, sound, 1, BLUE, LOWER_LEFT);  //A
+	//InitBall(&m_ball[1], 70, -48, sound, 1, RED, LOWER_LEFT); //B
 }
 //③パソコンのデストラクタ
 void GimmickSoundComputer::Destructor() {
@@ -1867,16 +1876,20 @@ void GimmickSoundComputer::Draw() {
 	m_dst.right = 512;
 
 	//転送先座標
-	m_src.top = 400;
-	m_src.bottom = m_src.top + 100;
-	m_src.left = 300;
-	m_src.right = m_src.left + 100;
+	m_src.top = m_iYpos;
+	m_src.bottom = m_src.top + m_iHeight;
+	m_src.left = m_iXpos + User()->mscroll_x;
+	m_src.right = m_src.left + m_iWidth;
 
 	//描画
 	Image()->DrawEx(14, &m_src, &m_dst, col, 0.0f); //描画値変更
 
+	//ギミック名前描画
+	Font()->StrDraw("パソコン", m_iXpos, m_iYpos, 20, col);
+
+
 	//吹き出し描画＆動作-------
-	this->gimmicDraw(1);
+	this->gimmicDraw(2);
 	//-------------------------
 
 }
@@ -1886,7 +1899,7 @@ void GimmickMusician::Init(int xpos, int ypos, int widht, int height, int balloo
 	//親クラスのInit関数を呼ぶ
 	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
 	//吹き出しの初期化
-	InitBall(&m_ball[0],48, -48, sound, 1, RED, LOWER_LEFT);
+	InitBall(&m_ball[0], m_iWidth - 50, -48, talk, 1, RED, LOWER_LEFT);
 }
 //④演奏家のデストラクタ
 void GimmickMusician::Destructor() {
@@ -1937,13 +1950,16 @@ void GimmickMusician::Draw() {
 	m_dst.right = 360;
 
 	//転送先座標
-	m_src.top = 0;
-	m_src.bottom = m_src.top + 0;
-	m_src.left = 0;
-	m_src.right = m_src.left + 0;
+	m_src.top = m_iYpos;
+	m_src.bottom = m_src.top + m_iHeight;
+	m_src.left = m_iXpos + User()->mscroll_x;
+	m_src.right = m_src.left + m_iWidth;
 
 	//描画
 	Image()->DrawEx(9, &m_src, &m_dst, col, 0.0f); //描画値変更
+
+	//ギミック名前描画
+	Font()->StrDraw("演奏家", m_iXpos, m_iYpos, 20, col);
 
 	//吹き出し描画＆動作-------
 	this->gimmicDraw(1);

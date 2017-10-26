@@ -67,6 +67,8 @@ void COverlay::InitLoad()
 	image->LoadImageEx("StageTutorial.png", EX_STAGE_TUTORIAL, TEX_SIZE_1024);
 	//----------------------------------------------
 	image->LoadImageEx("音量ボタン.png", EX_VOLBOTTON, TEX_SIZE_512);
+	image->LoadImageEx("アイコン透過.png", EX_ICON, TEX_SIZE_512);
+
 	//サウンド読み込み↓---------------------------------------------------------------------------
 	//チュートリアルステージ
 	audio->LoadAudio(TUTORIAL_BGM, "Sound\\チュートリアル\\fanfare3.wav");
@@ -832,16 +834,16 @@ void COverlay::Draw()
 		m_fWaitColor[3] = m_fWaitAlpha;
 		//切り取り座標
 		waitdst.top = 0;
-		waitdst.left = 0;
-		waitdst.bottom = waitdst.top + 256;
-		waitdst.right = waitdst.left + 256;
+		waitdst.left = 32*13;
+		waitdst.bottom = waitdst.top + 32;
+		waitdst.right = waitdst.left + 32;
 		//転送先座標
-		waitsrc.top = WINDOW_SIZE_H - 100;
-		waitsrc.left = WINDOW_SIZE_W - 250;
-		waitsrc.bottom = waitsrc.top + 64;
-		waitsrc.right = waitsrc.left + 96;
+		waitsrc.top = WINDOW_SIZE_H - 80;
+		waitsrc.left = WINDOW_SIZE_W - 220;
+		waitsrc.bottom = waitsrc.top + 42;
+		waitsrc.right = waitsrc.left + 64;
 
-		image->DrawEx(63, &waitsrc, &waitdst, m_fWaitColor, 0.0f);
+		image->DrawEx(EX_ICON, &waitsrc, &waitdst, m_fWaitColor, 0.0f);
 		//-------------------待機インジケータ終-------------
 
 		//-------------------------------テキスト表示処理------------------------------------

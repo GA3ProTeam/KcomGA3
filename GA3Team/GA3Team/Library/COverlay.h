@@ -105,6 +105,8 @@ enum koune
 	KOUNE2_BOYA_FLAG3_OUEN_BIG,
 	KOUNE2_BOYA_FLAG3_OUEN_BIG_AFTER,
 
+	//ÉRÉEÉl5
+	KOUNE5_START,
 
 };
 enum merueru

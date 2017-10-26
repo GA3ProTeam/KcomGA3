@@ -393,35 +393,35 @@ void CObjGimmickManager::Action() {
 	enum KOUNE5_NUMBER {
 		KOUNE5_TALK_START,						//ステージ開始時会話
 		KOUNE5_TALK_START_END,					//ステージ開始時会話_終了
-												//メカニック
-												KOUNE5_TALK_MECHANIC,					//メカニック会話0
-												KOUNE5_TALK_MECHANIC_END,				//メカニック会話0_終了
-												KOUNE5_TALK_MECHANIC1_ABILITY,			//メカニック会話1_能力発動時
-												KOUNE5_TALK_MECHANIC1_ABILITY_END,		//メカニック会話1_能力発動時_終了
-												KOUNE5_TALK_MECHANIC2_MUSIC_OK,			//メカニック会話2_指定の音を聞かせる
-												KOUNE5_TALK_MECHANIC2_MUSIC_OK_END,		//メカニック会話2_指定の音を聞かせる_終了
-												KOUNE5_TALK_MECHANIC3_MUSIC_MIS,		//メカニック会話3_指定の音以外を聞かせる
-												KOUNE5_TALK_MECHANIC3_MUSIC_MIS_END,	//メカニック会話3_指定の音以外を聞かせる_終了
-												KOUNE5_TALK_MECHANIC3_RESET,			//メカニック会話4_ランプリセット
-												KOUNE5_TALK_MECHANIC3_RESET_END,		//メカニック会話4_ランプリセット_終了
-												KOUNE5_TALK_MECHANIC5_RESET_YES,		//メカニック会話5_リセットする
-												KOUNE5_TALK_MECHANIC5_RESET_YES_END,	//メカニック会話5_リセットする_終了
-												KOUNE5_TALK_MECHANIC6_RESET_NO,			//メカニック会話6_リセットしない
-												KOUNE5_TALK_MECHANIC6_RESET_NO_END,		//メカニック会話6_リセットしない_終了
-												KOUNE5_TALK_MECHANIC7_CLEAR,			//メカニック会話7_クリア条件達成
-												KOUNE5_TALK_MECHANIC7_CLEAR_END,		//メカニック会話7_クリア条件達成_終了
-																						//演奏家
-																						KOUNE5_TALK_MUSICIAN1_FLG3_FALSE_NO,	//演奏家会話1_フラグ3×_条件を満たしていない
-																						KOUNE5_TALK_MUSICIAN1_FLG3_FALSE_NO_END,//演奏家会話1_フラグ3×_条件を満たしていない_終了
-																						KOUNE5_TALK_MUSICIAN2_FLG3_FALSE_YES,	//演奏家会話2_フラグ3×_条件を満たしている
-																						KOUNE5_TALK_MUSICIAN2_FLG3_FALSE_YES_END,//演奏家会話2_フラグ3×_条件を満たしている_終了
-																						KOUNE5_TALK_MUSICIAN3_FLG3_TRUE,		//演奏家会話3_フラグ3○
-																						KOUNE5_TALK_MUSICIAN3_FLG3_TRUE_END,	//演奏家会話3_フラグ3○_終了
-																																//録音---------
-																																KOUNE5_SOUND_REC_A,						//機械音A_録音
-																																KOUNE5_SOUND_REC_B,						//機械音B_録音
-																																KOUNE5_SOUND_REC_Ad,					//機械音A'_録音
-																																KOUNE5_SOUND_REC_Bd,					//機械音B'_録音
+		//メカニック
+		KOUNE5_TALK_MECHANIC,					//メカニック会話0
+		KOUNE5_TALK_MECHANIC_END,				//メカニック会話0_終了
+		KOUNE5_TALK_MECHANIC1_ABILITY,			//メカニック会話1_能力発動時
+		KOUNE5_TALK_MECHANIC1_ABILITY_END,		//メカニック会話1_能力発動時_終了
+		KOUNE5_TALK_MECHANIC2_MUSIC_OK,			//メカニック会話2_指定の音を聞かせる
+		KOUNE5_TALK_MECHANIC2_MUSIC_OK_END,		//メカニック会話2_指定の音を聞かせる_終了
+		KOUNE5_TALK_MECHANIC3_MUSIC_MIS,		//メカニック会話3_指定の音以外を聞かせる
+		KOUNE5_TALK_MECHANIC3_MUSIC_MIS_END,	//メカニック会話3_指定の音以外を聞かせる_終了
+		KOUNE5_TALK_MECHANIC3_RESET,			//メカニック会話4_ランプリセット
+		KOUNE5_TALK_MECHANIC3_RESET_END,		//メカニック会話4_ランプリセット_終了
+		KOUNE5_TALK_MECHANIC5_RESET_YES,		//メカニック会話5_リセットする
+		KOUNE5_TALK_MECHANIC5_RESET_YES_END,	//メカニック会話5_リセットする_終了
+		KOUNE5_TALK_MECHANIC6_RESET_NO,			//メカニック会話6_リセットしない
+		KOUNE5_TALK_MECHANIC6_RESET_NO_END,		//メカニック会話6_リセットしない_終了
+		KOUNE5_TALK_MECHANIC7_CLEAR,			//メカニック会話7_クリア条件達成
+		KOUNE5_TALK_MECHANIC7_CLEAR_END,		//メカニック会話7_クリア条件達成_終了
+		//演奏家
+		KOUNE5_TALK_MUSICIAN1_FLG3_FALSE_NO,	//演奏家会話1_フラグ3×_条件を満たしていない
+		KOUNE5_TALK_MUSICIAN1_FLG3_FALSE_NO_END,//演奏家会話1_フラグ3×_条件を満たしていない_終了
+		KOUNE5_TALK_MUSICIAN2_FLG3_FALSE_YES,	//演奏家会話2_フラグ3×_条件を満たしている
+		KOUNE5_TALK_MUSICIAN2_FLG3_FALSE_YES_END,//演奏家会話2_フラグ3×_条件を満たしている_終了
+		KOUNE5_TALK_MUSICIAN3_FLG3_TRUE,		//演奏家会話3_フラグ3○
+		KOUNE5_TALK_MUSICIAN3_FLG3_TRUE_END,	//演奏家会話3_フラグ3○_終了
+		//録音---------
+		KOUNE5_SOUND_REC_A,						//機械音A_録音
+		KOUNE5_SOUND_REC_B,						//機械音B_録音
+		KOUNE5_SOUND_REC_Ad,					//機械音A'_録音
+		KOUNE5_SOUND_REC_Bd,					//機械音B'_録音
 	};
 
 	//イベント番号(メルエルステージ1)
@@ -453,6 +453,9 @@ void CObjGimmickManager::Action() {
 	//コウネ3ステージ
 	static int m_Koune3_flg;
 	static int m_Koune3_tolkingflg;
+
+	//コウネ5
+	static int m_Koune5_flg;
 	//-------------------------------------------------
 
 	//セーブデータへの参照を取得---------------------------------------------------------
@@ -495,8 +498,6 @@ void CObjGimmickManager::Action() {
 
 		//シオンステージ3
 		m_Sion3_flg = SION3_TOLK_START;
-		
-
 			
 
 		//コウネステージ1
@@ -514,6 +515,9 @@ void CObjGimmickManager::Action() {
 		//コウネステージ3
 		m_Koune3_flg = KOUNE3_TALK_START;
 		m_Koune3_tolkingflg = 0;
+
+		//コウネステージ5
+		m_Koune5_flg = KOUNE5_TALK_START;
 		
 	}
 	//↑【セーブデータの初期化（デバッグ用）】------------------------------------------

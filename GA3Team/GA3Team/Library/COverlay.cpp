@@ -12,69 +12,69 @@ void COverlay::InitLoad()
 
 	//空白画像
 	image->LoadImageEx("null.png", 0, TEX_SIZE_512);
-	//コウネ1----------------------------------
-	image->LoadImageEx("おじいさんc.png", 1, TEX_SIZE_512);
-	image->LoadImageEx("マンホール.png", 2, TEX_SIZE_1024);
-	image->LoadImageEx("マンホールの穴.png", 3, TEX_SIZE_1024);
+	//コウネ1----------------------------------　
+	image->LoadImageEx("おじいさんc.png",			EX_KOUNE_OJICHAN, TEX_SIZE_512);
+	image->LoadImageEx("マンホール.png",			EX_KOUNE_MANHOLE, TEX_SIZE_1024);
+	image->LoadImageEx("マンホールの穴.png",		EX_KOUNE_MANHOLE_HOLE, TEX_SIZE_1024);
 	//コウネ2-----------------------------------
-	image->LoadImageEx("強気少年.png", EX_KOUNE_STRONG_BOY, TEX_SIZE_512);
-	image->LoadImageEx("女の子c.png", EX_KOUNE_GIRL, TEX_SIZE_512);
-	image->LoadImageEx("コウネマスク表情.png", EX_KOUNE_MASK_YES, TEX_SIZE_1024);
-	image->LoadImageEx("コウネマスク(無)表情.png", EX_KOUNE_MASK_NO, TEX_SIZE_1024);
-	image->LoadImageEx("窓(ステージ2).png", EX_KOUNE2_WINDOW_NO_BREAK, TEX_SIZE_1024);
-	image->LoadImageEx("窓割れた(ステージ2).png", EX_KOUNE2_WINDOW_BREAK, TEX_SIZE_1024);
-	image->LoadImageEx("少女.png", EX_KOUNE_GIRL_ALL, TEX_SIZE_1024);
-	image->LoadImageEx("シオンゴーグル表情.png", EX_SION_GOGGLES_YES, TEX_SIZE_1024);
-	image->LoadImageEx("シオン表情.png", EX_SION_GOGGLES_NO, TEX_SIZE_1024);
+	image->LoadImageEx("強気少年.png",				EX_KOUNE_STRONG_BOY, TEX_SIZE_512);
+	image->LoadImageEx("女の子c.png",				EX_KOUNE_GIRL, TEX_SIZE_512);
+	image->LoadImageEx("コウネマスク表情.png",		EX_KOUNE_MASK_YES, TEX_SIZE_1024);
+	image->LoadImageEx("コウネマスク(無)表情.png",	EX_KOUNE_MASK_NO, TEX_SIZE_1024);
+	image->LoadImageEx("窓(ステージ2).png",			EX_KOUNE2_WINDOW_NO_BREAK, TEX_SIZE_1024);
+	image->LoadImageEx("窓割れた(ステージ2).png",	EX_KOUNE2_WINDOW_BREAK, TEX_SIZE_1024);
+	image->LoadImageEx("少女.png",					EX_KOUNE_GIRL_ALL, TEX_SIZE_1024);
+	image->LoadImageEx("シオンゴーグル表情.png",	EX_SION_GOGGLES_YES, TEX_SIZE_1024);
+	image->LoadImageEx("シオン表情.png",			EX_SION_GOGGLES_NO, TEX_SIZE_1024);
 	//コウネ3----------------------------------------
-	image->LoadImageEx("優しい少女.png", 6, TEX_SIZE_512);
+	image->LoadImageEx("優しい少女.png",			EX_KOUNE_FRIENDLY_GIRL, TEX_SIZE_512);
 	//シオン１
-	image->LoadImageEx("女性.png", EX_WOMANALL, TEX_SIZE_1024);
-	image->LoadImageEx("インターフォン.png", EX_INTERPHONE, TEX_SIZE_512);
+	image->LoadImageEx("女性.png",					EX_WOMANALL, TEX_SIZE_1024);
+	image->LoadImageEx("インターフォン.png",		EX_INTERPHONE, TEX_SIZE_512);
 	//シオン2--------------------------------------
 	/*image->LoadImageEx("イヤホン男.png", 7, TEX_SIZE_512);
 	image->LoadImageEx("自転車.png", 8, TEX_SIZE_512);*/
-	image->LoadImageEx("イヤホン男自転車消防車.png", EX_SION_BYCYCLE, TEX_SIZE_1024);
+	image->LoadImageEx("イヤホン男自転車消防車.png",EX_SION_BYCYCLE, TEX_SIZE_1024);
 	//シオン3--------------------------------------
-	image->LoadImageEx("おばあちゃんc.png", 9, TEX_SIZE_512);
+	image->LoadImageEx("おばあちゃんc.png",			EX_SION_OLD_LADY, TEX_SIZE_512);
 	//シオン4--------------------------------------
-	image->LoadImageEx("なぞなぞさん.png", 9, TEX_SIZE_512);
+	image->LoadImageEx("なぞなぞさん.png",			EX_SION_QUIZ_MAN, TEX_SIZE_512);
 	//image->LoadImageEx("バイク.png", 9, TEX_SIZE_512);
 	//image->LoadImageEx("シオン4ドア.png", 9, TEX_SIZE_512);
 	//メルエル1-----------------------------------
-	image->LoadImageEx("カツオc.png", EX_MERUERU_KATSUO, TEX_SIZE_512);
-	image->LoadImageEx("ドアc.png", EX_MERUERU_DOOR, TEX_SIZE_512);
-	image->LoadImageEx("机.png", EX_MERUERU_TANA, TEX_SIZE_512);
-	image->LoadImageEx("電子レンジ.png", EX_MERUERU_MICROWAVE, TEX_SIZE_512);
-	image->LoadImageEx("博士c.png", EX_MERUERU_HAKASE, TEX_SIZE_512);
-	image->LoadImageEx("壁掛けテレビ.png", 42, TEX_SIZE_512);
+	image->LoadImageEx("カツオc.png",				EX_MERUERU_KATSUO, TEX_SIZE_512);
+	image->LoadImageEx("ドアc.png",					EX_MERUERU_DOOR, TEX_SIZE_512);
+	image->LoadImageEx("机.png",					EX_MERUERU_TANA, TEX_SIZE_512);
+	image->LoadImageEx("電子レンジ.png",			EX_MERUERU_MICROWAVE, TEX_SIZE_512);
+	image->LoadImageEx("博士c.png",					EX_MERUERU_HAKASE, TEX_SIZE_512);
+	image->LoadImageEx("壁掛けテレビ.png",			EX_MERUERU_TELEVISION, TEX_SIZE_512);
 	//動物------------------------------------------
-	image->LoadImageEx("動物まとめ.png", EX_ANIMALALL, TEX_SIZE_1024);
+	image->LoadImageEx("動物まとめ.png",			EX_ANIMALALL, TEX_SIZE_1024);
 	//メインキャラクター----------------------------
-	image->LoadImageEx("コウネ立ち.png", 17, TEX_SIZE_1024);
-	image->LoadImageEx("シオン立ち.png", 18, TEX_SIZE_1024);
-	image->LoadImageEx("メルエルc立ち.png", 19, TEX_SIZE_512);
+	image->LoadImageEx("コウネ立ち.png",			EX_OTHER_KOUNE_CHARA, TEX_SIZE_1024);
+	image->LoadImageEx("シオン立ち.png",			EX_OTHER_SION_CHARA, TEX_SIZE_1024);
+	image->LoadImageEx("メルエルc立ち.png",			EX_OTHER_MERUERU_CHARA, TEX_SIZE_512);
 	//データセレクト--------------------------------
-	image->LoadImageEx("コウネ.png", 20, TEX_SIZE_1024);
-	image->LoadImageEx("メルエル.png", 21, TEX_SIZE_512);
+	image->LoadImageEx("コウネ.png",				EX_OTHER_KOUNE_DATA, TEX_SIZE_1024);
+	image->LoadImageEx("メルエル.png",				EX_OTHER_MERUERU_DATA, TEX_SIZE_512);
 	//吹き出し系統-----------------------------------
-	image->LoadImageEx("アイコン.png", 22, TEX_SIZE_1024);
-	image->LoadImageEx("会話吹き出しまとめ.png", EX_OTHER_BALLOON, TEX_SIZE_1024);
+	image->LoadImageEx("アイコン.png",				EX_OTHER_ICON, TEX_SIZE_1024);
+	image->LoadImageEx("会話吹き出しまとめ.png",	EX_OTHER_BALLOON, TEX_SIZE_1024);
 	//ステージ
-	image->LoadImageEx("シオンステージ-1.png", 24, TEX_SIZE_1024);
-	image->LoadImageEx("コウネステージ-1.png", 25, TEX_SIZE_1024);
-	image->LoadImageEx("研究所背景.png", EX_STAGE_LAB, TEX_SIZE_1024);
-	image->LoadImageEx("T字路右側.png", EX_STAGE_SION_STAGE2_right, TEX_SIZE_1024);
-	image->LoadImageEx("T字路左側.png", EX_STAGE_SION_STAGE2_left, TEX_SIZE_1024);
+	image->LoadImageEx("シオンステージ-1.png",		EX_STAGE_SION_STAGE1, TEX_SIZE_1024);
+	image->LoadImageEx("コウネステージ-1.png",		EX_STAGE_KOUNE_STAGE1, TEX_SIZE_1024);
+	image->LoadImageEx("研究所背景.png",			EX_STAGE_LAB, TEX_SIZE_1024);
+	image->LoadImageEx("T字路右側.png",				EX_STAGE_SION_STAGE2_right, TEX_SIZE_1024);
+	image->LoadImageEx("T字路左側.png",				EX_STAGE_SION_STAGE2_left, TEX_SIZE_1024);
 
 	//チュートリアルステージ------------------------
-	image->LoadImageEx("StageTutorial.png", EX_STAGE_TUTORIAL, TEX_SIZE_1024);
-	image->LoadImageEx("ヴォイスレコーダ.png", EX_VOICE_RECORDER, TEX_SIZE_512);
-	image->LoadImageEx("パソコン.png", EX_COMPUTER, TEX_SIZE_512);
-	image->LoadImageEx("机.png", EX_DESK, TEX_SIZE_1024);
+	image->LoadImageEx("StageTutorial.png",			EX_STAGE_TUTORIAL, TEX_SIZE_1024);
+	image->LoadImageEx("ヴォイスレコーダ.png",		EX_VOICE_RECORDER, TEX_SIZE_512);
+	image->LoadImageEx("パソコン.png",				EX_COMPUTER, TEX_SIZE_512);
+	image->LoadImageEx("机.png",					EX_DESK, TEX_SIZE_1024);
 	//----------------------------------------------
-	image->LoadImageEx("音量ボタン.png", EX_VOLBOTTON, TEX_SIZE_512);
-	image->LoadImageEx("アイコン透過.png", EX_ICON, TEX_SIZE_512);
+	image->LoadImageEx("音量ボタン.png",			EX_VOLBOTTON, TEX_SIZE_512);
+	image->LoadImageEx("アイコン透過.png",			EX_ICON, TEX_SIZE_512);
 
 	//サウンド読み込み↓---------------------------------------------------------------------------
 	//チュートリアルステージ

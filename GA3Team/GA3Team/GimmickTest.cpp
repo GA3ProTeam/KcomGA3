@@ -1953,7 +1953,7 @@ void GimmickTelevision::Draw()
 	m_src.right = m_src.left + m_iWidth;
 
 	//•`‰æ
-	Image()->DrawEx(42, &m_src, &m_dst, col, 0.0f);
+	Image()->DrawEx(EX_MERUERU_TELEVISION, &m_src, &m_dst, col, 0.0f);
 	//---------------------------------------------------------------------------
 
 	//‚«o‚µ•`‰æ•“®ì---------------------------------------------------------

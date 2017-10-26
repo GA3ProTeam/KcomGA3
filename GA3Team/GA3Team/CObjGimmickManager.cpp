@@ -490,39 +490,70 @@ void CObjGimmickManager::Action() {
 		SION3_TOLK_END,
 	};
 
-	//イベント進行度
-	//チュートリアルステージ
+	
+	//【セーブしない】---------------------------------
+	//チュートリアルステージフラグ
 	static int m_itutorialflg = TUTORIAL_WELCOM_TALK;
+	//コウネ3ステージ
+	static int m_Koune3_flg = KOUNE3_TALK_START;
+	static int m_Koune3_saveflg = 0;
+	//-------------------------------------------------
 
-	//シオンステージ1
-	static int m_Sion1_flg = SION1_TOLK_START;
-	//シオンステージ3
-	static int m_Sion3_flg = SION3_TOLK_START;
+	//セーブデータへの参照を取得---------------------------------------------------------
+	int& m_Sion1_flg = g_SavedataManeger->CurrentData->m_stage[SION].stage1;
 
-	//コウネステージ1
-	static int m_Koune1_flg = 0;
+	int& m_Sion3_flg = g_SavedataManeger->CurrentData->m_stage[SION].stage3;
 
+	int& m_Koune1_flg = g_SavedataManeger->CurrentData->m_stage[KOUNE].stage1;
 	//boolフラグリスト
 	enum KOUNE1_BOOL_FLG_LIST {
 		KOUNE1_BOOL_OLDMAN_TALK,//おじいさんと会話した
 	};
-	static bool m_bKoune1_flg_list[5] = { false };
+	vector<bool>& m_bKoune1_flg_list = g_SavedataManeger->CurrentData->m_bKoune1_flg_list;
 
-
-	//コウネステージ2
-	static int m_iKoune2_flg = 0;
-
+	int& m_iKoune2_flg = g_SavedataManeger->CurrentData->m_stage[KOUNE].stage2;
 	//boolフラグリスト
 	enum KOUNE2_BOOL_FLG_LIST {
 		KOUNE2_BOOL_GIRL_ACTION,//女の子動作開始
 		KOUNE2_BOOL_GIRL_TALK,	//女の子と話しかけたかどうか
 		KOUNE2_BOOL_SION_TALK,	//シオンに話しかけたかどうか
 	};
-	static bool m_bKoune2_flg_list[5] = { false };
+	vector<bool>& m_bKoune2_flg_list = g_SavedataManeger->CurrentData->m_bKoune2_flg_list;
 
-	//コウネ3ステージ
-	static int m_Koune3_flg = KOUNE3_TALK_START;
-	static int m_Koune3_saveflg = 0;
+	int& m_iKoune3_flg = g_SavedataManeger->CurrentData->m_stage[KOUNE].stage3;
+	//-----------------------------------------------------------------------------------
+
+	//↓【ここからセーブデータの初期化（デバッグ用）】-----------------------------------
+	//ステージを特定の進行度からデバッグしたい場合は、ここで進行度を設定してください。
+	static bool init_flg = false;
+	if (!init_flg) {
+		init_flg = true;
+
+
+		//イベント進行度初期化
+		//チュートリアルステージ
+		m_Sion1_flg = TUTORIAL_WELCOM_TALK;
+
+		//シオンステージ1
+		m_Sion1_flg = SION1_TOLK_START;
+
+		//シオンステージ3
+		m_Sion3_flg = SION3_TOLK_START;
+
+		//コウネステージ1
+		m_Koune1_flg = 0;
+		for (int i = 0; i < m_bKoune1_flg_list.size(); i++) {
+			m_bKoune1_flg_list[i] = false;
+		}
+
+		//コウネステージ2
+		m_iKoune2_flg = 0;
+		for (int i = 0; i < m_bKoune1_flg_list.size(); i++) {
+			m_bKoune2_flg_list[i] = false;
+		}
+	}
+	//↑【セーブデータの初期化（デバッグ用）】------------------------------------------
+
 
 	switch (m_Stage_ID) {
 		//-シオンステージ-----------------------------------------
@@ -813,14 +844,14 @@ void CObjGimmickManager::Action() {
 				if (m_gimmick_oldman->m_getsound.sound_num == 0 &&
 					m_gimmick_oldman->m_getsound.sound_volume == BALL_VOL_BIG) {
 					//おじいさん「この声ははなこ！！」
-					Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG3_YES);
+					//Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG3_YES);
 
 				}/*犬の音を少音量で聞かせた+おじいさんに話しかける前に*/
 				else if (m_gimmick_oldman->m_getsound.sound_num == 0 &&
 					m_gimmick_oldman->m_getsound.sound_volume != BALL_VOL_BIG&&
 					m_bKoune1_flg_list[KOUNE1_BOOL_OLDMAN_TALK] == false) {
 					//おじいさん「何か小さな音がしたような気がしたが・・・」
-					Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG3_NO_FLAG1_YES);
+					//Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG3_NO_FLAG1_YES);
 				}
 				/*犬の音を少～中音量で聞かせた*/
 				else if (m_gimmick_oldman->m_getsound.sound_num == 0 &&
@@ -832,11 +863,11 @@ void CObjGimmickManager::Action() {
 
 				//会話終了
 				if (Overlay()->NextWait()) {
-					if (Overlay()->NowTalk() == KOUNE1_OZI_FLAG3_YES) {
+					//if (Overlay()->NowTalk() == KOUNE1_OZI_FLAG3_YES) {
 						m_gimmick_oldman->m_Status = STATUS_DELETE;
 						m_gimmick_oldman = NULL;
 						m_Koune1_flg = 4;
-					}
+					//}
 				}
 			}
 		}
@@ -862,6 +893,7 @@ void CObjGimmickManager::Action() {
 		break;
 	case 31://コウネステージ2
 	{
+
 		//女の子に話しかけることができるタイミング
 		if (KOUNE2_EVENT_SION_TALK_END <= m_iKoune2_flg && m_iKoune2_flg < KOUNE2_EVENT_BOYA_QUIZ_COMPLETE) {
 			//女の子に話しかける
@@ -1507,8 +1539,7 @@ void CObjGimmickManager::Draw(){
 	RECT m_src;		//転送先座標
 	RECT m_dst;		//切り取り座標
 
-
-					//背景描画
+	//背景描画
 	switch (m_Stage_ID){
 		//-シオンステージ-----------------------------------------
 	case 10:

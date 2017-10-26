@@ -486,20 +486,20 @@ void Gimmickkoune::Destructor()
 
 void Gimmickkoune::Action()
 {
-	if (m_ball[1].OnPush)
-	{
-		if (SavedataManeger()->CurrentData->m_bSionflg[0] ==false)
-		{
-			//イヤホン男フラグなし会話
+	//if (m_ball[1].OnPush)
+	//{
+	//	if (SavedataManeger()->CurrentData->m_bSionflg[0] ==false)
+	//	{
+	//		//イヤホン男フラグなし会話
 
-		}
+	//	}
 
-		else if (SavedataManeger()->CurrentData->m_bSionflg[0] == true)
-		{
-			//イヤホン男フラグなし会話
+	//	else if (SavedataManeger()->CurrentData->m_bSionflg[0] == true)
+	//	{
+	//		//イヤホン男フラグなし会話
 
-		}
-	}
+	//	}
+	//}
 }
 
 void Gimmickkoune::Draw()

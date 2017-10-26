@@ -514,6 +514,10 @@ void CObjGimmickManager::Action() {
 		for (int i = 0; i < m_bKoune1_flg_list.size(); i++) {
 			m_bKoune2_flg_list[i] = false;
 		}
+
+		/*g_SavedataManeger->CurrentData->m_stage[KOUNE].stage1clear = true;
+		g_SavedataManeger->CurrentData->m_stage[KOUNE].stage2clear = true;
+		g_SavedataManeger->CurrentData->m_stage[KOUNE].stage3clear = true;*/
 	}
 	//↑【セーブデータの初期化（デバッグ用）】------------------------------------------
 

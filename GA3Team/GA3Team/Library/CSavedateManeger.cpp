@@ -693,6 +693,12 @@ void CSavedataManeger::Setcurrentdata()
 {
 	CurrentData = &(Savedata[SelectedData]);
 }
+
+//セーブデータ取得
+CSavedata* CSavedataManeger::GetSaveData(int savedata_slot) {
+	return &(Savedata[savedata_slot]);
+}
+
 void CSavedataManeger::InitSaveData(int savedate_srot)
 {
 
@@ -737,6 +743,12 @@ void CSavedataManeger::InitSaveData(int savedate_srot)
 	Savedata[savedate_srot].m_btutoriaruflg.resize(10);
 	Savedata[savedate_srot].m_btutorial = false;
 }
+
+//クリアフラグを取得する
+//引数：
+//savedatenum=セーブデータ番号
+//type=キャラクター番号
+//num=取得したいステージ数
 int  CSavedataManeger::GetClearflg(int savedatenum,int type, int num)
 {
 	switch (num)

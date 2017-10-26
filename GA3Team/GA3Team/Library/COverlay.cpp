@@ -688,7 +688,7 @@ void COverlay::Draw()
 				}
 
 				//キャラクター描画
-				DrawCharacter(talk_data->name.c_str(), m_talk_expression_list[dir][chara].c_str(), dir, chara, col);
+				//DrawCharacter(talk_data->name.c_str(), m_talk_expression_list[dir][chara].c_str(), dir, chara, col);
 			}
 		}
 
@@ -704,7 +704,7 @@ void COverlay::Draw()
 			col[1] = 1.0f;
 			col[2] = 1.0f;
 			talk_data = &m_Chara_talk_chara_list->data[m_iNowDrawDir][talk_chara];
-			DrawCharacter(talk_data->name.c_str(), m_talk_expression_list[m_iNowDrawDir][talk_chara].c_str(), m_iNowDrawDir, talk_chara, col);
+			//DrawCharacter(talk_data->name.c_str(), m_talk_expression_list[m_iNowDrawDir][talk_chara].c_str(), m_iNowDrawDir, talk_chara, col);
 		}
 		//---------------------------------------------------
 

@@ -30,7 +30,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 	*/
 	SavedataManeger()->Setcurrentdata();
 
-	m_Stage_ID = 20;
+	m_Stage_ID = 22;
 
 	switch (m_Stage_ID) {
 	//チュートリアル（博士）ステージ--------------------------
@@ -1000,6 +1000,64 @@ void CObjGimmickManager::Action() {
 			}
 		}
 
+		//----音を聞かせる--------------------------------------------------------------------------------
+
+		//子猫の音を録音している
+		if (m_gimmick_granny->m_getsound.sound_num == KOUNE3_KITTY)
+		{
+			//おばあちゃん「あら、その鳴き声は...」
+			Overlay()->talkDraw(KOUNE, KOUNE2_BOYA_FLAG1_YES);
+		}
+		
+		//少女
+		//子猫の鳴き声を聞かせる
+		if (m_gimmick_little_girl->m_getsound.sound_num == KOUNE3_KITTY)
+		{
+			//少女「かわいい声ね！」
+			Overlay()->talkDraw(KOUNE, KOUNE2_BOYA_FLAG2_YES);
+		}
+		//九官鳥
+		//イントロを聞かせる(クリア条件達成)
+		else if (m_gimmick_mynah->m_getsound.sound_num == SION3_CHANT2 && m_Koune3_flg == KOUNE3_FLG5)
+		{
+			//ステージクリア
+			Overlay()->talkDraw(KOUNE, KOUNE2_BOYA_FLAG3_YES);
+			if (Overlay()->NextWait()) {
+				//クリアフラグを立てる			
+			}
+		}
+		//イントロを聞かせる(クリア条件未達成)
+		else if (m_gimmick_mynah->m_getsound.sound_num == SION3_CHANT2 && m_Koune3_flg != KOUNE3_FLG5)
+		{
+			//九ちゃん「...。」
+			Overlay()->talkDraw(KOUNE, KOUNE2_BOYA_NOCREATURE_FLAG3_NO);
+		}
+		//フラグ3が立っている＆小さい音を聞かせる
+		else if (m_Koune3_flg == KOUNE3_FLG3 && m_gimmick_mynah->m_getsound.sound_volume == 1)
+		{
+			//九ちゃん「ミギ！ニバンメ！！...」
+			Overlay()->talkDraw(KOUNE, KOUNE2_BOYA_CREATURE_FLAG3_NO);
+			//フラグ4
+			m_Koune3_tolkingflg = 4;		
+		}
+		//子猫
+		//犬の鳴き声を聞かせる
+		else if (m_gimmick_kitten->m_getsound.sound_num == KOUNE1_DOG && m_gimmick_mynah->m_getsound.sound_volume == 10)
+		{
+			//子猫「にゃーーーん」
+			Overlay()->talkDraw(KOUNE, KOUNE2_BOYB_FLAG3_YES);
+
+			//フラグ2
+			m_Koune3_tolkingflg = 2;
+
+		}
+		//犬の鳴き声以外の音を聞かせる
+		else if (!m_gimmick_kitten->m_getsound.sound_num == KOUNE1_DOG)
+		{
+			//子猫「にゃーー」
+			Overlay()->talkDraw(KOUNE, KOUNE2_BOYA_FLAG1_NO);
+		}
+
 		//---フキダシにクリック---------------------------------------------------------------------------
 		//おばあちゃん
 		if (m_gimmick_granny->m_ball[0].OnPush)
@@ -1038,7 +1096,7 @@ void CObjGimmickManager::Action() {
 		}
 
 		//少女
-		if (m_gimmick_little_girl->m_ball[0].OnPush)
+		else if (m_gimmick_little_girl->m_ball[0].OnPush)
 		{
 			//フラグ立っていない||フラグ1が立っている
 			if (m_Koune3_flg == KOUNE3_TALK_START_END || m_Koune3_flg == KOUNE3_FLG1)
@@ -1062,7 +1120,7 @@ void CObjGimmickManager::Action() {
 		}
 
 		//九官鳥
-		if (m_gimmick_mynah->m_ball[0].OnPush)
+		else if (m_gimmick_mynah->m_ball[0].OnPush)
 		{
 			//フラグ3が立っていない
 			if (m_Koune3_flg != KOUNE3_FLG3)
@@ -1078,7 +1136,7 @@ void CObjGimmickManager::Action() {
 			}
 		}
 		//子猫
-		if (m_gimmick_kitten->m_ball[0].OnPush)
+		else if (m_gimmick_kitten->m_ball[0].OnPush)
 		{
 			//普通に調べる
 			//女の子「かわいい！」
@@ -1086,65 +1144,7 @@ void CObjGimmickManager::Action() {
 		}
 
 
-		//----音を聞かせる--------------------------------------------------------------------------------
-
-		//子猫の音を録音している
-		if(m_gimmick_granny->m_getsound.sound_num == KOUNE3_KITTY)
-		{
-			//おばあちゃん「あら、その鳴き声は...」
-//			Overlay()->talkDraw(KOUNE, ///);
-		}
-		//少女
-		//子猫の鳴き声を聞かせる
-		if (m_gimmick_little_girl->m_getsound.sound_num == KOUNE3_KITTY)
-		{
-			//少女「かわいい声ね！」
-			//Overlay()->talkDraw(KOUNE, ///);
-		}
-
-		//九官鳥
-		//イントロを聞かせる(クリア条件達成)
-		if (m_gimmick_mynah->m_getsound.sound_num == SION3_CHANT2 && m_Koune3_flg == KOUNE3_FLG5)
-		{
-			//ステージクリア
-//			Overlay()->talkDraw(KOUNE, ///);
-//			if (Overlay()->NextWait()) {
-				//クリアフラグを立てる			
-//			}
-		}
-		//イントロを聞かせる(クリア条件未達成)
-		else if (m_gimmick_mynah->m_getsound.sound_num == SION3_CHANT2 && m_Koune3_flg != KOUNE3_FLG5)
-		{
-			//九ちゃん「...。」
-//			Overlay()->talkDraw(KOUNE, ///);
-		}
-		//フラグ3が立っている＆小さい音を聞かせる
-		else if (m_Koune3_flg == KOUNE3_FLG3 && m_gimmick_mynah->m_getsound.sound_volume == 1)
-		{
-			//九ちゃん「ミギ！ニバンメ！！...」
-//			Overlay()->talkDraw(KOUNE, ///);
-			//フラグ4
-			m_Koune3_tolkingflg = 4;		
-		}
-
-		//子猫
-		//犬の鳴き声を聞かせる
-		if (m_gimmick_kitten->m_getsound.sound_num == KOUNE1_DOG && m_gimmick_mynah->m_getsound.sound_volume == 10)
-		{
-			//子猫「にゃーーーん」
-			Overlay()->talkDraw(KOUNE, KOUNE2_BOYB_FLAG3_YES);
-
-			//フラグ2
-			m_Koune3_tolkingflg = 2;
-
-		}
-		//犬の鳴き声以外の音を聞かせる
-		else if (!m_gimmick_kitten->m_getsound.sound_num == KOUNE1_DOG)
-		{
-			//子猫「にゃーー」
-			Overlay()->talkDraw(KOUNE, KOUNE2_BOYA_FLAG1_NO);
-		}
-
+		
 		//---フラグ管理----------------------------------------------------
 		if (m_Koune3_tolkingflg == 1 && Overlay()->NextWait())			   
 		{																   

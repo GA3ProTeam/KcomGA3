@@ -1683,7 +1683,7 @@ void GimmickMysteryDoor::Action() {
 			//”à‚Ì“ä‰ð‚«...ƒ‰ƒ“ƒv‚Ìˆ—...‰¹”Ô†”»’è
 		   //‹@ŠB‰¹A
 			/*switch (Sound_num) {
-			   case 0:
+			   case KOUNE5_MECHANICAL_SOUND_A:
 				   m_idoorgimmick[0] += 1; //¶’[...–¾
 				   m_idoorgimmick[1] -= 1; //’†‰›...ˆÃ
 
@@ -1697,7 +1697,7 @@ void GimmickMysteryDoor::Action() {
 				   break;
 
 		   //‹@ŠB‰¹B
-				case 2:
+				case KOUNE5_MECHANICAL_SOUND_B:
 					m_idoorgimmick[0] -= 1; //¶’[...ˆÃ
 					m_idoorgimmick[2] -= 1; //‰E’[...ˆÃ
 
@@ -1773,13 +1773,16 @@ void GimmickMysteryDoor::Draw() {
 	m_dst.right = 512;
 
 	//“]‘—æÀ•W
-	m_src.top = 200;
-	m_src.bottom = m_src.top + 300;
-	m_src.left = 400;
-	m_src.right = m_src.left + 300;
+	m_src.top = m_iYpos;
+	m_src.bottom = m_src.top + m_iHeight;
+	m_src.left = m_iXpos + User()->mscroll_x;
+	m_src.right = m_src.left + m_iWidth;
 
 	//•`‰æ
 	Image()->DrawEx(12, &m_src, &m_dst, col, 0.0f); //•`‰æ’l•ÏX
+
+	//ƒMƒ~ƒbƒN–¼‘O•`‰æ
+	Font()->StrDraw("ƒhƒA", m_iXpos, m_iYpos, 20, col);
 
 	//‚«o‚µ•`‰æ•“®ì-------
 	this->gimmicDraw(1);
@@ -1858,13 +1861,16 @@ void GimmickMechanic::Draw() {
 	m_dst.right = 200;
 
 	//“]‘—æÀ•W
-	m_src.top = 400;
-	m_src.bottom = m_src.top + 150;
-	m_src.left = 100;
-	m_src.right = m_src.left + 100;
+	m_src.top = m_iYpos;
+	m_src.bottom = m_src.top + m_iHeight;
+	m_src.left = m_iXpos + User()->mscroll_x;
+	m_src.right = m_src.left + m_iWidth;
 
 	//•`‰æ
 	Image()->DrawEx(1, &m_src, &m_dst, col, 0.0f); //•`‰æ’l•ÏX
+
+	//ƒMƒ~ƒbƒN–¼‘O•`‰æ
+	Font()->StrDraw("ƒƒJƒjƒbƒN", m_iXpos, m_iYpos, 20, col);
 
 	//‚«o‚µ•`‰æ•“®ì-------
 	this->gimmicDraw(1);
@@ -1906,13 +1912,17 @@ void GimmickSoundComputer::Draw() {
 	m_dst.right = 512;
 
 	//“]‘—æÀ•W
-	m_src.top = 400;
-	m_src.bottom = m_src.top + 100;
-	m_src.left = 300;
-	m_src.right = m_src.left + 100;
+	m_src.top = m_iYpos;
+	m_src.bottom = m_src.top + m_iHeight;
+	m_src.left = m_iXpos + User()->mscroll_x;
+	m_src.right = m_src.left + m_iWidth;
 
 	//•`‰æ
 	Image()->DrawEx(14, &m_src, &m_dst, col, 0.0f); //•`‰æ’l•ÏX
+
+	//ƒMƒ~ƒbƒN–¼‘O•`‰æ
+	Font()->StrDraw("ƒpƒ\ƒRƒ“", m_iXpos, m_iYpos, 20, col);
+
 
 	//‚«o‚µ•`‰æ•“®ì-------
 	this->gimmicDraw(1);
@@ -1976,13 +1986,16 @@ void GimmickMusician::Draw() {
 	m_dst.right = 360;
 
 	//“]‘—æÀ•W
-	m_src.top = 0;
-	m_src.bottom = m_src.top + 0;
-	m_src.left = 0;
-	m_src.right = m_src.left + 0;
+	m_src.top = m_iYpos;
+	m_src.bottom = m_src.top + m_iHeight;
+	m_src.left = m_iXpos + User()->mscroll_x;
+	m_src.right = m_src.left + m_iWidth;
 
 	//•`‰æ
 	Image()->DrawEx(9, &m_src, &m_dst, col, 0.0f); //•`‰æ’l•ÏX
+
+	//ƒMƒ~ƒbƒN–¼‘O•`‰æ
+	Font()->StrDraw("‰‰‘t‰Æ", m_iXpos, m_iYpos, 20, col);
 
 	//‚«o‚µ•`‰æ•“®ì-------
 	this->gimmicDraw(1);

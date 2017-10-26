@@ -1088,7 +1088,7 @@ void CObjGimmickManager::Action() {
 		//}
 		break;
 	}
-	case 32:
+	case 32://コウネステージ３
 	{
 		//【初回動作】
 		if (m_Koune3_flg == KOUNE3_TALK_START) {

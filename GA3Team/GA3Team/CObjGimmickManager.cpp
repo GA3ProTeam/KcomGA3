@@ -159,15 +159,15 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 		//‡@ƒhƒA
 		m_gimmick_mysterydoor = new GimmickMysteryDoor();
 		Obj()->InsertObj(m_gimmick_mysterydoor,GIMMICK_MYSTERYDOOR, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_mysterydoor->Init(0, 0, 0, 0, 1);
+		m_gimmick_mysterydoor->Init(300, 200, 200, 300, 1);
 		//‡AƒƒJƒjƒbƒN
 		m_gimmick_mechanic = new GimmickMechanic();
 		Obj()->InsertObj(m_gimmick_mechanic, GIMMICK_MECHANIC, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_mechanic->Init(0, 0, 0, 0, 1);
+		m_gimmick_mechanic->Init(20, 400, 100, 170, 1);
 		//‡Bƒpƒ\ƒRƒ“
 		m_gimmick_soundcomputer = new GimmickSoundComputer();
 		Obj()->InsertObj(m_gimmick_soundcomputer, GIMMICK_SOUNDCOMPUTER, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_soundcomputer->Init(0, 0, 0, 0, 1);
+		m_gimmick_soundcomputer->Init(150, 450, 50, 50, 1);
 		//‡C‰‰‘t‰Æ
 		m_gimmick_musician = new GimmickMusician();
 		Obj()->InsertObj(m_gimmick_musician, GIMMICK_MUSICIAN, 5, this->m_pScene, HIT_BOX_OFF);

@@ -28,6 +28,9 @@ void COverlay::InitLoad()
 	image->LoadImageEx("シオン表情.png", EX_SION_GOGGLES_NO, TEX_SIZE_1024);
 	//コウネ3----------------------------------------
 	image->LoadImageEx("優しい少女.png", 6, TEX_SIZE_512);
+	//シオン１
+	image->LoadImageEx("女性.png", EX_WOMANALL, TEX_SIZE_1024);
+	image->LoadImageEx("インターフォン.png", EX_INTERPHONE, TEX_SIZE_512);
 	//シオン2--------------------------------------
 	/*image->LoadImageEx("イヤホン男.png", 7, TEX_SIZE_512);
 	image->LoadImageEx("自転車.png", 8, TEX_SIZE_512);*/
@@ -45,7 +48,7 @@ void COverlay::InitLoad()
 	image->LoadImageEx("電子レンジ.png", 14, TEX_SIZE_512);
 	image->LoadImageEx("博士c.png", 15, TEX_SIZE_512);
 	//動物------------------------------------------
-	image->LoadImageEx("動物まとめ.png", 16, TEX_SIZE_1024);
+	image->LoadImageEx("動物まとめ.png", EX_ANIMALALL, TEX_SIZE_1024);
 	//メインキャラクター----------------------------
 	image->LoadImageEx("コウネ立ち.png", 17, TEX_SIZE_1024);
 	image->LoadImageEx("シオン立ち.png", 18, TEX_SIZE_1024);
@@ -67,6 +70,8 @@ void COverlay::InitLoad()
 	image->LoadImageEx("StageTutorial.png", EX_STAGE_TUTORIAL, TEX_SIZE_1024);
 	//----------------------------------------------
 	image->LoadImageEx("音量ボタン.png", EX_VOLBOTTON, TEX_SIZE_512);
+	image->LoadImageEx("アイコン透過.png", EX_ICON, TEX_SIZE_512);
+
 	//サウンド読み込み↓---------------------------------------------------------------------------
 	//チュートリアルステージ
 	audio->LoadAudio(TUTORIAL_BGM, "Sound\\チュートリアル\\fanfare3.wav");
@@ -832,16 +837,16 @@ void COverlay::Draw()
 		m_fWaitColor[3] = m_fWaitAlpha;
 		//切り取り座標
 		waitdst.top = 0;
-		waitdst.left = 0;
-		waitdst.bottom = waitdst.top + 256;
-		waitdst.right = waitdst.left + 256;
+		waitdst.left = 32*13;
+		waitdst.bottom = waitdst.top + 32;
+		waitdst.right = waitdst.left + 32;
 		//転送先座標
-		waitsrc.top = WINDOW_SIZE_H - 100;
-		waitsrc.left = WINDOW_SIZE_W - 250;
-		waitsrc.bottom = waitsrc.top + 64;
-		waitsrc.right = waitsrc.left + 96;
+		waitsrc.top = WINDOW_SIZE_H - 80;
+		waitsrc.left = WINDOW_SIZE_W - 220;
+		waitsrc.bottom = waitsrc.top + 42;
+		waitsrc.right = waitsrc.left + 64;
 
-		image->DrawEx(63, &waitsrc, &waitdst, m_fWaitColor, 0.0f);
+		image->DrawEx(EX_ICON, &waitsrc, &waitdst, m_fWaitColor, 0.0f);
 		//-------------------待機インジケータ終-------------
 
 		//-------------------------------テキスト表示処理------------------------------------

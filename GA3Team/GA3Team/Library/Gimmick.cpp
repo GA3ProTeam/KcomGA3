@@ -108,8 +108,7 @@ void Gimmick::gimmicDraw(int num)
 				m_src.right = m_src.left + GIMMICK_SIZE_X;
 
 				//‰¹‚«o‚µ‚ğ•`‰æ
-				Image()->DrawEx(22, &m_src, &m_dst, col, 0.0f);
-
+				Image()->DrawEx(EX_OTHER_ICON, &m_src, &m_dst, col, 0.0f);
 
 				//‰Ÿ‚µ‚Ä‚¢‚È‚¢ó‘Ô‚É‰Šú‰»
 				m_ball[i].OnPush = false;

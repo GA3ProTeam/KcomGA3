@@ -71,9 +71,9 @@ enum koune
 	KOUNE1_OZI_FLAG2_NO,
 	KOUNE1_OZI_FLAG2_YES,
 	KOUNE1_OZI_FLAG3_NO,
-	KOUNE1_OZI_FLAG3_NO_FLAG1_YES,
-	KOUNE1_OZI_FLAG3_YES,
 	KOUNE1_OZI_CLEAR,
+	KOUNE1_OZI_FLAG3_YES,
+	KOUNE1_OZI_FLAG3_NO_FLAG1_YES,
 
 	//ステージ2
 	KOUNE2_START,
@@ -148,6 +148,13 @@ enum DrawExID {
 	EX_STAGE_LAB,
 	EX_STAGE_TUTORIAL,
 	EX_VOLBOTTON,
+	EX_KOUNE_MASK_YES,
+	EX_KOUNE_MASK_NO,
+	EX_KOUNE_GIRL_ALL,
+	EX_KOUNE2_WINDOW_NO_BREAK,
+	EX_KOUNE2_WINDOW_BREAK,
+	EX_SION_GOGGLES_YES,
+	EX_SION_GOGGLES_NO,
 };
 
 //効果音アドレス
@@ -257,6 +264,7 @@ private:
 	int m_iDrawingStageIDGet;
 
 	int m_iBeforeDrawDir;	//前回話していたキャラクターの方向
+	int m_iBeforeBalloon;	//前回の吹き出しタイプ
 	int m_iNowDrawDir;		//現在話しているキャラクターの方向
 
 	int m_iDrawFlg;
@@ -328,6 +336,7 @@ public:
 		m_piShowTextID(NULL),
 		m_piShowCharaID(NULL),
 		m_iBeforeDrawDir(-1),
+		m_iBeforeBalloon(-1),
 		m_iNowDrawDir(-1)
 	{}
 

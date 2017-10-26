@@ -13,12 +13,15 @@ void CSceneStageSelect::InitScene()
 	CObjStageTab *stage_tab;
 	//-----------------------------------
 
+	//選んだデータをセット
+	SavedataManeger()->Setcurrentdata();
+
 	//シーンに必要なオブジェクト情報-------------------------------------------
 
 	//ステージタブ生成
 	stage_tab = new CObjStageTab();
-	stage_tab->Init();
 	Obj()->InsertObj(stage_tab, OBJ_STAGE_TAB, 0, this, HIT_BOX_OFF);
+	stage_tab->Init();
 
 	//プレイヤーボタン生成
 	for (int player_num = 0; player_num < MAX_CHARA; player_num++) {

@@ -10,6 +10,7 @@ public:
 	bool Savedatacheck(int savedate_srot/*確認したいセーブデータのスロット*/); //セーブデータ確認
 	void Deletesavedata(int savedate_srot);//セーブデータ削除
 	void Setcurrentdata();//ポインターセット
+	CSavedata* GetSaveData(int savedata_slot);//セーブデータ取得
 	void InitSaveData(int savedate_srot);
 	int SelectedData;
 	int GetClearflg(int savedatenum,int type, int num);

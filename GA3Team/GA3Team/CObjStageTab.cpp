@@ -8,17 +8,37 @@ void CObjStageTab::Init() {
 	//前回選択したキャラクター番号保存(-1はステージが選択されていないときの状態)
 	m_isel_chara_old = -1;
 
-	//各キャラクターのステージ数
-	m_istage_num[0]=4;
-	m_istage_num[1]=4;
-	m_istage_num[2]=4;
-	m_istage_num[3]=4;
+	//各キャラクターのステージ最大数
+	m_istage_num[0]=1;
+	m_istage_num[1]=2;
+	m_istage_num[2]=2;
+	m_istage_num[3]=2;
 
-	//各キャラクターのステージ開放数
-	m_istage_open[0]=1;
-	m_istage_open[1]=2;
-	m_istage_open[2]=3;
-	m_istage_open[3]=4;
+	//各キャラクターのステージ開放数初期値
+	m_istage_open[0] = 1;
+	m_istage_open[1] = 0;
+	m_istage_open[2] = 0;
+	m_istage_open[3] = 0;
+
+	//ステージ開放数を加算-------------------------------------------------
+	//チュートリアルをクリア
+	if (g_SavedataManeger->CurrentData->m_stage[TUTORIAL].stage1clear) {
+		//各キャラクターでステージ1個開放
+		m_istage_open[1]++;
+		m_istage_open[2]++;
+		m_istage_open[3]++;
+	}
+
+	//コウネ、シオン、メルエルの1ステージクリア
+	if (g_SavedataManeger->CurrentData->m_stage[KOUNE].stage1clear &&
+		g_SavedataManeger->CurrentData->m_stage[SION].stage1clear &&
+		g_SavedataManeger->CurrentData->m_stage[MERUERU].stage1clear) {
+		//各キャラクターでステージ1個開放
+		m_istage_open[1]++;
+		m_istage_open[2]++;
+		m_istage_open[3]++;
+	}
+	//--------------------------------------------------------------------
 
 	//各キャラクターのステージボタン数分のポインタ配列を生成
 	for (int chara_num = 0; chara_num < MAX_CHARA; chara_num++) {

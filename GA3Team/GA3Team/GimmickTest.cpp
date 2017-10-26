@@ -415,7 +415,7 @@ void Gimmickearphone::Init(int xpos,int ypos,int widht,int height,int balloonnum
 {
 	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
 	//吹き出しの初期化
-	InitBall(&m_ball[0], m_iWidth - 50, -48, sound, 1, RED, LOWER_LEFT);
+	InitBall(&m_ball[0], m_iWidth - 50, -48, sound, 1, NORMAL, LOWER_LEFT);
 }
 void Gimmickearphone::Destructor()
 {
@@ -506,7 +506,7 @@ void Gimmickcat::Init(int xpos, int ypos, int widht, int height, int balloonnum)
 {
 	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
 	//吹き出しの初期化
-	InitBall(&m_ball[0], m_iWidth - 50, -48, sound, 1, RED, LOWER_LEFT);
+	InitBall(&m_ball[0], m_iWidth - 50, -48, sound, SION2_CAT1, GREEN, LOWER_LEFT);
 }
 void Gimmickcat::Destructor()
 {
@@ -551,7 +551,7 @@ void Gimmickbicycle::Init(int xpos, int ypos, int widht, int height, int balloon
 {
 	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
 	//吹き出しの初期化
-	InitBall(&m_ball[0], m_iWidth - 50, -48, sound, 1, RED, LOWER_LEFT);
+	InitBall(&m_ball[0], m_iWidth - 50, -48, sound, SION2_BICYCLE_BELL, ORANGE, LOWER_LEFT);
 }
 void Gimmickbicycle::Destructor()
 {
@@ -596,7 +596,7 @@ void Gimmickfiretruck::Init(int xpos, int ypos, int widht, int height, int ballo
 {
 	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
 	//吹き出しの初期化
-	InitBall(&m_ball[0], m_iWidth - 50, -48, sound, 1, RED, LOWER_LEFT);
+	InitBall(&m_ball[0], m_iWidth - 50, -48, sound, SION2_FIRE_ENGINE, PURPLE, LOWER_LEFT);
 }
 void Gimmickfiretruck::Destructor()
 {

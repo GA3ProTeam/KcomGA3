@@ -1475,10 +1475,71 @@ void CObjGimmickManager::Draw() {
 	RECT m_src;		//転送先座標
 	RECT m_dst;		//切り取り座標
 
+
+	/*
+	m_Stage_ID
+	10   =チュートリアル（博士）
+	20~25=コウネ
+	30~35=シオン
+	40~45=メルエル
+	*/
+
 	//背景描画
 	switch (m_Stage_ID){
-		//-シオンステージ-----------------------------------------
+	//チュートリアルステージ--------------------------------------
 	case 10:
+
+		break;
+	//------------------------------------------------------------
+
+	//-コウネステージ-----------------------------------------
+	case 20:
+
+		//切り取り座標
+		m_dst.top = 0;
+		m_dst.bottom = m_dst.top + 1024;
+		m_dst.left = 0;
+		m_dst.right = m_dst.left + 1024;
+
+		//転送先座標
+		m_src.top = 0;
+		m_src.bottom = m_src.top + 600;
+		m_src.left = -400 + User()->mscroll_x;
+		m_src.right = m_src.left + 1200;
+
+		//背景描画
+		Image()->DrawEx(25, &m_src, &m_dst, col, 0.0f);
+		break;
+
+	case 21:
+		break;
+	case 22:
+		break;
+	case 23:
+		break;
+	case 24://コウネ5
+			/*
+			//切り取り座標
+			m_dst.top = 0;
+			m_dst.bottom = m_dst.top + 1024;
+			m_dst.left = 0;
+			m_dst.right = m_dst.left + 1024;
+
+			//転送先座標
+			m_src.top = 0;
+			m_src.bottom = m_src.top + 600;
+			m_src.left = -400 + User()->mscroll_x;
+			m_src.right = m_src.left + 1200;
+
+			//背景描画
+			Image()->DrawEx(0, &m_src, &m_dst, col, 0.0f); //仮
+			*/
+		break;
+	case 25:
+		break;
+
+		//-シオンステージ-----------------------------------------
+	case 30:
 		//切り取り座標
 		m_dst.top = 0;
 		m_dst.bottom = m_dst.top + 1024;
@@ -1494,7 +1555,7 @@ void CObjGimmickManager::Draw() {
 		//背景描画
 		Image()->DrawEx(24, &m_src, &m_dst, col, 0.0f);
 		break;
-	case 11:
+	case 31:
 		//右
 		//切り取り座標
 		m_dst.top = 0;
@@ -1528,9 +1589,9 @@ void CObjGimmickManager::Draw() {
 		Image()->DrawEx(EX_STAGE_SION_STAGE2_left, &m_src, &m_dst, col, 0.0f);
 
 		break;
-	case 12:
+	case 32:
 		break;
-	case 13:
+	case 33:
 
 		//切り取り座標
 		m_dst.top = 0;
@@ -1547,12 +1608,12 @@ void CObjGimmickManager::Draw() {
 		//背景描画
 		Image()->DrawEx(25, &m_src, &m_dst, col, 0.0f);
 		break;
-	case 14:
+	case 34:
 		break;
-	case 15:
+	case 35:
 		break;
 		//-メルエルステージ---------------------------------------
-	case 20:
+	case 40:
 
 		//背景
 		//切り取り座標
@@ -1591,60 +1652,16 @@ void CObjGimmickManager::Draw() {
 
 
 		break;
-	case 21:
+	case 41:
 		break;
-	case 22:
+	case 42:
 		break;
-	case 23:
+	case 43:
 		break;
-	case 24:
+	case 44:
 		break;
-	case 25:
+	case 45:
 		break;
-		//-コウネステージ-----------------------------------------
-	case 30:
-
-		//切り取り座標
-		m_dst.top = 0;
-		m_dst.bottom = m_dst.top + 1024;
-		m_dst.left = 0;
-		m_dst.right = m_dst.left + 1024;
-
-		//転送先座標
-		m_src.top = 0;
-		m_src.bottom = m_src.top + 600;
-		m_src.left = -400 + User()->mscroll_x;
-		m_src.right = m_src.left + 1200;
-
-		//背景描画
-		Image()->DrawEx(25, &m_src, &m_dst, col, 0.0f);
-		break;
-
-	case 31:
-		break;
-	case 32:
-		break;
-	case 33:
-		break;
-	case 34://コウネ5
-			/*
-			//切り取り座標
-			m_dst.top = 0;
-			m_dst.bottom = m_dst.top + 1024;
-			m_dst.left = 0;
-			m_dst.right = m_dst.left + 1024;
-
-			//転送先座標
-			m_src.top = 0;
-			m_src.bottom = m_src.top + 600;
-			m_src.left = -400 + User()->mscroll_x;
-			m_src.right = m_src.left + 1200;
-
-			//背景描画
-			Image()->DrawEx(0, &m_src, &m_dst, col, 0.0f); //仮
-			*/
-		break;
-	case 35:
-		break;
+		
 	}
 }

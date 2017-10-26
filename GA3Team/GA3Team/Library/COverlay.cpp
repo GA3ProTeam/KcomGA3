@@ -69,6 +69,9 @@ void COverlay::InitLoad()
 
 	//チュートリアルステージ------------------------
 	image->LoadImageEx("StageTutorial.png", EX_STAGE_TUTORIAL, TEX_SIZE_1024);
+	image->LoadImageEx("ヴォイスレコーダ.png", EX_VOICE_RECORDER, TEX_SIZE_512);
+	image->LoadImageEx("パソコン.png", EX_COMPUTER, TEX_SIZE_512);
+	image->LoadImageEx("机.png", EX_DESK, TEX_SIZE_1024);
 	//----------------------------------------------
 	image->LoadImageEx("音量ボタン.png", EX_VOLBOTTON, TEX_SIZE_512);
 	image->LoadImageEx("アイコン透過.png", EX_ICON, TEX_SIZE_512);

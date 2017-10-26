@@ -77,9 +77,9 @@ void GimmickDoctor::Draw() {
 	//ギミック本体描画-----------------------------------------------------------
 	//切り取り先座標
 	m_dst.top = 0;
-	m_dst.bottom = m_dst.top + 64;
+	m_dst.bottom = m_dst.top + 512;
 	m_dst.left = 0;
-	m_dst.right = m_dst.left + 64;
+	m_dst.right = m_dst.left + 512;
 
 	//転送先座標
 	m_src.top = m_iYpos;
@@ -88,11 +88,11 @@ void GimmickDoctor::Draw() {
 	m_src.right = m_src.left + m_iWidth;
 
 	//描画
-	Image()->DrawEx(58, &m_src, &m_dst, col, 0.0f);
+	Image()->DrawEx(15, &m_src, &m_dst, col, 0.0f);
 	//---------------------------------------------------------------------------
 
 	//ギミック名前描画
-	Font()->StrDraw("博士", m_iXpos, m_iYpos, 20, col);
+	//Font()->StrDraw("博士", m_iXpos, m_iYpos, 20, col);
 
 	//ギミックの動作＆吹き出しの動作・描画
 	this->gimmicDraw(1);
@@ -124,10 +124,10 @@ void GimmickComputer::Draw() {
 
 	//ギミック本体描画-----------------------------------------------------------
 	//切り取り先座標
-	m_dst.top = 64;
-	m_dst.bottom = m_dst.top + 64;
+	m_dst.top = 0;
+	m_dst.bottom = m_dst.top + 260;
 	m_dst.left = 0;
-	m_dst.right = m_dst.left + 64;
+	m_dst.right = m_dst.left + 280;
 
 	//転送先座標
 	m_src.top = m_iYpos;
@@ -136,11 +136,11 @@ void GimmickComputer::Draw() {
 	m_src.right = m_src.left + m_iWidth;
 
 	//描画
-	Image()->DrawEx(58, &m_src, &m_dst, col, 0.0f);
+	Image()->DrawEx(EX_COMPUTER, &m_src, &m_dst, col, 0.0f);
 	//---------------------------------------------------------------------------
 
 	//ギミック名前描画
-	Font()->StrDraw("パソコン", m_iXpos, m_iYpos, 20, col);
+	//Font()->StrDraw("パソコン", m_iXpos, m_iYpos, 20, col);
 
 	//ギミックの動作＆吹き出しの動作・描画
 	this->gimmicDraw(1);
@@ -172,10 +172,10 @@ void GimmickRecorder::Draw() {
 
 	//ギミック本体描画-----------------------------------------------------------
 	//切り取り先座標
-	m_dst.top = 128;
-	m_dst.bottom = m_dst.top + 64;
+	m_dst.top = 0;
+	m_dst.bottom = m_dst.top + 350;
 	m_dst.left = 0;
-	m_dst.right = m_dst.left + 64;
+	m_dst.right = m_dst.left + 135;
 
 	//転送先座標
 	m_src.top = m_iYpos;
@@ -184,11 +184,11 @@ void GimmickRecorder::Draw() {
 	m_src.right = m_src.left + m_iWidth;
 
 	//描画
-	Image()->DrawEx(58, &m_src, &m_dst, col, 0.0f);
+	Image()->DrawEx(EX_VOICE_RECORDER, &m_src, &m_dst, col, 0.0f);
 	//---------------------------------------------------------------------------
 
 	//ギミック名前描画
-	Font()->StrDraw("レコーダー", m_iXpos, m_iYpos, 20, col);
+	//Font()->StrDraw("レコーダー", m_iXpos, m_iYpos, 20, col);
 
 	//ギミックの動作＆吹き出しの動作・描画
 	this->gimmicDraw(1);
@@ -222,10 +222,10 @@ void CObjDesk::Draw() {
 
 	//ギミック本体描画-----------------------------------------------------------
 	//切り取り先座標
-	m_dst.top = 192;
-	m_dst.bottom = m_dst.top + 64;
+	m_dst.top = 0;
+	m_dst.bottom = m_dst.top + 440;
 	m_dst.left = 0;
-	m_dst.right = m_dst.left + 64;
+	m_dst.right = m_dst.left + 560;
 
 	//転送先座標
 	m_src.top = m_iYpos;
@@ -234,11 +234,11 @@ void CObjDesk::Draw() {
 	m_src.right = m_src.left + m_iWidth;
 
 	//描画
-	Image()->DrawEx(58, &m_src, &m_dst, col, 0.0f);
+	Image()->DrawEx(EX_DESK, &m_src, &m_dst, col, 0.0f);
 	//---------------------------------------------------------------------------
 
 	//ギミック名前描画
-	Font()->StrDraw("机", m_iXpos, m_iYpos, 20, col);
+	//Font()->StrDraw("机", m_iXpos, m_iYpos, 20, col);
 }
 //-----------チュートリアル（博士）ステージ↑-------------------------
 

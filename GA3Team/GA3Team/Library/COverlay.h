@@ -192,7 +192,10 @@ enum DrawExID {
 	EX_INTERPHONE,
 	EX_ANIMALALL,
 	EX_ICON,
-
+	EX_VOICE_RECORDER,
+	EX_COMPUTER,
+	EX_DESK,
+	EX_LABO,
 };
 
 //Œø‰Ê‰¹ƒAƒhƒŒƒX

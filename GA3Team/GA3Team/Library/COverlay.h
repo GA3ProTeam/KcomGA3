@@ -103,7 +103,7 @@ enum koune
 	KOUNE2_BOYA_FLAG3_ALL_COLOR,
 	KOUNE2_BOYA_FLAG3_OUEN_SMALL,
 	KOUNE2_BOYA_FLAG3_OUEN_BIG,
-	//KOUNE2_BOYA_FLAG3_OUEN_BIG_AFTER,
+	KOUNE2_BOYA_FLAG3_OUEN_BIG_AFTER,
 
 	//ステージ3
 	KOUNE3_START,
@@ -197,6 +197,7 @@ enum DrawExID {
 	EX_COMPUTER,
 	EX_DESK,
 	EX_LABO,
+
 };
 
 //効果音アドレス
@@ -233,6 +234,10 @@ enum SoundID {
 	TALK_SELECT01,				//会話音
 	DECISION_BUTTON5,			//決定音
 	ERROR_CANCEL,				//キャンセル音
+
+	//↓まだ読み込んでいないもの-------------------------------------
+	KOUNE2_GIRL_SING,//女の子の応援音
+	//---------------------------------------------------------------
 };
 
 //---------------------------

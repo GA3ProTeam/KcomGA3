@@ -86,7 +86,7 @@ CTextManager::CTextManager()
 	filePath_koune.push_back("Text\\koune2\\koune2_BoyA_flag3_all_color.bin");
 	filePath_koune.push_back("Text\\koune2\\koune2_BoyA_flag3_ouen_small.bin");
 	filePath_koune.push_back("Text\\koune2\\koune2_BoyA_flag3_ouen_Big.bin");
-	//filePath_koune.push_back("Text\\koune2\\koune2_BoyA_flag3_ouen_BigAfter.bin");
+	filePath_koune.push_back("Text\\koune2\\koune2_BoyA_flag3_ouen_Big_After.bin");
 
 	//Stage3
 	filePath_koune.push_back("Text\\koune3\\koune3_start.bin");

@@ -1205,8 +1205,11 @@ void GimmickGirl_Koune2::Init(int xpos, int ypos, int widht, int height, int bal
 	//親クラスのInit関数を呼ぶ
 	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
 
+	m_sound_flg = 1;//吹き出し描画数
+
 	//吹き出しの初期化
 	InitBall(&m_ball[0], m_iWidth - 50, -48, talk, 1, RED, LOWER_LEFT);
+	InitBall(&m_ball[1], m_iWidth + 20, -48, sound, KOUNE2_GIRL_SING, YELLOW, LOWER_LEFT);
 }
 
 //デストラクタ
@@ -1247,7 +1250,7 @@ void GimmickGirl_Koune2::Draw() {
 	Font()->StrDraw("女の子", m_src.left, m_src.top, 20, col);
 
 	//ギミックの動作＆吹き出しの動作・描画
-	this->gimmicDraw(1);
+	this->gimmicDraw(m_sound_flg);
 }
 
 //シオン

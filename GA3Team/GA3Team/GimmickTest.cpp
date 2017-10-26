@@ -424,21 +424,6 @@ void Gimmickearphone::Destructor()
 
 void Gimmickearphone::Action()
 {
-	if (m_ball[0].OnPush)
-	{
-		//会話
-
-	}
-	//工事音使用でステージクリア
-	if (Input()->m_x > m_iXpos&& Input()->m_x < (m_iXpos + m_iWidth)
-		&& Input()->m_y > m_iYpos && Input()->m_y < (m_iYpos + m_iHeight)) {
-		//マウスドラッグ中にマウスボタンが離された
-		//if (!Input()->GetMouButtonL() && tab->GetHaveSound()) {
-
-		SavedataManeger()->CurrentData->m_stage[SION].stage1clear = true;
-
-
-		}
 	
 }
 
@@ -486,20 +471,7 @@ void Gimmickkoune::Destructor()
 
 void Gimmickkoune::Action()
 {
-	//if (m_ball[1].OnPush)
-	//{
-	//	if (SavedataManeger()->CurrentData->m_bSionflg[0] ==false)
-	//	{
-	//		//イヤホン男フラグなし会話
-
-	//	}
-
-	//	else if (SavedataManeger()->CurrentData->m_bSionflg[0] == true)
-	//	{
-	//		//イヤホン男フラグなし会話
-
-	//	}
-	//}
+	
 }
 
 void Gimmickkoune::Draw()
@@ -543,10 +515,7 @@ void Gimmickcat::Destructor()
 
 void Gimmickcat::Action()
 {
-	if (m_ball[2].OnPush)
-	{
-		//音を取得
-	}
+	
 }
 
 void Gimmickcat::Draw()
@@ -591,10 +560,7 @@ void Gimmickbicycle::Destructor()
 
 void Gimmickbicycle::Action()
 {
-	if (m_ball[3].OnPush)
-	{
-		//音を取得
-	}
+	
 }
 
 void Gimmickbicycle::Draw()
@@ -639,10 +605,7 @@ void Gimmickfiretruck::Destructor()
 
 void Gimmickfiretruck::Action()
 {
-	if (m_ball[4].OnPush)
-	{
-		//音を取得
-	}
+	
 }
 
 void Gimmickfiretruck::Draw()

@@ -476,7 +476,7 @@ void Gimmickkoune::Draw()
 	m_src.right = m_src.left + m_iWidth;
 
 	//描画
-	Image()->DrawEx(17, &m_src, &m_dst, col, 0.0f); //描画値変更
+	Image()->DrawEx(EX_OTHER_KOUNE_CHARA, &m_src, &m_dst, col, 0.0f); //描画値変更
 	//---------------------------------------------------------------------------
 
 	//レコーダーを取得した後から吹き出し出現
@@ -520,7 +520,7 @@ void Gimmickcat::Draw()
 	m_src.right = m_src.left + m_iWidth;
 
 	//描画
-	Image()->DrawEx(16, &m_src, &m_dst, col, 0.0f); //描画値変更
+	Image()->DrawEx(EX_ANIMALALL, &m_src, &m_dst, col, 0.0f); //描画値変更
 	//---------------------------------------------------------------------------
 
 	//レコーダーを取得した後から吹き出し出現
@@ -1618,7 +1618,7 @@ void GimmickMysteryDoor::Destructor(){
 void GimmickMysteryDoor::Action() {
 
 	//メニュータブへの参照取得
-	CObjMenuTab* tab = (CObjMenuTab*)Obj()->GetObj(OBJ_MENUTAB);
+	//CObjMenuTab* tab = (CObjMenuTab*)Obj()->GetObj(OBJ_MENUTAB);
 
 }
 //①ドアの描画
@@ -1626,6 +1626,7 @@ void GimmickMysteryDoor::Draw() {
 
 	float col[4] = { 1.0,1.0,1.0,1.0 };
 
+	//ドア---------------------------------------
 	//切り取り先座標
 	m_dst.top = 0;
 	m_dst.bottom = 512;
@@ -1640,6 +1641,66 @@ void GimmickMysteryDoor::Draw() {
 
 	//描画
 	Image()->DrawEx(58, &m_src, &m_dst, col, 0.0f); //仮描画
+
+	//ランプ-----------------------------------------
+	//for (int i = 0; i < 3; i++) {
+		//switch (/**/) {
+		/*case 0: //灰色
+			//切り取り先座標
+			m_dst.top = 0;
+			m_dst.bottom = 512;
+			m_dst.left = 0;
+			m_dst.right = 512;
+
+			//転送先座標
+			m_src.top = m_iYpos;
+			m_src.bottom = m_src.top + m_iHeight;
+			m_src.left = m_iXpos + User()->mscroll_x;
+			m_src.right = m_src.left + m_iWidth;
+
+			//描画
+			Image()->DrawEx(58, &m_src, &m_dst, col, 0.0f); //仮描画
+
+			break;
+
+		case 1: //黄色
+				//切り取り先座標
+			m_dst.top = 0;
+			m_dst.bottom = 512;
+			m_dst.left = 0;
+			m_dst.right = 512;
+
+			//転送先座標
+			m_src.top = m_iYpos;
+			m_src.bottom = m_src.top + m_iHeight;
+			m_src.left = m_iXpos + User()->mscroll_x;
+			m_src.right = m_src.left + m_iWidth;
+
+			//描画
+			Image()->DrawEx(58, &m_src, &m_dst, col, 0.0f); //仮描画
+
+			break;
+
+		case 2: //緑色
+			//切り取り先座標
+			m_dst.top = 0;
+			m_dst.bottom = 512;
+			m_dst.left = 0;
+			m_dst.right = 512;
+
+			//転送先座標
+			m_src.top = m_iYpos;
+			m_src.bottom = m_src.top + m_iHeight;
+			m_src.left = m_iXpos + User()->mscroll_x;
+			m_src.right = m_src.left + m_iWidth;
+
+			//描画
+			Image()->DrawEx(58, &m_src, &m_dst, col, 0.0f); //仮描画
+
+			break;
+		}
+	}*/
+	//--------------------------------------------
 
 	//ギミック名前描画
 	Font()->StrDraw("ドア", m_iXpos, m_iYpos, 20, col);
@@ -1665,7 +1726,7 @@ void GimmickMechanic::Destructor() {
 //②メカニックのアクション
 void GimmickMechanic::Action() {
 	 //メニュータブ取得
-	 CObjMenuTab* tab = (CObjMenuTab*)Obj()->GetObj(OBJ_MENUTAB);
+	 //CObjMenuTab* tab = (CObjMenuTab*)Obj()->GetObj(OBJ_MENUTAB);
 
 }
 //②メカニックの描画
@@ -1704,7 +1765,7 @@ void GimmickSoundComputer::Init(int xpos, int ypos, int widht, int height, int b
 	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
 	//吹き出しの初期化
 	InitBall(&m_ball[0],48, -48, sound, 1, BLUE, LOWER_LEFT);  //A
-	//InitBall(&m_ball[1], 150, -48, sound, 1, RED, LOWER_LEFT); //B
+	//InitBall(&m_ball[1], 0, -48, sound, 1, RED, LOWER_LEFT); //B
 }
 //③パソコンのデストラクタ
 void GimmickSoundComputer::Destructor() {

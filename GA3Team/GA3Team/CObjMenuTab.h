@@ -2,6 +2,7 @@
 #ifndef __C_OBJ_MENUTAB_H__
 #define __C_OBJ_MENUTAB_H__
 
+
 class CObjMenuTab : public Button
 {
 private:
@@ -36,6 +37,8 @@ private:
 	RECT m_rDst;//切り取り座標
 
 	bool abiltyOverray;//能力発動フラグ
+	bool isSlotSelect;
+	int inputcount;
 
 public:
 	//bool m_bability;//能力発動フラグ

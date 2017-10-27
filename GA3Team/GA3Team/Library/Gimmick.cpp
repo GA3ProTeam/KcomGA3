@@ -91,8 +91,8 @@ void Gimmick::gimmicDraw(int num)
 				//切り取り先座標設定
 				m_dst.top = m_ball[i].m_iballoontype * 64;
 				//leftは、↑で決定しています。
-				m_dst.bottom = m_dst.top + GIMMICK_SIZE_Y;
-				m_dst.right = m_dst.left + GIMMICK_SIZE_X;
+				m_dst.bottom = m_dst.top + GIMMICK_SIZE_Y*2;
+				m_dst.right = m_dst.left + GIMMICK_SIZE_X*2;
 
 				//向き変更(切り取り先座標左右反転)
 				if (m_ball[i].m_iballoonDir == LOWER_RIGHT) {
@@ -104,11 +104,11 @@ void Gimmick::gimmicDraw(int num)
 				//転送先座標設定
 				m_src.top = m_iYpos + m_ball[i].m_iGimYpos;
 				m_src.left = m_iXpos + m_ball[i].m_iGimXpos + User()->mscroll_x;
-				m_src.bottom = m_src.top + GIMMICK_SIZE_Y;
-				m_src.right = m_src.left + GIMMICK_SIZE_X;
+				m_src.bottom = m_src.top + GIMMICK_SIZE_Y*2;
+				m_src.right = m_src.left + GIMMICK_SIZE_X*2;
 
 				//音吹き出しを描画
-				Image()->DrawEx(EX_OTHER_ICON, &m_src, &m_dst, col, 0.0f);
+				Image()->DrawEx(EX_ICON, &m_src, &m_dst, col, 0.0f);
 
 				//押していない状態に初期化
 				m_ball[i].OnPush = false;

@@ -1269,10 +1269,10 @@ ROOP_END:
 	image->DrawEx(image_id, &leftsrc, &leftdst, col, 0.0f);
 
 	//キャラクター名表示
-	g_DrawFont->StrDraw((char*)name, leftsrc.left, leftsrc.top, 32, col);
+	//g_DrawFont->StrDraw((char*)name, leftsrc.left, leftsrc.top, 32, col);
 
 	//表情表示
-	g_DrawFont->StrDraw((char*)expression, leftsrc.left, leftsrc.top + 32, 32, col);
+	//g_DrawFont->StrDraw((char*)expression, leftsrc.left, leftsrc.top + 32, 32, col);
 }
 
 //トークの描画有効

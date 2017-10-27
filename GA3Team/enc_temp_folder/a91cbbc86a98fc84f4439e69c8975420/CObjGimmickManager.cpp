@@ -50,7 +50,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 	*/
 	SavedataManeger()->Setcurrentdata();
 
-	//m_Stage_ID = 32;
+	m_Stage_ID = 32;
 
 	switch (m_Stage_ID) {
 		//チュートリアル（博士）ステージ--------------------------
@@ -538,7 +538,7 @@ void CObjGimmickManager::Action() {
 
 		//コウネステージ2
 		m_iKoune2_flg = 1;
-		for (unsigned int i = 0; i < m_bKoune2_flg_list.size(); i++) {
+		for (unsigned int i = 0; i < m_bKoune1_flg_list.size(); i++) {
 			m_bKoune2_flg_list[i] = false;
 		}
 
@@ -550,13 +550,6 @@ void CObjGimmickManager::Action() {
 
 		// コウネステージ5
 		m_Koune5_flg = KOUNE5_TALK_START;
-
-
-		/*g_SavedataManeger->CurrentData->m_stage[SION].stage1clear = true;
-		g_SavedataManeger->CurrentData->m_stage[SION].stage2clear = true;
-		g_SavedataManeger->CurrentData->m_stage[SION].stage3clear = true;
-		g_SavedataManeger->CurrentData->m_stage[SION].stage4clear = true;
-		g_SavedataManeger->CurrentData->m_stage[SION].stage5clear = true;*/
 
 	}
 	//↑【セーブデータの初期化（デバッグ用）】------------------------------------------

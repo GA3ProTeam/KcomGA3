@@ -13,6 +13,8 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 	//セーブデータへの参照を取得---------------------------------------------------------
 	int& m_Sion1_flg = g_SavedataManeger->CurrentData->m_stage[SION].stage1;
 
+	int& m_Sion2_flg = g_SavedataManeger->CurrentData->m_stage[SION].stage2;
+
 	int& m_Sion3_flg = g_SavedataManeger->CurrentData->m_stage[SION].stage3;
 
 	int& m_Koune1_flg = g_SavedataManeger->CurrentData->m_stage[KOUNE].stage1;
@@ -466,6 +468,9 @@ void CObjGimmickManager::Action() {
 	//【セーブしない】---------------------------------
 	//チュートリアルステージフラグ
 	static int m_itutorialflg = TUTORIAL_WELCOM_TALK;
+	//シオン2ステージ
+	static int m_Sion2_flg;
+
 	//コウネ3ステージ
 	static int m_Koune3_flg;
 	static int m_Koune3_tolkingflg;
@@ -479,6 +484,8 @@ void CObjGimmickManager::Action() {
 
 	//セーブデータへの参照を取得---------------------------------------------------------
 	int& m_Sion1_flg = g_SavedataManeger->CurrentData->m_stage[SION].stage1;
+
+	int& m_Sion2_flg = g_SavedataManeger->CurrentData->m_stage[SION].stage3;
 
 	int& m_Sion3_flg = g_SavedataManeger->CurrentData->m_stage[SION].stage3;
 
@@ -506,6 +513,9 @@ void CObjGimmickManager::Action() {
 
 		//シオンステージ1
 		m_Sion1_flg = SION1_TOLK_START;
+
+		//シオンステージ1
+		m_Sion2_flg = SION2_TOLK_START;
 
 		//シオンステージ3
 		m_Sion3_flg = SION3_TOLK_START;
@@ -1417,9 +1427,12 @@ void CObjGimmickManager::Action() {
 
 		Overlay()->NextWait();
 
-			//イヤホン男と会話フラグON
-			m_gimmick_earphone->m_bActionFlg = true;
-		}
+
+		break;
+	case 21:
+		//イヤホン男と会話フラグON
+		m_gimmick_earphone->m_bActionFlg = true;
+
 		//コウネ会話開始
 		if (m_Sion2_flg == SION2_KOUNE_FLAG_NO) {
 			Overlay()->talkDraw(SION, SION2_KOUNE_FLAG_NO);
@@ -1436,8 +1449,43 @@ void CObjGimmickManager::Action() {
 		if (m_gimmick_firetruck->m_ball[0].OnPush) {
 
 		}
-		break;
-	case 21:
+
+		//static int m_Sion2_flg = SION2_TOLK_START;
+		//m_gimmick_oven->m_bActionFlg = false;
+		//初回会話
+		if (m_Sion2_flg == SION2_TOLK_START) {
+			Overlay()->talkDraw(SION, SION2_START);
+
+			//会話終了
+			if (Overlay()->NextWait()) {
+				m_Sion2_flg = SION2_TOLK_END;
+			}
+
+		}
+		//イヤホン男会話開始
+		if (m_Sion2_flg == SION2_IYAHON_START) {
+			Overlay()->talkDraw(SION, SION2_IYAHON_START);
+			//会話終了
+			if (Overlay()->NextWait()) {
+				m_Sion2_flg = SION2_IYAHON_END;
+			}
+			//再度吹き出し表示
+			Overlay()->NextWait();
+
+			//イヤホン男と会話フラグON
+			m_gimmick_earphone->m_bActionFlg = true;
+		}
+		//コウネ会話開始
+		if (m_Sion2_flg == SION2_KOUNE_FLAG_NO) {
+			Overlay()->talkDraw(SION, SION2_KOUNE_FLAG_NO);
+			//会話終了
+			if (Overlay()->NextWait()) {
+				m_Sion2_flg = SION2_KOUNE_FLAG_NO_END;
+			}
+		}
+		else if (m_Sion2_flg == SION2_KOUNE_FLAG_YES) {
+
+		}
 		break;
 	case 22:
 		//if (m_Sion3_flg == SION3_TOLK_START) {

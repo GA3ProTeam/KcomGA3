@@ -46,7 +46,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 
 	m_Stage_ID = ((select_chara + 1) * 10) + stage_id;
 
-	//m_Stage_ID = 32;
+	m_Stage_ID = 32;
 
 	/*
 	m_Stage_ID
@@ -1013,7 +1013,7 @@ void CObjGimmickManager::Action() {
 
 		//子猫の鳴き声を聞かせる
 		if (m_gimmick_granny->m_getsound.sound_num != -1) {
-			if (m_gimmick_granny->m_getsound.sound_color == ORANGE /*m_gimmick_granny->m_getsound.sound_num == KOUNE3_KITTY*/) {
+			if (m_gimmick_granny->m_getsound.sound_num == KOUNE3_KITTY) {
 
 				KOUNE3_KITTY; //子猫の鳴き声
 							  //おばあちゃん「あら、その鳴き声は...」
@@ -1024,7 +1024,7 @@ void CObjGimmickManager::Action() {
 		//少女
 		//子猫の鳴き声を聞かせる
 		if (m_gimmick_little_girl->m_getsound.sound_num != -1) {
-			if (m_gimmick_little_girl->m_getsound.sound_color == ORANGE /*m_gimmick_little_girl->m_getsound.sound_num == KOUNE3_KITTY*/)
+			if (m_gimmick_little_girl->m_getsound.sound_num == KOUNE3_KITTY)
 			{
 				//少女「かわいい声ね！」
 				Overlay()->talkDraw(KOUNE, KOUNE3_GIRLA_CAT_LISTEN);
@@ -1035,7 +1035,7 @@ void CObjGimmickManager::Action() {
 		if (m_gimmick_mynah->m_getsound.sound_num != -1) {
 
 			//イントロを聞かせる(クリア条件達成)
-			if (m_gimmick_mynah->m_getsound.sound_color == PINK /*m_gimmick_mynah->m_getsound.sound_num == SION3_CHANT2*/ && m_Koune3_flg == KOUNE3_FLG5)
+			if (m_gimmick_mynah->m_getsound.sound_num == SION3_CHANT2 && m_Koune3_flg == KOUNE3_FLG5)
 			{
 				//ステージクリア
 				Overlay()->talkDraw(KOUNE, KOUNE3_CLEAR);
@@ -1043,7 +1043,7 @@ void CObjGimmickManager::Action() {
 
 			}
 			//イントロを聞かせる(クリア条件未達成)
-			else if (m_gimmick_mynah->m_getsound.sound_color == PINK /*m_gimmick_mynah->m_getsound.sound_num == SION3_CHANT2*/ && m_Koune3_flg != KOUNE3_FLG5)
+			else if (m_gimmick_mynah->m_getsound.sound_num == SION3_CHANT2 && m_Koune3_flg != KOUNE3_FLG5)
 			{
 				//九ちゃん「...。」
 				Overlay()->talkDraw(KOUNE, KOUNE3_MYNAH_KOUNE_SOUND_LISTEN);
@@ -1062,7 +1062,7 @@ void CObjGimmickManager::Action() {
 		if (m_gimmick_kitten->m_getsound.sound_num != -1) {
 
 			//犬の鳴き声を聞かせる
-			if (m_gimmick_mynah->m_getsound.sound_color == ORANGE/*RED*/ /*m_gimmick_kitten->m_getsound.sound_num == KOUNE1_DOG */ && m_gimmick_mynah->m_getsound.sound_volume == BALL_VOL_BIG)
+			if (m_gimmick_kitten->m_getsound.sound_num == KOUNE1_DOG && m_gimmick_mynah->m_getsound.sound_volume == BALL_VOL_BIG)
 			{
 				//子猫「にゃーーーん」
 				Overlay()->talkDraw(KOUNE, KOUNE3_CAT_ABILITY_DOG_SOUND_LISTEN);
@@ -1588,8 +1588,6 @@ void CObjGimmickManager::Action() {
 		//メルエル1
 	case 40:
 	{
-		
-
 
 		//初回会話
 		if (m_iMerueru1 == MERUERU1_WELCOM_TALK) {

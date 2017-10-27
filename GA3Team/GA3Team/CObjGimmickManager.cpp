@@ -523,7 +523,7 @@ void CObjGimmickManager::Action() {
 
 		//イベント進行度初期化
 		//チュートリアルステージ
-		//m_Sion1_flg = TUTORIAL_WELCOM_TALK;
+		m_itutorialflg = TUTORIAL_WELCOM_TALK;
 
 		//シオンステージ1
 		m_Sion1_flg = SION1_TOLK_START;
@@ -542,7 +542,7 @@ void CObjGimmickManager::Action() {
 		}
 
 		//コウネステージ2
-		m_iKoune2_flg = 2;
+		m_iKoune2_flg = 0;
 		for (unsigned int i = 0; i < m_bKoune2_flg_list.size(); i++) {
 			m_bKoune2_flg_list[i] = false;
 		}
@@ -560,12 +560,7 @@ void CObjGimmickManager::Action() {
 		m_Koune5_flg = KOUNE5_TALK_START;
 
 
-		/*g_SavedataManeger->CurrentData->m_stage[SION].stage1clear = true;
-		g_SavedataManeger->CurrentData->m_stage[SION].stage2clear = true;
-		g_SavedataManeger->CurrentData->m_stage[SION].stage3clear = true;
-		g_SavedataManeger->CurrentData->m_stage[SION].stage4clear = true;
-		g_SavedataManeger->CurrentData->m_stage[SION].stage5clear = true;*/
-
+	
 	}
 	//↑【セーブデータの初期化（デバッグ用）】------------------------------------------
 
@@ -578,7 +573,7 @@ void CObjGimmickManager::Action() {
 	*/
 
 	switch (m_Stage_ID) {
-		//チュートリアルステージ（博士）
+	//チュートリアルステージ（博士）
 	case 10:
 	{
 		//ゴミ箱動作不可
@@ -606,7 +601,7 @@ void CObjGimmickManager::Action() {
 				m_itutorialflg = TUTORIAL_RECORDER_GET_TALK;
 				m_gimmick_recorder->m_Status = STATUS_DELETE;//レコーダー削除
 
-															 //博士、コンピューター　動作再開
+				//博士、コンピューター　動作再開
 				m_gimmick_doctor->m_bActionFlg = true;
 				m_gimmick_computer->m_bActionFlg = true;
 			}
@@ -697,6 +692,7 @@ void CObjGimmickManager::Action() {
 			if (Overlay()->NextWait()) {
 				//チュートリアルクリア
 				SavedataManeger()->CurrentData->m_btutorial = true;
+
 				//ステージセレクト画面に移行
 				Manager()->Pop(new CSceneStageSelect);
 			}

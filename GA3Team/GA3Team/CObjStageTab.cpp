@@ -22,17 +22,16 @@ void CObjStageTab::Init() {
 
 	//ステージ開放数を加算-------------------------------------------------
 	//チュートリアルをクリア
-	if (g_SavedataManeger->CurrentData->m_stage[TUTORIAL].stage1clear) {
+	if (g_SavedataManeger->CurrentData->m_btutorial) {
 		//各キャラクターステージ1個開放
 		m_istage_open[1]++;
 		m_istage_open[2]++;
 		m_istage_open[3]++;
 	}
 
-	//コウネ、シオン、メルエルの1ステージクリア
+	//コウネ、シオンの1ステージクリア
 	if (g_SavedataManeger->CurrentData->m_stage[KOUNE].stage1clear &&
-		g_SavedataManeger->CurrentData->m_stage[SION].stage1clear &&
-		g_SavedataManeger->CurrentData->m_stage[MERUERU].stage1clear) {
+		g_SavedataManeger->CurrentData->m_stage[SION].stage1clear) {
 		//各キャラクターステージ1個開放
 		m_istage_open[1]++;
 		m_istage_open[2]++;

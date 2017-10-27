@@ -50,7 +50,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 	*/
 	SavedataManeger()->Setcurrentdata();
 
-	m_Stage_ID = 21;
+	m_Stage_ID = 34;
 
 	switch (m_Stage_ID) {
 		//チュートリアル（博士）ステージ--------------------------
@@ -1272,7 +1272,7 @@ void CObjGimmickManager::Action() {
 		//マスクが壊れていて使用できない⇒メカニックとの会話
 		//　└メカニック...作業用に何か曲を持ってきてほしい
 		// 　　└""フラグ2回収""
-		if (m_pMenuTab->isabilty()) { //能力使用(仮) 一度のみ
+		if (Input()->GetMouButtonL()) { //能力使用(仮) 一度のみ
 			if (m_Koune5_flg == KOUNE5_FLG1 && m_Koune5_gim_flg[0] == 0) {
 				Overlay()->talkDraw(KOUNE, KOUNE5_FLG1_YES_ABILITY); //「マスクが壊れたのかい？」
 				if (Overlay()->NextWait()) {
@@ -1314,7 +1314,7 @@ void CObjGimmickManager::Action() {
 		*/
 
 		m_Koune5_sound_num = m_gimmick_mysterydoor->m_getsound.sound_num; //音番号取得
-		if (m_Koune5_gim_flg[0] == 2 && m_pMenuTab->isabilty()) {
+		if (m_Koune5_gim_flg[0] == 2/* && 能力使用*/) {
 			//if (/*Aの音量を下げるorBの音量を上げる*/) {
 				m_Koune5_sound_num += 1000;
 			//}

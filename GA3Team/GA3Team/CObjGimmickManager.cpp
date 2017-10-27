@@ -54,22 +54,22 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 		//博士
 		m_gimmick_doctor = new GimmickDoctor();
 		Obj()->InsertObj(m_gimmick_doctor, GIMMICK_DOCTOR, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_doctor->Init(50, 200, 200 * 0.8f, 380 * 0.8f, 2);
+		m_gimmick_doctor->Init(50, 200, (int)(200 * 0.8), (int)(380 * 0.8), 2);
 
 		//レコーダー
 		m_gimmick_recorder = new GimmickRecorder();
 		Obj()->InsertObj(m_gimmick_recorder, GIMMICK_RECORDER, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_recorder->Init(370, 200, 135 * 0.5f, 350 * 0.5f, 1);
+		m_gimmick_recorder->Init(370, 200, (int)(135 * 0.5), (int)(350 * 0.5), 1);
 
 		//パソコン
 		m_gimmick_computer = new GimmickComputer();
 		Obj()->InsertObj(m_gimmick_computer, GIMMICK_COMPUTER, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_computer->Init(550, 300, 280 * 0.8f, 260 * 0.8f, 1);
+		m_gimmick_computer->Init(550, 300, (int)(280 * 0.8), (int)(260 * 0.8), 1);
 
 		//机
 		m_obj_desk = new CObjDesk();
 		Obj()->InsertObj(m_obj_desk, OBJ_DESK, 5, this->m_pScene, HIT_BOX_OFF);
-		m_obj_desk->Init(266, 310, 560 * 0.5f, 440 * 0.5f);
+		m_obj_desk->Init(266, 310, (int)(560 * 0.5), (int)(440 * 0.5));
 		break;
 		//--------------------------------------------------------
 
@@ -108,7 +108,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 		//女の子
 		m_gimmick_girl_koune2 = new GimmickGirl_Koune2();
 		Obj()->InsertObj(m_gimmick_girl_koune2, GIMMICK_GIRL_KOUNE2, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_girl_koune2->Init(595, 275, 170 * 0.8f, 300 * 0.8f, 2);
+		m_gimmick_girl_koune2->Init(595, 275, (int)(170 * 0.8), (int)(300 * 0.8), 2);
 
 		m_gimmick_girl_koune2->m_bActionFlg = false;
 
@@ -124,17 +124,17 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 		//シオン
 		m_gimmick_sion = new GimmickSion();
 		Obj()->InsertObj(m_gimmick_sion, GIMMICK_SION, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_sion->Init(850, 225, 180 * 0.8f, 380 * 0.8f, 1);
+		m_gimmick_sion->Init(850, 225, (int)(180 * 0.8), (int)(380 * 0.8), 1);
 
 		//少年A
 		m_gimmick_boy_a = new GimmickBoyA();
 		Obj()->InsertObj(m_gimmick_boy_a, GIMMICK_BOY_A, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_boy_a->Init(50, 250, 160 * 0.8f, 300 * 0.8f, 1);
+		m_gimmick_boy_a->Init(50, 250, (int)(160 * 0.8), (int)(300 * 0.8), 1);
 
 		//少年B
 		m_gimmick_boy_b = new GimmickBoyB();
 		Obj()->InsertObj(m_gimmick_boy_b, GIMMICK_BOY_B, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_boy_b->Init(240, 250, 100 * 0.8f, 300 * 0.8f, 1);
+		m_gimmick_boy_b->Init(240, 250, (int)(100 * 0.8), (int)(300 * 0.8), 1);
 
 		//窓
 		m_gimmick_window_koune2 = new GimmickWindow_Koune2();
@@ -513,13 +513,13 @@ void CObjGimmickManager::Action() {
 
 		//コウネステージ1
 		m_Koune1_flg = 0;
-		for (int i = 0; i < m_bKoune1_flg_list.size(); i++) {
+		for (unsigned int i = 0; i < m_bKoune1_flg_list.size(); i++) {
 			m_bKoune1_flg_list[i] = false;
 		}
 
 		//コウネステージ2
 		m_iKoune2_flg = 1;
-		for (int i = 0; i < m_bKoune1_flg_list.size(); i++) {
+		for (unsigned int i = 0; i < m_bKoune1_flg_list.size(); i++) {
 			m_bKoune2_flg_list[i] = false;
 		}
 

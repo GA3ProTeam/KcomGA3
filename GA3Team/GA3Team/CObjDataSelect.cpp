@@ -107,10 +107,6 @@ void CObjDataSelect::Action()
 
 void CObjDataSelect::Draw()
 {
-	
-
-
-
 	//マウス位置取得
 	int mouse_x, mouse_y;
 	mouse_x = Input()->m_x;

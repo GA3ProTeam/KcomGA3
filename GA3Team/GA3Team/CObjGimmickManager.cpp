@@ -32,6 +32,9 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 	int& m_iKoune5_flg = g_SavedataManeger->CurrentData->m_stage[KOUNE].stage5;
 	//-----------------------------------------------------------------------------------
 
+	//一度だけ初期化するための変数を初期化
+	init_flg = false;
+
 	//メニュータブへの参照セット
 	m_pMenuTab = pMenuTab;
 
@@ -439,10 +442,8 @@ void CObjGimmickManager::Action() {
 
 	//↓【ここからセーブデータの初期化（デバッグ用）】-----------------------------------
 	//ステージを特定の進行度からデバッグしたい場合は、ここで進行度を設定してください。
-	static bool init_flg = false;
 	if (!init_flg) {
 		init_flg = true;
-
 
 		//イベント進行度初期化
 		//チュートリアルステージ

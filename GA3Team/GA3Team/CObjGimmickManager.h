@@ -120,6 +120,9 @@ public:
 	
 private:
 
+	//一度だけ初期化するための変数
+	bool init_flg;
+
 	int m_Stage_ID;//ステージの番号
 
 	ButtonLScrollScreen* m_pLScroll;//画面左スクロールボタンへの参照

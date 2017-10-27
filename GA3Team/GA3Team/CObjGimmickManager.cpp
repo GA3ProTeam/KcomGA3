@@ -1870,7 +1870,7 @@ void CObjGimmickManager::Draw() {
 		//“]‘—æÀ•W
 		m_src.top = 0;
 		m_src.bottom = m_src.top + 600;
-		m_src.left = 0 + User()->mscroll_x;
+		m_src.left = 0;
 		m_src.right = m_src.left + 800;
 
 		//”wŒi•`‰æ

@@ -1,6 +1,6 @@
 #include "main.h"
 //-----------------------------------------------------------------
-void CObjMenuTab::Init(int openclosey)
+void CObjMenuTab::Init(int openclosey, int iMoveScreenFlg)
 {
 	//各変数を初期化
 	m_bOpenClose = false;//閉じている
@@ -36,6 +36,9 @@ void CObjMenuTab::Init(int openclosey)
 	m_iHeight = 64;
 
 	inputcount = 0;
+
+	//戻るボタンを押すとどこに戻るか
+	m_iMoveScreenFlg = iMoveScreenFlg;
 }
 
 //-----------------------------------------------------------------
@@ -141,7 +144,13 @@ void CObjMenuTab::Action()
 			//SavedataManeger()->Savedata[SavedataManeger()->SelectedData].m_bSionflg[0] = true;
 			//SavedataManeger()->Writesavedata();
 			//【データセーブ処理はステージ選択画面のInit関数に移行しました。】
-			Manager()->Pop(new CSceneStageSelect());//ステージ選択に戻る
+			if (m_iMoveScreenFlg == 0) {
+				Manager()->Pop(new CSceneStageSelect());//ステージ選択に戻る
+			}
+			else {
+				Manager()->Pop(new CSceneTitle());//タイトル画面に戻る
+			}
+			
 		}
 		else if (m_bOpenClose) {
 			m_icnt++;

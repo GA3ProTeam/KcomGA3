@@ -50,7 +50,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 	*/
 	SavedataManeger()->Setcurrentdata();
 
-	//m_Stage_ID = 32;
+	m_Stage_ID = 21;
 
 	switch (m_Stage_ID) {
 		//チュートリアル（博士）ステージ--------------------------
@@ -245,27 +245,27 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 
 		break;
 	case 21:
-		////シオンのステージ2のギミック生成
-		////イヤホン男生成
-		//m_gimmick_earphone = new Gimmickearphone();
-		//Obj()->InsertObj(m_gimmick_earphone, GIMMICK_EARPHONE, 5, this->m_pScene, HIT_BOX_OFF);
-		//m_gimmick_earphone->Init(650, 120, 200, 400, 1);
-		////コウネ生成
-		//m_gimmick_koune = new Gimmickkoune();
-		//Obj()->InsertObj(m_gimmick_koune, GIMMICK_KOUNE, 5, this->m_pScene, HIT_BOX_OFF);
-		//m_gimmick_koune->Init(-250, 150, 200, 400, 1);
-		////猫生成
-		//m_gimmick_cat = new Gimmickcat();
-		//Obj()->InsertObj(m_gimmick_cat, GIMMICK_CAT, 5, this->m_pScene, HIT_BOX_OFF);
-		//m_gimmick_cat->Init(550, 120, 100, 100, 1);
-		////自転車生成
-		//m_gimmick_bicycle = new Gimmickbicycle();
-		//Obj()->InsertObj(m_gimmick_bicycle, GIMMICK_BICYCLE, 5, this->m_pScene, HIT_BOX_OFF);
-		//m_gimmick_bicycle->Init(100, 300, 400, 250, 1);
-		////消防車
-		//m_gimmick_firetruck = new Gimmickfiretruck();
-		//Obj()->InsertObj(m_gimmick_firetruck, GIMMICK_FIRETRUCK, 5, this->m_pScene, HIT_BOX_OFF);
-		//m_gimmick_firetruck->Init(-430, -120, 400, 450, 1);
+		//シオンのステージ2のギミック生成
+		//イヤホン男生成
+		m_gimmick_earphone = new Gimmickearphone();
+		Obj()->InsertObj(m_gimmick_earphone, GIMMICK_EARPHONE, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_earphone->Init(650, 120, 200, 400, 1);
+		//コウネ生成
+		m_gimmick_koune = new Gimmickkoune();
+		Obj()->InsertObj(m_gimmick_koune, GIMMICK_KOUNE, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_koune->Init(-250, 150, 200, 400, 1);
+		//猫生成
+		m_gimmick_cat = new Gimmickcat();
+		Obj()->InsertObj(m_gimmick_cat, GIMMICK_CAT, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_cat->Init(550, 120, 100, 100, 1);
+		//自転車生成
+		m_gimmick_bicycle = new Gimmickbicycle();
+		Obj()->InsertObj(m_gimmick_bicycle, GIMMICK_BICYCLE, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_bicycle->Init(100, 300, 400, 250, 1);
+		//消防車
+		m_gimmick_firetruck = new Gimmickfiretruck();
+		Obj()->InsertObj(m_gimmick_firetruck, GIMMICK_FIRETRUCK, 5, this->m_pScene, HIT_BOX_OFF);
+		m_gimmick_firetruck->Init(-430, -120, 400, 450, 1);
 
 	case 22:
 		//シオンのステージ3のギミック生成
@@ -457,6 +457,16 @@ void CObjGimmickManager::Action() {
 		SION1_ABILITY,
 		SION1_CLEAR,
 	};
+	//イベント番号(シオンステージ2)
+	enum SION2_NUMBER {
+		SION2_TOLK_START,
+		SION2_TOLK_END,
+		SION2_TOLK_IYAHON_START,
+		SION2_TOLK_IYAHON_FLAG_NO,
+		SION2_TOLK_IYAHON_FLAG_YES,
+		SION2_TOLK_IYAHON_END,
+
+	};
 	//イベント番号(シオンステージ3)
 	enum SION3_NUMBER {
 		SION3_TOLK_START,
@@ -467,8 +477,6 @@ void CObjGimmickManager::Action() {
 	//【セーブしない】---------------------------------
 	//チュートリアルステージフラグ
 	static int m_itutorialflg = TUTORIAL_WELCOM_TALK;
-	//シオン2ステージ
-	static int m_Sion2_flg;
 
 	//コウネ3ステージ
 	static int m_Koune3_flg;
@@ -1474,24 +1482,6 @@ void CObjGimmickManager::Action() {
 	case 21:
 		//イヤホン男と会話フラグON
 		m_gimmick_earphone->m_bActionFlg = true;
-
-		//コウネ会話開始
-		if (m_Sion2_flg == SION2_KOUNE_FLAG_NO) {
-			Overlay()->talkDraw(SION, SION2_KOUNE_FLAG_NO);
-			//会話終了
-			if (Overlay()->NextWait()) {
-				m_Sion2_flg = SION2_KOUNE_FLAG_NO_END;
-			}
-		}
-		else if (m_Sion2_flg == SION2_KOUNE_FLAG_YES) {
-
-		}
-
-		//猫の音取得
-		if (m_gimmick_firetruck->m_ball[0].OnPush) {
-
-		}
-
 		//static int m_Sion2_flg = SION2_TOLK_START;
 		//m_gimmick_oven->m_bActionFlg = false;
 		//初回会話

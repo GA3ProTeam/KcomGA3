@@ -1307,7 +1307,7 @@ void CObjGimmickManager::Action() {
 				m_Koune5_gim_flg[0] = 2;
 			}
 		}//フラグ3未回収
-		else {
+		else if (m_gimmick_mechanic->m_getsound.sound_num != KOUNE5_SAX) {
 			//メカニック...曲が好みではない
 			Overlay()->talkDraw(KOUNE, KOUNE5_MECHANIC_OTO_NO_FLG2_YES); //「なんだか違う」
 
@@ -1419,26 +1419,28 @@ void CObjGimmickManager::Action() {
 		//音を所持していない
 		// └演奏家が演奏を聞かせてくれる
 	    //    └""フラグ3回収""
-		if (m_Koune5_gim_flg[1]) {
-			//フラグ3未回収＋音所持
-			Overlay()->talkDraw(KOUNE, KOUNE5_MUSICIANS_FLG4_NO_NO); //「いろいろな音が聴こえる」
-			if (Overlay()->NextWait()) {
-				m_Koune5_flg = KOUNE5_FLG3;
+		if (m_gimmick_musician->m_ball[0].OnPush) {
+			if (m_Koune5_gim_flg[1]) {
+				//フラグ3未回収＋音所持
+				Overlay()->talkDraw(KOUNE, KOUNE5_MUSICIANS_FLG4_NO_NO); //「いろいろな音が聴こえる」
+				if (Overlay()->NextWait()) {
+					m_Koune5_flg = KOUNE5_FLG3;
+				}
+				Overlay()->NextWait();
 			}
-			Overlay()->NextWait();
-		}
-		if (!m_Koune5_gim_flg[1] && m_Koune5_flg == KOUNE5_FLG3) {
-			//フラグ3回収済み＋音未所持
-			Overlay()->talkDraw(KOUNE, KOUNE5_MUSICIANS_FLG4_YES_YES); //「演奏を聴いていく？」
-			if (Overlay()->NextWait()) {
-				m_Koune5_flg = KOUNE5_FLG3;
+			if (!m_Koune5_gim_flg[1] && m_Koune5_flg == KOUNE5_FLG3) {
+				//フラグ3回収済み＋音未所持
+				Overlay()->talkDraw(KOUNE, KOUNE5_MUSICIANS_FLG4_YES_YES); //「演奏を聴いていく？」
+				if (Overlay()->NextWait()) {
+					m_Koune5_flg = KOUNE5_FLG3;
+				}
 			}
-		}
-		if (!m_Koune5_gim_flg[1]) {
-			//フラグ3未回収+音未所持
-			Overlay()->talkDraw(KOUNE, KOUNE5_MUSICIANS_FLG4_NO_YES); //「演奏を聴いていく？」
-			if (Overlay()->NextWait()) {
-				m_Koune5_flg = KOUNE5_FLG3;
+			if (!m_Koune5_gim_flg[1]) {
+				//フラグ3未回収+音未所持
+				Overlay()->talkDraw(KOUNE, KOUNE5_MUSICIANS_FLG4_NO_YES); //「演奏を聴いていく？」
+				if (Overlay()->NextWait()) {
+					m_Koune5_flg = KOUNE5_FLG3;
+				}
 			}
 		}
 						 

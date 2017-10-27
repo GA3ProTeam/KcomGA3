@@ -54,22 +54,22 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 		//博士
 		m_gimmick_doctor = new GimmickDoctor();
 		Obj()->InsertObj(m_gimmick_doctor, GIMMICK_DOCTOR, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_doctor->Init(50, 200, 200 * 0.8f, 380 * 0.8f, 2);
+		m_gimmick_doctor->Init(50, 200, (int)(200 * 0.8), (int)(380 * 0.8), 2);
 
 		//レコーダー
 		m_gimmick_recorder = new GimmickRecorder();
 		Obj()->InsertObj(m_gimmick_recorder, GIMMICK_RECORDER, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_recorder->Init(370, 200, 135 * 0.5f, 350 * 0.5f, 1);
+		m_gimmick_recorder->Init(370, 200, (int)(135 * 0.5), (int)(350 * 0.5), 1);
 
 		//パソコン
 		m_gimmick_computer = new GimmickComputer();
 		Obj()->InsertObj(m_gimmick_computer, GIMMICK_COMPUTER, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_computer->Init(550, 300, 280 * 0.8f, 260 * 0.8f, 1);
+		m_gimmick_computer->Init(550, 300, (int)(280 * 0.8), (int)(260 * 0.8), 1);
 
 		//机
 		m_obj_desk = new CObjDesk();
 		Obj()->InsertObj(m_obj_desk, OBJ_DESK, 5, this->m_pScene, HIT_BOX_OFF);
-		m_obj_desk->Init(266, 310, 560 * 0.5f, 440 * 0.5f);
+		m_obj_desk->Init(266, 310, (int)(560 * 0.5), (int)(440 * 0.5));
 		break;
 		//--------------------------------------------------------
 
@@ -108,7 +108,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 		//女の子
 		m_gimmick_girl_koune2 = new GimmickGirl_Koune2();
 		Obj()->InsertObj(m_gimmick_girl_koune2, GIMMICK_GIRL_KOUNE2, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_girl_koune2->Init(595, 275, 170 * 0.8f, 300 * 0.8f, 2);
+		m_gimmick_girl_koune2->Init(595, 275, (int)(170 * 0.8), (int)(300 * 0.8), 2);
 
 		m_gimmick_girl_koune2->m_bActionFlg = false;
 
@@ -124,17 +124,17 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 		//シオン
 		m_gimmick_sion = new GimmickSion();
 		Obj()->InsertObj(m_gimmick_sion, GIMMICK_SION, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_sion->Init(850, 225, 180 * 0.8f, 380 * 0.8f, 1);
+		m_gimmick_sion->Init(850, 225, (int)(180 * 0.8), (int)(380 * 0.8), 1);
 
 		//少年A
 		m_gimmick_boy_a = new GimmickBoyA();
 		Obj()->InsertObj(m_gimmick_boy_a, GIMMICK_BOY_A, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_boy_a->Init(50, 250, 160 * 0.8f, 300 * 0.8f, 1);
+		m_gimmick_boy_a->Init(50, 250, (int)(160 * 0.8), (int)(300 * 0.8), 1);
 
 		//少年B
 		m_gimmick_boy_b = new GimmickBoyB();
 		Obj()->InsertObj(m_gimmick_boy_b, GIMMICK_BOY_B, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_boy_b->Init(240, 250, 100 * 0.8f, 300 * 0.8f, 1);
+		m_gimmick_boy_b->Init(240, 250, (int)(100 * 0.8), (int)(300 * 0.8), 1);
 
 		//窓
 		m_gimmick_window_koune2 = new GimmickWindow_Koune2();
@@ -513,13 +513,13 @@ void CObjGimmickManager::Action() {
 
 		//コウネステージ1
 		m_Koune1_flg = 0;
-		for (int i = 0; i < m_bKoune1_flg_list.size(); i++) {
+		for (unsigned int i = 0; i < m_bKoune1_flg_list.size(); i++) {
 			m_bKoune1_flg_list[i] = false;
 		}
 
 		//コウネステージ2
 		m_iKoune2_flg = 1;
-		for (int i = 0; i < m_bKoune1_flg_list.size(); i++) {
+		for (unsigned int i = 0; i < m_bKoune1_flg_list.size(); i++) {
 			m_bKoune2_flg_list[i] = false;
 		}
 
@@ -1221,166 +1221,160 @@ void CObjGimmickManager::Action() {
 	case 33:
 		break;
 	case 34://コウネステージ5
-			/*
-			//【初回動作】
-			if (m_Koune5_flg == KOUNE5_TALK_START) {
+			
+		//【初回動作】
+		if (m_Koune5_flg == KOUNE5_TALK_START) {
 			//コウネ「電車の時間~」
 			Overlay()->talkDraw(KOUNE, KOUNE5_START);
 
 			//会話終了
 			if (Overlay()->NextWait()) {
-			m_Koune5_flg = KOUNE5_TALK_START_END;
+				m_Koune5_flg = KOUNE5_TALK_START_END;
 			}
-			}
+		}
 
-
-			//駅に向かうための扉の前でメカニックに話しかけられる
-			// └システムの動作を見たいから扉を開けてみてほしい
-			//    └""フラグ1回収""
-			if (m_gimmick_mysterydoor->m_ball[0].OnPush || m_gimmick_mechanic->m_ball[0].OnPush) {
+		//駅に向かうための扉の前でメカニックに話しかけられる
+		// └システムの動作を見たいから扉を開けてみてほしい
+		//    └""フラグ1回収""
+		if (m_gimmick_mysterydoor->m_ball[0].OnPush || m_gimmick_mechanic->m_ball[0].OnPush) {
 			//Overlay()->talkDraw(KOUNE, ); //「駅に行きたいのかな？」
 			m_Koune5_flg = KOUNE5_FLG1;
+		}
 
-			}
-
-
-			//能力を使う
-			//マスクが壊れていて使用できない⇒メカニックとの会話
-			//　└メカニック...作業用に何か曲を持ってきてほしい
-			// 　　└""フラグ2回収""
-			if (Input()->GetMouButtonL()) { //能力使用(仮) 一度のみ
+		//能力を使う
+		//マスクが壊れていて使用できない⇒メカニックとの会話
+		//　└メカニック...作業用に何か曲を持ってきてほしい
+		// 　　└""フラグ2回収""
+		if (Input()->GetMouButtonL()) { //能力使用(仮) 一度のみ
 			if (m_Koune5_flg == KOUNE5_FLG1 && m_Koune5_gim_flg[0] == 0) {
-			//Overlay()->talkDraw(KOUNE, ); //「マスクが壊れたのかい？」
-			m_Koune5_flg = KOUNE5_FLG2;
-			m_Koune5_gim_flg[0] = 1;
+				//Overlay()->talkDraw(KOUNE, ); //「マスクが壊れたのかい？」
+				m_Koune5_flg = KOUNE5_FLG2;
+				m_Koune5_gim_flg[0] = 1;
 			}
-			}
+		}
 
-			//メカニックに曲を渡す
-			//フラグ3回収済み
-			if (m_Koune5_flg == KOUNE5_FLG3) {
+		//メカニックに曲を渡す
+		//フラグ3回収済み
+		if (m_Koune5_flg == KOUNE5_FLG3) {
 			//メカニック...修理したマスクを渡す
 			//　　　　　　　└音量の変更ができるようになる
 			Overlay()->talkDraw(KOUNE, KOUNE5_MECHANIC_OTO_FLG2_YES); //「これなら作業が捗る！」
 			//能力を使用できるようにする
-
-			}//フラグ3未回収
-			else {
+		}//フラグ3未回収
+		else {
 			//メカニック...曲が好みではない
 			Overlay()->talkDraw(KOUNE, KOUNE5_MECHANIC_OTO_NO_FLG2_YES); //「なんだか違う」
+		}
 
-			}
-
-
-			/*ランプの色...3つ全てを緑にすると扉が開く
-			└0...灰色
+		/*ランプの色...3つ全てを緑にすると扉が開く
+					   └0...灰色
 			　			 1...黄色
 						 2...緑
 						 ※ランプの色は灰色以下、緑以上にはならない
-						 */
-						 /*
+		*/
+		 /*
 						 機械音A...音量を下げると"A'"
 						 機械音B...音量を上げると"B'"
-						 */
+		*/
 
-						 /*		m_Koune5_sound_num = m_gimmick_mysterydoor->m_getsound.sound_num; //音番号取得
-						 if (m_Koune5_sound_num == 0/*能力使用*///) {
-						 /*			m_Koune5_sound_num += 1000;
-						 }
+		m_Koune5_sound_num = m_gimmick_mysterydoor->m_getsound.sound_num; //音番号取得
+		if (m_Koune5_sound_num == 0/*能力使用*/) {
+			m_Koune5_sound_num += 1000;
+		}
 
-						 //扉の謎解き...ランプの処理...音番号判定
-						 //機械音A
-						 switch (m_Koune5_sound_num) {
-						 case KOUNE5_MECHANICAL_SOUND_A:
-						 m_Koune5_doorgimmick_flg[0] += 1; //左端...明
-						 m_Koune5_doorgimmick_flg[1] -= 1; //中央...暗
+		//扉の謎解き...ランプの処理...音番号判定
+		//機械音A
+		switch (m_Koune5_sound_num) {
+			 case KOUNE5_MECHANICAL_SOUND_A:
+					m_Koune5_doorgimmick_flg[0] += 1; //左端...明
+					m_Koune5_doorgimmick_flg[1] -= 1; //中央...暗
 
-						 break;
+					break;
 
-						 //機械音A'
-						 case KOUNE5_MECHANICAL_SOUND_A + 1000:
-						 m_Koune5_doorgimmick_flg[1] -= 1; //中央...暗
-						 m_Koune5_doorgimmick_flg[2] += 1; //右端...明
+		//機械音A'
+			case KOUNE5_MECHANICAL_SOUND_A + 1000:
+					 m_Koune5_doorgimmick_flg[1] -= 1; //中央...暗
+					 m_Koune5_doorgimmick_flg[2] += 1; //右端...明
 
-						 break;
+					 break;
 
-						 //機械音B
-						 case KOUNE5_MECHANICAL_SOUND_B:
-						 m_Koune5_doorgimmick_flg[0] -= 1; //左端...暗
-						 m_Koune5_doorgimmick_flg[2] -= 1; //右端...暗
+		 //機械音B
+			 case KOUNE5_MECHANICAL_SOUND_B:
+					 m_Koune5_doorgimmick_flg[0] -= 1; //左端...暗
+					 m_Koune5_doorgimmick_flg[2] -= 1; //右端...暗
 
-						 break;
+					 break;
 
-						 //機械音B'
-						 case KOUNE5_MECHANICAL_SOUND_B + 1000:
-						 m_Koune5_doorgimmick_flg[1] += 1; //中央...明
+		//機械音B'
+			case KOUNE5_MECHANICAL_SOUND_B + 1000:
+				 m_Koune5_doorgimmick_flg[1] += 1; //中央...明
 
-						 break;
-						 }
+				break;
+		 }
 
-						 //ランプの色は"0未満(灰色)"、"2を超えない(緑)"
-						 for (int i = 0; i < 3; i++) {
-						 if (m_Koune5_doorgimmick_flg[i] > 2) {
-						 m_Koune5_doorgimmick_flg[i] = 2;
-						 }
-						 if (m_Koune5_doorgimmick_flg[i] < 0) {
-						 m_Koune5_doorgimmick_flg[i] = 0;
-						 }
-						 }
+		//ランプの色は"0未満(灰色)"、"2を超えない(緑)"
+		for (int i = 0; i < 3; i++) {
+			if (m_Koune5_doorgimmick_flg[i] > 2) {
+				 m_Koune5_doorgimmick_flg[i] = 2;
+			 }
+			if (m_Koune5_doorgimmick_flg[i] < 0) {
+				 m_Koune5_doorgimmick_flg[i] = 0;
+			 }
+		 }
 
-						 //ランプが全て緑で点灯
-						 // └メカニック...会話
-						 //　　└ステージクリア
-						 if (m_Koune5_doorgimmick_flg[0] == 2 && m_Koune5_doorgimmick_flg[1] == 2 && m_Koune5_doorgimmick_flg[2] == 2) {
-						 //ドアの 謎解きをクリア
-						 Overlay()->talkDraw(KOUNE, KOUNE5_CLEAR); //「開けられたんだね！」
+		//ランプが全て緑で点灯
+		// └メカニック...会話
+		//　　└ステージクリア
+		if (m_Koune5_doorgimmick_flg[0] == 2 && m_Koune5_doorgimmick_flg[1] == 2 && m_Koune5_doorgimmick_flg[2] == 2) {
+			//ドアの 謎解きをクリア
+			Overlay()->talkDraw(KOUNE, KOUNE5_CLEAR); //「開けられたんだね！」
 
-						 //コウネステージ5 クリア
-						 if (Overlay()->NextWait()) {
-						 //クリアフラグを立てる
-						 ;
-						 }
-						 }
+			//コウネステージ5 クリア
+			if (Overlay()->NextWait()) {
+				//クリアフラグを立てる
+				 ;
+			 }
+		 }
 
-						 //フラグ1○の状態で話しかける
-						 // └ドアの謎解きをリセットするか聞く
-						 if(m_Koune5_flg >= KOUNE5_FLG1){
-						 Overlay()->talkDraw(KOUNE, KOUNE5_MECHANIC_FLG1); //「リセット？」
+		//フラグ1○の状態で話しかける
+		// └ドアの謎解きをリセットするか聞く
+		if(m_Koune5_flg >= KOUNE5_FLG1){
+			Overlay()->talkDraw(KOUNE, KOUNE5_MECHANIC_FLG1); //「リセット？」
 
-						 if (Overlay()->NextWait()) {
-						 //選択肢のボタン表示(2択)
-						 if (Overlay()->Selected("1")) {
-						 //「うなずく」...リセットする
-						 m_Koune5_doorgimmick_flg[0] = 1; //左
-						 m_Koune5_doorgimmick_flg[1] = 2; //中央
-						 m_Koune5_doorgimmick_flg[2] = 1; //右
-						 }
-						 }
+			if (Overlay()->NextWait()) {
+				//選択肢のボタン表示(2択)
+				if (Overlay()->Selected("1")) {
+					 //「うなずく」...リセットする
+					 m_Koune5_doorgimmick_flg[0] = 1; //左
+					 m_Koune5_doorgimmick_flg[1] = 2; //中央
+					 m_Koune5_doorgimmick_flg[2] = 1; //右
+				}
+			 }
 
-						 }
+		 }
 
-						 for (int i = 0; i < 3; i++) {
-						 if (SoundManager()->GetSound(i).sound_num) {
-						 m_Koune5_gim_flg[1] = true;
-						 }
-						 }
+		for (int i = 0; i < 3; i++) {
+			if (SoundManager()->GetSound(i).sound_num) {
+				m_Koune5_gim_flg[1] = true;
+			 }
+		 }
 
-						 //音を所持していない
-						 // └演奏家が演奏を聞かせてくれる
-						 //    └""フラグ3回収""
-						 if (m_Koune5_gim_flg[1]) {
-						 //音を所持している
-						 Overlay()->talkDraw(KOUNE, KOUNE5_MUSICIANS_FLG4_NO_NO); //「いろいろな音が聴こえる」
-						 m_Koune5_flg = KOUNE5_FLG3;
-						 }
-						 if (!m_Koune5_gim_flg[1] && m_Koune5_flg == KOUNE5_FLG3) {
-						 Overlay()->talkDraw(KOUNE, KOUNE5_MUSICIANS_FLG4_YES_YES); //「演奏を聴いていく？」
-						 }
-						 if (!m_Koune5_gim_flg[1]) {
-						 Overlay()->talkDraw(KOUNE, KOUNE5_MUSICIANS_FLG4_NO_YES); //「演奏を聴いていく？」
-						 m_Koune5_flg = KOUNE5_FLG3;
-						 }
-						 */
+		//音を所持していない
+		// └演奏家が演奏を聞かせてくれる
+	    //    └""フラグ3回収""
+		if (m_Koune5_gim_flg[1]) {
+			//音を所持している
+			Overlay()->talkDraw(KOUNE, KOUNE5_MUSICIANS_FLG4_NO_NO); //「いろいろな音が聴こえる」
+				 m_Koune5_flg = KOUNE5_FLG3;
+			}
+			if (!m_Koune5_gim_flg[1] && m_Koune5_flg == KOUNE5_FLG3) {
+				Overlay()->talkDraw(KOUNE, KOUNE5_MUSICIANS_FLG4_YES_YES); //「演奏を聴いていく？」
+			}
+			if (!m_Koune5_gim_flg[1]) {
+				Overlay()->talkDraw(KOUNE, KOUNE5_MUSICIANS_FLG4_NO_YES); //「演奏を聴いていく？」
+				m_Koune5_flg = KOUNE5_FLG3;
+			}
+						 
 		break;
 
 

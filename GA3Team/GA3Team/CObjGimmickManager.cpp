@@ -1259,7 +1259,7 @@ void CObjGimmickManager::Action() {
 
 		//メカニックに曲を渡す
 		//フラグ3回収済み
-		if (m_Koune5_flg == KOUNE5_FLG3) {
+		if (m_gimmick_mechanic->m_getsound.sound_num == KOUNE5_SAX) {
 			//メカニック...修理したマスクを渡す
 			//　　　　　　　└音量の変更ができるようになる
 			Overlay()->talkDraw(KOUNE, KOUNE5_MECHANIC_OTO_FLG2_YES); //「これなら作業が捗る！」

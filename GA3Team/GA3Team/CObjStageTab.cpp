@@ -3,16 +3,16 @@
 //イニシャライズ
 void CObjStageTab::Init() {
 	//選んだキャラクター番号の初期化(-1はステージが選択されていないときの状態)
-	m_isel_chara =-1;
-	
+	m_isel_chara = -1;
+
 	//前回選択したキャラクター番号保存(-1はステージが選択されていないときの状態)
 	m_isel_chara_old = -1;
 
 	//各キャラクターのステージ最大数
-	m_istage_num[TUTORIAL]=1;
-	m_istage_num[SION]=2;
-	m_istage_num[KOUNE]=2;
-	m_istage_num[MERUERU]=1;
+	m_istage_num[TUTORIAL] = 1;
+	m_istage_num[SION] = 2;
+	m_istage_num[KOUNE] = 2;
+	m_istage_num[MERUERU] = 1;
 
 	//各キャラクターのステージ開放数初期値
 	m_istage_open[TUTORIAL] = 1;
@@ -29,9 +29,10 @@ void CObjStageTab::Init() {
 		m_istage_open[MERUERU]++;
 	}
 
-	//コウネ、シオンの1ステージクリア
+	//コウネ、シオン、メルエルの1ステージクリア
 	if (g_SavedataManeger->CurrentData->m_stage[KOUNE].stage1clear &&
-		g_SavedataManeger->CurrentData->m_stage[SION].stage1clear) {
+		g_SavedataManeger->CurrentData->m_stage[SION].stage1clear &&
+		g_SavedataManeger->CurrentData->m_stage[MERUERU].stage1clear) {
 		//各キャラクターステージ1個開放
 		m_istage_open[SION]++;
 		m_istage_open[KOUNE]++;
@@ -116,11 +117,11 @@ void CObjStageTab::Draw() {
 	//切り取り先座標
 	m_rDst.top = 0;
 	m_rDst.left = 0;
-	m_rDst.bottom = m_rDst.top+1024;
-	m_rDst.right = m_rDst.left+1024;
+	m_rDst.bottom = m_rDst.top + 1024;
+	m_rDst.right = m_rDst.left + 1024;
 
 	//転送先座標
-	m_rSrc.top = 40; 
+	m_rSrc.top = 40;
 	m_rSrc.left = 200;
 	m_rSrc.bottom = m_rSrc.top + 350;
 	m_rSrc.right = m_rSrc.left + 575;

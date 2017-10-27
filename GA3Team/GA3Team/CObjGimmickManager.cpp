@@ -1612,6 +1612,7 @@ void CObjGimmickManager::Action() {
 			//‰ï˜bI—¹
 			if (Overlay()->NextWait()) {
 				m_iMerueru1 = MERUERU1_KATSUO_TALK_END;
+				m_gimmick_oven->m_bActionFlg = true;
 			}
 		}
 

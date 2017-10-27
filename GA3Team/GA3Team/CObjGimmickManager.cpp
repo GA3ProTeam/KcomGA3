@@ -24,6 +24,8 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 	vector<bool>& m_bKoune2_flg_list = g_SavedataManeger->CurrentData->m_bKoune2_flg_list;
 
 	int& m_iKoune3_flg = g_SavedataManeger->CurrentData->m_stage[KOUNE].stage3;
+
+	int& m_iKoune5_flg = g_SavedataManeger->CurrentData->m_stage[KOUNE].stage5;
 	//-----------------------------------------------------------------------------------
 
 	//メニュータブへの参照セット

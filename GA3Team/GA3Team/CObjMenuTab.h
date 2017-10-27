@@ -40,11 +40,13 @@ private:
 	bool isSlotSelect;
 	int inputcount;
 
+	int m_iMoveScreenFlg;//戻るボタンを押すとどこに戻るか
+
 public:
 	//bool m_bability;//能力発動フラグ
 
 
-	void Init(int openclosey);//イニシャライズInit(タブのY軸の指定)
+	void Init(int openclosey, int iMoveScreenFlg);//イニシャライズInit(タブのY軸の指定)
 	void Destructor();//デストラクタ
 	void Action();//アクション
 	void Draw();//描画

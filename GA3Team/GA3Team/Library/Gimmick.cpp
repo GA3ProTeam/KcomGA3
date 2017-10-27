@@ -141,7 +141,7 @@ void Gimmick::gimmicDraw(int num)
 						this;
 					}
 					//音を再生---------------------------------------------------------------------
-					if (soundcount == true)
+					if (soundcount == true&& m_ball[i].m_iballoontype == sound)
 					{
 						Audio()->Start(m_ball[i].m_sound_data.sound_num);
 						soundcount = false;
@@ -151,7 +151,10 @@ void Gimmick::gimmicDraw(int num)
 				//マウスが範囲外
 				else {
 					m_ball[i].m_bOnceFlg = false;//一回クリックフラグを戻しておく
-					soundcount=true;
+					if (soundcount == false && m_ball[i].m_iballoontype == sound){
+						soundcount=true;
+					}
+					
 				}
 			}
 		}

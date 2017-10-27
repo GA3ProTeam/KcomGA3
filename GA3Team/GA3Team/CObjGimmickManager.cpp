@@ -1328,9 +1328,16 @@ void CObjGimmickManager::Action() {
 
 		m_Koune5_sound_num = m_gimmick_mysterydoor->m_getsound.sound_num; //‰¹”Ô†æ“¾
 		if (m_Koune5_gim_flg[0] == 2 && m_pMenuTab->isabilty()) {
-			//if (/*A‚Ì‰¹—Ê‚ğ‰º‚°‚éorB‚Ì‰¹—Ê‚ğã‚°‚é*/) {
+			if (m_gimmick_oldman->m_getsound.sound_num == KOUNE5_MECHANICAL_SOUND_A &&
+				m_gimmick_oldman->m_getsound.sound_volume == BALL_VOL_BIG) {
+				//A'
 				m_Koune5_sound_num += 1000;
-			//}
+			}
+			if (m_gimmick_oldman->m_getsound.sound_num == KOUNE5_MECHANICAL_SOUND_B &&
+				m_gimmick_oldman->m_getsound.sound_volume == BALL_VOL_SMALL) {
+				//B'
+				m_Koune5_sound_num += 1000;
+			}
 		}
 
 		//”à‚Ì“ä‰ğ‚«...ƒ‰ƒ“ƒv‚Ìˆ—...‰¹”Ô†”»’è

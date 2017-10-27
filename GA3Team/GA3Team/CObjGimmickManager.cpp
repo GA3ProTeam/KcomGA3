@@ -1490,7 +1490,7 @@ void CObjGimmickManager::Action() {
 			m_Sion1_flg = SION1_CLEAR;
 			//ステージセレクト画面に移行
 			Manager()->Pop(new CSceneStageSelect);
-
+		}
 		break;
 	case 21:
 		//イヤホン男と会話フラグON

@@ -335,6 +335,8 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 		m_gimmick_oven = new GimmickOven();
 		Obj()->InsertObj(m_gimmick_oven, GIMMICK_OVEN, 5, this->m_pScene, HIT_BOX_OFF);
 		m_gimmick_oven->Init(-335, 235, 300, 150, 1);
+		//動作フラグ停止
+		m_gimmick_oven->m_bActionFlg = false;
 
 		m_gimmick_katsuo = new GimmickKatsuo();
 		Obj()->InsertObj(m_gimmick_katsuo, GIMMICK_KATSUO, 5, this->m_pScene, HIT_BOX_OFF);
@@ -507,6 +509,9 @@ void CObjGimmickManager::Action() {
 	int& m_iKoune3_flg = g_SavedataManeger->CurrentData->m_stage[KOUNE].stage3;
 
 	int& m_iKoune5_flg = g_SavedataManeger->CurrentData->m_stage[KOUNE].stage5;
+
+	int& m_iMerueru1 = g_SavedataManeger->CurrentData->m_stage[MERUERU].stage1;
+	vector<bool>& m_bMerueru1_flg_list = g_SavedataManeger->CurrentData->m_bMerueru1_flg_list;
 	//-----------------------------------------------------------------------------------
 
 	//↓【ここからセーブデータの初期化（デバッグ用）】-----------------------------------
@@ -550,6 +555,15 @@ void CObjGimmickManager::Action() {
 
 		// コウネステージ5
 		m_Koune5_flg = KOUNE5_TALK_START;
+
+
+		//メルエルステージ1
+		m_iMerueru1 = MERUERU1_KATSUO_TALK3;
+		for (unsigned int i = 0; i < m_bMerueru1_flg_list.size(); i++) {
+			m_bMerueru1_flg_list[i] = false;
+		}
+		
+
 
 
 		/*g_SavedataManeger->CurrentData->m_stage[SION].stage1clear = true;
@@ -1633,8 +1647,7 @@ void CObjGimmickManager::Action() {
 		//メルエル1
 	case 40:
 	{
-		static int m_iMerueru1 = MERUERU1_WELCOM_TALK;
-		m_gimmick_oven->m_bActionFlg = false;
+		
 
 
 		//初回会話
@@ -1726,6 +1739,7 @@ void CObjGimmickManager::Action() {
 			if (Overlay()->NextWait()) {
 				m_iMerueru1 = MERUERU1_KATSUO_TALK_END;
 				m_gimmick_oven->m_bActionFlg = true;
+				
 			}
 		}
 

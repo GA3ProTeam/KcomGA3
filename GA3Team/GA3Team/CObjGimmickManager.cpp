@@ -1358,8 +1358,11 @@ void CObjGimmickManager::Action() {
 
 			//コウネステージ5 クリア
 			if (Overlay()->NextWait()) {
-				//クリアフラグを立てる
-				 ;
+				//クリア
+				SavedataManeger()->CurrentData->m_stage[KOUNE].stage5clear = true;
+				SavedataManeger()->Writesavedata();
+				//ステージセレクト画面に移行
+				Manager()->Pop(new CSceneStageSelect);
 			 }
 		 }
 
@@ -1706,6 +1709,7 @@ void CObjGimmickManager::Action() {
 			//会話終了
 			if (Overlay()->NextWait()) {
 				m_iMerueru1 = MERUERU1_KATSUO_TALK_END;
+				m_gimmick_oven->m_bActionFlg = true;
 			}
 		}
 

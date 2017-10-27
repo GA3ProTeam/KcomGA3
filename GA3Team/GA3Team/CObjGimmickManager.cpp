@@ -1526,7 +1526,7 @@ void CObjGimmickManager::Action() {
 		//メルエル1
 	case 40:
 	{
-		static int m_iMerueru1 = MERUERU1_KATSUO_TALK1_1;
+		static int m_iMerueru1 = MERUERU1_WELCOM_TALK;
 		m_gimmick_oven->m_bActionFlg = false;
 
 
@@ -1546,120 +1546,42 @@ void CObjGimmickManager::Action() {
 
 		//カツオ会話
 		if (m_gimmick_katsuo->m_ball[0].OnPush) {
-			/*
-			//会話1-2能力なし
-			if (m_iMerueru1 == MERUERU1_KATSUO_TALK1_2  &&
-				!User()->m_bmerueruability) {
-				Overlay()->talkDraw(MERUERU, MERUERU_KATUO_1_2);
-				//会話終了
-				if (Overlay()->NextWait()) {
-					m_iMerueru1 = MERUERU1_KATSUO_TALK1_1;
-				}
-			}
-			//会話1-1能力なし
-			if (m_iMerueru1 == MERUERU1_KATSUO_TALK1_1 &&
-				!User()->m_bmerueruability) {
-				Overlay()->talkDraw(MERUERU, MERUERU_KATUO_1_OFF);
-				//会話終了
-				if (Overlay()->NextWait()) {
-					m_iMerueru1 = MERUERU1_KATSUO_TALK1_2;
-				}
-			}
-			//会話1能力あり
-			else if (m_iMerueru1 == MERUERU1_KATSUO_TALK1_1 &&
-				User()->m_bmerueruability) {
-				Overlay()->talkDraw(MERUERU, MERUERU_KATUO_1_ON);
-				//会話終了
-				if (Overlay()->NextWait()) {
-					m_iMerueru1 = MERUERU1_KATSUO_TALK2;
-				}
-			}
-
-			//会話2
-			if (m_iMerueru1 == MERUERU1_KATSUO_TALK2) {
-				Overlay()->talkDraw(MERUERU, MERUERU_KATUO_2);
-				//会話終了
-				if (Overlay()->NextWait()) {
-					m_iMerueru1 = MERUERU1_KATSUO_TALK3;
-				}
-			}
-
-			//会話3
-			if (m_iMerueru1 == MERUERU1_KATSUO_TALK3) {
-				Overlay()->talkDraw(MERUERU, MERUERU_KATUO_3);
-				//会話終了
-				if (Overlay()->NextWait()) {
-					m_iMerueru1 = MERUERU1_KATSUO_TALK_END;
-
-					m_gimmick_oven->m_bActionFlg = true;
-					m_gimmick_oven->m_bActionFlg = true;
-
-				}
-			}
-
-			//口笛音取得
-			if (m_iMerueru1 == MERUERU1_KATSUO_TALK_END) {
-
-			}
-			*/
 
 			switch (m_iMerueru1) {
-
+				//カツオ会話1-1
 			case MERUERU1_KATSUO_TALK1_1:
-
+				//能力なし
 				if (!User()->m_bmerueruability) {
+
 					Overlay()->talkDraw(MERUERU, MERUERU_KATUO_1_OFF);
-					//会話終了
-					if (Overlay()->NextWait()) {
-						m_iMerueru1 = MERUERU1_KATSUO_TALK1_2;
-					}
+				
 				}
+				//能力あり
 				else {
+
 					Overlay()->talkDraw(MERUERU, MERUERU_KATUO_1_ON);
-					//会話終了
-					if (Overlay()->NextWait()) {
-						m_iMerueru1 = MERUERU1_KATSUO_TALK2;
-					}
 					
 				}
 				break;
-
+				//カツオ会話1-2
 			case MERUERU1_KATSUO_TALK1_2:
 				
 				Overlay()->talkDraw(MERUERU, MERUERU_KATUO_1_2);
-				//会話終了
-				if (Overlay()->NextWait()) {
-					m_iMerueru1 = MERUERU1_KATSUO_TALK1_1;
-				}
 				
 				break;
-
-
+				//カツオ会話2
 			case MERUERU1_KATSUO_TALK2:
 
 				Overlay()->talkDraw(MERUERU, MERUERU_KATUO_2);
-				//会話終了
-				if (Overlay()->NextWait()) {
-					m_iMerueru1 = MERUERU1_KATSUO_TALK3;
-				}
+				
 				break;
-
-
+				//カツオ会話3
 			case MERUERU1_KATSUO_TALK3:
 
 				Overlay()->talkDraw(MERUERU, MERUERU_KATUO_3);
-				//会話終了
-				if (Overlay()->NextWait()) {
-					m_iMerueru1 = MERUERU1_KATSUO_TALK_END;
-
-					m_gimmick_oven->m_bActionFlg = true;
-					m_gimmick_oven->m_bActionFlg = true;
-
-				}
-
+				
 				break;
-
-
+				//カツオ口笛
 			case MERUERU1_KATSUO_TALK_END:
 
 
@@ -1668,22 +1590,55 @@ void CObjGimmickManager::Action() {
 
 		}
 
-
-
+		if (Overlay()->NowTalk() == MERUERU_KATUO_1_ON) {
+			//会話終了
+			if (Overlay()->NextWait()) {
+				m_iMerueru1 = MERUERU1_KATSUO_TALK2;
+			}
+		}
+		else if (Overlay()->NowTalk() == MERUERU_KATUO_1_OFF) {
+			//会話終了
+			if (Overlay()->NextWait()) {
+				m_iMerueru1 = MERUERU1_KATSUO_TALK1_2;
+			}
+		}
+		else if (Overlay()->NowTalk() == MERUERU_KATUO_1_2) {
+			//会話終了
+			if (Overlay()->NextWait()) {
+				m_iMerueru1 = MERUERU1_KATSUO_TALK1_1;
+			}
+		}
+		else if (Overlay()->NowTalk() == MERUERU_KATUO_2) {
+			//会話終了
+			if (Overlay()->NextWait()) {
+				m_iMerueru1 = MERUERU1_KATSUO_TALK3;
+			}
+		}
+		else if (Overlay()->NowTalk() == MERUERU_KATUO_3) {
+			//会話終了
+			if (Overlay()->NextWait()) {
+				m_iMerueru1 = MERUERU1_KATSUO_TALK_END;
+			}
+		}
 
 
 		//テレビ音取得
 		if (m_gimmick_television->m_ball[0].OnPush) {
 
+
+
 		}
 		//レンジ音取得
 		if (m_gimmick_oven->m_ball[0].OnPush) {
 
+
+
 		}
 
 		//レンジ音使用でステージクリア
-		if (m_gimmick_doctorroomdoor->m_ball[0].m_sound_data.sound_num == 1)
-		{
+		if (m_gimmick_doctorroomdoor->m_ball[0].m_sound_data.sound_num == 1){
+
+
 
 		}
 

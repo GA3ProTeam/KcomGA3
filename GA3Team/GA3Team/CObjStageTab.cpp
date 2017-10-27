@@ -16,9 +16,9 @@ void CObjStageTab::Init() {
 
 	//各キャラクターのステージ開放数初期値
 	m_istage_open[0] = 1;
-	m_istage_open[1] = 0;
-	m_istage_open[2] = 0;
-	m_istage_open[3] = 0;
+	m_istage_open[1] = 2;
+	m_istage_open[2] = 2;
+	m_istage_open[3] = 2;
 
 	//ステージ開放数を加算-------------------------------------------------
 	//チュートリアルをクリア
@@ -115,10 +115,10 @@ void CObjStageTab::Draw() {
 	float m_fCol[4] = { 1.0f,1.0f,1.0f,1.0f };
 
 	//切り取り先座標
-	m_rDst.top = 896;
+	m_rDst.top = 0;
 	m_rDst.left = 0;
-	m_rDst.bottom = m_rDst.top+128;
-	m_rDst.right = 128;
+	m_rDst.bottom = m_rDst.top+1024;
+	m_rDst.right = m_rDst.left+1024;
 
 	//転送先座標
 	m_rSrc.top = 40; 
@@ -127,5 +127,5 @@ void CObjStageTab::Draw() {
 	m_rSrc.right = m_rSrc.left + 575;
 
 	//描画
-	Image()->Draw(0, &m_rSrc, &m_rDst, m_fCol, 0.0f);
+	Image()->DrawEx(EX_STAGE_TAB_FRAME, &m_rSrc, &m_rDst, m_fCol, 0.0f);
 }

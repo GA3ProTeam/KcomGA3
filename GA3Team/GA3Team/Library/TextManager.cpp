@@ -86,7 +86,7 @@ CTextManager::CTextManager()
 	filePath_koune.push_back("Text\\koune2\\koune2_BoyA_flag3_all_color.bin");
 	filePath_koune.push_back("Text\\koune2\\koune2_BoyA_flag3_ouen_small.bin");
 	filePath_koune.push_back("Text\\koune2\\koune2_BoyA_flag3_ouen_Big.bin");
-	//filePath_koune.push_back("Text\\koune2\\koune2_BoyA_flag3_ouen_BigAfter.bin");
+	filePath_koune.push_back("Text\\koune2\\koune2_BoyA_flag3_ouen_Big_After.bin");
 
 	//Stage3
 	filePath_koune.push_back("Text\\koune3\\koune3_start.bin");
@@ -107,6 +107,17 @@ CTextManager::CTextManager()
 	filePath_koune.push_back("Text\\koune3\\koune3_cat_ability_dog_sound_listen.bin");
 	filePath_koune.push_back("Text\\koune3\\koune3_cat_exception_sound_listen.bin");
 	filePath_koune.push_back("Text\\koune3\\koune3_clear.bin");
+	//Stage5
+	//filePath_koune.push_back("Text\\koune3\\koune5_start.bin");
+	//filePath_koune.push_back("Text\\koune3\\koune5_door_mechanic_flag1_no.bin");
+	//filePath_koune.push_back("Text\\koune3\\koune5_flag1_yes_ability.bin");
+	//filePath_koune.push_back("Text\\koune3\\koune5_mechanic_flag1.bin");
+	//filePath_koune.push_back("Text\\koune3\\koune5_mechanic_oto_flag2_yes.bin");
+	//filePath_koune.push_back("Text\\koune3\\koune5_mechanic_oto_no_flag2_yes.bin");
+	//filePath_koune.push_back("Text\\koune3\\koune5_musicians_flag4_no_not.bin");
+	//filePath_koune.push_back("Text\\koune3\\koune5_musicians_flag4_no_yes.bin");
+	//filePath_koune.push_back("Text\\koune3\\koune5_musicians_flag4_yes_yes.bin");
+	//filePath_koune.push_back("Text\\koune3\\koune5_clear.bin");
 	//ÉÅÉãÉGÉã
 	//Stage1
 	filePath_merueru.push_back("Text\\merueru1\\merueru_start.bin");

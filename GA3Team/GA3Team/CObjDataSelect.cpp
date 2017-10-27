@@ -288,10 +288,10 @@ void CObjDataSelect::Draw()
 				}
 			}			
 			
-			//描画
-			Image()->Draw(2, &m_rSrc_Koune, &m_rDst_Koune, coldraw, 0.0f);  //コウネ
-			Image()->Draw(3, &m_rSrc_Sion, &m_rDst_Sion, coldraw, 0.0f);	//シオン
-			Image()->Draw(4, &m_rSrc_Melueru, &m_rDst_Melueru, coldraw, 0.0f);	//メルエル
+			////描画
+			//Image()->Draw(2, &m_rSrc_Koune, &m_rDst_Koune, coldraw, 0.0f);  //コウネ
+			//Image()->Draw(3, &m_rSrc_Sion, &m_rDst_Sion, coldraw, 0.0f);	//シオン
+			//Image()->Draw(4, &m_rSrc_Melueru, &m_rDst_Melueru, coldraw, 0.0f);	//メルエル
 
 			}
 		}

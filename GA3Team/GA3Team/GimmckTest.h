@@ -438,6 +438,7 @@ public:
 	void Action();		//アクション
 	void Draw();		//ドロー
 
+	int m_sound_flg;//吹き出し描画数
 };
 
 //シオン

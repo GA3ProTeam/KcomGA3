@@ -77,9 +77,9 @@ void GimmickDoctor::Draw() {
 	//ギミック本体描画-----------------------------------------------------------
 	//切り取り先座標
 	m_dst.top = 0;
-	m_dst.bottom = m_dst.top + 64;
+	m_dst.bottom = m_dst.top + 512;
 	m_dst.left = 0;
-	m_dst.right = m_dst.left + 64;
+	m_dst.right = m_dst.left + 512;
 
 	//転送先座標
 	m_src.top = m_iYpos;
@@ -88,11 +88,11 @@ void GimmickDoctor::Draw() {
 	m_src.right = m_src.left + m_iWidth;
 
 	//描画
-	Image()->DrawEx(58, &m_src, &m_dst, col, 0.0f);
+	Image()->DrawEx(15, &m_src, &m_dst, col, 0.0f);
 	//---------------------------------------------------------------------------
 
 	//ギミック名前描画
-	Font()->StrDraw("博士", m_iXpos, m_iYpos, 20, col);
+	//Font()->StrDraw("博士", m_iXpos, m_iYpos, 20, col);
 
 	//ギミックの動作＆吹き出しの動作・描画
 	this->gimmicDraw(1);
@@ -124,10 +124,10 @@ void GimmickComputer::Draw() {
 
 	//ギミック本体描画-----------------------------------------------------------
 	//切り取り先座標
-	m_dst.top = 64;
-	m_dst.bottom = m_dst.top + 64;
+	m_dst.top = 0;
+	m_dst.bottom = m_dst.top + 260;
 	m_dst.left = 0;
-	m_dst.right = m_dst.left + 64;
+	m_dst.right = m_dst.left + 280;
 
 	//転送先座標
 	m_src.top = m_iYpos;
@@ -136,11 +136,11 @@ void GimmickComputer::Draw() {
 	m_src.right = m_src.left + m_iWidth;
 
 	//描画
-	Image()->DrawEx(58, &m_src, &m_dst, col, 0.0f);
+	Image()->DrawEx(EX_COMPUTER, &m_src, &m_dst, col, 0.0f);
 	//---------------------------------------------------------------------------
 
 	//ギミック名前描画
-	Font()->StrDraw("パソコン", m_iXpos, m_iYpos, 20, col);
+	//Font()->StrDraw("パソコン", m_iXpos, m_iYpos, 20, col);
 
 	//ギミックの動作＆吹き出しの動作・描画
 	this->gimmicDraw(1);
@@ -172,10 +172,10 @@ void GimmickRecorder::Draw() {
 
 	//ギミック本体描画-----------------------------------------------------------
 	//切り取り先座標
-	m_dst.top = 128;
-	m_dst.bottom = m_dst.top + 64;
+	m_dst.top = 0;
+	m_dst.bottom = m_dst.top + 350;
 	m_dst.left = 0;
-	m_dst.right = m_dst.left + 64;
+	m_dst.right = m_dst.left + 135;
 
 	//転送先座標
 	m_src.top = m_iYpos;
@@ -184,11 +184,11 @@ void GimmickRecorder::Draw() {
 	m_src.right = m_src.left + m_iWidth;
 
 	//描画
-	Image()->DrawEx(58, &m_src, &m_dst, col, 0.0f);
+	Image()->DrawEx(EX_VOICE_RECORDER, &m_src, &m_dst, col, 0.0f);
 	//---------------------------------------------------------------------------
 
 	//ギミック名前描画
-	Font()->StrDraw("レコーダー", m_iXpos, m_iYpos, 20, col);
+	//Font()->StrDraw("レコーダー", m_iXpos, m_iYpos, 20, col);
 
 	//ギミックの動作＆吹き出しの動作・描画
 	this->gimmicDraw(1);
@@ -222,10 +222,10 @@ void CObjDesk::Draw() {
 
 	//ギミック本体描画-----------------------------------------------------------
 	//切り取り先座標
-	m_dst.top = 192;
-	m_dst.bottom = m_dst.top + 64;
+	m_dst.top = 0;
+	m_dst.bottom = m_dst.top + 440;
 	m_dst.left = 0;
-	m_dst.right = m_dst.left + 64;
+	m_dst.right = m_dst.left + 560;
 
 	//転送先座標
 	m_src.top = m_iYpos;
@@ -234,11 +234,11 @@ void CObjDesk::Draw() {
 	m_src.right = m_src.left + m_iWidth;
 
 	//描画
-	Image()->DrawEx(58, &m_src, &m_dst, col, 0.0f);
+	Image()->DrawEx(EX_DESK, &m_src, &m_dst, col, 0.0f);
 	//---------------------------------------------------------------------------
 
 	//ギミック名前描画
-	Font()->StrDraw("机", m_iXpos, m_iYpos, 20, col);
+	//Font()->StrDraw("机", m_iXpos, m_iYpos, 20, col);
 }
 //-----------チュートリアル（博士）ステージ↑-------------------------
 
@@ -270,23 +270,17 @@ void GimmickAunt::Draw() {
 	//-------------------------ギミック(本体)を描画-------------------------------
 	float col[4] = { 1.0,1.0,1.0,1.0 };
 	//切り取り先座標
-	m_dst.top = 128; m_dst.left = 0;
-	m_dst.bottom = m_dst.top + 64; m_dst.right = m_dst.left + 64;
+	m_dst.top = 0; m_dst.left = 129;
+	m_dst.bottom = m_dst.top + 382; m_dst.right = m_dst.left - 129;
 
 	//転送先座標
 	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
 	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
 	//描画
-	Image()->DrawEx(58, &m_src, &m_dst, col, 0.0f);
-	//--------------------------------------------------------------------------
-	//ギミック名前描画
-	Font()->StrDraw("おばちゃん", m_iXpos, m_iYpos, 20, col);
+	Image()->DrawEx(EX_WOMANALL, &m_src, &m_dst, col, 0.0f);
 	//--------------------------------------------------------------------------
 	//吹き出しの描画＆動作
 	this->gimmicDraw(1);
-
-	////【会話終了時】
-	//SavedataManeger()->CurrentData->m_bSionflg[0] = true;
 
 }
 
@@ -297,7 +291,7 @@ void GimmickBird::Init(int xpos, int ypos, int widht, int height, int balloonnum
 	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
 
 	//吹き出しの初期化
-	InitBall(&m_ball[0], 48, -48, sound, 1, BLUE, LOWER_LEFT);
+	InitBall(&m_ball[0], 48, -48, sound, SION1_BARD, BLUE, LOWER_LEFT);
 }
 void GimmickBird::Destructor()	//デストラクタ
 {
@@ -312,17 +306,14 @@ void GimmickBird::Draw()		//ドロー
 	//-------------------------ギミック(本体)を描画-------------------------------
 	float col[4] = { 1.0,1.0,1.0,1.0 };
 	//切り取り先座標
-	m_dst.top = 64; m_dst.left = 64;
-	m_dst.bottom = m_dst.top + 64; m_dst.right = m_dst.left + 64;
+	m_dst.top = 402; m_dst.left = 201;
+	m_dst.bottom = m_dst.top + 201; m_dst.right = m_dst.left + 201;
 
 	//転送先座標
 	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
 	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
 	//描画
-	Image()->DrawEx(58, &m_src, &m_dst, col, 0.0f);
-
-	//ギミック名前描画
-	Font()->StrDraw("すずめ", m_iXpos, m_iYpos, 20, col);
+	Image()->DrawEx(EX_ANIMALALL, &m_src, &m_dst, col, 0.0f);
 
 	//吹き出しの描画＆動作
 	this->gimmicDraw(1);
@@ -336,7 +327,7 @@ void Gimmickwatchdog::Init(int xpos, int ypos, int widht, int height, int balloo
 	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
 
 	//吹き出しの初期化
-	InitBall(&m_ball[0], 48, -48, sound, 1, RED, LOWER_LEFT);
+	InitBall(&m_ball[0], 48, -48, sound, SION1_DOG, RED, LOWER_LEFT);
 }
 void Gimmickwatchdog::Destructor()	//デストラクタ
 {
@@ -351,17 +342,14 @@ void Gimmickwatchdog::Draw()		//ドロー
 	//-------------------------ギミック(本体)を描画-------------------------------
 	float col[4] = { 1.0,1.0,1.0,1.0 };
 	//切り取り先座標
-	m_dst.top = 128; m_dst.left = 0;
-	m_dst.bottom = m_dst.top + 64; m_dst.right = m_dst.left + 64;
+	m_dst.top = 804; m_dst.left = 0;
+	m_dst.bottom = m_dst.top + 201; m_dst.right = m_dst.left + 224;
 
 	//転送先座標
 	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
 	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
 	//描画
-	Image()->DrawEx(58, &m_src, &m_dst, col, 0.0f);
-
-	//ギミック名前描画
-	Font()->StrDraw("犬A", m_iXpos, m_iYpos, 20, col);
+	Image()->DrawEx(EX_ANIMALALL, &m_src, &m_dst, col, 0.0f);
 
 	//吹き出しの描画＆動作
 	this->gimmicDraw(1);
@@ -375,7 +363,7 @@ void GimmickInterphone::Init(int xpos, int ypos, int widht, int height, int ball
 	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
 
 	//吹き出しの初期化
-	InitBall(&m_ball[0], -48, -48, sound, 1, YELLOW, LOWER_RIGHT);
+	InitBall(&m_ball[0], -48, -48, sound, SION1_DOOR_CHIME, YELLOW, LOWER_RIGHT);
 }
 void GimmickInterphone::Destructor()	//デストラクタ
 {
@@ -390,17 +378,14 @@ void GimmickInterphone::Draw()		//ドロー
 	//-------------------------ギミック(本体)を描画-------------------------------
 	float col[4] = { 1.0,1.0,1.0,1.0 };
 	//切り取り先座標
-	m_dst.top = 64; m_dst.left = 0;
-	m_dst.bottom = m_dst.top + 64; m_dst.right = m_dst.left + 64;
+	m_dst.top = 0; m_dst.left = 0;
+	m_dst.bottom = m_dst.top + 515; m_dst.right = m_dst.left + 310;
 
 	//転送先座標
 	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
 	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
 	//描画
-	Image()->DrawEx(58, &m_src, &m_dst, col, 0.0f);
-
-	//ギミック名前描画
-	Font()->StrDraw("インターホン", m_iXpos, m_iYpos, 20, col);
+	Image()->DrawEx(EX_INTERPHONE, &m_src, &m_dst, col, 0.0f);
 
 	//吹き出しの描画＆動作
 	this->gimmicDraw(1);
@@ -1076,7 +1061,7 @@ void GimmickDog::Draw()
 	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
 	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
 	//描画
-	Image()->DrawEx(16, &m_src, &m_dst, col, 0.0f);
+	Image()->DrawEx(EX_ANIMALALL, &m_src, &m_dst, col, 0.0f);
 	this->gimmicDraw(1);
 }	
 //マンホールの蓋のデストラクタ
@@ -1117,7 +1102,7 @@ void GimmickManholeCover::Draw()
 void GimmickManholeHole::Init(int xpos, int ypos, int widht, int height, int balloonnum)
 {
 	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
-	InitBall(&m_ball[0], m_iWidth - 50, m_iHeight - 48, sound, 1, RED, UPPER_LEFT);
+	InitBall(&m_ball[0], m_iWidth - 50, m_iHeight - 48, sound, 1, GRAY, UPPER_LEFT);
 	m_Status = STATUS_SLEEP;
 
 }
@@ -1217,8 +1202,11 @@ void GimmickGirl_Koune2::Init(int xpos, int ypos, int widht, int height, int bal
 	//親クラスのInit関数を呼ぶ
 	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
 
+	m_sound_flg = 1;//吹き出し描画数
+
 	//吹き出しの初期化
 	InitBall(&m_ball[0], m_iWidth - 50, -48, talk, 1, RED, LOWER_LEFT);
+	InitBall(&m_ball[1], m_iWidth + 20, -48, sound, KOUNE2_GIRL_SING, YELLOW, LOWER_LEFT);
 }
 
 //デストラクタ
@@ -1240,9 +1228,9 @@ void GimmickGirl_Koune2::Draw() {
 	if (this->m_bActionFlg) {
 		//切り取り先座標
 		m_dst.top = 0;
-		m_dst.bottom = m_dst.top + 512;
+		m_dst.bottom = m_dst.top + 300;
 		m_dst.left = 0;
-		m_dst.right = m_dst.left + 512;
+		m_dst.right = m_dst.left + 170;
 
 		//転送先座標
 		m_src.top = m_iYpos;
@@ -1251,15 +1239,15 @@ void GimmickGirl_Koune2::Draw() {
 		m_src.right = m_src.left + m_iWidth;
 
 		//描画
-		Image()->DrawEx(4, &m_src, &m_dst, col, 0.0f);
+		Image()->DrawEx(EX_KOUNE_GIRL_ALL, &m_src, &m_dst, col, 0.0f);
 	}
 	//---------------------------------------------------------------------------
 
 	//ギミック名前描画
-	Font()->StrDraw("女の子", m_src.left, m_src.top, 20, col);
+	//Font()->StrDraw("女の子", m_src.left, m_src.top, 20, col);
 
 	//ギミックの動作＆吹き出しの動作・描画
-	this->gimmicDraw(1);
+	this->gimmicDraw(m_sound_flg);
 }
 
 //シオン
@@ -1291,7 +1279,7 @@ void GimmickSion::Draw() {
 	m_dst.top = 0;
 	m_dst.bottom = m_dst.top + 380;
 	m_dst.left = 0;
-	m_dst.right = m_dst.left + 190;
+	m_dst.right = m_dst.left + 180;
 
 	//転送先座標
 	m_src.top = m_iYpos;
@@ -1300,11 +1288,11 @@ void GimmickSion::Draw() {
 	m_src.right = m_src.left + m_iWidth;
 
 	//描画
-	Image()->DrawEx(18, &m_src, &m_dst, col, 0.0f);
+	Image()->DrawEx(EX_SION_GOGGLES_NO, &m_src, &m_dst, col, 0.0f);
 	//---------------------------------------------------------------------------
 
 	//ギミック名前描画
-	Font()->StrDraw("シオン", m_src.left, m_src.top, 20, col);
+	//Font()->StrDraw("シオン", m_src.left, m_src.top, 20, col);
 
 	//ギミックの動作＆吹き出しの動作・描画
 	this->gimmicDraw(1);
@@ -1336,10 +1324,10 @@ void GimmickBoyA::Draw() {
 
 	//ギミック本体描画-----------------------------------------------------------
 	//切り取り先座標
-	m_dst.top = 0;
-	m_dst.bottom = m_dst.top + 512;
+	m_dst.top = 300;
+	m_dst.bottom = m_dst.top + 300;
 	m_dst.left = 0;
-	m_dst.right = m_dst.left + 512;
+	m_dst.right = m_dst.left + 160;
 
 	//転送先座標
 	m_src.top = m_iYpos;
@@ -1348,7 +1336,7 @@ void GimmickBoyA::Draw() {
 	m_src.right = m_src.left + m_iWidth;
 
 	//描画
-	Image()->DrawEx(4, &m_src, &m_dst, col, 0.0f);
+	Image()->DrawEx(EX_BOY, &m_src, &m_dst, col, 0.0f);
 	//---------------------------------------------------------------------------
 
 	//ギミック名前描画
@@ -1384,10 +1372,10 @@ void GimmickBoyB::Draw() {
 
 	//ギミック本体描画-----------------------------------------------------------
 	//切り取り先座標
-	m_dst.top = 192;
-	m_dst.bottom = m_dst.top + 64;
+	m_dst.top = 0;
+	m_dst.bottom = m_dst.top + 300;
 	m_dst.left = 0;
-	m_dst.right = m_dst.left + 64;
+	m_dst.right = m_dst.left + 100;
 
 	//転送先座標
 	m_src.top = m_iYpos;
@@ -1396,7 +1384,7 @@ void GimmickBoyB::Draw() {
 	m_src.right = m_src.left + m_iWidth;
 
 	//描画
-	Image()->DrawEx(58, &m_src, &m_dst, col, 0.0f);
+	Image()->DrawEx(EX_BOY, &m_src, &m_dst, col, 0.0f);
 	//---------------------------------------------------------------------------
 
 	//ギミック名前描画
@@ -1436,11 +1424,22 @@ void GimmickWindow_Koune2::Draw() {
 	float col[4] = { 1.0f,1.0f,1.0f,1.0f };
 
 	//ギミック本体描画-----------------------------------------------------------
+	int image_id = 0;
+
+	//割れていない
+	if (!m_break_flg) {
+		image_id = EX_KOUNE2_WINDOW_NO_BREAK;
+	}
+	//割れている
+	else {
+		image_id = EX_KOUNE2_WINDOW_BREAK;
+	}
+
 	//切り取り先座標
-	m_dst.top = 256;
-	m_dst.bottom = m_dst.top + 64;
+	m_dst.top = 0;
+	m_dst.bottom = m_dst.top + 1024;
 	m_dst.left = 0;
-	m_dst.right = m_dst.left + 64;
+	m_dst.right = m_dst.left + 1024;
 
 	//転送先座標
 	m_src.top = m_iYpos;
@@ -1449,16 +1448,16 @@ void GimmickWindow_Koune2::Draw() {
 	m_src.right = m_src.left + m_iWidth;
 
 	//描画
-	Image()->DrawEx(4, &m_src, &m_dst, col, 0.0f);
+	Image()->DrawEx(image_id, &m_src, &m_dst, col, 0.0f);
 	//---------------------------------------------------------------------------
 
-	//ギミック名前描画
-	if (!m_break_flg) {
-		Font()->StrDraw("窓", m_src.left, m_src.top, 20, col);
-	}
-	else {
-		Font()->StrDraw("窓割れた", m_src.left, m_src.top, 20, col);
-	}
+	////ギミック名前描画
+	//if (!m_break_flg) {
+	//	Font()->StrDraw("窓", m_src.left, m_src.top, 20, col);
+	//}
+	//else {
+	//	Font()->StrDraw("窓割れた", m_src.left, m_src.top, 20, col);
+	//}
 }
 ////ステージ2↑
 //
@@ -1623,106 +1622,6 @@ void GimmickMysteryDoor::Action() {
 	//メニュータブへの参照取得
 	CObjMenuTab* tab = (CObjMenuTab*)Obj()->GetObj(OBJ_MENUTAB);
 
-	/*ランプの色...3つ全てを緑にすると扉が開く
-		└0...灰色
-　		  1...黄色
-		  2...緑
-	 ※ランプの色は灰色以下、緑以上にはならない
-	 */
-	 /*
-	 機械音A...音量を下げると"A'"
-	 機械音B...音量を上げると"B'"
-	 */
-
-	int m_idoorgimmick[3] = { 1,2,1 }; //ドアの謎解き初期値(スタート)
-
-	if (!Input()->GetMouButtonL() && tab->GetHaveSound()) {
-		//マウスがギミック範囲内か確認
-		if (Input()->m_x > m_iXpos&& Input()->m_x < (m_iXpos + m_iWidth)
-			&& Input()->m_y > m_iYpos && Input()->m_y < (m_iYpos + m_iHeight)) {
-
-			//int Sound_num = GetSound; //音番号取得
-
-			//扉の謎解き...ランプの処理...音番号判定
-		   //機械音A
-			/*switch (Sound_num) {
-			   case KOUNE5_MECHANICAL_SOUND_A:
-				   m_idoorgimmick[0] += 1; //左端...明
-				   m_idoorgimmick[1] -= 1; //中央...暗
-
-				   break;
-
-			//機械音A'
-				case 1:
-				   m_idoorgimmick[1] -= 1; //中央...暗
-				   m_idoorgimmick[2] += 1; //右端...明
-
-				   break;
-
-		   //機械音B
-				case KOUNE5_MECHANICAL_SOUND_B:
-					m_idoorgimmick[0] -= 1; //左端...暗
-					m_idoorgimmick[2] -= 1; //右端...暗
-
-					break;
-
-			//機械音B'
-				case 3:
-					m_idoorgimmick[1] += 1; //中央...明
-
-					break;
-			}*/
-
-			//ランプの色は"0未満(灰色)"、"2を超えない(緑)"
-			for (int i = 0; i < 3; i++) {
-				if (m_idoorgimmick[i] > 2) {
-					m_idoorgimmick[i] = 2;
-				}
-				if (m_idoorgimmick[i] < 0) {
-					m_idoorgimmick[i] = 0;
-				}
-			}
-
-			//ランプが全て緑で点灯
-			// └メカニック...会話
-			//　　└ステージクリア
-			if (m_idoorgimmick[0] == 2 && m_idoorgimmick[1] == 2 && m_idoorgimmick[2] == 2) {
-				//ドアの 謎解きをクリア
-				//Overlay()->talkDraw(KOUNE, ); //「開けられたんだね！」
-
-				//SavedataManeger()->CurrentData->m_bKouneClearflg[4] = true; //コウネステージ5 クリア
-			}
-		}
-	}
-
-	//フラグ1○の状態で話しかける
-	// └ドアの謎解きをリセットするか聞く
-	//if(SavedataManeger()->CurrentData->m_bKouneflg[17] == true){
-	//if (Input()->GetMouButtonL()) {
-	//	//マウスがギミック範囲内か確認
-	//	if (Input()->m_x > m_iXpos&& Input()->m_x < (m_iXpos + m_iWidth)
-	//		&& Input()->m_y > m_iYpos && Input()->m_y < (m_iYpos + m_iHeight)) {
-
-	//		//Overlay()->talkDraw(KOUNE, ); //「リセット？」
-
-	//		//選択肢のボタン表示(2択)
-	//		//if () {
-	//			//「うなずく」...リセットする
-	//			m_idoorgimmick[0] = 1; //左
-	//			m_idoorgimmick[1] = 2; //中央
-	//			m_idoorgimmick[2] = 1; //右
-
-	//			//Overlay()->talkDraw(KOUNE, ); //「おっけー」
-	//		//}
-	//		//if(){
-	//			//「首を振る」...リセットしない
-	//			//Overlay()->talkDraw(KOUNE, ); //「がんばってねー」
-	//		//}
-
-	//	}
-	//}
-	//}
-
 }
 //①ドアの描画
 void GimmickMysteryDoor::Draw() {
@@ -1816,12 +1715,6 @@ void GimmickSoundComputer::Destructor() {
 //③パソコンのアクション
 void GimmickSoundComputer::Action() {
 
-	//能力の使用で機械音の音量変更
-	//　└メカニックから修理済みのマスクを受け取っている場合のみ有効
-	//if () {
-
-	//}
-
 }
 //③パソコンの描画
 void GimmickSoundComputer::Draw() {
@@ -1867,37 +1760,8 @@ void GimmickMusician::Destructor() {
 //④演奏家のアクション
 void GimmickMusician::Action() {
 
-	//int m_isoundhave; //何か音を持っているか
-
-	//if (Input()->GetMouButtonL()) {
-	//	//マウスがギミック範囲内か確認
-	//	if (Input()->m_x > m_iXpos&& Input()->m_x < (m_iXpos + m_iWidth)
-	//		&& Input()->m_y > m_iYpos && Input()->m_y < (m_iYpos + m_iHeight)) {
-
-	//		m_isoundhave = false;
-
-	//		for (int i = 0; i < 3; i++) {
-	//			if (SoundManager()->GetSound(i).sound_num) {
-	//				m_isoundhave = true;
-	//			}
-	//		}
-
-	//		//音を所持していない
-	//		// └演奏家が演奏を聞かせてくれる
-	//		//    └""フラグ3回収""
-	//		if (!m_isoundhave) {
-	//			//Overlay()->talkDraw(KOUNE, ); //「演奏を聴いていく？」
-	//			SavedataManeger()->CurrentData->m_bKouneflg[19] = true;
-	//		}
-	//		if (m_isoundhave) {
-	//			//音を所持している
-	//			//Overlay()->talkDraw(KOUNE, ); //「いろいろな音が聴こえる」
-	//		}
-	//	}
-
-	//}
 }
-//④演奏家の描画(最初：画面外)
+//④演奏家の描画
 void GimmickMusician::Draw() {
 
 	float col[4] = { 1.0,1.0,1.0,1.0 };
@@ -2088,10 +1952,10 @@ void GimmickTelevision::Draw()
 
 	//ギミック本体描画-----------------------------------------------------------
 	//切り取り先座標
-	m_dst.top = 43;
-	m_dst.bottom = m_dst.top + 167;
-	m_dst.left = 20;
-	m_dst.right = m_dst.left + 245;
+	m_dst.top = 0;
+	m_dst.bottom = m_dst.top + 155;
+	m_dst.left = 0;
+	m_dst.right = m_dst.left + 255;
 
 	//転送先座標
 	m_src.top = m_iYpos;
@@ -2100,7 +1964,7 @@ void GimmickTelevision::Draw()
 	m_src.right = m_src.left + m_iWidth;
 
 	//描画
-	Image()->DrawEx(EX_MERUERU_MICROWAVE, &m_src, &m_dst, col, 0.0f);
+	Image()->DrawEx(EX_MERUERU_TELEVISION, &m_src, &m_dst, col, 0.0f);
 	//---------------------------------------------------------------------------
 
 	//吹き出し描画＆動作---------------------------------------------------------

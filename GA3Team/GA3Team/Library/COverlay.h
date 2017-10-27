@@ -173,6 +173,7 @@ enum DrawExID {
 	EX_OTHER_MERUERU_CHARA,
 	EX_OTHER_KOUNE_DATA,
 	EX_OTHER_MERUERU_DATA,
+	EX_OTHER_SION_DATA,
 	EX_OTHER_ICON,
 	EX_OTHER_BALLOON,
 	EX_STAGE_SION_STAGE1,
@@ -241,9 +242,9 @@ enum SoundID {
 	DECISION_BUTTON5,			//決定音
 	ERROR_CANCEL,				//キャンセル音
 
-								//↓まだ読み込んでいないもの-------------------------------------
-								KOUNE2_GIRL_SING,//女の子の応援音
-												 //---------------------------------------------------------------
+	//↓まだ読み込んでいないもの-------------------------------------
+	KOUNE2_GIRL_SING,//女の子の応援音
+	//---------------------------------------------------------------
 };
 
 //---------------------------

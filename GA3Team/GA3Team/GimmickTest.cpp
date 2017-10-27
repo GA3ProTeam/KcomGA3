@@ -415,7 +415,7 @@ void Gimmickearphone::Init(int xpos,int ypos,int widht,int height,int balloonnum
 {
 	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
 	//‚«o‚µ‚Ì‰Šú‰»
-	InitBall(&m_ball[0], m_iWidth - 50, -48, sound, 1, NORMAL, LOWER_LEFT);
+	InitBall(&m_ball[0], m_iWidth - 150, -48, talk, 1, NORMAL, LOWER_LEFT);
 }
 void Gimmickearphone::Destructor()
 {
@@ -462,7 +462,7 @@ void Gimmickkoune::Init(int xpos, int ypos, int widht, int height, int balloonnu
 {
 	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
 	//‚«o‚µ‚Ì‰Šú‰»
-	InitBall(&m_ball[0], m_iWidth - 50, -48, sound, 1, RED, LOWER_LEFT);
+	InitBall(&m_ball[0], m_iWidth - 50, -48, talk, 1, NORMAL, LOWER_LEFT);
 }
 void Gimmickkoune::Destructor()
 {
@@ -596,7 +596,7 @@ void Gimmickfiretruck::Init(int xpos, int ypos, int widht, int height, int ballo
 {
 	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
 	//‚«o‚µ‚Ì‰Šú‰»
-	InitBall(&m_ball[0], m_iWidth - 50, -48, sound, SION2_FIRE_ENGINE, PURPLE, LOWER_LEFT);
+	InitBall(&m_ball[0], m_iWidth - 50, +160, sound, SION2_FIRE_ENGINE, PURPLE, LOWER_LEFT);
 }
 void Gimmickfiretruck::Destructor()
 {

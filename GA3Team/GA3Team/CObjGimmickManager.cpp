@@ -1370,10 +1370,26 @@ void CObjGimmickManager::Action() {
 				m_Sion2_flg = SION2_KOUNE_FLAG_NO_END;
 			}
 		}
+		//ƒCƒ„ƒzƒ“’j‰ï˜bƒtƒ‰ƒOONŽž
 		else if (m_Sion2_flg == SION2_KOUNE_FLAG_YES) {
+			Overlay()->talkDraw(SION, SION2_KOUNE_FLAG_YES);
+
+		}
+		
+		//”L‚Ì‰¹Žæ“¾
+		if (m_gimmick_cat->m_ball[0].OnPush) {
 
 		}
 
+		//Ž©“]ŽÔ‚Ì‰¹Žæ“¾
+		if (m_gimmick_bicycle->m_ball[0].OnPush) {
+
+		}
+
+		//”L‚Ì‰¹Žæ“¾
+		if (m_gimmick_firetruck->m_ball[0].OnPush) {
+
+		}
 		break;
 	case 32:
 		//if (m_Sion3_flg == SION3_TOLK_START) {

@@ -676,20 +676,20 @@ void CObjGimmickManager::Action() {
 			}
 			else if (m_Koune1_flg == 1) {
 				/*犬の音を大音量で聞かせた*/
-				if (m_gimmick_oldman->m_getsound.sound_num == 0 &&
+				if (m_gimmick_oldman->m_getsound.sound_num == KOUNE1_DOG &&
 					m_gimmick_oldman->m_getsound.sound_volume == BALL_VOL_BIG) {
 					//おじいさん「この声ははなこ！！」
 					Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG3_YES);
 
 				}/*犬の音を少音量で聞かせた+おじいさんに話しかける前に*/
-				else if (m_gimmick_oldman->m_getsound.sound_num == 0 &&
+				else if (m_gimmick_oldman->m_getsound.sound_num == KOUNE1_DOG &&
 					m_gimmick_oldman->m_getsound.sound_volume != BALL_VOL_BIG&&
 					m_bKoune1_flg_list[KOUNE1_BOOL_OLDMAN_TALK] == false) {
 					//おじいさん「何か小さな音がしたような気がしたが・・・」
 					Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG3_NO_FLAG1_YES);
 				}
 				/*犬の音を少～中音量で聞かせた*/
-				else if (m_gimmick_oldman->m_getsound.sound_num == 0 &&
+				else if (m_gimmick_oldman->m_getsound.sound_num == KOUNE1_DOG &&
 					m_gimmick_oldman->m_getsound.sound_volume != BALL_VOL_BIG &&
 					m_bKoune1_flg_list[KOUNE1_BOOL_OLDMAN_TALK] == true) {
 

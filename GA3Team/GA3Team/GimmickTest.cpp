@@ -1023,7 +1023,7 @@ void GimmickWindchime::Draw()		//ÉhÉçÅ[
 void GimmickDog::Init(int xpos, int ypos, int widht, int height, int balloonnum)
 {
 	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
-	InitBall(m_ball, m_iWidth - 50, m_iHeight - 48, sound, 0, RED, UPPER_LEFT);
+	InitBall(m_ball, m_iWidth - 50, m_iHeight - 48, sound, KOUNE1_DOG, RED, UPPER_LEFT);
 }
 
 
@@ -1100,7 +1100,7 @@ void GimmickManholeCover::Draw()
 void GimmickManholeHole::Init(int xpos, int ypos, int widht, int height, int balloonnum)
 {
 	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
-	InitBall(&m_ball[0], m_iWidth - 50, m_iHeight - 48, sound, 1, GRAY, UPPER_LEFT);
+	InitBall(&m_ball[0], m_iWidth - 50, m_iHeight - 48, sound, KOUNE1_CONSTRUCTION, GRAY, UPPER_LEFT);
 	m_Status = STATUS_SLEEP;
 
 }

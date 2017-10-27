@@ -139,7 +139,8 @@ void CObjMenuTab::Action()
 		//タブが押されて1秒以上経つと押せるようになる
 		if (SelectPush(m_iBackTitlex, m_iBackTitley, 64, 64) && m_bOpenClose && m_icnt >= 60) {
 			//SavedataManeger()->Savedata[SavedataManeger()->SelectedData].m_bSionflg[0] = true;
-			SavedataManeger()->Writesavedata();
+			//SavedataManeger()->Writesavedata();
+			//【データセーブ処理はステージ選択画面のInit関数に移行しました。】
 			Manager()->Pop(new CSceneStageSelect());//ステージ選択に戻る
 		}
 		else if (m_bOpenClose) {

@@ -10,6 +10,8 @@
 void CObjGimmickManager::Init(int select_chara, int stage_id,
 	ButtonLScrollScreen* pLScroll, ButtonRScrollScreen* pRScroll, CObjMenuTab* pMenuTab) {
 
+	SavedataManeger()->Setcurrentdata();
+
 	//セーブデータへの参照を取得---------------------------------------------------------
 	int& m_Sion1_flg = g_SavedataManeger->CurrentData->m_stage[SION].stage1;
 
@@ -30,6 +32,9 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 	int& m_iKoune5_flg = g_SavedataManeger->CurrentData->m_stage[KOUNE].stage5;
 	//-----------------------------------------------------------------------------------
 
+	//一度だけ初期化するための変数を初期化
+	init_flg = false;
+
 	//メニュータブへの参照セット
 	m_pMenuTab = pMenuTab;
 
@@ -41,7 +46,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 
 	m_Stage_ID = ((select_chara + 1) * 10) + stage_id;
 
-	//m_Stage_ID = 32;
+	m_Stage_ID = 32;
 
 	/*
 	m_Stage_ID
@@ -50,7 +55,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 	20~25=シオン
 	40~45=メルエル
 	*/
-	SavedataManeger()->Setcurrentdata();
+	
 
 
 
@@ -333,10 +338,14 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 		m_gimmick_television = new GimmickTelevision();
 		Obj()->InsertObj(m_gimmick_television, GIMMICK_TELEVISION, 5, this->m_pScene, HIT_BOX_OFF);
 		m_gimmick_television->Init(50, 200, 255, 155, 1);
+		//動作フラグ停止
+		m_gimmick_television->m_bActionFlg = false;
 
 		m_gimmick_oven = new GimmickOven();
 		Obj()->InsertObj(m_gimmick_oven, GIMMICK_OVEN, 5, this->m_pScene, HIT_BOX_OFF);
 		m_gimmick_oven->Init(-335, 235, 300, 150, 1);
+		//動作フラグ停止
+		m_gimmick_oven->m_bActionFlg = false;
 
 		m_gimmick_katsuo = new GimmickKatsuo();
 		Obj()->InsertObj(m_gimmick_katsuo, GIMMICK_KATSUO, 5, this->m_pScene, HIT_BOX_OFF);
@@ -391,91 +400,7 @@ void CObjGimmickManager::Destructor() {
 
 //アクション
 void CObjGimmickManager::Action() {
-	//イベント番号(チュートリアルステージ)
-	enum TUTORIAL_NUMBER {
-		TUTORIAL_WELCOM_TALK,				//博士開始メッセージ
-		TUTORIAL_WELCOM_TALK_END,			//開始時メッセージ終了
-		TUTORIAL_RECORDER_GET_TALK,			//レコーダー入手後会話
-		TUTORIAL_RECORDER_GET_TALK_END,		//レコーダー入手後会話終了
-		TUTORIAL_SOUND_REC,					//音録音
-		TUTORIAL_SOUND_REC_AFTER_TALK,		//音を録音した後、会話
-		TUTORIAL_SOUND_REC_AFTER_TALK_END,	//音を録音した後の会話終了
-		TUTORIAL_SOUND_REC_AND_PLAY,		//音を録音した後、会話せずに再生までこなした
-		TUTORIAL_SOUND_REC_TALK_PLAY,		//音を録音した後、会話してから再生した
-	};
-
-	//イベント番号（コウネ2ステージ）
-	enum KOUNE2_NUMBER {
-		KOUNE2_EVENT_TALK_START,			//初回会話
-		KOUNE2_EVENT_TALK_START_END,		//初回会話終了後
-		KOUNE2_EVENT_SION_TALK_END,			//シオンと会話後
-		KOUNE2_EVENT_BOYA_TALK_END,			//少年Aと会話後
-		KOUNE2_EVENT_BOYA_QUIZ_COMPLETE,	//少年Aのクイズに正解後
-		KOUNE2_EVENT_GIRL_SOUNDBIG_TO_BOYA,	//少年Aに女の子の応援音（大）を聞かせた
-		KOUNE2_EVENT_WINDOW_BREAK,			//窓が割れる
-	};
-
-	//イベント番号(コウネ3ステージ)
-	enum KOUNE3_NUMBER
-	{
-		//会話シーン-------------------------------------------------------------------------------------
-		KOUNE3_TALK_START,						//ステージ開始時トーク
-		KOUNE3_TALK_START_END,					//ステージ開始時トーク終了
-
-		KOUNE3_FLG1,
-		KOUNE3_FLG2,
-		KOUNE3_FLG3,
-		KOUNE3_FLG4,
-		KOUNE3_FLG5,
-
-	};
-
-	//イベント番号(コウネステージ5)
-	enum KOUNE5_NUMBER {
-		KOUNE5_TALK_START,						//ステージ開始時会話
-		KOUNE5_TALK_START_END,					//ステージ開始時会話_終了
-
-		KOUNE5_FLG1,
-		KOUNE5_FLG2,
-		KOUNE5_FLG3,
-
-};
-
-	//イベント番号(メルエルステージ1)
-	enum MERUERU1_NUMBER {
-		MERUERU1_WELCOM_TALK,					//開始会話
-		MERUERU1_KATSUO_TALK1_1,				//カツオ会話1-1
-		MERUERU1_KATSUO_TALK1_2,				//カツオ会話1-2
-		MERUERU1_KATSUO_TALK2,					//カツオ会話2
-		MERUERU1_KATSUO_TALK3,					//カツオ会話3
-		MERUERU1_KATSUO_TALK_END,				//カツオ会話終了
-	};
-
-	//イベント番号(シオンステージ1)
-	enum SION1_NUMBER {
-		SION1_TOLK_START,
-		SION1_TOLK_END,
-		SION1_TOLK_AUNT,
-		SION1_ABILITY,
-		SION1_CLEAR,
-	};
-	//イベント番号(シオンステージ2)
-	enum SION2_NUMBER {
-		SION2_TALK_START,
-		SION2_TALK_END,
-		SION2_TALK_IYAHON_START,
-		SION2_TALK_IYAHON_FLAG_NO,
-		SION2_TALK_IYAHON_FLAG_YES,
-		SION2_TALK_IYAHON_END,
-
-	};
-	//イベント番号(シオンステージ3)
-	enum SION3_NUMBER {
-		SION3_TOLK_START,
-		SION3_TOLK_END,
-	};
-
-
+	
 	//【セーブしない】---------------------------------
 	//チュートリアルステージフラグ
 	static int m_itutorialflg = TUTORIAL_WELCOM_TALK;
@@ -494,7 +419,7 @@ void CObjGimmickManager::Action() {
 	//セーブデータへの参照を取得---------------------------------------------------------
 	int& m_Sion1_flg = g_SavedataManeger->CurrentData->m_stage[SION].stage1;
 
-	int& m_Sion2_flg = g_SavedataManeger->CurrentData->m_stage[SION].stage3;
+	int& m_Sion2_flg = g_SavedataManeger->CurrentData->m_stage[SION].stage2;
 
 	int& m_Sion3_flg = g_SavedataManeger->CurrentData->m_stage[SION].stage3;
 
@@ -510,18 +435,19 @@ void CObjGimmickManager::Action() {
 	vector<bool>& m_bKoune3_flg_list = g_SavedataManeger->CurrentData->m_bKoune3_flg_list;
 
 	int& m_iKoune5_flg = g_SavedataManeger->CurrentData->m_stage[KOUNE].stage5;
+
+	int& m_iMerueru1 = g_SavedataManeger->CurrentData->m_stage[MERUERU].stage1;
+	vector<bool>& m_bMerueru1_flg_list = g_SavedataManeger->CurrentData->m_bMerueru1_flg_list;
 	//-----------------------------------------------------------------------------------
 
 	//↓【ここからセーブデータの初期化（デバッグ用）】-----------------------------------
 	//ステージを特定の進行度からデバッグしたい場合は、ここで進行度を設定してください。
-	static bool init_flg = false;
 	if (!init_flg) {
 		init_flg = true;
 
-
 		//イベント進行度初期化
 		//チュートリアルステージ
-		m_Sion1_flg = TUTORIAL_WELCOM_TALK;
+		m_itutorialflg = TUTORIAL_WELCOM_TALK;
 
 		//シオンステージ1
 		m_Sion1_flg = SION1_TOLK_START;
@@ -540,7 +466,7 @@ void CObjGimmickManager::Action() {
 		}
 
 		//コウネステージ2
-		m_iKoune2_flg = 1;
+		m_iKoune2_flg = 0;
 		for (unsigned int i = 0; i < m_bKoune2_flg_list.size(); i++) {
 			m_bKoune2_flg_list[i] = false;
 		}
@@ -556,6 +482,15 @@ void CObjGimmickManager::Action() {
 
 		// コウネステージ5
 		m_Koune5_flg = KOUNE5_TALK_START;
+
+
+		//メルエルステージ1
+		m_iMerueru1 = MERUERU1_WELCOM_TALK;
+		for (unsigned int i = 0; i < m_bMerueru1_flg_list.size(); i++) {
+			m_bMerueru1_flg_list[i] = false;
+		}
+		
+
 
 
 		/*g_SavedataManeger->CurrentData->m_stage[SION].stage1clear = true;
@@ -576,7 +511,7 @@ void CObjGimmickManager::Action() {
 	*/
 
 	switch (m_Stage_ID) {
-		//チュートリアルステージ（博士）
+	//チュートリアルステージ（博士）
 	case 10:
 	{
 		//ゴミ箱動作不可
@@ -604,7 +539,7 @@ void CObjGimmickManager::Action() {
 				m_itutorialflg = TUTORIAL_RECORDER_GET_TALK;
 				m_gimmick_recorder->m_Status = STATUS_DELETE;//レコーダー削除
 
-															 //博士、コンピューター　動作再開
+				//博士、コンピューター　動作再開
 				m_gimmick_doctor->m_bActionFlg = true;
 				m_gimmick_computer->m_bActionFlg = true;
 			}
@@ -695,6 +630,7 @@ void CObjGimmickManager::Action() {
 			if (Overlay()->NextWait()) {
 				//チュートリアルクリア
 				SavedataManeger()->CurrentData->m_btutorial = true;
+
 				//ステージセレクト画面に移行
 				Manager()->Pop(new CSceneStageSelect);
 			}
@@ -1077,7 +1013,7 @@ void CObjGimmickManager::Action() {
 
 		//子猫の鳴き声を聞かせる
 		if (m_gimmick_granny->m_getsound.sound_num != -1) {
-			if (m_gimmick_granny->m_getsound.sound_color == ORANGE /*m_gimmick_granny->m_getsound.sound_num == KOUNE3_KITTY*/) {
+			if (m_gimmick_granny->m_getsound.sound_num == KOUNE3_KITTY) {
 
 				KOUNE3_KITTY; //子猫の鳴き声
 							  //おばあちゃん「あら、その鳴き声は...」
@@ -1088,7 +1024,7 @@ void CObjGimmickManager::Action() {
 		//少女
 		//子猫の鳴き声を聞かせる
 		if (m_gimmick_little_girl->m_getsound.sound_num != -1) {
-			if (m_gimmick_little_girl->m_getsound.sound_color == ORANGE /*m_gimmick_little_girl->m_getsound.sound_num == KOUNE3_KITTY*/)
+			if (m_gimmick_little_girl->m_getsound.sound_num == KOUNE3_KITTY)
 			{
 				//少女「かわいい声ね！」
 				Overlay()->talkDraw(KOUNE, KOUNE3_GIRLA_CAT_LISTEN);
@@ -1099,7 +1035,7 @@ void CObjGimmickManager::Action() {
 		if (m_gimmick_mynah->m_getsound.sound_num != -1) {
 
 			//イントロを聞かせる(クリア条件達成)
-			if (m_gimmick_mynah->m_getsound.sound_color == PINK /*m_gimmick_mynah->m_getsound.sound_num == SION3_CHANT2*/ && m_Koune3_flg == KOUNE3_FLG5)
+			if (m_gimmick_mynah->m_getsound.sound_num == SION3_CHANT2 && m_Koune3_flg == KOUNE3_FLG5)
 			{
 				//ステージクリア
 				Overlay()->talkDraw(KOUNE, KOUNE3_CLEAR);
@@ -1107,7 +1043,7 @@ void CObjGimmickManager::Action() {
 
 			}
 			//イントロを聞かせる(クリア条件未達成)
-			else if (m_gimmick_mynah->m_getsound.sound_color == PINK /*m_gimmick_mynah->m_getsound.sound_num == SION3_CHANT2*/ && m_Koune3_flg != KOUNE3_FLG5)
+			else if (m_gimmick_mynah->m_getsound.sound_num == SION3_CHANT2 && m_Koune3_flg != KOUNE3_FLG5)
 			{
 				//九ちゃん「...。」
 				Overlay()->talkDraw(KOUNE, KOUNE3_MYNAH_KOUNE_SOUND_LISTEN);
@@ -1126,7 +1062,7 @@ void CObjGimmickManager::Action() {
 		if (m_gimmick_kitten->m_getsound.sound_num != -1) {
 
 			//犬の鳴き声を聞かせる
-			if (m_gimmick_mynah->m_getsound.sound_color == ORANGE/*RED*/ /*m_gimmick_kitten->m_getsound.sound_num == KOUNE1_DOG */ && m_gimmick_mynah->m_getsound.sound_volume == BALL_VOL_BIG)
+			if (m_gimmick_kitten->m_getsound.sound_num == KOUNE1_DOG && m_gimmick_mynah->m_getsound.sound_volume == BALL_VOL_BIG)
 			{
 				//子猫「にゃーーーん」
 				Overlay()->talkDraw(KOUNE, KOUNE3_CAT_ABILITY_DOG_SOUND_LISTEN);
@@ -1510,44 +1446,49 @@ void CObjGimmickManager::Action() {
 
 			break;
 	case 21:
-		//イヤホン男と会話フラグON
+		//static int m_Sion2_flg = SION2_TOLK_START
 
-		//static int m_Sion2_flg = SION2_TOLK_START;
-		//m_gimmick_oven->m_bActionFlg = false;
+
 		//初回会話
 		if (m_Sion2_flg == SION2_TALK_START) {
 			Overlay()->talkDraw(SION, SION2_START);
 
 			//会話終了
 			if (Overlay()->NextWait()) {
-				m_Sion2_flg = SION2_TALK_END;
+				m_Sion2_flg = SION2_KOUNE_FLAG_NO;
 			}
-
 		}
+
 		//イヤホン男会話開始
 		if (m_gimmick_earphone->m_ball[0].OnPush) {
 			Overlay()->talkDraw(SION, SION2_IYAHON_START);
+		}
+		if (Overlay()->NowTalk() == SION2_IYAHON_START) {
 			//会話終了
 			if (Overlay()->NextWait()) {
-				m_Sion2_flg = SION2_IYAHON_END;
+				m_Sion2_flg = SION2_KOUNE_FLAG_YES;
 			}
-			//再度吹き出し表示
-			Overlay()->NextWait();
-
-			//イヤホン男と会話フラグON
-			m_gimmick_earphone->m_bActionFlg = true;
 		}
+
 		//コウネ会話開始
 		if (m_gimmick_koune ->m_ball[0].OnPush) {
-			Overlay()->talkDraw(SION, SION2_KOUNE_FLAG_NO);
+			if (m_Sion2_flg == SION2_KOUNE_FLAG_NO) {
+				Overlay()->talkDraw(SION, SION2_KOUNE_FLAG_NO);
+			}
+			else if (m_Sion2_flg == SION2_KOUNE_FLAG_YES) {
+				Overlay()->talkDraw(SION, SION2_KOUNE_FLAG_YES);
+			}			
+		}
+		Overlay()->NextWait();
+
+		if (Overlay()->NowTalk() == SION2_KOUNE_FLAG_YES) {
 			//会話終了
 			if (Overlay()->NextWait()) {
-				m_Sion2_flg = SION2_KOUNE_FLAG_NO_END;
+				m_Sion2_flg = SION2_KOUNE_FLAG_YES_END;
 			}
 		}
-	/*	else if (m_gimmick_koune->m_ball[0].OnPush&& == true) {
 
-		}*/
+
 		break;
 	case 22:
 		//if (m_Sion3_flg == SION3_TOLK_START) {
@@ -1647,9 +1588,6 @@ void CObjGimmickManager::Action() {
 		//メルエル1
 	case 40:
 	{
-		static int m_iMerueru1 = MERUERU1_WELCOM_TALK;
-		m_gimmick_oven->m_bActionFlg = false;
-
 
 		//初回会話
 		if (m_iMerueru1 == MERUERU1_WELCOM_TALK) {
@@ -1740,6 +1678,8 @@ void CObjGimmickManager::Action() {
 			if (Overlay()->NextWait()) {
 				m_iMerueru1 = MERUERU1_KATSUO_TALK_END;
 				m_gimmick_oven->m_bActionFlg = true;
+				m_gimmick_katsuo->m_bActionFlg = false;
+				
 			}
 		}
 
@@ -1758,15 +1698,14 @@ void CObjGimmickManager::Action() {
 		}
 
 		//レンジ音使用でステージクリア
-		if (m_gimmick_doctorroomdoor->m_ball[0].m_sound_data.sound_num == 1) {
+		if (m_gimmick_doctorroomdoor->m_getsound.sound_num != -1) {
 
-
-
+			//クリア
+			SavedataManeger()->CurrentData->m_stage[MERUERU].stage1clear = true;
+			SavedataManeger()->Writesavedata();
+			//ステージセレクト画面に移行
+			Manager()->Pop(new CSceneStageSelect);
 		}
-
-
-
-
 	}
 	case 41:
 		break;

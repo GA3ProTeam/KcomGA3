@@ -4,6 +4,9 @@
 void CSceneStageSelect::InitScene()
 {
 
+	//【現在の状態をセーブ】
+	SavedataManeger()->Writesavedata();
+
 	//このシーンで表示させるイメージ情報
 	Image()->LoadImage("ステージセレクト仮画像.png",0,TEX_SIZE_1024);
 	Image()->LoadImage("メニュータブ(仮).png", 1, TEX_SIZE_256);

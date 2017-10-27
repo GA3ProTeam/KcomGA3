@@ -455,6 +455,7 @@ void CObjGimmickManager::Action() {
 		SION1_TOLK_END,
 		SION1_TOLK_AUNT,
 		SION1_ABILITY,
+		SION1_CLEAR,
 	};
 	//イベント番号(シオンステージ3)
 	enum SION3_NUMBER {
@@ -1418,11 +1419,11 @@ void CObjGimmickManager::Action() {
 		Overlay()->NextWait();
 
 		//ステージクリア
-		if (SavedataManeger()->CurrentData->m_stage[SION].stage1clear) {
-			SavedataManeger()->Writesavedata();
+		if (SavedataManeger()->CurrentData->m_stage[SION].stage1clear && m_Sion1_flg == SION1_ABILITY) {
+			//SavedataManeger()->Writesavedata();
+			m_Sion1_flg = SION1_CLEAR;
 			//ステージセレクト画面に移行
 			Manager()->Pop(new CSceneStageSelect);
-
 		}
 
 		break;

@@ -1310,9 +1310,6 @@ void CObjGimmickManager::Action() {
 		else if (m_gimmick_mechanic->m_getsound.sound_num != KOUNE5_SAX) {
 			//メカニック...曲が好みではない
 			Overlay()->talkDraw(KOUNE, KOUNE5_MECHANIC_OTO_NO_FLG2_YES); //「なんだか違う」
-
-			Overlay()->NextWait();
-
 		}
 
 		/*ランプの色...3つ全てを緑にすると扉が開く
@@ -1426,7 +1423,7 @@ void CObjGimmickManager::Action() {
 				if (Overlay()->NextWait()) {
 					m_Koune5_flg = KOUNE5_FLG3;
 				}
-				Overlay()->NextWait();
+				//Overlay()->NextWait();
 			}
 			if (!m_Koune5_gim_flg[1] && m_Koune5_flg == KOUNE5_FLG3) {
 				//フラグ3回収済み＋音未所持
@@ -1442,6 +1439,7 @@ void CObjGimmickManager::Action() {
 					m_Koune5_flg = KOUNE5_FLG3;
 				}
 			}
+			Overlay()->NextWait();
 		}
 						 
 		break;

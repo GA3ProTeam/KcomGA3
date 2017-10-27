@@ -50,7 +50,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 	*/
 	SavedataManeger()->Setcurrentdata();
 
-	m_Stage_ID = 21;
+	//m_Stage_ID = 32;
 
 	switch (m_Stage_ID) {
 		//チュートリアル（博士）ステージ--------------------------
@@ -1490,7 +1490,7 @@ void CObjGimmickManager::Action() {
 			m_Sion1_flg = SION1_CLEAR;
 			//ステージセレクト画面に移行
 			Manager()->Pop(new CSceneStageSelect);
-
+		}
 		break;
 	case 21:
 		//イヤホン男と会話フラグON
@@ -1783,7 +1783,8 @@ void CObjGimmickManager::Action() {
 	}
 
 	}
-
+	
+	
 }
 
 //ドロー
@@ -2032,4 +2033,5 @@ void CObjGimmickManager::Draw() {
 		break;
 		//メルエルステージ↑------------------------------------------------------------
 	}
+}
 

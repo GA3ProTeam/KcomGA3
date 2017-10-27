@@ -1363,6 +1363,7 @@ void CObjGimmickManager::Action() {
 				SavedataManeger()->Writesavedata();
 				//ステージセレクト画面に移行
 				Manager()->Pop(new CSceneStageSelect);
+
 			 }
 		 }
 

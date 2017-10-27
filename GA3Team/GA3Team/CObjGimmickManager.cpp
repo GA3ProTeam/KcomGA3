@@ -957,7 +957,7 @@ void CObjGimmickManager::Action() {
 					m_iKoune2_flg = KOUNE2_EVENT_WINDOW_BREAK;
 
 					//‘‹‚ªŠ„‚ê‚é‰¹Ä¶
-					//Audio()->Start(KOUNE2_GLASS_BREAK);
+					Audio()->Start(KOUNE2_GLASS_BREAK);
 				}
 
 

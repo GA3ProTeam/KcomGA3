@@ -10,6 +10,8 @@
 void CObjGimmickManager::Init(int select_chara, int stage_id,
 	ButtonLScrollScreen* pLScroll, ButtonRScrollScreen* pRScroll, CObjMenuTab* pMenuTab) {
 
+	SavedataManeger()->Setcurrentdata();
+
 	//セーブデータへの参照を取得---------------------------------------------------------
 	int& m_Sion1_flg = g_SavedataManeger->CurrentData->m_stage[SION].stage1;
 
@@ -48,7 +50,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 	20~25=シオン
 	40~45=メルエル
 	*/
-	SavedataManeger()->Setcurrentdata();
+	
 
 	//m_Stage_ID = 32;
 
@@ -492,7 +494,7 @@ void CObjGimmickManager::Action() {
 	//セーブデータへの参照を取得---------------------------------------------------------
 	int& m_Sion1_flg = g_SavedataManeger->CurrentData->m_stage[SION].stage1;
 
-	int& m_Sion2_flg = g_SavedataManeger->CurrentData->m_stage[SION].stage3;
+	int& m_Sion2_flg = g_SavedataManeger->CurrentData->m_stage[SION].stage2;
 
 	int& m_Sion3_flg = g_SavedataManeger->CurrentData->m_stage[SION].stage3;
 
@@ -518,7 +520,7 @@ void CObjGimmickManager::Action() {
 
 		//イベント進行度初期化
 		//チュートリアルステージ
-		m_Sion1_flg = TUTORIAL_WELCOM_TALK;
+		//m_Sion1_flg = TUTORIAL_WELCOM_TALK;
 
 		//シオンステージ1
 		m_Sion1_flg = SION1_TOLK_START;
@@ -537,7 +539,7 @@ void CObjGimmickManager::Action() {
 		}
 
 		//コウネステージ2
-		m_iKoune2_flg = 1;
+		m_iKoune2_flg = 2;
 		for (unsigned int i = 0; i < m_bKoune2_flg_list.size(); i++) {
 			m_bKoune2_flg_list[i] = false;
 		}

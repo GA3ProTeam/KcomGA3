@@ -559,7 +559,7 @@ void CObjGimmickManager::Action() {
 			if (m_gimmick_doctor->m_ball[0].OnPush) {
 
 				//音を録音している場合（フラグ2達成済み）
-				if (SoundManager()->HaveSound(1)) {
+				if (SoundManager()->HaveSound(TUTORIAL_BGM)) {
 					m_itutorialflg = TUTORIAL_SOUND_REC_AFTER_TALK;
 				}
 				//音を録音していない（フラグ2未達成）場合
@@ -651,12 +651,12 @@ void CObjGimmickManager::Action() {
 					//2回目以降に会話したとき
 					else {
 						//犬から音を録音していない
-						if (SoundManager()->HaveSound(0) == false) {
+						if (SoundManager()->HaveSound(KOUNE1_DOG) == false) {
 							//コウネ「知りません。」
 							Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG2_NO);
 						}
 						//犬から音を録音している
-						else if (SoundManager()->HaveSound(0) == true) {
+						else if (SoundManager()->HaveSound(KOUNE1_DOG) == true) {
 							//コウネ「直接鳴き声を聞かせたほうが早いな・・・」
 							Overlay()->talkDraw(KOUNE, KOUNE1_OZI_FLAG2_YES);
 						}

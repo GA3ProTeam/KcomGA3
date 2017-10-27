@@ -10,6 +10,8 @@
 void CObjGimmickManager::Init(int select_chara, int stage_id,
 	ButtonLScrollScreen* pLScroll, ButtonRScrollScreen* pRScroll, CObjMenuTab* pMenuTab) {
 
+	SavedataManeger()->Setcurrentdata();
+
 	//セーブデータへの参照を取得---------------------------------------------------------
 	int& m_Sion1_flg = g_SavedataManeger->CurrentData->m_stage[SION].stage1;
 
@@ -41,6 +43,8 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 
 	m_Stage_ID = ((select_chara + 1) * 10) + stage_id;
 
+	//m_Stage_ID = 32;
+
 	/*
 	m_Stage_ID
 	10   =チュートリアル（博士）
@@ -48,9 +52,9 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 	20~25=シオン
 	40~45=メルエル
 	*/
-	SavedataManeger()->Setcurrentdata();
+	
 
-	//m_Stage_ID = 21;
+
 
 	switch (m_Stage_ID) {
 		//チュートリアル（博士）ステージ--------------------------
@@ -335,6 +339,8 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 		m_gimmick_oven = new GimmickOven();
 		Obj()->InsertObj(m_gimmick_oven, GIMMICK_OVEN, 5, this->m_pScene, HIT_BOX_OFF);
 		m_gimmick_oven->Init(-335, 235, 300, 150, 1);
+		//動作フラグ停止
+		m_gimmick_oven->m_bActionFlg = false;
 
 		m_gimmick_katsuo = new GimmickKatsuo();
 		Obj()->InsertObj(m_gimmick_katsuo, GIMMICK_KATSUO, 5, this->m_pScene, HIT_BOX_OFF);
@@ -492,7 +498,7 @@ void CObjGimmickManager::Action() {
 	//セーブデータへの参照を取得---------------------------------------------------------
 	int& m_Sion1_flg = g_SavedataManeger->CurrentData->m_stage[SION].stage1;
 
-	int& m_Sion2_flg = g_SavedataManeger->CurrentData->m_stage[SION].stage3;
+	int& m_Sion2_flg = g_SavedataManeger->CurrentData->m_stage[SION].stage2;
 
 	int& m_Sion3_flg = g_SavedataManeger->CurrentData->m_stage[SION].stage3;
 
@@ -505,8 +511,12 @@ void CObjGimmickManager::Action() {
 	vector<bool>& m_bKoune2_flg_list = g_SavedataManeger->CurrentData->m_bKoune2_flg_list;
 
 	int& m_iKoune3_flg = g_SavedataManeger->CurrentData->m_stage[KOUNE].stage3;
+	vector<bool>& m_bKoune3_flg_list = g_SavedataManeger->CurrentData->m_bKoune3_flg_list;
 
 	int& m_iKoune5_flg = g_SavedataManeger->CurrentData->m_stage[KOUNE].stage5;
+
+	int& m_iMerueru1 = g_SavedataManeger->CurrentData->m_stage[MERUERU].stage1;
+	vector<bool>& m_bMerueru1_flg_list = g_SavedataManeger->CurrentData->m_bMerueru1_flg_list;
 	//-----------------------------------------------------------------------------------
 
 	//↓【ここからセーブデータの初期化（デバッグ用）】-----------------------------------
@@ -518,7 +528,7 @@ void CObjGimmickManager::Action() {
 
 		//イベント進行度初期化
 		//チュートリアルステージ
-		m_Sion1_flg = TUTORIAL_WELCOM_TALK;
+		//m_Sion1_flg = TUTORIAL_WELCOM_TALK;
 
 		//シオンステージ1
 		m_Sion1_flg = SION1_TOLK_START;
@@ -537,19 +547,31 @@ void CObjGimmickManager::Action() {
 		}
 
 		//コウネステージ2
-		m_iKoune2_flg = 1;
+		m_iKoune2_flg = 2;
 		for (unsigned int i = 0; i < m_bKoune2_flg_list.size(); i++) {
 			m_bKoune2_flg_list[i] = false;
 		}
 
 		//コウネステージ3
 		m_Koune3_flg = KOUNE3_TALK_START;
+		for (unsigned int i = 0; i < m_bKoune3_flg_list.size(); i++) {
+			m_bKoune3_flg_list[i] = false;
+		}
 		m_Koune3_tolkingflg = 0;
 
 		//m_Koune3_flg = KOUNE3_FLG2;
 
 		// コウネステージ5
 		m_Koune5_flg = KOUNE5_TALK_START;
+
+
+		//メルエルステージ1
+		m_iMerueru1 = MERUERU1_KATSUO_TALK3;
+		for (unsigned int i = 0; i < m_bMerueru1_flg_list.size(); i++) {
+			m_bMerueru1_flg_list[i] = false;
+		}
+		
+
 
 
 		/*g_SavedataManeger->CurrentData->m_stage[SION].stage1clear = true;
@@ -800,6 +822,7 @@ void CObjGimmickManager::Action() {
 
 				//女の子と話しかけたフラグを立てる
 				m_bKoune2_flg_list[KOUNE2_BOOL_GIRL_TALK] = true;
+				m_iKoune2_flg = 2;
 			}
 		}
 
@@ -1640,8 +1663,7 @@ void CObjGimmickManager::Action() {
 		//メルエル1
 	case 40:
 	{
-		static int m_iMerueru1 = MERUERU1_WELCOM_TALK;
-		m_gimmick_oven->m_bActionFlg = false;
+		
 
 
 		//初回会話
@@ -1733,6 +1755,7 @@ void CObjGimmickManager::Action() {
 			if (Overlay()->NextWait()) {
 				m_iMerueru1 = MERUERU1_KATSUO_TALK_END;
 				m_gimmick_oven->m_bActionFlg = true;
+				
 			}
 		}
 

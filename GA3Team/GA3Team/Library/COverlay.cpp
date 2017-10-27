@@ -59,7 +59,8 @@ void COverlay::InitLoad()
 	image->LoadImageEx("メルエルc立ち.png", EX_OTHER_MERUERU_CHARA, TEX_SIZE_512);
 	//データセレクト--------------------------------
 	image->LoadImageEx("コウネ.png", EX_OTHER_KOUNE_DATA, TEX_SIZE_1024);
-	image->LoadImageEx("メルエル.png", EX_OTHER_MERUERU_DATA, TEX_SIZE_512);
+	image->LoadImageEx("メルエル.png", EX_OTHER_MERUERU_DATA, TEX_SIZE_1024);
+	image->LoadImageEx("シオン.png", EX_OTHER_SION_DATA, TEX_SIZE_1024);
 	//吹き出し系統-----------------------------------
 	image->LoadImageEx("アイコン.png", EX_OTHER_ICON, TEX_SIZE_1024);
 	image->LoadImageEx("会話吹き出しまとめ.png", EX_OTHER_BALLOON, TEX_SIZE_1024);

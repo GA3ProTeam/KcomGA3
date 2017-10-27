@@ -12,18 +12,18 @@ void CObjStageTab::Init() {
 	m_istage_num[0]=1;
 	m_istage_num[1]=2;
 	m_istage_num[2]=2;
-	m_istage_num[3]=2;
+	m_istage_num[3]=1;
 
 	//各キャラクターのステージ開放数初期値
 	m_istage_open[0] = 1;
 	m_istage_open[1] = 2;
 	m_istage_open[2] = 2;
-	m_istage_open[3] = 2;
+	m_istage_open[3] = 1;
 
 	//ステージ開放数を加算-------------------------------------------------
 	//チュートリアルをクリア
 	if (g_SavedataManeger->CurrentData->m_stage[TUTORIAL].stage1clear) {
-		//各キャラクターでステージ1個開放
+		//各キャラクターステージ1個開放
 		m_istage_open[1]++;
 		m_istage_open[2]++;
 		m_istage_open[3]++;
@@ -33,7 +33,7 @@ void CObjStageTab::Init() {
 	if (g_SavedataManeger->CurrentData->m_stage[KOUNE].stage1clear &&
 		g_SavedataManeger->CurrentData->m_stage[SION].stage1clear &&
 		g_SavedataManeger->CurrentData->m_stage[MERUERU].stage1clear) {
-		//各キャラクターでステージ1個開放
+		//各キャラクターステージ1個開放
 		m_istage_open[1]++;
 		m_istage_open[2]++;
 		m_istage_open[3]++;

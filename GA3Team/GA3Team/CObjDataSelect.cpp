@@ -160,34 +160,34 @@ void CObjDataSelect::Draw()
 
 			//一つの区画の幅と高さ
 			int width = 210;
-			int height = 300;
+			int height = 301;
 
 			//各キャラクターループ
 			for (int chara = 1; chara <= CHARA_MAX; chara++) {
 				//ステージクリアカウント初期化
 				stage_clear_count = 0;
 
-				////ステージクリア数をカウント
-				//if (save_data->m_stage[chara].stage1clear) {
-				//	stage_clear_count++;
-				//}
-				//if (save_data->m_stage[chara].stage2clear) {
-				//	stage_clear_count++;
-				//}
-				//if (save_data->m_stage[chara].stage3clear) {
-				//	stage_clear_count++;
-				//}
-				//if (save_data->m_stage[chara].stage4clear) {
-				//	stage_clear_count++;
-				//}
-				//if (save_data->m_stage[chara].stage5clear) {
-				//	stage_clear_count++;
-				//}
-				//if (save_data->m_stage[chara].stage6clear) {
-				//	stage_clear_count++;
-				//}
+				//ステージクリア数をカウント
+				if (save_data->m_stage[chara].stage1clear) {
+					stage_clear_count++;
+				}
+				if (save_data->m_stage[chara].stage2clear) {
+					stage_clear_count++;
+				}
+				if (save_data->m_stage[chara].stage3clear) {
+					stage_clear_count++;
+				}
+				if (save_data->m_stage[chara].stage4clear) {
+					stage_clear_count++;
+				}
+				if (save_data->m_stage[chara].stage5clear) {
+					stage_clear_count++;
+				}
+				if (save_data->m_stage[chara].stage6clear) {
+					stage_clear_count++;
+				}
 
-				stage_clear_count = 2;
+				//stage_clear_count = 6;
 
 				//各キャラクターごとに切り取り座標設定
 				if (chara==KOUNE) {
@@ -198,15 +198,15 @@ void CObjDataSelect::Draw()
 				}
 				else if (chara == SION) {
 					m_rDst_Sion.left = (stage_clear_count % hori_num)*width;
-					m_rDst_Sion.right = m_rDst_Koune.left + width;
+					m_rDst_Sion.right = m_rDst_Sion.left + width;
 					m_rDst_Sion.top = (stage_clear_count / hori_num)*height;
-					m_rDst_Sion.bottom = m_rDst_Koune.top + height;
+					m_rDst_Sion.bottom = m_rDst_Sion.top + height;
 				}
 				else if (chara == MERUERU) {
 					m_rDst_Melueru.left = (stage_clear_count % hori_num)*width;
-					m_rDst_Melueru.right = m_rDst_Koune.left + width;
+					m_rDst_Melueru.right = m_rDst_Melueru.left + width;
 					m_rDst_Melueru.top = (stage_clear_count / hori_num)*height;
-					m_rDst_Melueru.bottom = m_rDst_Koune.top + height;
+					m_rDst_Melueru.bottom = m_rDst_Melueru.top + height;
 				}
 			}
 			
@@ -242,10 +242,15 @@ void CObjDataSelect::Draw()
 			//	m_rDst_Melueru.top = 305; m_rDst_Melueru.left = m_iprogress_cnt[i][2] * 220; m_rDst_Melueru.bottom = m_rDst_Melueru.top + 300; m_rDst_Melueru.right = m_rDst_Melueru.left + 210; //メリエル
 			//}
 
+			//転送先　幅高
+			int ofs_y = 85;
+			int src_width = 210*0.3f;
+			int src_height = 301*0.3f;
+
 			//等倍																																											//↓等倍
-			m_rSrc_Koune.top = (i * 150) + 100;   m_rSrc_Koune.left = 400;   m_rSrc_Koune.bottom = m_rSrc_Koune.top + 64;    m_rSrc_Koune.right = m_rSrc_Koune.left + 64;	//コウネ
-			m_rSrc_Sion.top = (i * 150) + 100;   m_rSrc_Sion.left = 500;   m_rSrc_Sion.bottom = m_rSrc_Sion.top + 64;    m_rSrc_Sion.right = m_rSrc_Sion.left + 64;	//シオン
-			m_rSrc_Melueru.top = (i * 150) + 100;   m_rSrc_Melueru.left = 600;   m_rSrc_Melueru.bottom = m_rSrc_Melueru.top + 64;	 m_rSrc_Melueru.right = m_rSrc_Melueru.left + 64;	//メルエル
+			m_rSrc_Koune.top = (i * 150) + ofs_y;   m_rSrc_Koune.left = 400;   m_rSrc_Koune.bottom = m_rSrc_Koune.top + src_height;    m_rSrc_Koune.right = m_rSrc_Koune.left + src_width;	//コウネ
+			m_rSrc_Sion.top = (i * 150) + ofs_y;   m_rSrc_Sion.left = 500;   m_rSrc_Sion.bottom = m_rSrc_Sion.top + src_height;    m_rSrc_Sion.right = m_rSrc_Sion.left + src_width;	//シオン
+			m_rSrc_Melueru.top = (i * 150) + ofs_y;   m_rSrc_Melueru.left = 600;   m_rSrc_Melueru.bottom = m_rSrc_Melueru.top + src_height;	 m_rSrc_Melueru.right = m_rSrc_Melueru.left + src_width;	//メルエル
 
 			text_size_playername[i] = 20;
 			
@@ -255,9 +260,9 @@ void CObjDataSelect::Draw()
 			{
 				if (i == 0)
 				{
-					m_rSrc_Koune.top = (i * 150) + 75;   m_rSrc_Koune.left = 400;   m_rSrc_Koune.bottom = m_rSrc_Koune.top + 80;    m_rSrc_Koune.right = m_rSrc_Koune.left + 80;	//コウネ
-					m_rSrc_Sion.top = (i * 150) + 75;   m_rSrc_Sion.left = 500;   m_rSrc_Sion.bottom = m_rSrc_Sion.top + 80;    m_rSrc_Sion.right = m_rSrc_Sion.left + 80;	//シオン
-					m_rSrc_Melueru.top = (i * 150) + 75;   m_rSrc_Melueru.left = 600;   m_rSrc_Melueru.bottom = m_rSrc_Melueru.top + 80;	 m_rSrc_Melueru.right = m_rSrc_Melueru.left + 80;	//メルエル
+					m_rSrc_Koune.top = (i * 150) + 75;   m_rSrc_Koune.left = 400;   m_rSrc_Koune.bottom = m_rSrc_Koune.top + src_height;    m_rSrc_Koune.right = m_rSrc_Koune.left + src_width;	//コウネ
+					m_rSrc_Sion.top = (i * 150) + 75;   m_rSrc_Sion.left = 500;   m_rSrc_Sion.bottom = m_rSrc_Sion.top + src_height;    m_rSrc_Sion.right = m_rSrc_Sion.left + src_width;	//シオン
+					m_rSrc_Melueru.top = (i * 150) + 75;   m_rSrc_Melueru.left = 600;   m_rSrc_Melueru.bottom = m_rSrc_Melueru.top + src_height;	 m_rSrc_Melueru.right = m_rSrc_Melueru.left + src_width;	//メルエル
 
 					text_size_playername[0] = 30;
 
@@ -268,9 +273,9 @@ void CObjDataSelect::Draw()
 			{
 				if (i == 1)
 				{
-					m_rSrc_Koune.top = (i * 150) + 75;   m_rSrc_Koune.left = 400;   m_rSrc_Koune.bottom = m_rSrc_Koune.top + 80;    m_rSrc_Koune.right = m_rSrc_Koune.left + 80;	//コウネ
-					m_rSrc_Sion.top = (i * 150) + 75;   m_rSrc_Sion.left = 500;   m_rSrc_Sion.bottom = m_rSrc_Sion.top + 80;    m_rSrc_Sion.right = m_rSrc_Sion.left + 80;	//シオン
-					m_rSrc_Melueru.top = (i * 150) + 75;   m_rSrc_Melueru.left = 600;   m_rSrc_Melueru.bottom = m_rSrc_Melueru.top + 80;	 m_rSrc_Melueru.right = m_rSrc_Melueru.left + 80;	//メルエル
+					m_rSrc_Koune.top = (i * 150) + 75;   m_rSrc_Koune.left = 400;   m_rSrc_Koune.bottom = m_rSrc_Koune.top + src_height;    m_rSrc_Koune.right = m_rSrc_Koune.left + src_width;	//コウネ
+					m_rSrc_Sion.top = (i * 150) + 75;   m_rSrc_Sion.left = 500;   m_rSrc_Sion.bottom = m_rSrc_Sion.top + src_height;    m_rSrc_Sion.right = m_rSrc_Sion.left + src_width;	//シオン
+					m_rSrc_Melueru.top = (i * 150) + 75;   m_rSrc_Melueru.left = 600;   m_rSrc_Melueru.bottom = m_rSrc_Melueru.top + src_height;	 m_rSrc_Melueru.right = m_rSrc_Melueru.left + src_width;	//メルエル
 
 					text_size_playername[1] = 30;
 				}
@@ -280,18 +285,18 @@ void CObjDataSelect::Draw()
 			{
 				if (i == 2)
 				{
-					m_rSrc_Koune.top = (i * 150) + 75;   m_rSrc_Koune.left = 400;   m_rSrc_Koune.bottom = m_rSrc_Koune.top + 80;    m_rSrc_Koune.right = m_rSrc_Koune.left + 80;	//コウネ
-					m_rSrc_Sion.top = (i * 150) + 75;   m_rSrc_Sion.left = 500;   m_rSrc_Sion.bottom = m_rSrc_Sion.top + 80;    m_rSrc_Sion.right = m_rSrc_Sion.left + 80;	//シオン
-					m_rSrc_Melueru.top = (i * 150) + 75;   m_rSrc_Melueru.left = 600;   m_rSrc_Melueru.bottom = m_rSrc_Melueru.top + 80;	 m_rSrc_Melueru.right = m_rSrc_Melueru.left + 80;	//メルエル
+					m_rSrc_Koune.top = (i * 150) + 75;   m_rSrc_Koune.left = 400;   m_rSrc_Koune.bottom = m_rSrc_Koune.top + src_height;    m_rSrc_Koune.right = m_rSrc_Koune.left + src_width;	//コウネ
+					m_rSrc_Sion.top = (i * 150) + 75;   m_rSrc_Sion.left = 500;   m_rSrc_Sion.bottom = m_rSrc_Sion.top + src_height;    m_rSrc_Sion.right = m_rSrc_Sion.left + src_width;	//シオン
+					m_rSrc_Melueru.top = (i * 150) + 75;   m_rSrc_Melueru.left = 600;   m_rSrc_Melueru.bottom = m_rSrc_Melueru.top + src_height;	 m_rSrc_Melueru.right = m_rSrc_Melueru.left + src_width;	//メルエル
 
 					text_size_playername[2] = 30;
 				}
 			}			
 			
-			////描画
-			//Image()->Draw(2, &m_rSrc_Koune, &m_rDst_Koune, coldraw, 0.0f);  //コウネ
-			//Image()->Draw(3, &m_rSrc_Sion, &m_rDst_Sion, coldraw, 0.0f);	//シオン
-			//Image()->Draw(4, &m_rSrc_Melueru, &m_rDst_Melueru, coldraw, 0.0f);	//メルエル
+			//描画
+			Image()->DrawEx(EX_OTHER_KOUNE_DATA, &m_rSrc_Koune, &m_rDst_Koune, coldraw, 0.0f);  //コウネ
+			Image()->DrawEx(EX_OTHER_MERUERU_DATA, &m_rSrc_Sion, &m_rDst_Sion, coldraw, 0.0f);	//シオン
+			Image()->DrawEx(EX_OTHER_SION_DATA, &m_rSrc_Melueru, &m_rDst_Melueru, coldraw, 0.0f);	//メルエル
 
 			}
 		}

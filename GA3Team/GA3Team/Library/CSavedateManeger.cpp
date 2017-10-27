@@ -772,4 +772,6 @@ int  CSavedataManeger::GetClearflg(int savedatenum,int type, int num)
 		 return Savedata[savedatenum].m_stage[type].stage6clear;
 		 break;
 	}
+
+	return -1;
 }

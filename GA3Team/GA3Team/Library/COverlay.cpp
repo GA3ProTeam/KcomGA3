@@ -59,7 +59,8 @@ void COverlay::InitLoad()
 	image->LoadImageEx("メルエルc立ち.png", EX_OTHER_MERUERU_CHARA, TEX_SIZE_512);
 	//データセレクト--------------------------------
 	image->LoadImageEx("コウネ.png", EX_OTHER_KOUNE_DATA, TEX_SIZE_1024);
-	image->LoadImageEx("メルエル.png", EX_OTHER_MERUERU_DATA, TEX_SIZE_512);
+	image->LoadImageEx("メルエル.png", EX_OTHER_MERUERU_DATA, TEX_SIZE_1024);
+	image->LoadImageEx("シオン.png", EX_OTHER_SION_DATA, TEX_SIZE_1024);
 	//吹き出し系統-----------------------------------
 	image->LoadImageEx("アイコン.png", EX_OTHER_ICON, TEX_SIZE_1024);
 	image->LoadImageEx("会話吹き出しまとめ.png", EX_OTHER_BALLOON, TEX_SIZE_1024);
@@ -79,7 +80,12 @@ void COverlay::InitLoad()
 	image->LoadImageEx("音量ボタン.png", EX_VOLBOTTON, TEX_SIZE_512);
 	image->LoadImageEx("アイコン透過.png", EX_ICON, TEX_SIZE_1024);
 
+	//タイトル画面----------------------------------
+	image->LoadImageEx("タイトル案3.png", EX_TITLE, TEX_SIZE_1024);
+	//----------------------------------------------
+
 	//ステージセレクト画面--------------------------
+	image->LoadImageEx("博士(プレート).png", EX_BUTTON_PLAYER_TUTORIAL, TEX_SIZE_128);
 	image->LoadImageEx("コウネ(プレート).png", EX_BUTTON_PLAYER_KOUNE, TEX_SIZE_128);
 	image->LoadImageEx("シオン(プレート).png", EX_BUTTON_PLAYER_SION, TEX_SIZE_128);
 	image->LoadImageEx("メルエル(プレート).png", EX_BUTTON_PLAYER_MERUERU, TEX_SIZE_128);

@@ -126,16 +126,16 @@ enum koune
 	KOUNE3_CLEAR,
 
 	//コウネ5
-	//KOUNE5_START,
-	//KOUNE5_DOOR_OR_MECHANIC,
-	//KOUNE5_FLG1_YES_ABILITY,
-	//KOUNE5_MECHANIC_FLG1,
-	//KOUNE5_MECHANIC_OTO_FLG2_YES,
-	//KOUNE5_MECHANIC_OTO_NO_FLG2_YES,
-	//KOUNE5_MUSICIANS_FLG4_NO_NO,
-	//KOUNE5_MUSICIANS_FLG4_NO_YES,
-	//KOUNE5_MUSICIANS_FLG4_YES_YES,
-	//KOUNE5_CLEAR,
+	KOUNE5_START,
+	KOUNE5_DOOR_OR_MECHANIC,
+	KOUNE5_FLG1_YES_ABILITY,
+	KOUNE5_MECHANIC_FLG1,
+	KOUNE5_MECHANIC_OTO_FLG2_YES,
+	KOUNE5_MECHANIC_OTO_NO_FLG2_YES,
+	KOUNE5_MUSICIANS_FLG4_NO_NO,
+	KOUNE5_MUSICIANS_FLG4_NO_YES,
+	KOUNE5_MUSICIANS_FLG4_YES_YES,
+	KOUNE5_CLEAR,
 };
 enum merueru
 {
@@ -173,6 +173,7 @@ enum DrawExID {
 	EX_OTHER_MERUERU_CHARA,
 	EX_OTHER_KOUNE_DATA,
 	EX_OTHER_MERUERU_DATA,
+	EX_OTHER_SION_DATA,
 	EX_OTHER_ICON,
 	EX_OTHER_BALLOON,
 	EX_STAGE_SION_STAGE1,
@@ -197,6 +198,7 @@ enum DrawExID {
 	EX_COMPUTER,
 	EX_DESK,
 	EX_LABO,
+	EX_BUTTON_PLAYER_TUTORIAL,
 	EX_BUTTON_PLAYER_KOUNE,
 	EX_BUTTON_PLAYER_SION,
 	EX_BUTTON_PLAYER_MERUERU,
@@ -204,6 +206,7 @@ enum DrawExID {
 	EX_BOY,
 	EX_PARK_LEFT,
 	EX_PARK_RIGHT,
+	EX_TITLE,
 };
 
 //効果音アドレス
@@ -241,9 +244,9 @@ enum SoundID {
 	DECISION_BUTTON5,			//決定音
 	ERROR_CANCEL,				//キャンセル音
 
-								//↓まだ読み込んでいないもの-------------------------------------
-								KOUNE2_GIRL_SING,//女の子の応援音
-												 //---------------------------------------------------------------
+	//↓まだ読み込んでいないもの-------------------------------------
+	KOUNE2_GIRL_SING,//女の子の応援音
+	//---------------------------------------------------------------
 };
 
 //---------------------------

@@ -6,6 +6,7 @@ void CObjMenuTab::Init(int openclosey)
 	m_bOpenClose = false;//閉じている
 	m_bhavesound = false;//持っていない
 	m_igivesound = -1;//音なし
+	isSlotSelect = false;
 	m_icnt = 0;
 	OnceFlg = false;//引数がほしいPushの一回クリックフラグ
 	m_Storageflg = false;//反応なし
@@ -33,6 +34,8 @@ void CObjMenuTab::Init(int openclosey)
 	m_iWidth = 64;
 	//ボタンの高さ
 	m_iHeight = 64;
+
+	inputcount = 0;
 }
 
 //-----------------------------------------------------------------
@@ -113,75 +116,101 @@ void CObjMenuTab::Action()
 		m_Storageflg = ArgumentPush(m_iability_x, m_iability_y, 64, 64);
 		//--------------------------------------------------------------------------
 		//能力ボタン動作
-		if (m_Storageflg && !abiltyOverray) {
+		if (!User()->m_bkouneability && inputcount<= 0)
+		{
+			if (m_Storageflg && !abiltyOverray) {
 			//abiltyOverray = true;
 			Onability();
 			//User()->m_bmerueruability = true;
-		}
-		else if (m_Storageflg && abiltyOverray) {
+			}
+			else if (m_Storageflg && abiltyOverray) {
 			//abiltyOverray = false;
 			Offability();
 			//User()->m_bmerueruability = false;
-		}
-
-
-	}
-	//--------------------------------------------------------------------------
-	//タイトルに戻るボタン動作--------------------------------------------------
-	//タブが開いた後、すぐに反応させないようにする
-	//タブが押されて1秒以上経つと押せるようになる
-	if (SelectPush(m_iBackTitlex, m_iBackTitley, 64, 64) && m_bOpenClose && m_icnt >= 60) {
-		//SavedataManeger()->Savedata[SavedataManeger()->SelectedData].m_bSionflg[0] = true;
-		SavedataManeger()->Writesavedata();
-		Manager()->Pop(new CSceneStageSelect());//ステージ選択に戻る
-	}
-	else if (m_bOpenClose) {
-		m_icnt++;
-	}
-	else {
-		m_icnt = 0;
-	}
-	if (User()->m_bkouneability)
-	{
-		static bool flg = false;
-		static int slnum = -1;
-		static int newslnum = -1;
-		static vol vol = SOUND_NON;//(SOUND_PLUS,SOUND_MINUS)
-								   //どのスロットを調整するか。
-		if (!flg)
-		{
-			int slnum = GetGiveSound();//スロットの番号
-			if (slnum >= 0) {
-				flg = true;
-				newslnum = slnum;
 			}
 		}
 		else {
-			//音量を変える
-			//上げるか下げるかの選択
-			//上げるボタンを押す
-			////転送先座標
-			//m_rSrc.top = m_iability_y; m_rSrc.left = m_iability_x;
-			//m_rSrc.bottom = m_rSrc.top + 64; m_rSrc.right = m_rSrc.left + 64;
-
-			if (SelectPush(m_iability_x, m_iability_y, 64, 32)) {
-				vol = SOUND_PLUS;
-			}
-			//下げるボタンを押す
-			if (SelectPush(m_iability_x, m_iability_y + 32, 64, 32)) {
-				vol = SOUND_MINUS;
-			}
-			//能力で音量を調整したら
-			if (g_SoundManeger->soundvol(newslnum, vol))
+			inputcount--;
+		}
+	
+		//--------------------------------------------------------------------------
+		//タイトルに戻るボタン動作--------------------------------------------------
+		//タブが開いた後、すぐに反応させないようにする
+		//タブが押されて1秒以上経つと押せるようになる
+		if (SelectPush(m_iBackTitlex, m_iBackTitley, 64, 64) && m_bOpenClose && m_icnt >= 60) {
+			//SavedataManeger()->Savedata[SavedataManeger()->SelectedData].m_bSionflg[0] = true;
+			SavedataManeger()->Writesavedata();
+			Manager()->Pop(new CSceneStageSelect());//ステージ選択に戻る
+		}
+		else if (m_bOpenClose) {
+			m_icnt++;
+		}
+		else {
+			m_icnt = 0;
+		}
+		if (User()->m_bkouneability)
+		{
+			static bool flg = false;
+			static int slnum = -1;
+			static int newslnum = -1;
+			static vol vol = SOUND_NON;//(SOUND_PLUS,SOUND_MINUS)
+									   //どのスロットを調整するか。
+			if (!flg)
 			{
-				vol = SOUND_NON;
-				flg = false;
-				newslnum = -1;
-				User()->m_bkouneability = false;
-				abiltyOverray = false;
+				int slnum = GetGiveSound();//スロットの番号
+				if (slnum >= 0) {
+					flg = true;
+					isSlotSelect = true;
+					newslnum = slnum;
+				}
+			}
+			else {
+				//音量を変える
+				//上げるか下げるかの選択
+				//上げるボタンを押す
+				////転送先座標
+				//m_rSrc.top = m_iability_y; m_rSrc.left = m_iability_x;
+				//m_rSrc.bottom = m_rSrc.top + 64; m_rSrc.right = m_rSrc.left + 64;
+
+				if (SelectPush(m_iability_x, m_iability_y, 64, 32)) {
+					vol = SOUND_PLUS;
+					vol = SOUND_NON;
+					flg = false;
+					newslnum = -1;
+					User()->m_bkouneability = false;
+					inputcount = INPUT_COUNT;
+					abiltyOverray = false;
+					isSlotSelect = false;
+				}
+				//下げるボタンを押す
+				if (SelectPush(m_iability_x, m_iability_y + 32, 64, 32)) {
+					vol = SOUND_MINUS;
+					g_SoundManeger->soundvol(newslnum, vol);
+					vol = SOUND_NON;
+					flg = false;
+					newslnum = -1;
+					User()->m_bkouneability = false;
+					inputcount = INPUT_COUNT;
+					abiltyOverray = false;
+					isSlotSelect = false;
+
+				}
+				////能力で音量を調整したら
+				//if (g_SoundManeger->soundvol(newslnum, vol) && isSlotSelect == true)
+				//{
+				//	vol = SOUND_NON;
+				//	flg = false;
+				//	newslnum = -1;
+				//	User()->m_bkouneability = false;
+				//	inputcount = INPUT_COUNT;
+				//	abiltyOverray = false;
+				//	isSlotSelect = false;
+				//}
 			}
 		}
+
 	}
+	
 	//--------------------------------------------------------------------------
 }
 
@@ -194,8 +223,8 @@ void CObjMenuTab::Draw()
 	float m_fCol[4] = { 1.0f,1.0f,1.0f,1.0f };
 
 	//切り取り先座標
-	m_rDst.top = 0; m_rDst.left = 32 * 8;
-	m_rDst.bottom = m_rDst.top + 32; m_rDst.right = m_rDst.left + 32;
+	m_rDst.top = 0; m_rDst.left = 64 * 8;
+	m_rDst.bottom = m_rDst.top + 64; m_rDst.right = m_rDst.left + 64;
 
 	//転送先座標
 	m_rSrc.top = m_openclose_y; m_rSrc.left = m_openclose_x;
@@ -210,8 +239,8 @@ void CObjMenuTab::Draw()
 		//機能部分(帯の部分)を表示する場所の描画---------------------
 
 		//切り取り先座標
-		m_rDst.top = 0; m_rDst.left = 32 * 9;
-		m_rDst.bottom = m_rDst.top + 32; m_rDst.right = m_rDst.left + 96;
+		m_rDst.top = 0; m_rDst.left = 64 * 9;
+		m_rDst.bottom = m_rDst.top + 64; m_rDst.right = m_rDst.left + 96;
 
 		//転送先座標
 		m_rSrc.top = m_openclose_y; m_rSrc.left = m_openclose_x + 64;
@@ -224,8 +253,8 @@ void CObjMenuTab::Draw()
 		//タイトルに戻るボタン--------------------------------------------
 
 		//切り取り先座標
-		m_rDst.top = 0; m_rDst.left = 32 * 3;
-		m_rDst.bottom = m_rDst.top + 32; m_rDst.right = m_rDst.left + 32;
+		m_rDst.top = 0; m_rDst.left = 64 * 3;
+		m_rDst.bottom = m_rDst.top + 64; m_rDst.right = m_rDst.left + 64;
 
 		//転送先座標
 		m_rSrc.top = m_iBackTitley; m_rSrc.left = m_iBackTitlex;
@@ -239,8 +268,8 @@ void CObjMenuTab::Draw()
 		for (int i = 0; i < 3; i++) {
 			if (SoundManager()->GetSound(i).sound_num != -1) {
 				//切り取り座標
-				m_rDst.top = 0; m_rDst.left = 32 * 4;
-				m_rDst.bottom = m_rDst.top + 32; m_rDst.right = m_rDst.left + 32;
+				m_rDst.top = 0; m_rDst.left = 64 * 4;
+				m_rDst.bottom = m_rDst.top + 64; m_rDst.right = m_rDst.left + 64;
 
 				//転送先座標
 				m_rSrc.top = m_isoundy - 3; m_rSrc.left = m_isoundx + 64 * i;
@@ -248,11 +277,25 @@ void CObjMenuTab::Draw()
 
 				//描画
 				Image()->DrawEx(EX_ICON, &m_rSrc, &m_rDst, m_fCol, 0.0f);
+				if (isSlotSelect == true)
+				{
+					//切り取り座標
+					m_rDst.top = 0; m_rDst.left = 64*14-1;
+					m_rDst.bottom = m_rDst.top + 64; m_rDst.right = m_rDst.left + 64;
+
+					//転送先座標
+					m_rSrc.top = m_isoundy - 3; m_rSrc.left = m_isoundx + 64 * i;
+					m_rSrc.bottom = m_rSrc.top + 64; m_rSrc.right = m_rSrc.left + 64;
+
+					//描画
+					Image()->DrawEx(EX_ICON, &m_rSrc, &m_rDst, m_fCol, 0.0f);
+				}
 			}
+		
 			else {
 				//切り取り座標
-				m_rDst.top = 0; m_rDst.left = 32 * 5;
-				m_rDst.bottom = m_rDst.top + 32; m_rDst.right = m_rDst.left + 32;
+				m_rDst.top = 0; m_rDst.left = 64 * 5;
+				m_rDst.bottom = m_rDst.top + 64; m_rDst.right = m_rDst.left + 64;
 
 				//転送先座標
 				m_rSrc.top = m_isoundy - 3; m_rSrc.left = m_isoundx + 64 * i;
@@ -264,8 +307,8 @@ void CObjMenuTab::Draw()
 		}
 		//音を消すボタン
 		//切り取り先座標
-		m_rDst.top = 0; m_rDst.left = 32 * 2;
-		m_rDst.bottom = m_rDst.top + 32; m_rDst.right = m_rDst.left + 32;
+		m_rDst.top = 0; m_rDst.left = 64 * 2;
+		m_rDst.bottom = m_rDst.top + 64; m_rDst.right = m_rDst.left + 64;
 
 		//転送先座標
 		m_rSrc.top = m_isoundy; m_rSrc.left = m_isoundx + 192;
@@ -274,19 +317,23 @@ void CObjMenuTab::Draw()
 		//描画
 		Image()->DrawEx(EX_ICON, &m_rSrc, &m_rDst, m_fCol, 0.0f);
 
+		//bool aaa = User()->m_bkouneability;
 		//能力ボタン-------------------------------------------------------------
 		if (!User()->m_bkouneability)
 		{
 			if (abiltyOverray) {
-				m_fCol[3] = 0.5f;
+				//切り取り先座標
+				m_rDst.top = 0; m_rDst.left = 64 * 7;
+				m_rDst.bottom = m_rDst.top + 64; m_rDst.right = m_rDst.left + 64;
+
 			}
 			else {
-				m_fCol[3] = 1.0f;
-			}
-			//切り取り先座標
-			m_rDst.top = 0; m_rDst.left = 32 * 7;
-			m_rDst.bottom = m_rDst.top + 32; m_rDst.right = m_rDst.left + 32;
+				//切り取り先座標
+				m_rDst.top = 0; m_rDst.left = 64 * 6;
+				m_rDst.bottom = m_rDst.top + 64; m_rDst.right = m_rDst.left + 64;
 
+			}
+			
 			//転送先座標
 			m_rSrc.top = m_iability_y; m_rSrc.left = m_iability_x;
 			m_rSrc.bottom = m_rSrc.top + 64; m_rSrc.right = m_rSrc.left + 64;
@@ -300,14 +347,15 @@ void CObjMenuTab::Draw()
 		//----------------------------------------------------------------------
 
 		//コウネの能力発動時(上げる、下げる)のボタンを描画
-		if (User()->m_bkouneability && abiltyOverray == true)
+		if (User()->m_bkouneability)
 		{
 			//ボタンの描画
 			float m_fCol1[4] = { 1.0f,1.0f,1.0f,1.0f };
 
+
 			//音量調整ボタン
-			m_rDst.top = 0; m_rDst.left = 32 * 12;
-			m_rDst.bottom = m_rDst.top + 32; m_rDst.right = m_rDst.left + 32;
+			m_rDst.top = 0; m_rDst.left = 64 * 12;
+			m_rDst.bottom = m_rDst.top + 64; m_rDst.right = m_rDst.left + 64;
 
 			//転送先座標
 			m_rSrc.top = m_iability_y; m_rSrc.left = m_iability_x;
@@ -322,13 +370,13 @@ void CObjMenuTab::Draw()
 		for (int i = 0; i < 3; i++) {
 			if (SoundManager()->GetSound(i).sound_num != -1) {
 				//切り取り先座標
-				m_rDst.top = 0; m_rDst.left = 32 * 4;
-				m_rDst.bottom = m_rDst.top + 32; m_rDst.right = m_rDst.left + 32;
+				m_rDst.top = 0; m_rDst.left = 64 * 4;
+				m_rDst.bottom = m_rDst.top + 64; m_rDst.right = m_rDst.left + 64;
 			}
 			else {
 				//切り取り先座標
-				m_rDst.top = 0; m_rDst.left = 32 * 5;
-				m_rDst.bottom = m_rDst.top + 32; m_rDst.right = m_rDst.left + 32;
+				m_rDst.top = 0; m_rDst.left = 64 * 5;
+				m_rDst.bottom = m_rDst.top + 64; m_rDst.right = m_rDst.left + 64;
 			}
 		}
 
@@ -363,6 +411,7 @@ bool CObjMenuTab::SelectPush(int btx, int bty, int btwid, int bthei)
 		//左クリックされたら
 		if (Input()->GetMouButtonL())
 		{
+			flg = false;
 			return true;
 		}
 		else {
@@ -379,45 +428,47 @@ bool CObjMenuTab::SelectPush(int btx, int bty, int btwid, int bthei)
 
 void CObjMenuTab::Onability()
 {
-	if (!abiltyOverray)
-	{
-		abiltyOverray = true;
-	}
+
 	//コウネの能力が発動したら音量を変える
-	if (User()->m_iCurrentChara == KOUNE) {
+	if (User()->m_iCurrentChara == 2) {
 		User()->m_bkouneability = true;
 	}
 	//メルエルが能力が発動したら
-	if (User()->m_iCurrentChara == MERUERU) {
+	if (User()->m_iCurrentChara == 3) {
 		User()->m_bmerueruability = true;
+		abiltyOverray = true;
 	}
 	//シオン能力が発動したら
-	if (User()->m_iCurrentChara == SION) {
+	if (User()->m_iCurrentChara == 1) {
 		User()->m_bsionability = true;
+		abiltyOverray = true;
 	}
 }
 
 void CObjMenuTab::Offability()
-{
+{/*
 	if (abiltyOverray) {
 		abiltyOverray = false;
-	}
-	if (User()->m_iCurrentChara == 3) {
-		User()->m_bkouneability = false;
+	}*/
+	if (User()->m_iCurrentChara == 2) {
+		//User()->m_bkouneability = false;
 	}
 	//メルエル能力解除
-	if (User()->m_iCurrentChara == 2) {
+	if (User()->m_iCurrentChara == 3) {
 		User()->m_bmerueruability = false;
+		abiltyOverray = false;
 	}
 	//シオン能力解除
 	if (User()->m_iCurrentChara == 1) {
 		User()->m_bsionability = false;
+		abiltyOverray = false;
 	}
 }
 
 //引数ありのPush
 bool CObjMenuTab::ArgumentPush(int x, int y, int w, int h)
 {
+
 	//マウスがボタンの範囲外なら、処理しない
 	if (!ArgumentRangedetection(x, y, w, h)) {
 		OnceFlg = false;//マウス位置がボタンの範囲外なら、一回クリックフラグを解除
@@ -432,6 +483,7 @@ bool CObjMenuTab::ArgumentPush(int x, int y, int w, int h)
 	else if (!Input()->GetMouButtonL() && OnceFlg) {
 		OnceFlg = false;
 		return true;
+
 	}
 
 	return false;
@@ -455,3 +507,5 @@ bool CObjMenuTab::ArgumentRangedetection(int x, int y, int w, int h)
 		return false;
 	}
 }
+
+

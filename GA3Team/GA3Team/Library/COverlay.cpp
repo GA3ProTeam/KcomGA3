@@ -77,7 +77,7 @@ void COverlay::InitLoad()
 	image->LoadImageEx("机.png", EX_DESK, TEX_SIZE_1024);
 	//----------------------------------------------
 	image->LoadImageEx("音量ボタン.png", EX_VOLBOTTON, TEX_SIZE_512);
-	image->LoadImageEx("アイコン透過.png", EX_ICON, TEX_SIZE_512);
+	image->LoadImageEx("アイコン透過.png", EX_ICON, TEX_SIZE_1024);
 
 	//ステージセレクト画面--------------------------
 	image->LoadImageEx("コウネ(プレート).png", EX_BUTTON_PLAYER_KOUNE, TEX_SIZE_128);
@@ -851,9 +851,9 @@ void COverlay::Draw()
 		m_fWaitColor[3] = m_fWaitAlpha;
 		//切り取り座標
 		waitdst.top = 0;
-		waitdst.left = 32 * 13;
-		waitdst.bottom = waitdst.top + 32;
-		waitdst.right = waitdst.left + 32;
+		waitdst.left = 64 * 13;
+		waitdst.bottom = waitdst.top + 64;
+		waitdst.right = waitdst.left + 64;
 		//転送先座標
 		waitsrc.top = WINDOW_SIZE_H - 80;
 		waitsrc.left = WINDOW_SIZE_W - 220;

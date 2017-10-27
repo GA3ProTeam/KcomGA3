@@ -270,8 +270,8 @@ void GimmickAunt::Draw() {
 	//-------------------------ƒMƒ~ƒbƒN(–{‘Ì)‚ð•`‰æ-------------------------------
 	float col[4] = { 1.0,1.0,1.0,1.0 };
 	//Ø‚èŽæ‚èæÀ•W
-	m_dst.top = 0; m_dst.left = 44;
-	m_dst.bottom = m_dst.top + 302; m_dst.right = m_dst.left + 121;
+	m_dst.top = 0; m_dst.left = 129;
+	m_dst.bottom = m_dst.top + 382; m_dst.right = m_dst.left - 129;
 
 	//“]‘—æÀ•W
 	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
@@ -281,9 +281,6 @@ void GimmickAunt::Draw() {
 	//--------------------------------------------------------------------------
 	//‚«o‚µ‚Ì•`‰æ•“®ì
 	this->gimmicDraw(1);
-
-	////y‰ï˜bI—¹Žžz
-	//SavedataManeger()->CurrentData->m_bSionflg[0] = true;
 
 }
 

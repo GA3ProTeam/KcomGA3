@@ -436,12 +436,8 @@ void CObjGimmickManager::Action() {
 		KOUNE5_FLG1,
 		KOUNE5_FLG2,
 		KOUNE5_FLG3,
-		//録音---------
-		KOUNE5_SOUND_REC_A,						//機械音A_録音
-		KOUNE5_SOUND_REC_B,						//機械音B_録音
-		KOUNE5_SOUND_REC_Ad,					//機械音A'_録音
-		KOUNE5_SOUND_REC_Bd,
-	};
+
+};
 
 	//イベント番号(メルエルステージ1)
 	enum MERUERU1_NUMBER {
@@ -459,6 +455,7 @@ void CObjGimmickManager::Action() {
 		SION1_TOLK_END,
 		SION1_TOLK_AUNT,
 		SION1_ABILITY,
+		SION1_CLEAR,
 	};
 	//イベント番号(シオンステージ2)
 	enum SION2_NUMBER {
@@ -508,6 +505,8 @@ void CObjGimmickManager::Action() {
 	vector<bool>& m_bKoune2_flg_list = g_SavedataManeger->CurrentData->m_bKoune2_flg_list;
 
 	int& m_iKoune3_flg = g_SavedataManeger->CurrentData->m_stage[KOUNE].stage3;
+
+	int& m_iKoune5_flg = g_SavedataManeger->CurrentData->m_stage[KOUNE].stage5;
 	//-----------------------------------------------------------------------------------
 
 	//↓【ここからセーブデータの初期化（デバッグ用）】-----------------------------------
@@ -1292,7 +1291,7 @@ void CObjGimmickManager::Action() {
 			
 			if (Overlay()->NextWait()) {
 				//能力を使用できるようにする
-				;
+				m_Koune5_gim_flg[0] = 2;
 			}
 		}//フラグ3未回収
 		else {
@@ -1315,8 +1314,10 @@ void CObjGimmickManager::Action() {
 		*/
 
 		m_Koune5_sound_num = m_gimmick_mysterydoor->m_getsound.sound_num; //音番号取得
-		if (m_Koune5_sound_num == 0/*能力使用*/) {
-			m_Koune5_sound_num += 1000;
+		if (m_Koune5_gim_flg[0] == 2/* && 能力使用*/) {
+			//if (/*Aの音量を下げるorBの音量を上げる*/) {
+				m_Koune5_sound_num += 1000;
+			//}
 		}
 
 		//扉の謎解き...ランプの処理...音番号判定
@@ -1368,8 +1369,12 @@ void CObjGimmickManager::Action() {
 
 			//コウネステージ5 クリア
 			if (Overlay()->NextWait()) {
-				//クリアフラグを立てる
-				 ;
+				//クリア
+				SavedataManeger()->CurrentData->m_stage[KOUNE].stage5clear = true;
+				SavedataManeger()->Writesavedata();
+				//ステージセレクト画面に移行
+				Manager()->Pop(new CSceneStageSelect);
+
 			 }
 		 }
 
@@ -1466,6 +1471,12 @@ void CObjGimmickManager::Action() {
 
 		Overlay()->NextWait();
 
+		//ステージクリア
+		if (SavedataManeger()->CurrentData->m_stage[SION].stage1clear && m_Sion1_flg == SION1_ABILITY) {
+			//SavedataManeger()->Writesavedata();
+			m_Sion1_flg = SION1_CLEAR;
+			//ステージセレクト画面に移行
+			Manager()->Pop(new CSceneStageSelect);
 
 		break;
 	case 21:
@@ -1698,6 +1709,7 @@ void CObjGimmickManager::Action() {
 			//会話終了
 			if (Overlay()->NextWait()) {
 				m_iMerueru1 = MERUERU1_KATSUO_TALK_END;
+				m_gimmick_oven->m_bActionFlg = true;
 			}
 		}
 

@@ -222,7 +222,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 		//おばちゃん生成
 		m_gimmick_aunt = new GimmickAunt();
 		Obj()->InsertObj(m_gimmick_aunt, GIMMICK_AUNT, 1, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_aunt->Init(110, 430, 100, 170, 1);
+		m_gimmick_aunt->Init(110, 390, 80, 210, 1);
 
 		//すずめ生成
 		m_gimmick_bird = new GimmickBird();
@@ -232,12 +232,12 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 		//犬A(番犬)生成
 		m_gimmick_watchdog = new Gimmickwatchdog();
 		Obj()->InsertObj(m_gimmick_watchdog, GIMMICK_WATCHDOG, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_watchdog->Init(600, 530, 100, 70, 1);
+		m_gimmick_watchdog->Init(550, 510, 150, 90, 1);
 
 		//インターホン生成
 		m_gimmick_interphone = new GimmickInterphone();
 		Obj()->InsertObj(m_gimmick_interphone, GIMMICK_INTERPHONE, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_interphone->Init(730, 300, 70, 100, 1);
+		m_gimmick_interphone->Init(755, 350, 35, 50, 1);
 
 		break;
 	case 21:
@@ -1408,40 +1408,57 @@ void CObjGimmickManager::Action() {
 	case 20:
 		if (m_Sion1_flg == SION1_TOLK_START) {
 			Overlay()->talkDraw(SION, SION1_START);
-			Overlay()->NextWait();
 
 			m_Sion1_flg = SION1_TOLK_END;
 		}
 
-		if (m_gimmick_aunt->m_ball[0].OnPush) {
+		else if (m_gimmick_aunt->m_ball[0].OnPush) {
 			Overlay()->talkDraw(SION, SION1_BBA);
 
-			if (Overlay()->NextWait()) {
-				m_Sion1_flg = SION1_TOLK_AUNT;
-			}
+			m_Sion1_flg = SION1_TOLK_AUNT;
 		}
 
 		//能力使用時に、フラグ2が立つ
-		/*if (シオンの能力ボタンを押した) {
-		m_Sion1_flg = SION1_ABILITY;
-		}*/
-		if (m_gimmick_watchdog->m_getsound.sound_num != -1) {
+		else if (m_Sion1_flg == SION1_TOLK_AUNT && m_pMenuTab->isabilty()) {
+			m_Sion1_flg = SION1_ABILITY;
+		}
+		else if (m_gimmick_watchdog->m_getsound.sound_num != -1) {
 			if (m_gimmick_watchdog->m_getsound.sound_color == BLUE) {
 				if (m_Sion1_flg == 0) {
 					Overlay()->talkDraw(SION, SION1_FLAG1_NO);
-					Overlay()->NextWait();
 				}
 				else if (m_Sion1_flg == SION1_TOLK_AUNT) {
 					Overlay()->talkDraw(SION, SION1_FLAG1_YES_FLAG2_NO_CLEAR);
-					Overlay()->NextWait();
 				}
-				if (m_Sion1_flg == SION1_ABILITY) {
+				else if (m_Sion1_flg == SION1_ABILITY) {
 					Overlay()->talkDraw(SION, SION1_FLAG1_YES_FLAG2_YES_CLEAR);
-					Overlay()->NextWait();
+
+					SavedataManeger()->CurrentData->m_stage[SION].stage1clear = true;
 				}
 			}
 		}
 
+		Overlay()->NextWait();
+
+			//イヤホン男と会話フラグON
+			m_gimmick_earphone->m_bActionFlg = true;
+		}
+		//コウネ会話開始
+		if (m_Sion2_flg == SION2_KOUNE_FLAG_NO) {
+			Overlay()->talkDraw(SION, SION2_KOUNE_FLAG_NO);
+			//会話終了
+			if (Overlay()->NextWait()) {
+				m_Sion2_flg = SION2_KOUNE_FLAG_NO_END;
+			}
+		}
+		else if (m_Sion2_flg == SION2_KOUNE_FLAG_YES) {
+
+		}
+
+		//猫の音取得
+		if (m_gimmick_firetruck->m_ball[0].OnPush) {
+
+		}
 		break;
 	case 21:
 		break;
@@ -1543,7 +1560,7 @@ void CObjGimmickManager::Action() {
 		//メルエル1
 	case 40:
 	{
-		static int m_iMerueru1 = MERUERU1_KATSUO_TALK1_1;
+		static int m_iMerueru1 = MERUERU1_WELCOM_TALK;
 		m_gimmick_oven->m_bActionFlg = false;
 
 
@@ -1563,120 +1580,42 @@ void CObjGimmickManager::Action() {
 
 		//カツオ会話
 		if (m_gimmick_katsuo->m_ball[0].OnPush) {
-			/*
-			//会話1-2能力なし
-			if (m_iMerueru1 == MERUERU1_KATSUO_TALK1_2  &&
-				!User()->m_bmerueruability) {
-				Overlay()->talkDraw(MERUERU, MERUERU_KATUO_1_2);
-				//会話終了
-				if (Overlay()->NextWait()) {
-					m_iMerueru1 = MERUERU1_KATSUO_TALK1_1;
-				}
-			}
-			//会話1-1能力なし
-			if (m_iMerueru1 == MERUERU1_KATSUO_TALK1_1 &&
-				!User()->m_bmerueruability) {
-				Overlay()->talkDraw(MERUERU, MERUERU_KATUO_1_OFF);
-				//会話終了
-				if (Overlay()->NextWait()) {
-					m_iMerueru1 = MERUERU1_KATSUO_TALK1_2;
-				}
-			}
-			//会話1能力あり
-			else if (m_iMerueru1 == MERUERU1_KATSUO_TALK1_1 &&
-				User()->m_bmerueruability) {
-				Overlay()->talkDraw(MERUERU, MERUERU_KATUO_1_ON);
-				//会話終了
-				if (Overlay()->NextWait()) {
-					m_iMerueru1 = MERUERU1_KATSUO_TALK2;
-				}
-			}
-
-			//会話2
-			if (m_iMerueru1 == MERUERU1_KATSUO_TALK2) {
-				Overlay()->talkDraw(MERUERU, MERUERU_KATUO_2);
-				//会話終了
-				if (Overlay()->NextWait()) {
-					m_iMerueru1 = MERUERU1_KATSUO_TALK3;
-				}
-			}
-
-			//会話3
-			if (m_iMerueru1 == MERUERU1_KATSUO_TALK3) {
-				Overlay()->talkDraw(MERUERU, MERUERU_KATUO_3);
-				//会話終了
-				if (Overlay()->NextWait()) {
-					m_iMerueru1 = MERUERU1_KATSUO_TALK_END;
-
-					m_gimmick_oven->m_bActionFlg = true;
-					m_gimmick_oven->m_bActionFlg = true;
-
-				}
-			}
-
-			//口笛音取得
-			if (m_iMerueru1 == MERUERU1_KATSUO_TALK_END) {
-
-			}
-			*/
 
 			switch (m_iMerueru1) {
-
+				//カツオ会話1-1
 			case MERUERU1_KATSUO_TALK1_1:
-
+				//能力なし
 				if (!User()->m_bmerueruability) {
+
 					Overlay()->talkDraw(MERUERU, MERUERU_KATUO_1_OFF);
-					//会話終了
-					if (Overlay()->NextWait()) {
-						m_iMerueru1 = MERUERU1_KATSUO_TALK1_2;
-					}
+				
 				}
+				//能力あり
 				else {
+
 					Overlay()->talkDraw(MERUERU, MERUERU_KATUO_1_ON);
-					//会話終了
-					if (Overlay()->NextWait()) {
-						m_iMerueru1 = MERUERU1_KATSUO_TALK2;
-					}
 					
 				}
 				break;
-
+				//カツオ会話1-2
 			case MERUERU1_KATSUO_TALK1_2:
 				
 				Overlay()->talkDraw(MERUERU, MERUERU_KATUO_1_2);
-				//会話終了
-				if (Overlay()->NextWait()) {
-					m_iMerueru1 = MERUERU1_KATSUO_TALK1_1;
-				}
 				
 				break;
-
-
+				//カツオ会話2
 			case MERUERU1_KATSUO_TALK2:
 
 				Overlay()->talkDraw(MERUERU, MERUERU_KATUO_2);
-				//会話終了
-				if (Overlay()->NextWait()) {
-					m_iMerueru1 = MERUERU1_KATSUO_TALK3;
-				}
+				
 				break;
-
-
+				//カツオ会話3
 			case MERUERU1_KATSUO_TALK3:
 
 				Overlay()->talkDraw(MERUERU, MERUERU_KATUO_3);
-				//会話終了
-				if (Overlay()->NextWait()) {
-					m_iMerueru1 = MERUERU1_KATSUO_TALK_END;
-
-					m_gimmick_oven->m_bActionFlg = true;
-					m_gimmick_oven->m_bActionFlg = true;
-
-				}
-
+				
 				break;
-
-
+				//カツオ口笛
 			case MERUERU1_KATSUO_TALK_END:
 
 
@@ -1685,22 +1624,55 @@ void CObjGimmickManager::Action() {
 
 		}
 
-
-
+		if (Overlay()->NowTalk() == MERUERU_KATUO_1_ON) {
+			//会話終了
+			if (Overlay()->NextWait()) {
+				m_iMerueru1 = MERUERU1_KATSUO_TALK2;
+			}
+		}
+		else if (Overlay()->NowTalk() == MERUERU_KATUO_1_OFF) {
+			//会話終了
+			if (Overlay()->NextWait()) {
+				m_iMerueru1 = MERUERU1_KATSUO_TALK1_2;
+			}
+		}
+		else if (Overlay()->NowTalk() == MERUERU_KATUO_1_2) {
+			//会話終了
+			if (Overlay()->NextWait()) {
+				m_iMerueru1 = MERUERU1_KATSUO_TALK1_1;
+			}
+		}
+		else if (Overlay()->NowTalk() == MERUERU_KATUO_2) {
+			//会話終了
+			if (Overlay()->NextWait()) {
+				m_iMerueru1 = MERUERU1_KATSUO_TALK3;
+			}
+		}
+		else if (Overlay()->NowTalk() == MERUERU_KATUO_3) {
+			//会話終了
+			if (Overlay()->NextWait()) {
+				m_iMerueru1 = MERUERU1_KATSUO_TALK_END;
+			}
+		}
 
 
 		//テレビ音取得
 		if (m_gimmick_television->m_ball[0].OnPush) {
 
+
+
 		}
 		//レンジ音取得
 		if (m_gimmick_oven->m_ball[0].OnPush) {
 
+
+
 		}
 
 		//レンジ音使用でステージクリア
-		if (m_gimmick_doctorroomdoor->m_ball[0].m_sound_data.sound_num == 1)
-		{
+		if (m_gimmick_doctorroomdoor->m_ball[0].m_sound_data.sound_num == 1){
+
+
 
 		}
 
@@ -1862,11 +1834,23 @@ void CObjGimmickManager::Draw() {
 	case 35://ステージ6
 
 		break;
-		//コウネステージ↑---------------------------------------------------------
 
 		//シオンステージ↓---------------------------------------------------------
 	case 20://ステージ1
+			//切り取り座標
+		m_dst.top = 0;
+		m_dst.bottom = m_dst.top + 1024;
+		m_dst.left = 0;
+		m_dst.right = m_dst.left + 1024;
 
+		//転送先座標
+		m_src.top = 0;
+		m_src.bottom = m_src.top + 600;
+		m_src.left = 0 + User()->mscroll_x;
+		m_src.right = m_src.left + 800;
+
+		//背景描画
+		Image()->DrawEx(EX_STAGE_SION_STAGE1, &m_src, &m_dst, col, 0.0f);
 		break;
 
 	case 21://ステージ2

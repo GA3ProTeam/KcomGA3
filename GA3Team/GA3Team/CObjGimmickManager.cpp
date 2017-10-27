@@ -800,6 +800,7 @@ void CObjGimmickManager::Action() {
 
 				//女の子と話しかけたフラグを立てる
 				m_bKoune2_flg_list[KOUNE2_BOOL_GIRL_TALK] = true;
+				m_iKoune2_flg = 2;
 			}
 		}
 

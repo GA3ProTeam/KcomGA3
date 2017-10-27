@@ -44,12 +44,12 @@ void CObjTitle::Action()
 
 		//はじめからボタン生成
 		m_obj_button[0] = new ButtonDataSelect();
-		Obj()->InsertObj(m_obj_button[0], OBJ_BUTTON_STAGE, 0, this->m_pScene, HIT_BOX_OFF);
+		Obj()->InsertObj(m_obj_button[0], OBJ_BUTTON_STAGE, 1, this->m_pScene, HIT_BOX_OFF);
 		m_obj_button[0]->Init(250, 300, 300, 100, true,0, 512, 512);
 
 		//つづきからボタン生成
 		m_obj_button[1] = new ButtonDataSelect();
-		Obj()->InsertObj(m_obj_button[1], OBJ_BUTTON_STAGE, 0, this->m_pScene, HIT_BOX_OFF);
+		Obj()->InsertObj(m_obj_button[1], OBJ_BUTTON_STAGE, 1, this->m_pScene, HIT_BOX_OFF);
 		m_obj_button[1]->Init(250, 400, 300, 100, m_bdataflg,1, 512, 512);//セーブデータがなかったら続きからを暗くする。ボタン判定なくす
 
 		m_icreateflg = true; //ボタン作成済
@@ -79,9 +79,9 @@ void CObjTitle::Draw()
 {
 	char x[32], y[32];
 
-	//マウス位置取得 デバック用
-	sprintf(x, "%d", Input()->m_x);
-	sprintf(y, "%d", Input()->m_y);
+	////マウス位置取得 デバック用
+	//sprintf(x, "%d", Input()->m_x);
+	//sprintf(y, "%d", Input()->m_y);
 
 	//カラー情報
 	float col[4] = { 1.0f,1.0f,1.0f,1.0f };
@@ -89,10 +89,24 @@ void CObjTitle::Draw()
 	//テキストカラー情報
 	float coltext[4] = { 1.0f,1.0f,1.0f,1.0f };
 
-	//テスト描画
-	Font()->StrDraw("title", 0, 0, 16, coltext);
-	Font()->StrDraw(x, 0, 16, 16, coltext);
-	Font()->StrDraw(y, 0, 32, 16, coltext);
+	//描画
+	//切り取り先座標
+	m_rDst.top = 0;
+	m_rDst.bottom = m_rDst.top + 1024;
+	m_rDst.left = 0;
+	m_rDst.right = m_rDst.left + 1024;
+
+	//転送先座標
+	m_rSrc.top = 0;
+	m_rSrc.bottom = m_rSrc.top + WINDOW_SIZE_H;
+	m_rSrc.left = 0;
+	m_rSrc.right = m_rSrc.left + WINDOW_SIZE_W;
+	Image()->DrawEx(EX_TITLE, &m_rSrc, &m_rDst, col, 0.0f);  //コウネ
+
+	////テスト描画
+	//Font()->StrDraw("title", 0, 0, 16, coltext);
+	//Font()->StrDraw(x, 0, 16, 16, coltext);
+	//Font()->StrDraw(y, 0, 32, 16, coltext);
 
 	//テスト用表示
 	float coldbg[4] = { 1.0f,1.0f,1.0f,1.0f };

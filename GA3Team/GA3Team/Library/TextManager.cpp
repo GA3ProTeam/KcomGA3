@@ -60,7 +60,6 @@ CTextManager::CTextManager()
 	filePath_koune.push_back("Text\\koune1\\koune1_ozi_flag3_flag1_yes.bin");
 	//filePath_koune.push_back("Text\\koune1\\koune1_ozi_flag3_no_flag1_yes.bin");
 	
-
 	//Stage2
 	filePath_koune.push_back("Text\\koune2\\koune2_start.bin");
 	filePath_koune.push_back("Text\\koune2\\koune2_sion_flag1_No_flag2_No.bin");
@@ -107,17 +106,18 @@ CTextManager::CTextManager()
 	filePath_koune.push_back("Text\\koune3\\koune3_cat_ability_dog_sound_listen.bin");
 	filePath_koune.push_back("Text\\koune3\\koune3_cat_exception_sound_listen.bin");
 	filePath_koune.push_back("Text\\koune3\\koune3_clear.bin");
+	
 	//Stage5
-	//filePath_koune.push_back("Text\\koune3\\koune5_start.bin");
-	//filePath_koune.push_back("Text\\koune3\\koune5_door_mechanic_flag1_no.bin");
-	//filePath_koune.push_back("Text\\koune3\\koune5_flag1_yes_ability.bin");
-	//filePath_koune.push_back("Text\\koune3\\koune5_mechanic_flag1.bin");
-	//filePath_koune.push_back("Text\\koune3\\koune5_mechanic_oto_flag2_yes.bin");
-	//filePath_koune.push_back("Text\\koune3\\koune5_mechanic_oto_no_flag2_yes.bin");
-	//filePath_koune.push_back("Text\\koune3\\koune5_musicians_flag4_no_not.bin");
-	//filePath_koune.push_back("Text\\koune3\\koune5_musicians_flag4_no_yes.bin");
-	//filePath_koune.push_back("Text\\koune3\\koune5_musicians_flag4_yes_yes.bin");
-	//filePath_koune.push_back("Text\\koune3\\koune5_clear.bin");
+	filePath_koune.push_back("Text\\koune5\\koune5_start.bin");
+	filePath_koune.push_back("Text\\koune5\\koune5_door_mechanic_flag1_no.bin");
+	filePath_koune.push_back("Text\\koune5\\koune5_flag1_yes_ability.bin");
+	filePath_koune.push_back("Text\\koune5\\koune5_mechanic_flag1.bin");
+	filePath_koune.push_back("Text\\koune5\\koune5_mechanic_oto_flag2_yes.bin");
+	filePath_koune.push_back("Text\\koune5\\koune5_mechanic_oto_no_flag2_yes.bin");
+	filePath_koune.push_back("Text\\koune5\\koune5_musicians_flag4_no_no.bin");
+	filePath_koune.push_back("Text\\koune5\\koune5_musicians_flag4_no_yes.bin");
+	filePath_koune.push_back("Text\\koune5\\koune5_musicians_flag4_yes_yes.bin");
+	filePath_koune.push_back("Text\\koune5\\koune5_clear.bin");
 	//メルエル
 	//Stage1
 	filePath_merueru.push_back("Text\\merueru1\\merueru_start.bin");
@@ -185,7 +185,7 @@ void CTextManager::LoadText()
 		for (auto fileitr = filePath_chara->begin(); fileitr != filePath_chara->end(); ++fileitr) {
 
 			//デバッグ用
-			if ((*fileitr).find("Text\\tyu-toriaru\\hakase_clear.bin") != -1) {
+			if ((*fileitr).find("Text\\merueru1\\merueru_katuo_3.bin") != -1) {
 				int a = 0;
 			}
 

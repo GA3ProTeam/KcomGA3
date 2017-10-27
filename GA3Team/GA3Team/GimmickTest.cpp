@@ -284,8 +284,8 @@ void GimmickAunt::Draw() {
 	//-------------------------ギミック(本体)を描画-------------------------------
 	float col[4] = { 1.0,1.0,1.0,1.0 };
 	//切り取り先座標
-	m_dst.top = 0; m_dst.left = 44;
-	m_dst.bottom = m_dst.top + 302; m_dst.right = m_dst.left + 121;
+	m_dst.top = 0; m_dst.left = 129;
+	m_dst.bottom = m_dst.top + 382; m_dst.right = m_dst.left - 129;
 
 	//転送先座標
 	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
@@ -295,9 +295,6 @@ void GimmickAunt::Draw() {
 	//--------------------------------------------------------------------------
 	//吹き出しの描画＆動作
 	this->gimmicDraw(1);
-
-	////【会話終了時】
-	//SavedataManeger()->CurrentData->m_bSionflg[0] = true;
 
 }
 
@@ -417,7 +414,7 @@ void Gimmickearphone::Init(int xpos,int ypos,int widht,int height,int balloonnum
 {
 	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
 	//吹き出しの初期化
-	InitBall(&m_ball[0], m_iWidth - 50, -48, sound, 1, NORMAL, LOWER_LEFT);
+	InitBall(&m_ball[0], m_iWidth - 150, -48, talk, 1, NORMAL, LOWER_LEFT);
 }
 void Gimmickearphone::Destructor()
 {
@@ -464,7 +461,7 @@ void Gimmickkoune::Init(int xpos, int ypos, int widht, int height, int balloonnu
 {
 	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
 	//吹き出しの初期化
-	InitBall(&m_ball[0], m_iWidth - 50, -48, sound, 1, RED, LOWER_LEFT);
+	InitBall(&m_ball[0], m_iWidth - 50, -48, talk, 1, NORMAL, LOWER_LEFT);
 }
 void Gimmickkoune::Destructor()
 {
@@ -598,7 +595,7 @@ void Gimmickfiretruck::Init(int xpos, int ypos, int widht, int height, int ballo
 {
 	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
 	//吹き出しの初期化
-	InitBall(&m_ball[0], m_iWidth - 50, -48, sound, SION2_FIRE_ENGINE, PURPLE, LOWER_LEFT);
+	InitBall(&m_ball[0], m_iWidth - 50, +160, sound, SION2_FIRE_ENGINE, PURPLE, LOWER_LEFT);
 }
 void Gimmickfiretruck::Destructor()
 {
@@ -766,7 +763,6 @@ void GimmickMynah::Init(int xpos, int ypos, int widht, int height, int balloonnu
 
 	//吹き出しの初期化
 	InitBall(&m_ball[0], 48, -48, sound, 1, PINK, LOWER_LEFT);
-	//InitBall(&m_ball[0], 48, -48, sound, 1, NORMAL, LOWER_LEFT);
 }
 void GimmickMynah::Destructor()	//デストラクタ
 {
@@ -846,7 +842,6 @@ void GimmickWindchime::Init(int xpos, int ypos, int widht, int height, int ballo
 
 	//吹き出しの初期化
 	InitBall(&m_ball[0], 48, -48, sound, 1, PURPLE, LOWER_LEFT);
-	//InitBall(&m_ball[0], 48, -48, sound, 1, NORMAL, LOWER_LEFT);
 }
 void GimmickWindchime::Destructor()	//デストラクタ
 {
@@ -1488,7 +1483,7 @@ void GimmickKitten::Init(int xpos, int ypos, int widht, int height, int balloonn
 	//親クラスのInit関数を呼ぶ
 	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
 	//吹き出しの初期化
-	InitBall(&m_ball[0],48, -48, sound, 1, NORMAL, LOWER_LEFT);
+	InitBall(&m_ball[0],48, -48, sound, 1, ORANGE, LOWER_LEFT);
 }
 //デストラクタ
 void GimmickKitten::Destructor()
@@ -1530,7 +1525,7 @@ void GimmickCicada::Init(int xpos, int ypos, int widht, int height, int balloonn
 	//親クラスのInit関数を呼ぶ
 	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
 	//吹き出しの初期化
-	InitBall(&m_ball[0],48, -48, sound, 1, NORMAL, LOWER_LEFT);
+	InitBall(&m_ball[0],48, -48, sound, 1, GREEN, LOWER_LEFT);
 }
 //デストラクタ
 void GimmickCicada::Destructor()
@@ -1637,7 +1632,7 @@ void GimmickMysteryDoor::Destructor(){
 void GimmickMysteryDoor::Action() {
 
 	//メニュータブへの参照取得
-	CObjMenuTab* tab = (CObjMenuTab*)Obj()->GetObj(OBJ_MENUTAB);
+	//CObjMenuTab* tab = (CObjMenuTab*)Obj()->GetObj(OBJ_MENUTAB);
 
 }
 //①ドアの描画
@@ -1684,7 +1679,7 @@ void GimmickMechanic::Destructor() {
 //②メカニックのアクション
 void GimmickMechanic::Action() {
 	 //メニュータブ取得
-	 CObjMenuTab* tab = (CObjMenuTab*)Obj()->GetObj(OBJ_MENUTAB);
+	// CObjMenuTab* tab = (CObjMenuTab*)Obj()->GetObj(OBJ_MENUTAB);
 
 }
 //②メカニックの描画
@@ -1722,8 +1717,8 @@ void GimmickSoundComputer::Init(int xpos, int ypos, int widht, int height, int b
 	//親クラスのInit関数を呼ぶ
 	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
 	//吹き出しの初期化
-	InitBall(&m_ball[0],48, -48, sound, 1, BLUE, LOWER_LEFT);  //A
-	//InitBall(&m_ball[1], 150, -48, sound, 1, RED, LOWER_LEFT); //B
+	InitBall(&m_ball[0], -48, -48, sound, 1, BLUE, LOWER_RIGHT); //A
+	//InitBall(&m_ball[1], 48, -48, sound, 1, RED, LOWER_LEFT);	 //B
 }
 //③パソコンのデストラクタ
 void GimmickSoundComputer::Destructor() {
@@ -1759,6 +1754,7 @@ void GimmickSoundComputer::Draw() {
 
 	//吹き出し描画＆動作-------
 	this->gimmicDraw(1);
+	//this->gimmicDraw(2);
 	//-------------------------
 
 }
@@ -1943,7 +1939,7 @@ void GimmickTelevision::Init(int xpos, int ypos, int widht, int height, int ball
 	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
 
 	//吹き出しの初期化
-	InitBall(&m_ball[0], m_iWidth - 50, -48, talk, 1, RED, LOWER_LEFT);
+	InitBall(&m_ball[0], m_iWidth - 50, -48, sound, 1, RED, LOWER_LEFT);
 }
 
 void GimmickTelevision::Destructor()
@@ -1995,7 +1991,7 @@ void GimmickOven::Init(int xpos, int ypos, int widht, int height, int balloonnum
 	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
 
 	//吹き出しの初期化
-	InitBall(&m_ball[0], m_iWidth - 50, -48, talk, 1, RED, LOWER_LEFT);
+	InitBall(&m_ball[0], m_iWidth - 50, -48, sound, 1, RED, LOWER_LEFT);
 }
 
 void GimmickOven::Destructor()

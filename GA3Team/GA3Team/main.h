@@ -302,11 +302,12 @@ inline RECT InitRect(LONG left, LONG top, LONG right, LONG bottom)
 #define MAX_CHARA 4
 
 //吹き出しのサイズ
-#define GIMMICK_SIZE_X 64
-#define GIMMICK_SIZE_Y 64
+#define GIMMICK_SIZE_X 32
+#define GIMMICK_SIZE_Y 32
 
 //吹き出し維持時間
 #define BALLOON_KEEP_TIME 180
+#define INPUT_COUNT	120	
 
 //シーンタイトル
 #include "CSceneTitle.h"

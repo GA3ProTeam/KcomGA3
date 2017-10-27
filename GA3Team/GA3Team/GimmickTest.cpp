@@ -1618,7 +1618,7 @@ void GimmickMysteryDoor::Destructor(){
 void GimmickMysteryDoor::Action() {
 
 	//メニュータブへの参照取得
-	CObjMenuTab* tab = (CObjMenuTab*)Obj()->GetObj(OBJ_MENUTAB);
+	//CObjMenuTab* tab = (CObjMenuTab*)Obj()->GetObj(OBJ_MENUTAB);
 
 }
 //①ドアの描画
@@ -1626,6 +1626,7 @@ void GimmickMysteryDoor::Draw() {
 
 	float col[4] = { 1.0,1.0,1.0,1.0 };
 
+	//ドア---------------------------------------
 	//切り取り先座標
 	m_dst.top = 0;
 	m_dst.bottom = 512;
@@ -1639,7 +1640,67 @@ void GimmickMysteryDoor::Draw() {
 	m_src.right = m_src.left + m_iWidth;
 
 	//描画
-	Image()->DrawEx(12, &m_src, &m_dst, col, 0.0f); //描画値変更
+	Image()->DrawEx(58, &m_src, &m_dst, col, 0.0f); //仮描画
+
+	//ランプ-----------------------------------------
+	//for (int i = 0; i < 3; i++) {
+		//switch (/**/) {
+		/*case 0: //灰色
+			//切り取り先座標
+			m_dst.top = 0;
+			m_dst.bottom = 512;
+			m_dst.left = 0;
+			m_dst.right = 512;
+
+			//転送先座標
+			m_src.top = m_iYpos;
+			m_src.bottom = m_src.top + m_iHeight;
+			m_src.left = m_iXpos + User()->mscroll_x;
+			m_src.right = m_src.left + m_iWidth;
+
+			//描画
+			Image()->DrawEx(58, &m_src, &m_dst, col, 0.0f); //仮描画
+
+			break;
+
+		case 1: //黄色
+				//切り取り先座標
+			m_dst.top = 0;
+			m_dst.bottom = 512;
+			m_dst.left = 0;
+			m_dst.right = 512;
+
+			//転送先座標
+			m_src.top = m_iYpos;
+			m_src.bottom = m_src.top + m_iHeight;
+			m_src.left = m_iXpos + User()->mscroll_x;
+			m_src.right = m_src.left + m_iWidth;
+
+			//描画
+			Image()->DrawEx(58, &m_src, &m_dst, col, 0.0f); //仮描画
+
+			break;
+
+		case 2: //緑色
+			//切り取り先座標
+			m_dst.top = 0;
+			m_dst.bottom = 512;
+			m_dst.left = 0;
+			m_dst.right = 512;
+
+			//転送先座標
+			m_src.top = m_iYpos;
+			m_src.bottom = m_src.top + m_iHeight;
+			m_src.left = m_iXpos + User()->mscroll_x;
+			m_src.right = m_src.left + m_iWidth;
+
+			//描画
+			Image()->DrawEx(58, &m_src, &m_dst, col, 0.0f); //仮描画
+
+			break;
+		}
+	}*/
+	//--------------------------------------------
 
 	//ギミック名前描画
 	Font()->StrDraw("ドア", m_iXpos, m_iYpos, 20, col);
@@ -1665,7 +1726,7 @@ void GimmickMechanic::Destructor() {
 //②メカニックのアクション
 void GimmickMechanic::Action() {
 	 //メニュータブ取得
-	 CObjMenuTab* tab = (CObjMenuTab*)Obj()->GetObj(OBJ_MENUTAB);
+	 //CObjMenuTab* tab = (CObjMenuTab*)Obj()->GetObj(OBJ_MENUTAB);
 
 }
 //②メカニックの描画
@@ -1674,8 +1735,8 @@ void GimmickMechanic::Draw() {
 	float col[4] = { 1.0,1.0,1.0,1.0 };
 
 	//切り取り先座標
-	m_dst.top = 0;
-	m_dst.bottom = 360;
+	m_dst.top = 300;
+	m_dst.bottom = m_dst.top+300;
 	m_dst.left = 0;
 	m_dst.right = 200;
 
@@ -1686,7 +1747,7 @@ void GimmickMechanic::Draw() {
 	m_src.right = m_src.left + m_iWidth;
 
 	//描画
-	Image()->DrawEx(1, &m_src, &m_dst, col, 0.0f); //描画値変更
+	Image()->DrawEx(EX_WOMANALL, &m_src, &m_dst, col, 0.0f);
 
 	//ギミック名前描画
 	Font()->StrDraw("メカニック", m_iXpos, m_iYpos, 20, col);
@@ -1704,7 +1765,7 @@ void GimmickSoundComputer::Init(int xpos, int ypos, int widht, int height, int b
 	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
 	//吹き出しの初期化
 	InitBall(&m_ball[0],48, -48, sound, 1, BLUE, LOWER_LEFT);  //A
-	//InitBall(&m_ball[1], 150, -48, sound, 1, RED, LOWER_LEFT); //B
+	//InitBall(&m_ball[1], 0, -48, sound, 1, RED, LOWER_LEFT); //B
 }
 //③パソコンのデストラクタ
 void GimmickSoundComputer::Destructor() {
@@ -1732,7 +1793,7 @@ void GimmickSoundComputer::Draw() {
 	m_src.right = m_src.left + m_iWidth;
 
 	//描画
-	Image()->DrawEx(14, &m_src, &m_dst, col, 0.0f); //描画値変更
+	Image()->DrawEx(58, &m_src, &m_dst, col, 0.0f); //描画値変更
 
 	//ギミック名前描画
 	Font()->StrDraw("パソコン", m_iXpos, m_iYpos, 20, col);
@@ -1766,9 +1827,9 @@ void GimmickMusician::Draw() {
 
 	//切り取り先座標
 	m_dst.top = 0;
-	m_dst.bottom = 200;
-	m_dst.left = 0;
-	m_dst.right = 360;
+	m_dst.bottom = 300;
+	m_dst.left = 800;
+	m_dst.right = 200;
 
 	//転送先座標
 	m_src.top = m_iYpos;
@@ -1777,7 +1838,7 @@ void GimmickMusician::Draw() {
 	m_src.right = m_src.left + m_iWidth;
 
 	//描画
-	Image()->DrawEx(9, &m_src, &m_dst, col, 0.0f); //描画値変更
+	Image()->DrawEx(EX_WOMANALL, &m_src, &m_dst, col, 0.0f); //描画値変更
 
 	//ギミック名前描画
 	Font()->StrDraw("演奏家", m_iXpos, m_iYpos, 20, col);

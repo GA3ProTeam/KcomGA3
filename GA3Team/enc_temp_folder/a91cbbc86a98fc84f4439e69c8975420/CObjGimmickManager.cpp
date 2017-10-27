@@ -50,7 +50,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 	*/
 	SavedataManeger()->Setcurrentdata();
 
-	//m_Stage_ID = 21;
+	m_Stage_ID = 32;
 
 	switch (m_Stage_ID) {
 		//チュートリアル（博士）ステージ--------------------------
@@ -266,7 +266,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 		m_gimmick_firetruck = new Gimmickfiretruck();
 		Obj()->InsertObj(m_gimmick_firetruck, GIMMICK_FIRETRUCK, 5, this->m_pScene, HIT_BOX_OFF);
 		m_gimmick_firetruck->Init(-430, -120, 400, 450, 1);
-		break;
+
 	case 22:
 		//シオンのステージ3のギミック生成
 		m_gimmick_granny = new GimmickGranny();
@@ -538,7 +538,7 @@ void CObjGimmickManager::Action() {
 
 		//コウネステージ2
 		m_iKoune2_flg = 1;
-		for (unsigned int i = 0; i < m_bKoune2_flg_list.size(); i++) {
+		for (unsigned int i = 0; i < m_bKoune1_flg_list.size(); i++) {
 			m_bKoune2_flg_list[i] = false;
 		}
 
@@ -550,13 +550,6 @@ void CObjGimmickManager::Action() {
 
 		// コウネステージ5
 		m_Koune5_flg = KOUNE5_TALK_START;
-
-
-		/*g_SavedataManeger->CurrentData->m_stage[SION].stage1clear = true;
-		g_SavedataManeger->CurrentData->m_stage[SION].stage2clear = true;
-		g_SavedataManeger->CurrentData->m_stage[SION].stage3clear = true;
-		g_SavedataManeger->CurrentData->m_stage[SION].stage4clear = true;
-		g_SavedataManeger->CurrentData->m_stage[SION].stage5clear = true;*/
 
 	}
 	//↑【セーブデータの初期化（デバッグ用）】------------------------------------------
@@ -1328,16 +1321,9 @@ void CObjGimmickManager::Action() {
 
 		m_Koune5_sound_num = m_gimmick_mysterydoor->m_getsound.sound_num; //音番号取得
 		if (m_Koune5_gim_flg[0] == 2 && m_pMenuTab->isabilty()) {
-			if (m_gimmick_oldman->m_getsound.sound_num == KOUNE5_MECHANICAL_SOUND_A &&
-				m_gimmick_oldman->m_getsound.sound_volume == BALL_VOL_BIG) {
-				//A'
+			//if (/*Aの音量を下げるorBの音量を上げる*/) {
 				m_Koune5_sound_num += 1000;
-			}
-			if (m_gimmick_oldman->m_getsound.sound_num == KOUNE5_MECHANICAL_SOUND_B &&
-				m_gimmick_oldman->m_getsound.sound_volume == BALL_VOL_SMALL) {
-				//B'
-				m_Koune5_sound_num += 1000;
-			}
+			//}
 		}
 
 		//扉の謎解き...ランプの処理...音番号判定
@@ -1500,11 +1486,11 @@ void CObjGimmickManager::Action() {
 			m_Sion1_flg = SION1_CLEAR;
 			//ステージセレクト画面に移行
 			Manager()->Pop(new CSceneStageSelect);
-
-			break;
+		}
+		break;
 	case 21:
 		//イヤホン男と会話フラグON
-
+		m_gimmick_earphone->m_bActionFlg = true;
 		//static int m_Sion2_flg = SION2_TOLK_START;
 		//m_gimmick_oven->m_bActionFlg = false;
 		//初回会話
@@ -1531,16 +1517,16 @@ void CObjGimmickManager::Action() {
 			m_gimmick_earphone->m_bActionFlg = true;
 		}
 		//コウネ会話開始
-		if (m_gimmick_koune ->m_ball[0].OnPush) {
+		if (m_Sion2_flg == SION2_KOUNE_FLAG_NO) {
 			Overlay()->talkDraw(SION, SION2_KOUNE_FLAG_NO);
 			//会話終了
 			if (Overlay()->NextWait()) {
 				m_Sion2_flg = SION2_KOUNE_FLAG_NO_END;
 			}
 		}
-	/*	else if (m_gimmick_koune->m_ball[0].OnPush&& == true) {
+		else if (m_Sion2_flg == SION2_KOUNE_FLAG_YES) {
 
-		}*/
+		}
 		break;
 	case 22:
 		//if (m_Sion3_flg == SION3_TOLK_START) {
@@ -1668,32 +1654,32 @@ void CObjGimmickManager::Action() {
 				if (!User()->m_bmerueruability) {
 
 					Overlay()->talkDraw(MERUERU, MERUERU_KATUO_1_OFF);
-
+				
 				}
 				//能力あり
 				else {
 
 					Overlay()->talkDraw(MERUERU, MERUERU_KATUO_1_ON);
-
+					
 				}
 				break;
 				//カツオ会話1-2
 			case MERUERU1_KATSUO_TALK1_2:
-
+				
 				Overlay()->talkDraw(MERUERU, MERUERU_KATUO_1_2);
-
+				
 				break;
 				//カツオ会話2
 			case MERUERU1_KATSUO_TALK2:
 
 				Overlay()->talkDraw(MERUERU, MERUERU_KATUO_2);
-
+				
 				break;
 				//カツオ会話3
 			case MERUERU1_KATSUO_TALK3:
 
 				Overlay()->talkDraw(MERUERU, MERUERU_KATUO_3);
-
+				
 				break;
 				//カツオ口笛
 			case MERUERU1_KATSUO_TALK_END:
@@ -1751,7 +1737,7 @@ void CObjGimmickManager::Action() {
 		}
 
 		//レンジ音使用でステージクリア
-		if (m_gimmick_doctorroomdoor->m_ball[0].m_sound_data.sound_num == 1) {
+		if (m_gimmick_doctorroomdoor->m_ball[0].m_sound_data.sound_num == 1){
 
 
 
@@ -1791,8 +1777,10 @@ void CObjGimmickManager::Action() {
 		}
 		break;
 	}
-		}
-		}
+
+	}
+	
+	
 }
 
 //ドロー
@@ -2042,5 +2030,4 @@ void CObjGimmickManager::Draw() {
 		//メルエルステージ↑------------------------------------------------------------
 	}
 }
-
 

@@ -436,12 +436,8 @@ void CObjGimmickManager::Action() {
 		KOUNE5_FLG1,
 		KOUNE5_FLG2,
 		KOUNE5_FLG3,
-		//録音---------
-		KOUNE5_SOUND_REC_A,						//機械音A_録音
-		KOUNE5_SOUND_REC_B,						//機械音B_録音
-		KOUNE5_SOUND_REC_Ad,					//機械音A'_録音
-		KOUNE5_SOUND_REC_Bd,
-	};
+
+};
 
 	//イベント番号(メルエルステージ1)
 	enum MERUERU1_NUMBER {

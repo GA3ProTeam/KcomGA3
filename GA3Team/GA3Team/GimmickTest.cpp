@@ -476,7 +476,7 @@ void Gimmickkoune::Draw()
 	m_src.right = m_src.left + m_iWidth;
 
 	//描画
-	Image()->DrawEx(17, &m_src, &m_dst, col, 0.0f); //描画値変更
+	Image()->DrawEx(EX_OTHER_KOUNE_CHARA, &m_src, &m_dst, col, 0.0f); //描画値変更
 	//---------------------------------------------------------------------------
 
 	//レコーダーを取得した後から吹き出し出現
@@ -520,7 +520,7 @@ void Gimmickcat::Draw()
 	m_src.right = m_src.left + m_iWidth;
 
 	//描画
-	Image()->DrawEx(16, &m_src, &m_dst, col, 0.0f); //描画値変更
+	Image()->DrawEx(EX_ANIMALALL, &m_src, &m_dst, col, 0.0f); //描画値変更
 	//---------------------------------------------------------------------------
 
 	//レコーダーを取得した後から吹き出し出現

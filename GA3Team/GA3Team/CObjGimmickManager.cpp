@@ -50,7 +50,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 	*/
 	SavedataManeger()->Setcurrentdata();
 
-	//m_Stage_ID = 32;
+	m_Stage_ID = 32;
 
 	switch (m_Stage_ID) {
 		//チュートリアル（博士）ステージ--------------------------
@@ -1060,8 +1060,6 @@ void CObjGimmickManager::Action() {
 			m_Koune3_flg == KOUNE3_FLG5;
 		}
 
-
-
 		//----音を聞かせる--------------------------------------------------------------------------------
 
 		//子猫の鳴き声を聞かせる
@@ -1073,7 +1071,6 @@ void CObjGimmickManager::Action() {
 				Overlay()->talkDraw(KOUNE, KOUNE3_OBA_CAT_LISTEN);
 			}
 		}
-
 
 		//少女
 		//子猫の鳴き声を聞かせる

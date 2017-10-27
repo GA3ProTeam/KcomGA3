@@ -112,11 +112,14 @@ void Gimmick::gimmicDraw(int num)
 
 				//押していない状態に初期化
 				m_ball[i].OnPush = false;
-
+				//音の連続再生を防止するためのフラグ
+				static bool soundcount = true;
 				//範囲内にあるかないか
 				if ((mousex > m_src.left&& mousex < m_src.right)
 					&& (mousey > m_src.top && mousey < m_src.bottom)) {
 					flg = true;
+					
+					//-----------------------------------------------------------------------------
 				}
 				else {
 					flg = false;
@@ -137,10 +140,18 @@ void Gimmick::gimmicDraw(int num)
 						m_ball[i].OnPush = true;//押下フラグオン
 						this;
 					}
+					//音を再生---------------------------------------------------------------------
+					if (soundcount == true)
+					{
+						Audio()->Start(m_ball[i].m_sound_data.sound_num);
+						soundcount = false;
+
+					}
 				}
 				//マウスが範囲外
 				else {
 					m_ball[i].m_bOnceFlg = false;//一回クリックフラグを戻しておく
+					soundcount=true;
 				}
 			}
 		}

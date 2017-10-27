@@ -274,7 +274,7 @@ void GimmickAunt::Draw() {
 	m_dst.bottom = m_dst.top + 382; m_dst.right = m_dst.left - 129;
 
 	//“]‘—æÀ•W
-	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
+	m_src.top = m_iYpos; m_src.left = m_iXpos;
 	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
 	//•`‰æ
 	Image()->DrawEx(EX_WOMANALL, &m_src, &m_dst, col, 0.0f);
@@ -310,7 +310,7 @@ void GimmickBird::Draw()		//ƒhƒ[
 	m_dst.bottom = m_dst.top + 201; m_dst.right = m_dst.left + 201;
 
 	//“]‘—æÀ•W
-	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
+	m_src.top = m_iYpos; m_src.left = m_iXpos;
 	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
 	//•`‰æ
 	Image()->DrawEx(EX_ANIMALALL, &m_src, &m_dst, col, 0.0f);
@@ -346,7 +346,7 @@ void Gimmickwatchdog::Draw()		//ƒhƒ[
 	m_dst.bottom = m_dst.top + 201; m_dst.right = m_dst.left + 224;
 
 	//“]‘—æÀ•W
-	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
+	m_src.top = m_iYpos; m_src.left = m_iXpos;
 	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
 	//•`‰æ
 	Image()->DrawEx(EX_ANIMALALL, &m_src, &m_dst, col, 0.0f);
@@ -382,7 +382,7 @@ void GimmickInterphone::Draw()		//ƒhƒ[
 	m_dst.bottom = m_dst.top + 515; m_dst.right = m_dst.left + 310;
 
 	//“]‘—æÀ•W
-	m_src.top = m_iYpos; m_src.left = m_iXpos + User()->mscroll_x;
+	m_src.top = m_iYpos; m_src.left = m_iXpos;
 	m_src.bottom = m_src.top + m_iHeight; m_src.right = m_src.left + m_iWidth;
 	//•`‰æ
 	Image()->DrawEx(EX_INTERPHONE, &m_src, &m_dst, col, 0.0f);

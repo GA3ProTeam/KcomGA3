@@ -127,11 +127,11 @@ void COverlay::InitLoad()
 	audio->LoadAudio(SION3_BAG, "Sound\\シオンステージ\\ステージ3\\袋\\bag.wav");
 	audio->LoadAudio(SION3_WIND_CHIMES, "Sound\\シオンステージ\\ステージ3\\風鈴\\Wind chimes.wav");
 	//シオンステージ4
-	audio->LoadAudio(SION4_BIKE, "Sound\\シオンステージ\\ステージ3\\bike.wav");
+	audio->LoadAudio(SION4_BIKE, "Sound\\シオンステージ\\ステージ4\\bike.wav");
 	//メルエムステージ1
-	audio->LoadAudio(MERUEMU1_RELEASE, "Sound\\メルエムステージ\\ステージ3\\解除音(ドア)\\Release.wav");
-	audio->LoadAudio(MERUEMU1_GUN, "Sound\\メルエムステージ\\ステージ3\\銃声\\gun.wav");
-	audio->LoadAudio(MERUEMU1_MICROWAVE, "Sound\\メルエムステージ\\ステージ3\\電磁レンジ(ピー)\\microwave.wav");
+	audio->LoadAudio(MERUEMU1_RELEASE, "Sound\\メルエルステージ\\ステージ1\\解除音(ドア)\\Release.wav");
+	audio->LoadAudio(MERUEMU1_GUN, "Sound\\メルエルステージ\\ステージ1\\銃声\\gun.wav");
+	audio->LoadAudio(MERUEMU1_MICROWAVE, "Sound\\メルエルステージ\\ステージ1\\電磁レンジ(ピー)\\microwave.wav");
 	//スタート音
 	audio->LoadAudio(START_START4, "Sound\\スタート音（はじめからのボタン）\\start4.wav");
 	//会話音
@@ -244,7 +244,7 @@ void COverlay::Action()
 			m_iFadeFlg = 0;
 			m_fAlpha = 1.0f;
 		}
-
+		//audio->Start(TUTORIAL_BGM);
 	}
 	//フェードアウト
 	else if (m_iFadeFlg == 2) {

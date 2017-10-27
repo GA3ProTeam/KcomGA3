@@ -11,6 +11,8 @@ void CSceneStageSelect::InitScene()
 	Image()->LoadImage("ステージセレクト仮画像.png",0,TEX_SIZE_1024);
 	Image()->LoadImage("メニュータブ(仮).png", 1, TEX_SIZE_256);
 
+	//Audio()->LoadAudio(1, "Sound\\チュートリアル\\fanfare3.wav");
+	//Audio()->LoopStart(1);
 	//ポインタ宣言-----------------------
 	ButtonPlayer *button_player;
 	CObjStageTab *stage_tab;

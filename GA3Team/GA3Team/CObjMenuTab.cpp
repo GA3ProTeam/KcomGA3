@@ -88,14 +88,20 @@ void CObjMenuTab::Action()
 		if (SelectPush(m_isoundx, m_isoundy, 64, 64) && !m_bhavesound) {
 			m_bhavesound = true;//マウスドラッグ開始
 			m_igivesound = 0;//配列[0]番目の音を選択
+			//音を再生----------------------------------------------------------------------
+			SoundManager()->StartSound(m_igivesound);
 		}
 		else if (SelectPush(m_isoundx + 64, m_isoundy, 64, 64) && !m_bhavesound) {
 			m_bhavesound = true;//マウスドラッグ開始
 			m_igivesound = 1;//配列[1]番目の音を選択
+			//音を再生----------------------------------------------------------------------
+			SoundManager()->StartSound(m_igivesound);
 		}
 		else if (SelectPush(m_isoundx + 128, m_isoundy, 64, 64) && !m_bhavesound) {
 			m_bhavesound = true;//マウスドラッグ開始
 			m_igivesound = 2;//配列[2]番目の音を選択
+			 //音を再生----------------------------------------------------------------------
+			SoundManager()->StartSound(m_igivesound);
 
 		}//マウス左クリックが離されたら、ドラッグ＆ドロップ完了
 		else if (!Input()->GetMouButtonL() && m_bhavesound) {
@@ -184,6 +190,7 @@ void CObjMenuTab::Action()
 
 				if (SelectPush(m_iability_x, m_iability_y, 64, 32)) {
 					vol = SOUND_PLUS;
+					g_SoundManeger->soundvol(newslnum, vol);
 					vol = SOUND_NON;
 					flg = false;
 					newslnum = -1;

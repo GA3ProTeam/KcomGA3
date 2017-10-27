@@ -699,6 +699,7 @@ void CObjGimmickManager::Action() {
 				if (Overlay()->NextWait()) {
 					if (Overlay()->NowTalk() == KOUNE1_OZI_FLAG3_YES) {
 						m_gimmick_oldman->m_Status = STATUS_DELETE;
+						m_gimmick_dog->m_Status = STATUS_DELETE;
 						m_gimmick_oldman = NULL;
 						m_Koune1_flg = 4;
 					}
@@ -1427,16 +1428,17 @@ void CObjGimmickManager::Action() {
 				else if (m_Sion1_flg == SION1_ABILITY) {
 					Overlay()->talkDraw(SION, SION1_FLAG1_YES_FLAG2_YES_CLEAR);
 
-					SavedataManeger()->CurrentData->m_stage[SION].stage1clear = true;
+					m_Sion1_flg = SION1_CLEAR;
 					m_gimmick_watchdog->m_Status = STATUS_DELETE;
 				}
 			}
 		}
 
 		//ステージクリア
-		if (SavedataManeger()->CurrentData->m_stage[SION].stage1clear && Overlay()->NextWait()) {
+		if (m_Sion1_flg == SION1_CLEAR && Overlay()->NextWait()) {
 			//SavedataManeger()->Writesavedata();
-			m_Sion1_flg = SION1_CLEAR;
+			
+			SavedataManeger()->CurrentData->m_stage[SION].stage1clear = true;
 			//ステージセレクト画面に移行
 			Manager()->Pop(new CSceneStageSelect);
 		}

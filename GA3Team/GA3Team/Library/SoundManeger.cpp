@@ -36,24 +36,37 @@ void CSoundManeger::SoundSave(SoundData sound/*セーブする音*/) //音をセーブする
 	}
 }
 
-//音を再生する
+//手持ちの音を再生する
 void CSoundManeger::StartSound(int slotNum/*再生する音のスロット番号*/)
 {
 	//各スロットでの音ボリューム情報に応じて音量帰る。
 	if (SoundSlot[slotNum].sound_volume == BALL_VOL_MIDDLE){
-		g_Audio->Volume(10, SoundSlot[slotNum].sound_num);
-		g_Audio->Start(SoundSlot[slotNum].sound_num);
+		if (SoundSlot[slotNum].sound_num != -1)
+		{
+			g_Audio->Volume(10, SoundSlot[slotNum].sound_num);
+			g_Audio->Start(SoundSlot[slotNum].sound_num);
+		}
+		
 	}
 	else if (SoundSlot[slotNum].sound_volume == BALL_VOL_BIG) {
-		g_Audio->Start(SoundSlot[slotNum].sound_num);
-		g_Audio->Volume(15, SoundSlot[slotNum].sound_num);
+		if (SoundSlot[slotNum].sound_num != -1)
+		{
+			g_Audio->Volume(15, SoundSlot[slotNum].sound_num);
+			g_Audio->Start(SoundSlot[slotNum].sound_num);
+
+		}
+		
 	}
 	else if (SoundSlot[slotNum].sound_volume == BALL_VOL_SMALL) {
-		g_Audio->Start(SoundSlot[slotNum].sound_num);
-		g_Audio->Volume(5, SoundSlot[slotNum].sound_num);
+		if (SoundSlot[slotNum].sound_num != -1)
+		{
+			g_Audio->Volume(5, SoundSlot[slotNum].sound_num);
+			g_Audio->Start(SoundSlot[slotNum].sound_num);
+		}
+		
 	}
 	
-	g_Audio->Start(SoundSlot[slotNum].sound_num);
+	//g_Audio->Start(SoundSlot[slotNum].sound_num);
 }
 
 SoundData CSoundManeger::GetSound(int slotNum/*引き出すスロットの番号*/)

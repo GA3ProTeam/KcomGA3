@@ -1429,18 +1429,24 @@ void CObjGimmickManager::Action() {
 					Overlay()->talkDraw(SION, SION1_FLAG1_YES_FLAG2_YES_CLEAR);
 
 					SavedataManeger()->CurrentData->m_stage[SION].stage1clear = true;
+
+				}
+					//ステージクリア
+				if(SavedataManeger()->CurrentData->m_stage[SION].stage1clear == true)
+				{
+					if (Overlay()->NextWait()) {
+						//SavedataManeger()->Writesavedata();
+						m_Sion1_flg = SION1_CLEAR;
+						//ステージセレクト画面に移行
+						Manager()->Pop(new CSceneStageSelect);
+					}
 				}
 			}
 		}
 
 		Overlay()->NextWait();
 
-		//ステージクリア
-		if (SavedataManeger()->CurrentData->m_stage[SION].stage1clear && m_Sion1_flg == SION1_ABILITY) {
-			//SavedataManeger()->Writesavedata();
-			m_Sion1_flg = SION1_CLEAR;
-			//ステージセレクト画面に移行
-			Manager()->Pop(new CSceneStageSelect);
+		
 
 			break;
 	case 21:
@@ -1735,7 +1741,6 @@ void CObjGimmickManager::Action() {
 		}
 		break;
 	}
-		}
 		}
 }
 

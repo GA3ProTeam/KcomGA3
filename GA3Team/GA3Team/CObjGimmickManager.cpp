@@ -46,7 +46,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 	*/
 	SavedataManeger()->Setcurrentdata();
 
-	//m_Stage_ID = 30;
+	//m_Stage_ID = 32;
 
 	switch (m_Stage_ID) {
 		//チュートリアル（博士）ステージ--------------------------
@@ -1035,6 +1035,12 @@ void CObjGimmickManager::Action() {
 			}
 		}
 
+		//フラグ5
+		if (SoundManager()->HaveSound(SION3_CHANT2) && m_Koune3_flg == KOUNE3_FLG4)
+		{
+			m_Koune3_flg == KOUNE3_FLG5;
+		}
+
 
 
 		//----音を聞かせる--------------------------------------------------------------------------------
@@ -1061,7 +1067,7 @@ void CObjGimmickManager::Action() {
 		{
 			//ステージクリア
 			Overlay()->talkDraw(KOUNE, KOUNE3_CLEAR);
-			m_Koune3_tolkingflg = 5;
+			m_Koune3_tolkingflg = 6;
 
 		}
 		//イントロを聞かせる(クリア条件未達成)
@@ -1201,7 +1207,7 @@ void CObjGimmickManager::Action() {
 		{
 			m_Koune3_flg = KOUNE3_FLG4;
 		}
-		else if (m_Koune3_tolkingflg == 5 && Overlay()->NextWait())
+		else if (m_Koune3_tolkingflg == 6 && Overlay()->NextWait())
 		{
 			//クリア
 			SavedataManeger()->CurrentData->m_stage[KOUNE].stage3clear = true;

@@ -13,6 +13,8 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 	//セーブデータへの参照を取得---------------------------------------------------------
 	int& m_Sion1_flg = g_SavedataManeger->CurrentData->m_stage[SION].stage1;
 
+	int& m_Sion2_flg = g_SavedataManeger->CurrentData->m_stage[SION].stage2;
+
 	int& m_Sion3_flg = g_SavedataManeger->CurrentData->m_stage[SION].stage3;
 
 	int& m_Koune1_flg = g_SavedataManeger->CurrentData->m_stage[KOUNE].stage1;
@@ -24,6 +26,8 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 	vector<bool>& m_bKoune2_flg_list = g_SavedataManeger->CurrentData->m_bKoune2_flg_list;
 
 	int& m_iKoune3_flg = g_SavedataManeger->CurrentData->m_stage[KOUNE].stage3;
+
+	int& m_iKoune5_flg = g_SavedataManeger->CurrentData->m_stage[KOUNE].stage5;
 	//-----------------------------------------------------------------------------------
 
 	//メニュータブへの参照セット
@@ -46,7 +50,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 	*/
 	SavedataManeger()->Setcurrentdata();
 
-	//m_Stage_ID = 30;
+	//m_Stage_ID = 32;
 
 	switch (m_Stage_ID) {
 		//チュートリアル（博士）ステージ--------------------------
@@ -432,12 +436,8 @@ void CObjGimmickManager::Action() {
 		KOUNE5_FLG1,
 		KOUNE5_FLG2,
 		KOUNE5_FLG3,
-		//録音---------
-		KOUNE5_SOUND_REC_A,						//機械音A_録音
-		KOUNE5_SOUND_REC_B,						//機械音B_録音
-		KOUNE5_SOUND_REC_Ad,					//機械音A'_録音
-		KOUNE5_SOUND_REC_Bd,
-	};
+
+};
 
 	//イベント番号(メルエルステージ1)
 	enum MERUERU1_NUMBER {
@@ -467,6 +467,9 @@ void CObjGimmickManager::Action() {
 	//【セーブしない】---------------------------------
 	//チュートリアルステージフラグ
 	static int m_itutorialflg = TUTORIAL_WELCOM_TALK;
+	//シオン2ステージ
+	static int m_Sion2_flg;
+
 	//コウネ3ステージ
 	static int m_Koune3_flg;
 	static int m_Koune3_tolkingflg;
@@ -480,6 +483,8 @@ void CObjGimmickManager::Action() {
 
 	//セーブデータへの参照を取得---------------------------------------------------------
 	int& m_Sion1_flg = g_SavedataManeger->CurrentData->m_stage[SION].stage1;
+
+	int& m_Sion2_flg = g_SavedataManeger->CurrentData->m_stage[SION].stage3;
 
 	int& m_Sion3_flg = g_SavedataManeger->CurrentData->m_stage[SION].stage3;
 
@@ -507,6 +512,9 @@ void CObjGimmickManager::Action() {
 
 		//シオンステージ1
 		m_Sion1_flg = SION1_TOLK_START;
+
+		//シオンステージ1
+		m_Sion2_flg = SION2_TOLK_START;
 
 		//シオンステージ3
 		m_Sion3_flg = SION3_TOLK_START;
@@ -1036,6 +1044,12 @@ void CObjGimmickManager::Action() {
 			}
 		}
 
+		//フラグ5
+		if (SoundManager()->HaveSound(SION3_CHANT2) && m_Koune3_flg == KOUNE3_FLG4)
+		{
+			m_Koune3_flg == KOUNE3_FLG5;
+		}
+
 
 
 		//----音を聞かせる--------------------------------------------------------------------------------
@@ -1062,7 +1076,7 @@ void CObjGimmickManager::Action() {
 		{
 			//ステージクリア
 			Overlay()->talkDraw(KOUNE, KOUNE3_CLEAR);
-			m_Koune3_tolkingflg = 5;
+			m_Koune3_tolkingflg = 6;
 
 		}
 		//イントロを聞かせる(クリア条件未達成)
@@ -1202,7 +1216,7 @@ void CObjGimmickManager::Action() {
 		{
 			m_Koune3_flg = KOUNE3_FLG4;
 		}
-		else if (m_Koune3_tolkingflg == 5 && Overlay()->NextWait())
+		else if (m_Koune3_tolkingflg == 6 && Overlay()->NextWait())
 		{
 			//クリア
 			SavedataManeger()->CurrentData->m_stage[KOUNE].stage3clear = true;
@@ -1238,8 +1252,10 @@ void CObjGimmickManager::Action() {
 		// └システムの動作を見たいから扉を開けてみてほしい
 		//    └""フラグ1回収""
 		if (m_gimmick_mysterydoor->m_ball[0].OnPush || m_gimmick_mechanic->m_ball[0].OnPush) {
-			//Overlay()->talkDraw(KOUNE, ); //「駅に行きたいのかな？」
-			m_Koune5_flg = KOUNE5_FLG1;
+			Overlay()->talkDraw(KOUNE, KOUNE5_DOOR_OR_MECHANIC); //「駅に行きたいのかな？」
+			if (Overlay()->NextWait()) {
+				m_Koune5_flg = KOUNE5_FLG1;
+			}
 		}
 
 		//能力を使う
@@ -1248,23 +1264,32 @@ void CObjGimmickManager::Action() {
 		// 　　└""フラグ2回収""
 		if (Input()->GetMouButtonL()) { //能力使用(仮) 一度のみ
 			if (m_Koune5_flg == KOUNE5_FLG1 && m_Koune5_gim_flg[0] == 0) {
-				//Overlay()->talkDraw(KOUNE, ); //「マスクが壊れたのかい？」
-				m_Koune5_flg = KOUNE5_FLG2;
-				m_Koune5_gim_flg[0] = 1;
+				Overlay()->talkDraw(KOUNE, KOUNE5_FLG1_YES_ABILITY); //「マスクが壊れたのかい？」
+				if (Overlay()->NextWait()) {
+					m_Koune5_flg = KOUNE5_FLG2;
+					m_Koune5_gim_flg[0] = 1;
+				}
 			}
 		}
 
 		//メカニックに曲を渡す
 		//フラグ3回収済み
-		if (m_Koune5_flg == KOUNE5_FLG3) {
+		if (m_gimmick_mechanic->m_getsound.sound_num == KOUNE5_SAX) {
 			//メカニック...修理したマスクを渡す
 			//　　　　　　　└音量の変更ができるようになる
 			Overlay()->talkDraw(KOUNE, KOUNE5_MECHANIC_OTO_FLG2_YES); //「これなら作業が捗る！」
-			//能力を使用できるようにする
+			
+			if (Overlay()->NextWait()) {
+				//能力を使用できるようにする
+				m_Koune5_gim_flg[0] = 2;
+			}
 		}//フラグ3未回収
 		else {
 			//メカニック...曲が好みではない
 			Overlay()->talkDraw(KOUNE, KOUNE5_MECHANIC_OTO_NO_FLG2_YES); //「なんだか違う」
+
+			Overlay()->NextWait();
+
 		}
 
 		/*ランプの色...3つ全てを緑にすると扉が開く
@@ -1279,8 +1304,10 @@ void CObjGimmickManager::Action() {
 		*/
 
 		m_Koune5_sound_num = m_gimmick_mysterydoor->m_getsound.sound_num; //音番号取得
-		if (m_Koune5_sound_num == 0/*能力使用*/) {
-			m_Koune5_sound_num += 1000;
+		if (m_Koune5_gim_flg[0] == 2/* && 能力使用*/) {
+			//if (/*Aの音量を下げるorBの音量を上げる*/) {
+				m_Koune5_sound_num += 1000;
+			//}
 		}
 
 		//扉の謎解き...ランプの処理...音番号判定
@@ -1332,8 +1359,12 @@ void CObjGimmickManager::Action() {
 
 			//コウネステージ5 クリア
 			if (Overlay()->NextWait()) {
-				//クリアフラグを立てる
-				 ;
+				//クリア
+				SavedataManeger()->CurrentData->m_stage[KOUNE].stage5clear = true;
+				SavedataManeger()->Writesavedata();
+				//ステージセレクト画面に移行
+				Manager()->Pop(new CSceneStageSelect);
+
 			 }
 		 }
 
@@ -1352,6 +1383,8 @@ void CObjGimmickManager::Action() {
 				}
 			 }
 
+			Overlay()->NextWait();
+
 		 }
 
 		for (int i = 0; i < 3; i++) {
@@ -1364,17 +1397,27 @@ void CObjGimmickManager::Action() {
 		// └演奏家が演奏を聞かせてくれる
 	    //    └""フラグ3回収""
 		if (m_Koune5_gim_flg[1]) {
-			//音を所持している
+			//フラグ3未回収＋音所持
 			Overlay()->talkDraw(KOUNE, KOUNE5_MUSICIANS_FLG4_NO_NO); //「いろいろな音が聴こえる」
-				 m_Koune5_flg = KOUNE5_FLG3;
-			}
-			if (!m_Koune5_gim_flg[1] && m_Koune5_flg == KOUNE5_FLG3) {
-				Overlay()->talkDraw(KOUNE, KOUNE5_MUSICIANS_FLG4_YES_YES); //「演奏を聴いていく？」
-			}
-			if (!m_Koune5_gim_flg[1]) {
-				Overlay()->talkDraw(KOUNE, KOUNE5_MUSICIANS_FLG4_NO_YES); //「演奏を聴いていく？」
+			if (Overlay()->NextWait()) {
 				m_Koune5_flg = KOUNE5_FLG3;
 			}
+			Overlay()->NextWait();
+		}
+		if (!m_Koune5_gim_flg[1] && m_Koune5_flg == KOUNE5_FLG3) {
+			//フラグ3回収済み＋音未所持
+			Overlay()->talkDraw(KOUNE, KOUNE5_MUSICIANS_FLG4_YES_YES); //「演奏を聴いていく？」
+			if (Overlay()->NextWait()) {
+				m_Koune5_flg = KOUNE5_FLG3;
+			}
+		}
+		if (!m_Koune5_gim_flg[1]) {
+			//フラグ3未回収+音未所持
+			Overlay()->talkDraw(KOUNE, KOUNE5_MUSICIANS_FLG4_NO_YES); //「演奏を聴いていく？」
+			if (Overlay()->NextWait()) {
+				m_Koune5_flg = KOUNE5_FLG3;
+			}
+		}
 						 
 		break;
 
@@ -1424,10 +1467,65 @@ void CObjGimmickManager::Action() {
 			m_Sion1_flg = SION1_CLEAR;
 			//ステージセレクト画面に移行
 			Manager()->Pop(new CSceneStageSelect);
-		}
 
 		break;
 	case 21:
+		//イヤホン男と会話フラグON
+		m_gimmick_earphone->m_bActionFlg = true;
+
+		//コウネ会話開始
+		if (m_Sion2_flg == SION2_KOUNE_FLAG_NO) {
+			Overlay()->talkDraw(SION, SION2_KOUNE_FLAG_NO);
+			//会話終了
+			if (Overlay()->NextWait()) {
+				m_Sion2_flg = SION2_KOUNE_FLAG_NO_END;
+			}
+		}
+		else if (m_Sion2_flg == SION2_KOUNE_FLAG_YES) {
+
+		}
+
+		//猫の音取得
+		if (m_gimmick_firetruck->m_ball[0].OnPush) {
+
+		}
+
+		//static int m_Sion2_flg = SION2_TOLK_START;
+		//m_gimmick_oven->m_bActionFlg = false;
+		//初回会話
+		if (m_Sion2_flg == SION2_TOLK_START) {
+			Overlay()->talkDraw(SION, SION2_START);
+
+			//会話終了
+			if (Overlay()->NextWait()) {
+				m_Sion2_flg = SION2_TOLK_END;
+			}
+
+		}
+		//イヤホン男会話開始
+		if (m_Sion2_flg == SION2_IYAHON_START) {
+			Overlay()->talkDraw(SION, SION2_IYAHON_START);
+			//会話終了
+			if (Overlay()->NextWait()) {
+				m_Sion2_flg = SION2_IYAHON_END;
+			}
+			//再度吹き出し表示
+			Overlay()->NextWait();
+
+			//イヤホン男と会話フラグON
+			m_gimmick_earphone->m_bActionFlg = true;
+		}
+		//コウネ会話開始
+		if (m_Sion2_flg == SION2_KOUNE_FLAG_NO) {
+			Overlay()->talkDraw(SION, SION2_KOUNE_FLAG_NO);
+			//会話終了
+			if (Overlay()->NextWait()) {
+				m_Sion2_flg = SION2_KOUNE_FLAG_NO_END;
+			}
+		}
+		else if (m_Sion2_flg == SION2_KOUNE_FLAG_YES) {
+
+		}
 		break;
 	case 22:
 		//if (m_Sion3_flg == SION3_TOLK_START) {
@@ -1619,6 +1717,7 @@ void CObjGimmickManager::Action() {
 			//会話終了
 			if (Overlay()->NextWait()) {
 				m_iMerueru1 = MERUERU1_KATSUO_TALK_END;
+				m_gimmick_oven->m_bActionFlg = true;
 			}
 		}
 

@@ -50,7 +50,7 @@ void ButtonPlayer::Draw()
 	int image_id = 0;
 
 	if (m_iCharacterNumber == TUTORIAL) {
-		image_id = 0;
+		image_id = EX_BUTTON_PLAYER_TUTORIAL;
 	}
 	else if (m_iCharacterNumber == KOUNE) {
 		image_id = EX_BUTTON_PLAYER_KOUNE;

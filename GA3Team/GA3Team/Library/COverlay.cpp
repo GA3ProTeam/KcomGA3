@@ -80,7 +80,12 @@ void COverlay::InitLoad()
 	image->LoadImageEx("音量ボタン.png", EX_VOLBOTTON, TEX_SIZE_512);
 	image->LoadImageEx("アイコン透過.png", EX_ICON, TEX_SIZE_512);
 
+	//タイトル画面----------------------------------
+	image->LoadImageEx("タイトル案3.png", EX_TITLE, TEX_SIZE_1024);
+	//----------------------------------------------
+
 	//ステージセレクト画面--------------------------
+	image->LoadImageEx("博士(プレート).png", EX_BUTTON_PLAYER_TUTORIAL, TEX_SIZE_128);
 	image->LoadImageEx("コウネ(プレート).png", EX_BUTTON_PLAYER_KOUNE, TEX_SIZE_128);
 	image->LoadImageEx("シオン(プレート).png", EX_BUTTON_PLAYER_SION, TEX_SIZE_128);
 	image->LoadImageEx("メルエル(プレート).png", EX_BUTTON_PLAYER_MERUERU, TEX_SIZE_128);

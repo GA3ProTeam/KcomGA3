@@ -94,20 +94,6 @@ void GimmickDoctor::Draw() {
 	//ƒMƒ~ƒbƒN–¼‘O•`‰æ
 	//Font()->StrDraw("”ŽŽm", m_iXpos, m_iYpos, 20, col);
 
-	////•`‰æ
-	////Ø‚èŽæ‚èæÀ•W
-	//m_dst.top = 0;
-	//m_dst.bottom = m_dst.top + 301;
-	//m_dst.left = 0;
-	//m_dst.right = m_dst.left + 210;
-
-	////“]‘—æÀ•W
-	//m_src.top = 0;
-	//m_src.bottom = m_src.top + 301;
-	//m_src.left = 0;
-	//m_src.right = m_src.left + 210;
-	//Image()->DrawEx(EX_OTHER_KOUNE_DATA, &m_src, &m_dst, col, 0.0f);  //ƒRƒEƒl
-
 	//ƒMƒ~ƒbƒN‚Ì“®ì•‚«o‚µ‚Ì“®ìE•`‰æ
 	this->gimmicDraw(1);
 }

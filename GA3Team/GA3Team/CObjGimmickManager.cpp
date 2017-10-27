@@ -46,7 +46,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 
 	m_Stage_ID = ((select_chara + 1) * 10) + stage_id;
 
-	m_Stage_ID = 32;
+	//m_Stage_ID = 32;
 
 	/*
 	m_Stage_ID
@@ -477,8 +477,6 @@ void CObjGimmickManager::Action() {
 			m_bKoune3_flg_list[i] = false;
 		}
 		m_Koune3_tolkingflg = 0;
-
-		//m_Koune3_flg = KOUNE3_FLG2;
 
 		// コウネステージ5
 		m_Koune5_flg = KOUNE5_TALK_START;

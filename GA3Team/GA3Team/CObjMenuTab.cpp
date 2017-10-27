@@ -175,6 +175,7 @@ void CObjMenuTab::Action()
 
 				if (SelectPush(m_iability_x, m_iability_y, 64, 32)) {
 					vol = SOUND_PLUS;
+					g_SoundManeger->soundvol(newslnum, vol);
 					vol = SOUND_NON;
 					flg = false;
 					newslnum = -1;

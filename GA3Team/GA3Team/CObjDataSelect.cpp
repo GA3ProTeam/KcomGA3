@@ -118,14 +118,14 @@ void CObjDataSelect::Draw()
 
 	//マウス位置描画　デバック用
 	char x[32], y[32];
-	sprintf(x, "%d", Input()->m_x);
-	sprintf(y, "%d", Input()->m_y);
+	sprintf(x, "タイトルに戻る", Input()->m_x);
+	//sprintf(y, "%d", Input()->m_y);
 
 	float col[4]     = { 1.0f,1.0f,1.0f,1.0f };
 	float coltext[4] = { 1.0f,1.0f,1.0f,1.0f };
 	float coldraw[4] = { 1.0f,1.0f,1.0f,1.0f };
 
-	//Font()->StrDraw(x, 0, 16, 16, coltext);
+	Font()->StrDraw(x, 30, 540, 20, coltext);
 	//Font()->StrDraw(y, 0, 32, 16, coltext);
 
 	//-------------------------------------------

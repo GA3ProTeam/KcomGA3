@@ -38,7 +38,7 @@ void CSceneStageSelect::InitScene()
 	//メニュータブ生成
 	CObjMenuTab* obj_menutab = new CObjMenuTab();
 	Obj()->InsertObj(obj_menutab, OBJ_MENUTAB, 5, this, HIT_BOX_OFF);
-	obj_menutab->Init(500);
+	obj_menutab->Init(500,1);
 }
 
 //シーン実行

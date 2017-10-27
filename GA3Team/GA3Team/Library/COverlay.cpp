@@ -3,8 +3,6 @@
 void COverlay::InitLoad()
 {
 	//Image
-	image->LoadImageEx("各ステージで使用するギミック仮画像.png", 58, TEX_SIZE_1024);
-	image->LoadImageEx("bb.png", 59, TEX_SIZE_512);
 	image->LoadImageEx("orga2.png", 60, TEX_SIZE_1024);
 	image->LoadImageEx("yjt.png", 61, TEX_SIZE_512);
 	image->LoadImageEx("orga.png", 62, TEX_SIZE_512);
@@ -16,6 +14,7 @@ void COverlay::InitLoad()
 	image->LoadImageEx("おじいさんc.png", EX_KOUNE_OJICHAN, TEX_SIZE_512);
 	image->LoadImageEx("マンホール.png", EX_KOUNE_MANHOLE, TEX_SIZE_1024);
 	image->LoadImageEx("マンホールの穴.png", EX_KOUNE_MANHOLE_HOLE, TEX_SIZE_1024);
+	image->LoadImageEx("男性.png", EX_MALE, TEX_SIZE_1024);
 	//コウネ2-----------------------------------
 	image->LoadImageEx("強気少年.png", EX_KOUNE_STRONG_BOY, TEX_SIZE_512);
 	image->LoadImageEx("少年.png", EX_BOY, TEX_SIZE_1024);
@@ -51,6 +50,7 @@ void COverlay::InitLoad()
 	image->LoadImageEx("電子レンジ.png", EX_MERUERU_MICROWAVE, TEX_SIZE_512);
 	image->LoadImageEx("博士c.png", EX_MERUERU_HAKASE, TEX_SIZE_512);
 	image->LoadImageEx("壁掛けテレビ.png", EX_MERUERU_TELEVISION, TEX_SIZE_512);
+	image->LoadImageEx("メルエル表情.png", EX_MERUERU, TEX_SIZE_1024);
 	//動物------------------------------------------
 	image->LoadImageEx("動物まとめ.png", EX_ANIMALALL, TEX_SIZE_1024);
 	//メインキャラクター----------------------------
@@ -76,6 +76,7 @@ void COverlay::InitLoad()
 	image->LoadImageEx("ヴォイスレコーダ.png", EX_VOICE_RECORDER, TEX_SIZE_512);
 	image->LoadImageEx("パソコン.png", EX_COMPUTER, TEX_SIZE_512);
 	image->LoadImageEx("机.png", EX_DESK, TEX_SIZE_1024);
+	image->LoadImageEx("研究系.png", EX_LABO_CHARA, TEX_SIZE_1024);
 	//----------------------------------------------
 	image->LoadImageEx("音量ボタン.png", EX_VOLBOTTON, TEX_SIZE_512);
 	image->LoadImageEx("アイコン透過.png", EX_ICON, TEX_SIZE_1024);
@@ -90,6 +91,11 @@ void COverlay::InitLoad()
 	image->LoadImageEx("シオン(プレート).png", EX_BUTTON_PLAYER_SION, TEX_SIZE_128);
 	image->LoadImageEx("メルエル(プレート).png", EX_BUTTON_PLAYER_MERUERU, TEX_SIZE_128);
 	image->LoadImageEx("枠.png", EX_STAGE_TAB_FRAME, TEX_SIZE_1024);
+	//----------------------------------------------
+
+	//会話シーンUI----------------------------------
+	image->LoadImageEx("各ステージで使用するギミック仮画像.png", EX_GIMMICK_KARI, TEX_SIZE_1024);
+	image->LoadImageEx("bb.png", EX_FADE_OUT, TEX_SIZE_512);
 	//----------------------------------------------
 
 	//サウンド読み込み↓---------------------------------------------------------------------------
@@ -622,7 +628,7 @@ void COverlay::Draw()
 		backsrc.bottom = backsrc.top + 600;
 		backsrc.right = backsrc.left + 800;
 
-		image->DrawEx(59, &backsrc, &backdst, m_fBackColor, 0.0f);
+		image->DrawEx(EX_FADE_OUT, &backsrc, &backdst, m_fBackColor, 0.0f);
 		//-------------------背景終------------------------
 
 
@@ -705,15 +711,20 @@ void COverlay::Draw()
 					m_talk_expression_list[dir][chara] = m_tmpsearch;
 					continue;
 				}
+				//「一同」なら全員明るくする
+				else if (strcmp(m_strTempName.c_str(), "一同") == 0) {
+					col[0] = 1.0f;
+					col[1] = 1.0f;
+					col[2] = 1.0f;
+				}
 				//現在発言中のキャラでなければ、暗くする
 				else {
 					col[0] = 0.5f;
 					col[1] = 0.5f;
 					col[2] = 0.5f;
 				}
-
 				//キャラクター描画
-				//DrawCharacter(talk_data->name.c_str(), m_talk_expression_list[dir][chara].c_str(), dir, chara, col);
+				DrawCharacter(talk_data->name.c_str(), m_talk_expression_list[dir][chara].c_str(), dir, chara, col);
 			}
 		}
 
@@ -729,7 +740,7 @@ void COverlay::Draw()
 			col[1] = 1.0f;
 			col[2] = 1.0f;
 			talk_data = &m_Chara_talk_chara_list->data[m_iNowDrawDir][talk_chara];
-			//DrawCharacter(talk_data->name.c_str(), m_talk_expression_list[m_iNowDrawDir][talk_chara].c_str(), m_iNowDrawDir, talk_chara, col);
+			DrawCharacter(talk_data->name.c_str(), m_talk_expression_list[m_iNowDrawDir][talk_chara].c_str(), m_iNowDrawDir, talk_chara, col);
 		}
 		//---------------------------------------------------
 
@@ -925,14 +936,68 @@ void COverlay::DrawCharacter(const char* name, const char* expression, int dir, 
 					 //画像アドレス
 	int image_id = 0;
 
+	//切り取りXYオフセット座標
+	int dst_ofs_x = 0;
+	int dst_ofs_y = 0;
+
+	//転送先Yオフセット座標
+	int src_ofs_y = 100;
+
 	//表情リスト
 	char* ex_list[EX_MAX][EX_SHARE_MAX] = { NULL };
 	//----------------------------------------
 
 	//キャラクター名
+	if (strcmp(name, "犬") == 0) {
+		//画像アドレス指定
+		image_id = EX_ANIMALALL;
+
+		hori_num = 1;//横に並んでいる数
+
+					 //切り取りオフセット座標
+		dst_ofs_x = 0;
+		dst_ofs_y = 800;
+
+		//切り取り幅高
+		width = 230;
+		height = 200;
+
+		//転送先オフセット座標
+		src_ofs_y = 200;
+
+		//転送幅高
+		show_width = 230;
+		show_height = 200;
+
+		//表情リスト
+		char* ex_list_cpy[EX_MAX][EX_SHARE_MAX] = { { "普" } };
+		memcpy(ex_list, ex_list_cpy, sizeof(ex_list));
+	}
+
+	//キャラクター名
+	if (strcmp(name, "おばちゃん") == 0) {
+		//画像アドレス指定
+		image_id = EX_WOMANALL;
+
+		hori_num = 3;//横に並んでいる数
+
+					 //切り取り幅高
+		width = 140;
+		height = 380;
+
+		//転送幅高
+		show_width = 140;
+		show_height = 380;
+
+		//表情リスト
+		char* ex_list_cpy[EX_MAX][EX_SHARE_MAX] = { { "普" },{ "笑" },{ "困" } };
+		memcpy(ex_list, ex_list_cpy, sizeof(ex_list));
+	}
+
+	//キャラクター名
 	if (strcmp(name, "博士") == 0) {
 		//画像アドレス指定
-		image_id = EX_KOUNE_MASK_YES;
+		image_id = EX_LABO_CHARA;
 
 		hori_num = 5;//横に並んでいる数
 
@@ -945,38 +1010,42 @@ void COverlay::DrawCharacter(const char* name, const char* expression, int dir, 
 		show_height = 380;
 
 		//表情リスト
-		char* ex_list_cpy[EX_MAX][EX_SHARE_MAX] = { { "普" },{ "汗" } };
+		char* ex_list_cpy[EX_MAX][EX_SHARE_MAX] = { { "普","笑" },{ "汗" } };
 		memcpy(ex_list, ex_list_cpy, sizeof(ex_list));
 	}
 
 	//キャラクター名
 	if (strcmp(name, "メルエル") == 0) {
 		//画像アドレス指定
-		image_id = EX_KOUNE_MASK_YES;
+		image_id = EX_MERUERU;
 
 		hori_num = 5;//横に並んでいる数
 
 					 //切り取り幅高
-		width = 200;
+		width = 180;
 		height = 380;
 
 		//転送幅高
-		show_width = 200;
+		show_width = 180;
 		show_height = 380;
 
 		//表情リスト
-		char* ex_list_cpy[EX_MAX][EX_SHARE_MAX] = { { "普" },{ "笑","微笑" },{ "驚" },{ "不思議" },{ "汗" },{ "寂","悲" },{ "呆" },{ "考","怒" } };
+		char* ex_list_cpy[EX_MAX][EX_SHARE_MAX] = { { "普" },{ "笑","微笑" },{ "驚" },{ "？" },{ "汗" },{ "寂","悲" },{ "呆" },{ "考","怒" } };
 		memcpy(ex_list, ex_list_cpy, sizeof(ex_list));
 	}
 
 	//キャラクター名
 	if (strcmp(name, "カツオ") == 0) {
 		//画像アドレス指定
-		image_id = EX_KOUNE_MASK_YES;
+		image_id = EX_LABO_CHARA;
 
 		hori_num = 5;//横に並んでいる数
 
-					 //切り取り幅高
+					 //切り取りオフセット座標
+		dst_ofs_x = 400;
+		dst_ofs_y = 0;
+
+		//切り取り幅高
 		width = 200;
 		height = 380;
 
@@ -997,11 +1066,11 @@ void COverlay::DrawCharacter(const char* name, const char* expression, int dir, 
 		hori_num = 5;//横に並んでいる数
 
 					 //切り取り幅高
-		width = 200;
+		width = 180;
 		height = 380;
 
 		//転送幅高
-		show_width = 200;
+		show_width = 180;
 		show_height = 380;
 
 		//表情リスト
@@ -1017,15 +1086,15 @@ void COverlay::DrawCharacter(const char* name, const char* expression, int dir, 
 		hori_num = 5;//横に並んでいる数
 
 					 //切り取り幅高
-		width = 200;
+		width = 180;
 		height = 380;
 
 		//転送幅高
-		show_width = 200;
+		show_width = 180;
 		show_height = 380;
 
 		//表情リスト
-		char* ex_list_cpy[EX_MAX][EX_SHARE_MAX] = { { "笑" },{ "疑" },{ "驚" },{ "見つけた時の顔","ひらめき" },{ "困","悩" },{ "考" } };
+		char* ex_list_cpy[EX_MAX][EX_SHARE_MAX] = { { "笑","普" },{ "疑" },{ "驚" },{ "見つけた時の顔","ひらめき" },{ "呆" },{ "困","悩" },{ "考" } };
 		memcpy(ex_list, ex_list_cpy, sizeof(ex_list));
 	}
 
@@ -1037,76 +1106,89 @@ void COverlay::DrawCharacter(const char* name, const char* expression, int dir, 
 		hori_num = 5;//横に並んでいる数
 
 					 //一つの表情の画像幅と高さ
-		width = 200;
+		width = 170;
 		height = 300;
 
 		//切り取り幅高
-		width = 200;
+		width = 170;
 		height = 300;
 
+		//転送先オフセットY座標
+		src_ofs_y = 150;
+
 		//転送幅高
-		show_width = 200;
+		show_width = 170;
 		show_height = 300;
 
 		//表情リスト
-		char* ex_list_cpy[EX_MAX][EX_SHARE_MAX] = { { "普" },{ "嬉" },{ "怒" },{ "疑" },{ "困","しょんぼり","寂","不安" },{ "あわてる" },{ "不思議" },{ "驚" },{ "考" } };
+		char* ex_list_cpy[EX_MAX][EX_SHARE_MAX] = { { "普" },{ "嬉","笑","微笑" },{ "怒" },{ "疑" },{ "困","しょんぼり","寂","不安" },{ "慌" },{ "不思議" },{ "驚" },{ "考","照" } };
 		memcpy(ex_list, ex_list_cpy, sizeof(ex_list));
 	}
 
 	//キャラクター名
 	if (strcmp(name, "少年A") == 0) {
 		//画像アドレス指定
-		image_id = EX_KOUNE_STRONG_BOY;
+		image_id = EX_BOY;
 
-		hori_num = 1;//横に並んでいる数
+		hori_num = 6;//横に並んでいる数
 
-					 //切り取り幅高
-		width = 512;
-		height = 512;
+					 //切り取りオフセット座標
+		dst_ofs_x = 0;
+		dst_ofs_y = 300;
+
+		//切り取り幅高
+		width = 160;
+		height = 300;
+
+		//転送先オフセットY座標
+		src_ofs_y = 150;
 
 		//転送幅高
-		show_width = 200;
+		show_width = 160;
 		show_height = 300;
 
 		//表情リスト
-		char* ex_list_cpy[EX_MAX][EX_SHARE_MAX] = { { "普","困","焦","怒","驚","考" } };
+		char* ex_list_cpy[EX_MAX][EX_SHARE_MAX] = { { "普" },{ "笑" },{ "困" },{ "焦" },{ "怒" },{ "驚" },{ "考" } };
 		memcpy(ex_list, ex_list_cpy, sizeof(ex_list));
 	}
 
 	//キャラクター名
 	if (strcmp(name, "少年B") == 0) {
 		//画像アドレス指定
-		image_id = EX_KOUNE_STRONG_BOY;
+		image_id = EX_BOY;
 
-		hori_num = 1;//横に並んでいる数
+		hori_num = 6;//横に並んでいる数
 
 					 //切り取り幅高
-		width = 512;
-		height = 512;
+		width = 100;
+		height = 300;
+
+		//転送先オフセットY座標
+		src_ofs_y = 150;
 
 		//転送幅高
-		show_width = 200;
+		show_width = 100;
 		show_height = 300;
 
 		//表情リスト
-		char* ex_list_cpy[EX_MAX][EX_SHARE_MAX] = { { "普","困","笑","驚","慌","疑" } };
+		char* ex_list_cpy[EX_MAX][EX_SHARE_MAX] = { { "普" },{ "困" },{ "笑" },{ "驚" },{ "慌","焦" },{ "疑" } };
 		memcpy(ex_list, ex_list_cpy, sizeof(ex_list));
 	}
 
 	//キャラクター名
 	if (strcmp(name, "イヤホン男") == 0) {
 		//画像アドレス指定
-		image_id = EX_KOUNE_MASK_YES;
+		image_id = EX_SION_BYCYCLE;
 
-		hori_num = 5;//横に並んでいる数
+		hori_num = 1;//横に並んでいる数
 
 					 //切り取り幅高
 		width = 200;
-		height = 380;
+		height = 360;
 
 		//転送幅高
 		show_width = 200;
-		show_height = 380;
+		show_height = 360;
 
 		//表情リスト
 		char* ex_list_cpy[EX_MAX][EX_SHARE_MAX] = { { "普" } };
@@ -1116,20 +1198,24 @@ void COverlay::DrawCharacter(const char* name, const char* expression, int dir, 
 	//キャラクター名
 	if (strcmp(name, "おじいさん") == 0) {
 		//画像アドレス指定
-		image_id = EX_KOUNE_MASK_YES;
+		image_id = EX_MALE;
 
 		hori_num = 5;//横に並んでいる数
 
-					 //切り取り幅高
-		width = 200;
-		height = 380;
+					 //切り取りオフセット座標
+		dst_ofs_x = 274;
+		dst_ofs_y = 0;
+
+		//切り取り幅高
+		width = 160;
+		height = 360;
 
 		//転送幅高
-		show_width = 200;
-		show_height = 380;
+		show_width = 160;
+		show_height = 360;
 
 		//表情リスト
-		char* ex_list_cpy[EX_MAX][EX_SHARE_MAX] = { { "普" },{ "困" },{ "驚" } };
+		char* ex_list_cpy[EX_MAX][EX_SHARE_MAX] = { { "普","笑" },{ "困" },{ "驚" } };
 		memcpy(ex_list, ex_list_cpy, sizeof(ex_list));
 	}
 
@@ -1151,8 +1237,8 @@ void COverlay::DrawCharacter(const char* name, const char* expression, int dir, 
 			}
 
 			//切り取り座標
-			leftdst.top = (ex / hori_num)*height; //exが横端(hori_num)に達すると1下へ進む
-			leftdst.left = (ex % hori_num)*width;//0～hori_num-1を繰り返し
+			leftdst.top = dst_ofs_y + (ex / hori_num)*height; //exが横端(hori_num)に達すると1下へ進む
+			leftdst.left = dst_ofs_x + (ex % hori_num)*width;//0～hori_num-1を繰り返し
 			leftdst.bottom = leftdst.top + height;
 			leftdst.right = leftdst.left + width;
 
@@ -1167,15 +1253,15 @@ ROOP_END:
 	//表示X座標決定
 	//左
 	if (dir == CHARA_LEFT) {
-		leftsrc.left = (WINDOW_SIZE_W / 2 - width - 50) - dir_count * 100;
+		leftsrc.left = (WINDOW_SIZE_W / 2 - width - 50) - dir_count * 130;
 	}
 	//右
 	else {
-		leftsrc.left = (WINDOW_SIZE_W / 2 + 50) + dir_count * 100;
+		leftsrc.left = (WINDOW_SIZE_W / 2 + 50) + dir_count * 130;
 	}
 
 	//転送先座標
-	leftsrc.top = 100;
+	leftsrc.top = src_ofs_y;
 	//leftは↑で決定しています。
 	leftsrc.bottom = leftsrc.top + show_height;
 	leftsrc.right = leftsrc.left + show_width;

@@ -167,27 +167,27 @@ void CObjDataSelect::Draw()
 				//ステージクリアカウント初期化
 				stage_clear_count = 0;
 
-				////ステージクリア数をカウント
-				//if (save_data->m_stage[chara].stage1clear) {
-				//	stage_clear_count++;
-				//}
-				//if (save_data->m_stage[chara].stage2clear) {
-				//	stage_clear_count++;
-				//}
-				//if (save_data->m_stage[chara].stage3clear) {
-				//	stage_clear_count++;
-				//}
-				//if (save_data->m_stage[chara].stage4clear) {
-				//	stage_clear_count++;
-				//}
-				//if (save_data->m_stage[chara].stage5clear) {
-				//	stage_clear_count++;
-				//}
-				//if (save_data->m_stage[chara].stage6clear) {
-				//	stage_clear_count++;
-				//}
+				//ステージクリア数をカウント
+				if (save_data->m_stage[chara].stage1clear) {
+					stage_clear_count++;
+				}
+				if (save_data->m_stage[chara].stage2clear) {
+					stage_clear_count++;
+				}
+				if (save_data->m_stage[chara].stage3clear) {
+					stage_clear_count++;
+				}
+				if (save_data->m_stage[chara].stage4clear) {
+					stage_clear_count++;
+				}
+				if (save_data->m_stage[chara].stage5clear) {
+					stage_clear_count++;
+				}
+				if (save_data->m_stage[chara].stage6clear) {
+					stage_clear_count++;
+				}
 
-				stage_clear_count = 6;
+				//stage_clear_count = 6;
 
 				//各キャラクターごとに切り取り座標設定
 				if (chara==KOUNE) {

@@ -335,10 +335,14 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 		m_gimmick_television = new GimmickTelevision();
 		Obj()->InsertObj(m_gimmick_television, GIMMICK_TELEVISION, 5, this->m_pScene, HIT_BOX_OFF);
 		m_gimmick_television->Init(50, 200, 255, 155, 1);
+		//動作フラグ停止
+		m_gimmick_television->m_bActionFlg = false;
 
 		m_gimmick_oven = new GimmickOven();
 		Obj()->InsertObj(m_gimmick_oven, GIMMICK_OVEN, 5, this->m_pScene, HIT_BOX_OFF);
 		m_gimmick_oven->Init(-335, 235, 300, 150, 1);
+		//動作フラグ停止
+		m_gimmick_oven->m_bActionFlg = false;
 
 		m_gimmick_katsuo = new GimmickKatsuo();
 		Obj()->InsertObj(m_gimmick_katsuo, GIMMICK_KATSUO, 5, this->m_pScene, HIT_BOX_OFF);
@@ -512,6 +516,9 @@ void CObjGimmickManager::Action() {
 	vector<bool>& m_bKoune3_flg_list = g_SavedataManeger->CurrentData->m_bKoune3_flg_list;
 
 	int& m_iKoune5_flg = g_SavedataManeger->CurrentData->m_stage[KOUNE].stage5;
+
+	int& m_iMerueru1 = g_SavedataManeger->CurrentData->m_stage[MERUERU].stage1;
+	vector<bool>& m_bMerueru1_flg_list = g_SavedataManeger->CurrentData->m_bMerueru1_flg_list;
 	//-----------------------------------------------------------------------------------
 
 	//↓【ここからセーブデータの初期化（デバッグ用）】-----------------------------------
@@ -560,7 +567,21 @@ void CObjGimmickManager::Action() {
 		m_Koune5_flg = KOUNE5_TALK_START;
 
 
-	
+		//メルエルステージ1
+		m_iMerueru1 = MERUERU1_WELCOM_TALK;
+		for (unsigned int i = 0; i < m_bMerueru1_flg_list.size(); i++) {
+			m_bMerueru1_flg_list[i] = false;
+		}
+		
+
+
+
+		/*g_SavedataManeger->CurrentData->m_stage[SION].stage1clear = true;
+		g_SavedataManeger->CurrentData->m_stage[SION].stage2clear = true;
+		g_SavedataManeger->CurrentData->m_stage[SION].stage3clear = true;
+		g_SavedataManeger->CurrentData->m_stage[SION].stage4clear = true;
+		g_SavedataManeger->CurrentData->m_stage[SION].stage5clear = true;*/
+
 	}
 	//↑【セーブデータの初期化（デバッグ用）】------------------------------------------
 
@@ -1645,8 +1666,7 @@ void CObjGimmickManager::Action() {
 		//メルエル1
 	case 40:
 	{
-		static int m_iMerueru1 = MERUERU1_WELCOM_TALK;
-		m_gimmick_oven->m_bActionFlg = false;
+		
 
 
 		//初回会話
@@ -1738,6 +1758,8 @@ void CObjGimmickManager::Action() {
 			if (Overlay()->NextWait()) {
 				m_iMerueru1 = MERUERU1_KATSUO_TALK_END;
 				m_gimmick_oven->m_bActionFlg = true;
+				m_gimmick_katsuo->m_bActionFlg = false;
+				
 			}
 		}
 
@@ -1756,15 +1778,14 @@ void CObjGimmickManager::Action() {
 		}
 
 		//レンジ音使用でステージクリア
-		if (m_gimmick_doctorroomdoor->m_ball[0].m_sound_data.sound_num == 1) {
+		if (m_gimmick_doctorroomdoor->m_getsound.sound_num != -1) {
 
-
-
+			//クリア
+			SavedataManeger()->CurrentData->m_stage[MERUERU].stage1clear = true;
+			SavedataManeger()->Writesavedata();
+			//ステージセレクト画面に移行
+			Manager()->Pop(new CSceneStageSelect);
 		}
-
-
-
-
 	}
 	case 41:
 		break;

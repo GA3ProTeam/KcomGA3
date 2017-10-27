@@ -2037,7 +2037,7 @@ void GimmickOven::Init(int xpos, int ypos, int widht, int height, int balloonnum
 	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
 
 	//‚«o‚µ‚Ì‰Šú‰»
-	InitBall(&m_ball[0], m_iWidth - 100, -48, sound, 1, RED, LOWER_LEFT);
+	InitBall(&m_ball[0], m_iWidth - 100, -48, sound, MERUEMU1_MICROWAVE, RED, LOWER_LEFT);
 }
 
 void GimmickOven::Destructor()

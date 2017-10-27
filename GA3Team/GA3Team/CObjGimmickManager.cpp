@@ -1171,7 +1171,7 @@ void CObjGimmickManager::Action() {
 		}
 		else if (m_Koune3_tolkingflg == 2 && Overlay()->NextWait())
 		{
-			m_gimmick_mynah->m_Status = STATUS_DELETE;//子猫削除		   
+			m_gimmick_kitten->m_Status = STATUS_DELETE;//子猫削除		   
 			m_Koune3_flg = KOUNE3_FLG2;
 		}
 		else if (m_Koune3_tolkingflg == 3 && Overlay()->NextWait())
@@ -1428,11 +1428,10 @@ void CObjGimmickManager::Action() {
 					Overlay()->talkDraw(SION, SION1_FLAG1_YES_FLAG2_YES_CLEAR);
 
 					SavedataManeger()->CurrentData->m_stage[SION].stage1clear = true;
+					m_gimmick_watchdog->m_Status = STATUS_DELETE;
 				}
 			}
 		}
-
-		
 
 		//ステージクリア
 		if (SavedataManeger()->CurrentData->m_stage[SION].stage1clear && Overlay()->NextWait()) {
@@ -1446,8 +1445,6 @@ void CObjGimmickManager::Action() {
 
 			break;
 	case 21:
-		//static int m_Sion2_flg = SION2_TOLK_START
-
 
 		//初回会話
 		if (m_Sion2_flg == SION2_TALK_START) {

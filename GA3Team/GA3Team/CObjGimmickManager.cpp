@@ -46,7 +46,6 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 
 	m_Stage_ID = ((select_chara + 1) * 10) + stage_id;
 
-	//m_Stage_ID = 32;
 
 	/*
 	m_Stage_ID
@@ -1433,15 +1432,17 @@ void CObjGimmickManager::Action() {
 			}
 		}
 
-		Overlay()->NextWait();
+		
 
 		//ステージクリア
-		if (SavedataManeger()->CurrentData->m_stage[SION].stage1clear && m_Sion1_flg == SION1_ABILITY) {
+		if (SavedataManeger()->CurrentData->m_stage[SION].stage1clear && Overlay()->NextWait()) {
 			//SavedataManeger()->Writesavedata();
 			m_Sion1_flg = SION1_CLEAR;
 			//ステージセレクト画面に移行
 			Manager()->Pop(new CSceneStageSelect);
 		}
+
+		Overlay()->NextWait();
 
 			break;
 	case 21:

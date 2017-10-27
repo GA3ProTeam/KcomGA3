@@ -748,7 +748,7 @@ void GimmickMynah::Init(int xpos, int ypos, int widht, int height, int balloonnu
 	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
 
 	//吹き出しの初期化
-	InitBall(&m_ball[0], 48, -48, sound, 1, PINK, LOWER_LEFT);
+	InitBall(&m_ball[0], 48, -48, sound, SION3_CHANT2, PINK, LOWER_LEFT);
 }
 void GimmickMynah::Destructor()	//デストラクタ
 {
@@ -827,7 +827,7 @@ void GimmickWindchime::Init(int xpos, int ypos, int widht, int height, int ballo
 	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
 
 	//吹き出しの初期化
-	InitBall(&m_ball[0], 48, -48, sound, 1, PURPLE, LOWER_LEFT);
+	InitBall(&m_ball[0], 48, -48, sound, SION3_WIND_CHIMES, PURPLE, LOWER_LEFT);
 }
 void GimmickWindchime::Destructor()	//デストラクタ
 {
@@ -1469,7 +1469,7 @@ void GimmickKitten::Init(int xpos, int ypos, int widht, int height, int balloonn
 	//親クラスのInit関数を呼ぶ
 	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
 	//吹き出しの初期化
-	InitBall(&m_ball[0],48, -48, sound, 1, ORANGE, LOWER_LEFT);
+	InitBall(&m_ball[0],48, -48, sound, KOUNE3_KITTY, ORANGE, LOWER_LEFT);
 }
 //デストラクタ
 void GimmickKitten::Destructor()
@@ -1511,7 +1511,7 @@ void GimmickCicada::Init(int xpos, int ypos, int widht, int height, int balloonn
 	//親クラスのInit関数を呼ぶ
 	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
 	//吹き出しの初期化
-	InitBall(&m_ball[0],48, -48, sound, 1, GREEN, LOWER_LEFT);
+	InitBall(&m_ball[0],48, -48, sound, KOUNE3_CICADA, GREEN, LOWER_LEFT);
 }
 //デストラクタ
 void GimmickCicada::Destructor()

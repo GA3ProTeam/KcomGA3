@@ -18,7 +18,7 @@ void CObjStageTab::Init() {
 	m_istage_open[0] = 1;
 	m_istage_open[1] = 2;
 	m_istage_open[2] = 2;
-	m_istage_open[3] = 1;
+	m_istage_open[3] = 2;
 
 	//ステージ開放数を加算-------------------------------------------------
 	//チュートリアルをクリア

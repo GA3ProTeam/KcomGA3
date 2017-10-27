@@ -1503,44 +1503,49 @@ void CObjGimmickManager::Action() {
 
 			break;
 	case 21:
-		//イヤホン男と会話フラグON
+		//static int m_Sion2_flg = SION2_TOLK_START
 
-		//static int m_Sion2_flg = SION2_TOLK_START;
-		//m_gimmick_oven->m_bActionFlg = false;
+
 		//初回会話
 		if (m_Sion2_flg == SION2_TALK_START) {
 			Overlay()->talkDraw(SION, SION2_START);
 
 			//会話終了
 			if (Overlay()->NextWait()) {
-				m_Sion2_flg = SION2_TALK_END;
+				m_Sion2_flg = SION2_KOUNE_FLAG_NO;
 			}
-
 		}
+
 		//イヤホン男会話開始
 		if (m_gimmick_earphone->m_ball[0].OnPush) {
 			Overlay()->talkDraw(SION, SION2_IYAHON_START);
+		}
+		if (Overlay()->NowTalk() == SION2_IYAHON_START) {
 			//会話終了
 			if (Overlay()->NextWait()) {
-				m_Sion2_flg = SION2_IYAHON_END;
+				m_Sion2_flg = SION2_KOUNE_FLAG_YES;
 			}
-			//再度吹き出し表示
-			Overlay()->NextWait();
-
-			//イヤホン男と会話フラグON
-			m_gimmick_earphone->m_bActionFlg = true;
 		}
+
 		//コウネ会話開始
 		if (m_gimmick_koune ->m_ball[0].OnPush) {
-			Overlay()->talkDraw(SION, SION2_KOUNE_FLAG_NO);
+			if (m_Sion2_flg == SION2_KOUNE_FLAG_NO) {
+				Overlay()->talkDraw(SION, SION2_KOUNE_FLAG_NO);
+			}
+			else if (m_Sion2_flg == SION2_KOUNE_FLAG_YES) {
+				Overlay()->talkDraw(SION, SION2_KOUNE_FLAG_YES);
+			}			
+		}
+		Overlay()->NextWait();
+
+		if (Overlay()->NowTalk() == SION2_KOUNE_FLAG_YES) {
 			//会話終了
 			if (Overlay()->NextWait()) {
-				m_Sion2_flg = SION2_KOUNE_FLAG_NO_END;
+				m_Sion2_flg = SION2_KOUNE_FLAG_YES_END;
 			}
 		}
-	/*	else if (m_gimmick_koune->m_ball[0].OnPush&& == true) {
 
-		}*/
+
 		break;
 	case 22:
 		//if (m_Sion3_flg == SION3_TOLK_START) {

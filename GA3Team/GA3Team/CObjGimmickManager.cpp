@@ -13,6 +13,8 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 	//セーブデータへの参照を取得---------------------------------------------------------
 	int& m_Sion1_flg = g_SavedataManeger->CurrentData->m_stage[SION].stage1;
 
+	int& m_Sion2_flg = g_SavedataManeger->CurrentData->m_stage[SION].stage2;
+
 	int& m_Sion3_flg = g_SavedataManeger->CurrentData->m_stage[SION].stage3;
 
 	int& m_Koune1_flg = g_SavedataManeger->CurrentData->m_stage[KOUNE].stage1;
@@ -24,6 +26,8 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 	vector<bool>& m_bKoune2_flg_list = g_SavedataManeger->CurrentData->m_bKoune2_flg_list;
 
 	int& m_iKoune3_flg = g_SavedataManeger->CurrentData->m_stage[KOUNE].stage3;
+
+	int& m_iKoune5_flg = g_SavedataManeger->CurrentData->m_stage[KOUNE].stage5;
 	//-----------------------------------------------------------------------------------
 
 	//メニュータブへの参照セット
@@ -169,7 +173,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 		//子猫
 		m_gimmick_kitten = new GimmickKitten();
 		Obj()->InsertObj(m_gimmick_kitten, GIMMICK_KITTEN, 5, this->m_pScene, HIT_BOX_OFF);
-		m_gimmick_kitten->Init(500, 450, 100, 100, 1);
+		m_gimmick_kitten->Init(500, 400, 100, 100, 1);
 
 		//蝉
 		m_gimmick_cicada = new GimmickCicada();
@@ -432,12 +436,8 @@ void CObjGimmickManager::Action() {
 		KOUNE5_FLG1,
 		KOUNE5_FLG2,
 		KOUNE5_FLG3,
-		//録音---------
-		KOUNE5_SOUND_REC_A,						//機械音A_録音
-		KOUNE5_SOUND_REC_B,						//機械音B_録音
-		KOUNE5_SOUND_REC_Ad,					//機械音A'_録音
-		KOUNE5_SOUND_REC_Bd,
-	};
+
+};
 
 	//イベント番号(メルエルステージ1)
 	enum MERUERU1_NUMBER {
@@ -455,6 +455,7 @@ void CObjGimmickManager::Action() {
 		SION1_TOLK_END,
 		SION1_TOLK_AUNT,
 		SION1_ABILITY,
+		SION1_CLEAR,
 	};
 	//イベント番号(シオンステージ3)
 	enum SION3_NUMBER {
@@ -466,6 +467,9 @@ void CObjGimmickManager::Action() {
 	//【セーブしない】---------------------------------
 	//チュートリアルステージフラグ
 	static int m_itutorialflg = TUTORIAL_WELCOM_TALK;
+	//シオン2ステージ
+	static int m_Sion2_flg;
+
 	//コウネ3ステージ
 	static int m_Koune3_flg;
 	static int m_Koune3_tolkingflg;
@@ -480,6 +484,8 @@ void CObjGimmickManager::Action() {
 	//セーブデータへの参照を取得---------------------------------------------------------
 	int& m_Sion1_flg = g_SavedataManeger->CurrentData->m_stage[SION].stage1;
 
+	int& m_Sion2_flg = g_SavedataManeger->CurrentData->m_stage[SION].stage3;
+
 	int& m_Sion3_flg = g_SavedataManeger->CurrentData->m_stage[SION].stage3;
 
 	int& m_Koune1_flg = g_SavedataManeger->CurrentData->m_stage[KOUNE].stage1;
@@ -491,6 +497,8 @@ void CObjGimmickManager::Action() {
 	vector<bool>& m_bKoune2_flg_list = g_SavedataManeger->CurrentData->m_bKoune2_flg_list;
 
 	int& m_iKoune3_flg = g_SavedataManeger->CurrentData->m_stage[KOUNE].stage3;
+
+	int& m_iKoune5_flg = g_SavedataManeger->CurrentData->m_stage[KOUNE].stage5;
 	//-----------------------------------------------------------------------------------
 
 	//↓【ここからセーブデータの初期化（デバッグ用）】-----------------------------------
@@ -506,6 +514,9 @@ void CObjGimmickManager::Action() {
 
 		//シオンステージ1
 		m_Sion1_flg = SION1_TOLK_START;
+
+		//シオンステージ1
+		m_Sion2_flg = SION2_TOLK_START;
 
 		//シオンステージ3
 		m_Sion3_flg = SION3_TOLK_START;
@@ -1045,74 +1056,61 @@ void CObjGimmickManager::Action() {
 
 		//----音を聞かせる--------------------------------------------------------------------------------
 
-		//子猫の鳴き声を聞かせる
-		if (m_gimmick_granny->m_getsound.sound_num != -1) {
-			if (m_gimmick_granny->m_getsound.sound_color == ORANGE /*m_gimmick_granny->m_getsound.sound_num == KOUNE3_KITTY*/) {
+		//子猫の音を録音している
+		if (m_gimmick_granny->m_getsound.sound_num == KOUNE3_KITTY) {
 
-				KOUNE3_KITTY; //子猫の鳴き声
-							  //おばあちゃん「あら、その鳴き声は...」
-				Overlay()->talkDraw(KOUNE, KOUNE3_OBA_CAT_LISTEN);
-			}
+			KOUNE3_KITTY; //子猫の鳴き声
+						  //おばあちゃん「あら、その鳴き声は...」
+			Overlay()->talkDraw(KOUNE, KOUNE3_OBA_CAT_LISTEN);
 		}
 
 
 		//少女
 		//子猫の鳴き声を聞かせる
-		if (m_gimmick_little_girl->m_getsound.sound_num != -1) {
-			if (m_gimmick_little_girl->m_getsound.sound_num == KOUNE3_KITTY)
-			{
-				//少女「かわいい声ね！」
-				Overlay()->talkDraw(KOUNE, KOUNE3_GIRLA_CAT_LISTEN);
-			}
+		if (m_gimmick_little_girl->m_getsound.sound_num == KOUNE3_KITTY)
+		{
+			//少女「かわいい声ね！」
+			Overlay()->talkDraw(KOUNE, KOUNE3_GIRLA_CAT_LISTEN);
 		}
-
 		//九官鳥
-		if (m_gimmick_mynah->m_getsound.sound_num != -1) {
+		//イントロを聞かせる(クリア条件達成)
+		else if (m_gimmick_mynah->m_getsound.sound_num == SION3_CHANT2 && m_Koune3_flg == KOUNE3_FLG5)
+		{
+			//ステージクリア
+			Overlay()->talkDraw(KOUNE, KOUNE3_CLEAR);
+			m_Koune3_tolkingflg = 6;
 
-			//イントロを聞かせる(クリア条件達成)
-			if (m_gimmick_mynah->m_getsound.sound_num == SION3_CHANT2 && m_Koune3_flg == KOUNE3_FLG5)
-			{
-				//ステージクリア
-				Overlay()->talkDraw(KOUNE, KOUNE3_CLEAR);
-				m_Koune3_tolkingflg = 6;
-
-			}
-			//イントロを聞かせる(クリア条件未達成)
-			else if (m_gimmick_mynah->m_getsound.sound_num == SION3_CHANT2 && m_Koune3_flg != KOUNE3_FLG5)
-			{
-				//九ちゃん「...。」
-				Overlay()->talkDraw(KOUNE, KOUNE3_MYNAH_KOUNE_SOUND_LISTEN);
-			}
-			//フラグ3が立っている＆小さい音を聞かせる
-			else if (m_Koune3_flg == KOUNE3_FLG3 && m_gimmick_mynah->m_getsound.sound_volume == 1)
-			{
-				//九ちゃん「ミギ！ニバンメ！！...」
-				Overlay()->talkDraw(KOUNE, KOUNE3_MYNAH_SOUND_SMALL_FLAG3_YES);
-				//フラグ4
-				m_Koune3_tolkingflg = 4;
-			}
 		}
-	
+		//イントロを聞かせる(クリア条件未達成)
+		else if (m_gimmick_mynah->m_getsound.sound_num == SION3_CHANT2 && m_Koune3_flg != KOUNE3_FLG5)
+		{
+			//九ちゃん「...。」
+			Overlay()->talkDraw(KOUNE, KOUNE3_MYNAH_KOUNE_SOUND_LISTEN);
+		}
+		//フラグ3が立っている＆小さい音を聞かせる
+		else if (m_Koune3_flg == KOUNE3_FLG3 && m_gimmick_mynah->m_getsound.sound_volume == 1)
+		{
+			//九ちゃん「ミギ！ニバンメ！！...」
+			Overlay()->talkDraw(KOUNE, KOUNE3_MYNAH_SOUND_SMALL_FLAG3_YES);
+			//フラグ4
+			m_Koune3_tolkingflg = 4;
+		}
 		//子猫
-		if (m_gimmick_kitten->m_getsound.sound_num != -1) {
+		//犬の鳴き声を聞かせる
+		else if (m_gimmick_kitten->m_getsound.sound_num == KOUNE1_DOG && m_gimmick_mynah->m_getsound.sound_volume == 10)
+		{
+			//子猫「にゃーーーん」
+			Overlay()->talkDraw(KOUNE, KOUNE3_CAT_ABILITY_DOG_SOUND_LISTEN);
 
-			//犬の鳴き声を聞かせる
-			if (m_gimmick_kitten->m_getsound.sound_num == KOUNE1_DOG && m_gimmick_mynah->m_getsound.sound_volume == 10)
-			{
-				//子猫「にゃーーーん」
-				Overlay()->talkDraw(KOUNE, KOUNE3_CAT_ABILITY_DOG_SOUND_LISTEN);
+			//フラグ2
+			m_Koune3_tolkingflg = 2;
 
-				//フラグ2
-				m_Koune3_tolkingflg = 2;
-
-			}
-			//犬の鳴き声以外の音を聞かせる
-			else
-			{
-				//子猫「にゃーー」
-				Overlay()->talkDraw(KOUNE, KOUNE3_CAT_EXCEPTION_SOUND_LISTEN);
-			}
-			
+		}
+		//犬の鳴き声以外の音を聞かせる
+		else if (m_gimmick_kitten->m_getsound.sound_num != -1)
+		{
+			//子猫「にゃーー」
+			Overlay()->talkDraw(KOUNE, KOUNE3_CAT_EXCEPTION_SOUND_LISTEN);
 		}
 
 		//---フキダシにクリック---------------------------------------------------------------------------
@@ -1278,14 +1276,14 @@ void CObjGimmickManager::Action() {
 
 		//メカニックに曲を渡す
 		//フラグ3回収済み
-		if (m_Koune5_flg == KOUNE5_FLG3) {
+		if (m_gimmick_mechanic->m_getsound.sound_num == KOUNE5_SAX) {
 			//メカニック...修理したマスクを渡す
 			//　　　　　　　└音量の変更ができるようになる
 			Overlay()->talkDraw(KOUNE, KOUNE5_MECHANIC_OTO_FLG2_YES); //「これなら作業が捗る！」
 			
 			if (Overlay()->NextWait()) {
 				//能力を使用できるようにする
-				;
+				m_Koune5_gim_flg[0] = 2;
 			}
 		}//フラグ3未回収
 		else {
@@ -1308,8 +1306,10 @@ void CObjGimmickManager::Action() {
 		*/
 
 		m_Koune5_sound_num = m_gimmick_mysterydoor->m_getsound.sound_num; //音番号取得
-		if (m_Koune5_sound_num == 0/*能力使用*/) {
-			m_Koune5_sound_num += 1000;
+		if (m_Koune5_gim_flg[0] == 2/* && 能力使用*/) {
+			//if (/*Aの音量を下げるorBの音量を上げる*/) {
+				m_Koune5_sound_num += 1000;
+			//}
 		}
 
 		//扉の謎解き...ランプの処理...音番号判定
@@ -1361,8 +1361,12 @@ void CObjGimmickManager::Action() {
 
 			//コウネステージ5 クリア
 			if (Overlay()->NextWait()) {
-				//クリアフラグを立てる
-				 ;
+				//クリア
+				SavedataManeger()->CurrentData->m_stage[KOUNE].stage5clear = true;
+				SavedataManeger()->Writesavedata();
+				//ステージセレクト画面に移行
+				Manager()->Pop(new CSceneStageSelect);
+
 			 }
 		 }
 
@@ -1425,61 +1429,105 @@ void CObjGimmickManager::Action() {
 
 		//-シオンステージ-----------------------------------------
 	case 20:
-		//if (m_Sion1_flg == SION1_TOLK_START) {
-		//	Overlay()->talkDraw(SION, SION1_START);
-		//
-		//	m_Sion1_flg = SION1_TOLK_END;
-		//}
-		//
-		//else if (m_gimmick_aunt->m_ball[0].OnPush) {
-		//	Overlay()->talkDraw(SION, SION1_BBA);
-		//
-		//	m_Sion1_flg = SION1_TOLK_AUNT;
-		//}
-		//
-		////能力使用時に、フラグ2が立つ
-		//else if (m_Sion1_flg == SION1_TOLK_AUNT && m_pMenuTab->isabilty()) {
-		//	m_Sion1_flg = SION1_ABILITY;
-		//}
-		//else if (m_gimmick_watchdog->m_getsound.sound_num != -1) {
-		//	if (m_gimmick_watchdog->m_getsound.sound_color == BLUE) {
-		//		if (m_Sion1_flg == 0) {
-		//			Overlay()->talkDraw(SION, SION1_FLAG1_NO);
-		//		}
-		//		else if (m_Sion1_flg == SION1_TOLK_AUNT) {
-		//			Overlay()->talkDraw(SION, SION1_FLAG1_YES_FLAG2_NO_CLEAR);
-		//		}
-		//		else if (m_Sion1_flg == SION1_ABILITY) {
-		//			Overlay()->talkDraw(SION, SION1_FLAG1_YES_FLAG2_YES_CLEAR);
-		//
-		//			SavedataManeger()->CurrentData->m_stage[SION].stage1clear = true;
-		//		}
-		//	}
-		//}
-		//
-		//Overlay()->NextWait();
-		//
-		//	//イヤホン男と会話フラグON
-		//	m_gimmick_earphone->m_bActionFlg = true;
-		//}
-		////コウネ会話開始
-		//if (m_Sion2_flg == SION2_KOUNE_FLAG_NO) {
-		//	Overlay()->talkDraw(SION, SION2_KOUNE_FLAG_NO);
-		//	//会話終了
-		//	if (Overlay()->NextWait()) {
-		//		m_Sion2_flg = SION2_KOUNE_FLAG_NO_END;
-		//	}
-		//}
-		//else if (m_Sion2_flg == SION2_KOUNE_FLAG_YES) {
-		//
-		//}
-		//
-		////猫の音取得
-		//if (m_gimmick_firetruck->m_ball[0].OnPush) {
-		//
-		//}
+		if (m_Sion1_flg == SION1_TOLK_START) {
+			Overlay()->talkDraw(SION, SION1_START);
+
+			m_Sion1_flg = SION1_TOLK_END;
+		}
+
+		else if (m_gimmick_aunt->m_ball[0].OnPush) {
+			Overlay()->talkDraw(SION, SION1_BBA);
+
+			m_Sion1_flg = SION1_TOLK_AUNT;
+		}
+
+		//能力使用時に、フラグ2が立つ
+		else if (m_Sion1_flg == SION1_TOLK_AUNT && m_pMenuTab->isabilty()) {
+			m_Sion1_flg = SION1_ABILITY;
+		}
+		else if (m_gimmick_watchdog->m_getsound.sound_num != -1) {
+			if (m_gimmick_watchdog->m_getsound.sound_color == BLUE) {
+				if (m_Sion1_flg == 0) {
+					Overlay()->talkDraw(SION, SION1_FLAG1_NO);
+				}
+				else if (m_Sion1_flg == SION1_TOLK_AUNT) {
+					Overlay()->talkDraw(SION, SION1_FLAG1_YES_FLAG2_NO_CLEAR);
+				}
+				else if (m_Sion1_flg == SION1_ABILITY) {
+					Overlay()->talkDraw(SION, SION1_FLAG1_YES_FLAG2_YES_CLEAR);
+
+					SavedataManeger()->CurrentData->m_stage[SION].stage1clear = true;
+				}
+			}
+		}
+
+		Overlay()->NextWait();
+
+		//ステージクリア
+		if (SavedataManeger()->CurrentData->m_stage[SION].stage1clear && m_Sion1_flg == SION1_ABILITY) {
+			//SavedataManeger()->Writesavedata();
+			m_Sion1_flg = SION1_CLEAR;
+			//ステージセレクト画面に移行
+			Manager()->Pop(new CSceneStageSelect);
+
 		break;
 	case 21:
+		//イヤホン男と会話フラグON
+		m_gimmick_earphone->m_bActionFlg = true;
+
+		//コウネ会話開始
+		if (m_Sion2_flg == SION2_KOUNE_FLAG_NO) {
+			Overlay()->talkDraw(SION, SION2_KOUNE_FLAG_NO);
+			//会話終了
+			if (Overlay()->NextWait()) {
+				m_Sion2_flg = SION2_KOUNE_FLAG_NO_END;
+			}
+		}
+		else if (m_Sion2_flg == SION2_KOUNE_FLAG_YES) {
+
+		}
+
+		//猫の音取得
+		if (m_gimmick_firetruck->m_ball[0].OnPush) {
+
+		}
+
+		//static int m_Sion2_flg = SION2_TOLK_START;
+		//m_gimmick_oven->m_bActionFlg = false;
+		//初回会話
+		if (m_Sion2_flg == SION2_TOLK_START) {
+			Overlay()->talkDraw(SION, SION2_START);
+
+			//会話終了
+			if (Overlay()->NextWait()) {
+				m_Sion2_flg = SION2_TOLK_END;
+			}
+
+		}
+		//イヤホン男会話開始
+		if (m_Sion2_flg == SION2_IYAHON_START) {
+			Overlay()->talkDraw(SION, SION2_IYAHON_START);
+			//会話終了
+			if (Overlay()->NextWait()) {
+				m_Sion2_flg = SION2_IYAHON_END;
+			}
+			//再度吹き出し表示
+			Overlay()->NextWait();
+
+			//イヤホン男と会話フラグON
+			m_gimmick_earphone->m_bActionFlg = true;
+		}
+		//コウネ会話開始
+		if (m_Sion2_flg == SION2_KOUNE_FLAG_NO) {
+			Overlay()->talkDraw(SION, SION2_KOUNE_FLAG_NO);
+			//会話終了
+			if (Overlay()->NextWait()) {
+				m_Sion2_flg = SION2_KOUNE_FLAG_NO_END;
+			}
+		}
+		else if (m_Sion2_flg == SION2_KOUNE_FLAG_YES) {
+
+		}
 		break;
 	case 22:
 		//if (m_Sion3_flg == SION3_TOLK_START) {
@@ -1671,6 +1719,7 @@ void CObjGimmickManager::Action() {
 			//会話終了
 			if (Overlay()->NextWait()) {
 				m_iMerueru1 = MERUERU1_KATSUO_TALK_END;
+				m_gimmick_oven->m_bActionFlg = true;
 			}
 		}
 

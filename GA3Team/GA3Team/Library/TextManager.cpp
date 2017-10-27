@@ -185,7 +185,7 @@ void CTextManager::LoadText()
 		for (auto fileitr = filePath_chara->begin(); fileitr != filePath_chara->end(); ++fileitr) {
 
 			//デバッグ用
-			if ((*fileitr).find("Text\\tyu-toriaru\\hakase_clear.bin") != -1) {
+			if ((*fileitr).find("Text\\merueru1\\merueru_katuo_3.bin") != -1) {
 				int a = 0;
 			}
 

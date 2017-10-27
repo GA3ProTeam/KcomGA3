@@ -1924,7 +1924,7 @@ void GimmickTelevision::Init(int xpos, int ypos, int widht, int height, int ball
 	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
 
 	//‚«o‚µ‚Ì‰Šú‰»
-	InitBall(&m_ball[0], m_iWidth - 50, -48, talk, 1, RED, LOWER_LEFT);
+	InitBall(&m_ball[0], m_iWidth - 50, -48, sound, 1, RED, LOWER_LEFT);
 }
 
 void GimmickTelevision::Destructor()
@@ -1976,7 +1976,7 @@ void GimmickOven::Init(int xpos, int ypos, int widht, int height, int balloonnum
 	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
 
 	//‚«o‚µ‚Ì‰Šú‰»
-	InitBall(&m_ball[0], m_iWidth - 50, -48, talk, 1, RED, LOWER_LEFT);
+	InitBall(&m_ball[0], m_iWidth - 50, -48, sound, 1, RED, LOWER_LEFT);
 }
 
 void GimmickOven::Destructor()

@@ -63,7 +63,7 @@ void COverlay::InitLoad()
 	image->LoadImageEx("シオン.png", EX_OTHER_SION_DATA, TEX_SIZE_1024);
 	//吹き出し系統-----------------------------------
 	image->LoadImageEx("アイコン.png", EX_OTHER_ICON, TEX_SIZE_1024);
-	image->LoadImageEx("会話吹き出しまとめ.png", EX_OTHER_BALLOON, TEX_SIZE_1024);
+	image->LoadImageEx("吹き出しまとめ.png", EX_OTHER_BALLOON, TEX_SIZE_1024);
 	//ステージ
 	image->LoadImageEx("シオンステージ-1.png", EX_STAGE_SION_STAGE1, TEX_SIZE_1024);
 	image->LoadImageEx("コウネステージ-1.png", EX_STAGE_KOUNE_STAGE1, TEX_SIZE_1024);
@@ -824,10 +824,10 @@ void COverlay::Draw()
 			}
 
 			//切り取り座標
-			m_dst.top = balloom * 165;
+			m_dst.top = balloom * 250;
 			m_dst.left = 0;
-			m_dst.right = m_dst.left + 310;
-			m_dst.bottom = m_dst.top + 165;
+			m_dst.right = m_dst.left + 600;
+			m_dst.bottom = m_dst.top + 250;
 
 			//転送先座標左上
 			m_src.top = WINDOW_SIZE_H - 250;
@@ -846,7 +846,7 @@ void COverlay::Draw()
 
 			//転送先座標右下
 			m_src.right = m_src.left + 600;
-			m_src.bottom = m_src.top + 280;
+			m_src.bottom = m_src.top + 250;
 
 			image->DrawEx(EX_OTHER_BALLOON, &m_src, &m_dst, m_fBallonColor, 0.0f);
 		}

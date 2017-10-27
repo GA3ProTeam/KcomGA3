@@ -50,7 +50,7 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 	*/
 	SavedataManeger()->Setcurrentdata();
 
-	//m_Stage_ID = 32;
+	m_Stage_ID = 32;
 
 	switch (m_Stage_ID) {
 		//チュートリアル（博士）ステージ--------------------------
@@ -266,8 +266,6 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 		m_gimmick_firetruck = new Gimmickfiretruck();
 		Obj()->InsertObj(m_gimmick_firetruck, GIMMICK_FIRETRUCK, 5, this->m_pScene, HIT_BOX_OFF);
 		m_gimmick_firetruck->Init(-430, -120, 400, 450, 1);
-
-		break;
 
 	case 22:
 		//シオンのステージ3のギミック生成
@@ -540,7 +538,7 @@ void CObjGimmickManager::Action() {
 
 		//コウネステージ2
 		m_iKoune2_flg = 1;
-		for (unsigned int i = 0; i < m_bKoune2_flg_list.size(); i++) {
+		for (unsigned int i = 0; i < m_bKoune1_flg_list.size(); i++) {
 			m_bKoune2_flg_list[i] = false;
 		}
 
@@ -552,13 +550,6 @@ void CObjGimmickManager::Action() {
 
 		// コウネステージ5
 		m_Koune5_flg = KOUNE5_TALK_START;
-
-
-		/*g_SavedataManeger->CurrentData->m_stage[SION].stage1clear = true;
-		g_SavedataManeger->CurrentData->m_stage[SION].stage2clear = true;
-		g_SavedataManeger->CurrentData->m_stage[SION].stage3clear = true;
-		g_SavedataManeger->CurrentData->m_stage[SION].stage4clear = true;
-		g_SavedataManeger->CurrentData->m_stage[SION].stage5clear = true;*/
 
 	}
 	//↑【セーブデータの初期化（デバッグ用）】------------------------------------------
@@ -1330,16 +1321,9 @@ void CObjGimmickManager::Action() {
 
 		m_Koune5_sound_num = m_gimmick_mysterydoor->m_getsound.sound_num; //音番号取得
 		if (m_Koune5_gim_flg[0] == 2 && m_pMenuTab->isabilty()) {
-			if (m_gimmick_oldman->m_getsound.sound_num == KOUNE5_MECHANICAL_SOUND_A &&
-				m_gimmick_oldman->m_getsound.sound_volume == BALL_VOL_BIG) {
-				//A'
+			//if (/*Aの音量を下げるorBの音量を上げる*/) {
 				m_Koune5_sound_num += 1000;
-			}
-			if (m_gimmick_oldman->m_getsound.sound_num == KOUNE5_MECHANICAL_SOUND_B &&
-				m_gimmick_oldman->m_getsound.sound_volume == BALL_VOL_SMALL) {
-				//B'
-				m_Koune5_sound_num += 1000;
-			}
+			//}
 		}
 
 		//扉の謎解き...ランプの処理...音番号判定
@@ -2047,4 +2031,3 @@ void CObjGimmickManager::Draw() {
 	}
 }
 
-}

@@ -1280,7 +1280,7 @@ void CObjGimmickManager::Action() {
 			
 			if (Overlay()->NextWait()) {
 				//能力を使用できるようにする
-				;
+				m_Koune5_gim_flg[0] = 2;
 			}
 		}//フラグ3未回収
 		else {
@@ -1303,8 +1303,10 @@ void CObjGimmickManager::Action() {
 		*/
 
 		m_Koune5_sound_num = m_gimmick_mysterydoor->m_getsound.sound_num; //音番号取得
-		if (m_Koune5_sound_num == 0/*能力使用*/) {
-			m_Koune5_sound_num += 1000;
+		if (m_Koune5_gim_flg[0] == 2/* && 能力使用*/) {
+			//if (/*Aの音量を下げるorBの音量を上げる*/) {
+				m_Koune5_sound_num += 1000;
+			//}
 		}
 
 		//扉の謎解き...ランプの処理...音番号判定

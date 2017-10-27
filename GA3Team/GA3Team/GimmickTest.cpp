@@ -105,7 +105,7 @@ void GimmickComputer::Init(int xpos, int ypos, int widht, int height, int balloo
 	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
 
 	//吹き出しの初期化
-	InitBall(&m_ball[0], m_iWidth - 50, -48, sound, 1, RED, LOWER_LEFT);
+	InitBall(&m_ball[0], m_iWidth - 50, -48, sound, TUTORIAL_BGM, RED, LOWER_LEFT);
 }
 
 //デストラクタ

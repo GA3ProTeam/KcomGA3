@@ -9,33 +9,33 @@ void CObjStageTab::Init() {
 	m_isel_chara_old = -1;
 
 	//各キャラクターのステージ最大数
-	m_istage_num[0]=1;
-	m_istage_num[1]=2;
-	m_istage_num[2]=2;
-	m_istage_num[3]=1;
+	m_istage_num[TUTORIAL]=1;
+	m_istage_num[SION]=2;
+	m_istage_num[KOUNE]=2;
+	m_istage_num[MERUERU]=1;
 
 	//各キャラクターのステージ開放数初期値
-	m_istage_open[0] = 1;
-	m_istage_open[1] = 2;
-	m_istage_open[2] = 2;
-	m_istage_open[3] = 2;
+	m_istage_open[TUTORIAL] = 1;
+	m_istage_open[SION] = 0;
+	m_istage_open[KOUNE] = 0;
+	m_istage_open[MERUERU] = 0;
 
 	//ステージ開放数を加算-------------------------------------------------
 	//チュートリアルをクリア
 	if (g_SavedataManeger->CurrentData->m_btutorial) {
 		//各キャラクターステージ1個開放
-		m_istage_open[1]++;
-		m_istage_open[2]++;
-		m_istage_open[3]++;
+		m_istage_open[SION]++;
+		m_istage_open[KOUNE]++;
+		m_istage_open[MERUERU]++;
 	}
 
 	//コウネ、シオンの1ステージクリア
 	if (g_SavedataManeger->CurrentData->m_stage[KOUNE].stage1clear &&
 		g_SavedataManeger->CurrentData->m_stage[SION].stage1clear) {
 		//各キャラクターステージ1個開放
-		m_istage_open[1]++;
-		m_istage_open[2]++;
-		m_istage_open[3]++;
+		m_istage_open[SION]++;
+		m_istage_open[KOUNE]++;
+		m_istage_open[MERUERU]++;
 	}
 	//--------------------------------------------------------------------
 

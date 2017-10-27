@@ -94,20 +94,6 @@ void GimmickDoctor::Draw() {
 	//ギミック名前描画
 	//Font()->StrDraw("博士", m_iXpos, m_iYpos, 20, col);
 
-	////描画
-	////切り取り先座標
-	//m_dst.top = 0;
-	//m_dst.bottom = m_dst.top + 301;
-	//m_dst.left = 0;
-	//m_dst.right = m_dst.left + 210;
-
-	////転送先座標
-	//m_src.top = 0;
-	//m_src.bottom = m_src.top + 301;
-	//m_src.left = 0;
-	//m_src.right = m_src.left + 210;
-	//Image()->DrawEx(EX_OTHER_KOUNE_DATA, &m_src, &m_dst, col, 0.0f);  //コウネ
-
 	//ギミックの動作＆吹き出しの動作・描画
 	this->gimmicDraw(1);
 }
@@ -1632,7 +1618,7 @@ void GimmickMysteryDoor::Destructor(){
 void GimmickMysteryDoor::Action() {
 
 	//メニュータブへの参照取得
-	//CObjMenuTab* tab = (CObjMenuTab*)Obj()->GetObj(OBJ_MENUTAB);
+	CObjMenuTab* tab = (CObjMenuTab*)Obj()->GetObj(OBJ_MENUTAB);
 
 }
 //①ドアの描画
@@ -1679,7 +1665,7 @@ void GimmickMechanic::Destructor() {
 //②メカニックのアクション
 void GimmickMechanic::Action() {
 	 //メニュータブ取得
-	// CObjMenuTab* tab = (CObjMenuTab*)Obj()->GetObj(OBJ_MENUTAB);
+	 CObjMenuTab* tab = (CObjMenuTab*)Obj()->GetObj(OBJ_MENUTAB);
 
 }
 //②メカニックの描画
@@ -1717,8 +1703,8 @@ void GimmickSoundComputer::Init(int xpos, int ypos, int widht, int height, int b
 	//親クラスのInit関数を呼ぶ
 	Gimmick::Init(xpos, ypos, widht, height, balloonnum);
 	//吹き出しの初期化
-	InitBall(&m_ball[0], -48, -48, sound, 1, BLUE, LOWER_RIGHT); //A
-	//InitBall(&m_ball[1], 48, -48, sound, 1, RED, LOWER_LEFT);	 //B
+	InitBall(&m_ball[0],48, -48, sound, 1, BLUE, LOWER_LEFT);  //A
+	//InitBall(&m_ball[1], 150, -48, sound, 1, RED, LOWER_LEFT); //B
 }
 //③パソコンのデストラクタ
 void GimmickSoundComputer::Destructor() {
@@ -1754,7 +1740,6 @@ void GimmickSoundComputer::Draw() {
 
 	//吹き出し描画＆動作-------
 	this->gimmicDraw(1);
-	//this->gimmicDraw(2);
 	//-------------------------
 
 }

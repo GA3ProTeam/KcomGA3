@@ -459,12 +459,12 @@ void CObjGimmickManager::Action() {
 	};
 	//イベント番号(シオンステージ2)
 	enum SION2_NUMBER {
-		SION2_TOLK_START,
-		SION2_TOLK_END,
-		SION2_TOLK_IYAHON_START,
-		SION2_TOLK_IYAHON_FLAG_NO,
-		SION2_TOLK_IYAHON_FLAG_YES,
-		SION2_TOLK_IYAHON_END,
+		SION2_TALK_START,
+		SION2_TALK_END,
+		SION2_TALK_IYAHON_START,
+		SION2_TALK_IYAHON_FLAG_NO,
+		SION2_TALK_IYAHON_FLAG_YES,
+		SION2_TALK_IYAHON_END,
 
 	};
 	//イベント番号(シオンステージ3)
@@ -524,7 +524,7 @@ void CObjGimmickManager::Action() {
 		m_Sion1_flg = SION1_TOLK_START;
 
 		//シオンステージ1
-		m_Sion2_flg = SION2_TOLK_START;
+		m_Sion2_flg = SION2_TALK_START;
 
 		//シオンステージ3
 		m_Sion3_flg = SION3_TOLK_START;
@@ -1477,7 +1477,7 @@ void CObjGimmickManager::Action() {
 			m_Sion1_flg = SION1_CLEAR;
 			//ステージセレクト画面に移行
 			Manager()->Pop(new CSceneStageSelect);
-		}
+
 		break;
 	case 21:
 		//イヤホン男と会話フラグON
@@ -1485,17 +1485,17 @@ void CObjGimmickManager::Action() {
 		//static int m_Sion2_flg = SION2_TOLK_START;
 		//m_gimmick_oven->m_bActionFlg = false;
 		//初回会話
-		if (m_Sion2_flg == SION2_TOLK_START) {
+		if (m_Sion2_flg == SION2_TALK_START) {
 			Overlay()->talkDraw(SION, SION2_START);
 
 			//会話終了
 			if (Overlay()->NextWait()) {
-				m_Sion2_flg = SION2_TOLK_END;
+				m_Sion2_flg = SION2_TALK_END;
 			}
 
 		}
 		//イヤホン男会話開始
-		if (m_Sion2_flg == SION2_IYAHON_START) {
+		if (m_gimmick_earphone->m_ball[0].OnPush) {
 			Overlay()->talkDraw(SION, SION2_IYAHON_START);
 			//会話終了
 			if (Overlay()->NextWait()) {
@@ -1773,7 +1773,6 @@ void CObjGimmickManager::Action() {
 
 }
 
-
 //ドロー
 void CObjGimmickManager::Draw() {
 	float col[4] = { 1.0f,1.0f,1.0f,1.0f };
@@ -2020,4 +2019,4 @@ void CObjGimmickManager::Draw() {
 		break;
 		//メルエルステージ↑------------------------------------------------------------
 	}
-}
+

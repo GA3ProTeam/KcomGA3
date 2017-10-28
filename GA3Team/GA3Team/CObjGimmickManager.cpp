@@ -55,9 +55,6 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 	40~45=メルエル
 	*/
 
-
-
-
 	switch (m_Stage_ID) {
 		//チュートリアル（博士）ステージ--------------------------
 	case 10:

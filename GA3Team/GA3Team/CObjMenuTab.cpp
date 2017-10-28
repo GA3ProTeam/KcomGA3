@@ -39,6 +39,9 @@ void CObjMenuTab::Init(int openclosey, int iMoveScreenFlg)
 
 	//戻るボタンを押すとどこに戻るか
 	m_iMoveScreenFlg = iMoveScreenFlg;
+
+	//クリックした際一度だけ反応するためのフラグ
+	m_bOnceFlg=false;
 }
 
 //-----------------------------------------------------------------
@@ -146,7 +149,7 @@ void CObjMenuTab::Action()
 		//タイトルに戻るボタン動作--------------------------------------------------
 		//タブが開いた後、すぐに反応させないようにする
 		//タブが押されて1秒以上経つと押せるようになる
-		if (SelectPush(m_iBackTitlex, m_iBackTitley, 64, 64) && m_bOpenClose && m_icnt >= 60) {
+		if (SelectPushTitle(m_iBackTitlex, m_iBackTitley, 64, 64) && m_bOpenClose && m_icnt >= 60) {
 			//SavedataManeger()->Savedata[SavedataManeger()->SelectedData].m_bSionflg[0] = true;
 			//SavedataManeger()->Writesavedata();
 			//【データセーブ処理はステージ選択画面のInit関数に移行しました。】
@@ -441,6 +444,30 @@ bool CObjMenuTab::SelectPush(int btx, int bty, int btwid, int bthei)
 
 	return false;
 
+}
+
+//タイトル画面に戻るボタン専用処理
+bool CObjMenuTab::SelectPushTitle(int btx, int bty, int btwid, int bthei) {
+	int mousex = Input()->m_x;
+	int mousey = Input()->m_y;
+
+	//縦と横(x)
+	if ((mousex > btx && mousex < (btx + btwid))
+		&& (mousey > bty && mousey < (bty + bthei))) {
+		//左クリックされたら
+		if (Input()->GetMouButtonLOnce())
+		{
+			m_bOnceFlg = true;
+		}
+		//左クリックされていない　&&　一回クリックされていたなら（ドラッグ＆ドロップ）
+		else if (!Input()->GetMouButtonL() && m_bOnceFlg)
+		{
+			m_bOnceFlg = false;//クリックフラグを解除
+			return true;
+		}
+	}
+
+	return false;
 }
 
 void CObjMenuTab::Onability()

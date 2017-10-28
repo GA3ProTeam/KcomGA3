@@ -20,7 +20,7 @@ typedef struct
 class CSavedata{
 public:
 	//char m_savedata;	  //仮
-	char m_cPlayerName[32];   //プレイヤーの名前
+	char m_cPlayerName[256];   //プレイヤーの名前
 	bool m_btutorial;
 	vector<bool> m_btutoriaruflg;//チュートリアルのフラグ進行度
 

@@ -114,10 +114,23 @@ BOOL CALLBACK DlgProc(HWND hDlg, UINT Msg, WPARAM wParam, LPARAM lParam)
 		switch (LOWORD(wParam))
 		{
 		case IDOK:
+		{
 			GetDlgItemText(hDlg, IDC_EDIT1, str, 255);
-			strcpy_s(g_UserData->dlgIn, str);
-			EndDialog(hDlg, IDOK);
+
+			//入力文字列を転送
+			int len = strlen(str);
+
+			//256文字以内の場合のみ格納
+			if (len < 256) {
+				strcpy_s(g_UserData->dlgIn, str);
+				EndDialog(hDlg, IDOK);
+			}
+			else {
+				MessageBox(hDlg, "文字数オーバーです。", "警告", MB_OK);
+			}
+
 			break;
+		}
 			//MessageBox(hDlg, str, "取得されたメッセージ", MB_OK);
 		case IDCANCEL:
 			EndDialog(hDlg, IDCANCEL);

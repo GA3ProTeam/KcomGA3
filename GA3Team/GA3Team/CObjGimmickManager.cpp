@@ -510,9 +510,6 @@ void CObjGimmickManager::Action() {
 		//チュートリアルステージ（博士）
 	case 10:
 	{
-		//ゴミ箱動作不可
-		m_pMenuTab->SetGarbageActionFlg(false);
-
 		//【初回動作】
 		if (m_itutorialflg == TUTORIAL_WELCOM_TALK) {
 			//博士「ようこそ！ここは・・・」

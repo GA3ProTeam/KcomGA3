@@ -42,6 +42,10 @@ private:
 
 	int m_iMoveScreenFlg;//戻るボタンを押すとどこに戻るか
 
+
+	//クリックした際一度だけ反応するためのフラグ
+	bool m_bOnceFlg;
+
 public:
 	//bool m_bability;//能力発動フラグ
 
@@ -52,6 +56,9 @@ public:
 	void Draw();//描画
 	//指定されたボタンを押す
 	bool SelectPush(int btx, int bty, int btwid, int bthei);
+
+	//タイトル画面に戻るボタン専用処理
+	bool SelectPushTitle(int btx, int bty, int btwid, int bthei);
 
 	//音を持っているか調べる
 	bool GetHaveSound() { return m_bhavesound; };

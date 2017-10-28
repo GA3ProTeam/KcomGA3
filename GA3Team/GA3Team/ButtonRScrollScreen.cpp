@@ -53,7 +53,7 @@ void ButtonRScrollScreen::Action() {
 	}
 
 	//デバッグ用
-	sprintf(strsave, "%d", User()->mscroll_x);
+	//sprintf(strsave, "%d", User()->mscroll_x);
 }
 
 //ドロー
@@ -74,7 +74,7 @@ void ButtonRScrollScreen::Draw() {
 	Image()->Draw(0, &m_src, &m_dst, col, 0.0f);
 
 
-	Font()->StrDraw(strsave, 0, 500, 16, col);
+	//Font()->StrDraw(strsave, 0, 500, 16, col);
 
 
 }

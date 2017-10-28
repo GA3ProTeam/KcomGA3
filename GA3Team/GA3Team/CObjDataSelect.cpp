@@ -298,7 +298,7 @@ void CObjDataSelect::Draw()
 		}
 
 	//テスト描画/
-	Font()->StrDraw("dataselect", 0, 0, 20, col);
+	//Font()->StrDraw("dataselect", 0, 0, 20, col);
 
 	//プレイヤー名/進行度描画(位置確認中)---> 入力した名前、進行度を描画する
 	//マウスカーソルが合っているときは拡大と発光をする

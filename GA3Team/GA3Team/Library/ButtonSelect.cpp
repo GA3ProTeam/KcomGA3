@@ -42,7 +42,7 @@ void ButtonSelect::DrawButtonSelect() {
 	m_rSrc.left = m_iXpos;
 	m_rSrc.right = m_rSrc.left + m_iWidth;
 
-	Image()->DrawEx(58, &m_rSrc, &m_rDst, col, 0.0f);
+	Image()->DrawEx(EX_GIMMICK_KARI, &m_rSrc, &m_rDst, col, 0.0f);
 	//------------------------------------------------
 
 	//•¶Žš•`‰æ----------------------------------------

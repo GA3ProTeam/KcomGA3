@@ -55,6 +55,8 @@ void CObjGimmickManager::Init(int select_chara, int stage_id,
 	40~45=メルエル
 	*/
 
+	//m_Stage_ID = 99;
+
 	switch (m_Stage_ID) {
 		//チュートリアル（博士）ステージ--------------------------
 	case 10:
@@ -1737,7 +1739,7 @@ void CObjGimmickManager::Action() {
 		if (test_num == 0) {
 			int show_id = 0;
 
-			Overlay()->talkDraw(TUTORIAL, CHARA_SHIFT_TEST, &show_id, 1, &show_id, 1);
+			Overlay()->talkDraw(KOUNE, KOUNE2_ONNNA_FLAG3_YES, &show_id, 1, &show_id, 1);
 
 			//会話終了
 			if (Overlay()->NextWait()) {

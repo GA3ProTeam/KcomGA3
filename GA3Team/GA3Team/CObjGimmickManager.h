@@ -76,13 +76,9 @@ enum SION1_NUMBER {
 };
 //イベント番号(シオンステージ2)
 enum SION2_NUMBER {
-	SION2_TALK_START,
-	SION2_TALK_END,
-	SION2_TALK_IYAHON_START,
-	SION2_TALK_IYAHON_FLAG_NO,
-	SION2_TALK_IYAHON_FLAG_YES,
-	SION2_TALK_IYAHON_END,
-
+	SION2_TALK_START,//初回会話
+	SION2_EARPHONE_TALK,//イヤホン男と会話した
+	SION2_EARPHONE_TALK_KOUNE_TALK,//イヤホン男と会話した後、コウネと会話
 };
 //イベント番号(シオンステージ3)
 enum SION3_NUMBER {
@@ -116,8 +112,8 @@ public:
 	void Destructor();	//デストラクタ
 	void Action();		//アクション
 	void Draw();		//ドロー
-	
-	
+
+
 private:
 
 	//一度だけ初期化するための変数
@@ -129,8 +125,8 @@ private:
 	ButtonRScrollScreen* m_pRScroll;//画面右スクロールボタンへの参照
 	CObjMenuTab* m_pMenuTab;//メニュータブへの参照
 
-	//シオンステージ↓
-	//ステージ1↓
+							//シオンステージ↓
+							//ステージ1↓
 	GimmickAunt* m_gimmick_aunt;
 	GimmickBird* m_gimmick_bird;
 	Gimmickwatchdog* m_gimmick_watchdog;
@@ -218,7 +214,7 @@ private:
 
 
 
-	
+
 };
 
 #endif

@@ -39,8 +39,8 @@ void CSceneTitle::Scene()
 	}
 	
 
-	//テスト用　消さないように
-	if (Input()->GetVKey(VK_RETURN)) {
-		Manager()->Pop(new CSceneGameMain());
-	}
+	////テスト用　消さないように
+	//if (Input()->GetVKey(VK_RETURN)) {
+	//	Manager()->Pop(new CSceneGameMain());
+	//}
 }

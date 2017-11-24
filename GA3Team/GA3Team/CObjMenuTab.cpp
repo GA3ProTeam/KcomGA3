@@ -1,6 +1,6 @@
 #include "main.h"
 //-----------------------------------------------------------------
-void CObjMenuTab::Init(int openclosey)
+void CObjMenuTab::Init(int openclosey, int iMoveScreenFlg)
 {
 	//各変数を初期化
 	m_bOpenClose = false;//閉じている
@@ -36,6 +36,12 @@ void CObjMenuTab::Init(int openclosey)
 	m_iHeight = 64;
 
 	inputcount = 0;
+
+	//戻るボタンを押すとどこに戻るか
+	m_iMoveScreenFlg = iMoveScreenFlg;
+
+	//クリックした際一度だけ反応するためのフラグ
+	m_bOnceFlg=false;
 }
 
 //-----------------------------------------------------------------
@@ -85,14 +91,20 @@ void CObjMenuTab::Action()
 		if (SelectPush(m_isoundx, m_isoundy, 64, 64) && !m_bhavesound) {
 			m_bhavesound = true;//マウスドラッグ開始
 			m_igivesound = 0;//配列[0]番目の音を選択
+			//音を再生----------------------------------------------------------------------
+			SoundManager()->StartSound(m_igivesound);
 		}
 		else if (SelectPush(m_isoundx + 64, m_isoundy, 64, 64) && !m_bhavesound) {
 			m_bhavesound = true;//マウスドラッグ開始
 			m_igivesound = 1;//配列[1]番目の音を選択
+			//音を再生----------------------------------------------------------------------
+			SoundManager()->StartSound(m_igivesound);
 		}
 		else if (SelectPush(m_isoundx + 128, m_isoundy, 64, 64) && !m_bhavesound) {
 			m_bhavesound = true;//マウスドラッグ開始
 			m_igivesound = 2;//配列[2]番目の音を選択
+			 //音を再生----------------------------------------------------------------------
+			SoundManager()->StartSound(m_igivesound);
 
 		}//マウス左クリックが離されたら、ドラッグ＆ドロップ完了
 		else if (!Input()->GetMouButtonL() && m_bhavesound) {
@@ -137,11 +149,17 @@ void CObjMenuTab::Action()
 		//タイトルに戻るボタン動作--------------------------------------------------
 		//タブが開いた後、すぐに反応させないようにする
 		//タブが押されて1秒以上経つと押せるようになる
-		if (SelectPush(m_iBackTitlex, m_iBackTitley, 64, 64) && m_bOpenClose && m_icnt >= 60) {
+		if (SelectPushTitle(m_iBackTitlex, m_iBackTitley, 64, 64) && m_bOpenClose && m_icnt >= 60) {
 			//SavedataManeger()->Savedata[SavedataManeger()->SelectedData].m_bSionflg[0] = true;
 			//SavedataManeger()->Writesavedata();
 			//【データセーブ処理はステージ選択画面のInit関数に移行しました。】
-			Manager()->Pop(new CSceneStageSelect());//ステージ選択に戻る
+			if (m_iMoveScreenFlg == 0) {
+				Manager()->Pop(new CSceneStageSelect());//ステージ選択に戻る
+			}
+			else {
+				Manager()->Pop(new CSceneTitle());//タイトル画面に戻る
+			}
+			
 		}
 		else if (m_bOpenClose) {
 			m_icnt++;
@@ -175,6 +193,7 @@ void CObjMenuTab::Action()
 
 				if (SelectPush(m_iability_x, m_iability_y, 64, 32)) {
 					vol = SOUND_PLUS;
+					g_SoundManeger->soundvol(newslnum, vol);
 					vol = SOUND_NON;
 					flg = false;
 					newslnum = -1;
@@ -425,6 +444,30 @@ bool CObjMenuTab::SelectPush(int btx, int bty, int btwid, int bthei)
 
 	return false;
 
+}
+
+//タイトル画面に戻るボタン専用処理
+bool CObjMenuTab::SelectPushTitle(int btx, int bty, int btwid, int bthei) {
+	int mousex = Input()->m_x;
+	int mousey = Input()->m_y;
+
+	//縦と横(x)
+	if ((mousex > btx && mousex < (btx + btwid))
+		&& (mousey > bty && mousey < (bty + bthei))) {
+		//左クリックされたら
+		if (Input()->GetMouButtonLOnce())
+		{
+			m_bOnceFlg = true;
+		}
+		//左クリックされていない　&&　一回クリックされていたなら（ドラッグ＆ドロップ）
+		else if (!Input()->GetMouButtonL() && m_bOnceFlg)
+		{
+			m_bOnceFlg = false;//クリックフラグを解除
+			return true;
+		}
+	}
+
+	return false;
 }
 
 void CObjMenuTab::Onability()

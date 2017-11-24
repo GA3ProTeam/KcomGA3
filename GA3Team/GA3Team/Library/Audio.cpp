@@ -109,6 +109,11 @@ void CAudio::Start(int id)
 	SoundBuffer.LoopCount		=  0;
 	SoundBuffer.Flags			=  XAUDIO2_END_OF_STREAM;
 
+	//データがないならスキップ
+	if (m_pSourceVoice[id][0]==NULL) {
+		return;
+	}
+
 	XAUDIO2_VOICE_STATE stats;
 	for(int i=0 ; i<(SCENE_AUDIO_EFFCT_MAX<<1) ; i++ )
 	{

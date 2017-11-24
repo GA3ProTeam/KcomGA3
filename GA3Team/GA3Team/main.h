@@ -191,7 +191,7 @@ enum OBJ_NAME
 //一つのシーンで読み込める音楽総数
 #define SCENE_AUDIO_MAX	192
 //効果音の同時出力最大数
-#define SCENE_AUDIO_EFFCT_MAX	8
+#define SCENE_AUDIO_EFFCT_MAX	1
 
 //フレームレート
 #define DRAW_FPS	false	//FPSの描画

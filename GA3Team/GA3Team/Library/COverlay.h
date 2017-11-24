@@ -39,9 +39,6 @@ enum sion
 	SION2_IYAHON_START,
 	SION2_KOUNE_FLAG_NO,
 	SION2_KOUNE_FLAG_YES,
-	SION2_IYAHON_END,
-	SION2_KOUNE_FLAG_YES_END,
-	SION2_KOUNE_FLAG_NO_END,
 	SION2_CLEAR,
 
 	//ステージ3
@@ -207,6 +204,11 @@ enum DrawExID {
 	EX_PARK_LEFT,
 	EX_PARK_RIGHT,
 	EX_TITLE,
+	EX_LABO_CHARA,
+	EX_MALE,
+	EX_GIMMICK_KARI,
+	EX_FADE_OUT,
+	EX_MERUERU,
 };
 
 //効果音アドレス
@@ -244,9 +246,10 @@ enum SoundID {
 	DECISION_BUTTON5,			//決定音
 	ERROR_CANCEL,				//キャンセル音
 
-	//↓まだ読み込んでいないもの-------------------------------------
-	KOUNE2_GIRL_SING,//女の子の応援音
-	//---------------------------------------------------------------
+								//↓まだ読み込んでいないもの-------------------------------------
+								KOUNE2_GIRL_SING,//女の子の応援音
+
+												 //---------------------------------------------------------------
 };
 
 //---------------------------

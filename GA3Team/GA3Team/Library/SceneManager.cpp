@@ -73,7 +73,7 @@ void CSceneManager::Pop()
 		//シーン切り替えによるデータの破棄
 		//テクスチャ・グラフィック・オブジェクト情報の削除
 		m_Scene->Image()->DeleteImage(); 
-		m_Scene->Audio()->DeleteAudio();
+		//m_Scene->Audio()->DeleteAudio();
 		//m_Scene->Hit()->DeleteAllListData();
 		m_Scene->Obj()->ListDeleteSceneObj(m_Scene);
 		m_Scene->Font()->ListDelete();

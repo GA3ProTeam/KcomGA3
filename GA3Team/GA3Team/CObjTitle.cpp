@@ -108,7 +108,7 @@ void CObjTitle::Draw()
 	//Font()->StrDraw(x, 0, 16, 16, coltext);
 	//Font()->StrDraw(y, 0, 32, 16, coltext);
 
-	//テスト用表示
-	float coldbg[4] = { 1.0f,1.0f,1.0f,1.0f };
-	Font()->StrDraw("Debugモード有効：EnterでGameMainへ", 0, WINDOW_SIZE_H - 16, 16, coldbg);
+	////テスト用表示
+	//float coldbg[4] = { 1.0f,1.0f,1.0f,1.0f };
+	//Font()->StrDraw("Debugモード有効：EnterでGameMainへ", 0, WINDOW_SIZE_H - 16, 16, coldbg);
 }

@@ -31,7 +31,7 @@ void CSceneGameMain::InitScene()
 
 	m_obj_menutab = new CObjMenuTab();
 	Obj()->InsertObj(m_obj_menutab, OBJ_MENUTAB, 5, this, HIT_BOX_OFF);
-	m_obj_menutab->Init(400);
+	m_obj_menutab->Init(400,0);
 
 	m_obj_Rscroll = new ButtonRScrollScreen();
 	Obj()->InsertObj(m_obj_Rscroll, BUTTON_RSCROLL_SCREEN, 5, this, HIT_BOX_OFF);

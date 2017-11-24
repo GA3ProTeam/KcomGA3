@@ -5,7 +5,7 @@
 void CDirectXDeviec::ViewClear()
 {
 	 // 画面を指定色でクリア
-	float color[] = {0.0f, 0.25f, 0.45f, 1.0f};
+	float color[] = {0.0f, 0.0f, 0.45f, 1.0f};
 	m_pDeviceContext->ClearRenderTargetView(m_pRTV, color);
 	//m_pDeviceContext->ClearDepthStencilView(m_pDSV, D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1.0f, 0);
 }

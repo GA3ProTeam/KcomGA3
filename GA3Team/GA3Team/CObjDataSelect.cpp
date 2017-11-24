@@ -107,10 +107,6 @@ void CObjDataSelect::Action()
 
 void CObjDataSelect::Draw()
 {
-	
-
-
-
 	//マウス位置取得
 	int mouse_x, mouse_y;
 	mouse_x = Input()->m_x;
@@ -118,14 +114,14 @@ void CObjDataSelect::Draw()
 
 	//マウス位置描画　デバック用
 	char x[32], y[32];
-	sprintf(x, "%d", Input()->m_x);
-	sprintf(y, "%d", Input()->m_y);
+	sprintf(x, "タイトルに戻る", Input()->m_x);
+	//sprintf(y, "%d", Input()->m_y);
 
 	float col[4]     = { 1.0f,1.0f,1.0f,1.0f };
 	float coltext[4] = { 1.0f,1.0f,1.0f,1.0f };
 	float coldraw[4] = { 1.0f,1.0f,1.0f,1.0f };
 
-	//Font()->StrDraw(x, 0, 16, 16, coltext);
+	Font()->StrDraw(x, 30, 540, 20, coltext);
 	//Font()->StrDraw(y, 0, 32, 16, coltext);
 
 	//-------------------------------------------
@@ -302,7 +298,7 @@ void CObjDataSelect::Draw()
 		}
 
 	//テスト描画/
-	Font()->StrDraw("dataselect", 0, 0, 20, col);
+	//Font()->StrDraw("dataselect", 0, 0, 20, col);
 
 	//プレイヤー名/進行度描画(位置確認中)---> 入力した名前、進行度を描画する
 	//マウスカーソルが合っているときは拡大と発光をする

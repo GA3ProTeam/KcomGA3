@@ -39,7 +39,7 @@ void CSoundManeger::SoundSave(SoundData sound/*セーブする音*/) //音をセーブする
 //音を再生する
 void CSoundManeger::StartSound(int slotNum/*再生する音のスロット番号*/)
 {
-	//各スロットでの音ボリューム情報に応じて音量帰る。
+	//各スロットでの音ボリューム情報に応じて音量変える。
 	if (SoundSlot[slotNum].sound_volume == BALL_VOL_MIDDLE){
 		g_Audio->Volume(10, SoundSlot[slotNum].sound_num);
 		g_Audio->Start(SoundSlot[slotNum].sound_num);
